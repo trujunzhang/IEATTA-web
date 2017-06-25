@@ -18,7 +18,7 @@ class UserLoginMain extends Component {
     this.setState({formState: state})
   }
 
-  async loginViaSocial(type) {
+  async loginViaSocial(type = 'facebook') {
     this.props.actions.loginRequest()
 
     let loginEvent = (type === 'twitter') ? logInWithTwitter : logInWithFacebook
@@ -109,6 +109,7 @@ class UserLoginMain extends Component {
           <Telescope.components.UserEmailSignIn
             actions={this.props.actions}
             auth={this.props.auth}
+            loginViaSocial={this.loginViaSocial.bind(this)}
             toggleEvent={this.switchFormState.bind(this)}/>
         )
       case 'REGISTER':
@@ -116,6 +117,7 @@ class UserLoginMain extends Component {
           <Telescope.components.UserEmailSignUp
             actions={this.props.actions}
             auth={this.props.auth}
+            loginViaSocial={this.loginViaSocial.bind(this)}
             toggleEvent={this.switchFormState.bind(this)}/>
         )
       case 'FORGOT':

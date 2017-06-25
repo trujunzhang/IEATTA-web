@@ -84,10 +84,14 @@ class UserEmailSignIn extends Component {
 
           <ul className="ylist">
             <li className="fb-login" data-component-bound="true">
-              <button type="submit" value="submit" className="ybtn ybtn--social ybtn--facebook ybtn-full"><span><div
-                className="u-text-centered">
-                <span id="login_facebook_icon"
-                      className="icon icon--24-facebook icon--size-24 icon--currentColor">
+              <button
+                onClick={(e) => {
+                  this.props.loginViaSocial('facebook')
+                }}
+                type="submit" value="submit" className="ybtn ybtn--social ybtn--facebook ybtn-full">
+                <span>
+                <div className="u-text-centered">
+                <span id="login_facebook_icon" className="icon icon--24-facebook icon--size-24 icon--currentColor">
                   <svg className="icon_svg"></svg>
                 </span>
                 Log In with Facebook</div>

@@ -119,9 +119,13 @@ class UserEmailSignUp extends Component {
           </div>
 
           <p className="fb-start" data-component-bound="true">
-            <button type="submit" value="submit" className="ybtn ybtn--social ybtn--facebook ybtn-full">
+            <button
+              onClick={(e) => {
+                this.props.loginViaSocial('facebook')
+              }}
+              type="submit" value="submit" className="ybtn ybtn--social ybtn--facebook ybtn-full">
               <span>
-              <div className="u-text-centered">
+                <div className="u-text-centered">
               <span id="login_facebook_icon"
                     aria-hidden="true"
                     className="icon icon--24-facebook icon--size-24 icon--currentColor">
