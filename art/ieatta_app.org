@@ -1,0 +1,28 @@
+* Libraries
+
+** immutable-js
+  [https://github.com/facebook/immutable-js]
+
+** slugify
+  [https://github.com/simov/slugify]
+
+** react-intl
+  [https://github.com/yahoo/react-intl]
+
+** tcomb-form
+  [https://github.com/gcanti/tcomb-form]
+
+** React.js with sass
+
+*** create-react-app-sass
+  [https://github.com/rickharrison/create-react-app-sass]
+
+* Parse Server
+
+** Cloud Code
+
+* Blogs
+
+** intl
+   [https://www.abidibo.net/blog/2017/03/17/internationalization-react-redux-starter-kit/]
+
