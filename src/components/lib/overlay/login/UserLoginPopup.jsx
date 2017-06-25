@@ -32,30 +32,24 @@ class UserLoginPopup extends Component {
     switch (this.state.formState) {
       case 'MAIN':
         return (
-          <div className='tcomb_panel'>
-            <Telescope.components.UserLoginMain
-              actions={this.props.actions}
-              auth={this.props.auth}
-              toggleEvent={this.switchFormState.bind(this)}/>
-          </div>
+          <Telescope.components.UserLoginMain
+            actions={this.props.actions}
+            auth={this.props.auth}
+            toggleEvent={this.switchFormState.bind(this)}/>
         )
       case 'SIGNIN':
         return (
-          <div className='tcomb_panel'>
-            <Telescope.components.UserEmailSignIn
-              actions={this.props.actions}
-              auth={this.props.auth}
-              toggleEvent={this.switchFormState.bind(this)}/>
-          </div>
+          <Telescope.components.UserEmailSignIn
+            actions={this.props.actions}
+            auth={this.props.auth}
+            toggleEvent={this.switchFormState.bind(this)}/>
         )
       case 'REGISTER':
         return (
-          <div className='tcomb_panel'>
-            <Telescope.components.UserEmailSignUp
-              actions={this.props.actions}
-              auth={this.props.auth}
-              toggleEvent={this.switchFormState.bind(this)}/>
-          </div>
+          <Telescope.components.UserEmailSignUp
+            actions={this.props.actions}
+            auth={this.props.auth}
+            toggleEvent={this.switchFormState.bind(this)}/>
         )
     }
   }
@@ -72,11 +66,17 @@ class UserLoginPopup extends Component {
     return (
       <div id="wrap" className="lang-en">
         {this.renderTitle()}
-        <Telescope.components.UserLoginLayout
-          title={formTitle + ' ' + extTitle}
-          showCloseIcon={showCloseIcon}
-          formState={formState}
-          child={this.renderLoginPanel()}/>
+
+        <div className="main-content-wrap main-content-wrap--full">
+          <div id="super-container" className="content-container">
+            <div className="clearfix layout-block layout-h row--responsive">
+
+              {this.renderLeftPanel()}
+
+              {this.renderRightPanel()}
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
@@ -98,14 +98,20 @@ class UserLoginPopup extends Component {
             </div>
           </div>
         </div>
+      </div>
+    )
+  }
 
+  renderLeftPanel() {
+    return this.renderLoginPanel()
+  }
 
-        <div id="print-masthead">
-          <img src="https://s3-media2.fl.yelpcdn.com/assets/2/www/img/b7e9d647188d/gfx/header_print.gif"
-               className="print-bkg-img"
-               alt="Yelp"/>
+  renderRightPanel() {
+    return (
+      <div className="column column-beta responsive-visible-large-block">
+        <div className="picture-container">
+          <img src="https://s3-media4.fl.yelpcdn.com/assets/2/www/img/1e82406ff345/signup/signup_illustration.png"/>
         </div>
-
 
       </div>
     )
