@@ -108,9 +108,7 @@ Telescope.registerComponent('UserCollectionsPopover',         require('./overlay
 
 Telescope.registerComponent('UserEmailSignIn',                require('./overlay/login/UserEmailSignIn.jsx').default)
 Telescope.registerComponent('UserEmailSignUp',                require('./overlay/login/UserEmailSignUp.jsx').default)
-Telescope.registerComponent('UserLoginLayout',                require('./overlay/login/UserLoginLayout.jsx').default)
 Telescope.registerComponent('UserLoginMain',                  require('./overlay/login/UserLoginMain.jsx').default)
-Telescope.registerComponent('UserLoginPopup',                 require('./overlay/login/UserLoginPopup.jsx').default)
 Telescope.registerComponent('UsersRemovedAccount',            require('./overlay/login/UsersRemovedAccount.jsx').default)
 Telescope.registerComponent('UsersResetPassword',             require('./overlay/login/UsersResetPassword.jsx').default)
 Telescope.registerComponent('UsersVerifyEmail',               require('./overlay/login/UsersVerifyEmail.jsx').default)

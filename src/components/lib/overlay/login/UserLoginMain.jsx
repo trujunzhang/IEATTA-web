@@ -8,7 +8,8 @@ class UserLoginMain extends Component {
     super(props)
 
     this.state = this.initialState = {
-      formState: 'SIGNIN',
+      // formState: 'SIGNIN',
+      formState: 'REGISTER',
     }
   }
 
@@ -111,6 +112,13 @@ class UserLoginMain extends Component {
             toggleEvent={this.switchFormState.bind(this)}/>
         )
       case 'REGISTER':
+        return (
+          <Telescope.components.UserEmailSignUp
+            actions={this.props.actions}
+            auth={this.props.auth}
+            toggleEvent={this.switchFormState.bind(this)}/>
+        )
+      case 'FORGOT':
         return (
           <Telescope.components.UserEmailSignUp
             actions={this.props.actions}
