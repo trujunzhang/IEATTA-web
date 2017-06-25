@@ -69,7 +69,12 @@ class UserEmailSignIn extends Component {
         <div className="signup-form-container">
           <div className="header">
             <h2>Log In to Yelp</h2>
-            <p className="subheading">New to Yelp? <a className="signup-link u-pseudo-link" href="/signup">Sign up</a>
+            <p className="subheading">{'New to Yelp? '}
+              <a onClick={(e) => {
+                this.props.toggleEvent(e, 'REGISTER')
+              }}
+                 className="signup-link u-pseudo-link" href="/signup">{'Sign up'}
+              </a>
             </p>
           </div>
 
@@ -99,7 +104,12 @@ class UserEmailSignIn extends Component {
 
         </div>
         <div className="sub-text-box">
-          <small className="subtle-text">New to Yelp? <a className="signup-link" href="/signup">Sign up</a></small>
+          <small className="subtle-text">{'New to Yelp? '}
+            <a onClick={(e) => {
+              this.props.toggleEvent(e, 'REGISTER')
+            }}
+               className="signup-link" href="/signup">{'Sign up'}</a>
+          </small>
         </div>
       </div>
     )
