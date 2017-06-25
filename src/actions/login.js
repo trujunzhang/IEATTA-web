@@ -89,7 +89,7 @@ async function _logInWithTwitter(source: ? object): Promise<Array<Action>> {
   let user = twitterUser
 
   user.set('username', profile.name)
-  user.set('slug', slugify(username, '_'))
+  user.set('slug', slugify(profile.name, '_'))
   user.set('email', profile.email)
   user.set('loginType', 'twitter')
   await user.save();

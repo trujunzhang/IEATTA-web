@@ -3,13 +3,25 @@ import React, {Component} from 'react'
 
 const {timeout, logInWithFacebook, logInWithTwitter, dismissPopModel} = require('../../../../actions').default
 
+
+/**
+ * States of login display
+ */
+const {
+  LOGIN_FORM_TYPE_LOGIN,
+  LOGIN_FORM_TYPE_REGISTER =,
+  LOGIN_FORM_TYPE_FORGOTPASSWORD,
+  LOGIN_FORM_TYPE_RESET_PASSWD,
+} = require('../../../../lib/constants').default
+
+
 class UserLoginMain extends Component {
   constructor(props) {
     super(props)
 
     this.state = this.initialState = {
-      // formState: 'SIGNIN',
-      formState: 'REGISTER',
+      // formState: LOGIN_FORM_TYPE_LOGIN,
+      formState: LOGIN_FORM_TYPE_REGISTER,
     }
   }
 
@@ -98,7 +110,7 @@ class UserLoginMain extends Component {
 
   renderLeftLoginForm() {
     switch (this.state.formState) {
-      case 'SIGNIN':
+      case LOGIN_FORM_TYPE_LOGIN:
         return (
           <Telescope.components.UserEmailSignIn
             actions={this.props.actions}
@@ -106,7 +118,7 @@ class UserLoginMain extends Component {
             loginViaSocial={this.loginViaSocial.bind(this)}
             toggleEvent={this.switchFormState.bind(this)}/>
         )
-      case 'REGISTER':
+      case LOGIN_FORM_TYPE_REGISTER:
         return (
           <Telescope.components.UserEmailSignUp
             actions={this.props.actions}
@@ -114,7 +126,7 @@ class UserLoginMain extends Component {
             loginViaSocial={this.loginViaSocial.bind(this)}
             toggleEvent={this.switchFormState.bind(this)}/>
         )
-      case 'FORGOT':
+      case LOGIN_FORM_TYPE_FORGOTPASSWORD:
         return (
           <Telescope.components.UserEmailSignUp
             actions={this.props.actions}

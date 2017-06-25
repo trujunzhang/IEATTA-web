@@ -1,10 +1,13 @@
 import React, {Component} from 'react'
 
+/**
+ * States of login display
+ */
 const {
-  LOGIN_VIA_SOCIAL,
-  LOGIN,
-  REGISTER,
-  FORGOT_PASSWORD
+  LOGIN_FORM_TYPE_LOGIN,
+  LOGIN_FORM_TYPE_REGISTER =,
+  LOGIN_FORM_TYPE_FORGOTPASSWORD,
+  LOGIN_FORM_TYPE_RESET_PASSWD,
 } = require('../../../../lib/constants').default
 
 const I18n = require('./Translate').default
@@ -102,7 +105,7 @@ class UserEmailSignUp extends Component {
         <div className="sub-text-box">
           <small className="subtle-text">{'Already on Yelp? '}
             <a onClick={(e) => {
-              this.props.toggleEvent(e, 'SIGNIN')
+              this.props.toggleEvent(e, LOGIN_FORM_TYPE_LOGIN)
             }}
                className="signup-link" href="/signup">{'Log in'}</a>
           </small>

@@ -1,15 +1,17 @@
 import Telescope from '../../index'
 import React, {Component} from 'react'
-/**
- *   LoginRender
- */
-import LoginRender from './LoginRender'
 
+
+/**
+ * States of login display
+ */
 const {
-  LOGIN,
-  REGISTER,
-  FORGOT_PASSWORD
+  LOGIN_FORM_TYPE_LOGIN,
+  LOGIN_FORM_TYPE_REGISTER =,
+  LOGIN_FORM_TYPE_FORGOTPASSWORD,
+  LOGIN_FORM_TYPE_RESET_PASSWD,
 } = require('../../../../lib/constants').default
+
 
 const I18n = require('./Translate').default
 
@@ -71,7 +73,7 @@ class UserEmailSignIn extends Component {
             <h2>Log In to Yelp</h2>
             <p className="subheading">{'New to Yelp? '}
               <a onClick={(e) => {
-                this.props.toggleEvent(e, 'REGISTER')
+                this.props.toggleEvent(e, LOGIN_FORM_TYPE_REGISTER)
               }}
                  className="signup-link u-pseudo-link" href="/signup">{'Sign up'}
               </a>
@@ -110,7 +112,7 @@ class UserEmailSignIn extends Component {
         <div className="sub-text-box">
           <small className="subtle-text">{'New to Yelp? '}
             <a onClick={(e) => {
-              this.props.toggleEvent(e, 'REGISTER')
+              this.props.toggleEvent(e, LOGIN_FORM_TYPE_REGISTER)
             }}
                className="signup-link" href="/signup">{'Sign up'}</a>
           </small>
