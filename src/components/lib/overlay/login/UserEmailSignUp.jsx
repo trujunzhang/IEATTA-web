@@ -62,8 +62,6 @@ class UserEmailSignUp extends Component {
   }
 
   render() {
-    debugger
-
     return (
       <div className="login" data-component-bound="true">
         <div className="signup-form-container">

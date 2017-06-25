@@ -43,8 +43,6 @@ class UserLoginMain extends Component {
   }
 
   render() {
-
-    debugger
     return (
       <div id="wrap" className="lang-en">
         {this.renderTitle()}
