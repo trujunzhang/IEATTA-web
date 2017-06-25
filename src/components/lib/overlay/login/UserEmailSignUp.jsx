@@ -5,7 +5,7 @@ import React, {Component} from 'react'
  */
 const {
   LOGIN_FORM_TYPE_LOGIN,
-  LOGIN_FORM_TYPE_REGISTER =,
+  LOGIN_FORM_TYPE_REGISTER,
   LOGIN_FORM_TYPE_FORGOTPASSWORD,
   LOGIN_FORM_TYPE_RESET_PASSWD,
 } = require('../../../../lib/constants').default
