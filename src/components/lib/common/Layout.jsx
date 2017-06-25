@@ -1,21 +1,13 @@
 import Telescope from '../index'
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 
 class Layout extends Component {
-  constructor (props, context) {
+  constructor(props, context) {
     super(props)
   }
 
-  renderContent () {
-    return (
-      <div id='container'>
-        <Telescope.components.Newsletter />
-        { this.props.children}
-      </div>
-    )
-  }
 
-  render () {
+  render() {
     if (this.props.location.pathname.indexOf('/management') !== -1) {
       return (
         <div id="admin-dashboard" className="hold-transition skin-blue sidebar-mini">
@@ -25,13 +17,7 @@ class Layout extends Component {
     }
     return (
       <div id='web-app-panel'>
-        <Telescope.components.HeaderContent />
-
-        <Telescope.components.PopoverPosts />
-
-        <Telescope.components.AppOverlay />
-
-        {this.renderContent()}
+        { this.props.children}
       </div>
     )
   }
