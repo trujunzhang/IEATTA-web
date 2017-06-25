@@ -103,7 +103,7 @@ class UserEmailSignIn extends Component {
           </ul>
 
           <fieldset className="hr-line">
-            <legend align="center">OR</legend>
+            <legend >OR</legend>
           </fieldset>
 
           {this.renderForm()}
@@ -124,16 +124,12 @@ class UserEmailSignIn extends Component {
   renderForm() {
     return (
       <form className="yform" id="ajax-login" method="POST">
-        <input type="hidden" name="csrftok" className="csrftok"
-               value="b5c33ec0e829354e49049e83557f8c5fb0ce4a1fd9a060aa83f0cee58b0be72e"/>
         <label className="placeholder-sub">Email</label>
         <input id="email" name="email" placeholder="Email" required="required" type="email" value=""
-               className="login_input_email"
-               autocomplete="off"/>
+               className="login_input_email"/>
         <label className="placeholder-sub">Password</label>
         <input id="password" name="password" placeholder="Password" required="required" type="password" value=""
-               className="login_input_password"
-               autocomplete="off"/>
+               className="login_input_password"/>
         <div className="forgot-password">
           <a href="/forgot" className="forgot-link">Forgot password?</a>
         </div>
