@@ -55,14 +55,6 @@ class UserLoginPopup extends Component {
   }
 
   render() {
-    const {formState, titles} = this.state,
-      comp = this.props.comp || {showCloseIcon: false, title: null},
-      showCloseIcon = comp.model || false,
-      title = comp.model || 'Politicl'
-
-    const formTitle = titles[formState],
-      extTitle = (title)
-
     return (
       <div id="wrap" className="lang-en">
         {this.renderTitle()}

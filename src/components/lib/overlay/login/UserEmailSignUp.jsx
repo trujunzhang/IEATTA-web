@@ -77,7 +77,7 @@ class UserEmailSignUp extends Component {
     )
   }
 
-  render() {
+  renderxxx() {
     let content = null
     if (this.state.formState === 'RESULT') {
       content = this.renderResult()
@@ -105,6 +105,55 @@ class UserEmailSignUp extends Component {
           { content }
         </span>
       </div>
+    )
+  }
+
+  render() {
+    return (
+      <form className="yform signup-form  city-hidden" id="signup-form" method="POST" data-component-bound="true"
+            _lpchecked="1">
+        <input type="hidden" name="csrftok" className="csrftok"
+               value="c8e6c7c922ac7654aae354e91cd235b9f49aa746b1477d58242544ae585f7a8c"/>
+        <div className="js-password-meter-container" data-component-bound="true">
+          <ul className="inline-layout clearfix">
+            <li>
+              <label className="placeholder-sub">First Name</label>
+              <input id="first_name"
+                     name="first_name"
+                     placeholder="First Name"
+                     required="required" type="text" value=""
+                     className="login_input_email"
+                     autocomplete="off"/>
+            </li>
+
+            <li>
+              <label className="placeholder-sub">Last Name</label>
+              <input id="last_name" name="last_name" placeholder="Last Name" required="required" type="text" value=""/>
+            </li>
+
+          </ul>
+          <label className="placeholder-sub">Email</label>
+          <input id="email" name="email" placeholder="Email" required="required" type="email" value=""/>
+
+          <label className="placeholder-sub">Password</label>
+          <input id="password" name="password" placeholder="Password" required="required" type="password" value=""
+                 className="login_input_password"
+                 autocomplete="off"/>
+
+          <input id="signup_source" name="signup_source" type="hidden" value="default"/>
+        </div>
+
+        <div className="captcha" id="signup-captcha"/>
+
+        <p className="legal-copy legal-left">
+          {'By signing up, you agree to Yelp’s '}<a className="legal-link" href="https://www.yelp.com.sg/static?p=tos">
+          {'Terms of Service'}</a> and <a className="legal-link" href="/tos/privacy_en_ie_20160131">Privacy Policy</a>.
+        </p>
+        <button id="signup-button" type="submit" value="Sign Up"
+                className="ybtn ybtn--primary disable-on-submit submit signup-button">
+          <span>Sign Up</span>
+        </button>
+      </form>
     )
   }
 }

@@ -87,6 +87,48 @@ class UserLoginMain extends Component {
 
   render() {
     return (
+      <div id="wrap" className="lang-en">
+        {this.renderTitle()}
+
+        <div className="main-content-wrap main-content-wrap--full">
+          <div id="super-container" className="content-container">
+            <div className="clearfix layout-block layout-h row--responsive">
+
+              <div className="column column-alpha column--responsive">
+                {this.renderLeftPanel()}
+              </div>
+
+              {this.renderRightPanel()}
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  renderTitle() {
+    return (
+      <div className="page-header">
+        <div className="main-header main-content-wrap js-main-header webview-hidden main-header--simple">
+          <div className="main-header_wrapper">
+            <div className="content-container">
+              <div className="arrange arrange--18 arrange--middle main-header_arrange">
+                <div
+                  className="arrange_unit arrange_unit--fill align-middle main-header--full_arrange_unit main-header_search-container">
+                  <div className="main-header_logo js-analytics-click" id="logo" data-analytics-label="logo">
+                    <a href="/">Yelp</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  renderLeftPanel() {
+    return (
       <div className="signup-wrapper">
         <div className="signup-flow on-flow-start " data-component-bound="true">
 
@@ -96,6 +138,18 @@ class UserLoginMain extends Component {
       </div>
     )
   }
+
+  renderRightPanel() {
+    return (
+      <div className="column column-beta responsive-visible-large-block">
+        <div className="picture-container">
+          <img src="https://s3-media4.fl.yelpcdn.com/assets/2/www/img/1e82406ff345/signup/signup_illustration.png"/>
+        </div>
+
+      </div>
+    )
+  }
+
 
   renderMainRows() {
     return (
@@ -130,7 +184,7 @@ class UserLoginMain extends Component {
           </fieldset>
 
           {/*{this.renderLoginForm()}*/}
-          {this.renderSignUp()}
+          {/*{this.renderSignUp()}*/}
 
         </div>
         <div className="sub-text-box">
@@ -139,83 +193,6 @@ class UserLoginMain extends Component {
       </div>
     )
   }
-
-  renderLoginForm() {
-    return (
-      <form className="yform" id="ajax-login" method="POST">
-        <input type="hidden" name="csrftok" className="csrftok"
-               value="b5c33ec0e829354e49049e83557f8c5fb0ce4a1fd9a060aa83f0cee58b0be72e"/>
-        <label className="placeholder-sub">Email</label>
-        <input id="email" name="email" placeholder="Email" required="required" type="email" value=""
-               className="login_input_email"
-               autocomplete="off"/>
-        <label className="placeholder-sub">Password</label>
-        <input id="password" name="password" placeholder="Password" required="required" type="password" value=""
-               className="login_input_password"
-               autocomplete="off"/>
-        <div className="forgot-password">
-          <a href="/forgot" className="forgot-link">Forgot password?</a>
-        </div>
-        <div className="captcha login-captcha"/>
-        <p className="legal-copy legal-left">
-          {'By logging in, you agree to Yelp’s '}<a className="legal-link" href="https://www.yelp.com.sg/static?p=tos">
-          {'Terms of Service'}</a> and <a className="legal-link" href="/tos/privacy_en_ie_20160131">Privacy Policy</a>.
-        </p>
-        <button type="submit" value="submit" className="ybtn ybtn--primary submit ybtn-full"><span>Log In</span>
-        </button>
-      </form>
-    )
-  }
-
-  renderSignUp() {
-    return (
-      <form className="yform signup-form  city-hidden" id="signup-form" method="POST" data-component-bound="true"
-            _lpchecked="1">
-        <input type="hidden" name="csrftok" className="csrftok"
-               value="c8e6c7c922ac7654aae354e91cd235b9f49aa746b1477d58242544ae585f7a8c"/>
-        <div className="js-password-meter-container" data-component-bound="true">
-          <ul className="inline-layout clearfix">
-            <li>
-              <label className="placeholder-sub">First Name</label>
-              <input id="first_name"
-                     name="first_name"
-                     placeholder="First Name"
-                     required="required" type="text" value=""
-                     className="login_input_email"
-                     autocomplete="off"/>
-            </li>
-
-            <li>
-              <label className="placeholder-sub">Last Name</label>
-              <input id="last_name" name="last_name" placeholder="Last Name" required="required" type="text" value=""/>
-            </li>
-
-          </ul>
-          <label className="placeholder-sub">Email</label>
-          <input id="email" name="email" placeholder="Email" required="required" type="email" value=""/>
-
-          <label className="placeholder-sub">Password</label>
-          <input id="password" name="password" placeholder="Password" required="required" type="password" value=""
-                 className="login_input_password"
-                 autocomplete="off"/>
-
-          <input id="signup_source" name="signup_source" type="hidden" value="default"/>
-        </div>
-
-        <div className="captcha" id="signup-captcha"/>
-
-        <p className="legal-copy legal-left">
-          {'By signing up, you agree to Yelp’s '}<a className="legal-link" href="https://www.yelp.com.sg/static?p=tos">
-          {'Terms of Service'}</a> and <a className="legal-link" href="/tos/privacy_en_ie_20160131">Privacy Policy</a>.
-        </p>
-        <button id="signup-button" type="submit" value="Sign Up"
-                className="ybtn ybtn--primary disable-on-submit submit signup-button">
-          <span>Sign Up</span></
-          button>
-      </form>
-    )
-  }
-
 
 }
 
