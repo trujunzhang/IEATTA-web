@@ -30,7 +30,7 @@ class App extends React.Component {
       secret: 'd969c13f2d19112e26c6b9c3f2563d2f',
       xfbml: true,
       cookie: true,
-      version: 'v2.9',
+      version: 'v2.8',
     }
 
     window.fbAsyncInit = function () {
