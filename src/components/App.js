@@ -1,13 +1,13 @@
 import React from 'react'
 // import { browserHistory, Router } from 'react-router'
-import { Router } from 'react-router'
-import { Provider } from 'react-redux'
+import {Router} from 'react-router'
+import {Provider} from 'react-redux'
 import PropTypes from 'prop-types'
-import { IntlProvider } from 'react-intl'
+import {IntlProvider} from 'react-intl'
 
 var Parse = require('parse')
 
-Parse.initialize('CwsmGkrIp6SHBB7ERFVQatRwwNyOL7ep0L5DT7rb', 'QpOB4AmY1aPtAiX7tXlTSO4RUubMkysANzaD7lHf')
+Parse.initialize('YJ60VCiTAD01YOA3LJtHQlhaLjxiHSsv4mkxKvVM', '3S9VZj8y9g0Tj1WS64dl19eDJrEVpvckG7uhcXIi', '87rxX8J0JwaaPSBxY9DdKJEqWXByqE7sShRsX4vg')
 Parse.serverURL = 'https://parseapi.back4app.com/'
 
 var Telescope = require('../lib/en_US').default
@@ -18,7 +18,7 @@ class App extends React.Component {
     routes: PropTypes.object.isRequired,
   }
 
-  shouldComponentUpdate () {
+  shouldComponentUpdate() {
     return false
   }
 
@@ -39,7 +39,9 @@ class App extends React.Component {
     // https://developers.facebook.com/docs/javascript/quickstart
     (function (d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0]
-      if (d.getElementById(id)) {return}
+      if (d.getElementById(id)) {
+        return
+      }
       js = d.createElement(s)
       js.id = id
       js.src = '//connect.facebook.net/en_US/sdk.js'
@@ -48,7 +50,7 @@ class App extends React.Component {
 
   }
 
-  render () {
+  render() {
     return (
       <Provider store={this.props.store}>
         <IntlProvider locale='en' messages={Telescope.strings.en}>
