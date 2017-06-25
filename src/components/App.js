@@ -26,11 +26,11 @@ class App extends React.Component {
 
     // https://developers.facebook.com/docs/javascript/reference/FB.init/v2.9
     const facebookInit = {
-      appId: '185174771986249',
-      secret: '432c2ff03f4ab82eb332c48f67b89fc5',
+      appId: '1050096535124346',
+      secret: 'd969c13f2d19112e26c6b9c3f2563d2f',
       xfbml: true,
       cookie: true,
-      version: 'v2.8',
+      version: 'v2.9',
     }
 
     window.fbAsyncInit = function () {
