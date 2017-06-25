@@ -71,7 +71,9 @@ class UserLoginPopup extends Component {
           <div id="super-container" className="content-container">
             <div className="clearfix layout-block layout-h row--responsive">
 
-              {this.renderLeftPanel()}
+              <div className="column column-alpha column--responsive">
+                {this.renderLeftPanel()}
+              </div>
 
               {this.renderRightPanel()}
             </div>

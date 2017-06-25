@@ -87,86 +87,45 @@ class UserLoginMain extends Component {
 
   render() {
     return (
-      <div className="column column-alpha column--responsive">
-        <div className="signup-wrapper">
-          <div className="signup-flow on-flow-start " data-component-bound="true">
-            <div className="flow-start hidden" data-component-bound="true">
-              <div className="sub-text-box">
-                <small className="subtle-text">Already on Yelp? <a className="login-link" href="javascript:;">Log in</a></small>
-              </div>
-            </div>
+      <div className="signup-wrapper">
+        <div className="signup-flow on-flow-start " data-component-bound="true">
 
+          {this.renderLogin()}
 
-            <div className="js-matches-biz-credentials-modal u-hidden">
-              <div className="modal_head">
-                <h2>Log in as a Business Owner?</h2>
-              </div>
-              <div className="modal_body">
-                <p className="u-space-b3">
-                  Your credentials match a business user account. Click below to log in at Yelp for Business Owners.
-                </p>
-                <a href="javascript:;" className="ybtn ybtn--primary js-go-to-biz-login">Log in to Yelp for Business
-                  Owners</a>
-                <a className="cancel-link js-modal-close" href="javascript:;">No thanks</a>
-              </div>
-            </div>
+        </div>
+      </div>
+    )
+  }
 
-            <div className="login" data-component-bound="true">
-              <div className="signup-form-container">
-                <div className="header">
-                  <h2>Log In to Yelp</h2>
-                  <p className="subheading">New to Yelp? <a className="signup-link u-pseudo-link" href="/signup">Sign up</a></p>
-                </div>
-                <div className="js-biz-owner-alert alert u-hidden">
-                  Want Yelp for Business Owners? <a href="https://biz.yelp.com/">Go there now »</a>
-                </div>
-                <ul className="ylist">
-                  <li className="fb-login" data-component-bound="true">
-                    <button type="submit" value="submit" className="ybtn ybtn--social ybtn--facebook ybtn-full"><span>
-                      <div className="u-text-centered">
-                        <span aria-hidden="true" className="icon icon--24-facebook icon--size-24 icon--currentColor">
+  renderLogin() {
+    return (
+      <div className="login" data-component-bound="true">
+        <div className="signup-form-container">
+          <div className="header">
+            <h2>Log In to Yelp</h2>
+            <p className="subheading">New to Yelp? <a className="signup-link u-pseudo-link" href="/signup">Sign up</a>
+            </p>
+          </div>
+          <div className="js-biz-owner-alert alert u-hidden">
+            Want Yelp for Business Owners? <a href="https://biz.yelp.com/">Go there now »</a>
+          </div>
+          <ul className="ylist">
+            <li className="fb-login" data-component-bound="true">
+              <button type="submit" value="submit" className="ybtn ybtn--social ybtn--facebook ybtn-full"><span><div
+                className="u-text-centered">
+                <span id="login_facebook_icon"
+                  className="icon icon--24-facebook icon--size-24 icon--currentColor">
     <svg className="icon_svg">
     </svg>
-</span> Log In with Facebook</div></span></button>
-                  </li>
+</span>
+                Log In with Facebook</div></span></button>
+            </li>
+          </ul>
 
-
-                </ul>
-
-
-              </div>
-              <div className="sub-text-box">
-                <small className="subtle-text">New to Yelp? <a className="signup-link" href="/signup">Sign up</a></small>
-              </div>
-            </div>
-
-            <div className="forgot hidden" data-component-bound="true">
-              <div className="forgot-password-container">
-                <h2>Forgot Password</h2>
-                <p>
-                  Please enter your email address and we will send you an email about how to reset your password.
-                </p>
-
-
-                <form action="/forgot/ajax" className="yform" method="POST" name="forgot_form">
-                  <input type="hidden" name="csrftok" className="csrftok"
-                         value="93c20737a3dfe692924e8e2222bd82e1b5eb39e44780027b28e1b71b6c93a5d3"/>
-                  <label className="placeholder-sub">Email</label>
-                  <input name="email" placeholder="Email" required="required" type="email"/>
-                  <button type="submit" value="submit" className="ybtn ybtn--primary submit ybtn-full">
-                    <span>Reset Password</span></button>
-                </form>
-              </div>
-              <div className="sub-text-box">
-                <a className="login-link">
-                  <small> Back to Login</small>
-                </a>
-              </div>
-            </div>
-
-          </div>
         </div>
-
+        <div className="sub-text-box">
+          <small className="subtle-text">New to Yelp? <a className="signup-link" href="/signup">Sign up</a></small>
+        </div>
       </div>
     )
   }
