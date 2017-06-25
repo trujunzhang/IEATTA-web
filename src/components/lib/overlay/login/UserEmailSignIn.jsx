@@ -63,8 +63,49 @@ class UserEmailSignIn extends Component {
   onForgotPasswordPress() {
   }
 
-
   render() {
+    return (
+      <div className="login" data-component-bound="true">
+        <div className="signup-form-container">
+          <div className="header">
+            <h2>Log In to Yelp</h2>
+            <p className="subheading">New to Yelp? <a className="signup-link u-pseudo-link" href="/signup">Sign up</a>
+            </p>
+          </div>
+
+          <div className="js-biz-owner-alert alert u-hidden">
+            Want Yelp for Business Owners? <a href="https://biz.yelp.com/">Go there now »</a>
+          </div>
+
+          <ul className="ylist">
+            <li className="fb-login" data-component-bound="true">
+              <button type="submit" value="submit" className="ybtn ybtn--social ybtn--facebook ybtn-full"><span><div
+                className="u-text-centered">
+                <span id="login_facebook_icon"
+                      className="icon icon--24-facebook icon--size-24 icon--currentColor">
+                  <svg className="icon_svg"></svg>
+                </span>
+                Log In with Facebook</div>
+              </span>
+              </button>
+            </li>
+          </ul>
+
+          <fieldset className="hr-line">
+            <legend align="center">OR</legend>
+          </fieldset>
+
+          {this.renderLoginForm()}
+
+        </div>
+        <div className="sub-text-box">
+          <small className="subtle-text">New to Yelp? <a className="signup-link" href="/signup">Sign up</a></small>
+        </div>
+      </div>
+    )
+  }
+
+  renderLoginForm() {
     return (
       <form className="yform" id="ajax-login" method="POST">
         <input type="hidden" name="csrftok" className="csrftok"
@@ -91,26 +132,6 @@ class UserEmailSignIn extends Component {
     )
   }
 
-
-  renderxxx() {
-    return (
-      <span>
-          {!!this.state.errorMessage ? <div className='errorMessage_2lxEG'>{this.state.errorMessage}</div> : null}
-        <LoginRender
-          formType={LOGIN}
-          loginButtonText={I18n.t('Login.login')}
-          onButtonPress={this.onButtonPress.bind(this)}
-          onForgotPasswordPress={this.onForgotPasswordPress.bind(this)}
-          footerLink={{
-            left: {title: 'Sign In', tag: 'MAIN'},
-            right: {title: 'Sign Up With Email', tag: 'REGISTER'}
-          }}
-          auth={this.props.auth}
-          toggleEvent={this.props.toggleEvent}
-        />
-      </span>
-    )
-  }
 }
 
 

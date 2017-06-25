@@ -4,6 +4,18 @@ import React, {Component} from 'react'
 const {timeout, logInWithFacebook, logInWithTwitter, dismissPopModel} = require('../../../../actions').default
 
 class UserLoginMain extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = this.initialState = {
+      formState: 'SIGNIN',
+    }
+  }
+
+  switchFormState(event, state) {
+    event.preventDefault()
+    this.setState({formState: state})
+  }
 
   async loginViaSocial(type) {
     this.props.actions.loginRequest()
@@ -34,56 +46,6 @@ class UserLoginMain extends Component {
       }
     }
   }
-
-  renderLoginFooterLinks() {
-    return (
-      <div className='login_footer_links light' id='__w2_VNnJBb6_social_signup_links'>
-        <a onClick={(e) => {
-          this.props.toggleEvent(e, 'SIGNIN')
-        }}>
-          I Have a Politicl Account
-        </a>
-        <span className='bullet'> · </span>
-        <a onClick={(e) => {
-          this.props.toggleEvent(e, 'REGISTER')
-        }}>
-          Sign Up With Email
-        </a>
-      </div>
-    )
-  }
-
-  renderLoginForm() {
-    return (
-      <div className='buttonGroup_1mB5C'>
-        <a rel='login-with-twitter'
-           className='button_2I1re mediumSize_10tzU secondaryBoldText_1PBCf secondaryText_PM80d twitterSolidColor_G22Bs solidVariant_2wWrf'
-           onClick={this.loginViaSocial.bind(this, 'twitter')}>
-          <div className='buttonContainer_wTYxi'>Log in with twitter</div>
-        </a>
-        <a rel='login-with-facebook'
-           className='button_2I1re mediumSize_10tzU secondaryBoldText_1PBCf secondaryText_PM80d facebookSolidColor_pdgXp solidVariant_2wWrf'
-           onClick={this.loginViaSocial.bind(this, 'facebook')}>
-          <div className='buttonContainer_wTYxi'>Log in with facebook</div>
-        </a>
-      </div>
-    )
-  }
-
-  renderxxx() {
-    return (
-      <div id='login_main_section'>
-        <span>
-          {this.renderLoginForm()}
-          <p className='login-fullscreen--login-info'>
-            {'We\'ll never post to Twitter or Facebook without your permission.'}
-          </p>
-          {this.renderLoginFooterLinks()}
-        </span>
-      </div>
-    )
-  }
-
 
   render() {
     return (
@@ -132,11 +94,30 @@ class UserLoginMain extends Component {
       <div className="signup-wrapper">
         <div className="signup-flow on-flow-start " data-component-bound="true">
 
-          {this.renderMainRows()}
+          {this.renderLeftLoginForm()}
 
         </div>
       </div>
     )
+  }
+
+  renderLeftLoginForm() {
+    switch (this.state.formState) {
+      case 'SIGNIN':
+        return (
+          <Telescope.components.UserEmailSignIn
+            actions={this.props.actions}
+            auth={this.props.auth}
+            toggleEvent={this.switchFormState.bind(this)}/>
+        )
+      case 'REGISTER':
+        return (
+          <Telescope.components.UserEmailSignUp
+            actions={this.props.actions}
+            auth={this.props.auth}
+            toggleEvent={this.switchFormState.bind(this)}/>
+        )
+    }
   }
 
   renderRightPanel() {
@@ -151,49 +132,6 @@ class UserLoginMain extends Component {
   }
 
 
-  renderMainRows() {
-    return (
-      <div className="login" data-component-bound="true">
-        <div className="signup-form-container">
-          <div className="header">
-            <h2>Log In to Yelp</h2>
-            <p className="subheading">New to Yelp? <a className="signup-link u-pseudo-link" href="/signup">Sign up</a>
-            </p>
-          </div>
-
-          <div className="js-biz-owner-alert alert u-hidden">
-            Want Yelp for Business Owners? <a href="https://biz.yelp.com/">Go there now »</a>
-          </div>
-
-          <ul className="ylist">
-            <li className="fb-login" data-component-bound="true">
-              <button type="submit" value="submit" className="ybtn ybtn--social ybtn--facebook ybtn-full"><span><div
-                className="u-text-centered">
-                <span id="login_facebook_icon"
-                      className="icon icon--24-facebook icon--size-24 icon--currentColor">
-                  <svg className="icon_svg"></svg>
-                </span>
-                Log In with Facebook</div>
-              </span>
-              </button>
-            </li>
-          </ul>
-
-          <fieldset className="hr-line">
-            <legend align="center">OR</legend>
-          </fieldset>
-
-          {/*{this.renderLoginForm()}*/}
-          {/*{this.renderSignUp()}*/}
-
-        </div>
-        <div className="sub-text-box">
-          <small className="subtle-text">New to Yelp? <a className="signup-link" href="/signup">Sign up</a></small>
-        </div>
-      </div>
-    )
-  }
-
 }
 
 
@@ -204,5 +142,20 @@ class UserLoginMain extends Component {
  */
 var {connect} = require('react-redux')
 
-export default connect()(UserLoginMain)
+import * as authActions from '../../../../reducers/auth/authActions'
+import {bindActionCreators} from 'redux'
+
+function select(store) {
+  return {
+    auth: store.auth
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(authActions, dispatch)
+  }
+}
+
+export default connect(select, mapDispatchToProps)(UserLoginMain)
 
