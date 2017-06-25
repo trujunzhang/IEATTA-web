@@ -1,0 +1,241 @@
+* Scrapy
+
+** Caches 
+
+|--------------+----------+---+---+---|
+| Field        | Type     |   |   |   |
+|--------------+----------+---+---+---|
+| objectId     |          |   |   |   |
+|--------------+----------+---+---+---|
+| url          | {string} |   |   |   |
+| sourcefrom   | {string} |   |   |   |
+| thumbnailUrl | {string} |   |   |   |
+| post         | [Point]  |   |   |   |
+|--------------+----------+---+---+---|
+
+
+** History 
+
+|------------+----------+--------+---+---|
+| Field      | Type     | Status |   |   |
+|------------+----------+--------+---+---|
+| objectId   |          |        |   |   |
+|------------+----------+--------+---+---|
+| url        | {string} |        |   |   |
+| sourcefrom | {string} | unused |   |   |
+| post       | [Point]  |        |   |   |
+|------------+----------+--------+---+---|
+
+
+* Web App
+
+** Topics
+
+|----------+-----------+---+---+---|
+| Field    | Type      |   |   |   |
+|----------+-----------+---+---+---|
+| objectId |           |   |   |   |
+|----------+-----------+---+---+---|
+| name     | {string}  |   |   |   |
+| slug     | {string}  |   |   |   |
+| status   | {string}  |   |   |   |
+| isIgnore | {boolean} |   |   |   |
+| active   | {boolean} |   |   |   |
+| days     | [Object]  |   |   |   |
+|----------+-----------+---+---+---|
+
+
+** Posts
+
+|-------------------+----------+---+---+---|
+| Field             | Type     |   |   |   |
+|-------------------+----------+---+---+---|
+| objectId          |          |   |   |   |
+|-------------------+----------+---+---+---|
+| url               | {string} |   |   |   |
+| author            | {string} |   |   |   |
+| title             | {string} |   |   |   |
+| slug              | {string} |   |   |   |
+| body              | {string} |   |   |   |
+| sourceFrom        | {string} |   |   |   |
+| thumbnailUrl      | {string} |   |   |   |
+| topics            | [Point]  |   |   |   |
+|-------------------+----------+---+---+---|
+| userId            | {string} |   |   |   |
+|-------------------+----------+---+---+---|
+| viewCount         | {int}    |   |   |   |
+| clickCount        | {int}    |   |   |   |
+| commentCount      | {int}    |   |   |   |
+|-------------------+----------+---+---+---|
+| upvotes           | [Point]  |   |   |   |
+| downvotes         | [Point]  |   |   |   |
+| commenters        | [Point]  |   |   |   |
+|-------------------+----------+---+---+---|
+| status            | {string} |   |   |   |
+|-------------------+----------+---+---+---|
+| cloudinaryId      | {string} |   |   |   |
+| cloudinaryVersion | {string} |   |   |   |
+| cloudinaryUrls    | {object} |   |   |   |
+|-------------------+----------+---+---+---|
+
+
+** Folders 
+
+|----------+----------+---+---+---|
+| Field    | Type     |   |   |   |
+|----------+----------+---+---+---|
+| objectId |          |   |   |   |
+|----------+----------+---+---+---|
+| name     | {string} |   |   |   |
+| slug     | {string} |   |   |   |
+| visible  | {string} |   |   |   |
+|----------+----------+---+---+---|
+| posts    | [Point]  |   |   |   |
+| lastPost | {string} |   |   |   |
+|----------+----------+---+---+---|
+
+
+** Comments 
+
+|------------+----------+---+---+---|
+| Field      | Type     |   |   |   |
+|------------+----------+---+---+---|
+| objectId   |          |   |   |   |
+|------------+----------+---+---+---|
+| body       | {string} |   |   |   |
+|------------+----------+---+---+---|
+| user       | {Point}  |   |   |   |
+| post       | {Point}  |   |   |   |
+|------------+----------+---+---+---|
+| upvotes    | [Point]  |   |   |   |
+| downvotes  | [Point]  |   |   |   |
+| commenters | [Point]  |   |   |   |
+|------------+----------+---+---+---|
+| status     | {string} |   |   |   |
+|------------+----------+---+---+---|
+
+
+* App Notification
+
+** Messages
+
+|-----------+-----------+---+---+---|
+| Field     | Type      |   |   |   |
+|-----------+-----------+---+---+---|
+| objectId  |           |   |   |   |
+|-----------+-----------+---+---+---|
+| message   | {string}  |   |   |   |
+| type      | {string}  |   |   |   |
+| isDeleted | {boolean} |   |   |   |
+|-----------+-----------+---+---+---|
+| status    | {string}  |   |   |   |
+|-----------+-----------+---+---+---|
+| post      | {point}   |   |   |   |
+| foler     | {point}   |   |   |   |
+| comment   | {point}   |   |   |   |
+|-----------+-----------+---+---+---|
+| users     | [Point]   |   |   |   |
+| readers   | [Point]   |   |   |   |
+|-----------+-----------+---+---+---|
+
+
+
+
+* App Settings
+
+** Settings
+
+|---------------------+----------+---+---+---|
+| Field               | Type     |   |   |   |
+|---------------------+----------+---+---+---|
+| objectId            |          |   |   |   |
+|---------------------+----------+---+---+---|
+| title               | {string} |   |   |   |
+| siteUrl             | {string} |   |   |   |
+| tagline             | {string} |   |   |   |
+| defaultEmail        | {string} |   |   |   |
+| mailUrl             | {string} |   |   |   |
+|---------------------+----------+---+---+---|
+| topicsFilterList    | [string] |   |   |   |
+| topicsBlackList     | [string] |   |   |   |
+|---------------------+----------+---+---+---|
+| scoreUpdateInterval | {string} |   |   |   |
+| postInterval        | {string} |   |   |   |
+| commentInterval     | {string} |   |   |   |
+| maxPostsPerDay      | {string} |   |   |   |
+| startInvitesCount   | {string} |   |   |   |
+| postsPerPage        | {string} |   |   |   |
+|---------------------+----------+---+---+---|
+| twitterAccount      | {string} |   |   |   |
+| facebookPage        | {string} |   |   |   |
+| googleAnalyticsId   | {string} |   |   |   |
+| embedlyKey          | {string} |   |   |   |
+| bugsnagKey          | {string} |   |   |   |
+|---------------------+----------+---+---+---|
+| KADIRA_APP_ID       | {string} |   |   |   |
+| KADIRA_APP_SECRET   | {string} |   |   |   |
+|---------------------+----------+---+---+---|
+| scraped_user_id     | {string} |   |   |   |
+|---------------------+----------+---+---+---|
+| cloudinaryCloudName | {string} |   |   |   |
+| cloudinaryAPIKey    | {string} |   |   |   |
+| cloudinaryAPISecret | {string} |   |   |   |
+|---------------------+----------+---+---+---|
+| emailNotifications  | {string} |   |   |   |
+|---------------------+----------+---+---+---|
+
+
+* App Users
+  
+** Profile
+
+|------------------------+-----------+---+---+---|
+| Field                  | Type      |   |   |   |
+|------------------------+-----------+---+---+---|
+| objectId               |           |   |   |   |
+|------------------------+-----------+---+---+---|
+| displayName            | {string}  |   |   |   |
+| slug                   | {string}  |   |   |   |
+| twitterUsername        | {string}  |   |   |   |
+| website                | {string}  |   |   |   |
+|------------------------+-----------+---+---+---|
+| userType               | {string}  |   |   |   |
+|------------------------+-----------+---+---+---|
+| upvotedPosts           | [Point]   |   |   |   |
+| downvotedPosts         | [Point]   |   |   |   |
+|------------------------+-----------+---+---+---|
+| upvotedComments        | [Point]   |   |   |   |
+| downvotedComments      | [Point]   |   |   |   |
+|------------------------+-----------+---+---+---|
+| postCount              | {int}     |   |   |   |
+| commentCount           | {int}     |   |   |   |
+|------------------------+-----------+---+---+---|
+| messages               | [point ]  |   |   |   |
+|------------------------+-----------+---+---+---|
+| folders                | [point ]  |   |   |   |
+| folderBookmarkId       | {string}  |   |   |   |
+|------------------------+-----------+---+---+---|
+| coverId                | {string}  |   |   |   |
+| coverVersion           | {string}  |   |   |   |
+| coverUrls              | {object}  |   |   |   |
+| localUploadPath        | {object}  |   |   |   |
+|------------------------+-----------+---+---+---|
+| notifications_users    | {boolean} |   |   |   |
+| notifications_posts    | {boolean} |   |   |   |
+| notifications_comments | {boolean} |   |   |   |
+| notifications_replies  | {boolean} |   |   |   |
+|------------------------+-----------+---+---+---|
+
+
+
+* Template
+
+|----------+----------+---+---+---|
+| Field    | Type     |   |   |   |
+|----------+----------+---+---+---|
+| objectId |          |   |   |   |
+|----------+----------+---+---+---|
+|          | {string} |   |   |   |
+|          |          |   |   |   |
+|          |          |   |   |   |
+
