@@ -110,6 +110,52 @@ class UserEmailSignUp extends Component {
 
   render() {
     return (
+      <div className="login" data-component-bound="true">
+        <div className="signup-form-container">
+
+          <div className="header">
+            <h2>Sign Up for Yelp</h2>
+            <p className="subheading">Connect with great local businesses</p>
+          </div>
+
+          <p className="fb-start" data-component-bound="true">
+            <button type="submit" value="submit" className="ybtn ybtn--social ybtn--facebook ybtn-full">
+              <span>
+              <div className="u-text-centered">
+              <span id="login_facebook_icon"
+                    aria-hidden="true"
+                    className="icon icon--24-facebook icon--size-24 icon--currentColor">
+                <svg className="icon_svg">
+                  {/*<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#24x24_facebook"></use>*/}
+                </svg>
+              </span> Sign Up with Facebook</div>
+              </span>
+            </button>
+          </p>
+
+          <p className="legal-copy">Don't worry, we never post without your permission.</p>
+
+          <fieldset className="hr-line">
+            <legend align="center">OR</legend>
+          </fieldset>
+
+          {this.renderForm()}
+
+        </div>
+        <div className="sub-text-box">
+          <small className="subtle-text">{'Already on Yelp? '}
+            <a onClick={(e) => {
+              this.props.toggleEvent(e, 'SIGNIN')
+            }}
+               className="signup-link" href="/signup">{'Log in'}</a>
+          </small>
+        </div>
+      </div>
+    )
+  }
+
+  renderForm() {
+    return (
       <form className="yform signup-form  city-hidden" id="signup-form" method="POST" data-component-bound="true"
             _lpchecked="1">
         <input type="hidden" name="csrftok" className="csrftok"

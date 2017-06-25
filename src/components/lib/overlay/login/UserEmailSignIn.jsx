@@ -95,7 +95,7 @@ class UserEmailSignIn extends Component {
             <legend align="center">OR</legend>
           </fieldset>
 
-          {this.renderLoginForm()}
+          {this.renderForm()}
 
         </div>
         <div className="sub-text-box">
@@ -105,7 +105,7 @@ class UserEmailSignIn extends Component {
     )
   }
 
-  renderLoginForm() {
+  renderForm() {
     return (
       <form className="yform" id="ajax-login" method="POST">
         <input type="hidden" name="csrftok" className="csrftok"
