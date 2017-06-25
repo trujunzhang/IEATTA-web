@@ -1,12 +1,13 @@
 import Telescope from '../../index'
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 
 class UserLoginPopup extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
-    const {comp} = this.props
-    const {model} = comp
+    const comp = this.props.comp || {},
+      model = comp.model
+
     var _formState = 'MAIN'
     if (model && Object.keys(model).indexOf('formState') !== -1) {
       _formState = model['formState']
@@ -22,12 +23,12 @@ class UserLoginPopup extends Component {
     }
   }
 
-  switchFormState (event, state) {
+  switchFormState(event, state) {
     event.preventDefault()
     this.setState({formState: state})
   }
 
-  renderLoginPanel () {
+  renderLoginPanel() {
     switch (this.state.formState) {
       case 'MAIN':
         return (
@@ -59,13 +60,14 @@ class UserLoginPopup extends Component {
     }
   }
 
-  render () {
+  render() {
     const {formState, titles} = this.state,
-      {comp} = this.props,
-      {showCloseIcon, title, subtitle} = comp.model
+      comp = this.props.comp || {showCloseIcon: false, title: null},
+      showCloseIcon = comp.model || false,
+      title = comp.model || 'Politicl'
 
     const formTitle = titles[formState],
-      extTitle = (title) || 'Politicl'
+      extTitle = (title)
 
     return (
       <Telescope.components.UserLoginLayout
@@ -85,15 +87,15 @@ class UserLoginPopup extends Component {
 var {connect} = require('react-redux')
 
 import * as authActions from '../../../../reducers/auth/authActions'
-import { bindActionCreators } from 'redux'
+import {bindActionCreators} from 'redux'
 
-function select (store) {
+function select(store) {
   return {
     auth: store.auth
   }
 }
 
-function mapDispatchToProps (dispatch) {
+function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(authActions, dispatch)
   }

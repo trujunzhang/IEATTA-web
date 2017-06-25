@@ -30,65 +30,9 @@ const createRoutes = (store) => {
 
       childRoutes: [
         {
-          // http://localhost:3000/users/zhang-trujun
-          path: 'users/(:uid)/(:uslug)',
-          component: Telescope.components.UsersSingle,
-          indexRoute: {component: Telescope.components.UsersUpvote},
-          childRoutes: [
-            {
-              // http://localhost:3000/users/zhang-trujun/downvotes
-              path: 'downvotes',
-              component: Telescope.components.UsersDownvote,
-            },
-            {
-              // http://localhost:3000/users/zhang-trujun/posts
-              path: 'posts',
-              component: Telescope.components.UsersSubmittedPostsList,
-            },
-            {
-              // http://localhost:3000/users/zhang-trujun/collections
-              path: 'collections',
-              component: Telescope.components.UsersCollectionFoldersList,
-            },
-            {
-              // http://localhost:3000/users/zhang-trujun/collections/
-              path: 'collections/(:fid)/(:fslug)',
-              component: Telescope.components.UsersSingleFolder,
-            }
-          ]
-        },
-        {
-          // http://localhost:3000/topic/lead
-          path: 'topic/(:topicId)/(:title)',
-          component: Telescope.components.PostsHome,
-        },
-        {
-          // http://localhost:3000/from/thehindu.com
-          path: 'from/(:domain)',
-          component: Telescope.components.PostsHome,
-        },
-        {
-          // http://localhost:3000/post/cDJao7Bw3P
-          path: '/post/(:id)',
-          component: Telescope.components.PopoverPosts,
-        },
-        {
-          // http://localhost:3000/article/new
-          path: 'article/new',
-          component: Telescope.components.SubmitAnArticle,
-        },
-        {
-          // http://localhost:3000/management
-          path: 'management',
-          component: Telescope.components.AppAdminLayout,
-          indexRoute: {component: Telescope.components.AppAdminDashboard},
-          childRoutes: [
-            {
-              // http://localhost:3000/management/posts
-              path: 'posts',
-              component: Telescope.components.AppAdminPostsList,
-            }
-          ]
+          // http://localhost:3000/login
+          path: 'login',
+          component: Telescope.components.UserLoginPopup
         },
         {
           path: 'signup',
