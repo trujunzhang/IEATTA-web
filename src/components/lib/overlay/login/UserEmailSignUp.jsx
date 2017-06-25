@@ -77,37 +77,6 @@ class UserEmailSignUp extends Component {
     )
   }
 
-  renderxxx() {
-    let content = null
-    if (this.state.formState === 'RESULT') {
-      content = this.renderResult()
-    } else {
-      content = (
-        <LoginRender
-          formType={REGISTER}
-          loginButtonText={I18n.t('Register.register')}
-          onButtonPress={this.onButtonPress.bind(this)}
-          footerLink={{
-            left: {title: 'Continue with Facebook and Twitter', tag: 'MAIN'},
-            right: {title: 'Login', tag: 'SIGNIN'}
-          }}
-          displayPasswordCheckbox
-          auth={this.props.auth}
-          toggleEvent={this.props.toggleEvent}
-        />
-      )
-    }
-
-    return (
-      <div>
-        <span>
-          {!!this.state.errorMessage ? <div className='errorMessage_2lxEG'>{this.state.errorMessage}</div> : null}
-          { content }
-        </span>
-      </div>
-    )
-  }
-
   render() {
     return (
       <div className="login" data-component-bound="true">
