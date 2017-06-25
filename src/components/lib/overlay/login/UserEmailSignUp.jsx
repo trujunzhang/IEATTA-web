@@ -9,8 +9,6 @@ const {
 
 const I18n = require('./Translate').default
 
-import LoginRender from './LoginRender'
-
 const {timeout, signUpWithPassword, dismissPopModel} = require('../../../../actions').default
 
 class UserEmailSignUp extends Component {
@@ -63,21 +61,9 @@ class UserEmailSignUp extends Component {
     }
   }
 
-  renderResult() {
-    return (
-      <div>
-        <div className='alert alert-info' role='alert'>
-          <span className='glyphicon glyphicon-exclamation-sign'/>
-          <span className='sr-only'>Error:</span>
-          {'You need to verify your email address before using Politicl. '}
-          <a className='resend_verification_link'
-             onClick={this.onResendVerificationLinkClick.bind(this)}>Resend verification link</a>.
-        </div>
-      </div>
-    )
-  }
-
   render() {
+    debugger
+
     return (
       <div className="login" data-component-bound="true">
         <div className="signup-form-container">
@@ -185,10 +171,4 @@ class UserEmailSignUp extends Component {
  */
 var {connect} = require('react-redux')
 
-function select(store) {
-  return {
-    auth: store.auth
-  }
-}
-
-export default connect(select)(UserEmailSignUp)
+export default connect()(UserEmailSignUp)

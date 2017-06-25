@@ -13,17 +13,15 @@ class UserLoginMain extends Component {
     }
   }
 
-  switchFormState(event, state) {
-    event.preventDefault()
+  switchFormState(e, state) {
+    e.preventDefault()
     this.setState({formState: state})
   }
 
   async loginViaSocial(type = 'facebook') {
-    this.props.actions.loginRequest()
-
     let loginEvent = (type === 'twitter') ? logInWithTwitter : logInWithFacebook
 
-    var errorMessage = null
+    let errorMessage = null
 
     try {
       await Promise.race([
@@ -31,7 +29,6 @@ class UserLoginMain extends Component {
         timeout(15000),
       ])
     } catch (e) {
-      this.props.actions.loginFailure(e)
       const message = e.message || e
       if (message !== 'Timed out' && message !== 'Canceled by user') {
         errorMessage = message
@@ -41,14 +38,13 @@ class UserLoginMain extends Component {
     } finally {
       if (!!errorMessage) {
         this.setState({errorMessage: errorMessage})
-      } else {
-        this.props.dispatch(dismissPopModel())
-        this.props.actions.loginSuccess()
       }
     }
   }
 
   render() {
+
+    debugger
     return (
       <div id="wrap" className="lang-en">
         {this.renderTitle()}
@@ -152,8 +148,6 @@ class UserLoginMain extends Component {
  */
 var {connect} = require('react-redux')
 
-import * as authActions from '../../../../reducers/auth/authActions'
-import {bindActionCreators} from 'redux'
 
 function select(store) {
   return {
@@ -161,11 +155,5 @@ function select(store) {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(authActions, dispatch)
-  }
-}
-
-export default connect(select, mapDispatchToProps)(UserLoginMain)
+export default connect(select)(UserLoginMain)
 
