@@ -90,14 +90,14 @@ class UserLoginMain extends Component {
       <div className="signup-wrapper">
         <div className="signup-flow on-flow-start " data-component-bound="true">
 
-          {this.renderLogin()}
+          {this.renderMainRows()}
 
         </div>
       </div>
     )
   }
 
-  renderLogin() {
+  renderMainRows() {
     return (
       <div className="login" data-component-bound="true">
         <div className="signup-form-container">
@@ -106,21 +106,31 @@ class UserLoginMain extends Component {
             <p className="subheading">New to Yelp? <a className="signup-link u-pseudo-link" href="/signup">Sign up</a>
             </p>
           </div>
+
           <div className="js-biz-owner-alert alert u-hidden">
             Want Yelp for Business Owners? <a href="https://biz.yelp.com/">Go there now »</a>
           </div>
+
           <ul className="ylist">
             <li className="fb-login" data-component-bound="true">
               <button type="submit" value="submit" className="ybtn ybtn--social ybtn--facebook ybtn-full"><span><div
                 className="u-text-centered">
                 <span id="login_facebook_icon"
-                  className="icon icon--24-facebook icon--size-24 icon--currentColor">
-    <svg className="icon_svg">
-    </svg>
-</span>
-                Log In with Facebook</div></span></button>
+                      className="icon icon--24-facebook icon--size-24 icon--currentColor">
+                  <svg className="icon_svg"></svg>
+                </span>
+                Log In with Facebook</div>
+              </span>
+              </button>
             </li>
           </ul>
+
+          <fieldset className="hr-line">
+            <legend align="center">OR</legend>
+          </fieldset>
+
+          {/*{this.renderLoginForm()}*/}
+          {this.renderSignUp()}
 
         </div>
         <div className="sub-text-box">
@@ -129,6 +139,41 @@ class UserLoginMain extends Component {
       </div>
     )
   }
+
+  renderLoginForm() {
+    return (
+      <form className="yform" id="ajax-login" method="POST">
+        <input type="hidden" name="csrftok" className="csrftok"
+               value="b5c33ec0e829354e49049e83557f8c5fb0ce4a1fd9a060aa83f0cee58b0be72e"/>
+        <label className="placeholder-sub">Email</label>
+        <input id="email" name="email" placeholder="Email" required="required" type="email" value=""
+               className="login_input_email"
+               autocomplete="off"/>
+        <label className="placeholder-sub">Password</label>
+        <input id="password" name="password" placeholder="Password" required="required" type="password" value=""
+               className="login_input_password"
+               autocomplete="off"/>
+        <div className="forgot-password">
+          <a href="/forgot" className="forgot-link">Forgot password?</a>
+        </div>
+        <div className="captcha login-captcha"/>
+        <p className="legal-copy legal-left">
+          {'By logging in, you agree to Yelp’s '}<a className="legal-link" href="https://www.yelp.com.sg/static?p=tos">
+          {'Terms of Service'}</a> and <a className="legal-link" href="/tos/privacy_en_ie_20160131">Privacy Policy</a>.
+        </p>
+        <button type="submit" value="submit" className="ybtn ybtn--primary submit ybtn-full"><span>Log In</span>
+        </button>
+      </form>
+    )
+  }
+
+  renderSignUp() {
+    return (
+
+    )
+  }
+
+
 }
 
 
