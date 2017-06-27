@@ -24,24 +24,29 @@ export type User = {
   downvotedComments: Array<string>, // commentId array
 }
 
-export type Topic = {
-  id: string;
-  name: string;
-  slug: string;
-  status: string;
-  isIgnore: boolean;
-  active: boolean;
+export type Event = {
+    id: string;
+    displayname: string;
+    slug: string;
+    post: Post;
+    servers: Server;
+    users: User;
+    start: string;
+    end: string;
+    status: string;
 }
 
 
-export type Folder = {
-  id: string;
-  name: string;
-  description: string;
-  slug: string;
-  status: string;
-  visible: string;
-  posts: Any;
+export type Recipe = {
+    id: string;
+    displayname: string;
+    slug: string;
+    price: string;
+    photos:Array<Photo>;
+    restaurant:Post;
+    event:Event;
+    user:User;
+    status: string;
 }
 
 export type Post = {
@@ -94,7 +99,7 @@ export function fromParseTopic(map: Object): Topic {
   };
 }
 
-export function fromParseFolder(map: Object): Folder {
+export function fromParseRecipe(map: Object): Recipe{
   return {
     id: map.id,
     name: map.get('name'),
