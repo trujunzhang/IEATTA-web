@@ -165,7 +165,7 @@ var slugify = require('slugify')
 // const FacebookSDK = require('FacebookSDK')
 const {updateInstallation} = require('./installation')
 
-let {ParseFolder, ParsePost} = require('./objects').default
+let {ParsePost} = require('./objects').default
 
 const {fromParseUser} = require('../reducers/parseModels')
 
@@ -173,19 +173,6 @@ import type {Action, ThunkAction} from './types'
 
 function getUserCallback(user) {
   return fromParseUser(user)
-}
-
-async function makeNewFolderForUser(user: Any, foldName: string = 'Read Later', postId: string = null): Promise {
-  let data = {
-    'name': foldName,
-    'visible': (foldName === 'Read Later') ? 'Lock' : '',
-    'user': user,
-    posts: []
-  }
-  if (!!postId) {
-    data['posts'] = [ParsePost.createWithoutData(postId)]
-  }
-  return await new ParseFolder(data).save()
 }
 
 async function ParseFacebookLogin(scope): Promise {
@@ -208,10 +195,6 @@ async function _logInWithFacebook(source: ? object): Promise<Array<Action>> {
   user.set('email', profile.email)
   user.set('loginType', 'facebook')
 
-  if ((user.get('folders') || []).length === 0) {
-    const defaultFolder = await  makeNewFolderForUser(user)
-    user.set('folders', [defaultFolder])
-  }
   await user.save();
 
   // await updateInstallation({user})
@@ -283,11 +266,6 @@ async function _signUpWithPassword(username: string, email: string, password: st
   // await updateInstallation({user})
   await user.signUp({'loginType': 'email'})
 
-  if ((user.get('folders') || []).length === 0) {
-    const defaultFolder = await  makeNewFolderForUser(user)
-    user.set('folders', [defaultFolder])
-  }
-
   await user.save();
 
   const action = {
@@ -314,67 +292,6 @@ function signUpWithPassword(username: string, email: string, password: string): 
   }
 }
 
-
-/**
- *
- * @param folder: Object
- * {
- * "name": folder._name
- * "folderId": folder._id|| false
- * "postExist": folder.post._exist|| false
- * }
- * @param postId
- * @param userId
- * @returns {Promise.<*>}
- * @private
- */
-async function _newUserFolderWithPost(folder: object, postId: string, userId: string): Promise<Array<Action>> {
-  const user = await Parse.User.currentAsync();
-  const {folderName, folderId, postExist} = folder
-
-  let newFolder = null
-  if (folderId !== '') {// Exist
-    if (postExist === false) {
-      newFolder = await new Parse.Query(ParseFolder).get(folderId)
-      let _posts = newFolder.get('posts')
-      _posts.push(ParsePost.createWithoutData(postId))
-      newFolder.set('posts', _posts)
-      await newFolder.save()
-      await user.save()
-    }
-  } else { // New
-    newFolder = await  makeNewFolderForUser(user, folderName, postId)
-    let _folders = user.get('folders')
-    _folders.push(newFolder)
-    user.set('folders', _folders)
-    await user.save()
-  }
-
-  const action = {
-    type: ADDED_NEW_FOLDER_WITH_POST,
-    payload: getUserCallback(user)
-  }
-
-  return Promise.all([
-    Promise.resolve(action)
-  ])
-}
-
-function newUserFolderWithPost(folderName: string, postId: string, userId: string): ThunkAction {
-  return (dispatch) => {
-    const action = _newUserFolderWithPost(folderName, postId, userId)
-
-    // Loading friends schedules shouldn't block the login process
-    action.then(
-      ([result]) => {
-        dispatch(result)
-      }
-    )
-    return action
-  }
-}
-
-
 function skipLogin(): Action {
   return {
     type: 'SKIPPED_LOGIN',
@@ -386,5 +303,4 @@ export default {
   signUpWithPassword, logInWithFacebook, logInWithTwitter,
   logInWithPassword,
   skipLogin, logOut,
-  newUserFolderWithPost
 }
