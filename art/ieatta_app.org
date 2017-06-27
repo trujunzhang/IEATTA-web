@@ -12,8 +12,12 @@
 ** tcomb-form
   [https://github.com/gcanti/tcomb-form]
 
-** mapbox
-  [npm install react-native-mapbox-gl --save]
+** mapbox(react-native)
+  [https://github.com/mapbox/react-native-mapbox-gl]
+
+** mapbox(react)
+  [https://github.com/alex3165/react-mapbox-gl]
+
 
 ** React.js with sass
 
