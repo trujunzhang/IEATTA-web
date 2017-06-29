@@ -24,7 +24,7 @@ class PopoverPosts extends Component {
       )
     }
 
-    return (<Telescope.components.PostsPage post={currentModel.model}/>)
+    return (<Telescope.components.PostsPage restaurant={currentModel}/>)
   }
 
 
