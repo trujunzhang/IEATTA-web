@@ -21,8 +21,6 @@ const {
   DASHBOARD_EDIT_SINGLE_ROW_CANCEL
 } = require('../../lib/constants').default
 
-const {fromParseRestaurant} = require('../parseModels')
-
 const {Map} = require('immutable')
 
 const initialState = {
@@ -56,7 +54,6 @@ function dashboardReducer (state = initialState, action): State {
       // console.log('Dashboard loaded posts: ')
 
       const {list, listTask, listId, limit} = action.payload
-      const objects = list.map(fromParseRestaurant)
 
       // let nextState = state
       //   .set('pageIndex', listTask.pageIndex + 1)
@@ -64,7 +61,7 @@ function dashboardReducer (state = initialState, action): State {
       //   .set('results',)
 
       return {
-        results: objects,
+        results: list,
         pageIndex: listTask.pageIndex + 1,
         limit: state.limit,
         ready: true,
