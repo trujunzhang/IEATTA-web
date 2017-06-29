@@ -226,7 +226,8 @@ class PostsSingleHeader extends Component {
                         Chic, upscale - modern contemporary…
                       </a>
                       <span className="author">
-                by         <a className="user-display-name js-analytics-click"
+                        by
+                        <a className="user-display-name js-analytics-click"
                               href="/user_details?userid=63rsfkJ6ptD9jU_Rf96iBg"
                               data-hovercard-id="xCvTC67I0MLNbenXw4irmA" data-analytics-label="about_me"
                               id="dropdown_user-name">Kenny G.</a>
@@ -277,11 +278,12 @@ class PostsSingleHeader extends Component {
                         BBQ fried chicken with fries and sweet…
                       </a>
                       <span className="author">
-                by         <a className="user-display-name js-analytics-click"
-                              href="/user_details?userid=RiyfftYb6iuh5S1lPrp7sQ"
-                              data-hovercard-id="2-YW12W31RtcIN7IVbhAuA" data-analytics-label="about_me"
-                              id="dropdown_user-name">Joshua H.</a>
-        </span>
+                        by
+                        <a className="user-display-name js-analytics-click"
+                           href="/user_details?userid=RiyfftYb6iuh5S1lPrp7sQ"
+                           data-hovercard-id="2-YW12W31RtcIN7IVbhAuA" data-analytics-label="about_me"
+                           id="dropdown_user-name">Joshua H.</a>
+                      </span>
                     </div>
 
                   </div>
