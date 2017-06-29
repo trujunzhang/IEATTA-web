@@ -15,9 +15,16 @@ class Layout extends Component {
         </div>
       )
     }
+    if (this.props.location.pathname.indexOf('login') !== -1) {
+      return (
+        <div id='web-app-panel'>
+          { this.props.children}
+        </div>
+      )
+    }
     return (
       <div id='web-app-panel'>
-        { this.props.children}
+        <div>wanghao</div>
       </div>
     )
   }
