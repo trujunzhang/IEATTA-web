@@ -49,7 +49,7 @@ export type Recipe = {
     status: string;
 }
 
-export type Post = {
+export type Restaurant = {
   id: string;
   url: string;
   title: string;
@@ -107,7 +107,7 @@ export function fromParseRecipe(map: Object): Recipe{
     slug: map.get('slug'),
     status: map.get('status'),
     visible: map.get('visible'),
-    posts: (map.get('posts') || []).map(fromParsePost)
+    posts: (map.get('posts') || []).map(fromParseRestaurant)
   };
 }
 
@@ -119,7 +119,7 @@ export function fromParseCloudinary(map: Object): Cloudinary {
   };
 }
 
-export function fromParsePost(map: Object): Post {
+export function fromParseRestaurant(map: Object): Restaurant {
   // console.log("after post: " + JSON.stringify(map));
   return {
     id: map.id,

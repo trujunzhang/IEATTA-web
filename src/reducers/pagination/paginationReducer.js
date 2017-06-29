@@ -26,7 +26,7 @@ const {
   POSTS_VOTING_DONE
 } = require('../../lib/constants').default
 
-const {fromParsePost} = require('../parseModels')
+const {fromParseRestaurant} = require('../parseModels')
 
 /**
  * ## authReducer function
@@ -41,7 +41,7 @@ function paginationReducer(state: State = initialState, action): State {
      */
     case LIST_VIEW_LOADED_POSTS: {
       const {list, listTask, listId, limit, totalCount} = action.payload
-      const objects = list.map(fromParsePost)
+      const objects = list.map(fromParseRestaurant)
 
       let nextTask = state.get(listId)
       if (!!nextTask) {

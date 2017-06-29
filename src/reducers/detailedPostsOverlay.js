@@ -36,7 +36,7 @@ const {
   OVERLAY_LOADED_RELATED_POSTS
 } = require('../lib/constants').default
 
-const {fromParsePost} = require('./parseModels')
+const {fromParseRestaurant} = require('./parseModels')
 
 const initialState = {
   isFetching: true,
@@ -52,7 +52,7 @@ function detailedPostsOverlay (state: State = initialState, action: Action): Sta
 
     const nextState = Object.assign({}, state, {
       isFetching: false,
-      currentModel: {objectId: objectId, model: fromParsePost(object)},
+      currentModel: {objectId: objectId, model: fromParseRestaurant(object)},
     })
     return nextState
   }
@@ -61,7 +61,7 @@ function detailedPostsOverlay (state: State = initialState, action: Action): Sta
     const {list, listTask, listId, limit, totalCount} = action.payload
 
     const nextState = Object.assign({}, state, {
-      currentRelatedPosts: list.map(fromParsePost),
+      currentRelatedPosts: list.map(fromParseRestaurant),
       isFetchingRelated: false,
     })
     return nextState

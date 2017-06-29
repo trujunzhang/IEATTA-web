@@ -36,6 +36,6 @@ const {
   LIST_VIEW_LOADED_POSTS
 } = require('../lib/constants').default
 
-const {fromParsePost} = require('./parseModels')
+const {fromParseRestaurant} = require('./parseModels')
 
-export default createParseReducer(LIST_VIEW_LOADED_POSTS, fromParsePost)
+export default createParseReducer(LIST_VIEW_LOADED_POSTS, fromParseRestaurant)

@@ -30,7 +30,7 @@ let _ = require('underscore')
 
 import type {Action, ThunkAction} from './types'
 
-const {User, Post, fromParseUser, fromParsePost} = require('../reducers/parseModels')
+const {User, Post, fromParseUser, fromParseRestaurant} = require('../reducers/parseModels')
 
 let {ParsePost, ParseFolder, ParseUser} = require('../parse/objects').default
 
@@ -142,7 +142,7 @@ async function _postsItemVoting(postId: string, userId: string, operation: strin
     payload: {
       listId: listId,
       user: fromParseUser(user),
-      post: fromParsePost(post)
+      post: fromParseRestaurant(post)
     }
   };
 

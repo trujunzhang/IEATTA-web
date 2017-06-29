@@ -32,7 +32,7 @@ let {getPostsParameters, getQueryByType} = require('../parse/parseUtiles').defau
 
 import Posts from '../lib/posts'
 
-const {fromParsePost} = require('../reducers/parseModels')
+const {fromParseRestaurant} = require('../reducers/parseModels')
 
 /**
  * The states were interested in
@@ -182,9 +182,8 @@ async function _loadPostsList(listTask: Any, listId: string, terms: Any, type: s
     }
   })
 
-  debugger
   const payload = {
-    list: (results || []).map(fromParsePost),
+    list: (results || []).map(fromParseRestaurant),
     listTask: listTask,
     listId: listId,
     limit: limit,
