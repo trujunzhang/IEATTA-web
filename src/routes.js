@@ -29,6 +29,12 @@ const createRoutes = (store) => {
       indexRoute: {component: Telescope.components.PostsHome},
 
       childRoutes: [
+
+        {
+          // http://localhost:3000/user_details?userid=t3cu9DxXtGyaPIWNvPOXxA
+          path: 'user_details',
+          component: Telescope.components.UsersSingle
+        },
         {
           // http://localhost:3000/login
           path: 'login',

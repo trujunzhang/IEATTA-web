@@ -1,11 +1,19 @@
 import keyMirror from 'key-mirror'
 
 export default keyMirror({
+  // Parse Object
+  PARSE_USERS:null,
+  PARSE_TOPICS:null,
+  PARSE_POSTS:null,
+  PARSE_COMMENTS:null,
+
   // Login UI
+  LOGIN_FORM_TYPE_MAIN: null,
   LOGIN_FORM_TYPE_LOGIN: null,
   LOGIN_FORM_TYPE_REGISTER: null,
   LOGIN_FORM_TYPE_FORGOTPASSWORD: null,
   LOGIN_FORM_TYPE_RESET_PASSWD: null,
+
 
   // User Profile Type
   USERPROFILE_TYPE_UPVOTE: null,
@@ -57,7 +65,7 @@ export default keyMirror({
   TOGGLE_TABLE_ROW_CHECKBOX: null,
   TOGGLE_TABLE_ROW_ALL_CHECKBOXS: null,
 
-  DASHBOARD_LOADED_POSTS: null,
+  DASHBOARD_LOADED_PAGINATION: null,
   DASHBOARD_LOADED_TOPICS: null,
   DASHBOARD_RESET: null,
 
