@@ -6,7 +6,6 @@ class Layout extends Component {
     super(props)
   }
 
-
   render() {
     if (this.props.location.pathname.indexOf('/management') !== -1) {
       return (
