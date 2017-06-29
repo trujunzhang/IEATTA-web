@@ -37,13 +37,28 @@ class PostsHome extends Component {
     )
   }
 
-  render() {
-    const {params, location} = this.props
-    const paramsLength = Object.keys(params).length
 
-    // const key = md5(location.pathname)
-    const key = 'list'
-    return this.renderPostList(key)
+  render() {
+    return (
+      <div className="main-content-wrap main-content-wrap--full">
+        <div className="top-shelf top-shelf-grey"/>
+        <div id="super-container" className="content-container">
+          <div className="container">
+            <div className="clearfix layout-block layout-a scroll-map-container search-results-block">
+              <div className="column column-alpha ">
+                <div className="results-wrapper indexed-biz-archive" id="restaurants_list_results"
+                     data-component-bound="true">
+                  <div className="search-results-content">
+                    { this.renderPostList('list')}
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
   }
 }
 

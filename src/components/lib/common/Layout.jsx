@@ -23,39 +23,11 @@ class Layout extends Component {
     }
     return (
       <div id="wrap" className="lang-en" data-component-bound="true">
-        <Telescope.components.HeaderContent />
-
-        <div className="main-content-wrap main-content-wrap--full">
-          <div className="top-shelf top-shelf-grey"></div>
-
-
-          <div id="super-container" className="content-container">
-
-
-            <div className="container">
-
-              <div className="clearfix layout-block layout-a scroll-map-container search-results-block">
-                <div className="column column-alpha ">
-
-                  <div className="results-wrapper indexed-biz-archive"
-                       id="restaurants_list_results"
-                       data-component-bound="true">
-
-                    <div className="search-results-content">
-                      { this.props.children}
-
-                    </div>
-
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-
+        <div className="page-header">
+          <Telescope.components.HeaderContent />
         </div>
+
+        { this.props.children}
 
       </div>
     )

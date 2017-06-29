@@ -263,19 +263,16 @@ class HeaderContent extends Component {
 
   render() {
     return (
-      <div className="page-header">
+      <div className="main-header main-content-wrap js-main-header webview-hidden">
+        <div className="main-header_wrapper">
+          <div className="content-container">
 
-        <div className="main-header main-content-wrap js-main-header webview-hidden">
-          <div className="main-header_wrapper">
-            <div className="content-container">
-
-              <div className="arrange arrange--18 arrange--middle main-header_arrange">
-                {this.renderLeft()}
-                {this.renderMiddle()}
-                {this.renderRight()}
-              </div>
-
+            <div className="arrange arrange--18 arrange--middle main-header_arrange">
+              {this.renderLeft()}
+              {this.renderMiddle()}
+              {this.renderRight()}
             </div>
+
           </div>
         </div>
       </div>
