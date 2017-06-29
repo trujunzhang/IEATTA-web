@@ -24,7 +24,49 @@ class Layout extends Component {
     return (
       <div id="wrap" className="lang-en" data-component-bound="true">
         <Telescope.components.HeaderContent />
-        { this.props.children}
+
+        <div className="main-content-wrap main-content-wrap--full">
+          <div className="top-shelf top-shelf-grey"></div>
+
+
+          <div id="super-container" className="content-container">
+
+
+            <div className="container">
+
+              <div className="clearfix layout-block layout-full search-exception" data-component-bound="true"
+                   style="position: relative;">
+                <div className="column column-alpha ">
+                  <div className="content">
+                  </div>
+                </div>
+                <div className="throbber-overlay" style="display: none;">
+                  <div className="throbber-container"></div>
+                </div>
+              </div>
+
+              <div className="clearfix layout-block layout-a scroll-map-container search-results-block">
+                <div className="column column-alpha ">
+
+                  <div className="results-wrapper indexed-biz-archive" data-component-bound="true"
+                       style="position: relative; min-height: 345px;">
+
+                    <div className="search-results-content">
+                      { this.props.children}
+
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+        </div>
+
       </div>
     )
   }
