@@ -27,7 +27,7 @@ const Parse = require('parse')
 
 import type {ThunkAction} from './types'
 
-let {ParsePost, ParseFolder, ParseUser} = require('../parse/objects').default
+let {ParsePost} = require('../parse/objects').default
 let {getPostsParameters, getQueryByType} = require('../parse/parseUtiles').default
 
 import Posts from '../lib/posts'
@@ -170,7 +170,6 @@ async function _loadPostsList(listTask: Any, listId: string, terms: Any, type: s
   const skipCount = (pageIndex - 1) * limit
 
   let objectsQuery = getPostsParameters(terms)
-
   let totalCount = await  objectsQuery.count()
 
   let results = await objectsQuery.skip(skipCount).limit(limit).find({
@@ -183,6 +182,7 @@ async function _loadPostsList(listTask: Any, listId: string, terms: Any, type: s
     }
   })
 
+  debugger
   const payload = {
     list: (results || []).map(fromParsePost),
     listTask: listTask,
@@ -190,6 +190,8 @@ async function _loadPostsList(listTask: Any, listId: string, terms: Any, type: s
     limit: limit,
     totalCount: totalCount
   }
+
+  debugger
 
   const action = {type, payload}
 

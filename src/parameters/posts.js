@@ -1,7 +1,7 @@
 const Parse = require('parse')
 import moment from 'moment'
 
-let {ParsePost, ParseFolder, ParseUser} = require('../parse/objects').default
+let {ParsePost, ParseUser} = require('../parse/objects').default
 
 /**
  * The states were interested in
@@ -19,7 +19,6 @@ export default class PostsParameters {
   }
 
   addParameters(terms: Any) {
-
     if (terms.userProfileType) {
       let userId = terms.userId
       if (typeof userId === 'undefined') {
