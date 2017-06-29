@@ -1,48 +1,32 @@
 import Telescope from '../../lib'
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 
 const {loadPostPage} = require('../../../actions').default
 
 class PopoverPosts extends Component {
-    constructor (props, context) {
-        super(props)
+  constructor(props, context) {
+    super(props)
+  }
+
+  componentDidMount() {
+    // this.props.dispatch(loadPostPage('cDJao7Bw3P'))
+  }
+
+  render() {
+    const {detailedPostsOverlay} = this.props,
+      {isFetching, currentModel} = detailedPostsOverlay
+
+    if (isFetching && false) {
+      return (
+        <div className="placeholder_1WOC3">
+          <div className="loader_54XfI animationRotate loader_OEQVm"/>
+        </div>
+      )
     }
 
-    componentDidMount () {
-        //this.props.dispatch(loadPostPage('cDJao7Bw3P'))
-    }
+    return (<Telescope.components.PostsPage post={currentModel.model}/>)
+  }
 
-    renderContent () {
-        const {detailedPostsOverlay} = this.props,
-              {isFetching, currentModel} = detailedPostsOverlay
-
-        if (isFetching) {
-            return (
-                <div className="placeholder_1WOC3">
-                    <div className="loader_54XfI animationRotate loader_OEQVm"/>
-                </div>
-            )
-        }
-
-        return (<Telescope.components.PostsPage post={currentModel.model}/>)
-    }
-
-    render () {
-        const {detailedPostsOverlay} = this.props,
-              {isFetching, currentModel} = detailedPostsOverlay
-
-        if (!!currentModel){
-            return (
-                <div>
-                    <Telescope.components.PopoverPostsLayout key="currentpost">
-                        {this.renderContent()}
-                    </Telescope.components.PopoverPostsLayout>
-                </div>
-            )
-        }
-
-        return null
-    }
 
 }
 
@@ -53,10 +37,10 @@ class PopoverPosts extends Component {
  */
 let {connect} = require('react-redux')
 
-function select (store) {
-    return {
-        detailedPostsOverlay: store.detailedPostsOverlay
-    }
+function select(store) {
+  return {
+    detailedPostsOverlay: store.detailedPostsOverlay
+  }
 }
 
 /**

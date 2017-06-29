@@ -36,6 +36,12 @@ const createRoutes = (store) => {
           component: Telescope.components.UsersSingle
         },
         {
+          // http://localhost:3000/biz/xxxxx
+          // https://www.yelp.com.sg/biz/my-two-cents-los-angeles-3
+          path: 'biz/(:rid)',
+          component: Telescope.components.PopoverPosts
+        },
+        {
           // http://localhost:3000/login
           path: 'login',
           component: Telescope.components.UserLoginMain

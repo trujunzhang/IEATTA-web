@@ -46,7 +46,6 @@ Telescope.registerComponent('PostsPopularThisWeek',       require('./posts/Posts
 
 // postsoverlay
 Telescope.registerComponent('PopoverPosts',                 require('./postsoverlay/PopoverPosts.jsx').default)
-Telescope.registerComponent('PopoverPostsLayout',           require('./postsoverlay/PopoverPostsLayout.jsx').default)
 
 // postsoverlay(page)
 Telescope.registerComponent('PostDetail',                         require('./postsoverlay/page/PostDetail.jsx').default)
