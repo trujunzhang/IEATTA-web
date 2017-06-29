@@ -18,7 +18,6 @@ const {
 function getQueryByType(type: string = PARSE_POSTS) {
   switch (type) {
     case PARSE_POSTS:
-      debugger
       return new Parse.Query(ParsePost)
     case PARSE_USERS:
       return new Parse.Query(ParseUser)

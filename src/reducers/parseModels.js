@@ -25,28 +25,28 @@ export type User = {
 }
 
 export type Event = {
-    id: string;
-    displayname: string;
-    slug: string;
-    post: Post;
-    servers: Server;
-    users: User;
-    start: string;
-    end: string;
-    status: string;
+  id: string;
+  displayname: string;
+  slug: string;
+  post: Post;
+  servers: Server;
+  users: User;
+  start: string;
+  end: string;
+  status: string;
 }
 
 
 export type Recipe = {
-    id: string;
-    displayname: string;
-    slug: string;
-    price: string;
-    photos:Array<Photo>;
-    restaurant:Post;
-    event:Event;
-    user:User;
-    status: string;
+  id: string;
+  displayname: string;
+  slug: string;
+  price: string;
+  photos: Array<Photo>;
+  restaurant: Post;
+  event: Event;
+  user: User;
+  status: string;
 }
 
 export type Restaurant = {
@@ -99,7 +99,7 @@ export function fromParseTopic(map: Object): Topic {
   };
 }
 
-export function fromParseRecipe(map: Object): Recipe{
+export function fromParseRecipe(map: Object): Recipe {
   return {
     id: map.id,
     name: map.get('name'),
@@ -120,7 +120,7 @@ export function fromParseCloudinary(map: Object): Cloudinary {
 }
 
 export function fromParseRestaurant(map: Object): Restaurant {
-  // console.log("after post: " + JSON.stringify(map));
+  debugger
   return {
     id: map.id,
     url: map.get('url'),
@@ -129,14 +129,7 @@ export function fromParseRestaurant(map: Object): Restaurant {
     body: map.get('body'),
     sourceFrom: map.get('sourceFrom'),
     thumbnailUrl: map.get('thumbnailUrl'),
-    userId: map.get('userId'),
-    author: map.get('author'),
     status: map.get('status') || 2,
-    topics: (map.get('topics') || []).map(fromParseTopic),
-    cloudinaryUrls: (map.get('cloudinaryUrls') || []).map(fromParseCloudinary),
-    postedAt: map.get('postedAt'),
-    upvoters: _.pluck((map.get('upvoters') || []).map(fromParsePointer), 'id'),
-    downvoters: _.pluck((map.get('downvoters') || []).map(fromParsePointer), 'id')
   };
 }
 
