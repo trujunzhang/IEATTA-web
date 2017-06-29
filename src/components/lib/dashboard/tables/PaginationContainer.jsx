@@ -42,7 +42,7 @@ class PaginationContainer extends Component {
 
   getCurrentPage () {
     if (!!this.props.router.location.query && this.props.router.location.query.paged) {
-      var paged = this.props.router.location.query.paged
+      let paged = this.props.router.location.query.paged
       return parseInt(paged)
     }
     return 1

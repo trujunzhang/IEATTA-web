@@ -5,12 +5,12 @@ import {Provider} from 'react-redux'
 import PropTypes from 'prop-types'
 import {IntlProvider} from 'react-intl'
 
-var Parse = require('parse')
+let Parse = require('parse')
 
 Parse.initialize('YJ60VCiTAD01YOA3LJtHQlhaLjxiHSsv4mkxKvVM', '3S9VZj8y9g0Tj1WS64dl19eDJrEVpvckG7uhcXIi', '87rxX8J0JwaaPSBxY9DdKJEqWXByqE7sShRsX4vg')
 Parse.serverURL = 'https://parseapi.back4app.com/'
 
-var Telescope = require('../lib/en_US').default
+let Telescope = require('../lib/en_US').default
 
 class App extends React.Component {
   static propTypes = {
@@ -38,7 +38,7 @@ class App extends React.Component {
     };
     // https://developers.facebook.com/docs/javascript/quickstart
     (function (d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0]
+      let js, fjs = d.getElementsByTagName(s)[0]
       if (d.getElementById(id)) {
         return
       }

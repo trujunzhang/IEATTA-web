@@ -1,6 +1,6 @@
 import Telescope from '../components/lib/index';
 import React from 'react';
-var _ = require('underscore');
+let _ = require('underscore');
 const Topics = {};
 
 

@@ -25,7 +25,9 @@ class PostsHome extends Component {
       limit = Telescope.settings.get('postsPerPage', 10)
 
     const terms = {...params, listId: 'posts.list.main', view: 'new', limit: limit}
-    debugger
+
+    // debugger
+
     return (
       <Telescope.components.PostsList
         key={key}

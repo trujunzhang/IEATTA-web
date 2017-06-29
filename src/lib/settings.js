@@ -1,5 +1,5 @@
 import Telescope from '../components/lib/config';
-var _ = require('underscore');
+let _ = require('underscore');
 
 Telescope.settings = {
     collection: {}
@@ -28,7 +28,7 @@ Telescope.settings.checkTopicStatus = function (name, type) {
     }
 
     let isBannedTopic = false;
-    for (var index in filterArray) {
+    for (let index in filterArray) {
         const keyword = filterArray[index];
         if ((new RegExp(keyword, 'i')).test(name)) {
             isBannedTopic = true;
