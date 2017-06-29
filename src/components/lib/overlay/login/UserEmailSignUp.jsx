@@ -148,7 +148,7 @@ class UserEmailSignUp extends Component {
             {'By signing up, you agree to Yelp’s '}
             <a className="legal-link" href="https://www.yelp.com.sg/static?p=tos">
                 {'Terms of Service'}</a>
-           {' and '} 
+           {' and '}
             <a className="legal-link" href="/tos/privacy_en_ie_20160131">Privacy Policy</a>{'.'}
         </p>
         <button id="signup-button" type="submit" value="Sign Up"
@@ -166,6 +166,6 @@ class UserEmailSignUp extends Component {
  *
  * Redux
  */
-var {connect} = require('react-redux')
+let {connect} = require('react-redux')
 
 export default connect()(UserEmailSignUp)
