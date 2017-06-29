@@ -30,9 +30,6 @@ import type {ThunkAction} from './types'
 let {ParseFolder, ParseUser} = require('../parse/objects').default
 let {getUsersParameters, getQueryByType} = require('../parse/parseUtiles').default
 
-import Users from '../lib/users'
-
-
 const {fromParseUser} = require('../reducers/parseModels')
 
 /**
