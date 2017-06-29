@@ -154,10 +154,10 @@ class HeaderContent extends Component {
                               data-component-bound="true">
                 <input disabled="" autocomplete="off" spellcheck="false" tabindex="-1"
                        className="header_content_middle_input"/>
-                  <input maxlength="64" id="find_desc" autocomplete="off" value=""
+                  <input maxLength="64" id="find_desc" autocomplete="off" value=""
                          placeholder="pizza, pub, Mustafa" className="main-search_field pseudo-input_field"
                          aria-autocomplete="list" tabindex="1" data-component-bound="true"/>
-                    <input type="hidden" maxlength="64" data-component-bound="true" name="find_desc" value=""/>
+                    <input type="hidden" maxLength="64" data-component-bound="true" name="find_desc" value=""/>
                         </span>
                       </label>
                       <div
@@ -174,13 +174,13 @@ class HeaderContent extends Component {
                       <label className="main-search_pseudo-input main-search_pseudo-input--near pseudo-input">
                         <span className="pseudo-input_text">Near</span>
                         <span className="main-search_field-holder pseudo-input_field-holder">
-                <input maxlength="80" id="dropperText_Mast" autocomplete="off" value="Los Angeles, CA"
+                          <input maxLength="80" id="dropperText_Mast" autocomplete="off" value="Los Angeles, CA"
                        placeholder="Address, Neighbourhood, or Postcode" data-query="Los Angeles, CA"
                        className="main-search_field pseudo-input_field" aria-autocomplete="list" tabindex="2"
                        data-component-bound="true"/>
-                          <input type="hidden" maxlength="80" data-component-bound="true"
+                          <input type="hidden" maxLength="80" data-component-bound="true"
                                  name="find_loc" value="Los Angeles, CA"/>
-            </span>
+                        </span>
                       </label>
                       <div
                         className="main-search_suggestions suggestions-list-container location-suggestions-list-container hidden"
@@ -208,9 +208,9 @@ class HeaderContent extends Component {
                             <span className="main-search_action-icon-wrap js-search-icon-wrap">
                                 <span aria-hidden="true" id="icon_24X24"
                                       className="icon icon--24-search icon--size-24 icon--inverse icon--fallback-inverted">
-    <svg className="icon_svg">
-    </svg>
-</span>
+                                  <svg className="icon_svg">
+                                  </svg>
+                                </span>
                                 <span className="u-offscreen">Search</span>
                             </span>
                       <div className="circle-spinner js-circle-spinner hidden">
