@@ -59,15 +59,15 @@ class HeaderContent extends Component {
 
                 <a className="ybtn ybtn--primary drop-menu-link user-account_button"
                    id="topbar-account-link" data-component-bound="true">
-                  <span aria-hidden="true" style="width: 14px; height: 14px;"
+                  <span aria-hidden="true" id="icon_14X14"
                         className="icon icon--14-triangle-down icon--size-14 icon--inverse icon--fallback-inverted u-triangle-direction-down user-account_button-arrow responsive-visible-large-inline-block">
                     <svg className="icon_svg"></svg>
                   </span>
-                  <span aria-hidden="true" style="width: 24px; height: 24px;"
+                  <span aria-hidden="true" id="icon_24X24"
                         className="icon icon--24-hamburger icon--size-24 icon--inverse icon--fallback-inverted drop-menu-link_open">
                     <svg className="icon_svg"></svg>
                   </span>
-                  <span aria-hidden="true" style="width: 24px; height: 24px;"
+                  <span aria-hidden="true" id="icon_24X24"
                         className="icon icon--24-close icon--size-24 icon--inverse icon--fallback-inverted drop-menu-link_close">
                     <svg className="icon_svg"></svg>
                   </span>
@@ -96,12 +96,12 @@ class HeaderContent extends Component {
                       <a className="js-analytics-click arrange arrange--middle arrange--6" href="/user_details"
                          data-analytics-label="">
                         <strong className="arrange_unit">
-                    <span aria-hidden="true" style="width: 24px; height: 24px;"
+                    <span aria-hidden="true" id="icon_24X24"
                           className="icon icon--24-profile icon--size-24 u-space-r1">
                       <svg className="icon_svg"></svg>
                     </span>About Me</strong>
                         <span className="arrange_unit arrange_unit--fill u-text-right">
-                <span aria-hidden="true" style="width: 24px; height: 24px;"
+                <span aria-hidden="true" id="icon_24X24"
                       className="icon icon--24-chevron-right icon--size-24 hidden-non-responsive-inline-block responsive-visible-medium-inline-block">
                   <svg className="icon_svg"></svg>
                 </span>
@@ -114,12 +114,12 @@ class HeaderContent extends Component {
                       <a className="js-analytics-click arrange arrange--middle arrange--6" href="/talk"
                          data-analytics-label="">
                         <strong className="arrange_unit">
-                    <span aria-hidden="true" style="width: 24px; height: 24px;"
+                    <span aria-hidden="true" id="icon_24X24"
                           className="icon icon--24-talk icon--size-24 u-space-r1">
                       <svg className="icon_svg"></svg>
                     </span>Talk</strong>
                         <span className="arrange_unit arrange_unit--fill u-text-right">
-                <span aria-hidden="true" style="width: 24px; height: 24px;"
+                <span aria-hidden="true" id="icon_24X24"
                       className="icon icon--24-chevron-right icon--size-24 hidden-non-responsive-inline-block responsive-visible-medium-inline-block">
                   <svg className="icon_svg"></svg>
                 </span>
