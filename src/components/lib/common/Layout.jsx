@@ -24,6 +24,7 @@ class Layout extends Component {
     }
     return (
       <div id="wrap" className="lang-en" data-component-bound="true">
+
         <div>wanghao</div>
       </div>
     )
