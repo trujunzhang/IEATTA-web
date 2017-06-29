@@ -34,22 +34,12 @@ class Layout extends Component {
 
             <div className="container">
 
-              <div className="clearfix layout-block layout-full search-exception" data-component-bound="true"
-                   style="position: relative;">
-                <div className="column column-alpha ">
-                  <div className="content">
-                  </div>
-                </div>
-                <div className="throbber-overlay" style="display: none;">
-                  <div className="throbber-container"></div>
-                </div>
-              </div>
-
               <div className="clearfix layout-block layout-a scroll-map-container search-results-block">
                 <div className="column column-alpha ">
 
-                  <div className="results-wrapper indexed-biz-archive" data-component-bound="true"
-                       style="position: relative; min-height: 345px;">
+                  <div className="results-wrapper indexed-biz-archive"
+                       id="restaurants_list_results"
+                       data-component-bound="true">
 
                     <div className="search-results-content">
                       { this.props.children}
