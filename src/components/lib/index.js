@@ -34,7 +34,7 @@ Telescope.registerComponent('PostsDomain',                require('./posts/Posts
 Telescope.registerComponent('PostsHome',                  require('./posts/PostsHome.jsx').default)
 Telescope.registerComponent('PostsHomeList',              require('./posts/PostsHomeList.jsx').default)
 Telescope.registerComponent('PostsItem',                  require('./posts/PostsItem.jsx').default)
-Telescope.registerComponent('PostsItemActions',           require('./posts/PostsItemActions.jsx').default)
+Telescope.registerComponent('PostsItemMap',               require('./posts/PostsItemMap.jsx').default)
 Telescope.registerComponent('PostsItemEditActions',       require('./posts/PostsItemEditActions.jsx').default)
 Telescope.registerComponent('PostsItemTopics',            require('./posts/PostsItemTopics.jsx').default)
 Telescope.registerComponent('PostsList',                  require('./posts/PostsList.jsx').default)
