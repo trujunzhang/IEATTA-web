@@ -22,6 +22,7 @@
  * @flow
  */
 
+const parseSingleActions = require('./parseSingle').default
 const parseRestaurantsActions = require('./parseRestaurants').default
 const parseUsersActions = require('./parseUsers').default
 const loginActions = require('./login').default
@@ -30,6 +31,7 @@ const shipmentActions = require('./shipment').default
 const golbalActions = require('./global').default
 
 export default {
+  ...parseSingleActions,
   ...parseRestaurantsActions,
   ...parseUsersActions,
   ...loginActions,
