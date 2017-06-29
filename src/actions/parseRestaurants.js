@@ -145,8 +145,6 @@ async function _loadPostsList(listTask: Any, listId: string, terms: Any, type: s
     totalCount: totalCount
   }
 
-  debugger
-
   const action = {type, payload}
 
   return Promise.all([
