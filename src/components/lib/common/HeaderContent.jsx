@@ -136,6 +136,60 @@ class HeaderContent extends Component {
     )
   }
 
+  renderLeftSearchbar() {
+    return (
+      <div className="arrange_unit main-search_search-field-arrange">
+        <div className="main-search_suggestions-field search-field-container find-decorator">
+          <label className="main-search_pseudo-input main-search_pseudo-input--find pseudo-input">
+            <span className="pseudo-input_text">Find</span>
+            <span className="pseudo-input_field-holder"
+                  data-component-bound="true">
+                <input disabled="" autocomplete="off" spellcheck="false" tabindex="-1"
+                       className="header_content_middle_input"/>
+                  <input maxLength="64" id="find_desc" autocomplete="off" value=""
+                         placeholder="pizza, pub, Mustafa" className="main-search_field pseudo-input_field"
+                         aria-autocomplete="list" tabindex="1" data-component-bound="true"/>
+                    <input type="hidden" maxLength="64" data-component-bound="true" name="find_desc" value=""/>
+                        </span>
+          </label>
+          <div
+            className="main-search_suggestions suggestions-list-container search-suggestions-list-container hidden"
+            data-component-bound="true">
+            <ul className="suggestions-list" role="listbox" aria-label="Search results"></ul>
+          </div>
+        </div>
+
+      </div>
+    )
+  }
+
+  renderRightSearchbar() {
+    return (
+      <div
+        className="arrange_unit main-search_near-field-arrange  main-search_search-field-arrange arrange_unit--stack-12">
+        <div className="main-search_suggestions-field search-field-container near-decorator">
+          <label className="main-search_pseudo-input main-search_pseudo-input--near pseudo-input">
+            <span className="pseudo-input_text">Near</span>
+            <span className="main-search_field-holder pseudo-input_field-holder">
+                          <input maxLength="80" id="dropperText_Mast" autocomplete="off" value="Los Angeles, CA"
+                                 placeholder="Address, Neighbourhood, or Postcode" data-query="Los Angeles, CA"
+                                 className="main-search_field pseudo-input_field" aria-autocomplete="list" tabindex="2"
+                                 data-component-bound="true"/>
+                          <input type="hidden" maxLength="80" data-component-bound="true"
+                                 name="find_loc" value="Los Angeles, CA"/>
+                        </span>
+          </label>
+          <div
+            className="main-search_suggestions suggestions-list-container location-suggestions-list-container hidden"
+            data-component-bound="true">
+            <ul className="suggestions-list" role="listbox" aria-label="Search results"></ul>
+          </div>
+        </div>
+
+      </div>
+    )
+  }
+
   renderMiddle() {
     return (
       <div
@@ -146,50 +200,8 @@ class HeaderContent extends Component {
             <div className="arrange arrange--stack">
               <div className="arrange_unit arrange_unit--fill">
                 <div className="arrange arrange--equal arrange--stack">
-                  <div className="arrange_unit main-search_search-field-arrange">
-                    <div className="main-search_suggestions-field search-field-container find-decorator">
-                      <label className="main-search_pseudo-input main-search_pseudo-input--find pseudo-input">
-                        <span className="pseudo-input_text">Find</span>
-                        <span className="pseudo-input_field-holder"
-                              data-component-bound="true">
-                <input disabled="" autocomplete="off" spellcheck="false" tabindex="-1"
-                       className="header_content_middle_input"/>
-                  <input maxLength="64" id="find_desc" autocomplete="off" value=""
-                         placeholder="pizza, pub, Mustafa" className="main-search_field pseudo-input_field"
-                         aria-autocomplete="list" tabindex="1" data-component-bound="true"/>
-                    <input type="hidden" maxLength="64" data-component-bound="true" name="find_desc" value=""/>
-                        </span>
-                      </label>
-                      <div
-                        className="main-search_suggestions suggestions-list-container search-suggestions-list-container hidden"
-                        data-component-bound="true">
-                        <ul className="suggestions-list" role="listbox" aria-label="Search results"></ul>
-                      </div>
-                    </div>
-
-                  </div>
-                  <div
-                    className="arrange_unit main-search_near-field-arrange  main-search_search-field-arrange arrange_unit--stack-12">
-                    <div className="main-search_suggestions-field search-field-container near-decorator">
-                      <label className="main-search_pseudo-input main-search_pseudo-input--near pseudo-input">
-                        <span className="pseudo-input_text">Near</span>
-                        <span className="main-search_field-holder pseudo-input_field-holder">
-                          <input maxLength="80" id="dropperText_Mast" autocomplete="off" value="Los Angeles, CA"
-                       placeholder="Address, Neighbourhood, or Postcode" data-query="Los Angeles, CA"
-                       className="main-search_field pseudo-input_field" aria-autocomplete="list" tabindex="2"
-                       data-component-bound="true"/>
-                          <input type="hidden" maxLength="80" data-component-bound="true"
-                                 name="find_loc" value="Los Angeles, CA"/>
-                        </span>
-                      </label>
-                      <div
-                        className="main-search_suggestions suggestions-list-container location-suggestions-list-container hidden"
-                        data-component-bound="true">
-                        <ul className="suggestions-list" role="listbox" aria-label="Search results"></ul>
-                      </div>
-                    </div>
-
-                  </div>
+                  {this.renderLeftSearchbar()}
+                  {/*{this.renderRightSearchbar()}*/}
                 </div>
               </div>
               <div className="arrange_unit main-search_actions arrange_unit--stack-12">
@@ -209,6 +221,8 @@ class HeaderContent extends Component {
                                 <span aria-hidden="true" id="icon_24X24"
                                       className="icon icon--24-search icon--size-24 icon--inverse icon--fallback-inverted">
                                   <svg className="icon_svg">
+                                    <path
+                                      d="M20.067 18.933l-4.157-4.157a6 6 0 1 0-.884.884l4.157 4.157a.624.624 0 1 0 .884-.884zM6.5 11c0-2.62 2.13-4.75 4.75-4.75S16 8.38 16 11s-2.13 4.75-4.75 4.75S6.5 13.62 6.5 11z"/>
                                   </svg>
                                 </span>
                                 <span className="u-offscreen">Search</span>

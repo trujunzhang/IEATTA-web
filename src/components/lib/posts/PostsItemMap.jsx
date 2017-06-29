@@ -20,8 +20,7 @@ class PostsItemMap extends Component {
   render() {
 
     return (
-
-
+      <div></div>
     )
   }
 
