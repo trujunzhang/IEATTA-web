@@ -150,10 +150,10 @@ class HeaderContent extends Component {
                     <div className="main-search_suggestions-field search-field-container find-decorator">
                       <label className="main-search_pseudo-input main-search_pseudo-input--find pseudo-input">
                         <span className="pseudo-input_text">Find</span>
-                        <span className="pseudo-input_field-holder" style="position: relative; display: block;"
+                        <span className="pseudo-input_field-holder"
                               data-component-bound="true">
                 <input disabled="" autocomplete="off" spellcheck="false" tabindex="-1"
-                       style="position: absolute; color: rgb(200, 200, 200); -webkit-text-fill-color: rgb(200, 200, 200); width: 100%; box-sizing: border-box; top: 0px; right: 0px; bottom: 0px; left: 0px; display: inline-block; font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; line-height: 20px; font-weight: 400; letter-spacing: 0px; background-color: rgba(0, 0, 0, 0); font-kerning: auto; vertical-align: baseline; padding: 0px; border-width: 0px;"/>
+                       className="header_content_middle_input"/>
                   <input maxlength="64" id="find_desc" autocomplete="off" value=""
                          placeholder="pizza, pub, Mustafa" className="main-search_field pseudo-input_field"
                          aria-autocomplete="list" tabindex="1" data-component-bound="true"/>
