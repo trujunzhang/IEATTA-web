@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import Posts from '../../../../lib/posts'
 import { Link } from 'react-router'
 
-const {loadPosts} = require('../../../../actions').default
+const {loadPostsList} = require('../../../../actions').default
 
 const {
   DASHBOARD_LOADED_POSTS
@@ -38,7 +38,7 @@ class AppAdminPostsList extends Component {
         limit: 10
       }
     const nextDashboard = convertToObject(this.props.dashboard)
-    this.props.dispatch(loadPosts(nextDashboard, terms.listId, terms, DASHBOARD_LOADED_POSTS))
+    this.props.dispatch(loadPostsList(nextDashboard, terms.listId, terms, DASHBOARD_LOADED_POSTS))
   }
 
   onDateSelectorChange (event) {

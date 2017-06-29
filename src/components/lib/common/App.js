@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
 
-// const {loadPosts, clientRequestAShipment} = require('../../../actions/index');
-
-
 class App extends Component {
     constructor(props) {
         super(props);
