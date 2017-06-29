@@ -10,7 +10,6 @@ class PostsSingleHeader extends Component {
     return (
       <div className="biz-page-header-left claim-status">
 
-
         <div className="u-space-t1">
           <h1 className="biz-page-title embossed-text-white shortenough">
             My Two Cents
@@ -228,9 +227,9 @@ class PostsSingleHeader extends Component {
                       <span className="author">
                         by
                         <a className="user-display-name js-analytics-click"
-                              href="/user_details?userid=63rsfkJ6ptD9jU_Rf96iBg"
-                              data-hovercard-id="xCvTC67I0MLNbenXw4irmA" data-analytics-label="about_me"
-                              id="dropdown_user-name">Kenny G.</a>
+                           href="/user_details?userid=63rsfkJ6ptD9jU_Rf96iBg"
+                           data-hovercard-id="xCvTC67I0MLNbenXw4irmA" data-analytics-label="about_me"
+                           id="dropdown_user-name">Kenny G.</a>
                       </span>
                     </div>
 
