@@ -1,16 +1,15 @@
 import Telescope from '../../../lib'
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import Posts from '../../../../lib/posts'
 import Users from '../../../../lib/users'
 
 class PostDetail extends Component {
 
 
-
-  render () {
+  render() {
 
     return (
-
+      <div>xxx</div>
     )
   }
 }

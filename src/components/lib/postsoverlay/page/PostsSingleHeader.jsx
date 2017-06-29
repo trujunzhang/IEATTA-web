@@ -357,7 +357,6 @@ class PostsSingleHeader extends Component {
   }
 
   render() {
-
     return (
       <div className="content-container">
         <div className="biz-page-header clearfix">

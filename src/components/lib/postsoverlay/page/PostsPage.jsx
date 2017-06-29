@@ -10,10 +10,20 @@ class PostsPage extends Component {
 
   }
 
-
   render() {
     return (
-      <div></div>
+      <div className="biz-country-us">
+
+        <div className="main-content-wrap main-content-wrap--full">
+          <div className="top-shelf">
+            <Telescope.components.PostsSingleHeader/>
+
+            <div id="super-container" className="content-container">
+              <Telescope.components.PostDetail/>
+            </div>
+          </div>
+        </div>
+      </div>
     )
   }
 }
