@@ -120,15 +120,13 @@ export function fromParseCloudinary(map: Object): Cloudinary {
 }
 
 export function fromParseRestaurant(map: Object): Restaurant {
-  debugger
+  // debugger
   return {
     id: map.id,
+    address: map.get('address'),
+    geoLocation: map.get('geoLocation'),
+    photos: map.get('photos'),
     url: map.get('url'),
-    title: map.get('title'),
-    slug: map.get('slug'),
-    body: map.get('body'),
-    sourceFrom: map.get('sourceFrom'),
-    thumbnailUrl: map.get('thumbnailUrl'),
     status: map.get('status') || 2,
   };
 }

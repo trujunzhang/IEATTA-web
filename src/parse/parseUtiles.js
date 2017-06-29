@@ -18,7 +18,7 @@ const {
 function getQueryByType(type: string = PARSE_POSTS) {
   switch (type) {
     case PARSE_POSTS:
-      return new Parse.Query(ParsePost)
+      return new Parse.Query(ParsePost).include('photos')
     case PARSE_USERS:
       return new Parse.Query(ParseUser)
   }
