@@ -1,0 +1,232 @@
+<div class="arrange_unit main-header--full_arrange_unit">
+
+  <div class="main-header_logo js-analytics-click" id="logo" data-analytics-label="logo">
+    <a href="/">Yelp</a>
+  </div>
+
+</div>
+
+<div
+  class="arrange_unit arrange_unit--fill align-middle main-header--full_arrange_unit main-header_search-container">
+  <div class="main-header_search responsive-hidden-medium-only">
+    <form method="get" action="/search" id="header_find_form" class="main-search yform u-space-b0"
+          role="search" data-component-bound="true">
+      <div class="arrange arrange--stack">
+        <div class="arrange_unit arrange_unit--fill">
+          <div class="arrange arrange--equal arrange--stack">
+            <div class="arrange_unit main-search_search-field-arrange">
+              <div class="main-search_suggestions-field search-field-container find-decorator">
+                <label class="main-search_pseudo-input main-search_pseudo-input--find pseudo-input">
+                  <span class="pseudo-input_text">Find</span>
+                  <span class="pseudo-input_field-holder" style="position: relative; display: block;"
+                        data-component-bound="true">
+                <input disabled="" autocomplete="off" spellcheck="false" tabindex="-1"
+                       style="position: absolute; color: rgb(200, 200, 200); -webkit-text-fill-color: rgb(200, 200, 200); width: 100%; box-sizing: border-box; top: 0px; right: 0px; bottom: 0px; left: 0px; display: inline-block; font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; line-height: 20px; font-weight: 400; letter-spacing: 0px; background-color: rgba(0, 0, 0, 0); font-kerning: auto; vertical-align: baseline; padding: 0px; border-width: 0px;"><input
+                    maxlength="64" id="find_desc" autocomplete="off" value=""
+                    placeholder="pizza, pub, Mustafa" class="main-search_field pseudo-input_field"
+                    aria-autocomplete="list" tabindex="1" data-component-bound="true"
+                    style="display: inline-block; background: transparent; position: relative; width: 100%; box-sizing: border-box;"><input
+                    type="hidden" maxlength="64" data-component-bound="true" name="find_desc" value="">
+            </span>
+                </label>
+                <div
+                  class="main-search_suggestions suggestions-list-container search-suggestions-list-container hidden"
+                  data-component-bound="true">
+                  <ul class="suggestions-list" role="listbox" aria-label="Search results"></ul>
+                </div>
+              </div>
+
+            </div>
+            <div
+              class="arrange_unit main-search_near-field-arrange  main-search_search-field-arrange arrange_unit--stack-12">
+              <div class="main-search_suggestions-field search-field-container near-decorator">
+                <label class="main-search_pseudo-input main-search_pseudo-input--near pseudo-input">
+                  <span class="pseudo-input_text">Near</span>
+                  <span class="main-search_field-holder pseudo-input_field-holder">
+                <input maxlength="80" id="dropperText_Mast" autocomplete="off" value="Los Angeles, CA"
+                       placeholder="Address, Neighbourhood, or Postcode" data-query="Los Angeles, CA"
+                       class="main-search_field pseudo-input_field" aria-autocomplete="list" tabindex="2"
+                       data-component-bound="true"><input type="hidden" maxlength="80" data-component-bound="true"
+                                                          name="find_loc" value="Los Angeles, CA">
+                <input type="hidden" name="ns" value="1">
+            </span>
+                </label>
+                <div
+                  class="main-search_suggestions suggestions-list-container location-suggestions-list-container hidden"
+                  data-component-bound="true">
+                  <ul class="suggestions-list" role="listbox" aria-label="Search results"></ul>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="arrange_unit main-search_actions arrange_unit--stack-12">
+          <div class="arrange arrange--wrap arrange--6">
+            <div
+              class="arrange_unit hidden-non-responsive-inline-block responsive-visible-small-inline-block main-search_action">
+
+              <a class="ybtn ybtn--primary main-header_button js-search-close main-search_close">
+                Cancel
+              </a>
+            </div>
+            <div class="arrange_unit main-search_action arrange_unit--stack-12">
+
+              <button class="ybtn ybtn--primary main-search_submit main-header_button"
+                      id="header-search-submit" tabindex="3" title="Search" type="submit" value="submit">
+                            <span class="main-search_action-icon-wrap js-search-icon-wrap">
+                                <span aria-hidden="true" style="width: 24px; height: 24px;"
+                                      class="icon icon--24-search icon--size-24 icon--inverse icon--fallback-inverted">
+    <svg class="icon_svg">
+        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#24x24_search"></use>
+    </svg>
+</span>
+                                <span class="u-offscreen">Search</span>
+                            </span>
+                <div class="circle-spinner js-circle-spinner hidden">
+                  <div class="circle-spinner_segment container1">
+                    <div class="circle1"></div>
+                    <div class="circle2"></div>
+                    <div class="circle3"></div>
+                    <div class="circle4"></div>
+                  </div>
+                  <div class="circle-spinner_segment container2">
+                    <div class="circle1"></div>
+                    <div class="circle2"></div>
+                    <div class="circle3"></div>
+                    <div class="circle4"></div>
+                  </div>
+                  <div class="circle-spinner_segment container3">
+                    <div class="circle1"></div>
+                    <div class="circle2"></div>
+                    <div class="circle3"></div>
+                    <div class="circle4"></div>
+                  </div>
+                </div>
+
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+  </div>
+
+</div>
+
+<div class="arrange_unit main-header--full_arrange_unit">
+  <div class="arrange arrange--6">
+    <div class="arrange_unit u-nowrap">
+      <div class="main-header_account webview-hidden">
+        <ul class="header-nav">
+          <li class="header-nav_item responsive-hidden-small js-analytics-click"
+              data-analytics-label="signup">
+
+            <a class="ybtn ybtn--primary main-header_button header-nav_button--sign-up js-sign-up-button"
+               href="/signup" id="header-sign-up">
+              Sign Up
+            </a>
+          </li>
+          <li class="header-nav_item">
+            <a class="header-nav_link header-nav_link--log-in js-log-in-button"
+               href="https://www.yelp.com.sg/login?return_url=%2Fsearch%3Fcflt%3Drestaurants%26find_loc%3DLos%2BAngeles%252C%2BCA">
+              Log In
+            </a>
+
+          </li>
+        </ul>
+
+        <div id="topbar-account-item"
+             class="user-account clearfix drop-menu-origin hidden-non-responsive-block responsive-visible-small-block"
+             data-component-bound="true">
+
+          <a class="ybtn ybtn--primary drop-menu-link user-account_button" href="javascript:;"
+             id="topbar-account-link" data-component-bound="true">
+                                            <span aria-hidden="true" style="width: 14px; height: 14px;"
+                                                  class="icon icon--14-triangle-down icon--size-14 icon--inverse icon--fallback-inverted u-triangle-direction-down user-account_button-arrow responsive-visible-large-inline-block">
+    <svg class="icon_svg">
+    </svg>
+</span>
+            <span aria-hidden="true" style="width: 24px; height: 24px;"
+                  class="icon icon--24-hamburger icon--size-24 icon--inverse icon--fallback-inverted drop-menu-link_open">
+    <svg class="icon_svg">
+    </svg>
+</span>
+            <span aria-hidden="true" style="width: 24px; height: 24px;"
+                  class="icon icon--24-close icon--size-24 icon--inverse icon--fallback-inverted drop-menu-link_close">
+    <svg class="icon_svg">
+    </svg>
+</span>
+          </a>
+          <div id="topbar-account-wrap" class="drop-menu drop-menu-has-arrow" data-component-bound="true">
+            <div class="drop-menu-arrow responsive-hidden-small"></div>
+
+            <div class="arrange arrange--6 arrange--equal drop-menu_auth-buttons">
+              <div class="arrange_unit">
+
+                <a class="ybtn ybtn-full"
+                   href="https://www.yelp.com.sg/login?return_url=%2Fsearch%3Fcflt%3Drestaurants%26find_loc%3DLos%2BAngeles%252C%2BCA">
+                  Login
+                </a>
+              </div>
+              <div class="arrange_unit">
+
+                <a class="ybtn ybtn--primary ybtn-full" href="/signup">
+                  Sign Up
+                </a>
+              </div>
+            </div>
+
+            <ul class="drop-menu-group--nav drop-menu-group">
+              <li class="drop-down-menu-link">
+                <a class="js-analytics-click arrange arrange--middle arrange--6" href="/user_details"
+                   data-analytics-label="">
+                  <strong class="arrange_unit">
+                    <span aria-hidden="true" style="width: 24px; height: 24px;"
+                          class="icon icon--24-profile icon--size-24 u-space-r1">
+    <svg class="icon_svg">
+    </svg>
+</span>About Me
+                  </strong>
+                  <span class="arrange_unit arrange_unit--fill u-text-right">
+                <span aria-hidden="true" style="width: 24px; height: 24px;"
+                      class="icon icon--24-chevron-right icon--size-24 hidden-non-responsive-inline-block responsive-visible-medium-inline-block">
+    <svg class="icon_svg">
+    </svg>
+</span>
+                                                        </span>
+                </a>
+              </li>
+
+
+              <li class="drop-down-menu-link hidden-non-responsive-block responsive-visible-medium-block">
+                <a class="js-analytics-click arrange arrange--middle arrange--6" href="/talk"
+                   data-analytics-label="">
+                  <strong class="arrange_unit">
+                    <span aria-hidden="true" style="width: 24px; height: 24px;"
+                          class="icon icon--24-talk icon--size-24 u-space-r1">
+    <svg class="icon_svg">
+    </svg>
+</span>Talk
+                  </strong>
+                  <span class="arrange_unit arrange_unit--fill u-text-right">
+                <span aria-hidden="true" style="width: 24px; height: 24px;"
+                      class="icon icon--24-chevron-right icon--size-24 hidden-non-responsive-inline-block responsive-visible-medium-inline-block">
+    <svg class="icon_svg">
+    </svg>
+                </span>
+                            </span>
+                </a>
+              </li>
+
+            </ul>
+
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
