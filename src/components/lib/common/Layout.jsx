@@ -24,7 +24,7 @@ class Layout extends Component {
     return (
       <div id="wrap" className="lang-en" data-component-bound="true">
         <Telescope.components.HeaderContent />
-        <div>wanghao</div>
+        { this.props.children}
       </div>
     )
   }
