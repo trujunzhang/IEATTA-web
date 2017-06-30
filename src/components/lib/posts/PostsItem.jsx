@@ -7,7 +7,7 @@ import {withRouter} from 'react-router'
 class PostsItem extends Component {
 
   render() {
-    const {listId, post} = this.props
+    const {listId, restaurant, index} = this.props
 
     if (typeof listId === 'undefined') {
       throw new Error('You need to set a proper List Id before using PostsItem')
@@ -15,15 +15,13 @@ class PostsItem extends Component {
 
     return (
       <li className="regular-search-result">
-        <div className="search-result natural-search-result" data-biz-id="6i7KnRylm4bhPIApDFSVCg" data-key="3"
-             data-component-bound="true">
+        <div className="search-result natural-search-result">
           <div className="biz-listing-large">
             <div className="main-attributes">
               <div className="media-block media-block--12">
                 <div className="media-avatar">
                   <div className="photo-box pb-90s">
-                    <a href="/biz/daves-hot-chicken-los-angeles" className="js-analytics-click"
-                       data-analytics-label="biz-photo">
+                    <a className="js-analytics-click">
                       <img alt="Dave's Hot Chicken" className="photo-box-img" height="90"
                            src="https://s3-media4.fl.yelpcdn.com/bphoto/8sLptCjCSN75Ob3kCLJuIA/90s.jpg" width="90"/>
                     </a>
@@ -31,16 +29,14 @@ class PostsItem extends Component {
                 </div>
                 <div className="media-story">
                   <h3 className="search-result-title">
-                        <span className="indexed-biz-name">3.
+                        <span className="indexed-biz-name">{`${index + 1}.`}
                           <a className="biz-name js-analytics-click"
                              data-analytics-label="biz-name"
                              href="/biz/daves-hot-chicken-los-angeles"
                              data-hovercard-id="tuy4AGHY7sx7DCGiwdkJNw">
-                            <span>Dave’s Hot Chicken</span>
+                            <span>{restaurant.displayName}</span>
                         </a>
                         </span>
-
-
                   </h3>
 
                   <div className="biz-rating biz-rating-large clearfix">
@@ -69,7 +65,6 @@ class PostsItem extends Component {
                     <a href="/search?find_desc=&amp;find_loc=Los+Angeles%2C+CA%2C+US&amp;cflt=southern">Southern</a>
                   </span>
 
-
                   </div>
 
 
@@ -95,7 +90,7 @@ class PostsItem extends Component {
 
             <div className="secondary-attributes">
               <span className="neighborhood-str-list">
-                Los Feliz
+                {restaurant.displayName}
               </span>
 
               <address>

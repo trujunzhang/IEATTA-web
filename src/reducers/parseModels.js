@@ -52,7 +52,7 @@ export type Recipe = {
 export type Restaurant = {
   id: string;
   url: string;
-  title: string;
+  displayName: string;
   slug: string;
   body: string;
   sourceFrom: string;
@@ -122,6 +122,7 @@ export function fromParseCloudinary(map: Object): Cloudinary {
 export function fromParseRestaurant(map: Object): Restaurant {
   return {
     id: map.id,
+    displayName: map.get('displayName'),
     address: map.get('address'),
     geoLocation: map.get('geoLocation'),
     photos: map.get('photos'),
