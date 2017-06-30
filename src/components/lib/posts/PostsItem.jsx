@@ -9,8 +9,23 @@ import moment from 'moment'
 
 class PostsItem extends Component {
 
+  renderReview() {
+    const {listId, restaurant, index} = this.props,
+      reviews = 0
+    return (
+      <div className="biz-rating biz-rating-large clearfix">
+        <div className={`i-stars i-stars--regular-${reviews} rating-large`} title={`${reviews}.0 star rating`}>
+          <img className="offscreen" width="84" height="303" src="/images/stars/stars.png"
+               alt={`${reviews}.0 star rating`}/>
+        </div>
+        <span className="review-count rating-qualifier">{`${reviews} reviews`}</span>
+      </div>
+    )
+  }
+
   renderLeft() {
-    const {listId, restaurant, index} = this.props
+    const {listId, restaurant, index} = this.props,
+      reviews = 0
 
     // debugger
 
@@ -35,27 +50,15 @@ class PostsItem extends Component {
               </span>
             </h3>
 
-            <div className="biz-rating biz-rating-large clearfix">
-
-
-              <div className="i-stars i-stars--regular-5 rating-large" title="5.0 star rating">
-                <img className="offscreen" height="303"
-                     src="https://s3-media2.fl.yelpcdn.com/assets/srv0/yelp_design_web/9b34e39ccbeb/assets/img/stars/stars.png"
-                     width="84" alt="5.0 star rating"/>
-              </div>
-
-              <span className="review-count rating-qualifier">{`${restaurant.reviews.length} reviews`}</span>
-            </div>
-
+            {this.renderReview()}
 
             <div className="price-category">
-                        <span className="bullet-after">
-                          <span className="business-attribute price-range">$</span>
-                        </span>
-              <span className="category-str-list">
-                <a href="/search?find_desc=&amp;find_loc=Los+Angeles%2C+CA%2C+US&amp;cflt=southern">Southern</a>
+              <span className="bullet-after">
+                <span className="business-attribute price-range">$</span>
               </span>
-
+              <span className="category-str-list">
+                <a>Restaurant</a>
+              </span>
             </div>
 
 
@@ -87,19 +90,21 @@ class PostsItem extends Component {
     const {listId, restaurant, index} = this.props
     return (
       <div className="secondary-attributes">
-              <span className="neighborhood-str-list">
-                {restaurant.displayName}
-              </span>
+        <span className="neighborhood-str-list">
+          {restaurant.displayName}
+        </span>
+
 
         <address>
-          {/*5115 Hollywood Blvd<br>Los Angeles, CA 90027<br>United States*/}
+          {'5115 Hollywood Blvd'}
+          <br>
+            {'Los Angeles, CA 90027'}
+          </br>
+          {'United States'}
         </address>
 
-
         <span className="offscreen">Phone number</span>
-        <span className="biz-phone">
-              (818) 414-7310
-            </span>
+        <span className="biz-phone">(818) 414-7310</span>
 
       </div>
     )
