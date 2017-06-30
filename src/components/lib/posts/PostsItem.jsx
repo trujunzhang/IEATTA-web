@@ -87,24 +87,26 @@ class PostsItem extends Component {
   }
 
   renderRight() {
-    const {listId, restaurant, index} = this.props
+    const {listId, restaurant, index} = this.props,
+      address = restaurant.address,
+      array = address.split(',')
+
+    const addressViews = array.map((item, index) => {
+      return (<span key={index}>{item}</span>)
+    })
+
     return (
       <div className="secondary-attributes">
         <span className="neighborhood-str-list">
           {restaurant.displayName}
         </span>
 
+        <div className="restaurant-list-item-address-rows">
+          {addressViews}
+        </div>
 
-        <address>
-          {'5115 Hollywood Blvd'}
-          <br>
-            {'Los Angeles, CA 90027'}
-          </br>
-          {'United States'}
-        </address>
-
-        <span className="offscreen">Phone number</span>
-        <span className="biz-phone">(818) 414-7310</span>
+        {/*<span className="offscreen">Phone number</span>*/}
+        {/*<span className="biz-phone">(818) 414-7310</span>*/}
 
       </div>
     )
