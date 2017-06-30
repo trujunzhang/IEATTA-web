@@ -70,8 +70,8 @@ class UserEmailSignIn extends Component {
       <div className="login" data-component-bound="true">
         <div className="signup-form-container">
           <div className="header">
-            <h2>Log In to Yelp</h2>
-            <p className="subheading">{'New to Yelp? '}
+            <h2>Log In to IEATTA</h2>
+            <p className="subheading">{'New to IEATTA? '}
               <a onClick={(e) => {
                 this.props.toggleEvent(e, LOGIN_FORM_TYPE_REGISTER)
               }}
@@ -94,7 +94,10 @@ class UserEmailSignIn extends Component {
                 <span>
                 <div className="u-text-centered">
                 <span id="login_facebook_icon" className="icon icon--24-facebook icon--size-24 icon--currentColor">
-                  <svg className="icon_svg"></svg>
+                  <svg className="icon_svg">
+                    <path
+                      d="M13 21v-8h3.15l.412-3H13V7.547C13 6.62 13.65 6 14.98 6H17V3.126C16 3.086 15.493 3 14.323 3 11.88 3 10 4.49 10 7.23V10H7v3h3v8h3z"/>
+                  </svg>
                 </span>
                 Log In with Facebook</div>
               </span>

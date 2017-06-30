@@ -86,7 +86,8 @@ class UserEmailSignUp extends Component {
                     aria-hidden="true"
                     className="icon icon--24-facebook icon--size-24 icon--currentColor">
                 <svg className="icon_svg">
-                  {/*<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#24x24_facebook"></use>*/}
+                  <path
+                    d="M13 21v-8h3.15l.412-3H13V7.547C13 6.62 13.65 6 14.98 6H17V3.126C16 3.086 15.493 3 14.323 3 11.88 3 10 4.49 10 7.23V10H7v3h3v8h3z"/>
                 </svg>
               </span> Sign Up with Facebook</div>
               </span>
@@ -145,11 +146,11 @@ class UserEmailSignUp extends Component {
         <div className="captcha" id="signup-captcha"/>
 
         <p className="legal-copy legal-left">
-            {'By signing up, you agree to IEATTA’s '}
-            <a className="legal-link" href="https://www.yelp.com.sg/static?p=tos">
-                {'Terms of Service'}</a>
-           {' and '}
-            <a className="legal-link" href="/tos/privacy_en_ie_20160131">Privacy Policy</a>{'.'}
+          {'By signing up, you agree to IEATTA’s '}
+          <a className="legal-link" href="https://www.yelp.com.sg/static?p=tos">
+            {'Terms of Service'}</a>
+          {' and '}
+          <a className="legal-link" href="/tos/privacy_en_ie_20160131">Privacy Policy</a>{'.'}
         </p>
         <button id="signup-button" type="submit" value="Sign Up"
                 className="ybtn ybtn--primary disable-on-submit submit signup-button">
