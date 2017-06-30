@@ -80,10 +80,6 @@ class UserEmailSignIn extends Component {
             </p>
           </div>
 
-          <div className="js-biz-owner-alert alert u-hidden">
-            Want Yelp for Business Owners? <a href="https://biz.yelp.com/">Go there now »</a>
-          </div>
-
           <ul className="ylist">
             <li className="fb-login" data-component-bound="true">
               <button
@@ -113,7 +109,7 @@ class UserEmailSignIn extends Component {
 
         </div>
         <div className="sub-text-box">
-          <small className="subtle-text">{'New to Yelp? '}
+          <small className="subtle-text">{'New to IEATTA? '}
             <a onClick={(e) => {
               this.props.toggleEvent(e, LOGIN_FORM_TYPE_REGISTER)
             }}
@@ -138,7 +134,7 @@ class UserEmailSignIn extends Component {
         </div>
         <div className="captcha login-captcha"/>
         <p className="legal-copy legal-left">
-          {'By logging in, you agree to Yelp’s '}<a className="legal-link" href="https://www.yelp.com.sg/static?p=tos">
+          {'By logging in, you agree to IEATT’s '}<a className="legal-link" href="https://www.yelp.com.sg/static?p=tos">
           {'Terms of Service'}</a> and <a className="legal-link" href="/tos/privacy_en_ie_20160131">Privacy Policy</a>.
         </p>
         <button type="submit" value="submit" className="ybtn ybtn--primary submit ybtn-full"><span>Log In</span>
