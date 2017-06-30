@@ -23,6 +23,7 @@
 
 ** react-svg-use
   [https://github.com/Ahrengot/react-svg-use]
+  [https://jsfiddle.net/paul_lecam/q2v7t59h/]
 
 ** React.js with sass
 
