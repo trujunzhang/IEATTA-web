@@ -24,6 +24,14 @@ export type User = {
   downvotedComments: Array<string>, // commentId array
 }
 
+export type Photo = {
+  id: string;
+  original: string;
+  thumbnail: string;
+  url: string;
+  photoType: string;
+}
+
 export type Event = {
   id: string;
   displayname: string;
@@ -88,14 +96,13 @@ export function fromParseUser(map: Object): User {
   };
 }
 
-export function fromParseTopic(map: Object): Topic {
+export function fromParsePhoto(map: Object): Photo {
   return {
     id: map.id,
-    name: map.get('name'),
-    slug: map.get('slug'),
-    status: map.get('status'),
-    isIgnore: map.get('isIgnore'),
-    active: map.get('active')
+    original: map.get('original'),
+    thumbnail: map.get('thumbnail'),
+    url: map.get('url'),
+    photoType: map.get('photoType'),
   };
 }
 
@@ -125,7 +132,7 @@ export function fromParseRestaurant(map: Object): Restaurant {
     displayName: map.get('displayName'),
     address: map.get('address'),
     geoLocation: map.get('geoLocation'),
-    photos: map.get('photos'),
+    photos: (map.get('photos') || []).map(fromParsePhoto)
     url: map.get('url'),
     status: map.get('status') || 2,
   };
