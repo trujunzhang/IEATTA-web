@@ -132,7 +132,7 @@ export function fromParseRestaurant(map: Object): Restaurant {
     displayName: map.get('displayName'),
     address: map.get('address'),
     geoLocation: map.get('geoLocation'),
-    photos: (map.get('photos') || []).map(fromParsePhoto)
+    photos: (map.get('photos') || []).map(fromParsePhoto),
     url: map.get('url'),
     status: map.get('status') || 2,
   };
