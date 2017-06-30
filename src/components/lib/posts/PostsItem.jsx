@@ -4,6 +4,8 @@ import Posts from '../../../lib/posts'
 import Users from '../../../lib/users'
 import {withRouter} from 'react-router'
 
+import {Link} from 'react-router'
+
 import {FormattedMessage, FormattedRelative} from 'react-intl'
 import moment from 'moment'
 
@@ -25,8 +27,7 @@ class PostsItem extends Component {
 
   renderLeft() {
     const {listId, restaurant, index} = this.props,
-      reviews = 0
-
+      link = `/biz/${restaurant.id}/${restaurant.displayName}`
     // debugger
 
     return (
@@ -34,19 +35,19 @@ class PostsItem extends Component {
         <div className="media-block media-block--12">
           <div className="media-avatar">
             <div className="photo-box pb-90s">
-              <a className="js-analytics-click">
+              <Link className="js-analytics-click" to={link}>
                 <img alt={restaurant.displayName}
                      className="photo-box-img" height="90" width="90"
                      src={Posts.getListThumbnailUrl(restaurant)}/>
-              </a>
+              </Link>
             </div>
           </div>
           <div className="media-story">
             <h3 className="search-result-title">
               <span className="indexed-biz-name">{`${index + 1}.`}
-                <a className="biz-name js-analytics-click">
+                <Link className="biz-name js-analytics-click" to={link}>
                   <span>{restaurant.displayName}</span>
-                </a>
+                </Link>f
               </span>
             </h3>
 
@@ -124,12 +125,9 @@ class PostsItem extends Component {
       <li className="regular-search-result">
         <div className="search-result natural-search-result">
           <div className="biz-listing-large">
-
             {this.renderLeft()}
             {this.renderRight()}
-
           </div>
-
         </div>
       </li>
     )
