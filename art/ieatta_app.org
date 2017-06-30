@@ -21,6 +21,9 @@
 ** leaflet(map)
   [https://github.com/PaulLeCam/react-leaflet]
 
+** react-svg-use
+  [https://github.com/Ahrengot/react-svg-use]
+
 ** React.js with sass
 
 *** create-react-app-sass
