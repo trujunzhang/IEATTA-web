@@ -1,31 +1,21 @@
 import Telescope from '../../../lib'
 import React from 'react'
 
-let ReactMapboxGl = require("react-mapbox-gl")
-
-let Layer = ReactMapboxGl.Layer
-let Feature = ReactMapboxGl.Feature
-
-const Map = ReactMapboxGl({
-  accessToken: "pk.eyJ1IjoidHJ1anVuemhhbmciLCJhIjoiY2lndXVpdGN4MGJ5cXZrbTV4dDkzdjJyZSJ9.asejSyEjXWl35MdbAHUNkQ"
-})
+import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
 
 const PostsPageMap = ({post}) => {
 
-
+  const position = [51.505, -0.09]
   return (
-    <Map
-      style="mapbox://styles/mapbox/streets-v9"
-      containerStyle={{
-        height: "100vh",
-        width: "100vw"
-      }}>
-      <Layer
-        type="symbol"
-        id="marker"
-        layout={{"icon-image": "marker-15"}}>
-        <Feature coordinates={[-0.481747846041145, 51.3233379650232]}/>
-      </Layer>
+    <Map center={position} zoom={13}>
+      <TileLayer
+        url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>
+      <Marker position={position}>
+        < Popup >
+          <span>A pretty CSS3 popup.<br/>Easily customizable.</span>
+        </Popup>
+      </Marker>
     </Map>
   )
 }
