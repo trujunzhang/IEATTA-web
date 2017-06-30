@@ -17,7 +17,10 @@ class PostsSingleHeader extends Component {
           <div className="u-nowrap claim-status_teaser js-claim-status-hover">
         <span aria-hidden="true" id="icon_18X18"
               className="icon icon--18-checkmark-badged icon--size-18 icon--blue-dark claim-status_icon u-space-r1 claim-status_icon--claimed">
-          <svg className="icon_svg"></svg>
+          <svg className="icon_svg">
+            <path
+              d="M9 1a8 8 0 1 0 0 16A8 8 0 0 0 9 1zm3.96 6.28l-4.808 4.807-3.112-3.11a.8.8 0 1 1 1.13-1.132l1.982 1.98 3.677-3.677a.8.8 0 1 1 1.13 1.13z"/>
+          </svg>
         </span>
             Claimed
           </div>
@@ -57,7 +60,9 @@ class PostsSingleHeader extends Component {
               <a className="chiclet-link chiclet-link--with-text show-tooltip js-rating-details">
             <span aria-hidden="true" id="icon_14X14"
                   className="icon icon--14-histogram icon--size-14 icon--currentColor">
-              <svg className="icon_svg"></svg>
+              <svg className="icon_svg">
+                <path d="M9 11V5h2v6H9zM6 3h2v8H6V3zM3 7h2v4H3V7z"/>
+              </svg>
             </span>
                 Details
                 <span className="offscreen">, Opens a popup</span>
@@ -353,7 +358,7 @@ class PostsSingleHeader extends Component {
                   <span aria-hidden="true" id="icon_24X24"
                         className="icon icon--24-grid icon--size-24 icon--inverse icon--fallback-inverted show-all-overlay_icon">
                     <svg className="icon_svg">
-
+                      <path d="M13 21v-8h8v8h-8zm0-18h8v8h-8V3zM3 13h8v8H3v-8zM3 3h8v8H3V3z"/>
                     </svg>
                   </span>
                   See all 124
