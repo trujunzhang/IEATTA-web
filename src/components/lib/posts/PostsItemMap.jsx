@@ -16,6 +16,20 @@ const {
 
 class PostsItemMap extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    // debugger
+    this.setState({
+
+    })
+  }
+
   renderHeader() {
     return (
       <div className="map-header clearfix">
