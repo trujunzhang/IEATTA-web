@@ -17,8 +17,8 @@ class PostsItem extends Component {
           <div className="media-avatar">
             <div className="photo-box pb-90s">
               <a className="js-analytics-click">
-                <img alt="Dave's Hot Chicken" className="photo-box-img" height="90"
-                     src="https://s3-media4.fl.yelpcdn.com/bphoto/8sLptCjCSN75Ob3kCLJuIA/90s.jpg" width="90"/>
+                <img alt={restaurant.displayName} className="photo-box-img" height="90" width="90"
+                     src={restaurant.url} />
               </a>
             </div>
           </div>

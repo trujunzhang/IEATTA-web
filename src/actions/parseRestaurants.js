@@ -28,7 +28,7 @@ const Parse = require('parse')
 import type {ThunkAction} from './types'
 
 let {ParsePost} = require('../parse/objects').default
-let {getPostsParameters, getQueryByType} = require('../parse/parseUtiles').default
+let {getRestaurantParameters, getQueryByType} = require('../parse/parseUtiles').default
 
 import Posts from '../lib/posts'
 
@@ -54,7 +54,7 @@ async function _loadPostsPaginationDashboard(listTask: Any, listId: string, term
   const skipCount = (pageIndex - 1) * limit
 
   let dashboardQuery = getQueryByType()
-  let objectsQuery = getPostsParameters(terms)
+  let objectsQuery = getRestaurantParameters(terms)
 
   let totalCount = await  new Parse.Query(ParsePost).count()
 
@@ -124,7 +124,7 @@ async function _loadPostsList(listTask: Any, listId: string, terms: Any, type: s
   const {pageIndex, limit} = listTask
   const skipCount = (pageIndex - 1) * limit
 
-  let objectsQuery = getPostsParameters(terms)
+  let objectsQuery = getRestaurantParameters(terms)
   let totalCount = await  objectsQuery.count()
 
   let results = await objectsQuery.skip(skipCount).limit(limit).find({

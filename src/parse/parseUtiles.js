@@ -25,7 +25,7 @@ function getQueryByType(type: string = PARSE_POSTS) {
 
 }
 
-function getPostsParameters(terms) {
+function getRestaurantParameters(terms) {
   return new Parameters.Posts(getQueryByType())
     .addParameters(terms)
     .end()
@@ -45,7 +45,7 @@ function getTopicsParameters(terms) {
 
 export default {
   getQueryByType,
-  getPostsParameters,
+  getRestaurantParameters,
   getUsersParameters,
   getTopicsParameters
 }
