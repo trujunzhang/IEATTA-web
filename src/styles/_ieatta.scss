@@ -32,6 +32,7 @@
   width: 18px;
   height: 18px;
 }
+
 #icon_24X24 {
   width: 24px;
   height: 24px;
@@ -85,4 +86,8 @@ input.header_content_middle_input {
   height: 18px;
 }
 
+.leaflet-container {
+  height: 400px;
+  width: 100%;
+}
 

@@ -144,11 +144,11 @@ class HeaderContent extends Component {
             <span className="pseudo-input_text">Find</span>
             <span className="pseudo-input_field-holder"
                   data-component-bound="true">
-                <input disabled="" autocomplete="off" spellcheck="false" tabindex="-1"
+                <input disabled="" autocomplete="off" spellcheck="false" tabIndex="-1"
                        className="header_content_middle_input"/>
                   <input maxLength="64" id="find_desc" autocomplete="off" value=""
                          placeholder="pizza, pub, Mustafa" className="main-search_field pseudo-input_field"
-                         aria-autocomplete="list" tabindex="1" data-component-bound="true"/>
+                         aria-autocomplete="list" tabIndex="1" data-component-bound="true"/>
                     <input type="hidden" maxLength="64" data-component-bound="true" name="find_desc" value=""/>
                         </span>
           </label>
@@ -173,7 +173,7 @@ class HeaderContent extends Component {
             <span className="main-search_field-holder pseudo-input_field-holder">
                           <input maxLength="80" id="dropperText_Mast" autocomplete="off" value="Los Angeles, CA"
                                  placeholder="Address, Neighbourhood, or Postcode" data-query="Los Angeles, CA"
-                                 className="main-search_field pseudo-input_field" aria-autocomplete="list" tabindex="2"
+                                 className="main-search_field pseudo-input_field" aria-autocomplete="list" tabIndex="2"
                                  data-component-bound="true"/>
                           <input type="hidden" maxLength="80" data-component-bound="true"
                                  name="find_loc" value="Los Angeles, CA"/>
@@ -216,7 +216,7 @@ class HeaderContent extends Component {
                   <div className="arrange_unit main-search_action arrange_unit--stack-12">
 
                     <button className="ybtn ybtn--primary main-search_submit main-header_button"
-                            id="header-search-submit" tabindex="3" title="Search" type="submit" value="submit">
+                            id="header-search-submit" tabIndex="3" title="Search" type="submit" value="submit">
                             <span className="main-search_action-icon-wrap js-search-icon-wrap">
                                 <span aria-hidden="true" id="icon_24X24"
                                       className="icon icon--24-search icon--size-24 icon--inverse icon--fallback-inverted">
