@@ -1,4 +1,4 @@
-import Telescope from '../index'
+import Telescope from '../../../lib'
 import React, {Component} from 'react'
 
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
@@ -25,10 +25,10 @@ class PostsPageMap extends Component {
     return (
       <ul>
         <li className="u-relative">
-                <span aria-hidden="true" id="icon_18X18"
-                      className="icon icon--18-marker icon--size-18 u-absolute u-sticky-top">
-                  <svg className="icon_svg"></svg>
-                </span>
+          <span aria-hidden="true" id="icon_18X18"
+                className="icon icon--18-marker icon--size-18 u-absolute u-sticky-top">
+            <svg className="icon_svg"></svg>
+          </span>
           <a href="/biz_attribute?biz_id=30jrTz8vh1xSXdtXMvt-mA" className="link-more icon-wrapper mapbox-edit">
             <span aria-hidden="true" id="icon_14X14"
                   className="icon icon--14-pencil icon--size-14 icon--linked u-space-r-half">
@@ -39,12 +39,12 @@ class PostsPageMap extends Component {
           <div className="map-box-address u-space-l4">
             <strong className="street-address">
               <address>
-                5583 W Pico Blvd<br>Los Angeles, CA 90019<br>United States
+                {/*{'5583 W Pico Blvd'}<br>{'Los Angeles, CA 90019'}<br>{'United States'}*/}
               </address>
             </strong>
 
             <span className="neighborhood-str-list">
-            Mid-Wilshire
+              {'Mid-Wilshire'}
             </span>
           </div>
 
