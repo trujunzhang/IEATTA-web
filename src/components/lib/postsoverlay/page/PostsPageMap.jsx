@@ -7,7 +7,6 @@ const PostsPageMap = ({post}) => {
 
   const position = [51.505, -0.09]
   return (
-    <div className="mapbox-container">
       <Map center={position} zoom={13}>
         <TileLayer
           url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
@@ -18,7 +17,6 @@ const PostsPageMap = ({post}) => {
           </Popup>
         </Marker>
       </Map>
-    </div>
   )
 }
 
