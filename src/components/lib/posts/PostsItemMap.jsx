@@ -70,7 +70,7 @@ class PostsItemMap extends Component {
       <div className="map-wrapper">
         <div className="search-map transform-style-support" data-component-bound="true">
           {this.renderHeader()}
-
+          {this.renderContent()}
         </div>
       </div>
     )
