@@ -86,7 +86,9 @@ class PostsSingleHeader extends Component {
                href="/biz_attribute?biz_id=30jrTz8vh1xSXdtXMvt-mA" data-component-bound="true">
               <span aria-hidden="true" id="icon_14X14"
                     className="icon icon--14-pencil icon--size-14 icon--currentColor">
-                <svg className="icon_svg"></svg>
+                <svg className="icon_svg">
+                  <use xmlnsXlink="http://www.w3.org/1999/xlink" xlinkHref="#14x14_pencil"></use>
+                </svg>
               </span>
               Edit
               <span className="offscreen">, Opens a popup</span>

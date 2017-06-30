@@ -144,11 +144,11 @@ class HeaderContent extends Component {
             <span className="pseudo-input_text">Find</span>
             <span className="pseudo-input_field-holder"
                   data-component-bound="true">
-                <input disabled="" autocomplete="off" spellcheck="false" tabIndex="-1"
+                <input disabled="" autoComplete="off" spellCheck="false" tabIndex="-1"
                        className="header_content_middle_input"/>
-                  <input maxLength="64" id="find_desc" autocomplete="off" value=""
+                  <input maxLength="64" id="find_desc" autoComplete="off" value=""
                          placeholder="pizza, pub, Mustafa" className="main-search_field pseudo-input_field"
-                         aria-autocomplete="list" tabIndex="1" data-component-bound="true"/>
+                         aria-autoComplete="list" tabIndex="1" data-component-bound="true"/>
                     <input type="hidden" maxLength="64" data-component-bound="true" name="find_desc" value=""/>
                         </span>
           </label>
@@ -171,9 +171,9 @@ class HeaderContent extends Component {
           <label className="main-search_pseudo-input main-search_pseudo-input--near pseudo-input">
             <span className="pseudo-input_text">Near</span>
             <span className="main-search_field-holder pseudo-input_field-holder">
-                          <input maxLength="80" id="dropperText_Mast" autocomplete="off" value="Los Angeles, CA"
+                          <input maxLength="80" id="dropperText_Mast" autoComplete="off" value="Los Angeles, CA"
                                  placeholder="Address, Neighbourhood, or Postcode" data-query="Los Angeles, CA"
-                                 className="main-search_field pseudo-input_field" aria-autocomplete="list" tabIndex="2"
+                                 className="main-search_field pseudo-input_field" aria-autoComplete="list" tabIndex="2"
                                  data-component-bound="true"/>
                           <input type="hidden" maxLength="80" data-component-bound="true"
                                  name="find_loc" value="Los Angeles, CA"/>
