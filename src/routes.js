@@ -39,7 +39,7 @@ const createRoutes = (store) => {
         {
           // http://localhost:3000/biz/xxxxx
           // https://www.yelp.com.sg/biz/my-two-cents-los-angeles-3
-          path: 'biz/(:rid)',
+          path: 'biz/(:rid)/(:rslug)',
           component: Telescope.components.PopoverPosts
         },
         {
