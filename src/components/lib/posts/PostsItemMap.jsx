@@ -31,12 +31,6 @@ class PostsItemMap extends Component {
 
         <div className="cube-wrapper">
           <div className="cube show-face2">
-            {/*<div className="face face1" style="display: none;">*/}
-            {/*<label>*/}
-            {/*<input className="js-redo-search-checkbox" type="checkbox"/>*/}
-            {/*{'Redo search when map moved'}*/}
-            {/*</label>*/}
-            {/*</div>*/}
             <div className="face face2">
               <a className="ybtn ybtn--primary ybtn--small redo-search">Redo Search in Map</a>
             </div>
@@ -78,6 +72,7 @@ class PostsItemMap extends Component {
 
 }
 
+
 /**
  * ## Imports
  *
@@ -85,12 +80,15 @@ class PostsItemMap extends Component {
  */
 let {connect} = require('react-redux')
 
+
 function select(store) {
   return {
-    isLoggedIn: store.user.isLoggedIn || store.user.hasSkippedLogin,
-    currentUser: store.user
+    listContainerTasks: store.listContainerTasks
   }
 }
 
-export default connect(select)(PostsItemMap)
+/**
+ * Connect the properties
+ */
 
+export default connect(select)(PostsItemMap)
