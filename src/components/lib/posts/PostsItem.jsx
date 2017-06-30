@@ -47,7 +47,7 @@ class PostsItem extends Component {
               <span className="indexed-biz-name">{`${index + 1}.`}
                 <Link className="biz-name js-analytics-click" to={link}>
                   <span>{restaurant.displayName}</span>
-                </Link>f
+                </Link>
               </span>
             </h3>
 
