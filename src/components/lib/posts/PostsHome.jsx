@@ -37,6 +37,26 @@ class PostsHome extends Component {
     )
   }
 
+  renderLeft() {
+    return (
+      <div className="column column-alpha ">
+        <div className="results-wrapper indexed-biz-archive" id="restaurants_list_results">
+          <div className="search-results-content">
+            { this.renderPostList('list')}
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  renderRight() {
+    return (
+      <div className="column column-beta ">
+        <Telescope.components.PostsItemMap/>
+      </div>
+    )
+  }
+
 
   render() {
     return (
@@ -45,15 +65,8 @@ class PostsHome extends Component {
         <div id="super-container" className="content-container">
           <div className="container">
             <div className="clearfix layout-block layout-a scroll-map-container search-results-block">
-              <div className="column column-alpha ">
-                <div className="results-wrapper indexed-biz-archive" id="restaurants_list_results"
-                     data-component-bound="true">
-                  <div className="search-results-content">
-                    { this.renderPostList('list')}
-
-                  </div>
-                </div>
-              </div>
+              {this.renderLeft()}
+              {this.renderRight()}
             </div>
           </div>
         </div>
