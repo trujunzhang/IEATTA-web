@@ -43,7 +43,7 @@ class PostsItem extends Component {
                      width="84" alt="5.0 star rating"/>
               </div>
 
-              <span className="review-count rating-qualifier">{`${post.reviews.length} reviews`}</span>
+              <span className="review-count rating-qualifier">{`${restaurant.reviews.length} reviews`}</span>
             </div>
 
 
@@ -67,6 +67,7 @@ class PostsItem extends Component {
                       <svg className="icon_svg">
                       </svg>
                     </span>
+                  {'updated '}
                   <FormattedRelative value={restaurant.updatedAt}/>
                 </small>
 
