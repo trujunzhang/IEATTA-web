@@ -62,15 +62,9 @@ export type Restaurant = {
   url: string;
   displayName: string;
   slug: string;
-  body: string;
-  sourceFrom: string;
   thumbnailUrl: string;
-  userId: string;
-  author: string;
-  status: int;
-  postedAt: Date;
-  upvoters: Array<string>, // UserId array
-  downvoters: Array<string> // UserId array
+  updatedAt: Date;
+  reviews: Array,
 };
 
 export function fromParsePointer(map: Object): Pointer {
@@ -133,6 +127,8 @@ export function fromParseRestaurant(map: Object): Restaurant {
     address: map.get('address'),
     geoLocation: map.get('geoLocation'),
     photos: (map.get('photos') || []).map(fromParsePhoto),
+    reviews: (map.get('reviews') || []),
+    updatedAt: map.get('updatedAt'),
     url: map.get('url'),
     status: map.get('status') || 2,
   };
