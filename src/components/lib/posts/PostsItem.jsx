@@ -5,47 +5,14 @@ import Users from '../../../lib/users'
 import {withRouter} from 'react-router'
 
 class PostsItem extends Component {
-  // A: Title + Image should open the “Read More” link - link to the original article
-  // B: Title + Image in post list is like in post detail. click them will open original url?
-  // A: YES
-
-  renderContent() {
-    const {post, listId} = this.props
-
-    // debugger
-    return (
-      <div className={'row '}></div>
-    )
-  }
-
-  renderThumbnail() {
-    const {post} = this.props,
-      imageSet = Posts.getThumbnailSet(post)
-
-    if (imageSet.small) {
-      return (
-        <div className="post-thumbnail thumbnail_JX64A post-left-thumbnail">
-          <div className="container_22rD3 post-list-thumbnail">
-            <Telescope.components.BlurryImage
-              imageId={post.id + '-thumbnail'}
-              containerclassName={'container__Ql6q lazyLoadContainer_3KgZD'}
-              imageclassName={'post-list-thumbnail'}
-              imageSet={imageSet}
-              width={'100%'}
-              height={'100%'}
-            />
-          </div>
-        </div>
-      )
-    }
-    return null
-  }
 
   render() {
-    const {listId} = this.props
+    const {listId, post} = this.props
+
     if (typeof listId === 'undefined') {
       throw new Error('You need to set a proper List Id before using PostsItem')
     }
+
     return (
       <li className="regular-search-result">
         <div className="search-result natural-search-result" data-biz-id="6i7KnRylm4bhPIApDFSVCg" data-key="3"
@@ -59,12 +26,8 @@ class PostsItem extends Component {
                        data-analytics-label="biz-photo">
                       <img alt="Dave's Hot Chicken" className="photo-box-img" height="90"
                            src="https://s3-media4.fl.yelpcdn.com/bphoto/8sLptCjCSN75Ob3kCLJuIA/90s.jpg" width="90"/>
-
                     </a>
-
                   </div>
-
-
                 </div>
                 <div className="media-story">
                   <h3 className="search-result-title">
@@ -131,9 +94,9 @@ class PostsItem extends Component {
             </div>
 
             <div className="secondary-attributes">
-            <span className="neighborhood-str-list">
-            Los Feliz
-          </span>
+              <span className="neighborhood-str-list">
+                Los Feliz
+              </span>
 
               <address>
                 {/*5115 Hollywood Blvd<br>Los Angeles, CA 90027<br>United States*/}
