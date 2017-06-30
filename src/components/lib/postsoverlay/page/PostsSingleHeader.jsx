@@ -166,6 +166,7 @@ class PostsSingleHeader extends Component {
   renderBizPageSubheaderLeft() {
     return (
       <div className="mapbox-container">
+        <Telescope.components.PostsPageMap/>
       </div>
     )
   }
