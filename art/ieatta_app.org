@@ -18,6 +18,8 @@
 ** mapbox(react)
   [https://github.com/alex3165/react-mapbox-gl]
 
+** leaflet(map)
+  [https://github.com/PaulLeCam/react-leaflet]
 
 ** React.js with sass
 
