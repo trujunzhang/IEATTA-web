@@ -420,9 +420,15 @@ Posts.generateCommentFacebookShareLink = function (router, comment) {
 
   return 'https://www.facebook.com/dialog/share?' + splits.join('&')
 }
-
 Posts.isRemovedPost = function (post) {
   return post.status === Posts.config.STATUS_REMOVED;
+}
+
+Posts.getListThumbnailUrl = function (post) {
+  let photos = post.photos,
+    firstPhoto = photos[0]
+
+  return firstPhoto.url
 }
 
 export default Posts
