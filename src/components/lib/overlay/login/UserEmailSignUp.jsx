@@ -70,7 +70,7 @@ class UserEmailSignUp extends Component {
         <div className="signup-form-container">
 
           <div className="header">
-            <h2>Sign Up for Yelp</h2>
+            <h2>Sign Up for IEATTA</h2>
             <p className="subheading">Connect with great local businesses</p>
           </div>
 
@@ -103,7 +103,7 @@ class UserEmailSignUp extends Component {
 
         </div>
         <div className="sub-text-box">
-          <small className="subtle-text">{'Already on Yelp? '}
+          <small className="subtle-text">{'Already on IEATTA? '}
             <a onClick={(e) => {
               this.props.toggleEvent(e, LOGIN_FORM_TYPE_LOGIN)
             }}
@@ -145,7 +145,7 @@ class UserEmailSignUp extends Component {
         <div className="captcha" id="signup-captcha"/>
 
         <p className="legal-copy legal-left">
-            {'By signing up, you agree to Yelp’s '}
+            {'By signing up, you agree to IEATTA’s '}
             <a className="legal-link" href="https://www.yelp.com.sg/static?p=tos">
                 {'Terms of Service'}</a>
            {' and '}
