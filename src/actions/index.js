@@ -22,6 +22,7 @@
  * @flow
  */
 
+const facebookLoginActions = require('./facebookLogin').default
 const parseSingleActions = require('./parseSingle').default
 const parseRestaurantsActions = require('./parseRestaurants').default
 const parseUsersActions = require('./parseUsers').default
@@ -30,6 +31,7 @@ const voingtActions = require('./voting').default
 const globalActions = require('./global').default
 
 export default {
+  ...facebookLoginActions,
   ...parseSingleActions,
   ...parseRestaurantsActions,
   ...parseUsersActions,
