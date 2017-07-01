@@ -37,6 +37,7 @@
     "immutable": "^v4.0.0-rc.2",
     "key-mirror": "^1.0.1",
     "leaflet": "^1.1.0",
+    "leaflet.markercluster": "^1.0.6",
     "moment": "^2.18.1",
     "numeral": "^2.0.6",
     "object-assign": "^4.1.1",

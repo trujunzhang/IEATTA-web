@@ -20,7 +20,8 @@
 
 ** leaflet(map)
   [https://github.com/PaulLeCam/react-leaflet]
-  [https://yuzhva.github.io/react-leaflet-markercluster/]
+  [https://github.com/YUzhva/react-leaflet-markercluster]
+  [https://yuzhva.github.io/react-leaflet-markercluster]
 
 ** react-svg-use
   [https://github.com/Ahrengot/react-svg-use]

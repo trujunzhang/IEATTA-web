@@ -17,6 +17,7 @@ class PostsHome extends Component {
 
     this.state = this.initialState = {
       // Navigation menu
+      listId: 'single-list-view'
     }
   }
 
@@ -24,7 +25,7 @@ class PostsHome extends Component {
     const {params, location} = this.props,
       limit = Telescope.settings.get('postsPerPage', 10)
 
-    const terms = {...params, listId: 'posts.list.main', view: 'new', limit: limit}
+    const terms = {...params, limit: limit}
 
     // debugger
 
@@ -33,7 +34,7 @@ class PostsHome extends Component {
         key={key}
         limit={limit}
         terms={terms}
-        listId={'single-list-view'}/>
+        listId={this.state.listId}/>
     )
   }
 
@@ -52,7 +53,7 @@ class PostsHome extends Component {
   renderRight() {
     return (
       <div className="column column-beta ">
-        <Telescope.components.PostsItemMap/>
+        <Telescope.components.PostsItemMap listId={this.state.listId}/>
       </div>
     )
   }
