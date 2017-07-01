@@ -17,20 +17,21 @@ const {
 } = require('../../../lib/constants').default
 
 const {loadPostsList} = require('../../../actions').default
-const {byListId} = require('../../filter/filterPosts').default
+const {generateMarkers} = require('../../filter/filterPosts').default
 
 class PostsListRightMap extends Component {
+
   constructor(props) {
     super(props)
     this.state = {
-      listTask: byListId(props.listContainerTasks, props.listId, props.limit)
+      markers: generateMarkers(props.listContainerTasks, props.listId)
     }
   }
 
   componentWillReceiveProps(nextProps) {
     // debugger
     this.setState({
-      listTask: byListId(nextProps.listContainerTasks, nextProps.listId, nextProps.limit)
+      markers: generateMarkers(nextProps.listContainerTasks, nextProps.listId)
     })
   }
 
@@ -64,36 +65,27 @@ class PostsListRightMap extends Component {
 
   renderContent() {
 
-    const {listTask} = this.state
+    const {markers} = this.state
 
-    const {
-      results,
-      ready,
-      totalCount,
-      limit,
-      firstPagination,
-    } = listTask
-
-    const markers = [
+    const markersxx = [
       {lat: 49.8397, lng: 24.0297},
       {lat: 52.2297, lng: 21.0122},
       {lat: 51.5074, lng: -0.0901}
     ];
 
-    const position = [51.505, -0.09]
     return (
       <div id="map-container" className="yelp-map-container" data-component-bound="true">
         <Map
-          center={position}
+          center={markers[0]}
           zoom={4} maxZoom={18}>
           <TileLayer
             url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>
-          <Marker position={position}>
-            <Popup >
-              <span>A pretty CSS3 popup.<br/>Easily customizable.</span>
-            </Popup>
-          </Marker>
+
+          <MarkerClusterGroup
+            markers={markers}
+            wrapperOptions={{enableDefaultStyle: true}}
+          />
         </Map>
 
       </div>

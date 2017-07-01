@@ -25,6 +25,8 @@
 
 let {convertToObject} = require('../../lib/utils')
 
+let _ = require('underscore')
+
 function byListId(listContainerTasks: Any, listId: string, limit: int) {
 
   let taskObject = convertToObject(listContainerTasks)
@@ -46,4 +48,22 @@ function byListId(listContainerTasks: Any, listId: string, limit: int) {
   }
 }
 
-export default  {byListId}
+function generateMarkers(listContainerTasks: Any, listId: string) {
+  let taskObject = convertToObject(listContainerTasks)
+
+  let task = taskObject[listId]
+
+    if (!!task) {
+        let {results }= task
+
+        let marks = results.map((item,index)=>{
+            let geoLocation = item.geoLocation
+            return [geoLocation.latitude,geoLocation.longitude]
+        })
+        return marks
+  }
+
+  return  []
+}
+
+export default  {byListId, generateMarkers}
