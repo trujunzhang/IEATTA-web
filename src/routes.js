@@ -48,6 +48,11 @@ const createRoutes = (store) => {
           component: Telescope.components.UserLoginMain
         },
         {
+          // http://localhost:3000/signup
+          path: 'signup',
+          component: Telescope.components.UserLoginMain
+        },
+        {
           path: 'signup',
           component: Telescope.components.PostsHome
         },

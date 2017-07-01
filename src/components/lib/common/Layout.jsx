@@ -7,14 +7,17 @@ class Layout extends Component {
   }
 
   render() {
-    if (this.props.location.pathname.indexOf('/management') !== -1) {
+      const {location} = this.props,
+            {pathname} = location
+
+    if (pathname.indexOf('/management') !== -1) {
       return (
         <div id="admin-dashboard" className="hold-transition skin-blue sidebar-mini">
           { this.props.children}
         </div>
       )
     }
-    if (this.props.location.pathname.indexOf('login') !== -1) {
+    if (pathname.indexOf('login') !== -1 || pathname.indexOf('signup') !== -1) {
       return (
         <div id='web-app-panel'>
           { this.props.children}

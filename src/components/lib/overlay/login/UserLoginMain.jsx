@@ -19,9 +19,12 @@ class UserLoginMain extends Component {
   constructor(props) {
     super(props)
 
+      const {location} = props,
+            {pathname} = location
+
     this.state = this.initialState = {
       // formState: LOGIN_FORM_TYPE_LOGIN,
-      formState: LOGIN_FORM_TYPE_REGISTER,
+      formState: (pathname.indexOf('login') !== -1)? LOGIN_FORM_TYPE_LOGIN:LOGIN_FORM_TYPE_REGISTER,
     }
   }
 
