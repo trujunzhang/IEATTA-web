@@ -5,7 +5,7 @@ import {LayerGroup} from 'react-leaflet';
 import L from 'leaflet'
 import 'leaflet.markercluster';
 
-import './style.scss';
+// import './style.scss';
 
 export default class MarkerClusterGroup extends LayerGroup {
 
@@ -67,7 +67,7 @@ export default class MarkerClusterGroup extends LayerGroup {
     filteredMarkers.forEach((marker) => {
       let currentMarkerOptions = marker.options
         ? Object.assign({}, marker.options)
-        : null ;
+        : null;
 
       let leafletMarker = L.marker(
         [marker.lat, marker.lng],
@@ -140,12 +140,12 @@ export default class MarkerClusterGroup extends LayerGroup {
 
   render() {
     return this.props.children
-    ? (
-      <section className="marker-cluster-group">
-        {this.addLayersWithReactLeafletMarkers()}
-      </section>
-    )
-    : null;
+      ? (
+        <section className="marker-cluster-group">
+          {this.addLayersWithReactLeafletMarkers()}
+        </section>
+      )
+      : null;
   }
 }
 

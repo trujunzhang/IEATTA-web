@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import Posts from '../../../lib/posts'
 import Users from '../../../lib/users'
 
-// import MarkerClusterGroup from 'react-leaflet-markercluster';
+import MarkerClusterGroup from '../../vendor/react-leaflet-markercluster/react-leaflet-markercluster'
 
 const {pushModel} = require('../../../actions').default
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
