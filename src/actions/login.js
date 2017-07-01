@@ -234,7 +234,7 @@ function skipLogin(): Action {
 
 
 export default {
-  signUpWithPassword, logInWithFacebook, logInWithTwitter,
+  signUpWithPassword, logInWithTwitter,
   logInWithPassword,
   skipLogin, logOut,
 }
