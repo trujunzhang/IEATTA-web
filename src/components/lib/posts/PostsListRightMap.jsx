@@ -76,8 +76,8 @@ class PostsListRightMap extends Component {
     return (
       <div id="map-container" className="yelp-map-container" data-component-bound="true">
         <Map
-          center={markers[0]}
-          zoom={8} maxZoom={18}>
+          center={markers[1]}
+          zoom={18} maxZoom={18}>
           <TileLayer
             url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>
