@@ -19,7 +19,7 @@ const {
 const {loadPostsList} = require('../../../actions').default
 const {byListId} = require('../../filter/filterPosts').default
 
-class PostsItemMap extends Component {
+class PostsListRightMap extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -133,4 +133,4 @@ function select(store) {
  * Connect the properties
  */
 
-export default connect(select)(PostsItemMap)
+export default connect(select)(PostsListRightMap)
