@@ -51,19 +51,11 @@ function byListId(listContainerTasks: Any, listId: string, limit: int) {
 function generateMarkers(listContainerTasks: Any, listId: string) {
   let taskObject = convertToObject(listContainerTasks)
 
-  let task = taskObject[listId]
+  let task = (taskObject[listId] || {})
 
-    if (!!task) {
-        let {results }= task
-
-        let marks = results.map((item,index)=>{
-            let geoLocation = item.geoLocation
-            return [geoLocation.latitude,geoLocation.longitude]
-        })
-        return marks
-  }
-
-  return  []
+    return (task.results || []).map((item, index) => {
+        return {lat: item.geoLocation.latitude, lng: item.geoLocation.longitude}
+  })
 }
 
 export default  {byListId, generateMarkers}
