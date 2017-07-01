@@ -8,7 +8,7 @@ class PostsPageMap extends Component {
   renderTopMap() {
     const position = [51.505, -0.09]
     return (
-      <Map center={position} zoom={13}>
+      <Map center={position} zoom={5} maxZoom={10}>
         <TileLayer
           url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>

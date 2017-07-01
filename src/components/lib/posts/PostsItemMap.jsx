@@ -18,16 +18,12 @@ class PostsItemMap extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {
-
-    }
+    this.state = {}
   }
 
   componentWillReceiveProps(nextProps) {
     // debugger
-    this.setState({
-
-    })
+    this.setState({})
   }
 
   renderHeader() {
@@ -54,11 +50,15 @@ class PostsItemMap extends Component {
     )
   }
 
+  onMarkerHover() {
+    debugger
+  }
+
   renderContent() {
     const position = [51.505, -0.09]
     return (
       <div id="map-container" className="yelp-map-container" data-component-bound="true">
-        <Map center={position} zoom={13}>
+        <Map center={position} zoom={4} maxZoom={15}>
           <TileLayer
             url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>
