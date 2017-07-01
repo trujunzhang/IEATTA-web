@@ -13296,19 +13296,19 @@ svg:not(:root) {
 .main-header_wrapper {
   padding: 12px 0;
   position: relative;
-  background: #d32323 url(https://s3-media4.fl.yelpcdn.com/assets/srv0/yelp_styleguide/c146b0884f6a/assets/img/structural/header_stars.png) no-repeat center
+  background: $header-background-color url(https://s3-media4.fl.yelpcdn.com/assets/srv0/yelp_styleguide/c146b0884f6a/assets/img/structural/header_stars.png) no-repeat center
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .main-header_wrapper {
-    background: #d32323 url(https://s3-media2.fl.yelpcdn.com/assets/srv0/yelp_styleguide/15ee41b0c3b2/assets/img/structural/header_stars@2x.png) no-repeat center;
+    background: $header-background-color url(https://s3-media2.fl.yelpcdn.com/assets/srv0/yelp_styleguide/15ee41b0c3b2/assets/img/structural/header_stars@2x.png) no-repeat center;
     background-size: 1135px auto, 100%
   }
 }
 
 @media only screen and (max-width: 989px) {
   .responsive .main-header_wrapper {
-    background: #d32323
+    background: $header-background-color
   }
 }
 
