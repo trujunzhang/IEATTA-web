@@ -42,7 +42,9 @@ class HeaderContent extends Component {
 
               <Telescope.components.HeaderContentSearchBar/>
 
-              <Telescope.components.HeaderRightLoginPanel/>
+              <Telescope.components.HeaderRightUserIconsPanel/>
+              
+              {/*<Telescope.components.HeaderRightLoginPanel/>*/}
             </div>
 
           </div>
