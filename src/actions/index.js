@@ -22,20 +22,22 @@
  * @flow
  */
 
+const loginActions = require('./login').default
+const loginCommonActions = require('./loginCommon').default
 const facebookLoginActions = require('./facebookLogin').default
 const parseSingleActions = require('./parseSingle').default
 const parseRestaurantsActions = require('./parseRestaurants').default
 const parseUsersActions = require('./parseUsers').default
-const loginActions = require('./login').default
 const voingtActions = require('./voting').default
 const globalActions = require('./global').default
 
 export default {
+  ...loginActions,
+  ...loginCommonActions,
   ...facebookLoginActions,
   ...parseSingleActions,
   ...parseRestaurantsActions,
   ...parseUsersActions,
-  ...loginActions,
   ...voingtActions,
   ...globalActions
 }
