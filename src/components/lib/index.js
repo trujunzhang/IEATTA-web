@@ -26,6 +26,7 @@ Telescope.registerComponent('App',                              require('./commo
 // header
 Telescope.registerComponent('HeaderContent',                    require('./header/HeaderContent.jsx').default)
 Telescope.registerComponent('HeaderContentSearchBar',           require('./header/HeaderContentSearchBar.jsx').default)
+Telescope.registerComponent('HeaderRightLoginPanel',            require('./header/HeaderRightLoginPanel.jsx').default)
 
 // posts
 Telescope.registerComponent('PostsDaily',                 require('./posts/PostsDaily.jsx').default)
