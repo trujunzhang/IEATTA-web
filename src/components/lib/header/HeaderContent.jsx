@@ -32,6 +32,8 @@ class HeaderContent extends Component {
 
 
   render() {
+    // const {} = this
+    
     return (
       <div className="main-header main-content-wrap js-main-header webview-hidden">
         <div className="main-header_wrapper">
@@ -43,7 +45,9 @@ class HeaderContent extends Component {
               <Telescope.components.HeaderContentSearchBar/>
 
               <Telescope.components.HeaderRightUserIconsPanel/>
-              
+              <Telescope.components.HeaderRightUserPanel/>
+
+
               {/*<Telescope.components.HeaderRightLoginPanel/>*/}
             </div>
 
