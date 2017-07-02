@@ -22,10 +22,10 @@ Telescope.registerComponent('UsersBlurryImageAvatar',           require('./exten
 Telescope.registerComponent('Layout',                           require('./common/Layout.jsx').default)
 Telescope.registerComponent('Error404',                         require('./common/Error404.jsx').default)
 Telescope.registerComponent('App',                              require('./common/App.js').default)
-Telescope.registerComponent('HeaderContent',                    require('./common/HeaderContent.jsx').default)
-Telescope.registerComponent('HeaderContentSearchBar',           require('./common/HeaderContentSearchBar.jsx').default)
-Telescope.registerComponent('Newsletter',                       require('./common/Newsletter.jsx').default)
-Telescope.registerComponent('NewsletterButton',                 require('./common/NewsletterButton.jsx').default)
+
+// header
+Telescope.registerComponent('HeaderContent',                    require('./header/HeaderContent.jsx').default)
+Telescope.registerComponent('HeaderContentSearchBar',           require('./header/HeaderContentSearchBar.jsx').default)
 
 // posts
 Telescope.registerComponent('PostsDaily',                 require('./posts/PostsDaily.jsx').default)

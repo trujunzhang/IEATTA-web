@@ -7,8 +7,8 @@ class Layout extends Component {
   }
 
   render() {
-      const {location} = this.props,
-            {pathname} = location
+    const {location} = this.props,
+      {pathname} = location
 
     if (pathname.indexOf('/management') !== -1) {
       return (

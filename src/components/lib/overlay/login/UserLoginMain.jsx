@@ -56,7 +56,7 @@ class UserLoginMain extends Component {
             if (!!errorMessage) {
                 this.setState({errorMessage: errorMessage})
             }else{
-
+                this.props.router.push({pathname:'/'})
             }
         }
     }
