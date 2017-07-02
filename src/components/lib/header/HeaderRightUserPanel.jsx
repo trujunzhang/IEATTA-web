@@ -34,19 +34,19 @@ class HeaderRightUserPanel extends Component {
                        src="https://s3-media4.fl.yelpcdn.com/photo/Hjd0EAdSH-gYJbRBF5nAnw/90s.jpg"
                        width="90"/>
 </span>
-                  <span aria-hidden="true" style="width: 14px; height: 14px;"
+                  <span aria-hidden="true" id="icon_14X14"
                         className="icon icon--14-triangle-down icon--size-14 icon--inverse icon--fallback-inverted u-triangle-direction-down user-account_button-arrow responsive-visible-large-inline-block">
     <svg className="icon_svg">
         <path d="M7 9L3.5 5h7L7 9z"/>
     </svg>
 </span>
-                  <span aria-hidden="true" style="width: 24px; height: 24px;"
+                  <span aria-hidden="true" id="icon_24X24"
                         className="icon icon--24-hamburger icon--size-24 icon--inverse icon--fallback-inverted drop-menu-link_open">
     <svg className="icon_svg">
         <path d="M3 18v-2h18v2H3zm0-7h18v2H3v-2zm0-5h18v2H3V6z"/>
     </svg>
 </span>
-                  <span aria-hidden="true" style="width: 24px; height: 24px;"
+                  <span aria-hidden="true" id="icon_24X24"
                         className="icon icon--24-close icon--size-24 icon--inverse icon--fallback-inverted drop-menu-link_close">
     <svg className="icon_svg">
         <path
@@ -89,9 +89,9 @@ class HeaderRightUserPanel extends Component {
 
                         <ul className="user-passport-stats">
                           <li className="friend-count">
-            <span aria-hidden="true" style="fill: #f15c00; width: 18px; height: 18px;"
+            <span aria-hidden="true" id="icon_fill_18X18"
                   className="icon icon--18-friends icon--size-18">
-    <svg className="icon_svg">
+              <svg className="icon_svg">
         <g>
       <path
         d="M7.904 9.43l-2.098 4.697a.9.9 0 0 1-1.612 0L2.096 9.43a.902.902 0 0 1 .806-1.305h4.196c.67 0 1.105.705.806 1.305zM5 7.375a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/>
@@ -104,7 +104,7 @@ class HeaderRightUserPanel extends Component {
                             <b>0</b>
                           </li>
                           <li className="review-count">
-            <span aria-hidden="true" style="fill: #f15c00; width: 18px; height: 18px;"
+            <span aria-hidden="true" id="icon_fill_18X18"
                   className="icon icon--18-review icon--size-18">
     <svg className="icon_svg">
           <path
@@ -127,7 +127,7 @@ class HeaderRightUserPanel extends Component {
                       <a className="js-analytics-click arrange arrange--middle arrange--6"
                          href="/user_details?userid=kIEHaO2vd6Lic4rwkMgH6Q" data-analytics-label="dropdown_about-me">
                         <strong className="arrange_unit">
-                    <span aria-hidden="true" style="width: 24px; height: 24px;"
+                    <span aria-hidden="true" id="icon_24X24"
                           className="icon icon--24-profile icon--size-24 u-space-r1">
     <svg className="icon_svg">
         <path
@@ -136,7 +136,7 @@ class HeaderRightUserPanel extends Component {
 </span>About Me
                         </strong>
                         <span className="arrange_unit arrange_unit--fill u-text-right">
-                <span aria-hidden="true" style="width: 24px; height: 24px;"
+                <span aria-hidden="true" id="icon_24X24"
                       className="icon icon--24-chevron-right icon--size-24 hidden-non-responsive-inline-block responsive-visible-medium-inline-block">
     <svg className="icon_svg">
         <path d="M9.525 5.636L8.11 7.05 13.06 12l-4.95 4.95 1.415 1.414L15.89 12 9.524 5.636z"/>
@@ -150,7 +150,7 @@ class HeaderRightUserPanel extends Component {
                       <a className="js-analytics-click arrange arrange--middle arrange--6" href="/find_friends"
                          data-analytics-label="dropdown_find-friends">
                         <strong className="arrange_unit">
-                    <span aria-hidden="true" style="width: 24px; height: 24px;"
+                    <span aria-hidden="true" id="icon_24X24"
                           className="icon icon--24-friends icon--size-24 u-space-r1">
     <svg className="icon_svg">
           <g>
@@ -164,7 +164,7 @@ class HeaderRightUserPanel extends Component {
 </span>Find Friends
                         </strong>
                         <span className="arrange_unit arrange_unit--fill u-text-right">
-                <span aria-hidden="true" style="width: 24px; height: 24px;"
+                <span aria-hidden="true" id="icon_24X24"
                       className="icon icon--24-chevron-right icon--size-24 hidden-non-responsive-inline-block responsive-visible-medium-inline-block">
     <svg className="icon_svg">
         <path d="M9.525 5.636L8.11 7.05 13.06 12l-4.95 4.95 1.415 1.414L15.89 12 9.524 5.636z"/>
@@ -179,7 +179,7 @@ class HeaderRightUserPanel extends Component {
                       <a className="js-analytics-click arrange arrange--middle arrange--6" href="/talk"
                          data-analytics-label="">
                         <strong className="arrange_unit">
-                    <span aria-hidden="true" style="width: 24px; height: 24px;"
+                    <span aria-hidden="true" id="icon_24X24"
                           className="icon icon--24-talk icon--size-24 u-space-r1">
     <svg className="icon_svg">
         <path
@@ -188,7 +188,7 @@ class HeaderRightUserPanel extends Component {
 </span>Talk
                         </strong>
                         <span className="arrange_unit arrange_unit--fill u-text-right">
-                <span aria-hidden="true" style="width: 24px; height: 24px;"
+                <span aria-hidden="true" id="icon_24X24"
                       className="icon icon--24-chevron-right icon--size-24 hidden-non-responsive-inline-block responsive-visible-medium-inline-block">
     <svg className="icon_svg">
         <path d="M9.525 5.636L8.11 7.05 13.06 12l-4.95 4.95 1.415 1.414L15.89 12 9.524 5.636z"/>
@@ -203,7 +203,7 @@ class HeaderRightUserPanel extends Component {
                          href="/user_details_cash_back?userid=kIEHaO2vd6Lic4rwkMgH6Q"
                          data-analytics-label="dropdown_rewards-inactive">
                         <strong className="arrange_unit">
-                    <span aria-hidden="true" style="width: 24px; height: 24px;"
+                    <span aria-hidden="true" id="icon_24X24"
                           className="icon icon--24-cash-back icon--size-24 u-space-r1">
     <svg className="icon_svg">
           <path
@@ -215,7 +215,7 @@ class HeaderRightUserPanel extends Component {
                     <span className="ybadge ybadge-notification drop-down-menu-link_new-label">NEW</span>
                 </span>
                         <span className="arrange_unit arrange_unit--fill u-text-right">
-                <span aria-hidden="true" style="width: 24px; height: 24px;"
+                <span aria-hidden="true" id="icon_24X24"
                       className="icon icon--24-chevron-right icon--size-24 hidden-non-responsive-inline-block responsive-visible-medium-inline-block">
     <svg className="icon_svg">
         <path d="M9.525 5.636L8.11 7.05 13.06 12l-4.95 4.95 1.415 1.414L15.89 12 9.524 5.636z"/>
@@ -229,7 +229,7 @@ class HeaderRightUserPanel extends Component {
                       <a className="js-analytics-click arrange arrange--middle arrange--6" href="/profile"
                          data-analytics-label="Zprofile">
                         <strong className="arrange_unit">
-                    <span aria-hidden="true" style="width: 24px; height: 24px;"
+                    <span aria-hidden="true" id="icon_24X24"
                           className="icon icon--24-settings icon--size-24 u-space-r1">
     <svg className="icon_svg">
         <path
@@ -238,7 +238,7 @@ class HeaderRightUserPanel extends Component {
 </span>Account Settings
                         </strong>
                         <span className="arrange_unit arrange_unit--fill u-text-right">
-                <span aria-hidden="true" style="width: 24px; height: 24px;"
+                <span aria-hidden="true" id="icon_24X24"
                       className="icon icon--24-chevron-right icon--size-24 hidden-non-responsive-inline-block responsive-visible-medium-inline-block">
     <svg className="icon_svg">
         <path d="M9.525 5.636L8.11 7.05 13.06 12l-4.95 4.95 1.415 1.414L15.89 12 9.524 5.636z"/>
