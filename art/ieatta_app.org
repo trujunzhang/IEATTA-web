@@ -28,6 +28,9 @@
   [https://jsfiddle.net/paul_lecam/q2v7t59h/]
   [http://leafletjs.com/]
 
+** react-onclickoutside
+  [https://github.com/Pomax/react-onclickoutside]
+
 ** React.js with sass
 
 *** create-react-app-sass
