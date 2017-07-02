@@ -80,8 +80,6 @@ export function fromParseUser(map: Object): User {
     slug: map.get('slug'),
     loginType: map.get('loginType'),
     email: map.get('email'),
-    defaultFolderId: fromParseFolder(map.get('folders')[0]).id,
-    folders: (map.get('folders') || []).map(fromParseFolder),
 
     upvotedPosts: _.pluck((map.get('upvotedPosts') || []).map(fromParsePointer), 'id'),
     downvotedPosts: _.pluck((map.get('downvotedPosts') || []).map(fromParsePointer), 'id'),

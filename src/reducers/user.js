@@ -37,7 +37,6 @@ const {
   POSTS_VOTING_DONE
 } = require('../lib/constants').default
 
-const {Folder, fromParseFolder} = require('./parseModels')
 
 import type {Action} from '../actions/types'
 let slugify = require('slugify')
@@ -51,10 +50,6 @@ export type State = {
   loginType: ? string,
   email: ? string,
   slug: ? string,
-  defaultFolderId: ? string,
-  folders: ? Array<Folder>,
-  // The following is for collection Folder
-  selectedFolder: Folder
 }
 
 const initialState = {
@@ -66,17 +61,13 @@ const initialState = {
   loginType: null,
   email: null,
   slug: null,
-  defaultFolderId: null,
-  folders: [],
-  // The following is for collection Folder
-  selectedFolder: null
 }
 
 function user(state: State = initialState, action: Action): State {
   switch (action.type) {
     case LOGGED_IN:
     case ADDED_NEW_FOLDER_WITH_POST: {
-      let {id, name, loginType, email, defaultFolderId, folders, upvotedPosts, downvotedPosts, upvotedComments, downvotedComments} = action.payload
+      let {id, name, loginType, email, upvotedPosts, downvotedPosts, upvotedComments, downvotedComments} = action.payload
       return {
         isLoggedIn: true,
         hasSkippedLogin: false,
@@ -84,8 +75,6 @@ function user(state: State = initialState, action: Action): State {
         name,
         loginType,
         email,
-        defaultFolderId,
-        folders,
         slug: slugify(name, '_')
       }
     }
