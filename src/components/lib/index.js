@@ -70,8 +70,6 @@ Telescope.registerComponent('MoreTagsPopoverMenu',           require('./overlay/
 Telescope.registerComponent('SubmitFlagPopover',             require('./overlay/SubmitFlagPopover.jsx').default)
 Telescope.registerComponent('UsersPopoverMenu',              require('./overlay/UsersPopoverMenu.jsx').default)
 
-Telescope.registerComponent('CollectionsResult',              require('./overlay/collections/CollectionsResult.jsx').default)
-Telescope.registerComponent('UserCollectionsPopover',         require('./overlay/collections/UserCollectionsPopover.jsx').default)
 
 Telescope.registerComponent('UserEmailSignIn',                require('./overlay/login/UserEmailSignIn.jsx').default)
 Telescope.registerComponent('UserEmailSignUp',                require('./overlay/login/UserEmailSignUp.jsx').default)
