@@ -6,7 +6,7 @@ Telescope.registerComponent('ArticleUpvote',                  require('./actions
 Telescope.registerComponent('PostItemVoteButton',             require('./actions/PostItemVoteButton.jsx').default)
 Telescope.registerComponent('PostsCommenters',                require('./actions/PostsCommenters.jsx').default)
 Telescope.registerComponent('PostsReadMore',                  require('./actions/PostsReadMore.jsx').default)
-Telescope.registerComponent('RestaurantsSingleHeaderRight',         require('./actions/RestaurantsSingleHeaderRight.jsx').default)
+Telescope.registerComponent('RestaurantsSingleHeaderRight',   require('./actions/RestaurantsSingleHeaderRight.jsx').default)
 Telescope.registerComponent('RelatedPostDownvote',            require('./actions/RelatedPostDownvote.jsx').default)
 Telescope.registerComponent('RelatedPostUpvote',              require('./actions/RelatedPostUpvote.jsx').default)
 Telescope.registerComponent('TopicItem',                      require('./actions/TopicItem.jsx').default)
