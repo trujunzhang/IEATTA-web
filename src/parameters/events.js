@@ -18,10 +18,9 @@ export default class EventsParameters {
   }
 
   addParameters(terms: Any) {
-    if (terms.userProfileType) {
+    if (terms.restaurantId) {
 
     }
-
 
     return this
   }

@@ -39,11 +39,12 @@ const {
 
 
 async function _loadEventsList(listTask: Any, listId: string, terms: Any, type: string = LIST_VIEW_LOADED_EVENTS): Promise<Array<Action>> {
-  debugger
   const {pageIndex, limit} = listTask
   const skipCount = (pageIndex - 1) * limit
 
   const objectsQuery = getEventParameters(terms)
+  debugger
+
   const totalCount = await objectsQuery.count()
 
   const results = await objectsQuery.skip(skipCount).limit(limit).find()

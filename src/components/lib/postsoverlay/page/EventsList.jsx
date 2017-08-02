@@ -9,16 +9,22 @@ class EventsList extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {
+
+    const terms = {
       listId: 'single-list-view-for-events',
-      listTask: byListId(props.listContainerTasks, props.listId, props.limit)
+      limit: 10,
+      restaurantId: props.restaurant.id
+    };
+    this.state = {
+      terms: terms,
+      listTask: byListId(props.listContainerTasks, terms.listId, terms.limit)
     }
   }
 
   componentWillReceiveProps(nextProps) {
     // debugger
     this.setState({
-      listTask: byListId(nextProps.listContainerTasks, nextProps.listId, nextProps.limit)
+      listTask: byListId(nextProps.listContainerTasks, this.state.terms.listId, this.state.terms.limit)
     })
   }
 
@@ -27,11 +33,11 @@ class EventsList extends Component {
   }
 
   loadMore() {
-    const terms = {}
+    const terms = this.state.terms;
     const nextListTask = this.state.listTask
     nextListTask['ready'] = false
     this.setState({listTask: nextListTask})
-    this.props.dispatch(loadEventsList(nextListTask, this.state.listId, terms))
+    this.props.dispatch(loadEventsList(nextListTask, terms.listId, terms))
   }
 
   render() {

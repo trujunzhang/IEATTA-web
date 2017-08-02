@@ -2,7 +2,7 @@ const Parse = require('parse')
 
 let Parameters = require('../parameters').default
 
-let {ParseRestaurant, ParseFolder, ParseUser} = require('./objects').default
+let {ParseRestaurant, ParseEvent, ParseUser} = require('./objects').default
 
 
 /**
@@ -18,6 +18,8 @@ function getQueryByType(type: string = PARSE_RESTAURANTS) {
   switch (type) {
     case PARSE_RESTAURANTS:
       return new Parse.Query(ParseRestaurant).include('photos')
+    case PARSE_EVENTS:
+      return new Parse.Query(ParseEvent)
     case PARSE_USERS:
       return new Parse.Query(ParseUser)
   }
