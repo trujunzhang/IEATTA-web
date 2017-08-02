@@ -12,7 +12,7 @@ let md5 = require('blueimp-md5')
  * So calendar will only show on “Homepage” and “Category” page
  * Homepage and category pages will have day wise groups
  */
-class PostsHome extends Component {
+class RestaurantsHome extends Component {
   constructor(props) {
     super(props)
 
@@ -77,4 +77,4 @@ class PostsHome extends Component {
   }
 }
 
-export default withRouter(PostsHome)
+export default withRouter(RestaurantsHome)

@@ -77,7 +77,7 @@ class PostsList extends Component {
       )
     } else if (!!results && !!results.length) {
       return (
-        <Telescope.components.PostsHomeList
+        <Telescope.components.RestaurantsHomeList
           infinite={infinite}
           results={results}
           limit={limit}

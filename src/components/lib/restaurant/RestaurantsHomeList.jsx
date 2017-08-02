@@ -1,7 +1,7 @@
 import Telescope from '../index'
 import React, {Component} from 'react'
 
-class PostsHomeList extends Component {
+class RestaurantsHomeList extends Component {
 
   render() {
     const {results, hasMore, ready, title, showHeader, showClose, dismissBanner, loadMore, listId} = this.props
@@ -25,5 +25,5 @@ class PostsHomeList extends Component {
 
 }
 
-export default PostsHomeList
+export default RestaurantsHomeList
 
