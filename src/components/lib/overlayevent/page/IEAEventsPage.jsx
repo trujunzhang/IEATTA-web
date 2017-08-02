@@ -7,21 +7,21 @@ class IEAEventsPage extends Component {
 
   constructor(props) {
     super(props)
-
   }
 
   render() {
     return (
-      <div className="biz-country-us">
 
-        <div className="main-content-wrap main-content-wrap--full">
-          <div className="top-shelf">
-            <Telescope.components.EventsSingleHeader {...this.props}/>
+      <div className="main-content-wrap main-content-wrap--full">
+        <div className="top-shelf top-shelf-grey">
+          <Telescope.components.EventsSingleHeader {...this.props}/>
+        </div>
 
-            <Telescope.components.EventsDetail {...this.props}/>
-          </div>
+        <div id="super-container" className="content-container">
+          {/*<Telescope.components.EventsDetail {...this.props}/>*/}
         </div>
       </div>
+
     )
   }
 }
