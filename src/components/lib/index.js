@@ -35,7 +35,7 @@ Telescope.registerComponent('HeaderRightUserPanel',             require('./heade
 Telescope.registerComponent('PostsDaily',                 require('./restaurant/PostsDaily.jsx').default)
 Telescope.registerComponent('PostsDay',                   require('./restaurant/PostsDay.jsx').default)
 Telescope.registerComponent('PostsDomain',                require('./restaurant/PostsDomain.jsx').default)
-Telescope.registerComponent('RestaurantsHome',            require('./restaurant/RestaurantsHome.jsx').default)
+Telescope.registerComponent('IEARestaurantsHome',         require('./restaurant/IEARestaurantsHome.jsx').default)
 Telescope.registerComponent('RestaurantsHomeList',        require('./restaurant/RestaurantsHomeList.jsx').default)
 Telescope.registerComponent('RestaurantsItem',            require('./restaurant/RestaurantsItem.jsx').default)
 Telescope.registerComponent('RestaurantsListRightMap',     require('./restaurant/RestaurantsListRightMap.jsx').default)

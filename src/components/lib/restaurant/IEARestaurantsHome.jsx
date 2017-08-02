@@ -1,7 +1,5 @@
 import Telescope from '../index'
 import React, {Component} from 'react'
-import Users from '../../../lib/users'
-import Posts from '../../../lib/posts'
 
 import {withRouter} from 'react-router'
 
@@ -12,7 +10,7 @@ let md5 = require('blueimp-md5')
  * So calendar will only show on “Homepage” and “Category” page
  * Homepage and category pages will have day wise groups
  */
-class RestaurantsHome extends Component {
+class IEARestaurantsHome extends Component {
   constructor(props) {
     super(props)
 
@@ -77,4 +75,4 @@ class RestaurantsHome extends Component {
   }
 }
 
-export default withRouter(RestaurantsHome)
+export default withRouter(IEARestaurantsHome)

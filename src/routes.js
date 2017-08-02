@@ -27,7 +27,7 @@ const createRoutes = (store) => {
       path: '/',
       component: Telescope.components.Layout,
       // indexRoute: {component: Telescope.components.DetailedRestaurant},
-      indexRoute: {component: Telescope.components.RestaurantsHome},
+      indexRoute: {component: Telescope.components.IEARestaurantsHome},
 
       childRoutes: [
         {
@@ -53,7 +53,7 @@ const createRoutes = (store) => {
         },
         {
           path: 'signup',
-          component: Telescope.components.RestaurantsHome
+          component: Telescope.components.IEARestaurantsHome
         },
         {
           path: '*',
