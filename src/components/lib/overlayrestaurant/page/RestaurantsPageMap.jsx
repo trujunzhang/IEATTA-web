@@ -12,7 +12,7 @@ class RestaurantsPageMap extends Component {
     const position = [latitude, longitude];
 
     return (
-      <Map center={position} zoom={10} maxZoom={10}>
+      <Map center={position} zoom={14} maxZoom={20}>
         <TileLayer
           url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>

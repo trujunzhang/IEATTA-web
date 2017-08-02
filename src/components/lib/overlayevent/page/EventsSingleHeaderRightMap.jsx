@@ -10,7 +10,10 @@ class EventsSingleHeaderRightMap extends Component {
 
   render() {
     const {event} = this.props;
-    const position = [34.050796, -118.247636];
+    const {restaurant} = event;
+    const latitude = restaurant.geoLocation.latitude;
+    const longitude = restaurant.geoLocation.longitude;
+    const position = [latitude, longitude];
 
     return (
       <div className="event-details_map-card">

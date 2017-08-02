@@ -7,13 +7,17 @@ class EventsDetail extends Component {
 
   renderLeftTopSection() {
     const {event} = this.props;
-    debugger
+
+    let html = event.want;
+    if (html) {
+      html = '<p>' + html.replace('\n' + '\n', '</p><p>') + '...</p>';
+    }
+    const htmlBody = {__html: html};
+
     return (
       <div className="ysection">
         <h3>What/Why:</h3>
-        <p>
-          {event.want}
-        </p>
+        <div className="post_page_body" dangerouslySetInnerHTML={htmlBody}/>
       </div>
     )
   }
