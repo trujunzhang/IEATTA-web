@@ -57,14 +57,18 @@ export type Recipe = {
   status: string;
 }
 
+
 export type Restaurant = {
+  // Basic Fields
   id: string;
-  url: string;
-  displayName: string;
-  slug: string;
-  thumbnailUrl: string;
+  createdAt: Date;
   updatedAt: Date;
-  reviews: Array,
+  // Attributes
+  displayName: string;
+  address: string;
+  geoLocation: Any;
+  // Photos
+  listPhotoId: string;
 };
 
 export function fromParsePointer(map: Object): Pointer {
@@ -118,18 +122,20 @@ export function fromParseCloudinary(map: Object): Cloudinary {
   };
 }
 
+
 export function fromParseRestaurant(map: Object): Restaurant {
   return {
+    // Basic Fields
     id: map.id,
+    createdAt: map.get('createdAt'),
+    updatedAt: map.get('updatedAt'),
+    // Attributes
     displayName: map.get('displayName'),
     address: map.get('address'),
     geoLocation: map.get('geoLocation'),
+    // Photos
     photos: (map.get('photos') || []).map(fromParsePhoto),
-    reviews: (map.get('reviews') || []),
-    updatedAt: map.get('updatedAt'),
-    url: map.get('url'),
-    status: map.get('status') || 2,
-  };
+  }
 }
 
 
