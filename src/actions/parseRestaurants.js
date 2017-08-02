@@ -72,18 +72,15 @@ function loadListByType(listTask: Any, objectsQuery: Parse.Query, terms: Any, pa
 }
 
 function loadRestaurantsList(listTask: Any, terms: Any): ThunkAction {
-  const objectsQuery = getRestaurantParameters(terms)
-  loadListByType(listTask, objectsQuery, terms, fromParseRestaurant)
+  return loadListByType(listTask, getRestaurantParameters(terms), terms, fromParseRestaurant)
 }
 
 function loadEventsList(listTask: Any, terms: Any): ThunkAction {
-  const objectsQuery = getEventParameters(terms)
-  loadListByType(listTask, objectsQuery, terms, fromParseEvent)
+  return loadListByType(listTask, getEventParameters(terms), terms, fromParseEvent)
 }
 
 function loadPeopleInEventList(listTask: Any, terms: Any): ThunkAction {
-  const objectsQuery = getRestaurantParameters(terms)
-  loadListByType(listTask, objectsQuery, terms, fromParseRestaurant)
+  return loadListByType(listTask, getRestaurantParameters(terms), terms, fromParseRestaurant)
 }
 
 export default {
