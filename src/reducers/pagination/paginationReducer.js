@@ -21,8 +21,7 @@ const initialState = Map({})
  * The states were interested in
  */
 const {
-  LIST_VIEW_LOADED_RESTAURANTS,
-  LIST_VIEW_LOADED_EVENTS,
+  LIST_VIEW_LOADED_BY_TYPE,
   LIST_VIEW_RESET_ALL_POSTS,
 } = require('../../lib/constants').default
 
@@ -37,7 +36,7 @@ function paginationReducer(state: State = initialState, action): State {
      * ### Requests start
      * set the form to fetching and clear any errors
      */
-    case LIST_VIEW_LOADED_RESTAURANTS: {
+    case LIST_VIEW_LOADED_BY_TYPE: {
       const {list, listTask, listId, limit, totalCount} = action.payload
 
       let nextTask = state.get(listId)
@@ -61,29 +60,6 @@ function paginationReducer(state: State = initialState, action): State {
       return nextState
     }
 
-    case LIST_VIEW_LOADED_EVENTS: {
-      const {list, listTask, listId, limit, totalCount} = action.payload
-
-      let nextTask = state.get(listId)
-      if (!!nextTask) {
-        nextTask = nextTask.set('results', nextTask.get('results').concat(list))
-          .set('pageIndex', listTask.pageIndex + 1)
-          .set('totalCount', totalCount)
-      } else {
-        nextTask = Map({
-          id: listId,
-          ready: true,
-          totalCount: totalCount,
-          limit: limit,
-          pageIndex: listTask.pageIndex + 1,
-          firstPagination: false,
-          results: list
-        })
-      }
-
-      let nextState = state.set(listId, nextTask)
-      return nextState
-    }
 
     case LIST_VIEW_RESET_ALL_POSTS: {
       return Map({})

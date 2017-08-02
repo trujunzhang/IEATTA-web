@@ -78,6 +78,7 @@ export default keyMirror({
   DASHBOARD_RESET: null,
 
   // PostHome, PostDaily
+  LIST_VIEW_LOADED_BY_TYPE: null,
   LIST_VIEW_LOADED_RESTAURANTS: null,
   LIST_VIEW_LOADED_EVENTS: null,
   LIST_VIEW_LOADED_ORDERED_USERS: null,
@@ -86,7 +87,7 @@ export default keyMirror({
   LIST_VIEW_RESET_ALL_POSTS: null,
 
   // Detailed Page(Posts,Events)
-  OVERLAY_LOADED_MODEL_PAGE:null,
+  OVERLAY_LOADED_MODEL_PAGE: null,
   OVERLAY_LOADED_EVENT_PAGE: null,
 
   SET_PLATFORM: null,

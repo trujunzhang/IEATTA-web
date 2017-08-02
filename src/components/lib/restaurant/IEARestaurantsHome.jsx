@@ -24,16 +24,14 @@ class IEARestaurantsHome extends Component {
     const {params, location} = this.props,
       limit = Telescope.settings.get('postsPerPage', 10)
 
-    const terms = {...params, limit: limit}
-
-    // debugger
+    const terms = {...params, limit: limit, listId: this.state.listId}
 
     return (
       <Telescope.components.IEARestaurantsList
         key={key}
         limit={limit}
         terms={terms}
-        listId={this.state.listId}/>
+      />
     )
   }
 
