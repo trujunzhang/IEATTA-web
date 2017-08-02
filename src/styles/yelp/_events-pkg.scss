@@ -1,0 +1,319 @@
+.date-container, .date-container .date-picker {
+  display: inline-block
+}
+
+.date-container .date-input {
+  width: 150px
+}
+
+.create-event-container .auto-width {
+  width: auto
+}
+
+.event-cost .yform .free-event-label {
+  font-weight: normal
+}
+
+.selected-event-biz .biz-search-result {
+  list-style-type: none;
+  padding: 0;
+  line-height: inherit
+}
+
+.biz-finder-container {
+  margin-bottom: spacing(3)
+}
+
+.events-section-header {
+  margin: 24px 0
+}
+
+@media only screen and (max-width: 989px) {
+  .responsive .events-section-header {
+    margin-top: 0
+  }
+}
+
+.more-categories-wrapper {
+  margin-top: 27px
+}
+
+@media only screen and (max-width: 479px) {
+  .responsive .more-categories-wrapper {
+    margin-top: 0
+  }
+}
+
+.category-browse_label {
+  padding-top: 3px;
+  padding-bottom: 3px
+}
+
+.category-browse_icon {
+  display: inline-block;
+  margin-top: 3px
+}
+
+.card-list {
+  margin-bottom: 30px
+}
+
+.va-grid {
+  height: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #ccc;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box
+}
+
+.va-grid_photo-box {
+  height: 100%
+}
+
+.va-grid_content {
+  height: 100%;
+  width: 100%
+}
+
+.va-grid_content.va-grid_content--filled > .va-grid_photo-box {
+  height: 50%
+}
+
+.va-grid_overlay {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.5), transparent 75%);
+  font-size: 16px;
+  line-height: 1.3125em;
+  color: white
+}
+
+.va-grid_overlay:hover .va-grid_text {
+  text-decoration: underline
+}
+
+.event-details_container {
+  margin-top: 42px
+}
+
+.event-details_container em {
+  font-style: italic
+}
+
+@media only screen and (max-width: 989px) {
+  .responsive .column--responsive.event-details_container.event-details_container {
+    margin-top: 36px
+  }
+}
+
+.event-details_info-card .card_photo {
+  overflow: visible
+}
+
+.event-details_info-card .photo-slideshow_slide {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px
+}
+
+.event-details_photo {
+  position: relative;
+  width: 100%;
+  height: 100%
+}
+
+.event-details_info li {
+  padding: 12px 0;
+  margin: 0
+}
+
+.event-details_info li + li {
+  border-top: 1px solid #e6e6e6
+}
+
+.event-details_map-card .yelp-map-container {
+  background: #fff;
+  width: auto;
+  height: 300px;
+  border-radius: 4px
+}
+
+.event-details_date {
+  margin-bottom: 6px
+}
+
+.event-subscription_reply-msg {
+  color: #d32323
+}
+
+.cancel-subscribe-form {
+  margin-bottom: 6px
+}
+
+.event-details_category-links--elite {
+  color: #d32323
+}
+
+.event-landing_section {
+  margin-top: 48px
+}
+
+.event-landing_section:first-child {
+  margin-top: 30px
+}
+
+.event-landing_container--has-top-shelf .event-landing_section:first-child {
+  margin-top: 48px
+}
+
+.event-landing_below-fold {
+  border-bottom: 1px solid #e6e6e6;
+  margin-top: 30px
+}
+
+.event-categories_top-wrapper {
+  height: 302px;
+  margin-left: 6px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box
+}
+
+@media only screen and (max-width: 479px) {
+  .responsive .event-categories_top-wrapper {
+    height: auto;
+    margin-left: 0
+  }
+}
+
+#flag-form .field-error label {
+  color: #d32323
+}
+
+#flag-form #field-message p {
+  line-height: 25px
+}
+
+#flag-form #field-message ol {
+  margin: 0 0 20px 30px
+}
+
+#flag-form #field-message ol li {
+  line-height: 20px
+}
+
+#flag-form.country-is-us .field .photo_label {
+  display: none
+}
+
+#flag-form.country-is-us .user_photos .field .photo_label {
+  display: block
+}
+
+#flag-form.country-is-us .user_photos .field .review_label {
+  display: none
+}
+
+#flag-form.country-is-us .event-photo .field .photo_label {
+  display: block
+}
+
+#flag-form.country-is-us .event-photo .field .review_label {
+  display: none
+}
+
+#flag-form.country-is-us .business_photo .field .photo_label {
+  display: block
+}
+
+#flag-form.country-is-us .business_photo .field .review_label {
+  display: none
+}
+
+#flag-form.country-is-us .user_photos .specific #business, #flag-form.country-is-us .user_photos .specific #location, #flag-form.country-is-us .user_photos .specific #reviewer {
+  display: none
+}
+
+#flag-form.country-is-us .event-photo .specific #business, #flag-form.country-is-us .event-photo .specific #location, #flag-form.country-is-us .event-photo .specific #reviewer {
+  display: none
+}
+
+#flag-form.country-is-us .business_photo .specific #business, #flag-form.country-is-us .business_photo .specific #location, #flag-form.country-is-us .business_photo .specific #reviewer {
+  display: none
+}
+
+#flag-content-popup .ypop-content, #flag-media-pop .ypop-content {
+  width: 465px
+}
+
+#flag-content-popup .ypop-buttons.hide-submit button[type=submit], #flag-media-pop .ypop-buttons.hide-submit button[type=submit] {
+  display: none
+}
+
+#flag-content-popup .ypop-buttons.hide-submit button + a, #flag-media-pop .ypop-buttons.hide-submit button + a {
+  margin-left: 0px
+}
+
+.photo-slideshow {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #ccc
+}
+
+.photo-slideshow_slide {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: inline-block;
+  max-width: 100%;
+  max-height: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0)
+}
+
+.photo-slideshow_slide.is-active {
+  z-index: 1
+}
+
+.ltie9 .photo-slideshow_slide {
+  background-image: none !important
+}
+
+.photo-slideshow_image, .photo-slideshow_slide img {
+  max-width: 100%;
+  max-height: 100%
+}
+
+.photo-slideshow_image {
+  opacity: 0
+}
+
+.photo-slideshow--full-width {
+  overflow: hidden
+}
+
+.photo-slideshow--full-width .photo-slideshow_slide {
+  width: 100%;
+  max-height: none
+}
+
+.photo-slideshow--rounded {
+  border: 1px solid #ccc;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box
+}
+
+.photo-slideshow--rounded, .photo-slideshow--rounded .photo-slideshow_slide {
+  border-radius: 4px
+}

@@ -19,7 +19,7 @@ const noarr = Object.freeze([])
 const noop = () => {
 }
 
-function getFormComponent (type, options) {
+function getFormComponent(type, options) {
   if (options.factory) {
     return options.factory
   }
@@ -52,7 +52,7 @@ function getFormComponent (type, options) {
 
 exports.getComponent = getFormComponent
 
-function sortByText (a, b) {
+function sortByText(a, b) {
   if (a.text < b.text) {
     return -1
   } else if (a.text > b.text) {
@@ -61,7 +61,7 @@ function sortByText (a, b) {
   return 0
 }
 
-function getComparator (order) {
+function getComparator(order) {
   return {
     asc: sortByText,
     desc: (a, b) => -sortByText(a, b)
@@ -72,14 +72,14 @@ export const decorators = {
 
   template(name) {
     return (Component) => {
-      Component.prototype.getTemplate = function getTemplate () {
+      Component.prototype.getTemplate = function getTemplate() {
         return this.props.options.template || this.props.ctx.templates[name]
       }
     }
   },
 
   attrs(Component) {
-    Component.prototype.getAttrs = function getAttrs () {
+    Component.prototype.getAttrs = function getAttrs() {
       const attrs = t.mixin({}, this.props.options.attrs)
       attrs.id = this.getId()
       attrs.name = this.getName()
@@ -88,7 +88,7 @@ export const decorators = {
   },
 
   templates(Component) {
-    Component.prototype.getTemplates = function getTemplates () {
+    Component.prototype.getTemplates = function getTemplates() {
       return merge(this.props.ctx.templates, this.props.options.templates)
     }
   }
@@ -102,7 +102,7 @@ export class Component extends React.Component {
     parse: value => value
   }
 
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.typeInfo = getTypeInfo(props.type)
     this.state = {
@@ -112,11 +112,11 @@ export class Component extends React.Component {
     }
   }
 
-  getTransformer () {
+  getTransformer() {
     return this.props.options.transformer || this.constructor.transformer
   }
 
-  shouldComponentUpdate (nextProps, nextState) {
+  shouldComponentUpdate(nextProps, nextState) {
     const should = (
       nextState.value !== this.state.value ||
       nextState.hasError !== this.state.hasError ||
@@ -131,7 +131,7 @@ export class Component extends React.Component {
     return should
   }
 
-  componentWillReceiveProps (props) {
+  componentWillReceiveProps(props) {
     if (props.type !== this.props.type) {
       this.typeInfo = getTypeInfo(props.type)
     }
@@ -145,7 +145,7 @@ export class Component extends React.Component {
     })
   }
 
-  getValidationOptions () {
+  getValidationOptions() {
     const context = this.props.context || this.props.ctx.context
     return {
       path: this.props.ctx.path,
@@ -153,33 +153,33 @@ export class Component extends React.Component {
     }
   }
 
-  getValue () {
+  getValue() {
     return this.getTransformer().parse(this.state.value)
   }
 
-  isValueNully () {
+  isValueNully() {
     return Nil.is(this.getValue())
   }
 
-  removeErrors () {
+  removeErrors() {
     this.setState({hasError: false})
   }
 
-  validate () {
+  validate() {
     const result = t.validate(this.getValue(), this.props.type, this.getValidationOptions())
     this.setState({hasError: !result.isValid()})
     return result
   }
 
-  getAuto () {
+  getAuto() {
     return this.props.options.auto || this.props.ctx.auto
   }
 
-  getI18n () {
+  getI18n() {
     return this.props.options.i18n || this.props.ctx.i18n
   }
 
-  getDefaultLabel () {
+  getDefaultLabel() {
     const label = this.props.ctx.label
     if (label) {
       const suffix = this.typeInfo.isMaybe ? this.getI18n().optional : this.getI18n().required
@@ -187,7 +187,7 @@ export class Component extends React.Component {
     }
   }
 
-  getLabel () {
+  getLabel() {
     let label = this.props.options.label || this.props.options.legend
     if (Nil.is(label) && this.getAuto() === 'labels') {
       label = this.getDefaultLabel()
@@ -195,7 +195,7 @@ export class Component extends React.Component {
     return label
   }
 
-  getError () {
+  getError() {
     if (this.hasError()) {
       const error = this.props.options.error || this.typeInfo.getValidationErrorMessage
       if (t.Function.is(error)) {
@@ -206,15 +206,15 @@ export class Component extends React.Component {
     }
   }
 
-  hasError () {
+  hasError() {
     return this.props.options.hasError || this.state.hasError
   }
 
-  getConfig () {
+  getConfig() {
     return merge(this.props.ctx.config, this.props.options.config)
   }
 
-  getId () {
+  getId() {
     const attrs = this.props.options.attrs || noobj
     if (attrs.id) {
       return attrs.id
@@ -225,11 +225,11 @@ export class Component extends React.Component {
     return this.uid
   }
 
-  getName () {
+  getName() {
     return this.props.options.name || this.props.ctx.name || this.getId()
   }
 
-  getLocals () {
+  getLocals() {
     const options = this.props.options
     const value = this.state.value
     return {
@@ -248,7 +248,7 @@ export class Component extends React.Component {
     }
   }
 
-  render () {
+  render() {
     const locals = this.getLocals()
     if (process.env.NODE_ENV !== 'production') {
       // getTemplate is the only required implementation when extending Component
@@ -260,11 +260,11 @@ export class Component extends React.Component {
 
 }
 
-function toNull (value) {
+function toNull(value) {
   return (t.String.is(value) && value.trim() === '') || Nil.is(value) ? null : value
 }
 
-function parseNumber (value) {
+function parseNumber(value) {
   const n = parseFloat(value)
   const isNumeric = value == n // eslint-disable-line eqeqeq
   return isNumeric ? n : toNull(value)
@@ -284,7 +284,7 @@ export class Textbox extends Component {
     parse: parseNumber
   }
 
-  getTransformer () {
+  getTransformer() {
     const options = this.props.options
     if (options.transformer) {
       return options.transformer
@@ -294,7 +294,7 @@ export class Textbox extends Component {
     return Textbox.transformer
   }
 
-  getPlaceholder () {
+  getPlaceholder() {
     const attrs = this.props.options.attrs || noobj
     let placeholder = attrs.placeholder
     if (Nil.is(placeholder) && this.getAuto() === 'placeholders') {
@@ -303,7 +303,7 @@ export class Textbox extends Component {
     return placeholder
   }
 
-  getLocals () {
+  getLocals() {
     const locals = super.getLocals()
     locals.attrs = this.getAttrs()
     locals.attrs.placeholder = this.getPlaceholder()
@@ -322,7 +322,7 @@ export class Checkbox extends Component {
     parse: value => value
   }
 
-  getLocals () {
+  getLocals() {
     const locals = super.getLocals()
     locals.attrs = this.getAttrs()
     // checkboxes must always have a label
@@ -348,7 +348,7 @@ export class Select extends Component {
     parse: value => value
   }
 
-  getTransformer () {
+  getTransformer() {
     const options = this.props.options
     if (options.transformer) {
       return options.transformer
@@ -359,19 +359,19 @@ export class Select extends Component {
     return Select.transformer(this.getNullOption())
   }
 
-  getNullOption () {
+  getNullOption() {
     return this.props.options.nullOption || {value: '', text: '-'}
   }
 
-  isMultiple () {
+  isMultiple() {
     return this.typeInfo.innerType.meta.kind === 'list'
   }
 
-  getEnum () {
+  getEnum() {
     return this.isMultiple() ? getTypeInfo(this.typeInfo.innerType.meta.type).innerType : this.typeInfo.innerType
   }
 
-  getOptions () {
+  getOptions() {
     const options = this.props.options
     const items = options.options ? options.options.slice() : getOptionsOfEnum(this.getEnum())
     if (options.order) {
@@ -384,7 +384,7 @@ export class Select extends Component {
     return items
   }
 
-  getLocals () {
+  getLocals() {
     const locals = super.getLocals()
     locals.attrs = this.getAttrs()
     locals.options = this.getOptions()
@@ -403,7 +403,7 @@ export class Radio extends Component {
     parse: value => value
   }
 
-  getOptions () {
+  getOptions() {
     const options = this.props.options
     const items = options.options ? options.options.slice() : getOptionsOfEnum(this.typeInfo.innerType)
     if (options.order) {
@@ -412,7 +412,7 @@ export class Radio extends Component {
     return items
   }
 
-  getLocals () {
+  getLocals() {
     const locals = super.getLocals()
     locals.attrs = this.getAttrs()
     locals.options = this.getOptions()
@@ -447,11 +447,11 @@ export class Datetime extends Component {
     }
   }
 
-  getOrder () {
+  getOrder() {
     return this.props.options.order || ['M', 'D', 'YY']
   }
 
-  getLocals () {
+  getLocals() {
     const locals = super.getLocals()
     locals.attrs = this.getAttrs()
     locals.order = this.getOrder()
@@ -468,16 +468,16 @@ export class Struct extends Component {
     parse: value => value
   }
 
-  isValueNully () {
+  isValueNully() {
     return Object.keys(this.refs).every((ref) => this.refs[ref].isValueNully())
   }
 
-  removeErrors () {
+  removeErrors() {
     this.setState({hasError: false})
     Object.keys(this.refs).forEach((ref) => this.refs[ref].removeErrors())
   }
 
-  validate () {
+  validate() {
     let value = {}
     let errors = []
     let result
@@ -518,19 +518,19 @@ export class Struct extends Component {
     })
   }
 
-  getTemplate () {
+  getTemplate() {
     return this.props.options.template || this.getTemplates().struct
   }
 
-  getTypeProps () {
+  getTypeProps() {
     return this.typeInfo.innerType.meta.props
   }
 
-  getOrder () {
+  getOrder() {
     return this.props.options.order || Object.keys(this.getTypeProps())
   }
 
-  getInputs () {
+  getInputs() {
     const {options, ctx} = this.props
     const props = this.getTypeProps()
     const auto = this.getAuto()
@@ -571,7 +571,7 @@ export class Struct extends Component {
     return inputs
   }
 
-  getLocals () {
+  getLocals() {
     const options = this.props.options
     const locals = super.getLocals()
     locals.order = this.getOrder()
@@ -582,7 +582,7 @@ export class Struct extends Component {
 
 }
 
-function toSameLength (value, keys, uidGenerator) {
+function toSameLength(value, keys, uidGenerator) {
   if (value.length === keys.length) {
     return keys
   }
@@ -601,12 +601,12 @@ export class List extends Component {
     parse: value => value
   }
 
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state.keys = this.state.value.map(() => props.ctx.uidGenerator.next())
   }
 
-  componentWillReceiveProps (props) {
+  componentWillReceiveProps(props) {
     if (props.type !== this.props.type) {
       this.typeInfo = getTypeInfo(props.type)
     }
@@ -617,16 +617,16 @@ export class List extends Component {
     })
   }
 
-  isValueNully () {
+  isValueNully() {
     return this.state.value.length === 0
   }
 
-  removeErrors () {
+  removeErrors() {
     this.setState({hasError: false})
     Object.keys(this.refs).forEach((ref) => this.refs[ref].removeErrors())
   }
 
-  validate () {
+  validate() {
     let value = []
     let errors = []
     let result
@@ -666,13 +666,13 @@ export class List extends Component {
     this.onChange(value, keys, this.props.ctx.path.concat(value.length - 1), 'add')
   }
 
-  onItemChange (itemIndex, itemValue, path, kind) {
+  onItemChange(itemIndex, itemValue, path, kind) {
     const value = this.state.value.slice()
     value[itemIndex] = itemValue
     this.onChange(value, this.state.keys, path, kind)
   }
 
-  removeItem (i) {
+  removeItem(i) {
     const value = this.state.value.slice()
     value.splice(i, 1)
     const keys = this.state.keys.slice()
@@ -680,7 +680,7 @@ export class List extends Component {
     this.onChange(value, keys, this.props.ctx.path.concat(i), 'remove')
   }
 
-  moveUpItem (i) {
+  moveUpItem(i) {
     if (i > 0) {
       this.onChange(
         move(this.state.value.slice(), i, i - 1),
@@ -691,7 +691,7 @@ export class List extends Component {
     }
   }
 
-  moveDownItem (i) {
+  moveDownItem(i) {
     if (i < this.state.value.length - 1) {
       this.onChange(
         move(this.state.value.slice(), i, i + 1),
@@ -702,11 +702,11 @@ export class List extends Component {
     }
   }
 
-  getTemplate () {
+  getTemplate() {
     return this.props.options.template || this.getTemplates().list
   }
 
-  getItems () {
+  getItems() {
     const {options, ctx} = this.props
     const auto = this.getAuto()
     const i18n = this.getI18n()
@@ -764,7 +764,7 @@ export class List extends Component {
     })
   }
 
-  getLocals () {
+  getLocals() {
     const options = this.props.options
     const i18n = this.getI18n()
     const locals = super.getLocals()
@@ -782,21 +782,21 @@ export class List extends Component {
 
 export class Form extends React.Component {
 
-  validate () {
+  validate() {
     return this.refs.input.validate()
   }
 
-  getValue () {
+  getValue() {
     const result = this.validate()
     return result.isValid() ? result.value : null
   }
 
-  getComponent (path) {
+  getComponent(path) {
     const points = t.String.is(path) ? path.split('.') : path
     return points.reduce((input, name) => input.refs[name], this.refs.input)
   }
 
-  getSeed () {
+  getSeed() {
     const rii = this._reactInternalInstance
     if (rii) {
       if (rii._hostContainerInfo) {
@@ -812,12 +812,12 @@ export class Form extends React.Component {
     return '0'
   }
 
-  getUIDGenerator () {
+  getUIDGenerator() {
     this.uidGenerator = this.uidGenerator || new UIDGenerator(this.getSeed())
     return this.uidGenerator
   }
 
-  render () {
+  render() {
     const {i18n, templates} = Form
 
     if (process.env.NODE_ENV !== 'production') {

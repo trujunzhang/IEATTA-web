@@ -10,8 +10,9 @@
 @import "leaflet";
 @import "search";
 // Bootstrap
-@import "biz_details-pkg";
-//@import "home-pkg";
+@import "yelp/biz_details-pkg";
+@import "yelp/events-pkg";
+//@import "yelp/home-pkg";
 @import "wwwpkg";
 @import "eu_cookie_notice";
 @import "sprite";
