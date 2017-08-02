@@ -8,7 +8,6 @@ class RestaurantsSingleHeader extends Component {
 
   renderBizPageHeaderLeft() {
     const {restaurant} = this.props;
-    debugger
     return (
       <div className="biz-page-header-left claim-status">
 
@@ -26,15 +25,6 @@ class RestaurantsSingleHeader extends Component {
         </span>
           </div>
 
-          <div className="u-hidden js-claim-status-hover-content">
-            <p className="u-space-b0">
-              This business has been claimed by the owner or a representative.
-              <a className="js-biz-page-claim-link" href="https://www.yelp-support.com/article/000032392?l=en_SG"
-                 target="_blank">Learn more</a>
-            </p>
-          </div>
-
-
         </div>
 
 
@@ -42,13 +32,11 @@ class RestaurantsSingleHeader extends Component {
           <div className="rating-info clearfix">
             <div className="biz-rating biz-rating-very-large clearfix">
 
-
               <div className="i-stars i-stars--large-5 rating-very-large" title="5.0 star rating">
                 <img className="offscreen" height="303"
                      src="https://s3-media2.fl.yelpcdn.com/assets/srv0/yelp_design_web/9b34e39ccbeb/assets/img/stars/stars.png"
                      width="84" alt="5.0 star rating"/>
               </div>
-
 
               <span className="review-count rating-qualifier">
                 130 reviews
@@ -66,8 +54,6 @@ class RestaurantsSingleHeader extends Component {
               </svg>
             </span>
                 Details
-                <span className="offscreen">, Opens a popup</span>
-
                 <span className="tooltip-wrapper">
                 <span className="tooltip">Rating details</span>
             </span>
@@ -78,18 +64,13 @@ class RestaurantsSingleHeader extends Component {
 
           <div className="price-category">
                     <span className="bullet-after">
-
                       <span className="business-attribute price-range">$$</span>
                     </span>
             <span className="category-str-list">
-                    <a href="/c/la/southern">Southern</a>,
-                    <a href="/c/la/seafood">Seafood</a>,
-                    <a href="/c/la/soulfood">Soul Food</a>
+                    <a>Restaurant</a>
             </span>
 
-            <a className="edit-category chiclet-link chiclet-link--with-text show-tooltip"
-               data-pop-uri="/edit_category_popup/30jrTz8vh1xSXdtXMvt-mA" data-ro-mode-action="edit categories"
-               href="/biz_attribute?biz_id=30jrTz8vh1xSXdtXMvt-mA" data-component-bound="true">
+            <a className="edit-category chiclet-link chiclet-link--with-text show-tooltip">
               <span aria-hidden="true" id="icon_14X14"
                     className="icon icon--14-pencil icon--size-14 icon--currentColor">
                 <svg className="icon_svg">
@@ -98,8 +79,6 @@ class RestaurantsSingleHeader extends Component {
                 </svg>
               </span>
               Edit
-              <span className="offscreen">, Opens a popup</span>
-
               <span className="tooltip-wrapper">
                 <span className="tooltip">Edit categories</span>
               </span>
@@ -116,8 +95,7 @@ class RestaurantsSingleHeader extends Component {
     return (
       <div className="biz-page-header-right u-relative">
         <div className="biz-page-actions nowrap">
-          <a className="ybtn ybtn--primary war-button"
-             href="/writeareview/biz/30jrTz8vh1xSXdtXMvt-mA?return_url=%2Fbiz%2F30jrTz8vh1xSXdtXMvt-mA">
+          <a className="ybtn ybtn--primary war-button">
             <span aria-hidden="true" id="icon_24X24"
                   className="icon icon--24-star icon--size-24 icon--currentColor u-space-r-half icon--fallback-inverted">
               <svg className="icon_svg">
@@ -129,7 +107,8 @@ class RestaurantsSingleHeader extends Component {
           </a>
           <span className="ybtn-group clearfix">
 
-            <a className="ybtn ybtn--small add-photo-button" href="/biz_user_photos/30jrTz8vh1xSXdtXMvt-mA/upload">
+            <a className="ybtn ybtn--small add-photo-button"
+               href="/biz_user_photos/30jrTz8vh1xSXdtXMvt-mA/upload">
               <span aria-hidden="true" id="icon_18X18"
                     className="icon icon--18-add-photo icon--size-18 icon--currentColor">
                 <svg className="icon_svg">
@@ -355,7 +334,7 @@ class RestaurantsSingleHeader extends Component {
                 </div>
 
 
-                <a className="see-more show-all-overlay" href="/biz_photos/my-two-cents-los-angeles-3">
+                <a className="see-more show-all-overlay">
                   <span aria-hidden="true" id="icon_24X24"
                         className="icon icon--24-grid icon--size-24 icon--inverse icon--fallback-inverted show-all-overlay_icon">
                     <svg className="icon_svg">
@@ -366,7 +345,6 @@ class RestaurantsSingleHeader extends Component {
                 </a>
 
               </div>
-
 
             </div>
           </div>
@@ -396,4 +374,4 @@ class RestaurantsSingleHeader extends Component {
   }
 }
 
-export default RestaurantsSingleHeader
+export default RestaurantsSingleHeader;
