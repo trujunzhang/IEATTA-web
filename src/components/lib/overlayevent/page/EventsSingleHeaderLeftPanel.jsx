@@ -103,30 +103,6 @@ class EventsSingleHeaderLeftPanel extends Component {
   }
 
 
-  renderLineThree() {
-    return (
-      <li>
-                                            <span className="event-details_ticket-info">
-
-                                              <span
-                                                id="icon_24X24"
-                                                className="icon icon--24-ticket icon--size-24 u-space-r1">
-    <svg className="icon_svg">
-    <path
-      d="M17.303 6.697a2 2 0 0 1 0-2.83L14.12.687 10.056 4.75l2.122 2.12-1.06 1.062-2.122-2.12-8.31 8.307L3.87 17.3a2 2 0 1 1 2.83 2.83l3.18 3.18 8.31-8.308-2.123-2.12 1.06-1.062 2.122 2.122 4.064-4.066-3.182-3.183a2 2 0 0 1-2.83 0zm-1.59 3.712l-1.06 1.06-2.123-2.124 1.06-1.06 2.122 2.12z"/>
-    </svg>
-</span>$10.00 - $35.00</span>
-        <span className="bullet-before event_ticket-url">
-            <a
-              href="https://www.yelp.com/redir?url=http%3A%2F%2Fwww.etix.com%2Fticket%2Fv%2F10432%3Fcobrand%3Dalameda&amp;s=6db4fa344b5920d73937d139a0effbb2c277cb1e9a62ed8abe14694b9aaecc64">Get tickets</a>
-        </span>
-
-
-      </li>
-    )
-  }
-
-
   renderRight() {
     return (
       <div className="card_body">
@@ -135,7 +111,6 @@ class EventsSingleHeaderLeftPanel extends Component {
 
             {this.renderLineOne()}
             {this.renderLineTwo()}
-            {this.renderLineThree()}
 
           </ul>
         </div>

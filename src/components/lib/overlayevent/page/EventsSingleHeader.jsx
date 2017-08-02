@@ -38,7 +38,7 @@ class EventsSingleHeader extends Component {
         <div
           className="clearfix layout-block layout-a event-details_cards-container top-shelf_overlap column--responsive">
 
-          <div classname="column column-alpha column--responsive">
+          <div className="column column-alpha column--responsive">
             <Telescope.components.EventsSingleHeaderLeftPanel {...this.props}/>
           </div>
 
