@@ -17,7 +17,7 @@ class EventsList extends Component {
     };
     this.state = {
       terms: terms,
-      listTask: byListId(props.listContainerTasks, terms.listId, terms.limit)
+      listTask: byListId(props.listContainerTasks, terms)
     }
   }
 
