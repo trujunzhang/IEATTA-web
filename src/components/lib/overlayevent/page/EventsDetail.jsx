@@ -7,11 +7,12 @@ class EventsDetail extends Component {
 
   renderLeftTopSection() {
     const {event} = this.props;
+    debugger
     return (
       <div className="ysection">
         <h3>What/Why:</h3>
         <p>
-          {event.body}
+          {event.want}
         </p>
       </div>
     )

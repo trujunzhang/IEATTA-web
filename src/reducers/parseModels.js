@@ -32,6 +32,7 @@ export type Photo = {
   photoType: string;
 }
 
+
 export type Event = {
   // Basic Fields
   id: string;
@@ -43,7 +44,7 @@ export type Event = {
   end: Date;
   want: string;
   // Pointer
-  restaurantId: string;
+  restaurant: Restaurant;
 }
 
 export type Recipe = {
@@ -122,6 +123,7 @@ export function fromParseCloudinary(map: Object): Cloudinary {
     url: map['url']
   };
 }
+
 
 export function fromParseEvent(map: Object): Event {
   return {
