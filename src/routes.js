@@ -30,7 +30,6 @@ const createRoutes = (store) => {
       indexRoute: {component: Telescope.components.RestaurantsHome},
 
       childRoutes: [
-
         {
           // http://localhost:3000/user_details?userid=t3cu9DxXtGyaPIWNvPOXxA
           path: 'user_details',

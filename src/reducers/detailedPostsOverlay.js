@@ -24,7 +24,7 @@
 
 'use strict'
 
-import type { Action } from '../actions/types'
+import type {Action} from '../actions/types'
 
 /**
  * The states were interested in
@@ -46,7 +46,7 @@ const initialState = {
   pages: []
 }
 
-function detailedPostsOverlay (state: State = initialState, action: Action): State {
+function detailedPostsOverlay(state: State = initialState, action: Action): State {
   if (action.type === OVERLAY_LOADED_POSTS_PAGE) {
     let {objectId, object} = action.payload
 
@@ -67,26 +67,26 @@ function detailedPostsOverlay (state: State = initialState, action: Action): Sta
     return nextState
   }
 
-    if (action.type === OVERLAY_DETAILS_POSTS_DISMISS) {
-        const nextState = Object.assign({}, state, initialState)
-        return nextState
-    }
+  if (action.type === OVERLAY_DETAILS_POSTS_DISMISS) {
+    const nextState = Object.assign({}, state, initialState)
+    return nextState
+  }
 
-    if (action.type === OVERLAY_DETAILS_POSTS_PUSH) {
-        const post = action.payload
+  if (action.type === OVERLAY_DETAILS_POSTS_PUSH) {
+    const post = action.payload
 
-        // const pages = state.pages.push(post)
+    // const pages = state.pages.push(post)
 
-        const nextState = Object.assign({}, state, {
-            isFetching:false,
-            currentModel: {objectId: post.id, model: post},
-            isFetchingRelated: true,
-            currentRelatedPosts: [],
-            // pages:pages
-        })
+    const nextState = Object.assign({}, state, {
+      isFetching: false,
+      currentModel: {objectId: post.id, model: post},
+      isFetchingRelated: true,
+      currentRelatedPosts: [],
+      // pages:pages
+    })
 
-        return nextState
-    }
+    return nextState
+  }
 
   return state
 }

@@ -6,17 +6,22 @@ const {loadPostPage} = require('../../../actions').default
 class PopoverPosts extends Component {
   constructor(props, context) {
     super(props)
+
+    this.state = this.initialState = {
+      rid: props.params.rid,
+      rslug: props.params.rslug
+    }
   }
 
   componentDidMount() {
-    // this.props.dispatch(loadPostPage('cDJao7Bw3P'))
+    this.props.dispatch(loadPostPage(this.state.rid))
   }
 
   render() {
     const {detailedPostsOverlay} = this.props,
       {isFetching, currentModel} = detailedPostsOverlay
 
-    if (isFetching && false) {
+    if (isFetching) {
       return (
         <div className="placeholder_1WOC3">
           <div className="loader_54XfI animationRotate loader_OEQVm"/>
