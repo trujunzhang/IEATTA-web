@@ -9,10 +9,12 @@ class RestaurantsSingleHeaderPhotos extends Component {
   renderSeeAll() {
     const {restaurant} = this.props;
     const {photos} = restaurant;
-
+    const photoLength = photos.length;
     return (
-      <div className="js-photo photo photo-3 photo-grid" data-ga-label="right_photo"
-           data-media-id="NWViHwgCl5AydMuovXBzJA" data-media-index="2">
+
+
+      <div className="js-photo photo photo-3 photo-grid">
+
         <div className="showcase-photo-box">
           <a href="/biz_photos/my-two-cents-los-angeles-3?select=NWViHwgCl5AydMuovXBzJA">
 
@@ -41,17 +43,30 @@ class RestaurantsSingleHeaderPhotos extends Component {
           </a>
 
         </div>
-        <a className="see-more show-all-overlay">
-                  <span aria-hidden="true" id="icon_24X24"
-                        className="icon icon--24-grid icon--size-24 icon--inverse icon--fallback-inverted show-all-overlay_icon">
+
+        {this.renderSeeAllButton()}
+
+      </div>
+
+    )
+  }
+
+  renderSeeAllButton() {
+    const {restaurant} = this.props;
+    const {photos} = restaurant;
+    const photoLength = photos.length;
+
+    return (
+      <a className="see-more show-all-overlay">
+                    <span id="icon_24X24"
+                          style={{display: 'block'}}
+                          className="icon icon--24-grid icon--size-24 icon--inverse icon--fallback-inverted show-all-overlay_icon">
                     <svg className="icon_svg">
                       <path d="M13 21v-8h8v8h-8zm0-18h8v8h-8V3zM3 13h8v8H3v-8zM3 3h8v8H3V3z"/>
                     </svg>
                   </span>
-          See all 124
-        </a>
-
-      </div>
+        {"See all " + photoLength}
+      </a>
 
     )
   }
@@ -181,8 +196,7 @@ class RestaurantsSingleHeaderPhotos extends Component {
   render() {
     const {restaurant} = this.props;
     const {photos} = restaurant;
-    const thumbnail01 = photos[0].thumbnail._url;
-    const thumbnail02 = photos[1].thumbnail._url;
+    const photoLength = photos.length;
     return (
       <div className="showcase-container">
 
@@ -196,10 +210,10 @@ class RestaurantsSingleHeaderPhotos extends Component {
                data-media-url="/biz_photos/get_media_slice/30jrTz8vh1xSXdtXMvt-mA" data-starting-index="0">
             <div className="showcase-photos">
 
-              {this.renderFirstThumbnail()}
-              {this.renderSecondThumbnail()}
+              {photoLength > 0 ? this.renderFirstThumbnail() : null}
+              {photoLength > 1 ? this.renderSecondThumbnail() : null}
 
-              {this.renderSeeAll()}
+              {photoLength > 2 ? this.renderSeeAll() : null}
 
             </div>
           </div>
