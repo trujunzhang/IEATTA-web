@@ -202,13 +202,9 @@ class RestaurantsSingleHeaderPhotos extends Component {
 
         <div className="showcase-container_inner showcase showcase-3-photo">
 
-          <div className="lightbox-media-parent"
-               data-ad-logging-csrf="aa8053dd89acca4aeeab2a925aa3697994b6f863dd0c34a39e0956ab2b0c42f1"
-               data-ad-logging-uri="/ad_acknowledgment" data-ga-path="media_lightbox/servlet:biz_details/type:biz"
-               data-logging-csrf="c846d6922ddea30ffe17e1fda509a302098c99138941cd4bd98b1f9da516ed5a"
-               data-logging-uri="/biz_photos/30jrTz8vh1xSXdtXMvt-mA/log_views" data-media-count="124"
-               data-media-url="/biz_photos/get_media_slice/30jrTz8vh1xSXdtXMvt-mA" data-starting-index="0">
-            <div className="showcase-photos">
+          <div className="lightbox-media-parent">
+
+            <div className="showcase-photos showcase-photos-z-index">
 
               {photoLength > 0 ? this.renderFirstThumbnail() : null}
               {photoLength > 1 ? this.renderSecondThumbnail() : null}

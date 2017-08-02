@@ -9,7 +9,8 @@ class RestaurantsPageMap extends Component {
     const {restaurant} = this.props;
     const latitude = restaurant.geoLocation.latitude;
     const longitude = restaurant.geoLocation.longitude;
-    const position = [latitude, longitude]
+    const position = [latitude, longitude];
+
     return (
       <Map center={position} zoom={10} maxZoom={10}>
         <TileLayer
