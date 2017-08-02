@@ -91,33 +91,6 @@ Telescope.registerComponent('SubmitAnArticle',                   require('./arti
 // users
 Telescope.registerComponent('UsersMenu',               require('./users/UsersMenu.jsx').default)
 
-// dashboard
-Telescope.registerComponent('AppAdminFooter',                require('./dashboard/AppAdminFooter.jsx').default)
-Telescope.registerComponent('AppAdminHeader',                require('./dashboard/AppAdminHeader.jsx').default)
-Telescope.registerComponent('AppAdminLayout',                require('./dashboard/AppAdminLayout.jsx').default)
-Telescope.registerComponent('AppAdminSidebar',               require('./dashboard/AppAdminSidebar.jsx').default)
-Telescope.registerComponent('AppSearchTitle',                require('./dashboard/AppSearchTitle').default)
-
-// dashboard(default)
-Telescope.registerComponent('AppAdminDashboard',               require('./dashboard/default/AppAdminDashboard.jsx').default)
-
-// dashboard(tables)
-Telescope.registerComponent('AdminTables',                        require('./dashboard/tables/AdminTables.jsx').default)
-Telescope.registerComponent('AdminTablesCommentsColumn',          require('./dashboard/tables/AdminTablesCommentsColumn.jsx').default)
-Telescope.registerComponent('AdminTablesCommonColumn',            require('./dashboard/tables/AdminTablesCommonColumn.jsx').default)
-Telescope.registerComponent('AdminTablesRow',                     require('./dashboard/tables/AdminTablesRow.jsx').default)
-Telescope.registerComponent('AdminTablesTH',                      require('./dashboard/tables/AdminTablesTH.jsx').default)
-Telescope.registerComponent('AdminTablesTopicsColumn',            require('./dashboard/tables/AdminTablesTopicsColumn.jsx').default)
-Telescope.registerComponent('PaginationContainer',                require('./dashboard/tables/PaginationContainer.jsx').default)
-
-// dashboard(posts)
-Telescope.registerComponent('AppAdminPostDateTime',                require('./dashboard/posts/AppAdminPostDateTime.jsx').default)
-Telescope.registerComponent('AppAdminPostItemAction',              require('./dashboard/posts/AppAdminPostItemAction.jsx').default)
-Telescope.registerComponent('AppAdminPostsAction',                 require('./dashboard/posts/AppAdminPostsAction.jsx').default)
-Telescope.registerComponent('AppAdminPostsEditAll',                require('./dashboard/posts/AppAdminPostsEditAll.jsx').default)
-Telescope.registerComponent('AppAdminPostsEditSingle',             require('./dashboard/posts/AppAdminPostsEditSingle.jsx').default)
-Telescope.registerComponent('AppAdminPostsList',                   require('./dashboard/posts/AppAdminPostsList.jsx').default)
-Telescope.registerComponent('AppAdminPostsTopAction',              require('./dashboard/posts/AppAdminPostsTopAction.jsx').default)
 
 
 export default Telescope
