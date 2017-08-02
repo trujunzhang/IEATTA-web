@@ -20,7 +20,7 @@ const FolderPostsList = ({results, limit, hasMore, ready, count, totalCount, loa
           )
         } else {
           return (
-            <Telescope.components.PostsItem
+            <Telescope.components.RestaurantsItem
               key={post._id}
               post={post}
               user={folder.folderUser}

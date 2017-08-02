@@ -10,7 +10,7 @@ class RestaurantsHomeList extends Component {
       <ul className="ylist ylist-bordered search-results">
 
         {results.map((item, index) =>
-          <Telescope.components.PostsItem
+          <Telescope.components.RestaurantsItem
             listId={listId}
             key={item.id}
             index={index}

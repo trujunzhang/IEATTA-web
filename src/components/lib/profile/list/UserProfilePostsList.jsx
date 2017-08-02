@@ -79,7 +79,7 @@ class UserProfilePostsList extends Component {
                       } else {
                         let _canEdit = canEdit && (post.status === Posts.config.STATUS_APPROVED);
                         return (
-                          <Telescope.components.PostsItem
+                          <Telescope.components.RestaurantsItem
                             listId={listId}
                             key={post.id}
                             post={post}

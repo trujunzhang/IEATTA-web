@@ -9,7 +9,7 @@ import {Link} from 'react-router'
 import {FormattedMessage, FormattedRelative} from 'react-intl'
 import moment from 'moment'
 
-class PostsItem extends Component {
+class RestaurantsItem extends Component {
 
   renderReview() {
     const {listId, restaurant, index} = this.props,
@@ -118,7 +118,7 @@ class PostsItem extends Component {
     const {listId, restaurant, index} = this.props
 
     if (typeof listId === 'undefined') {
-      throw new Error('You need to set a proper List Id before using PostsItem')
+      throw new Error('You need to set a proper List Id before using RestaurantsItem')
     }
 
     return (
@@ -135,4 +135,4 @@ class PostsItem extends Component {
 
 }
 
-export default withRouter(PostsItem)
+export default withRouter(RestaurantsItem)
