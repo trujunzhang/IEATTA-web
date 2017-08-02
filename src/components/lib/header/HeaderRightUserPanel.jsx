@@ -174,7 +174,7 @@ class HeaderRightUserPanel extends Component {
                                 </span>Find Friends
               </strong>
               <span className="arrange_unit arrange_unit--fill u-text-right">
-                                <span aria-hidden="true" id="icon_24X24"
+                                <span id="icon_24X24"
                                       className="icon icon--24-chevron-right icon--size-24 hidden-non-responsive-inline-block responsive-visible-medium-inline-block">
                                     <svg className="icon_svg">
                                         <path
