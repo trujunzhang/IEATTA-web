@@ -110,7 +110,45 @@ function loadRestaurantsList(listTask: Any, listId: string, terms: Any, type: st
 }
 
 
+async function _loadListByType(listTask: Any, listId: string, terms: Any, type: string = LIST_VIEW_LOADED_RESTAURANTS): Promise<Array<Action>> {
+  const {pageIndex, limit} = listTask
+  const skipCount = (pageIndex - 1) * limit
+
+  const objectsQuery = getRestaurantParameters(terms)
+  const totalCount = await objectsQuery.count()
+
+  const results = await objectsQuery.skip(skipCount).limit(limit).find()
+
+  const payload = {
+    list: (results || []).map(fromParseRestaurant),
+    listTask: listTask,
+    listId: listId,
+    limit: limit,
+    totalCount: totalCount
+  }
+
+  const action = {type, payload}
+
+  return Promise.all([
+    Promise.resolve(action)
+  ])
+}
+
+function loadListByType(listTask: Any, listId: string, terms: Any, type: string = LIST_VIEW_LOADED_RESTAURANTS): ThunkAction {
+  return (dispatch) => {
+    const action = _loadListByType(listTask, listId, terms, type)
+    action.then(
+      ([result]) => {
+        dispatch(result)
+      }
+    )
+    return action
+  }
+}
+
+
 export default {
   loadRestaurantsList,
   loadEventsList,
+  loadPeopleInEventList
 }
