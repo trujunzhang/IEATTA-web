@@ -110,7 +110,7 @@ class EventsList extends Component {
     if (!ready) {
       return (
         <section className="results_37tfm">
-          <Telescope.components.PostsLoading id='load.more.hint.posts'/>
+          <Telescope.components.RestaurantsLoading id='load.more.hint.posts'/>
         </section>
       )
     }
@@ -125,7 +125,7 @@ class EventsList extends Component {
     } else {
       return (
         <section className="results_37tfm">
-          <Telescope.components.PostsNoResults relatedList={true}/>
+          <Telescope.components.RestaurantsNoResults relatedList={true}/>
         </section>
       )
     }

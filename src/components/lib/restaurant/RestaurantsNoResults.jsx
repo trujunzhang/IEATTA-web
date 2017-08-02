@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router';
 
-class PostsNoResults extends Component {
+class RestaurantsNoResults extends Component {
 
     onSubmitOneClick() {
         // const {currentUser} = this.context;
@@ -31,4 +31,4 @@ class PostsNoResults extends Component {
     }
 }
 
-export default withRouter(PostsNoResults);
+export default withRouter(RestaurantsNoResults);

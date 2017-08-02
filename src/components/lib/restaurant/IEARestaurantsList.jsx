@@ -60,7 +60,7 @@ class IEARestaurantsList extends Component {
     if (showReady) {
       return (
         <section className='results_37tfm'>
-          <Telescope.components.PostsLoading id={'load.more.hint.posts'}/>
+          <Telescope.components.RestaurantsLoading id={'load.more.hint.posts'}/>
         </section>
       )
     } else if (!!results && !!results.length) {
@@ -81,7 +81,7 @@ class IEARestaurantsList extends Component {
     } else {
       return (
         <section className="results_37tfm">
-          <Telescope.components.PostsNoResults relatedList={false}/>
+          <Telescope.components.RestaurantsNoResults relatedList={false}/>
         </section>
       )
     }

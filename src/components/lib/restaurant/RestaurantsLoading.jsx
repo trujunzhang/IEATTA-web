@@ -1,7 +1,7 @@
 import React from 'react';
 import {FormattedMessage} from 'react-intl';
 
-const PostsLoading = ({id}) => {
+const RestaurantsLoading = ({id}) => {
     return (
         <div className="post_loading_same_height_as_load_more">
           <span className="loading_2hQxH featured_2W7jd subtle_1BWOT base_3CbW2">
@@ -19,4 +19,4 @@ const PostsLoading = ({id}) => {
 };
 
 
-export default PostsLoading
+export default RestaurantsLoading
