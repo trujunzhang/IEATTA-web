@@ -86,7 +86,7 @@ export default keyMirror({
   LIST_VIEW_RESET_ALL_POSTS: null,
 
   // Detailed Page(Posts,Events)
-  OVERLAY_LOADED_RESTAURANT_PAGE: null,
+  OVERLAY_LOADED_MODEL_PAGE:null,
   OVERLAY_LOADED_EVENT_PAGE: null,
 
   SET_PLATFORM: null,

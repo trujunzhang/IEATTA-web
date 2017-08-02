@@ -30,17 +30,15 @@ import type {Action} from '../actions/types'
  * The states were interested in
  */
 const {
-  OVERLAY_LOADED_RESTAURANT_PAGE
+  OVERLAY_LOADED_MODEL_PAGE,
 } = require('../lib/constants').default
-
-const {fromParseRestaurant} = require('./parseModels')
 
 const initialState = {
   currentModel: null,
 }
 
 function detailedModelsOverlay(state: State = initialState, action: Action): State {
-  if (action.type === OVERLAY_LOADED_RESTAURANT_PAGE) {
+  if (action.type === OVERLAY_LOADED_MODEL_PAGE) {
     const nextState = Object.assign({}, state, {
       currentModel: action.payload
     })
