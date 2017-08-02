@@ -1,28 +1,13 @@
 import Telescope from '../../../lib'
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import Posts from '../../../../lib/posts'
-import { withRouter } from 'react-router'
+import {withRouter} from 'react-router'
 
 let {showDetailedPagePath} = require('../../../../lib/link')
-const {pushOverlayDetailedPost} = require('../../../../actions').default
 
 class EventsItem extends Component {
 
-  renderVotesSection () {
-    const {post} = this.props
-    return (
-      <div className="smallSize_center secondaryText_PM80d">
-        <div className="row">
-          <Telescope.components.RelatedPostUpvote post={post}/>
-        </div>
-        <div className="row">
-          <Telescope.components.RelatedPostDownvote post={post}/>
-        </div>
-      </div>
-    )
-  }
-
-  renderThumbnail () {
+  renderThumbnail() {
     const {post} = this.props,
       imageSet = Posts.getThumbnailSet(post)
 
@@ -48,32 +33,30 @@ class EventsItem extends Component {
     return null
   }
 
-  render () {
-    const {post} = this.props
+  render() {
+    const {event} = this.props
 
     return (
       <div className="link_2Cj8i">
         <div className="side_3fRtk related-left-panel">
-          {this.renderThumbnail()}
-          {this.renderVotesSection()}
+          {/*{this.renderThumbnail()}*/}
         </div>
         <a onClick={this.onRelatedPostClick.bind(this)}>
-          <h2 className="name_DrXo8 featured_2W7jd default_tBeAo base_3CbW2">{post.title}</h2>
+          <h2 className="name_DrXo8 featured_2W7jd default_tBeAo base_3CbW2">{event.displayName}</h2>
           <p className="text_relate_3Wjo0 subtle_1BWOT base_3CbW2">
-            {Posts.getLimitedContent(post.body, 100)}
           </p>
         </a>
       </div>
     )
   }
 
-  onRelatedPostClick (event) {
+  onRelatedPostClick(event) {
     event.preventDefault()
 
-    const {router, post} = this.props
+    const {router, event} = this.props
 
-    showDetailedPagePath(router, post)
-    this.props.dispatch(pushOverlayDetailedPost(post))
+    // showDetailedPagePath(router, post)
+    // this.props.dispatch(pushOverlayDetailedPost(post))
   }
 
 }

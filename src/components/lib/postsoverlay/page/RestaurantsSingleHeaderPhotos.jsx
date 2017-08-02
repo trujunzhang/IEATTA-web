@@ -75,10 +75,8 @@ class RestaurantsSingleHeaderPhotos extends Component {
     const {restaurant} = this.props;
     const {photos} = restaurant;
     const thumbnail01 = photos[0].thumbnail._url;
-    const thumbnail02 = photos[1].thumbnail._url;
     return (
-      <div className="js-photo photo photo-1" data-ga-label="left_photo"
-           data-media-id="idHB5V5yEhk5Jmfc8d2luw">
+      <div className="js-photo photo photo-1">
         <div className="showcase-photo-box">
           <a href="/biz_photos/my-two-cents-los-angeles-3?select=idHB5V5yEhk5Jmfc8d2luw">
             <img
@@ -134,11 +132,9 @@ class RestaurantsSingleHeaderPhotos extends Component {
   renderSecondThumbnail() {
     const {restaurant} = this.props;
     const {photos} = restaurant;
-    const thumbnail01 = photos[0].thumbnail._url;
     const thumbnail02 = photos[1].thumbnail._url;
     return (
-      <div className="js-photo photo photo-2" data-ga-label="middle_photo"
-           data-media-id="GW7w6RYB9U1RyNEhCTZjwA" data-media-index="0">
+      <div className="js-photo photo photo-2">
         <div className="showcase-photo-box">
           <a href="/biz_photos/my-two-cents-los-angeles-3?select=GW7w6RYB9U1RyNEhCTZjwA">
 

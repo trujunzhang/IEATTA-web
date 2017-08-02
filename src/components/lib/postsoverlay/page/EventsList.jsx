@@ -22,7 +22,6 @@ class EventsList extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    debugger
     this.setState({
       listTask: byListId(nextProps.listContainerTasks, this.state.terms.listId, this.state.terms.limit)
     })
@@ -62,9 +61,7 @@ class EventsList extends Component {
 
     let hasMore = !ready && totalCount !== results.length
 
-    const showReady = true;//Posts.showReady(results, hasMore, ready, totalCount, limit, firstPagination)
-
-    if (showReady) {
+    if (!ready) {
       return (
         <section className="results_37tfm">
           <Telescope.components.PostsLoading id='load.more.hint.posts'/>
