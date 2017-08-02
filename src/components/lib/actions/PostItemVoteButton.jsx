@@ -125,7 +125,7 @@ class PostItemVoteButton extends Component {
  *
  * Redux
  */
-let {connect} = require('react-redux')
+const {connect} = require('react-redux')
 
 export default connect()(PostItemVoteButton)
 

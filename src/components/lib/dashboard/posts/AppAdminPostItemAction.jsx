@@ -79,7 +79,7 @@ class AppAdminPostItemAction extends Component {
  *
  * Redux
  */
-let {connect} = require('react-redux')
+const {connect} = require('react-redux')
 
 import { bindActionCreators } from 'redux'
 

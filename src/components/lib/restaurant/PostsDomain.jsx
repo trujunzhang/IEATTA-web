@@ -42,7 +42,7 @@ class PostsDomain extends Component {
  *
  * Redux
  */
-let {connect} = require('react-redux')
+const {connect} = require('react-redux')
 
 export default withRouter(connect()(PostsDomain))
 

@@ -65,7 +65,7 @@ class CollectionsResult extends Component {
  *
  * Redux
  */
-let {connect} = require('react-redux')
+const {connect} = require('react-redux')
 
 
 /**

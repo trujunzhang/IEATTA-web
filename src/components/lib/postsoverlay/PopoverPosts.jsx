@@ -35,12 +35,7 @@ class PopoverPosts extends Component {
 
 }
 
-/**
- * ## Imports
- *
- * Redux
- */
-let {connect} = require('react-redux')
+const {connect} = require('react-redux')
 
 function select(store) {
   return {

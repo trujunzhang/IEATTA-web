@@ -33,7 +33,7 @@ class HeaderContent extends Component {
 
   render() {
     // const {} = this
-    
+
     return (
       <div className="main-header main-content-wrap js-main-header webview-hidden">
         <div className="main-header_wrapper">
@@ -64,7 +64,7 @@ class HeaderContent extends Component {
  *
  * Redux
  */
-let {connect} = require('react-redux')
+const {connect} = require('react-redux')
 
 function select(store) {
   return {

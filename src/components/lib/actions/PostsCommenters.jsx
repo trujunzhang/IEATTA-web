@@ -46,7 +46,7 @@ class PostsCommenters extends Component {
  *
  * Redux
  */
-let {connect} = require('react-redux')
+const {connect} = require('react-redux')
 
 export default withRouter(connect()(PostsCommenters))
 

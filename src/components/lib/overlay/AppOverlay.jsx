@@ -39,7 +39,7 @@ class AppOverlay extends Component {
  *
  * Redux
  */
-let {connect} = require('react-redux')
+const {connect} = require('react-redux')
 
 function select(store) {
   return {
