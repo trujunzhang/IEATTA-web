@@ -30,7 +30,6 @@ class EventsSingleHeaderRightMap extends Component {
             </Marker>
           </Map>
 
-
         </div>
 
       </div>

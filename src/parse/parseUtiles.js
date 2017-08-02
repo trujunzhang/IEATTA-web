@@ -14,16 +14,24 @@ const {
   PARSE_USERS,
 } = require('../lib/constants').default
 
-function getQueryByType(type: string = PARSE_RESTAURANTS) {
+function getQueryByType(type: string = PARSE_RESTAURANTS, includes: Array = []) {
+  let query = null;
   switch (type) {
     case PARSE_RESTAURANTS:
-      return new Parse.Query(ParseRestaurant).include('photos')
+      query = new Parse.Query(ParseRestaurant).include('photos')
+      break;
     case PARSE_EVENTS:
-      return new Parse.Query(ParseEvent)
+      query = new Parse.Query(ParseEvent)
+      break;
     case PARSE_USERS:
-      return new Parse.Query(ParseUser)
+      query = new Parse.Query(ParseUser)
+      break;
   }
 
+  includes.map((include) => {
+    query = query.include(include)
+  })
+  return query;
 }
 
 function getRestaurantParameters(terms) {
