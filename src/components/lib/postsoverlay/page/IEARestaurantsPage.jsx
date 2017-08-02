@@ -18,9 +18,7 @@ class IEARestaurantsPage extends Component {
           <div className="top-shelf">
             <Telescope.components.RestaurantsSingleHeader {...this.props}/>
 
-            <div id="super-container" className="content-container">
-              <Telescope.components.RestaurantsDetail {...this.props}/>
-            </div>
+            <Telescope.components.RestaurantsDetail {...this.props}/>
           </div>
         </div>
       </div>

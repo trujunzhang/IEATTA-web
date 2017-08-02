@@ -39,7 +39,13 @@ class EventsList extends Component {
     this.props.dispatch(loadEventsList(nextListTask, terms.listId, terms))
   }
 
-  render() {
+  render(){
+   return(
+
+   )
+  }
+
+  renderContent() {
     const {
       listId,
       showHeader = false,
