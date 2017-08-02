@@ -69,7 +69,6 @@ async function timeout(ms: number): Promise {
 
 export default {
   pushModel, dismissPopModel,
-  resetOverlayDetailedPosts, pushOverlayDetailedPost,
   resetPostsDaily,
   timeout
 }
