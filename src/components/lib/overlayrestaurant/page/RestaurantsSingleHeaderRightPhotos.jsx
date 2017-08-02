@@ -4,7 +4,7 @@ import {FormattedMessage, FormattedRelative} from 'react-intl'
 import Posts from '../../../../lib/posts'
 import Users from '../../../../lib/users'
 
-class RestaurantsSingleHeaderPhotos extends Component {
+class RestaurantsSingleHeaderRightPhotos extends Component {
 
   renderSeeAll() {
     const {restaurant} = this.props;
@@ -218,4 +218,4 @@ class RestaurantsSingleHeaderPhotos extends Component {
 
 }
 
-export default RestaurantsSingleHeaderPhotos;
+export default RestaurantsSingleHeaderRightPhotos;

@@ -43,6 +43,19 @@ class EventsSingleHeader extends Component {
         </div>
 
 
+        <div
+          className="clearfix layout-block layout-a event-details_cards-container top-shelf_overlap column--responsive">
+
+          <div classname="column column-alpha column--responsive">
+
+          </div>
+
+
+          <div className="column column-beta column--responsive">
+          </div>
+
+        </div>
+
       </div>
     )
 

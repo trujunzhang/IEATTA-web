@@ -14,6 +14,7 @@ class RestaurantsDetail extends Component {
   renderRightPanel() {
     return (
       <div className="column column-beta column--responsive official-events">
+
       </div>
     )
   }

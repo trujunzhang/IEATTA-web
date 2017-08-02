@@ -51,7 +51,7 @@ Telescope.registerComponent('RestaurantsPageMap',                 require('./ove
 Telescope.registerComponent('EventsItem',                         require('./overlayrestaurant/page/EventsItem.jsx').default)
 Telescope.registerComponent('EventsList',                         require('./overlayrestaurant/page/EventsList.jsx').default)
 Telescope.registerComponent('RestaurantsSingleHeader',            require('./overlayrestaurant/page/RestaurantsSingleHeader.jsx').default)
-Telescope.registerComponent('RestaurantsSingleHeaderPhotos',      require('./overlayrestaurant/page/RestaurantsSingleHeaderPhotos.jsx').default)
+Telescope.registerComponent('RestaurantsSingleHeaderRightPhotos', require('./overlayrestaurant/page/RestaurantsSingleHeaderRightPhotos.jsx').default)
 
 
 // overlayEvent
@@ -64,7 +64,7 @@ Telescope.registerComponent('EventsPageMap',                 require('./overlaye
 Telescope.registerComponent('OrderedUserItem',               require('./overlayevent/page/OrderedUserItem.jsx').default)
 Telescope.registerComponent('OrderedUserList',               require('./overlayevent/page/OrderedUserList.jsx').default)
 Telescope.registerComponent('EventsSingleHeader',            require('./overlayevent/page/EventsSingleHeader.jsx').default)
-Telescope.registerComponent('EventsSingleHeaderPhotos',      require('./overlayevent/page/EventsSingleHeaderPhotos.jsx').default)
+Telescope.registerComponent('EventsSingleHeaderRightMap',    require('./overlayevent/page/EventsSingleHeaderRightMap.jsx').default)
 
 
 // profile
