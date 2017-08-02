@@ -41,7 +41,6 @@ const {
   LIST_VIEW_LOADED_POSTS,
   DASHBOARD_LOADED_PAGINATION,
   OVERLAY_LOADED_POSTS_PAGE,
-  USERPROFILE_LOADED,
   PARSE_USERS,
   PARSE_TOPICS,
   PARSE_POSTS,
@@ -49,93 +48,14 @@ const {
 } = require('../lib/constants').default
 
 
-async function _loadPostsPaginationDashboard(listTask: Any, listId: string, terms: Any): Promise<Array<Action>> {
-  const {pageIndex, limit} = listTask
-  const skipCount = (pageIndex - 1) * limit
-
-  let dashboardQuery = getQueryByType()
-  let objectsQuery = getRestaurantParameters(terms)
-
-  let totalCount = await  new Parse.Query(ParsePost).count()
-
-  let allCount = totalCount //dashboardQuery.equalTo("status": {$in: Posts.config.PUBLISH_STATUS}}), {noReady: true});
-  let publishCount = await  new Parse.Query(ParsePost).equalTo("status", Posts.config.STATUS_APPROVED).count()
-  let pendingCount = await  new Parse.Query(ParsePost).equalTo("status", Posts.config.STATUS_PENDING).count()
-  let rejectedCount = await  new Parse.Query(ParsePost).equalTo("status", Posts.config.STATUS_REJECTED).count()
-  let draftCount = await  new Parse.Query(ParsePost).equalTo("status", Posts.config.STATUS_SPAM).count()
-  let trashCount = await  new Parse.Query(ParsePost).equalTo("status", Posts.config.STATUS_DELETED).count()
-
-  let tableCount = await  objectsQuery.count()
-
-  let countKeys = {
-    allCount: allCount,
-    publishCount: publishCount,
-    pendingCount: pendingCount,
-    rejectedCount: rejectedCount,
-    draftCount: draftCount,
-    trashCount: trashCount,
-    tableCount: tableCount
-  }
-
-  let results = await objectsQuery.skip(skipCount).limit(limit).find({
-    success: (list) => {
-      // debugger
-      // Flow can't guarantee {type, list} is a valid action
-    },
-    error: (error) => {
-      debugger
-    }
-  })
-
-  const payload = {
-    list: (results || []).map(fromParseUser),
-    listTask,
-    listId,
-    limit,
-    countKeys,
-    totalCount
-  }
-
-  const action = {
-    type: DASHBOARD_LOADED_PAGINATION,
-    payload: payload
-  }
-
-  return Promise.all([
-    Promise.resolve(action)
-  ])
-}
-
-function loadPostsPaginationDashboard(listTask: Any, listId: string, terms: Any): ThunkAction {
-  return (dispatch) => {
-    const action = _loadPostsPaginationDashboard(listTask, listId, terms)
-
-    // Loading friends schedules shouldn't block the login process
-    action.then(
-      ([result]) => {
-        dispatch(result)
-      }
-    )
-    return action
-  }
-}
-
 async function _loadPostsList(listTask: Any, listId: string, terms: Any, type: string = LIST_VIEW_LOADED_POSTS): Promise<Array<Action>> {
   const {pageIndex, limit} = listTask
   const skipCount = (pageIndex - 1) * limit
 
-  let objectsQuery = getRestaurantParameters(terms)
-  let totalCount = await  objectsQuery.count()
+  const objectsQuery = getRestaurantParameters(terms)
+  const totalCount = await objectsQuery.count()
 
-  let results = await objectsQuery.skip(skipCount).limit(limit).find({
-    success: (list) => {
-      // debugger
-      // Flow can't guarantee {type, list} is a valid action
-    },
-    error: (error) => {
-      debugger
-    }
-  })
+  const results = await objectsQuery.skip(skipCount).limit(limit).find()
 
   const payload = {
     list: (results || []).map(fromParseRestaurant),
@@ -155,8 +75,6 @@ async function _loadPostsList(listTask: Any, listId: string, terms: Any, type: s
 function loadPostsList(listTask: Any, listId: string, terms: Any, type: string = LIST_VIEW_LOADED_POSTS): ThunkAction {
   return (dispatch) => {
     const action = _loadPostsList(listTask, listId, terms, type)
-
-    // Loading friends schedules shouldn't block the login process
     action.then(
       ([result]) => {
         dispatch(result)
@@ -168,5 +86,4 @@ function loadPostsList(listTask: Any, listId: string, terms: Any, type: string =
 
 export default {
   loadPostsList,
-  loadPostsPaginationDashboard
 }

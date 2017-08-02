@@ -12,6 +12,8 @@ const RELATED_POSTS_COUNT = 6
 class EventsList extends Component {
 
   componentDidMount() {
+    const {restaurant} = this.props;
+
     const listTask = {
       pageIndex: 1,
       limit: RELATED_POSTS_COUNT
