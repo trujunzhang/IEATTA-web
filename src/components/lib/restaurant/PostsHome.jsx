@@ -4,6 +4,7 @@ import Users from '../../../lib/users'
 import Posts from '../../../lib/posts'
 
 import {withRouter} from 'react-router'
+
 let md5 = require('blueimp-md5')
 
 /**
@@ -43,7 +44,7 @@ class PostsHome extends Component {
       <div className="column column-alpha ">
         <div className="results-wrapper indexed-biz-archive" id="restaurants_list_results">
           <div className="search-results-content">
-            { this.renderPostList('list')}
+            {this.renderPostList('list')}
           </div>
         </div>
       </div>

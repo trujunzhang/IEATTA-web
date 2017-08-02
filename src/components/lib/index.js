@@ -31,20 +31,20 @@ Telescope.registerComponent('HeaderRightUserIconsPanel',        require('./heade
 Telescope.registerComponent('HeaderRightUserPanel',             require('./header/HeaderRightUserPanel.jsx').default)
 
 
-// posts
-Telescope.registerComponent('PostsDaily',                 require('./posts/PostsDaily.jsx').default)
-Telescope.registerComponent('PostsDay',                   require('./posts/PostsDay.jsx').default)
-Telescope.registerComponent('PostsDomain',                require('./posts/PostsDomain.jsx').default)
-Telescope.registerComponent('PostsHome',                  require('./posts/PostsHome.jsx').default)
-Telescope.registerComponent('PostsHomeList',              require('./posts/PostsHomeList.jsx').default)
-Telescope.registerComponent('PostsItem',                  require('./posts/PostsItem.jsx').default)
-Telescope.registerComponent('PostsListRightMap',          require('./posts/PostsListRightMap.jsx').default)
-Telescope.registerComponent('PostsList',                  require('./posts/PostsList.jsx').default)
-Telescope.registerComponent('PostsListTitle',             require('./posts/PostsListTitle.jsx').default)
-Telescope.registerComponent('PostsLoading',               require('./posts/PostsLoading.jsx').default)
-Telescope.registerComponent('PostsLoadMore',              require('./posts/PostsLoadMore.jsx').default)
-Telescope.registerComponent('PostsNoResults',             require('./posts/PostsNoResults.jsx').default)
-Telescope.registerComponent('PostsPopularThisWeek',       require('./posts/PostsPopularThisWeek.jsx').default)
+// restaurant
+Telescope.registerComponent('PostsDaily',                 require('./restaurant/PostsDaily.jsx').default)
+Telescope.registerComponent('PostsDay',                   require('./restaurant/PostsDay.jsx').default)
+Telescope.registerComponent('PostsDomain',                require('./restaurant/PostsDomain.jsx').default)
+Telescope.registerComponent('PostsHome',                  require('./restaurant/PostsHome.jsx').default)
+Telescope.registerComponent('PostsHomeList',              require('./restaurant/PostsHomeList.jsx').default)
+Telescope.registerComponent('PostsItem',                  require('./restaurant/PostsItem.jsx').default)
+Telescope.registerComponent('PostsListRightMap',          require('./restaurant/PostsListRightMap.jsx').default)
+Telescope.registerComponent('PostsList',                  require('./restaurant/PostsList.jsx').default)
+Telescope.registerComponent('PostsListTitle',             require('./restaurant/PostsListTitle.jsx').default)
+Telescope.registerComponent('PostsLoading',               require('./restaurant/PostsLoading.jsx').default)
+Telescope.registerComponent('PostsLoadMore',              require('./restaurant/PostsLoadMore.jsx').default)
+Telescope.registerComponent('PostsNoResults',             require('./restaurant/PostsNoResults.jsx').default)
+Telescope.registerComponent('PostsPopularThisWeek',       require('./restaurant/PostsPopularThisWeek.jsx').default)
 
 // postsoverlay
 Telescope.registerComponent('PopoverPosts',                 require('./postsoverlay/PopoverPosts.jsx').default)
