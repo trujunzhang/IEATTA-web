@@ -28,6 +28,7 @@ const Parse = require('parse')
 
 const ParseRestaurant = Parse.Object.extend('Restaurant')
 const ParseEvent = Parse.Object.extend('Event')
+const ParsePeopleInEvent = Parse.Object.extend('PeopleInEvent')
 const ParseUser = Parse.Object.extend('User')
 const ParseHistory = Parse.Object.extend('History')
 const ParseTopic = Parse.Object.extend('Topic')
@@ -39,6 +40,7 @@ const ParseMessage = Parse.Object.extend('Message')
 export default {
   ParseRestaurant,
   ParseEvent,
+  ParsePeopleInEvent,
   ParseUser,
   ParseHistory,
   ParseTopic,

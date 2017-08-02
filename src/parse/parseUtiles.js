@@ -2,7 +2,7 @@ const Parse = require('parse')
 
 let Parameters = require('../parameters').default
 
-let {ParseRestaurant, ParseEvent, ParseUser} = require('./objects').default
+let {ParseRestaurant, ParseEvent, ParseUser, ParsePeopleInEvent} = require('./objects').default
 
 
 /**
@@ -11,6 +11,7 @@ let {ParseRestaurant, ParseEvent, ParseUser} = require('./objects').default
 const {
   PARSE_RESTAURANTS,
   PARSE_EVENTS,
+  PARSE_PEOPLE_IN_EVENTS,
   PARSE_USERS,
 } = require('../lib/constants').default
 
@@ -25,6 +26,9 @@ function getQueryByType(type: string = PARSE_RESTAURANTS, includes: Array = []) 
       break;
     case PARSE_USERS:
       query = new Parse.Query(ParseUser)
+      break;
+    case PARSE_PEOPLE_IN_EVENTS:
+      query = new Parse.Query(ParsePeopleInEvent)
       break;
   }
 
@@ -46,15 +50,14 @@ function getEventParameters(terms) {
     .end()
 }
 
-
 function getUsersParameters(terms) {
   return new Parameters.Users(getQueryByType(PARSE_USERS))
     .addParameters(terms)
     .end()
 }
 
-function getTopicsParameters(terms) {
-  return new Parameters.Topics(getQueryByType(PARSE_TOPICS))
+function getPeopleInEventParameters(terms) {
+  return new Parameters.PeopleInEvent(getQueryByType(PARSE_PEOPLE_IN_EVENTS))
     .addParameters(terms)
     .end()
 }
@@ -64,5 +67,5 @@ export default {
   getRestaurantParameters,
   getEventParameters,
   getUsersParameters,
-  getTopicsParameters
+  getPeopleInEventParameters,
 }
