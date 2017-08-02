@@ -26,14 +26,6 @@ class EventsSingleHeader extends Component {
   }
 
 
-  renderBottomLeftPanel() {
-
-  }
-
-  renderBottomRightPanel() {
-
-  }
-
   render() {
     return (
       <div className="content-container">
@@ -47,11 +39,11 @@ class EventsSingleHeader extends Component {
           className="clearfix layout-block layout-a event-details_cards-container top-shelf_overlap column--responsive">
 
           <div classname="column column-alpha column--responsive">
-
+            <Telescope.components.EventsSingleHeaderLeftPanel {...this.props}/>
           </div>
 
-
           <div className="column column-beta column--responsive">
+            {/*<Telescope.components.EventsSingleHeaderRightMap {...this.props}/>*/}
           </div>
 
         </div>
