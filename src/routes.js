@@ -45,7 +45,7 @@ const createRoutes = (store) => {
           // http://localhost:3000/events/xxxxx
           // https://www.yelp.com/events/pleasanton-alameda-county-fair-6
           path: 'events/(:eid)/(:eslug)',
-          component: Telescope.components.DetailedRestaurant
+          component: Telescope.components.DetailedEvent
         },
         {
           // http://localhost:3000/login

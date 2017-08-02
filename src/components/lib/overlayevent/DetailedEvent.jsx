@@ -3,13 +3,13 @@ import React, {Component} from 'react'
 
 const {loadRestaurantPage} = require('../../../actions').default
 
-class DetailedRestaurant extends Component {
+class DetailedEvent extends Component {
   constructor(props, context) {
     super(props)
 
     this.state = this.initialState = {
-      rid: props.params.rid,
-      rslug: props.params.rslug
+      eid: props.params.eid,
+      eslug: props.params.eslug
     }
   }
 
@@ -18,8 +18,8 @@ class DetailedRestaurant extends Component {
   }
 
   render() {
-    const {detailedRestaurantsOverlay} = this.props,
-      {isFetching, currentModel} = detailedRestaurantsOverlay;
+    const {detailedEventsOverlay} = this.props,
+      {isFetching, currentModel} = detailedEventsOverlay;
 
     if (isFetching) {
       return (
@@ -29,7 +29,7 @@ class DetailedRestaurant extends Component {
       )
     }
 
-    return (<Telescope.components.IEARestaurantsPage restaurant={currentModel.model}/>)
+    return (<Telescope.components.IEAEventsPage restaurant={currentModel.model}/>)
   }
 
 }
@@ -38,7 +38,7 @@ const {connect} = require('react-redux')
 
 function select(store) {
   return {
-    detailedRestaurantsOverlay: store.detailedRestaurantsOverlay
+    detailedEventsOverlay: store.detailedEventsOverlay
   }
 }
 
@@ -46,5 +46,5 @@ function select(store) {
  * Connect the properties
  */
 
-export default connect(select)(DetailedRestaurant)
+export default connect(select)(DetailedEvent)
 

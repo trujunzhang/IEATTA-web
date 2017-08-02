@@ -75,7 +75,11 @@ export default {
     return loadParseObject(USERPROFILE_LOADED, pageQuery, userId)
   },
 
-  loadPostPage: (objectId: string): ThunkAction => {
+  loadRestaurantPage: (objectId: string): ThunkAction => {
+    return loadParseObject(OVERLAY_LOADED_POSTS_PAGE, getQueryByType(), objectId)
+  },
+
+  loadEventPage: (objectId: string): ThunkAction => {
     return loadParseObject(OVERLAY_LOADED_POSTS_PAGE, getQueryByType(), objectId)
   }
 
