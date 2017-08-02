@@ -66,7 +66,7 @@ class RestaurantsItem extends Component {
             <ul className="search-result_tags">
               <li className="tag-18x18_flame-dd5114">
                 <small>
-                    <span aria-hidden="true"
+                    <span
                           id="posts_item_span"
                           className="icon icon--18-flame icon--size-18">
                       <svg className="icon_svg">

@@ -10,18 +10,22 @@ export type Pointer = {
   id: string
 }
 
+
 export type User = {
-  id: string,
-  name: string,
-  loginType: string,
-  email: string,
-  slug: string,
-  defaultFolderId: string,
-  folders: Array<Folder>,
-  upvotedPosts: Array<string>, // PostId array
-  downvotedPosts: Array<string>, // PostId array
-  upvotedComments: Array<string>, // commentId array
-  downvotedComments: Array<string>, // commentId array
+  // Basic Fields
+  id: string;
+  createdAt: Date;
+  updatedAt: Date;
+  // Attributes
+  username: string;
+  loginType: string;
+  email: string;
+  // Photos
+  listPhotoId: string;
+  // voting
+  useful: Array;
+  funny: Array;
+  cool: Array;
 }
 
 export type Photo = {
@@ -95,17 +99,21 @@ export function fromParsePointer(map: Object): Pointer {
 
 export function fromParseUser(map: Object): User {
   return {
+    // Basic Fields
     id: map.id,
-    name: map.get('username'),
-    slug: map.get('slug'),
+    createdAt: map.get('createdAt'),
+    updatedAt: map.get('updatedAt'),
+    // Attributes
+    username: map.get('username'),
     loginType: map.get('loginType'),
-    email: map.get('email'),
-
-    upvotedPosts: _.pluck((map.get('upvotedPosts') || []).map(fromParsePointer), 'id'),
-    downvotedPosts: _.pluck((map.get('downvotedPosts') || []).map(fromParsePointer), 'id'),
-    upvotedComments: _.pluck((map.get('upvotedComments') || []).map(fromParsePointer), 'id'),
-    downvotedComments: _.pluck((map.get('downvotedComments') || []).map(fromParsePointer), 'id')
-  };
+    email: map.get('email') || "",
+    // Photos
+    photos: (map.get('photos') || []).map(fromParsePhoto),
+    // voting
+    useful: _.pluck((map.get('useful') || []).map(fromParsePointer), 'id').join(';'),
+    funny: _.pluck((map.get('funny') || []).map(fromParsePointer), 'id').join(';'),
+    cool: _.pluck((map.get('cool') || []).map(fromParsePointer), 'id').join(';')
+  }
 }
 
 export function fromParsePhoto(map: Object): Photo {
