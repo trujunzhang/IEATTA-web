@@ -18,7 +18,7 @@ class IEAEventsPage extends Component {
         </div>
 
         <div id="super-container" className="content-container">
-          {/*<Telescope.components.EventsDetail {...this.props}/>*/}
+          <Telescope.components.EventsDetail {...this.props}/>
         </div>
       </div>
 

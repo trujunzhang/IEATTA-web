@@ -5,31 +5,55 @@ import Users from '../../../../lib/users'
 
 class EventsDetail extends Component {
 
+  renderLeftTopSection() {
+    const {event} = this.props;
+    return (
+      <div className="ysection">
+        <h3>What/Why:</h3>
+        <p>
+          {event.body}
+        </p>
+      </div>
+    )
+  }
+
+  renderLeftBottomReviewsSection() {
+    return (
+      <div className="ysection">
+      </div>
+    )
+  }
+
   renderLeftPanel() {
     return (
-      <Telescope.components.EventsList {...this.props}/>
+      <div className="column column-alpha column--responsive">
+        {this.renderLeftTopSection()}
+        {this.renderLeftBottomReviewsSection()}
+      </div>
+    )
+  }
+
+  renderRightTopUsersSection() {
+    return (
+      <div className="js-subscriber-list">
+      </div>
     )
   }
 
   renderRightPanel() {
     return (
-      <div className="column column-beta column--responsive official-events">
+      <div className="column column-beta column--responsive">
+        {this.renderRightTopUsersSection()}
+
       </div>
     )
   }
 
   render() {
     return (
-      <div id="super-container" className="content-container">
-
-        <div className="ysection event-landing_below-fold">
-          <div className="clearfix layout-block layout-a layout-border column--responsive">
-
-            {this.renderLeftPanel()}
-            {this.renderRightPanel()}
-
-          </div>
-        </div>
+      <div className="clearfix layout-block layout-a layout-border event-details_container column--responsive">
+        {this.renderLeftPanel()}
+        {this.renderRightPanel()}
       </div>
     )
   }
