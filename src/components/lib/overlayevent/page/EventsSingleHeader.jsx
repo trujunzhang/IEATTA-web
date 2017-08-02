@@ -43,7 +43,7 @@ class EventsSingleHeader extends Component {
           </div>
 
           <div className="column column-beta column--responsive">
-            {/*<Telescope.components.EventsSingleHeaderRightMap {...this.props}/>*/}
+            <Telescope.components.EventsSingleHeaderRightMap {...this.props}/>
           </div>
 
         </div>
