@@ -23,7 +23,7 @@ class EventsList extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      listTask: byListId(nextProps.listContainerTasks, this.state.terms.listId, this.state.terms.limit)
+      listTask: byListId(nextProps.listContainerTasks, this.state.terms)
     })
   }
 
@@ -36,7 +36,7 @@ class EventsList extends Component {
     const nextListTask = this.state.listTask
     nextListTask['ready'] = false
     this.setState({listTask: nextListTask})
-    this.props.dispatch(loadEventsList(nextListTask, terms.listId, terms))
+    this.props.dispatch(loadEventsList(nextListTask, terms))
   }
 
   render() {
