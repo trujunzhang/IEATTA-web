@@ -22,7 +22,7 @@ class EventsList extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // debugger
+    debugger
     this.setState({
       listTask: byListId(nextProps.listContainerTasks, this.state.terms.listId, this.state.terms.limit)
     })

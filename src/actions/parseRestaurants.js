@@ -43,13 +43,8 @@ async function _loadEventsList(listTask: Any, listId: string, terms: Any, type: 
   const skipCount = (pageIndex - 1) * limit
 
   const objectsQuery = getEventParameters(terms)
-  debugger
-
   const totalCount = await objectsQuery.count()
-
   const results = await objectsQuery.skip(skipCount).limit(limit).find()
-
-  debugger
 
   const payload = {
     list: (results || []).map(fromParseEvent),
