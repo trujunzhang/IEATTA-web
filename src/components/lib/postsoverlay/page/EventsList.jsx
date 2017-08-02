@@ -15,14 +15,19 @@ class EventsList extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    // debugger
+    this.setState({
+      listTask: byListId(nextProps.listContainerTasks, nextProps.listId, nextProps.limit)
+    })
+  }
+
   componentDidMount() {
     this.loadMore()
   }
 
   loadMore() {
-    const terms = {
-
-    }
+    const terms = {}
     const nextListTask = this.state.listTask
     nextListTask['ready'] = false
     this.setState({listTask: nextListTask})
@@ -67,7 +72,7 @@ const {connect} = require('react-redux')
 
 function select(store) {
   return {
-    detailedRestaurantsOverlay: store.detailedRestaurantsOverlay
+    listContainerTasks: store.listContainerTasks
   }
 }
 

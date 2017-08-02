@@ -26,7 +26,6 @@ const {
   POSTS_VOTING_DONE
 } = require('../../lib/constants').default
 
-
 /**
  * ## authReducer function
  * @param {Object} state - initialState
@@ -43,7 +42,6 @@ function paginationReducer(state: State = initialState, action): State {
 
       let nextTask = state.get(listId)
       if (!!nextTask) {
-
         nextTask = nextTask.set('results', nextTask.get('results').concat(list))
           .set('pageIndex', listTask.pageIndex + 1)
           .set('totalCount', totalCount)
@@ -60,42 +58,10 @@ function paginationReducer(state: State = initialState, action): State {
         })
       }
 
-      let nextState = state
-        .set(listId, nextTask)
-
+      let nextState = state.set(listId, nextTask)
       return nextState
     }
 
-    // https://stackoverflow.com/questions/29589753/how-to-update-element-inside-list-with-immutablejs
-    case POSTS_VOTING_DONE: {
-
-      const {user, post} = action.payload,
-        listId = action.payload.listId,
-        postId = post.id
-
-      let nextTask = state.get(listId),
-        results = nextTask.get('results')
-
-      let list = List(results)
-
-      list.update(
-        list.findIndex(function (item) {
-          return item.id === postId;
-        }), function (item) {
-          item['upvoters'] = post.upvoters
-          item['downvoters'] = post.downvoters
-          return item
-        }
-      )
-
-      let newResult = list.toJS()
-      // nextTask.set('results', newResult)
-
-      let nextState = state
-        .setIn([listId, 'results'], newResult)
-
-      return nextState
-    }
     case LIST_VIEW_RESET_ALL_POSTS: {
       return Map({})
     }
