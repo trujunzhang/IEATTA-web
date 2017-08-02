@@ -67,7 +67,7 @@ function pushOverlayDetailedPost(post: object): Action {
 }
 
 // ================================
-// For PostsDaily and PostsList
+// For PostsDaily and IEARestaurantsList
 // ================================
 function resetPostsDaily(): Action {
   return {type: LIST_VIEW_RESET_ALL_POSTS}

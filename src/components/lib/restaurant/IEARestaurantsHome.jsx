@@ -29,7 +29,7 @@ class IEARestaurantsHome extends Component {
     // debugger
 
     return (
-      <Telescope.components.PostsList
+      <Telescope.components.IEARestaurantsList
         key={key}
         limit={limit}
         terms={terms}

@@ -27,7 +27,7 @@ class PostsDay extends Component {
 
         return (
             <div className="posts-day">
-                <Telescope.components.PostsList
+                <Telescope.components.IEARestaurantsList
                 terms = {terms}
                 listId = {terms.listId}
                 showHeader={true}

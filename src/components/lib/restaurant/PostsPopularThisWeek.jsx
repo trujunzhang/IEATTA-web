@@ -90,7 +90,7 @@ class PostsPopularThisWeek extends Component {
 
         return (
             <div className="posts-day">
-                <Telescope.components.PostsList
+                <Telescope.components.IEARestaurantsList
                     showHeader={true}
                     checkReady={true}
                     title="Popular this week"

@@ -5,7 +5,7 @@ import Posts from '../../../lib/posts'
 const {loadRestaurantsList} = require('../../../actions').default
 const {byListId} = require('../../filter/filterPosts').default
 
-class PostsList extends Component {
+class IEARestaurantsList extends Component {
 
   constructor(props) {
     super(props)
@@ -22,7 +22,6 @@ class PostsList extends Component {
   }
 
   componentDidMount() {
-    // console.log('@ Posts List did Mount!')
     this.loadMore()
   }
 
@@ -102,13 +101,7 @@ class PostsList extends Component {
 
 }
 
-/**
- * ## Imports
- *
- * Redux
- */
 const {connect} = require('react-redux')
-
 
 function select(store) {
   return {
@@ -116,9 +109,5 @@ function select(store) {
   }
 }
 
-/**
- * Connect the properties
- */
-
-export default connect(select)(PostsList)
+export default connect(select)(IEARestaurantsList)
 
