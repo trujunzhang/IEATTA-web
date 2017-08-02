@@ -74,4 +74,4 @@ class RestaurantsSingleHeaderRight extends Component {
   }
 }
 
-export default RestaurantsSingleHeaderRight
+export default RestaurantsSingleHeaderRight;
