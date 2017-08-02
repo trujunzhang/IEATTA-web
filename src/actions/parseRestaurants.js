@@ -36,7 +36,7 @@ const {
   LIST_VIEW_LOADED_BY_TYPE,
 } = require('../lib/constants').default
 
-async function _loadListByType(listTask: Any, objectsQuery: Parse.Query, terms: Any, parseFun: Any): Promise<Array<Action>> {
+async function _loadListByType(listTask: Any, objectsQuery: Parse.Query, terms: Any, parseFun: Any, type: Any = LIST_VIEW_LOADED_BY_TYPE): Promise<Array<Action>> {
   const {pageIndex, limit} = listTask
   const skipCount = (pageIndex - 1) * limit
 
@@ -52,7 +52,8 @@ async function _loadListByType(listTask: Any, objectsQuery: Parse.Query, terms: 
     totalCount: totalCount
   }
 
-  const action = {LIST_VIEW_LOADED_BY_TYPE, payload}
+  const action = {type, payload}
+
 
   return Promise.all([
     Promise.resolve(action)

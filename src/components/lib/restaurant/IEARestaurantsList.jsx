@@ -34,7 +34,6 @@ class IEARestaurantsList extends Component {
 
   render() {
     const {
-      listId,
       showHeader = false,
       title,
       showClose = false,
@@ -45,6 +44,7 @@ class IEARestaurantsList extends Component {
     const {listTask} = this.state
 
     const {
+      id,
       results,
       ready,
       totalCount,
@@ -72,10 +72,7 @@ class IEARestaurantsList extends Component {
           hasMore={hasMore}
           ready={ready}
           title={title}
-          listId={listId}
-          showClose={showClose}
-          showHeader={showHeader}
-          dismissBanner={dismissBanner}
+          listId={id}
           loadMore={this.loadMore.bind(this)}/>
       )
     } else {
