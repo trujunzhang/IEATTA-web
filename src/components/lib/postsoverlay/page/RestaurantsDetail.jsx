@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import Posts from '../../../../lib/posts'
 import Users from '../../../../lib/users'
 
-class PostDetail extends Component {
+class RestaurantsDetail extends Component {
 
 
   render() {
@@ -14,4 +14,4 @@ class PostDetail extends Component {
   }
 }
 
-export default PostDetail
+export default RestaurantsDetail

@@ -6,7 +6,7 @@ Telescope.registerComponent('ArticleUpvote',                  require('./actions
 Telescope.registerComponent('PostItemVoteButton',             require('./actions/PostItemVoteButton.jsx').default)
 Telescope.registerComponent('PostsCommenters',                require('./actions/PostsCommenters.jsx').default)
 Telescope.registerComponent('PostsReadMore',                  require('./actions/PostsReadMore.jsx').default)
-Telescope.registerComponent('PostsSingleHeaderRight',         require('./actions/PostsSingleHeaderRight.jsx').default)
+Telescope.registerComponent('RestaurantsSingleHeaderRight',         require('./actions/RestaurantsSingleHeaderRight.jsx').default)
 Telescope.registerComponent('RelatedPostDownvote',            require('./actions/RelatedPostDownvote.jsx').default)
 Telescope.registerComponent('RelatedPostUpvote',              require('./actions/RelatedPostUpvote.jsx').default)
 Telescope.registerComponent('TopicItem',                      require('./actions/TopicItem.jsx').default)
@@ -50,12 +50,12 @@ Telescope.registerComponent('PostsPopularThisWeek',       require('./restaurant/
 Telescope.registerComponent('DetailedRestaurant',                 require('./postsoverlay/DetailedRestaurant.jsx').default)
 
 // postsoverlay(page)
-Telescope.registerComponent('PostDetail',                         require('./postsoverlay/page/PostDetail.jsx').default)
+Telescope.registerComponent('RestaurantsDetail',                         require('./postsoverlay/page/RestaurantsDetail.jsx').default)
 Telescope.registerComponent('RestaurantsPage',                    require('./postsoverlay/page/RestaurantsPage.jsx').default)
 Telescope.registerComponent('RestaurantsPageMap',                 require('./postsoverlay/page/RestaurantsPageMap.jsx').default)
 Telescope.registerComponent('PostsRelatedItem',                   require('./postsoverlay/page/PostsRelatedItem.jsx').default)
 Telescope.registerComponent('PostsRelatedList',                   require('./postsoverlay/page/PostsRelatedList.jsx').default)
-Telescope.registerComponent('PostsSingleHeader',                  require('./postsoverlay/page/PostsSingleHeader.jsx').default)
+Telescope.registerComponent('RestaurantsSingleHeader',                  require('./postsoverlay/page/RestaurantsSingleHeader.jsx').default)
 
 // profile
 Telescope.registerComponent('UserProfileHeader',                   require('./profile/UserProfileHeader.jsx').default)

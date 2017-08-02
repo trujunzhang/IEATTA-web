@@ -38,7 +38,7 @@ class AppAdminPostsEditSingle extends Component {
     }
   }
 
-  renderPostDetail () {
+  renderRestaurantsDetail () {
     return (
       <fieldset className="inline-edit-col-left">
         <legend className="inline-edit-legend">Quick Edit</legend>
@@ -191,7 +191,7 @@ class AppAdminPostsEditSingle extends Component {
         className="inline-edit-row inline-edit-row-post inline-edit-post quick-edit-row quick-edit-row-post inline-edit-post inline-editor">
         <td colSpan="8" className="colspanchange" id="bulk-edit-row">
 
-          {this.renderPostDetail()}
+          {this.renderRestaurantsDetail()}
 
           <fieldset className="inline-edit-col-right">
 

@@ -16,10 +16,10 @@ class RestaurantsPage extends Component {
 
         <div className="main-content-wrap main-content-wrap--full">
           <div className="top-shelf">
-            <Telescope.components.PostsSingleHeader/>
+            <Telescope.components.RestaurantsSingleHeader/>
 
             <div id="super-container" className="content-container">
-              <Telescope.components.PostDetail/>
+              <Telescope.components.RestaurantsDetail/>
             </div>
           </div>
         </div>

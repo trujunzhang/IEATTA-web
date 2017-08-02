@@ -4,7 +4,7 @@ import {FormattedMessage, FormattedRelative} from 'react-intl'
 import Posts from '../../../../lib/posts'
 import Users from '../../../../lib/users'
 
-class PostsSingleHeader extends Component {
+class RestaurantsSingleHeader extends Component {
 
   renderBizPageHeaderLeft() {
     return (
@@ -395,4 +395,4 @@ class PostsSingleHeader extends Component {
   }
 }
 
-export default PostsSingleHeader
+export default RestaurantsSingleHeader

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { FormattedMessage, FormattedRelative } from 'react-intl'
 import Posts from '../../../lib/posts'
 
-class PostsSingleHeaderRight extends Component {
+class RestaurantsSingleHeaderRight extends Component {
 
   onSaveButtonClick (event) {
     // event.preventDefault()
@@ -74,4 +74,4 @@ class PostsSingleHeaderRight extends Component {
   }
 }
 
-export default PostsSingleHeaderRight
+export default RestaurantsSingleHeaderRight
