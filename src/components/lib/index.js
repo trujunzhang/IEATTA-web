@@ -32,19 +32,14 @@ Telescope.registerComponent('HeaderRightUserPanel',             require('./heade
 
 
 // restaurant
-Telescope.registerComponent('PostsDaily',                 require('./restaurant/PostsDaily.jsx').default)
-Telescope.registerComponent('PostsDay',                   require('./restaurant/PostsDay.jsx').default)
-Telescope.registerComponent('PostsDomain',                require('./restaurant/PostsDomain.jsx').default)
 Telescope.registerComponent('IEARestaurantsHome',         require('./restaurant/IEARestaurantsHome.jsx').default)
 Telescope.registerComponent('RestaurantsHomeList',        require('./restaurant/RestaurantsHomeList.jsx').default)
 Telescope.registerComponent('RestaurantsItem',            require('./restaurant/RestaurantsItem.jsx').default)
 Telescope.registerComponent('RestaurantsListRightMap',    require('./restaurant/RestaurantsListRightMap.jsx').default)
 Telescope.registerComponent('IEARestaurantsList',         require('./restaurant/IEARestaurantsList.jsx').default)
-Telescope.registerComponent('PostsListTitle',             require('./restaurant/PostsListTitle.jsx').default)
 Telescope.registerComponent('PostsLoading',               require('./restaurant/PostsLoading.jsx').default)
 Telescope.registerComponent('PostsLoadMore',              require('./restaurant/PostsLoadMore.jsx').default)
 Telescope.registerComponent('PostsNoResults',             require('./restaurant/PostsNoResults.jsx').default)
-Telescope.registerComponent('PostsPopularThisWeek',       require('./restaurant/PostsPopularThisWeek.jsx').default)
 
 // restaurantsoverlay
 Telescope.registerComponent('DetailedRestaurant',                 require('./postsoverlay/DetailedRestaurant.jsx').default)
@@ -63,19 +58,11 @@ Telescope.registerComponent('UserProfileHeader',                   require('./pr
 Telescope.registerComponent('UsersProfile',                        require('./profile/UsersProfile.jsx').default)
 Telescope.registerComponent('UsersSingle',                         require('./profile/UsersSingle.jsx').default)
 
-// profile(list)
-Telescope.registerComponent('UserProfilePostsList',                require('./profile/list/UserProfilePostsList.jsx').default)
-
 // profile(menus)
 Telescope.registerComponent('UsersCollectionFoldersList',          require('./profile/menus/UsersCollectionFoldersList.jsx').default)
 Telescope.registerComponent('UsersDownvote',                       require('./profile/menus/UsersDownvote.jsx').default)
 Telescope.registerComponent('UsersSubmittedPostsList',             require('./profile/menus/UsersSubmittedPostsList.jsx').default)
 Telescope.registerComponent('UsersUpvote',                         require('./profile/menus/UsersUpvote.jsx').default)
-
-// profile(folders)
-Telescope.registerComponent('FoldersItem',                       require('./profile/folders/FoldersItem.jsx').default)
-Telescope.registerComponent('FoldersList',                       require('./profile/folders/FoldersList.jsx').default)
-
 
 // Sidebar
 Telescope.registerComponent('AppSideBar',           require('./sidebar/AppSideBar.jsx').default)

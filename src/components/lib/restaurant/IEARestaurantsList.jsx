@@ -56,22 +56,10 @@ class IEARestaurantsList extends Component {
 
     const showReady = Posts.showReady(results, hasMore, ready, totalCount, limit, firstPagination)
 
-    const headerView =
-      (<div>
-        <div className='fullWidthBox_3Dggh box_c4OJj'>
-          <div className='content_DcBqe'>
-            <Telescope.components.PostsListTitle
-              title={title}
-              showClose={showClose}
-              dismissBanner={dismissBanner}/>
-          </div>
-        </div>
-      </div>)
 
     if (showReady) {
       return (
         <section className='results_37tfm'>
-          {showHeader ? headerView : null}
           <Telescope.components.PostsLoading id={'load.more.hint.posts'}/>
         </section>
       )
@@ -93,7 +81,6 @@ class IEARestaurantsList extends Component {
     } else {
       return (
         <section className="results_37tfm">
-          {showHeader ? headerView : null}
           <Telescope.components.PostsNoResults relatedList={false}/>
         </section>
       )
