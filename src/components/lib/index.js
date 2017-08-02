@@ -46,16 +46,17 @@ Telescope.registerComponent('PostsLoadMore',              require('./restaurant/
 Telescope.registerComponent('PostsNoResults',             require('./restaurant/PostsNoResults.jsx').default)
 Telescope.registerComponent('PostsPopularThisWeek',       require('./restaurant/PostsPopularThisWeek.jsx').default)
 
-// postsoverlay
+// restaurantsoverlay
 Telescope.registerComponent('DetailedRestaurant',                 require('./postsoverlay/DetailedRestaurant.jsx').default)
 
-// postsoverlay(page)
-Telescope.registerComponent('RestaurantsDetail',                         require('./postsoverlay/page/RestaurantsDetail.jsx').default)
+// restaurantsoverlay(page)
+Telescope.registerComponent('RestaurantsDetail',                  require('./postsoverlay/page/RestaurantsDetail.jsx').default)
 Telescope.registerComponent('RestaurantsPage',                    require('./postsoverlay/page/RestaurantsPage.jsx').default)
 Telescope.registerComponent('RestaurantsPageMap',                 require('./postsoverlay/page/RestaurantsPageMap.jsx').default)
 Telescope.registerComponent('PostsRelatedItem',                   require('./postsoverlay/page/PostsRelatedItem.jsx').default)
 Telescope.registerComponent('PostsRelatedList',                   require('./postsoverlay/page/PostsRelatedList.jsx').default)
-Telescope.registerComponent('RestaurantsSingleHeader',                  require('./postsoverlay/page/RestaurantsSingleHeader.jsx').default)
+Telescope.registerComponent('RestaurantsSingleHeader',            require('./postsoverlay/page/RestaurantsSingleHeader.jsx').default)
+Telescope.registerComponent('RestaurantsSingleHeaderPhotos',      require('./postsoverlay/page/RestaurantsSingleHeaderPhotos.jsx').default)
 
 // profile
 Telescope.registerComponent('UserProfileHeader',                   require('./profile/UserProfileHeader.jsx').default)
