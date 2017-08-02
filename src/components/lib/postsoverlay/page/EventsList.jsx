@@ -9,7 +9,7 @@ const {
 
 const RELATED_POSTS_COUNT = 6
 
-class PostsRelatedList extends Component {
+class EventsList extends Component {
 
   componentDidMount() {
     const listTask = {
@@ -31,7 +31,7 @@ class PostsRelatedList extends Component {
       return (
         <div>
           {results.map(post =>
-            <Telescope.components.PostsRelatedItem key={post.id} post={post}/>
+            <Telescope.components.EventsItem key={post.id} post={post}/>
           )}
         </div>
       )
@@ -68,4 +68,4 @@ function select(store) {
  * Connect the properties
  */
 
-export default connect(select)(PostsRelatedList)
+export default connect(select)(EventsList)

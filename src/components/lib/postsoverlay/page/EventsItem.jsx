@@ -6,7 +6,7 @@ import { withRouter } from 'react-router'
 let {showDetailedPagePath} = require('../../../../lib/link')
 const {pushOverlayDetailedPost} = require('../../../../actions').default
 
-class PostsRelatedItem extends Component {
+class EventsItem extends Component {
 
   renderVotesSection () {
     const {post} = this.props
@@ -85,4 +85,4 @@ class PostsRelatedItem extends Component {
  */
 const {connect} = require('react-redux')
 
-export default withRouter(connect()(PostsRelatedItem))
+export default withRouter(connect()(EventsItem))

@@ -5,13 +5,13 @@ import Users from '../../../../lib/users'
 
 class RestaurantsDetail extends Component {
 
-
   render() {
-
     return (
-      <div>xxx</div>
+      <div>
+        <Telescope.components.EventsList {...this.props}/>
+      </div>
     )
   }
 }
 
-export default RestaurantsDetail
+export default RestaurantsDetail;

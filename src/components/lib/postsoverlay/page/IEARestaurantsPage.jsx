@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import Posts from '../../../../lib/posts'
 import Users from '../../../../lib/users'
 
-class RestaurantsPage extends Component {
+class IEARestaurantsPage extends Component {
 
   constructor(props) {
     super(props)
@@ -28,4 +28,4 @@ class RestaurantsPage extends Component {
   }
 }
 
-export default RestaurantsPage;
+export default IEARestaurantsPage;
