@@ -64,28 +64,6 @@ Telescope.registerComponent('UsersDownvote',                       require('./pr
 Telescope.registerComponent('UsersSubmittedPostsList',             require('./profile/menus/UsersSubmittedPostsList.jsx').default)
 Telescope.registerComponent('UsersUpvote',                         require('./profile/menus/UsersUpvote.jsx').default)
 
-// Sidebar
-Telescope.registerComponent('AppSideBar',           require('./sidebar/AppSideBar.jsx').default)
-Telescope.registerComponent('WidgetHeader',         require('./sidebar/WidgetHeader.jsx').default)
-
-Telescope.registerComponent('Week',                 require('./sidebar/widgetscalendar/Week.jsx').default)
-Telescope.registerComponent('WidgetCalendar',       require('./sidebar/widgetscalendar/WidgetCalendar.jsx').default)
-
-Telescope.registerComponent('WidgetTopics',         require('./sidebar/widgettopics/WidgetTopics.jsx').default)
-
-Telescope.registerComponent('TwitterTimeline',      require('./sidebar/widgettwitter/TwitterTimeline.jsx').default)
-Telescope.registerComponent('WidgetTwitter',        require('./sidebar/widgettwitter/WidgetTwitter.jsx').default)
-
-Telescope.registerComponent('AppAbout',            require('./sidebar/widgetapps/AppAbout.jsx').default)
-Telescope.registerComponent('AppCareers',          require('./sidebar/widgetapps/AppCareers.jsx').default)
-Telescope.registerComponent('AppContact',          require('./sidebar/widgetapps/AppContact.jsx').default)
-Telescope.registerComponent('AppFooter',           require('./sidebar/widgetapps/AppFooter.jsx').default)
-Telescope.registerComponent('AppPrivacy',          require('./sidebar/widgetapps/AppPrivacy.jsx').default)
-Telescope.registerComponent('AppTermsOfService',   require('./sidebar/widgetapps/AppTermsOfService.jsx').default)
-Telescope.registerComponent('WidgetAppFollower',   require('./sidebar/widgetapps/WidgetAppFollower.jsx').default)
-Telescope.registerComponent('WidgetAppFooter',     require('./sidebar/widgetapps/WidgetAppFooter.jsx').default)
-Telescope.registerComponent('WidgetMobileApps',    require('./sidebar/widgetapps/WidgetMobileApps.jsx').default)
-
 // overlay
 Telescope.registerComponent('AppOverlay',                    require('./overlay/AppOverlay.jsx').default)
 Telescope.registerComponent('MoreTagsPopoverMenu',           require('./overlay/MoreTagsPopoverMenu.jsx').default)
