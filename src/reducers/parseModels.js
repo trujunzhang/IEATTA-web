@@ -136,7 +136,7 @@ export function fromParseEvent(map: Object): Event {
     end: map.get('end'),
     want: map.get('want'),
     // Pointer
-    restaurantId: map.get('restaurant') && map.get('restaurant').id
+    restaurant: map.get('restaurant') && fromParseRestaurant(map.get('restaurant'))
   }
 }
 
