@@ -74,7 +74,7 @@ export default {
   },
 
   loadRestaurantPage: (objectId: string): ThunkAction => {
-    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(), objectId, fromParseRestaurant)
+    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_RESTAURANTS), objectId, fromParseRestaurant)
   },
 
   loadEventPage: (objectId: string): ThunkAction => {

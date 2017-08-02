@@ -73,6 +73,20 @@ export type Restaurant = {
   listPhotoId: string;
 };
 
+
+export type PeopleInEvent = {
+  // Basic Fields
+  id: string;
+  createdAt: Date;
+  updatedAt: Date;
+  // Attributes
+  //...
+  // Pointer
+  restaurantId: string,
+  eventId: string,
+  user: User
+}
+
 export function fromParsePointer(map: Object): Pointer {
   return {
     id: map.id,
@@ -159,3 +173,18 @@ export function fromParseRestaurant(map: Object): Restaurant {
 }
 
 
+export function fromParsePeopleInEvent(map: Object): PeopleInEvent {
+  // debugger
+  return {
+    // Basic Fields
+    id: map.id,
+    createdAt: map.get('createdAt') || new Date(),
+    updatedAt: map.get('updatedAt') || new Date(),
+    // Attributes
+    // ...
+    // Pointer
+    restaurantId: map.get('restaurant') && map.get('restaurant').id,
+    eventId: map.get('event') && map.get('event').id,
+    user: map.get('user') && fromParseUser(map.get('user'))
+  }
+}

@@ -17,13 +17,13 @@ class OrderedUserList extends Component {
     };
     this.state = {
       terms: terms,
-      listTask: byListId(props.listContainerTasks, terms.listId, terms.limit)
+      listTask: byListId(props.listContainerTasks, terms)
     }
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      listTask: byListId(nextProps.listContainerTasks, this.state.terms.listId, this.state.terms.limit)
+      listTask: byListId(nextProps.listContainerTasks, this.state.terms)
     })
   }
 
@@ -36,7 +36,7 @@ class OrderedUserList extends Component {
     const nextListTask = this.state.listTask
     nextListTask['ready'] = false
     this.setState({listTask: nextListTask})
-    this.props.dispatch(loadPeopleInEventList(nextListTask, terms.listId, terms))
+    this.props.dispatch(loadPeopleInEventList(nextListTask, terms))
   }
 
   render() {
@@ -77,8 +77,8 @@ class OrderedUserList extends Component {
         </div>
 
         <ul className="ylist">
-          {results.map(event =>
-            <Telescope.components.EventsItem key={event.id} event={event}/>
+          {results.map(peopleInEvent =>
+            <Telescope.components.OrderedUserItem key={peopleInEvent.id} peopleInEvent={peopleInEvent}/>
           )}
         </ul>
 

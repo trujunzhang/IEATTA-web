@@ -59,7 +59,8 @@ class OrderedUserItem extends Component {
   }
 
   render() {
-    const {event} = this.props;
+    const {peopleInEvent} = this.props;
+    const {user} = peopleInEvent;
 
     return (
       <li>

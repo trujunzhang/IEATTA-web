@@ -27,7 +27,7 @@ import type {ThunkAction} from './types'
 
 let {getRestaurantParameters, getEventParameters, getPeopleInEventParameters, getQueryByType} = require('../parse/parseUtiles').default
 
-const {fromParseRestaurant, fromParseEvent} = require('../reducers/parseModels')
+const {fromParseRestaurant, fromParseEvent, fromParsePeopleInEvent} = require('../reducers/parseModels')
 
 /**
  * The states were interested in
@@ -43,6 +43,8 @@ async function _loadListByType(listTask: Any, objectsQuery: Parse.Query, terms: 
   const totalCount = await objectsQuery.count()
 
   const results = await objectsQuery.skip(skipCount).limit(limit).find()
+
+  // debugger
 
   const payload = {
     list: (results || []).map(parseFun),
@@ -61,6 +63,7 @@ async function _loadListByType(listTask: Any, objectsQuery: Parse.Query, terms: 
 }
 
 function loadListByType(listTask: Any, objectsQuery: Parse.Query, terms: Any, parseFun: Any): ThunkAction {
+  // debugger
   return (dispatch) => {
     const action = _loadListByType(listTask, objectsQuery, terms, parseFun)
     action.then(
@@ -81,7 +84,8 @@ function loadEventsList(listTask: Any, terms: Any): ThunkAction {
 }
 
 function loadPeopleInEventList(listTask: Any, terms: Any): ThunkAction {
-  return loadListByType(listTask, getPeopleInEventParameters(terms), terms, fromParseRestaurant)
+  // debugger
+  return loadListByType(listTask, getPeopleInEventParameters(terms), terms, fromParsePeopleInEvent)
 }
 
 export default {

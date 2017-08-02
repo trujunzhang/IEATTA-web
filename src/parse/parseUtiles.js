@@ -15,7 +15,7 @@ const {
   PARSE_USERS,
 } = require('../lib/constants').default
 
-function getQueryByType(type: string = PARSE_RESTAURANTS, includes: Array = []) {
+function getQueryByType(type: string, includes: Array = []) {
   let query = null;
   switch (type) {
     case PARSE_RESTAURANTS:
@@ -39,7 +39,7 @@ function getQueryByType(type: string = PARSE_RESTAURANTS, includes: Array = []) 
 }
 
 function getRestaurantParameters(terms) {
-  return new Parameters.Posts(getQueryByType())
+  return new Parameters.Posts(getQueryByType(PARSE_RESTAURANTS))
     .addParameters(terms)
     .end()
 }
@@ -57,7 +57,7 @@ function getUsersParameters(terms) {
 }
 
 function getPeopleInEventParameters(terms) {
-  return new Parameters.PeopleInEvent(getQueryByType(PARSE_PEOPLE_IN_EVENTS))
+  return new Parameters.PeopleInEvent(getQueryByType(PARSE_PEOPLE_IN_EVENTS, ['user']))
     .addParameters(terms)
     .end()
 }
