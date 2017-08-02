@@ -39,12 +39,10 @@ const initialState = {
   currentModel: null,
 }
 
-function detailedRestaurantsOverlay(state: State = initialState, action: Action): State {
+function detailedModelsOverlay(state: State = initialState, action: Action): State {
   if (action.type === OVERLAY_LOADED_RESTAURANT_PAGE) {
-    let {objectId, object} = action.payload
-
     const nextState = Object.assign({}, state, {
-      currentModel: {objectId: objectId, model: fromParseRestaurant(object)},
+      currentModel: action.payload
     })
     return nextState
   }
@@ -52,4 +50,4 @@ function detailedRestaurantsOverlay(state: State = initialState, action: Action)
   return state
 }
 
-export default detailedRestaurantsOverlay
+export default detailedModelsOverlay

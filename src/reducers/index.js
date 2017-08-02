@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
   // topics: require('./topics').default,
   routing: routerReducer,
   popModels: require('./popModels').default,
-  detailedRestaurantsOverlay: require('./detailedRestaurantsOverlay').default,
+  detailedModelsOverlay: require('./detailedModelsOverlay').default,
   user: require('./user').default,
   userProfileTask: require('./userProfile').default,
   auth: require('./auth/authReducer').default,

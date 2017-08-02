@@ -30,8 +30,7 @@ import type {ThunkAction} from './types'
 let {ParseUser} = require('../parse/objects').default
 let {getUsersParameters, getQueryByType} = require('../parse/parseUtiles').default
 
-
-const {fromParseUser} = require('../reducers/parseModels')
+const {fromParseUser, fromParseRestaurant, fromParseEvent} = require('../reducers/parseModels')
 
 /**
  * The states were interested in
@@ -40,10 +39,12 @@ const {
   LIST_VIEW_LOADED_RESTAURANTS,
   DASHBOARD_LOADED_PAGINATION,
   OVERLAY_LOADED_RESTAURANT_PAGE,
+  OVERLAY_LOADED_EVENT_PAGE,
   USERPROFILE_LOADED,
   PARSE_USERS,
   PARSE_TOPICS,
   PARSE_RESTAURANTS,
+  PARSE_EVENTS,
   PARSE_COMMENTS,
 } = require('../lib/constants').default
 
@@ -52,11 +53,9 @@ function loadParseObject(type: string, query: Parse.Query, objectId: string): Th
   return (dispatch) => {
     return query.get(objectId, {
       success: (object) => {
+        const model = null;
         // Flow can't guarantee {type, list} is a valid action
-        const payload = {
-          objectId: objectId,
-          object: object
-        }
+        const payload = {objectId, model}
         dispatch({type, payload})
       },
       error: (error) => {
@@ -80,7 +79,7 @@ export default {
   },
 
   loadEventPage: (objectId: string): ThunkAction => {
-    return loadParseObject(OVERLAY_LOADED_RESTAURANT_PAGE, getQueryByType(), objectId)
+    return loadParseObject(OVERLAY_LOADED_EVENT_PAGE, getQueryByType(PARSE_EVENTS), objectId)
   }
 
 }

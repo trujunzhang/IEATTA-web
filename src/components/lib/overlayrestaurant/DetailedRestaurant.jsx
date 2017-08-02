@@ -48,7 +48,7 @@ const {connect} = require('react-redux')
 
 function select(store) {
   return {
-    detailedRestaurantsOverlay: store.detailedRestaurantsOverlay
+    detailedModelsOverlay: store.detailedModelsOverlay
   }
 }
 

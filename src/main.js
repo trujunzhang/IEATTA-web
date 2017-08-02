@@ -28,7 +28,7 @@ const {dismissPopModel, resetOverlayDetailedPosts, resetPostsDaily} = require('.
  */
 function onUpdate () {
   // debugger
-  if (!!store.getState().detailedRestaurantsOverlay.currentModel) {
+  if (!!store.getState().detailedModelsOverlay.currentModel) {
     store.dispatch(resetPostsDaily())
   }
   store.dispatch(dismissPopModel())

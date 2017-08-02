@@ -3,14 +3,25 @@ import React, {Component} from 'react'
 
 const {loadEventPage} = require('../../../actions').default
 
+const {getModelByObjectId} = require('../../filter/filterPosts').default
+
 class DetailedEvent extends Component {
   constructor(props, context) {
     super(props)
 
     this.state = this.initialState = {
       eid: props.params.eid,
-      eslug: props.params.eslug
+      eslug: props.params.eslug,
+      isFetching: true,
+      event: null
     }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      event: getModelByObjectId(nextProps, this.state.eid, this.state.event),
+      isFetching: false
+    })
   }
 
   componentDidMount() {
@@ -18,8 +29,7 @@ class DetailedEvent extends Component {
   }
 
   render() {
-    const {detailedEventsOverlay} = this.props,
-      {isFetching, currentModel} = detailedEventsOverlay;
+    const {isFetching, event} = this.state;
 
     if (isFetching) {
       return (
@@ -29,7 +39,7 @@ class DetailedEvent extends Component {
       )
     }
 
-    return (<Telescope.components.IEAEventsPage event={currentModel.model}/>)
+    return (<Telescope.components.IEAEventsPage event={event}/>)
   }
 
 }
@@ -38,7 +48,7 @@ const {connect} = require('react-redux')
 
 function select(store) {
   return {
-    detailedEventsOverlay: store.detailedEventsOverlay
+    detailedModelsOverlay: store.detailedModelsOverlay
   }
 }
 

@@ -49,8 +49,8 @@ function byListId(listContainerTasks: Any, listId: string, limit: int) {
 }
 
 function getModelByObjectId(nextProps: Any, forObjectId: string, lastModel: Any) {
-  const {detailedRestaurantsOverlay} = nextProps,
-    {currentModel} = detailedRestaurantsOverlay;
+  const {detailedModelsOverlay} = nextProps,
+    {currentModel} = detailedModelsOverlay;
 
   if (!!currentModel) {
     const {objectId, model} = currentModel;
