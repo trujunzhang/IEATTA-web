@@ -3,25 +3,30 @@ import React, {Component} from 'react'
 
 const {loadEventsList} = require('../../../../actions').default
 
-const {
-  OVERLAY_LOADED_RELATED_POSTS
-} = require('../../../../lib/constants').default
-
-const RELATED_POSTS_COUNT = 6
+const {byListId} = require('../../../filter/filterPosts').default
 
 class EventsList extends Component {
 
-  componentDidMount() {
-    const {restaurant} = this.props;
+  constructor(props) {
+    super(props)
+    this.state = {
+      listId: 'single-list-view',
+      listTask: byListId(props.listContainerTasks, props.listId, props.limit)
+    }
+  }
 
-    const listTask = {
-      pageIndex: 1,
-      limit: RELATED_POSTS_COUNT
-    }
+  componentDidMount() {
+    this.loadMore()
+  }
+
+  loadMore() {
     const terms = {
-      related: {id: this.props.post.id, author: this.props.post.author}
+
     }
-    this.props.dispatch(loadEventsList(listTask, 'posts.related.list', terms, OVERLAY_LOADED_RELATED_POSTS))
+    const nextListTask = this.state.listTask
+    nextListTask['ready'] = false
+    this.setState({listTask: nextListTask})
+    this.props.dispatch(loadEventsList(nextListTask, this.state.listId, terms))
   }
 
   render() {
