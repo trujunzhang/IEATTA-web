@@ -41,6 +41,7 @@ class EventsDetail extends Component {
   renderRightTopUsersSection() {
     return (
       <div className="js-subscriber-list">
+        <Telescope.components.OrderedUserList {...this.props}/>
       </div>
     )
   }

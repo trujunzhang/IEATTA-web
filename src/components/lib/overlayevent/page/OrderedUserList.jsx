@@ -1,7 +1,7 @@
 import Telescope from '../../../lib'
 import React, {Component} from 'react'
 
-const {loadEventsList} = require('../../../../actions').default
+const {loadPeopleInEventList} = require('../../../../actions').default
 
 const {byListId} = require('../../../filter/filterPosts').default
 
@@ -11,9 +11,9 @@ class OrderedUserList extends Component {
     super(props)
 
     const terms = {
-      listId: 'single-list-view-for-events',
+      listId: 'single-list-view-for-ordered-users',
       limit: 10,
-      restaurantId: props.restaurant.id
+      eventId: props.event.id
     };
     this.state = {
       terms: terms,
@@ -36,7 +36,7 @@ class OrderedUserList extends Component {
     const nextListTask = this.state.listTask
     nextListTask['ready'] = false
     this.setState({listTask: nextListTask})
-    this.props.dispatch(loadEventsList(nextListTask, terms.listId, terms))
+    this.props.dispatch(loadPeopleInEventList(nextListTask, terms.listId, terms))
   }
 
   render() {
@@ -62,15 +62,21 @@ class OrderedUserList extends Component {
     let hasMore = !ready && totalCount !== results.length;
 
     return (
-      <div className="column column-alpha column--responsive">
-        <div className="arrange">
-          <div className="arrange_unit arrange_unit--fill">
-            <h2>Events</h2>
+      <div className="ysection">
+
+        <div className="arrange arrange--12 arrange--baseline">
+
+          <div className="arrange_unit nowrap">
+            <h3 className="subscribe-list_title">Who's in?</h3>
           </div>
+
+          <div className="arrange_unit arrange_unit--fill">
+            <span>90 responses</span>
+          </div>
+
         </div>
 
-
-        <ul className="ylist ylist-bordered">
+        <ul className="ylist">
           {results.map(event =>
             <Telescope.components.EventsItem key={event.id} event={event}/>
           )}
@@ -85,51 +91,6 @@ class OrderedUserList extends Component {
     )
   }
 
-  renderContent() {
-    const {
-      listId,
-      showHeader = false,
-      title,
-      showClose = false,
-      infinite = false,
-      dismissBanner = null
-    } = this.props
-
-    const {listTask} = this.state
-
-    const {
-      results,
-      ready,
-      totalCount,
-      limit,
-      firstPagination,
-    } = listTask
-
-    let hasMore = !ready && totalCount !== results.length;
-
-    if (!ready) {
-      return (
-        <section className="results_37tfm">
-          <Telescope.components.EventsLoading id='load.more.hint.posts'/>
-        </section>
-      )
-    }
-    else if (!!results && !!results.length) {
-      return (
-        <div>
-          {results.map(event =>
-            <Telescope.components.EventsItem key={event.id} event={event}/>
-          )}
-        </div>
-      )
-    } else {
-      return (
-        <section className="results_37tfm">
-          <Telescope.components.EventsNoResults relatedList={true}/>
-        </section>
-      )
-    }
-  }
 }
 
 const {connect} = require('react-redux')
