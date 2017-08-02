@@ -166,7 +166,7 @@ class RestaurantsSingleHeader extends Component {
   renderBizPageSubheaderLeft() {
     return (
       <div className="mapbox-container">
-        <Telescope.components.RestaurantsPageMap/>
+        <Telescope.components.RestaurantsPageMap  {...this.props}/>
       </div>
     )
   }
@@ -176,10 +176,6 @@ class RestaurantsSingleHeader extends Component {
       <div className="showcase-container">
 
         <div className="showcase-container_inner showcase showcase-3-photo">
-
-          <div className="top-shelf-grey"></div>
-
-          <div className="showcase-footer-links"></div>
 
           <div className="lightbox-media-parent"
                data-ad-logging-csrf="aa8053dd89acca4aeeab2a925aa3697994b6f863dd0c34a39e0956ab2b0c42f1"
