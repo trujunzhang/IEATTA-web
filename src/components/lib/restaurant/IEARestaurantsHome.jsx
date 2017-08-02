@@ -16,7 +16,7 @@ class IEARestaurantsHome extends Component {
 
     this.state = this.initialState = {
       // Navigation menu
-      listId: 'single-list-view'
+      listId: 'single-list-view-for-restaurants'
     }
   }
 

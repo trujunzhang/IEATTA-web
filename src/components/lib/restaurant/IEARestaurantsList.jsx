@@ -55,6 +55,7 @@ class IEARestaurantsList extends Component {
     let hasMore = !ready && totalCount !== results.length
 
     const showReady = Posts.showReady(results, hasMore, ready, totalCount, limit, firstPagination)
+
     const headerView =
       (<div>
         <div className='fullWidthBox_3Dggh box_c4OJj'>

@@ -10,7 +10,7 @@ class EventsList extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      listId: 'single-list-view',
+      listId: 'single-list-view-for-events',
       listTask: byListId(props.listContainerTasks, props.listId, props.limit)
     }
   }
@@ -35,23 +35,43 @@ class EventsList extends Component {
   }
 
   render() {
-    const {detailedRestaurantsOverlay} = this.props,
-      {isFetchingRelated} = detailedRestaurantsOverlay,
-      results = detailedRestaurantsOverlay.currentRelatedPosts || []
+    const {
+      listId,
+      showHeader = false,
+      title,
+      showClose = false,
+      infinite = false,
+      dismissBanner = null
+    } = this.props
 
-    if (!isFetchingRelated && !!results.length) {
-      return (
-        <div>
-          {results.map(post =>
-            <Telescope.components.EventsItem key={post.id} post={post}/>
-          )}
-        </div>
-      )
-    } else if (isFetchingRelated) {
+    const {listTask} = this.state
+
+    const {
+      results,
+      ready,
+      totalCount,
+      limit,
+      firstPagination,
+    } = listTask
+
+    let hasMore = !ready && totalCount !== results.length
+
+    const showReady = true;//Posts.showReady(results, hasMore, ready, totalCount, limit, firstPagination)
+
+    if (showReady) {
       return (
         <section className="results_37tfm">
           <Telescope.components.PostsLoading id='load.more.hint.posts'/>
         </section>
+      )
+    }
+    else if (!!results && !!results.length) {
+      return (
+        <div>
+          {results.map(event =>
+            <Telescope.components.EventsItem key={event.id} event={event}/>
+          )}
+        </div>
       )
     } else {
       return (

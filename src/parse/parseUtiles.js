@@ -52,6 +52,7 @@ function getTopicsParameters(terms) {
 export default {
   getQueryByType,
   getRestaurantParameters,
+  getEventParameters,
   getUsersParameters,
   getTopicsParameters
 }
