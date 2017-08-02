@@ -29,7 +29,7 @@ class DetailedRestaurant extends Component {
       )
     }
 
-    return (<Telescope.components.PostsPage restaurant={currentModel}/>)
+    return (<Telescope.components.RestaurantsPage restaurant={currentModel}/>)
   }
 
 

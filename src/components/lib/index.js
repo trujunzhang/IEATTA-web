@@ -51,8 +51,8 @@ Telescope.registerComponent('DetailedRestaurant',                 require('./pos
 
 // postsoverlay(page)
 Telescope.registerComponent('PostDetail',                         require('./postsoverlay/page/PostDetail.jsx').default)
-Telescope.registerComponent('PostsPage',                          require('./postsoverlay/page/PostsPage.jsx').default)
-Telescope.registerComponent('PostsPageMap',                       require('./postsoverlay/page/PostsPageMap.jsx').default)
+Telescope.registerComponent('RestaurantsPage',                    require('./postsoverlay/page/RestaurantsPage.jsx').default)
+Telescope.registerComponent('RestaurantsPageMap',                 require('./postsoverlay/page/RestaurantsPageMap.jsx').default)
 Telescope.registerComponent('PostsRelatedItem',                   require('./postsoverlay/page/PostsRelatedItem.jsx').default)
 Telescope.registerComponent('PostsRelatedList',                   require('./postsoverlay/page/PostsRelatedList.jsx').default)
 Telescope.registerComponent('PostsSingleHeader',                  require('./postsoverlay/page/PostsSingleHeader.jsx').default)

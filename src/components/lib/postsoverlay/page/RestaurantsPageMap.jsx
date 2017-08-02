@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
 
-class PostsPageMap extends Component {
+class RestaurantsPageMap extends Component {
 
   renderTopMap() {
     const position = [51.505, -0.09]
@@ -126,4 +126,4 @@ class PostsPageMap extends Component {
   }
 }
 
-export default PostsPageMap
+export default RestaurantsPageMap
