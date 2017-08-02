@@ -48,14 +48,31 @@ function byListId(listContainerTasks: Any, listId: string, limit: int) {
   }
 }
 
+function getModelByObjectId(nextProps: Any, forObjectId: string, lastModel: Any) {
+  const {detailedRestaurantsOverlay} = nextProps,
+    {currentModel} = detailedRestaurantsOverlay;
+
+  if (!!currentModel) {
+    const {objectId, model} = currentModel;
+    if (!!objectId && objectId === forObjectId) {
+      return model;
+    }
+  }
+  return lastModel;
+}
+
 function generateMarkers(listContainerTasks: Any, listId: string) {
   let taskObject = convertToObject(listContainerTasks)
 
   let task = (taskObject[listId] || {})
 
-    return (task.results || []).map((item, index) => {
-        return {lat: item.geoLocation.latitude, lng: item.geoLocation.longitude}
+  return (task.results || []).map((item, index) => {
+    return {lat: item.geoLocation.latitude, lng: item.geoLocation.longitude}
   })
 }
 
-export default  {byListId, generateMarkers}
+export default {
+  byListId,
+  getModelByObjectId,
+  generateMarkers
+}

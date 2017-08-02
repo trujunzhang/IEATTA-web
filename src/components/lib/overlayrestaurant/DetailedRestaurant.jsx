@@ -3,14 +3,25 @@ import React, {Component} from 'react'
 
 const {loadRestaurantPage} = require('../../../actions').default
 
+const {getModelByObjectId} = require('../../filter/filterPosts').default
+
 class DetailedRestaurant extends Component {
   constructor(props, context) {
     super(props)
 
     this.state = this.initialState = {
       rid: props.params.rid,
-      rslug: props.params.rslug
+      rslug: props.params.rslug,
+      isFetching: true,
+      restaurant: null
     }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      restaurant: getModelByObjectId(nextProps, this.state.rid, this.state.restaurant),
+      isFetching: false
+    })
   }
 
   componentDidMount() {
@@ -18,8 +29,7 @@ class DetailedRestaurant extends Component {
   }
 
   render() {
-    const {detailedRestaurantsOverlay} = this.props,
-      {isFetching, currentModel} = detailedRestaurantsOverlay;
+    const {isFetching, restaurant} = this.state;
 
     if (isFetching) {
       return (
@@ -29,7 +39,7 @@ class DetailedRestaurant extends Component {
       )
     }
 
-    return (<Telescope.components.IEARestaurantsPage restaurant={currentModel.model}/>)
+    return (<Telescope.components.IEARestaurantsPage restaurant={restaurant}/>)
   }
 
 }

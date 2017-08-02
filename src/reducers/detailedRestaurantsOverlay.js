@@ -36,11 +36,7 @@ const {
 const {fromParseRestaurant} = require('./parseModels')
 
 const initialState = {
-  isFetching: true,
   currentModel: null,
-  isFetchingRelated: true,
-  currentRelatedPosts: [],
-  pages: []
 }
 
 function detailedRestaurantsOverlay(state: State = initialState, action: Action): State {
@@ -48,13 +44,10 @@ function detailedRestaurantsOverlay(state: State = initialState, action: Action)
     let {objectId, object} = action.payload
 
     const nextState = Object.assign({}, state, {
-      isFetching: false,
       currentModel: {objectId: objectId, model: fromParseRestaurant(object)},
     })
     return nextState
   }
-
-
 
   return state
 }
