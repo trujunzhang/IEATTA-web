@@ -59,7 +59,7 @@ class EventsList extends Component {
       firstPagination,
     } = listTask
 
-    let hasMore = !ready && totalCount !== results.length
+    let hasMore = !ready && totalCount !== results.length;
 
     if (!ready) {
       return (
@@ -86,11 +86,6 @@ class EventsList extends Component {
   }
 }
 
-/**
- * ## Imports
- *
- * Redux
- */
 const {connect} = require('react-redux')
 
 function select(store) {
@@ -98,9 +93,5 @@ function select(store) {
     listContainerTasks: store.listContainerTasks
   }
 }
-
-/**
- * Connect the properties
- */
 
 export default connect(select)(EventsList)

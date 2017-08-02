@@ -50,8 +50,8 @@ class EventsItem extends Component {
     )
   }
 
-  onRelatedPostClick(event) {
-    event.preventDefault()
+  onRelatedPostClick(e) {
+    e.preventDefault()
 
     const {router, event} = this.props
 
@@ -61,11 +61,7 @@ class EventsItem extends Component {
 
 }
 
-/**
- * ## Imports
- *
- * Redux
- */
+
 const {connect} = require('react-redux')
 
 export default withRouter(connect()(EventsItem))
