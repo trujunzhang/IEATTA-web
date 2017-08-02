@@ -30,10 +30,7 @@ import type {Action} from '../actions/types'
  * The states were interested in
  */
 const {
-  OVERLAY_DETAILS_POSTS_DISMISS,
-  OVERLAY_DETAILS_POSTS_PUSH,
-  OVERLAY_LOADED_POSTS_PAGE,
-  OVERLAY_LOADED_RELATED_POSTS
+  OVERLAY_LOADED_RESTAURANT_PAGE
 } = require('../lib/constants').default
 
 const {fromParseRestaurant} = require('./parseModels')
@@ -47,7 +44,7 @@ const initialState = {
 }
 
 function detailedRestaurantsOverlay(state: State = initialState, action: Action): State {
-  if (action.type === OVERLAY_LOADED_POSTS_PAGE) {
+  if (action.type === OVERLAY_LOADED_RESTAURANT_PAGE) {
     let {objectId, object} = action.payload
 
     const nextState = Object.assign({}, state, {
@@ -57,36 +54,7 @@ function detailedRestaurantsOverlay(state: State = initialState, action: Action)
     return nextState
   }
 
-  if (action.type === OVERLAY_LOADED_RELATED_POSTS) {
-    const {list, listTask, listId, limit, totalCount} = action.payload
 
-    const nextState = Object.assign({}, state, {
-      currentRelatedPosts: list.map(fromParseRestaurant),
-      isFetchingRelated: false,
-    })
-    return nextState
-  }
-
-  if (action.type === OVERLAY_DETAILS_POSTS_DISMISS) {
-    const nextState = Object.assign({}, state, initialState)
-    return nextState
-  }
-
-  if (action.type === OVERLAY_DETAILS_POSTS_PUSH) {
-    const post = action.payload
-
-    // const pages = state.pages.push(post)
-
-    const nextState = Object.assign({}, state, {
-      isFetching: false,
-      currentModel: {objectId: post.id, model: post},
-      isFetchingRelated: true,
-      currentRelatedPosts: [],
-      // pages:pages
-    })
-
-    return nextState
-  }
 
   return state
 }

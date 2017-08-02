@@ -32,8 +32,6 @@ import type {Action, ThunkAction} from './types'
 const {
   OVERLAY_MODEL_PUSH,
   OVERLAY_MODEL_DISMISS,
-  OVERLAY_DETAILS_POSTS_DISMISS,
-  OVERLAY_DETAILS_POSTS_PUSH,
   LIST_VIEW_RESET_ALL_POSTS
 } = require('../lib/constants').default
 
@@ -53,17 +51,6 @@ function pushModel(modelType: string, position: object = null, model: object = n
 
 function dismissPopModel(): Action {
   return {type: OVERLAY_MODEL_DISMISS}
-}
-
-// ================================
-// For Popup detailed Posts
-// ================================
-function resetOverlayDetailedPosts(): Action {
-  return {type: OVERLAY_DETAILS_POSTS_DISMISS}
-}
-
-function pushOverlayDetailedPost(post: object): Action {
-  return {type: OVERLAY_DETAILS_POSTS_PUSH, payload: post}
 }
 
 // ================================

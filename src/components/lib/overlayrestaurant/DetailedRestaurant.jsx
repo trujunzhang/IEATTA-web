@@ -42,9 +42,5 @@ function select(store) {
   }
 }
 
-/**
- * Connect the properties
- */
-
 export default connect(select)(DetailedRestaurant)
 

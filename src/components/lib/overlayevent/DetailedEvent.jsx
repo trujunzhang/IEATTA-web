@@ -1,7 +1,7 @@
 import Telescope from '../../lib'
 import React, {Component} from 'react'
 
-const {loadRestaurantPage} = require('../../../actions').default
+const {loadEventPage} = require('../../../actions').default
 
 class DetailedEvent extends Component {
   constructor(props, context) {
@@ -14,7 +14,7 @@ class DetailedEvent extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(loadRestaurantPage(this.state.rid))
+    this.props.dispatch(loadEventPage(this.state.eid))
   }
 
   render() {
@@ -29,7 +29,7 @@ class DetailedEvent extends Component {
       )
     }
 
-    return (<Telescope.components.IEAEventsPage restaurant={currentModel.model}/>)
+    return (<Telescope.components.IEAEventsPage event={currentModel.model}/>)
   }
 
 }
@@ -41,10 +41,6 @@ function select(store) {
     detailedEventsOverlay: store.detailedEventsOverlay
   }
 }
-
-/**
- * Connect the properties
- */
 
 export default connect(select)(DetailedEvent)
 

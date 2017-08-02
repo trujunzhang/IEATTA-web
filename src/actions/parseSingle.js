@@ -39,7 +39,7 @@ const {fromParseUser} = require('../reducers/parseModels')
 const {
   LIST_VIEW_LOADED_RESTAURANTS,
   DASHBOARD_LOADED_PAGINATION,
-  OVERLAY_LOADED_POSTS_PAGE,
+  OVERLAY_LOADED_RESTAURANT_PAGE,
   USERPROFILE_LOADED,
   PARSE_USERS,
   PARSE_TOPICS,
@@ -76,11 +76,11 @@ export default {
   },
 
   loadRestaurantPage: (objectId: string): ThunkAction => {
-    return loadParseObject(OVERLAY_LOADED_POSTS_PAGE, getQueryByType(), objectId)
+    return loadParseObject(OVERLAY_LOADED_RESTAURANT_PAGE, getQueryByType(), objectId)
   },
 
   loadEventPage: (objectId: string): ThunkAction => {
-    return loadParseObject(OVERLAY_LOADED_POSTS_PAGE, getQueryByType(), objectId)
+    return loadParseObject(OVERLAY_LOADED_RESTAURANT_PAGE, getQueryByType(), objectId)
   }
 
 }
