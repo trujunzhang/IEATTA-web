@@ -33,17 +33,18 @@ export type Photo = {
 }
 
 export type Event = {
+  // Basic Fields
   id: string;
-  displayname: string;
-  slug: string;
-  post: Post;
-  servers: Server;
-  users: User;
-  start: string;
-  end: string;
-  status: string;
+  createdAt: Date;
+  updatedAt: Date;
+  // Attributes
+  displayName: string;
+  start: Date;
+  end: Date;
+  want: string;
+  // Pointer
+  restaurantId: string;
 }
-
 
 export type Recipe = {
   id: string;
@@ -120,6 +121,23 @@ export function fromParseCloudinary(map: Object): Cloudinary {
     name: map['name'],
     url: map['url']
   };
+}
+
+export function fromParseEvent(map: Object): Event {
+  return {
+    // Basic Fields
+    id: map.id,
+    createdAt: map.get('createdAt'),
+    updatedAt: map.get('updatedAt'),
+    // Attributes
+    displayName: map.get('displayName'),
+    slug: map.get('slug'),
+    start: map.get('start'),
+    end: map.get('end'),
+    want: map.get('want'),
+    // Pointer
+    restaurantId: map.get('restaurant') && map.get('restaurant').id
+  }
 }
 
 

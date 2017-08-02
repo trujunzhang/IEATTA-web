@@ -41,7 +41,7 @@ const {
 const Parse = require('parse')
 const {operatePostsOnItem, operateUsersOnItem} = require('../voting').default
 
-let {ParsePost, ParseUser} = require('../parse/objects').default
+let {ParseRestaurant, ParseUser} = require('../../parse/objects').default
 
 
 /**
@@ -54,7 +54,7 @@ describe('voting', () => {
   let userId = 'RqlbSRQRAU'
 
   let user = ParseUser.createWithoutData(userId)
-  let post = ParsePost.createWithoutData(postId)
+  let post = ParseRestaurant.createWithoutData(postId)
 
 
   /**

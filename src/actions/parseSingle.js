@@ -43,7 +43,7 @@ const {
   USERPROFILE_LOADED,
   PARSE_USERS,
   PARSE_TOPICS,
-  PARSE_POSTS,
+  PARSE_RESTAURANTS,
   PARSE_COMMENTS,
 } = require('../lib/constants').default
 

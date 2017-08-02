@@ -2,23 +2,22 @@ const Parse = require('parse')
 
 let Parameters = require('../parameters').default
 
-let {ParsePost, ParseFolder, ParseUser} = require('./objects').default
+let {ParseRestaurant, ParseFolder, ParseUser} = require('./objects').default
 
 
 /**
  * The states were interested in
  */
 const {
+  PARSE_RESTAURANTS,
+  PARSE_EVENTS,
   PARSE_USERS,
-  PARSE_TOPICS,
-  PARSE_POSTS,
-  PARSE_COMMENTS,
 } = require('../lib/constants').default
 
-function getQueryByType(type: string = PARSE_POSTS) {
+function getQueryByType(type: string = PARSE_RESTAURANTS) {
   switch (type) {
-    case PARSE_POSTS:
-      return new Parse.Query(ParsePost).include('photos')
+    case PARSE_RESTAURANTS:
+      return new Parse.Query(ParseRestaurant).include('photos')
     case PARSE_USERS:
       return new Parse.Query(ParseUser)
   }
@@ -30,6 +29,13 @@ function getRestaurantParameters(terms) {
     .addParameters(terms)
     .end()
 }
+
+function getEventParameters(terms) {
+  return new Parameters.Events(getQueryByType(PARSE_EVENTS))
+    .addParameters(terms)
+    .end()
+}
+
 
 function getUsersParameters(terms) {
   return new Parameters.Users(getQueryByType(PARSE_USERS))

@@ -19,7 +19,7 @@ const {
 const {loadRestaurantsList} = require('../../../actions').default
 const {generateMarkers} = require('../../filter/filterPosts').default
 
-class PostsListRightMap extends Component {
+class RestaurantsListRightMap extends Component {
 
   constructor(props) {
     super(props)
@@ -125,4 +125,4 @@ function select(store) {
  * Connect the properties
  */
 
-export default connect(select)(PostsListRightMap)
+export default connect(select)(RestaurantsListRightMap)

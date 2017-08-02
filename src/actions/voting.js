@@ -32,7 +32,7 @@ import type {Action, ThunkAction} from './types'
 
 const {User, Post, fromParseUser, fromParseRestaurant} = require('../reducers/parseModels')
 
-let {ParsePost, ParseUser} = require('../parse/objects').default
+let {ParseRestaurant, ParseUser} = require('../parse/objects').default
 
 /**
  * The states were interested in
@@ -45,7 +45,7 @@ const {
   POSTS_VOTING_DONE,
 } = require('../lib/constants').default
 
-function operatePostsOnItem(post: ParsePost, userId: string, operation: string) {
+function operatePostsOnItem(post: ParseRestaurant, userId: string, operation: string) {
   let pointers = []
   switch (operation) {
     case POSTS_UPVOTE:
@@ -79,12 +79,12 @@ function operateUsersOnItem(user: ParseUser, postId: string, operation: string) 
   switch (operation) {
     case POSTS_UPVOTE:
       pointers = (user.get('upvotedPosts') || [])
-      pointers.push(ParsePost.createWithoutData(postId))
+      pointers.push(ParseRestaurant.createWithoutData(postId))
       user.set('upvotedPosts', pointers)
       break;
     case POSTS_DOWNVOTE:
       pointers = (user.get('downvotedPosts') || [])
-      pointers.push(ParsePost.createWithoutData(postId))
+      pointers.push(ParseRestaurant.createWithoutData(postId))
       user.set('downvotedPosts', pointers)
       break;
     case POSTS_UPVOTE_CACEL:
@@ -128,7 +128,7 @@ async function _postsItemVoting(postId: string, userId: string, operation: strin
     operateUsersOnItem(user, postId, preOperation)
   }
 
-  const post = await new Parse.Query(ParsePost).get(postId)
+  const post = await new Parse.Query(ParseRestaurant).get(postId)
   operatePostsOnItem(post, userId, operation)
   if (!!preOperation) {
     operatePostsOnItem(post, userId, preOperation)

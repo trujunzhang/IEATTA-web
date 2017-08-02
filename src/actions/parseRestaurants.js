@@ -23,16 +23,11 @@
  */
 
 
-const Parse = require('parse')
-
 import type {ThunkAction} from './types'
 
-let {ParsePost} = require('../parse/objects').default
-let {getRestaurantParameters, getQueryByType} = require('../parse/parseUtiles').default
+let {getRestaurantParameters, getEventParameters, getQueryByType} = require('../parse/parseUtiles').default
 
-import Posts from '../lib/posts'
-
-const {fromParseRestaurant} = require('../reducers/parseModels')
+const {fromParseRestaurant, fromParseEvent} = require('../reducers/parseModels')
 
 /**
  * The states were interested in
@@ -40,15 +35,46 @@ const {fromParseRestaurant} = require('../reducers/parseModels')
 const {
   LIST_VIEW_LOADED_RESTAURANTS,
   LIST_VIEW_LOADED_EVENTS,
-  LIST_VIEW_LOADED_ORDERED_USERS,
-  LIST_VIEW_LOADED_RECIPES,
-  LIST_VIEW_LOADED_USERS,
-  PARSE_USERS,
-  PARSE_TOPICS,
-  PARSE_POSTS,
-  PARSE_COMMENTS,
 } = require('../lib/constants').default
 
+
+async function _loadEventsList(listTask: Any, listId: string, terms: Any, type: string = LIST_VIEW_LOADED_EVENTS): Promise<Array<Action>> {
+  const {pageIndex, limit} = listTask
+  const skipCount = (pageIndex - 1) * limit
+
+  const objectsQuery = getEventParameters(terms)
+  const totalCount = await objectsQuery.count()
+
+  const results = await objectsQuery.skip(skipCount).limit(limit).find()
+
+  debugger
+
+  const payload = {
+    list: (results || []).map(fromParseEvent),
+    listTask: listTask,
+    listId: listId,
+    limit: limit,
+    totalCount: totalCount
+  }
+
+  const action = {type, payload}
+
+  return Promise.all([
+    Promise.resolve(action)
+  ])
+}
+
+function loadEventsList(listTask: Any, listId: string, terms: Any, type: string = LIST_VIEW_LOADED_EVENTS): ThunkAction {
+  return (dispatch) => {
+    const action = _loadEventsList(listTask, listId, terms, type)
+    action.then(
+      ([result]) => {
+        dispatch(result)
+      }
+    )
+    return action
+  }
+}
 
 async function _loadRestaurantsList(listTask: Any, listId: string, terms: Any, type: string = LIST_VIEW_LOADED_RESTAURANTS): Promise<Array<Action>> {
   const {pageIndex, limit} = listTask
@@ -86,6 +112,8 @@ function loadRestaurantsList(listTask: Any, listId: string, terms: Any, type: st
   }
 }
 
+
 export default {
   loadRestaurantsList,
+  loadEventsList,
 }

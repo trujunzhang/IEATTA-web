@@ -1,7 +1,6 @@
-const Parse = require('parse')
 import moment from 'moment'
 
-let {ParsePost, ParseUser} = require('../parse/objects').default
+let {ParseRestaurant, ParseUser} = require('../parse/objects').default
 
 /**
  * The states were interested in
@@ -13,7 +12,7 @@ const {
   USERPROFILE_TYPE_FOLDER_LIST
 } = require('../lib/constants').default
 
-export default class PostsParameters {
+export default class RestaurantsParameters {
   constructor(query: Parse.Query) {
     this.query = query
   }

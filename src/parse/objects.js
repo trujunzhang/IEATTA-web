@@ -26,22 +26,22 @@
 const Parse = require('parse')
 
 
-let ParseUser = Parse.Object.extend('User')
-let ParseCache = Parse.Object.extend('Cache')
-let ParseHistory = Parse.Object.extend('History')
-let ParseTopic = Parse.Object.extend('Topic')
-let ParsePost = Parse.Object.extend('Restaurant')
-let ParseFolder = Parse.Object.extend('Folder')
-let ParseComment = Parse.Object.extend('Comment')
-let ParseMessage = Parse.Object.extend('Message')
+const ParseRestaurant = Parse.Object.extend('Restaurant')
+const ParseEvent = Parse.Object.extend('Event')
+const ParseUser = Parse.Object.extend('User')
+const ParseHistory = Parse.Object.extend('History')
+const ParseTopic = Parse.Object.extend('Topic')
+const ParseFolder = Parse.Object.extend('Folder')
+const ParseComment = Parse.Object.extend('Comment')
+const ParseMessage = Parse.Object.extend('Message')
 
 
 export default {
+  ParseRestaurant,
+  ParseEvent,
   ParseUser,
-  ParseCache,
   ParseHistory,
   ParseTopic,
-  ParsePost,
   ParseFolder,
   ParseComment,
   ParseMessage

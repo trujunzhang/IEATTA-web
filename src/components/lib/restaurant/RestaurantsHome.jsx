@@ -54,7 +54,7 @@ class RestaurantsHome extends Component {
   renderRight() {
     return (
       <div className="column column-beta ">
-        <Telescope.components.PostsListRightMap listId={this.state.listId}/>
+        <Telescope.components.RestaurantsListRightMap listId={this.state.listId}/>
       </div>
     )
   }

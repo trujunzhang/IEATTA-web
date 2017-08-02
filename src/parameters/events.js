@@ -1,7 +1,6 @@
-const Parse = require('parse')
 import moment from 'moment'
 
-let {ParseRestaurant, ParseFolder, ParseUser} = require('../parse/objects').default
+let {ParseEvent, ParseUser} = require('../parse/objects').default
 
 /**
  * The states were interested in
@@ -13,17 +12,14 @@ const {
   USERPROFILE_TYPE_FOLDER_LIST
 } = require('../lib/constants').default
 
-export default class UsersParameters {
+export default class EventsParameters {
   constructor(query: Parse.Query) {
     this.query = query
   }
 
   addParameters(terms: Any) {
+    if (terms.userProfileType) {
 
-
-    if (terms.related) { // related posts
-      // this.query.notContainedIn('objectId', terms.related.id)
-      // this.query.equalTo('author', terms.related.author)
     }
 
 
