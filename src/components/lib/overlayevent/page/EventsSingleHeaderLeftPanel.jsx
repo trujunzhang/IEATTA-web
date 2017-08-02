@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
 
-class EventsPageMap extends Component {
+class EventsSingleHeaderLeftPanel extends Component {
 
   renderTopMap() {
     const {restaurant} = this.props;
@@ -96,4 +96,4 @@ class EventsPageMap extends Component {
   }
 }
 
-export default EventsPageMap;
+export default EventsSingleHeaderLeftPanel;
