@@ -1,7 +1,7 @@
 import Telescope from '../../index'
 import React, { Component } from 'react'
 
-const {loadPostsList} = require('../../../../actions').default
+const {loadRestaurantsList} = require('../../../../actions').default
 
 let _ = require('underscore')
 let numeral = require('numeral')
@@ -20,7 +20,7 @@ class AppAdminPostsTopAction extends Component {
   }
 
   componentDidMount () {
-    // this.props.dispatch(loadPostsList(nextListTask, this.props.listId, this.props.terms))
+    // this.props.dispatch(loadRestaurantsList(nextListTask, this.props.listId, this.props.terms))
   }
 
   onSearchChange (e) {

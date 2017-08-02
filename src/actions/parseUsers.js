@@ -36,7 +36,7 @@ const {fromParseUser} = require('../reducers/parseModels')
  * The states were interested in
  */
 const {
-  LIST_VIEW_LOADED_POSTS,
+  LIST_VIEW_LOADED_RESTAURANTS,
   DASHBOARD_LOADED_PAGINATION,
   OVERLAY_LOADED_POSTS_PAGE,
   USERPROFILE_LOADED,

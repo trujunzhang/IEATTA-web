@@ -33,9 +33,9 @@ const createParseReducer = require('./createParseReducer').default
  * The states were interested in
  */
 const {
-  LIST_VIEW_LOADED_POSTS
+  LIST_VIEW_LOADED_RESTAURANTS
 } = require('../lib/constants').default
 
 const {fromParseRestaurant} = require('./parseModels')
 
-export default createParseReducer(LIST_VIEW_LOADED_POSTS, fromParseRestaurant)
+export default createParseReducer(LIST_VIEW_LOADED_RESTAURANTS, fromParseRestaurant)

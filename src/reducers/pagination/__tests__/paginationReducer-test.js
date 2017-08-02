@@ -19,7 +19,7 @@
  * case statements are shared amongst the actions.
  */
 const {
-  LIST_VIEW_LOADED_POSTS
+  LIST_VIEW_LOADED_RESTAURANTS
 } = require('../../../lib/constants').default
 
 /**
@@ -38,10 +38,10 @@ const paginationReducer = require('../paginationReducer').default
 describe('paginationReducer', () => {
 
   /**
-   * ### The use LIST_VIEW_LOADED_POSTS
+   * ### The use LIST_VIEW_LOADED_RESTAURANTS
    *
    */
-  describe('LIST_VIEW_LOADED_POSTS', () => {
+  describe('LIST_VIEW_LOADED_RESTAURANTS', () => {
     let initialState = null
     /**
      * #### Get a valid state
@@ -60,13 +60,13 @@ describe('paginationReducer', () => {
      */
     it('form is not valid with empty fields', () => {
       const action = {
-        type: LIST_VIEW_LOADED_POSTS
+        type: LIST_VIEW_LOADED_RESTAURANTS
       }
       let next = paginationReducer(initialState, action)
 
-      expect(next.form.state).toBe(LIST_VIEW_LOADED_POSTS)
+      expect(next.form.state).toBe(LIST_VIEW_LOADED_RESTAURANTS)
       // expect(next.form.listContainer).toBe({})
     })
 
-  })// LIST_VIEW_LOADED_POSTS
+  })// LIST_VIEW_LOADED_RESTAURANTS
 })// paginationReducer

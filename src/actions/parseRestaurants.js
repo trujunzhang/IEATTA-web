@@ -38,9 +38,11 @@ const {fromParseRestaurant} = require('../reducers/parseModels')
  * The states were interested in
  */
 const {
-  LIST_VIEW_LOADED_POSTS,
-  DASHBOARD_LOADED_PAGINATION,
-  OVERLAY_LOADED_POSTS_PAGE,
+  LIST_VIEW_LOADED_RESTAURANTS,
+  LIST_VIEW_LOADED_EVENTS,
+  LIST_VIEW_LOADED_ORDERED_USERS,
+  LIST_VIEW_LOADED_RECIPES,
+  LIST_VIEW_LOADED_USERS,
   PARSE_USERS,
   PARSE_TOPICS,
   PARSE_POSTS,
@@ -48,7 +50,7 @@ const {
 } = require('../lib/constants').default
 
 
-async function _loadPostsList(listTask: Any, listId: string, terms: Any, type: string = LIST_VIEW_LOADED_POSTS): Promise<Array<Action>> {
+async function _loadRestaurantsList(listTask: Any, listId: string, terms: Any, type: string = LIST_VIEW_LOADED_RESTAURANTS): Promise<Array<Action>> {
   const {pageIndex, limit} = listTask
   const skipCount = (pageIndex - 1) * limit
 
@@ -72,9 +74,9 @@ async function _loadPostsList(listTask: Any, listId: string, terms: Any, type: s
   ])
 }
 
-function loadPostsList(listTask: Any, listId: string, terms: Any, type: string = LIST_VIEW_LOADED_POSTS): ThunkAction {
+function loadRestaurantsList(listTask: Any, listId: string, terms: Any, type: string = LIST_VIEW_LOADED_RESTAURANTS): ThunkAction {
   return (dispatch) => {
-    const action = _loadPostsList(listTask, listId, terms, type)
+    const action = _loadRestaurantsList(listTask, listId, terms, type)
     action.then(
       ([result]) => {
         dispatch(result)
@@ -85,5 +87,5 @@ function loadPostsList(listTask: Any, listId: string, terms: Any, type: string =
 }
 
 export default {
-  loadPostsList,
+  loadRestaurantsList,
 }

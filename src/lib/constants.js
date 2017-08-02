@@ -70,7 +70,11 @@ export default keyMirror({
   DASHBOARD_RESET: null,
 
   // PostHome, PostDaily
-  LIST_VIEW_LOADED_POSTS: null,
+  LIST_VIEW_LOADED_RESTAURANTS: null,
+  LIST_VIEW_LOADED_EVENTS: null,
+  LIST_VIEW_LOADED_ORDERED_USERS: null,
+  LIST_VIEW_LOADED_RECIPES: null,
+  LIST_VIEW_LOADED_USERS: null,
   LIST_VIEW_RESET_ALL_POSTS: null,
 
   // Detailed Posts

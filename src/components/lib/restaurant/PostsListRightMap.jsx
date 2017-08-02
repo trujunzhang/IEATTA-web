@@ -16,7 +16,7 @@ const {
   VOTE_BUTTON_LIST_DOWNVOTE
 } = require('../../../lib/constants').default
 
-const {loadPostsList} = require('../../../actions').default
+const {loadRestaurantsList} = require('../../../actions').default
 const {generateMarkers} = require('../../filter/filterPosts').default
 
 class PostsListRightMap extends Component {
