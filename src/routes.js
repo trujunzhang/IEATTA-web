@@ -26,7 +26,7 @@ const createRoutes = (store) => {
     {
       path: '/',
       component: Telescope.components.Layout,
-      // indexRoute: {component: Telescope.components.PopoverPosts},
+      // indexRoute: {component: Telescope.components.DetailedRestaurant},
       indexRoute: {component: Telescope.components.RestaurantsHome},
 
       childRoutes: [
@@ -39,7 +39,7 @@ const createRoutes = (store) => {
           // http://localhost:3000/biz/xxxxx
           // https://www.yelp.com.sg/biz/my-two-cents-los-angeles-3
           path: 'biz/(:rid)/(:rslug)',
-          component: Telescope.components.PopoverPosts
+          component: Telescope.components.DetailedRestaurant
         },
         {
           // http://localhost:3000/login

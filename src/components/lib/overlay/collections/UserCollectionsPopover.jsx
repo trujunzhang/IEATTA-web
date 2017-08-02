@@ -118,7 +118,7 @@ class UserCollectionsPopover extends Component {
   }
 
   onJumpToFolderClick() {
-    // this.context.messages.dismissAllPopoverPosts()
+    // this.context.messages.dismissAllDetailedRestaurant()
     // this.context.messages.dismissPopoverMenu()
 
     // const {currentUser} = this.props,

@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 
 const {loadPostPage} = require('../../../actions').default
 
-class PopoverPosts extends Component {
+class DetailedRestaurant extends Component {
   constructor(props, context) {
     super(props)
 
@@ -47,5 +47,5 @@ function select(store) {
  * Connect the properties
  */
 
-export default connect(select)(PopoverPosts)
+export default connect(select)(DetailedRestaurant)
 

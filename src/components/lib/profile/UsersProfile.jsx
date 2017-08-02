@@ -149,9 +149,9 @@ class UsersProfile extends Component {
 
   render() {
     const {location} = this.props
-    // const isShowPopoverPosts = this.context.messages.isShowPopoverPosts()
+    // const isShowDetailedRestaurant = this.context.messages.isShowDetailedRestaurant()
     // Refresh the page, show the single post detail page.
-    // if (!isShowPopoverPosts && !!location.query && !!location.query.postId) {
+    // if (!isShowDetailedRestaurant && !!location.query && !!location.query.postId) {
     //   return this.renderPostSingle()
     // }
 
