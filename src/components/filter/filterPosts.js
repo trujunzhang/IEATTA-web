@@ -27,12 +27,12 @@ let {convertToObject} = require('../../lib/utils')
 
 let _ = require('underscore')
 
-function byListId(listContainerTasks: Any, listId: string, limit: int) {
+function byListId(listContainerTasks: Any, terms: Any) {
+  const {listId, limit} = terms;
 
   let taskObject = convertToObject(listContainerTasks)
 
   let task = taskObject[listId]
-
   if (!!task) {
     return task
   }

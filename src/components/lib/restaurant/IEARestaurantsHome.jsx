@@ -29,7 +29,6 @@ class IEARestaurantsHome extends Component {
     return (
       <Telescope.components.IEARestaurantsList
         key={key}
-        limit={limit}
         terms={terms}
       />
     )

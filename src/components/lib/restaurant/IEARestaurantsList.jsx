@@ -10,14 +10,14 @@ class IEARestaurantsList extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      listTask: byListId(props.listContainerTasks, props.listId, props.limit)
+      listTask: byListId(props.listContainerTasks, props.terms)
     }
   }
 
   componentWillReceiveProps(nextProps) {
     // debugger
     this.setState({
-      listTask: byListId(nextProps.listContainerTasks, nextProps.listId, nextProps.limit)
+      listTask: byListId(nextProps.listContainerTasks, nextProps.terms)
     })
   }
 
@@ -29,7 +29,7 @@ class IEARestaurantsList extends Component {
     const nextListTask = this.state.listTask
     nextListTask['ready'] = false
     this.setState({listTask: nextListTask})
-    this.props.dispatch(loadRestaurantsList(nextListTask, this.props.listId, this.props.terms))
+    this.props.dispatch(loadRestaurantsList(nextListTask, this.props.terms))
   }
 
   render() {
