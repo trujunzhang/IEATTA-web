@@ -7,12 +7,14 @@ import Users from '../../../../lib/users'
 class RestaurantsSingleHeader extends Component {
 
   renderBizPageHeaderLeft() {
+    const {restaurant} = this.props;
+    debugger
     return (
       <div className="biz-page-header-left claim-status">
 
         <div className="u-space-t1">
           <h1 className="biz-page-title embossed-text-white shortenough">
-            My Two Cents
+            {restaurant.displayName}
           </h1>
           <div className="u-nowrap claim-status_teaser js-claim-status-hover">
         <span aria-hidden="true" id="icon_18X18"
@@ -22,7 +24,6 @@ class RestaurantsSingleHeader extends Component {
               d="M9 1a8 8 0 1 0 0 16A8 8 0 0 0 9 1zm3.96 6.28l-4.808 4.807-3.112-3.11a.8.8 0 1 1 1.13-1.132l1.982 1.98 3.677-3.677a.8.8 0 1 1 1.13 1.13z"/>
           </svg>
         </span>
-            Claimed
           </div>
 
           <div className="u-hidden js-claim-status-hover-content">

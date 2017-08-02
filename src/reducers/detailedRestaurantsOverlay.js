@@ -46,7 +46,7 @@ const initialState = {
   pages: []
 }
 
-function detailedPostsOverlay(state: State = initialState, action: Action): State {
+function detailedRestaurantsOverlay(state: State = initialState, action: Action): State {
   if (action.type === OVERLAY_LOADED_POSTS_PAGE) {
     let {objectId, object} = action.payload
 
@@ -91,4 +91,4 @@ function detailedPostsOverlay(state: State = initialState, action: Action): Stat
   return state
 }
 
-export default detailedPostsOverlay
+export default detailedRestaurantsOverlay

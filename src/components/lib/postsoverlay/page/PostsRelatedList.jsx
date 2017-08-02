@@ -1,5 +1,5 @@
 import Telescope from '../../../lib'
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 
 const {loadPostsList} = require('../../../../actions').default
 
@@ -11,7 +11,7 @@ const RELATED_POSTS_COUNT = 6
 
 class PostsRelatedList extends Component {
 
-  componentDidMount () {
+  componentDidMount() {
     const listTask = {
       pageIndex: 1,
       limit: RELATED_POSTS_COUNT
@@ -22,10 +22,10 @@ class PostsRelatedList extends Component {
     this.props.dispatch(loadPostsList(listTask, 'posts.related.list', terms, OVERLAY_LOADED_RELATED_POSTS))
   }
 
-  render () {
-    const {detailedPostsOverlay} = this.props,
-      {isFetchingRelated} = detailedPostsOverlay,
-      results = detailedPostsOverlay.currentRelatedPosts || []
+  render() {
+    const {detailedRestaurantsOverlay} = this.props,
+      {isFetchingRelated} = detailedRestaurantsOverlay,
+      results = detailedRestaurantsOverlay.currentRelatedPosts || []
 
     if (!isFetchingRelated && !!results.length) {
       return (
@@ -58,9 +58,9 @@ class PostsRelatedList extends Component {
  */
 const {connect} = require('react-redux')
 
-function select (store) {
+function select(store) {
   return {
-    detailedPostsOverlay: store.detailedPostsOverlay
+    detailedRestaurantsOverlay: store.detailedRestaurantsOverlay
   }
 }
 

@@ -16,10 +16,10 @@ class RestaurantsPage extends Component {
 
         <div className="main-content-wrap main-content-wrap--full">
           <div className="top-shelf">
-            <Telescope.components.RestaurantsSingleHeader/>
+            <Telescope.components.RestaurantsSingleHeader {...this.props}/>
 
             <div id="super-container" className="content-container">
-              <Telescope.components.RestaurantsDetail/>
+              <Telescope.components.RestaurantsDetail {...this.props}/>
             </div>
           </div>
         </div>
@@ -28,4 +28,4 @@ class RestaurantsPage extends Component {
   }
 }
 
-export default RestaurantsPage
+export default RestaurantsPage;

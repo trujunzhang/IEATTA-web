@@ -18,8 +18,8 @@ class DetailedRestaurant extends Component {
   }
 
   render() {
-    const {detailedPostsOverlay} = this.props,
-      {isFetching, currentModel} = detailedPostsOverlay
+    const {detailedRestaurantsOverlay} = this.props,
+      {isFetching, currentModel} = detailedRestaurantsOverlay;
 
     if (isFetching) {
       return (
@@ -29,7 +29,7 @@ class DetailedRestaurant extends Component {
       )
     }
 
-    return (<Telescope.components.RestaurantsPage restaurant={currentModel}/>)
+    return (<Telescope.components.RestaurantsPage restaurant={currentModel.model}/>)
   }
 
 
@@ -39,7 +39,7 @@ const {connect} = require('react-redux')
 
 function select(store) {
   return {
-    detailedPostsOverlay: store.detailedPostsOverlay
+    detailedRestaurantsOverlay: store.detailedRestaurantsOverlay
   }
 }
 
