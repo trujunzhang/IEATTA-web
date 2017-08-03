@@ -3,6 +3,9 @@ import React, {Component} from 'react'
 import Posts from '../../../lib/posts'
 import Photos from '../../../lib/photos'
 import Users from '../../../lib/users'
+
+
+
 import {getRestaurantLink} from '../../../lib/link'
 import {withRouter} from 'react-router'
 
@@ -14,7 +17,8 @@ class RestaurantsItem extends Component {
 
   renderReview() {
     const {listId, restaurant, index} = this.props,
-      reviews = 0
+      reviews = 0;
+
     return (
       <div className="biz-rating biz-rating-large clearfix">
         <div className={`i-stars i-stars--regular-${reviews} rating-large`} title={`${reviews}.0 star rating`}>

@@ -30,4 +30,8 @@ export function getRestaurantLink(restaurant) {
   return `/biz/${restaurant.id}/${restaurant.displayName}`
 }
 
+export function getEventLink(event) {
+  return `/event/${event.id}/${event.displayName}`
+}
+
 

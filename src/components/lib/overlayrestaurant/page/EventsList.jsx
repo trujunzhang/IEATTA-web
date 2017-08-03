@@ -11,7 +11,7 @@ class EventsList extends Component {
     super(props)
 
     const terms = {
-      listId: 'single-list-view-for-events',
+      listId: 'event-list-view-for-' + props.restaurant.id,
       limit: 10,
       restaurantId: props.restaurant.id
     };
@@ -40,16 +40,7 @@ class EventsList extends Component {
   }
 
   render() {
-    const {
-      listId,
-      showHeader = false,
-      title,
-      showClose = false,
-      infinite = false,
-      dismissBanner = null
-    } = this.props
-
-    const {listTask} = this.state
+    const {listTask} = this.state;
 
     const {
       results,
