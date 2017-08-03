@@ -15,9 +15,16 @@ export default class ReviewsParameters {
   }
 
   addParameters(terms: Any) {
-    if (terms.restaurantId) {
-      this.query.equalTo('restaurant', ParseRestaurant.createWithoutData(terms.restaurantId))
+    debugger
+
+    if (terms.reviewType) {
+      this.query.equalTo('reviewType', terms.reviewType)
+      if (terms.forObjectId) {
+
+        this.query.equalTo('restaurant', ParseRestaurant.createWithoutData(terms.restaurantId))
+      }
     }
+
 
     return this
   }

@@ -78,6 +78,27 @@ export type Restaurant = {
 };
 
 
+export type Review = {
+  // Basic Fields
+  id: string;
+  createdAt: Date;
+  updatedAt: Date;
+  // Attributes
+  rate: int;
+  body: string;
+  reviewType: string;
+  // Pointer
+  restaurantId: string;
+  eventId: string;
+  recipeId: string;
+  // Relation
+  userId: string;
+  // voting
+  useful: int;
+  funny: int;
+  cool: int;
+};
+
 export type PeopleInEvent = {
   // Basic Fields
   id: string;
@@ -194,5 +215,29 @@ export function fromParsePeopleInEvent(map: Object): PeopleInEvent {
     restaurantId: map.get('restaurant') && map.get('restaurant').id,
     eventId: map.get('event') && map.get('event').id,
     user: map.get('user') && fromParseUser(map.get('user'))
+  }
+}
+
+
+export function fromParseReview(map: Object): Review {
+  return {
+    // Basic Fields
+    id: map.id,
+    createdAt: map.get('createdAt'),
+    updatedAt: map.get('updatedAt'),
+    // Attributes
+    rate: map.get('rate'),
+    body: map.get('body'),
+    reviewType: map.get('reviewType'),
+    // Pointer
+    restaurantId: map.get('restaurant') && map.get('restaurant').id || '',
+    eventId: map.get('event') && map.get('event').id || '',
+    recipeId: map.get('recipe') && map.get('recipe').id || '',
+    // Relation
+    userId: map.get('user') && map.get('user').id || '',
+    // voting
+    useful: map.get('useful'),
+    funny: map.get('funny'),
+    cool: map.get('cool')
   }
 }
