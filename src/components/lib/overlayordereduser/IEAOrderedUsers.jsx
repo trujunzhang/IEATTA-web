@@ -5,7 +5,7 @@ const {loadEventPage} = require('../../../actions').default
 
 const {getModelByObjectId} = require('../../filter/filterPosts')
 
-class DetailedEvent extends Component {
+class IEAOrderedUsers extends Component {
   constructor(props, context) {
     super(props)
 
@@ -52,5 +52,5 @@ function select(store) {
   }
 }
 
-export default connect(select)(DetailedEvent)
+export default connect(select)(IEAOrderedUsers)
 
