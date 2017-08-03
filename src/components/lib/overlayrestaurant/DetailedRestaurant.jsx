@@ -31,7 +31,7 @@ class DetailedRestaurant extends Component {
   render() {
     const {ready, restaurant} = this.state;
 
-    if (ready) {
+    if (!ready) {
       return (
         <div className="placeholder_1WOC3">
           <div className="loader_54XfI animationRotate loader_OEQVm"/>
