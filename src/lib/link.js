@@ -31,7 +31,7 @@ export function getRestaurantLink(restaurant) {
 }
 
 export function getEventLink(event) {
-  return `/event/${event.id}/${event.displayName}`
+  return `/events/${event.id}/${event.displayName}`
 }
 
 
