@@ -14,7 +14,6 @@ Photos.getListThumbnailUrl = function (item) {
 
   if (photos.length > 0) {
     const firstPhoto = photos[0];
-    debugger
     return firstPhoto.thumbnail._url;
   }
 

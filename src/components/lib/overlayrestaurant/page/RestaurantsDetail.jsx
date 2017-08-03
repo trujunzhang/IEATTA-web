@@ -26,15 +26,12 @@ class RestaurantsDetail extends Component {
 
   render() {
     return (
-      <div id="super-container" className="content-container">
+      <div className="ysection event-landing_below-fold">
+        <div className="clearfix layout-block layout-a layout-border column--responsive">
 
-        <div className="ysection event-landing_below-fold">
-          <div className="clearfix layout-block layout-a layout-border column--responsive">
+          {this.renderLeftPanel()}
+          {this.renderRightPanel()}
 
-            {this.renderLeftPanel()}
-            {this.renderRightPanel()}
-
-          </div>
         </div>
       </div>
     )

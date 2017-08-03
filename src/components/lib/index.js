@@ -76,14 +76,13 @@ Telescope.registerComponent('EventsSingleHeaderRightMap',    require('./overlaye
 Telescope.registerComponent('IEAOrderedUsers',               require('./overlayordereduser/IEAOrderedUsers.jsx').default)
 
 // overlayOrderedUser(page)
-Telescope.registerComponent('EventsDetail',                  require('./overlayordereduser/page/EventsDetail.jsx').default)
-Telescope.registerComponent('IEAEventsPage',                 require('./overlayordereduser/page/IEAEventsPage.jsx').default)
-Telescope.registerComponent('EventsSingleHeaderLeftPanel',   require('./overlayordereduser/page/EventsSingleHeaderLeftPanel.jsx').default)
-Telescope.registerComponent('RecipesItem',                   require('./overlayordereduser/page/RecipesItem.jsx').default)
-Telescope.registerComponent('RecipesList',                   require('./overlayordereduser/page/RecipesList.jsx').default)
-Telescope.registerComponent('EventsSingleHeader',            require('./overlayordereduser/page/EventsSingleHeader.jsx').default)
-Telescope.registerComponent('EventsSingleHeaderRightMap',    require('./overlayordereduser/page/EventsSingleHeaderRightMap.jsx').default)
-
+Telescope.registerComponent('OrderedUsersDetail',                        require('./overlayordereduser/page/OrderedUsersDetail.jsx').default)
+Telescope.registerComponent('IEAOrderedUsersPage',                       require('./overlayordereduser/page/IEAOrderedUsersPage.jsx').default)
+Telescope.registerComponent('OrderedUsersSingleHeaderLeftPanel',         require('./overlayordereduser/page/OrderedUsersSingleHeaderLeftPanel.jsx').default)
+Telescope.registerComponent('OrderedUsersSingleHeader',                  require('./overlayordereduser/page/OrderedUsersSingleHeader.jsx').default)
+Telescope.registerComponent('OrderedUsersSingleHeaderRightMap',          require('./overlayordereduser/page/OrderedUsersSingleHeaderRightMap.jsx').default)
+Telescope.registerComponent('RecipesItem',                               require('./overlayordereduser/page/RecipesItem.jsx').default)
+Telescope.registerComponent('RecipesList',                               require('./overlayordereduser/page/RecipesList.jsx').default)
 
 // profile
 Telescope.registerComponent('UserProfileHeader',                   require('./profile/UserProfileHeader.jsx').default)

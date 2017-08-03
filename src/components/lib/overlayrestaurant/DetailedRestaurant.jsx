@@ -12,15 +12,15 @@ class DetailedRestaurant extends Component {
     this.state = this.initialState = {
       rid: props.params.rid,
       rslug: props.params.rslug,
-      isFetching: true,
-      restaurant: null
+      restaurant: null,
+      ready: false
     }
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
       restaurant: getModelByObjectId(nextProps, this.state.rid, this.state.restaurant),
-      isFetching: false
+      ready: true
     })
   }
 
@@ -29,9 +29,9 @@ class DetailedRestaurant extends Component {
   }
 
   render() {
-    const {isFetching, restaurant} = this.state;
+    const {ready, restaurant} = this.state;
 
-    if (isFetching) {
+    if (ready) {
       return (
         <div className="placeholder_1WOC3">
           <div className="loader_54XfI animationRotate loader_OEQVm"/>
