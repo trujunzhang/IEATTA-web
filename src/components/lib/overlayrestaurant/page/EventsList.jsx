@@ -39,6 +39,28 @@ class EventsList extends Component {
     this.props.dispatch(loadEventsList(nextListTask, terms))
   }
 
+  renderRows() {
+    const {listTask} = this.state;
+
+    const {
+      results,
+      ready,
+      totalCount,
+    } = listTask;
+
+    return (
+      <ul className="ylist ylist-bordered">
+        {results.map(event =>
+          <Telescope.components.EventsItem key={event.id} event={event}/>
+        )}
+      </ul>
+    )
+  }
+
+  renderEmptySection() {
+
+  }
+
   render() {
     const {listTask} = this.state;
 
@@ -46,27 +68,20 @@ class EventsList extends Component {
       results,
       ready,
       totalCount,
-      limit,
-      firstPagination,
     } = listTask
 
     let hasMore = !ready && totalCount !== results.length;
 
     return (
-      <div className="column column-alpha column--responsive">
+      <div className="ysection events">
+
         <div className="arrange">
           <div className="arrange_unit arrange_unit--fill">
             <h2>Events</h2>
           </div>
         </div>
 
-
-        <ul className="ylist ylist-bordered">
-          {results.map(event =>
-            <Telescope.components.EventsItem key={event.id} event={event}/>
-          )}
-        </ul>
-
+        {this.renderRows()}
 
         <div className="u-space-t2 u-space-b2">
           <a href="/events/sf/browse">View all events in San Francisco</a>
