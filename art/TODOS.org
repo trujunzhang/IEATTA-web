@@ -6,3 +6,6 @@
    1. (*)register with facebook and twitter
    2. build react-native apps
 
+* 03/07/2017
+   1. add reviews list
+   2.

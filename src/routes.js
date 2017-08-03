@@ -48,6 +48,12 @@ const createRoutes = (store) => {
           component: Telescope.components.DetailedEvent
         },
         {
+          // http://localhost:3000/events/px09dUf7tw/xxx
+          // https://www.yelp.com/events/pleasanton-alameda-county-fair-6
+          path: 'ordereduser/(:uid)/(:uslug)/(:eid)/(:eslug)/(:rid)/(:rslug)',
+          component: Telescope.components.DetailedEvent
+        },
+        {
           // http://localhost:3000/login
           path: 'login',
           component: Telescope.components.UserLoginMain
