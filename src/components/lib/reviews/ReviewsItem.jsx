@@ -29,7 +29,6 @@ class ReviewsItem extends Component {
                 </a>
               </div>
 
-
             </div>
             <div className="media-story">
               <ul className="user-passport-info">
