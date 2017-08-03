@@ -20,7 +20,6 @@ class IEARestaurantsHome extends Component {
 
     const {params, location} = props;
 
-    debugger
     const terms = {
       ...params,
       limit: 10,
@@ -29,7 +28,7 @@ class IEARestaurantsHome extends Component {
     this.state = {
       terms: terms,
       listTask: getDefaultListTask(terms),
-      markers: generateMarkers(props.listContainerTasks, props.listId)
+      markers: []
     }
   }
 
@@ -72,9 +71,7 @@ class IEARestaurantsHome extends Component {
   renderRight() {
     return (
       <div className="column column-beta ">
-        <Telescope.components.RestaurantsListRightMap
-          marks={this.state.markers}
-          listId={this.state.terms.listId}/>
+        <Telescope.components.RestaurantsListRightMap markers={this.state.markers}/>
       </div>
     )
   }

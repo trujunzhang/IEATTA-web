@@ -9,6 +9,7 @@ import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
 
 class RestaurantsListRightMap extends Component {
 
+
   renderHeader() {
     return (
       <div className="map-header clearfix">
@@ -37,19 +38,12 @@ class RestaurantsListRightMap extends Component {
   }
 
   renderContent() {
-
-    const {markers} = this.props;
-
-    const markersxx = [
-      {lat: 49.8397, lng: 24.0297},
-      {lat: 52.2297, lng: 21.0122},
-      {lat: 51.5074, lng: -0.0901}
-    ];
-
+    const markers = this.props.markers;
+    const mapProps = markers.length > 0 ? {center: markers[0]} : {};
     return (
       <div id="map-container" className="yelp-map-container" data-component-bound="true">
         <Map
-          center={markers[1]}
+          {...mapProps}
           zoom={18} maxZoom={18}>
           <TileLayer
             url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'

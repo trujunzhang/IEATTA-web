@@ -76,7 +76,8 @@ export function getModelByObjectId(nextProps: Any, forObjectId: string, lastMode
   return lastModel;
 }
 
-export function generateMarkers(listContainerTasks: Any, listId: string, lastModel: Any) {
+export function generateMarkers(listContainerTasks: Any, terms: Any, lastModel: Any) {
+  const {listId, limit} = terms;
   const taskObject = convertToObject(listContainerTasks)
 
   const task = (taskObject[listId] || lastModel)
