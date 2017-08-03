@@ -66,7 +66,7 @@ function getPeopleInEventParameters(terms) {
 }
 
 function getReviewsParameters(terms) {
-  return new Parameters.Reviews(getQueryByType(PARSE_REVIEW, ['user', 'user.photos']))
+  return new Parameters.Reviews(getQueryByType(PARSE_REVIEW, ['restaurant','event','recipe','user']))
     .addParameters(terms)
     .end()
 }

@@ -230,11 +230,11 @@ export function fromParseReview(map: Object): Review {
     body: map.get('body'),
     reviewType: map.get('reviewType'),
     // Pointer
-    restaurantId: map.get('restaurant') && map.get('restaurant').id || '',
-    eventId: map.get('event') && map.get('event').id || '',
-    recipeId: map.get('recipe') && map.get('recipe').id || '',
+    restaurant: map.get('restaurant') && fromParseRestaurant(map.get('restaurant')),
+    event: map.get('event') && fromParseEvent(map.get('event')),
+    recipe: map.get('recipe') && fromParseRecipe(map.get('recipe')),
     // Relation
-    userId: map.get('user') && map.get('user').id || '',
+    user: map.get('user') && fromParseUser(map.get('user')),
     // voting
     useful: map.get('useful'),
     funny: map.get('funny'),
