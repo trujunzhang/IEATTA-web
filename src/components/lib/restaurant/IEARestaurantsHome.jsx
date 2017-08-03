@@ -6,7 +6,7 @@ import {withRouter} from 'react-router'
 let md5 = require('blueimp-md5')
 
 const {loadRestaurantsList} = require('../../../actions').default
-const {byListId} = require('../../filter/filterPosts')
+const {byListId, getDefaultListTask} = require('../../filter/filterPosts')
 
 /**
  * Make day wise groups on category pages, remove calendar widget from tag and source pages
@@ -28,7 +28,7 @@ class IEARestaurantsHome extends Component {
     }
     this.state = {
       terms: terms,
-      listTask: byListId(props.listContainerTasks, terms)
+      listTask: getDefaultListTask(terms)
     }
   }
 

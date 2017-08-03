@@ -27,6 +27,19 @@ let {convertToObject} = require('../../lib/utils')
 
 let _ = require('underscore')
 
+export function getDefaultListTask(terms: Any) {
+  const {listId, limit} = terms;
+  return {
+    id: listId,
+    ready: false,
+    totalCount: 0,
+    limit: limit,
+    firstPagination: true,
+    pageIndex: 1,
+    results: []
+  }
+}
+
 export function byListId(listContainerTasks: Any, terms: Any, lastTask: Any) {
   const {listId, limit} = terms;
 
