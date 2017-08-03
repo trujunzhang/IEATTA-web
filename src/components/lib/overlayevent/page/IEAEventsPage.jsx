@@ -1,13 +1,11 @@
 import Telescope from '../../../lib'
 import React, {Component} from 'react'
-import Posts from '../../../../lib/posts'
 import Users from '../../../../lib/users'
+import Photos from '../../../../lib/photos'
+import Posts from '../../../../lib/posts'
+import Events from '../../../../lib/events'
 
 class IEAEventsPage extends Component {
-
-  constructor(props) {
-    super(props)
-  }
 
   render() {
     return (

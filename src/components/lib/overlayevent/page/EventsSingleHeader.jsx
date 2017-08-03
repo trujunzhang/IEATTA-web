@@ -8,6 +8,7 @@ class EventsSingleHeader extends Component {
 
   renderTopTitle() {
     const {event} = this.props;
+
     return (
       <div className="arrange arrange--12">
         <div className="arrange_unit arrange_unit--fill">

@@ -1,17 +1,24 @@
 import Telescope from '../../../lib'
 import React, {Component} from 'react'
 
+import Users from '../../../../lib/users'
+import Photos from '../../../../lib/photos'
+import Posts from '../../../../lib/posts'
+import Events from '../../../../lib/events'
+
+
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
 
 class EventsSingleHeaderLeftPanel extends Component {
 
   renderLeft() {
+    const {event} = this.props;
     return (
       <div className="event-details_photo">
 
         <div
           className="photo-slideshow photo-slideshow--full-width js-photo-slideshow-event-details lightbox-media-parent">
-          <img src="https://s3-media2.fl.yelpcdn.com/ephoto/t0BezxcOnJDjlg2RfcQI-g/300s.jpg"/>
+          <img src={Photos.getListThumbnailUrl(event.restaurant)}/>
         </div>
 
       </div>

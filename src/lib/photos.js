@@ -10,7 +10,7 @@ const Photos = {}
 Photos.config = {}
 
 Photos.getListThumbnailUrl = function (post) {
-  let photos = post.photos,
+  const photos = post.photos,
     firstPhoto = photos[0]
 
   return firstPhoto.url
