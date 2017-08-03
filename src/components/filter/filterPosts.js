@@ -80,7 +80,7 @@ export function generateMarkers(listContainerTasks: Any, terms: Any, lastModel: 
   const {listId, limit} = terms;
   const taskObject = convertToObject(listContainerTasks)
 
-  const task = (taskObject[listId] || lastModel)
+  const task = (taskObject[listId])
 
   return (task.results || []).map((item, index) => {
     return {lat: item.geoLocation.latitude, lng: item.geoLocation.longitude}
