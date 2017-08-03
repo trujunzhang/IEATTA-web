@@ -49,9 +49,7 @@ class IEAOrderedUsers extends Component {
       )
     }
 
-    debugger
-
-    return (<Telescope.components.IEAEventsPage orderedUser={orderedUser}/>)
+    return (<Telescope.components.IEAOrderedUsersPage {...this.state}/>)
   }
 
 }

@@ -18,7 +18,6 @@ class OrderedUsersSingleHeaderLeftPanel extends Component {
     const {event} = this.props;
     return (
       <div className="event-details_photo">
-
         <div
           className="photo-slideshow photo-slideshow--full-width js-photo-slideshow-event-details lightbox-media-parent">
           <img
@@ -31,9 +30,7 @@ class OrderedUsersSingleHeaderLeftPanel extends Component {
     )
   }
 
-
   renderLineOne() {
-
     const {event} = this.props;
     const address = event.restaurant.address,
       array = address.split(',');

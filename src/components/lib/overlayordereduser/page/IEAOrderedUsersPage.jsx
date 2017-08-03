@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import Users from '../../../../lib/users'
 import Photos from '../../../../lib/photos'
 import Posts from '../../../../lib/posts'
-import Events from '../../../../lib/events'
+import OrderedUsers from '../../../../lib/events'
 
 class IEAOrderedUsersPage extends Component {
 
@@ -12,11 +12,11 @@ class IEAOrderedUsersPage extends Component {
 
       <div className="main-content-wrap main-content-wrap--full">
         <div className="top-shelf top-shelf-grey">
-          <Telescope.components.EventsSingleHeader {...this.props}/>
+          <Telescope.components.OrderedUsersSingleHeader {...this.props}/>
         </div>
 
         <div id="super-container" className="content-container">
-          <Telescope.components.EventsDetail {...this.props}/>
+          {/*<Telescope.components.OrderedUsersDetail {...this.props}/>*/}
         </div>
       </div>
 
