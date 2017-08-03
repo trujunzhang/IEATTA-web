@@ -77,20 +77,22 @@ class ReviewsList extends Component {
     let hasMore = !ready && totalCount !== results.length;
 
     return (
-      <div className="ysection reviews">
+      <div className="feed">
+        <div className="ysection reviews">
 
-        <div className="arrange">
-          <div className="arrange_unit arrange_unit--fill">
-            <h2>Reviews</h2>
+          <div className="arrange">
+            <div className="arrange_unit arrange_unit--fill">
+              <h2>Reviews</h2>
+            </div>
           </div>
+
+          {this.renderRows()}
+
+          <div className="u-space-t2 u-space-b2">
+            <a href="/events/sf/browse">View all events in San Francisco</a>
+          </div>
+
         </div>
-
-        {this.renderRows()}
-
-        <div className="u-space-t2 u-space-b2">
-          <a href="/events/sf/browse">View all events in San Francisco</a>
-        </div>
-
       </div>
     )
   }

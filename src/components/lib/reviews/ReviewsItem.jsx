@@ -1,6 +1,5 @@
 import Telescope from '../../lib'
 import React, {Component} from 'react'
-
 import Posts from '../../../lib/posts'
 
 import {withRouter} from 'react-router'
@@ -105,4 +104,6 @@ class ReviewsItem extends Component {
 }
 
 
-export default ReviewsItem;
+const {connect} = require('react-redux')
+
+export default withRouter(connect()(ReviewsItem))
