@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import Telescope from '../../lib'
-
 import Posts from '../../../lib/posts'
+
+import onClickOutside from 'react-onclickoutside'
 
 import {withRouter} from 'react-router'
 
@@ -102,6 +103,11 @@ export class ReviewsHeaderRightSortView extends Component {
     this.setState({isOpening: !this.state.isOpening})
   }
 
+
+  handleClickOutside(e) {
+    this.setState({isOpening: false})
+  }
+
   renderSortButton() {
     /* DropDown prefix is so IMPORTANT */
     return (
@@ -156,4 +162,4 @@ export class ReviewsHeaderRightSortView extends Component {
 }
 
 
-export default ReviewsHeaderRightSortView;
+export default onClickOutside(ReviewsHeaderRightSortView);
