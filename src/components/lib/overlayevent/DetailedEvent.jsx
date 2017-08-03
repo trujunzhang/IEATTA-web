@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 
 const {loadEventPage} = require('../../../actions').default
 
-const {getModelByObjectId} = require('../../filter/filterPosts').default
+const {getModelByObjectId} = require('../../filter/filterPosts')
 
 class DetailedEvent extends Component {
   constructor(props, context) {

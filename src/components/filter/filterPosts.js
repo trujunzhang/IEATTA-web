@@ -27,7 +27,7 @@ let {convertToObject} = require('../../lib/utils')
 
 let _ = require('underscore')
 
-function byListId(listContainerTasks: Any, terms: Any) {
+export function byListId(listContainerTasks: Any, terms: Any, lastTask: Any) {
   const {listId, limit} = terms;
 
   let taskObject = convertToObject(listContainerTasks)
@@ -36,6 +36,8 @@ function byListId(listContainerTasks: Any, terms: Any) {
   if (!!task) {
     return task
   }
+
+  if (!!lastTask) return lastTask;
 
   return {
     id: listId,
@@ -48,7 +50,7 @@ function byListId(listContainerTasks: Any, terms: Any) {
   }
 }
 
-function getModelByObjectId(nextProps: Any, forObjectId: string, lastModel: Any) {
+export function getModelByObjectId(nextProps: Any, forObjectId: string, lastModel: Any) {
   const {detailedModelsOverlay} = nextProps,
     {currentModel} = detailedModelsOverlay;
 
@@ -61,7 +63,7 @@ function getModelByObjectId(nextProps: Any, forObjectId: string, lastModel: Any)
   return lastModel;
 }
 
-function generateMarkers(listContainerTasks: Any, listId: string) {
+export function generateMarkers(listContainerTasks: Any, listId: string) {
   let taskObject = convertToObject(listContainerTasks)
 
   let task = (taskObject[listId] || {})
@@ -71,8 +73,3 @@ function generateMarkers(listContainerTasks: Any, listId: string) {
   })
 }
 
-export default {
-  byListId,
-  getModelByObjectId,
-  generateMarkers
-}

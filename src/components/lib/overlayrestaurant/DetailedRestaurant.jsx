@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 
 const {loadRestaurantPage} = require('../../../actions').default
 
-const {getModelByObjectId} = require('../../filter/filterPosts').default
+const {getModelByObjectId} = require('../../filter/filterPosts')
 
 class DetailedRestaurant extends Component {
   constructor(props, context) {

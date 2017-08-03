@@ -120,7 +120,7 @@ class RestaurantsItem extends Component {
     return (
       <li
         onMouseEnter={() => {
-          debugger
+          // debugger
         }}
         className="regular-search-result">
         <div className="search-result natural-search-result">

@@ -17,7 +17,7 @@ const {
 } = require('../../../lib/constants').default
 
 const {loadRestaurantsList} = require('../../../actions').default
-const {generateMarkers} = require('../../filter/filterPosts').default
+const {generateMarkers} = require('../../filter/filterPosts')
 
 class RestaurantsListRightMap extends Component {
 

@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 
 const {loadPeopleInEventList} = require('../../../../actions').default
 
-const {byListId} = require('../../../filter/filterPosts').default
+const {byListId} = require('../../../filter/filterPosts')
 
 class OrderedUserList extends Component {
 

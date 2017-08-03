@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 
 const {loadEventsList} = require('../../../../actions').default
 
-const {byListId} = require('../../../filter/filterPosts').default
+const {byListId} = require('../../../filter/filterPosts')
 
 class EventsList extends Component {
 

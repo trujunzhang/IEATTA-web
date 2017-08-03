@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import Posts from '../../../lib/posts'
 
 const {loadRestaurantsList} = require('../../../actions').default
-const {byListId} = require('../../filter/filterPosts').default
+const {byListId} = require('../../filter/filterPosts')
 
 class IEARestaurantsList extends Component {
 
