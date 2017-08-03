@@ -119,8 +119,8 @@ class RestaurantsItem extends Component {
 
     return (
       <li
-        onMouseEnter={() => {
-          // debugger
+        onMouseEnter={(e) => {
+          this.props.onRestaurantItemHover(restaurant)
         }}
         className="regular-search-result">
         <div className="search-result natural-search-result">

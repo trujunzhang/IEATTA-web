@@ -6,7 +6,7 @@ import {withRouter} from 'react-router'
 let md5 = require('blueimp-md5')
 
 const {loadRestaurantsList} = require('../../../actions').default
-const {byListId, getDefaultListTask, generateMarkers} = require('../../filter/filterPosts')
+const {byListId, getDefaultListTask, generateMarkers, getMarker} = require('../../filter/filterPosts')
 
 /**
  * Make day wise groups on category pages, remove calendar widget from tag and source pages
@@ -28,19 +28,20 @@ class IEARestaurantsHome extends Component {
     this.state = {
       terms: terms,
       listTask: getDefaultListTask(terms),
-      markers: []
+      markers: [],
+      defaultMarker: null
     }
   }
 
   componentWillReceiveProps(nextProps) {
     const listTask = byListId(nextProps.listContainerTasks, this.state.terms, this.state.listTask);
     const markers = generateMarkers(nextProps.listContainerTasks, this.state.terms, this.state.listTask);
-
-// debugger
+    const defaultMarker = markers.length > 0 ? getMarker(markers[0]) : null;
 
     this.setState({
       listTask: listTask,
-      markers: markers
+      markers: markers,
+      defaultMarker: defaultMarker
     })
   }
 
@@ -55,6 +56,10 @@ class IEARestaurantsHome extends Component {
     this.props.dispatch(loadRestaurantsList(nextListTask, this.state.terms))
   }
 
+  onRestaurantItemHover(restaurant) {
+    this.setState({defaultMarker: getMarker(restaurant)})
+  }
+
   renderLeft() {
     return (
       <div className="column column-alpha ">
@@ -64,6 +69,7 @@ class IEARestaurantsHome extends Component {
             <Telescope.components.IEARestaurantsList
               key={"restaurantsList"}
               listTask={this.state.listTask}
+              onRestaurantItemHover={this.onRestaurantItemHover.bind(this)}
               loadMore={this.loadMore.bind(this)}
             />
 
@@ -76,7 +82,7 @@ class IEARestaurantsHome extends Component {
   renderRight() {
     return (
       <div className="column column-beta ">
-        <Telescope.components.RestaurantsListRightMap markers={this.state.markers}/>
+        <Telescope.components.RestaurantsListRightMap {...this.state}/>
       </div>
     )
   }

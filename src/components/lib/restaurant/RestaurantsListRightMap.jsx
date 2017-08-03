@@ -38,10 +38,9 @@ class RestaurantsListRightMap extends Component {
   }
 
   renderContent() {
-    const markers = this.props.markers;
-    // debugger
+    const {markers, defaultMarker} = this.props;
 
-    const mapProps = markers.length > 0 ? {center: markers[0]} : {};
+    const mapProps = (!!defaultMarker ) ? {center: defaultMarker} : {};
     return (
       <div id="map-container" className="yelp-map-container" data-component-bound="true">
         <Map

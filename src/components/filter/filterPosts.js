@@ -80,10 +80,14 @@ export function generateMarkers(listContainerTasks: Any, terms: Any, lastModel: 
   const {listId, limit} = terms;
   const taskObject = convertToObject(listContainerTasks)
 
-  const task = (taskObject[listId])
+  const task = (taskObject[listId] || {})
 
-  return (task.results || []).map((item, index) => {
-    return {lat: item.geoLocation.latitude, lng: item.geoLocation.longitude}
+  return (task.results || []).map((restaurant, index) => {
+    return getMarker(restaurant)
   })
+}
+
+export function getMarker(restaurant: Object) {
+  return {lat: restaurant.geoLocation.latitude, lng: restaurant.geoLocation.longitude}
 }
 

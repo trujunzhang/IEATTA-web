@@ -40,6 +40,7 @@ class IEARestaurantsList extends Component {
               key={item.id}
               index={index}
               restaurant={item}
+              onRestaurantItemHover={this.props.onRestaurantItemHover}
               canEdit={false}/>
           )}
 
