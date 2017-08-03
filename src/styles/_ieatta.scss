@@ -98,6 +98,13 @@ input.header_content_middle_input {
   width: 18px;
   height: 18px;
 }
+
+#review_header_view_span {
+  fill: #c41200;
+  width: 24px;
+  height: 24px;
+}
+
 .leaflet-container {
   height: 400px;
   width: 100%;
@@ -115,4 +122,8 @@ input.header_content_middle_input {
 
 .showcase-photos-z-index {
   z-index: 1000;
+}
+
+.position-relative {
+  position: relative;
 }
