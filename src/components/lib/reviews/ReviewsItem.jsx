@@ -57,8 +57,12 @@ class ReviewsItem extends Component {
 
 
   renderStory() {
-    const {review} = this.props;
+    const {review} = this.props,
+      {rate} = review;
+
     const htmlBody = Reviews.getHtmlBody(review);
+    const rateClass = "i-stars i-stars--regular-" + rate + " rating-large";
+    const rateTitle = rate + ".0 star rating";
 
     return (
       <div className="review-wrapper">
@@ -66,12 +70,12 @@ class ReviewsItem extends Component {
 
           <div className="biz-rating biz-rating-large clearfix">
             <div>
-              <div className="i-stars i-stars--regular-1 rating-large" title="1.0 star rating">
+              <div className={rateClass} title={rateTitle}>
                 <img className="offscreen"
                      width="84"
                      height="303"
                      src="/images/stars/stars.png"
-                     alt="1.0 star rating"/>
+                     alt={rateTitle}/>
               </div>
 
             </div>
