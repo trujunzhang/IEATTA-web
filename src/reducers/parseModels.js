@@ -88,11 +88,11 @@ export type Review = {
   body: string;
   reviewType: string;
   // Pointer
-  restaurantId: string;
-  eventId: string;
-  recipeId: string;
+  restaurant: Restaurant;
+  event: Event;
+  recipe: Recipe;
   // Relation
-  userId: string;
+  user: User;
   // voting
   useful: int;
   funny: int;
