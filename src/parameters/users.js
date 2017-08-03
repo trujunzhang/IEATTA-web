@@ -20,10 +20,8 @@ export default class UsersParameters {
 
   addParameters(terms: Any) {
 
-
-    if (terms.related) { // related posts
-      // this.query.notContainedIn('objectId', terms.related.id)
-      // this.query.equalTo('author', terms.related.author)
+    if (terms.userIds) { // related posts
+      this.query.include(terms.useIds)
     }
 
 

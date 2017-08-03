@@ -51,7 +51,7 @@ function getEventParameters(terms) {
 }
 
 function getUsersParameters(terms) {
-  return new Parameters.Users(getQueryByType(PARSE_USERS))
+  return new Parameters.Users(getQueryByType(PARSE_USERS, ['photos']))
     .addParameters(terms)
     .end()
 }

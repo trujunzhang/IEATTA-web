@@ -20,9 +20,7 @@ export default class PeopleInEventParameters {
 
   addParameters(terms: Any) {
 
-    if (terms.related) { // related posts
-      // this.query.notContainedIn('objectId', terms.related.id)
-      // this.query.equalTo('author', terms.related.author)
+    if (terms.related) {
     }
 
 

@@ -28,9 +28,9 @@ import type {ThunkAction} from './types'
 const slugify = require('slugify')
 const _ = require('underscore')
 
-let {getRestaurantParameters, getEventParameters, getPeopleInEventParameters, getQueryByType} = require('../parse/parseUtiles').default
+let {getRestaurantParameters, getEventParameters, getPeopleInEventParameters, getUsersParameters, getQueryByType} = require('../parse/parseUtiles').default
 
-const {fromParseRestaurant, fromParseEvent, fromParsePeopleInEvent} = require('../reducers/parseModels')
+const {fromParseRestaurant, fromParseEvent, fromParsePeopleInEvent, fromParseUser} = require('../reducers/parseModels')
 
 /**
  * The states were interested in
@@ -50,12 +50,11 @@ async function _loadListByType(listTask: Any, objectsQuery: Parse.Query, terms: 
     list: (results || []).map(parseFun),
     listTask: listTask,
     listId: terms.listId,
-    limit: limit,
+    limit: terms.limit,
     totalCount: totalCount
   }
 
   const action = {type, payload}
-
 
   return Promise.all([
     Promise.resolve(action)
@@ -63,7 +62,6 @@ async function _loadListByType(listTask: Any, objectsQuery: Parse.Query, terms: 
 }
 
 function loadListByType(listTask: Any, objectsQuery: Parse.Query, terms: Any, parseFun: Any): ThunkAction {
-  // debugger
   return (dispatch) => {
     const action = _loadListByType(listTask, objectsQuery, terms, parseFun)
     action.then(
@@ -83,19 +81,44 @@ function loadEventsList(listTask: Any, terms: Any): ThunkAction {
   return loadListByType(listTask, getEventParameters(terms), terms, fromParseEvent)
 }
 
-async function _getUserIds(terms: Any): Promise<Array<string>> {
+async function _loadPeopleInEventList(listTask: Any, terms: Any, type: Any = LIST_VIEW_LOADED_BY_TYPE): Promise<Array<Action>> {
   const peopleInEvent = await getPeopleInEventParameters(terms).find()
   const list = (peopleInEvent || []).map(fromParsePeopleInEvent)
+  const userIds = _.pluck(list, 'userId')
+  const userTerms = {userIds: userIds}
 
-  const ids = _.pluck(list, 'userId')
 
-  debugger
+  const objectsQuery = getUsersParameters(userTerms)
+  const totalCount = await objectsQuery.count()
+  const results = await objectsQuery.find()
+
+
+  const payload = {
+    list: (results || []).map(fromParseUser),
+    listTask: listTask,
+    listId: terms.listId,
+    limit: terms.limit,
+    totalCount: totalCount
+  }
+
+
+  const action = {type, payload}
+
+  return Promise.all([
+    Promise.resolve(action)
+  ])
 }
 
-async function loadPeopleInEventList(listTask: Any, terms: Any): ThunkAction {
-  const userIds = await _getUserIds(terms)
-  debugger
-  return loadListByType(listTask, getPeopleInEventParameters(terms), terms, fromParsePeopleInEvent)
+function loadPeopleInEventList(listTask: Any, terms: Any): ThunkAction {
+  return (dispatch) => {
+    const action = _loadPeopleInEventList(listTask, terms)
+    action.then(
+      ([result]) => {
+        dispatch(result)
+      }
+    )
+    return action
+  }
 }
 
 export default {

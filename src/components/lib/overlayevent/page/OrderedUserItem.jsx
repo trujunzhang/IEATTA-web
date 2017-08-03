@@ -1,22 +1,25 @@
 import Telescope from '../../../lib'
 import React, {Component} from 'react'
 import Posts from '../../../../lib/posts'
+import Photos from '../../../../lib/photos'
+
+
 import {withRouter} from 'react-router'
 
 class OrderedUserItem extends Component {
 
   renderLeft() {
-    const {peopleInEvent} = this.props;
-    const {user} = peopleInEvent;
+    const {user} = this.props;
 
     return (
 
       <div className="media-avatar">
         <div className="photo-box pb-30s" data-hovercard-id="hCvy2SRZbqVllq6p-KTJ8g">
+
           <a href="/user_details?userid=Uleb-8AMx3_dj3k8lrD2NQ" className="js-analytics-click"
              data-analytics-label="user-photo">
             <img alt="Jill S." className="photo-box-img" height="30"
-                 src="https://s3-media4.fl.yelpcdn.com/photo/Xh04iLbVPdV6Kh9e8wYw1w/30s.jpg" width="30"/>
+                 src={Photos.getListThumbnailUrl(user)}/>
           </a>
 
         </div>
@@ -29,8 +32,7 @@ class OrderedUserItem extends Component {
 
 
   renderStory() {
-    const {peopleInEvent} = this.props;
-    const {user} = peopleInEvent;
+    const {user} = this.props;
 
     return (
 
@@ -86,9 +88,6 @@ class OrderedUserItem extends Component {
   }
 
   render() {
-    const {peopleInEvent} = this.props;
-    const {user} = peopleInEvent;
-
     return (
       <li>
         <div className="ypassport ypassport-slim media-block">

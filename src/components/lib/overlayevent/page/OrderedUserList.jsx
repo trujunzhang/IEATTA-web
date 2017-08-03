@@ -40,14 +40,6 @@ class OrderedUserList extends Component {
   }
 
   render() {
-    const {
-      listId,
-      showHeader = false,
-      title,
-      showClose = false,
-      infinite = false,
-      dismissBanner = null
-    } = this.props
 
     const {listTask} = this.state
 
@@ -60,6 +52,8 @@ class OrderedUserList extends Component {
     } = listTask
 
     let hasMore = !ready && totalCount !== results.length;
+
+    debugger
 
     return (
       <div className="ysection">
@@ -77,8 +71,8 @@ class OrderedUserList extends Component {
         </div>
 
         <ul className="ylist">
-          {results.map(peopleInEvent =>
-            <Telescope.components.OrderedUserItem key={peopleInEvent.id} peopleInEvent={peopleInEvent}/>
+          {results.map(user =>
+            <Telescope.components.OrderedUserItem key={user.id} peopleInEvent={user}/>
           )}
         </ul>
 
