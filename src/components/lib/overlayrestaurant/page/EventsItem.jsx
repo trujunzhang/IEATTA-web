@@ -62,7 +62,7 @@ class EventsItem extends Component {
     const {event} = this.props;
 
     return (
-      <li>
+      <li key={event.id}>
         <div className="media-block">
           {this.renderLeft()}
           {this.renderStory()}

@@ -51,7 +51,7 @@ class RestaurantsPageMap extends Component {
           <div className="map-box-address u-space-l4">
             <strong className="street-address">
               {rows.map((item, index) => {
-                return (<div>{item}</div>)
+                return (<div key={'address-' + index}>{item}</div>)
               })}
             </strong>
           </div>
