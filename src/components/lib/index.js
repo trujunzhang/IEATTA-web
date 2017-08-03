@@ -20,6 +20,7 @@ Telescope.registerComponent('UsersBlurryImageAvatar',           require('./exten
 
 // common
 Telescope.registerComponent('Layout',                           require('./common/Layout.jsx').default)
+Telescope.registerComponent('F8StarIcon',                       require('./common/F8StarIcon.jsx').default)
 Telescope.registerComponent('Error404',                         require('./common/Error404.jsx').default)
 Telescope.registerComponent('App',                              require('./common/App.js').default)
 
