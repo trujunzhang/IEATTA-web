@@ -34,4 +34,14 @@ export function getEventLink(event) {
   return `/events/${event.id}/${event.displayName}`
 }
 
+/**
+ * path: 'ordereduser/(:uid)/(:uslug)/(:eid)/(:rid)',
+ *
+ * @param user
+ * @param peopleInEvent
+ * @returns {string}
+ */
+export function getOrderedUserLink(user, peopleInEvent) {
+  return `/ordereduser/${user.id}/${user.username}/${peopleInEvent.eventId}/${peopleInEvent.restaurantId}`
+}
 

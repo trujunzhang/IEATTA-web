@@ -4,8 +4,6 @@ import Posts from '../../../lib/posts'
 import Photos from '../../../lib/photos'
 import Users from '../../../lib/users'
 
-
-
 import {getRestaurantLink} from '../../../lib/link'
 import {withRouter} from 'react-router'
 

@@ -3,7 +3,9 @@ import React, {Component} from 'react'
 import Posts from '../../../../lib/posts'
 import Photos from '../../../../lib/photos'
 
+import {Link} from 'react-router'
 
+import {getOrderedUserLink} from '../../../../lib/link'
 import {withRouter} from 'react-router'
 
 class OrderedUserItem extends Component {
@@ -47,14 +49,13 @@ class OrderedUserItem extends Component {
       <div className="media-story">
         <ul className="user-passport-info">
           <li className="user-name">
-            <a className="user-display-name js-analytics-click"
-               href="/user_details?userid=Uleb-8AMx3_dj3k8lrD2NQ"
-               id="dropdown_user-name">
+            <Link className="user-display-name js-analytics-click"
+                  to={getOrderedUserLink(user, peopleInEvent)}
+                  id="dropdown_user-name">
               {user.username}
-            </a>
+            </Link>
           </li>
         </ul>
-
 
         <ul className="user-passport-stats">
           <li className="friend-count">
