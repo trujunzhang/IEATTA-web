@@ -5,7 +5,7 @@ import Photos from '../../../../lib/photos'
 import Posts from '../../../../lib/posts'
 import Events from '../../../../lib/events'
 
-class IEAEventsPage extends Component {
+class IEAOrderedUsersPage extends Component {
 
   render() {
     return (
@@ -24,4 +24,4 @@ class IEAEventsPage extends Component {
   }
 }
 
-export default IEAEventsPage;
+export default IEAOrderedUsersPage;

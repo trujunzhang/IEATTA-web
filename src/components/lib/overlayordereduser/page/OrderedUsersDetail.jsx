@@ -4,7 +4,7 @@ import Posts from '../../../../lib/posts'
 import Users from '../../../../lib/users'
 import Events from '../../../../lib/events'
 
-class EventsDetail extends Component {
+class OrderedUsersDetail extends Component {
 
   renderLeftTopSection() {
     const {event} = this.props;
@@ -55,4 +55,4 @@ class EventsDetail extends Component {
   }
 }
 
-export default EventsDetail;
+export default OrderedUsersDetail;

@@ -12,7 +12,7 @@ import {Link} from 'react-router'
 
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
 
-class EventsSingleHeaderLeftPanel extends Component {
+class OrderedUsersSingleHeaderLeftPanel extends Component {
 
   renderLeft() {
     const {event} = this.props;
@@ -168,4 +168,4 @@ class EventsSingleHeaderLeftPanel extends Component {
   }
 }
 
-export default EventsSingleHeaderLeftPanel;
+export default OrderedUsersSingleHeaderLeftPanel;

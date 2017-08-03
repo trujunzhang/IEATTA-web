@@ -4,7 +4,7 @@ import {FormattedMessage, FormattedRelative} from 'react-intl'
 import Posts from '../../../../lib/posts'
 import Users from '../../../../lib/users'
 
-class EventsSingleHeader extends Component {
+class OrderedUsersSingleHeader extends Component {
 
   renderTopTitle() {
     const {event} = this.props;
@@ -55,4 +55,4 @@ class EventsSingleHeader extends Component {
   }
 }
 
-export default EventsSingleHeader;
+export default OrderedUsersSingleHeader;

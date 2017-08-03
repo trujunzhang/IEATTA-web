@@ -6,7 +6,7 @@ import Users from '../../../../lib/users'
 
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
 
-class EventsSingleHeaderRightMap extends Component {
+class OrderedUsersSingleHeaderRightMap extends Component {
 
   render() {
     const {event} = this.props;
@@ -38,4 +38,4 @@ class EventsSingleHeaderRightMap extends Component {
 
 }
 
-export default EventsSingleHeaderRightMap;
+export default OrderedUsersSingleHeaderRightMap;
