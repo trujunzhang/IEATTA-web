@@ -6,6 +6,9 @@ import Photos from '../../../../lib/photos'
 import Posts from '../../../../lib/posts'
 import Events from '../../../../lib/events'
 
+import {getRestaurantLink} from '../../../../lib/link'
+
+import {Link} from 'react-router'
 
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
 
@@ -18,7 +21,10 @@ class EventsSingleHeaderLeftPanel extends Component {
 
         <div
           className="photo-slideshow photo-slideshow--full-width js-photo-slideshow-event-details lightbox-media-parent">
-          <img src={Photos.getListThumbnailUrl(event.restaurant)}/>
+          <img
+            width={300}
+            height={300}
+            src={Photos.getListThumbnailUrl(event.restaurant)}/>
         </div>
 
       </div>
@@ -27,6 +33,17 @@ class EventsSingleHeaderLeftPanel extends Component {
 
 
   renderLineOne() {
+
+    const {event} = this.props;
+    const address = event.restaurant.address,
+      array = address.split(',');
+    const info = Events.getDateInfo(event);
+    const htmlBody = Events.getWantBody(event);
+
+    const addressViews = array.map((item, index) => {
+      return (<span key={index}>{item}</span>)
+    })
+
     return (
       <li>
 
@@ -44,26 +61,28 @@ class EventsSingleHeaderLeftPanel extends Component {
 
           <div className="media-story">
             <div className="media-title">
-              <a className="biz-name js-analytics-click"
-                 href="/biz/alameda-county-fairgrounds-pleasanton">
-                <span>Alameda County Fairgrounds</span>
-              </a>
 
+              <Link className="biz-name js-analytics-click" to={getRestaurantLink(event.restaurant)}>
+                <span>{event.restaurant.displayName}</span>
+              </Link>
             </div>
             <div className="biz-rating biz-rating-medium clearfix">
 
               <div className="i-stars i-stars--small-3-half rating" title="3.5 star rating">
-                {/*<img className="offscreen" height="303" src="https://s3-media2.fl.yelpcdn.com/assets/srv0/yelp_design_web/9b34e39ccbeb/assets/img/stars/stars.png" width="84" alt="3.5 star rating">*/}
+                <img className="offscreen"
+                     height="303"
+                     src="https://s3-media2.fl.yelpcdn.com/assets/srv0/yelp_design_web/9b34e39ccbeb/assets/img/stars/stars.png"
+                     width="84"
+                     alt="3.5 star rating"/>
               </div>
 
-              <span className="review-count rating-qualifier">177 reviews</span>
+              <span className="review-count rating-qualifier">{0 + " reviews"}</span>
 
             </div>
 
-            <address>
-              4501 Pleasanton Ave
-              Pleasanton, CA 94566
-            </address>
+            <div className="restaurant-list-item-address-rows">
+              {addressViews}
+            </div>
 
           </div>
 
@@ -76,6 +95,10 @@ class EventsSingleHeaderLeftPanel extends Component {
   }
 
   renderLineTwo() {
+    const {event} = this.props;
+    const info = Events.getDateInfo(event);
+    const htmlBody = Events.getWantBody(event);
+
     return (
 
       <li>
@@ -93,10 +116,11 @@ class EventsSingleHeaderLeftPanel extends Component {
             <div className="event-details_date">
               <div>
                 <b>From:</b>
-                Friday, Jun 16, 11:00 am
+                {info.startFormat}
               </div>
               <div>
-                <b>To:</b> Sunday, Jul 9, 11:00 pm
+                <b>To:</b>
+                {info.endFormat}
               </div>
             </div>
 
