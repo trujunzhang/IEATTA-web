@@ -40,7 +40,7 @@ function paginationReducer(state: State = initialState, action): State {
       const {list, listTask, listId, limit, totalCount} = action.payload
 
       let nextTask = state.get(listId)
-      if (!!nextTask) {
+      if (!!nextTask && false) {
         nextTask = nextTask.set('results', nextTask.get('results').concat(list))
           .set('pageIndex', listTask.pageIndex + 1)
           .set('totalCount', totalCount)
