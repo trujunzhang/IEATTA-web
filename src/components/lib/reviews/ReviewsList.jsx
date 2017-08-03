@@ -52,7 +52,8 @@ class ReviewsList extends Component {
 
 
     return (
-      <ul className="ylist ylist-bordered reviews">
+
+      <ul className="ylist ylist-bordered reviews" data-component-bound="true">
         {results.map(review =>
           <Telescope.components.ReviewsItem key={review.id} review={review}/>
         )}
@@ -80,7 +81,7 @@ class ReviewsList extends Component {
       <div className="feed">
         <Telescope.components.ReviewsHeaderView/>
 
-        <div className="review-list">
+        <div className="review-list" id="position-relative">
 
           {this.renderRows()}
 

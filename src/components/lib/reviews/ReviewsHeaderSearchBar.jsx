@@ -35,7 +35,7 @@ export class ReviewsHeaderSearchBar extends Component {
             placeholder="Search within the reviews"
             name="q"
             value=""
-            autoComplete="on"/>
+          />
         </div>
         <div className="arrange_unit">
 
