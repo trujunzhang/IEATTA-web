@@ -9,11 +9,11 @@ const Photos = {}
  */
 Photos.config = {}
 
-Photos.getListThumbnailUrl = function (post) {
-  const photos = post.photos,
-    firstPhoto = photos[0]
+Photos.getListThumbnailUrl = function (item) {
+  const photos = item.photos,
+    firstPhoto = photos.length > 0 ? photos[0] : {}
 
-  return firstPhoto.url
+  return firstPhoto.url || '';
 }
 
 

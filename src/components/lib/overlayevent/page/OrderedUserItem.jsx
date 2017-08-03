@@ -16,9 +16,15 @@ class OrderedUserItem extends Component {
       <div className="media-avatar">
         <div className="photo-box pb-30s" data-hovercard-id="hCvy2SRZbqVllq6p-KTJ8g">
 
-          <a href="/user_details?userid=Uleb-8AMx3_dj3k8lrD2NQ" className="js-analytics-click"
+          <a href="/user_details?userid=Uleb-8AMx3_dj3k8lrD2NQ"
+             className="js-analytics-click"
              data-analytics-label="user-photo">
-            <img alt="Jill S." className="photo-box-img" height="30"
+            <img alt={user.username}
+                 className="photo-box-img"
+                 width={30}
+                 height={30}
+                 onError={() => {
+                 }}
                  src={Photos.getListThumbnailUrl(user)}/>
           </a>
 

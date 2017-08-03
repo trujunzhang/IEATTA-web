@@ -53,7 +53,6 @@ class OrderedUserList extends Component {
 
     let hasMore = !ready && totalCount !== results.length;
 
-    debugger
 
     return (
       <div className="ysection">
@@ -72,7 +71,7 @@ class OrderedUserList extends Component {
 
         <ul className="ylist">
           {results.map(user =>
-            <Telescope.components.OrderedUserItem key={user.id} peopleInEvent={user}/>
+            <Telescope.components.OrderedUserItem key={user.id} user={user}/>
           )}
         </ul>
 
