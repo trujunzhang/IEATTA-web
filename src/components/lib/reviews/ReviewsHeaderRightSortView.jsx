@@ -20,8 +20,13 @@ export class ReviewsHeaderRightSortView extends Component {
 
 
   renderDropList() {
+    const {isOpening} = this.state;
+    const dropMenuClass =
+      "dropdown_menu js-dropdown-menu " +
+      (isOpening ? "is-visible" : "");
+
     return (
-      <div className="dropdown_menu js-dropdown-menu">
+      <div className={dropMenuClass}>
         <div className="dropdown_menu-inner">
           <ul className="dropdown_menu-group" role="menu" aria-hidden="false">
             <li className="dropdown_item" role="presentation">
@@ -118,18 +123,27 @@ export class ReviewsHeaderRightSortView extends Component {
   }
 
   render() {
+    const {isOpening} = this.state;
+    const dropClass =
+      "dropdown js-dropdown dropdown--tab dropdown--arrow dropdown--hover dropdown--restricted " +
+      (isOpening ? "is-active" : "");
+
+    const dropToggleClass =
+      "dropdown_toggle js-dropdown-toggle " +
+      (isOpening ? "is-active" : "");
+
     return (
       <div className="arrange_unit u-nowrap">
         <div className="feed_sort js-review-feed-sort">
 
-          <div className="dropdown js-dropdown dropdown--tab dropdown--arrow dropdown--hover dropdown--restricted">
+          <div className={dropClass}>
 
-            <div className="dropdown_toggle js-dropdown-toggle">
+            <div className={dropToggleClass}>
               {this.renderSortButton()}
             </div>
 
             <div className="dropdown_menu-container">
-              {/*{this.renderDropList()}*/}
+              {this.renderDropList()}
             </div>
 
           </div>
