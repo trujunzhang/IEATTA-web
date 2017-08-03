@@ -5,35 +5,9 @@ import Users from '../../../lib/users'
 
 import MarkerClusterGroup from '../../vendor/react-leaflet-markercluster/react-leaflet-markercluster'
 
-const {pushModel} = require('../../../actions').default
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
 
-/**
- * The states were interested in
- */
-const {
-  VOTE_BUTTON_LIST_UPVOTE,
-  VOTE_BUTTON_LIST_DOWNVOTE
-} = require('../../../lib/constants').default
-
-const {loadRestaurantsList} = require('../../../actions').default
-const {generateMarkers} = require('../../filter/filterPosts')
-
 class RestaurantsListRightMap extends Component {
-
-  constructor(props) {
-    super(props)
-    this.state = {
-      markers: generateMarkers(props.listContainerTasks, props.listId)
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    // debugger
-    this.setState({
-      markers: generateMarkers(nextProps.listContainerTasks, nextProps.listId)
-    })
-  }
 
   renderHeader() {
     return (
@@ -60,12 +34,11 @@ class RestaurantsListRightMap extends Component {
   }
 
   onMarkerHover() {
-    debugger
   }
 
   renderContent() {
 
-    const {markers} = this.state
+    const {markers} = this.props;
 
     const markersxx = [
       {lat: 49.8397, lng: 24.0297},
@@ -106,23 +79,4 @@ class RestaurantsListRightMap extends Component {
 
 }
 
-
-/**
- * ## Imports
- *
- * Redux
- */
-const {connect} = require('react-redux')
-
-
-function select(store) {
-  return {
-    listContainerTasks: store.listContainerTasks
-  }
-}
-
-/**
- * Connect the properties
- */
-
-export default connect(select)(RestaurantsListRightMap)
+export default RestaurantsListRightMap;

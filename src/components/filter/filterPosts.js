@@ -43,7 +43,7 @@ export function getDefaultListTask(terms: Any) {
 export function byListId(listContainerTasks: Any, terms: Any, lastTask: Any) {
   const {listId, limit} = terms;
 
-  let taskObject = convertToObject(listContainerTasks)
+  const taskObject = convertToObject(listContainerTasks)
 
   let task = taskObject[listId]
   if (!!task) {
@@ -76,10 +76,10 @@ export function getModelByObjectId(nextProps: Any, forObjectId: string, lastMode
   return lastModel;
 }
 
-export function generateMarkers(listContainerTasks: Any, listId: string) {
-  let taskObject = convertToObject(listContainerTasks)
+export function generateMarkers(listContainerTasks: Any, listId: string, lastModel: Any) {
+  const taskObject = convertToObject(listContainerTasks)
 
-  let task = (taskObject[listId] || {})
+  const task = (taskObject[listId] || lastModel)
 
   return (task.results || []).map((item, index) => {
     return {lat: item.geoLocation.latitude, lng: item.geoLocation.longitude}

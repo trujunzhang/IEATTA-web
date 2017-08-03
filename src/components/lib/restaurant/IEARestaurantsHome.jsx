@@ -6,7 +6,7 @@ import {withRouter} from 'react-router'
 let md5 = require('blueimp-md5')
 
 const {loadRestaurantsList} = require('../../../actions').default
-const {byListId, getDefaultListTask} = require('../../filter/filterPosts')
+const {byListId, getDefaultListTask, generateMarkers} = require('../../filter/filterPosts')
 
 /**
  * Make day wise groups on category pages, remove calendar widget from tag and source pages
@@ -28,13 +28,15 @@ class IEARestaurantsHome extends Component {
     }
     this.state = {
       terms: terms,
-      listTask: getDefaultListTask(terms)
+      listTask: getDefaultListTask(terms),
+      markers: generateMarkers(props.listContainerTasks, props.listId)
     }
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      listTask: byListId(nextProps.listContainerTasks, this.state.terms, this.state.listTask)
+      listTask: byListId(nextProps.listContainerTasks, this.state.terms, this.state.listTask),
+      markers: generateMarkers(nextProps.listContainerTasks, this.state.terms, this.state.listTask)
     })
   }
 
@@ -70,7 +72,9 @@ class IEARestaurantsHome extends Component {
   renderRight() {
     return (
       <div className="column column-beta ">
-        <Telescope.components.RestaurantsListRightMap listId={this.state.terms.listId}/>
+        <Telescope.components.RestaurantsListRightMap
+          marks={this.state.markers}
+          listId={this.state.terms.listId}/>
       </div>
     )
   }
