@@ -23,7 +23,6 @@ class EventsItem extends Component {
                  width="120"
                  height="120"
                  src={Photos.getListThumbnailUrl(event.restaurant)}/>
-            />
           </Link>
         </div>
       </div>

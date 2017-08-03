@@ -19,7 +19,7 @@ class EventsSingleHeaderRightMap extends Component {
       <div className="event-details_map-card">
         <div className="js-map-container yelp-map-container">
 
-          <Map center={position} zoom={14} maxZoom={20}>
+          <Map center={position} zoom={18} maxZoom={20}>
             <TileLayer
               url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>
