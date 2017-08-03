@@ -2,17 +2,13 @@ import Telescope from '../../../lib'
 import React, {Component} from 'react'
 import Posts from '../../../../lib/posts'
 import Users from '../../../../lib/users'
+import Events from '../../../../lib/events'
 
 class EventsDetail extends Component {
 
   renderLeftTopSection() {
     const {event} = this.props;
-
-    let html = event.want;
-    if (html) {
-      html = '<p>' + html.replace('\n' + '\n', '</p><p>') + '...</p>';
-    }
-    const htmlBody = {__html: html};
+    const htmlBody = Events.getWantBody(event);
 
     return (
       <div className="ysection">

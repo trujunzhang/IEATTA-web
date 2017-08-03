@@ -35,6 +35,7 @@ class EventsItem extends Component {
   renderStory() {
     const {event} = this.props;
     const info = Events.getDateInfo(event);
+    const htmlBody = Events.getWantBody(event);
 
     return (
       <div className="media-story u-space-l1">
@@ -63,9 +64,8 @@ class EventsItem extends Component {
 </span>
             {"Locations — " + event.restaurant.address}
           </div>
-          <p className="event_desc">
-            {event.want}
-          </p>
+
+          <div className="post_page_body" dangerouslySetInnerHTML={htmlBody}/>
 
           <a href="/events/sf/browse?c=3">Performing Arts</a>
           <span className="u-text-subtle u-space-l1">36 are interested!</span>
