@@ -50,7 +50,7 @@ Events.updateDate = function (oldValue, value, mode) {
 Events.getWantBody = function (event) {
   let html = event.want;
   if (html) {
-    html = '<p>' + html.replace('\n' + '\n', '</p><p>') + '...</p>';
+    html = '<p>' + html.replace('\n' + '\n', '</p><p>') + '</p>';
   }
   const htmlBody = {__html: html};
 
