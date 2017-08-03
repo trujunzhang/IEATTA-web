@@ -2,6 +2,7 @@ import Telescope from '../../../lib'
 import React, {Component} from 'react'
 import Photos from '../../../../lib/photos'
 import Posts from '../../../../lib/posts'
+import Events from '../../../../lib/events'
 
 import {getEventLink} from '../../../../lib/link'
 import {withRouter} from 'react-router'
@@ -33,7 +34,7 @@ class EventsItem extends Component {
 
   renderStory() {
     const {event} = this.props;
-
+    const info = Events.getDateInfo(event);
 
     return (
       <div className="media-story u-space-l1">
@@ -50,10 +51,7 @@ class EventsItem extends Component {
       d="M18 21H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3 1 1 0 0 1 2 0h8a1 1 0 0 1 2 0 3 3 0 0 1 3 3v12a3 3 0 0 1-3 3zm1-13H5v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V8zm-6 5h4v4h-4v-4z"/>
     </svg>
 </span>
-
-            Thursday, Aug 10, 8:00 pm
-            –
-            Sunday, Aug 20, 10:00 pm
+            {`${info.startFormat} - ${info.endFormat}`}
           </div>
           <div className="u-text-truncate u-space-b1">
                                 <span id="icon_24X24"
@@ -63,7 +61,7 @@ class EventsItem extends Component {
       d="M12 2C8.13 2 5 5.13 5 9c0 2.61 1.43 4.88 3.54 6.08L12 22l3.46-6.92A6.987 6.987 0 0 0 19 9c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/>
     </svg>
 </span>
-            {"Multiple Locations — " + event.restaurant.address}
+            {"Locations — " + event.restaurant.address}
           </div>
           <p className="event_desc">
             {event.want}
