@@ -42,8 +42,24 @@ class OrderedUserList extends Component {
     this.props.dispatch(loadPeopleInEventList(nextListTask, terms))
   }
 
-  render() {
+  renderRows() {
+    const {listTask, ready} = this.state
 
+    const {
+      results
+    } = listTask
+
+    return (
+      <ul className="ylist">
+        {results.map(peopleInEvent =>
+          <Telescope.components.OrderedUserItem key={peopleInEvent.id} peopleInEvent={peopleInEvent}/>
+        )}
+      </ul>
+
+    )
+  }
+
+  renderEmptySection() {
     const {listTask, ready} = this.state
 
     const {
@@ -51,7 +67,18 @@ class OrderedUserList extends Component {
       totalCount,
     } = listTask
 
-    let hasMore = !ready && totalCount !== results.length;
+    if (ready && results.length === 0) {
+      return (
+        <div>
+          <p>No users</p>
+        </div>
+      )
+    }
+    return null;
+  }
+
+  render() {
+
 
     return (
       <div className="ysection">
@@ -68,15 +95,10 @@ class OrderedUserList extends Component {
 
         </div>
 
-        <ul className="ylist">
-          {results.map(peopleInEvent =>
-            <Telescope.components.OrderedUserItem key={peopleInEvent.id} peopleInEvent={peopleInEvent}/>
-          )}
-        </ul>
-
+        {this.renderRows()}
 
         <div className="u-space-t2 u-space-b2">
-          <a href="/events/sf/browse">View all events in San Francisco</a>
+          {this.renderEmptySection()}
         </div>
 
       </div>
