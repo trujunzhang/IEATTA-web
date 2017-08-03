@@ -11,22 +11,22 @@ class IEAOrderedUsers extends Component {
 
     // path: 'ordereduser/(:uid)/(:uslug)/(:eid)/(:eslug)/(:rid)/(:rslug)',
 
+    debugger
+
     this.state = this.initialState = {
       uid: props.params.uid,
       uslug: props.params.uslug,
       eid: props.params.eid,
-      eslug: props.params.eslug,
       rid: props.params.rid,
-      rslug: props.params.rslug,
-      isFetching: true,
-      orderedUser: null
+      orderedUser: null,
+      ready: false
     }
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
       orderedUser: getModelByObjectId(nextProps, this.state.eid, this.state.orderedUser),
-      isFetching: false
+      ready: true
     })
   }
 
@@ -35,9 +35,9 @@ class IEAOrderedUsers extends Component {
   }
 
   render() {
-    const {isFetching, event} = this.state;
+    const {ready, orderedUser} = this.state;
 
-    if (isFetching) {
+    if (!ready) {
       return (
         <div className="placeholder_1WOC3">
           <div className="loader_54XfI animationRotate loader_OEQVm"/>
@@ -45,7 +45,9 @@ class IEAOrderedUsers extends Component {
       )
     }
 
-    return (<Telescope.components.IEAEventsPage event={event}/>)
+    debugger
+
+    return (<Telescope.components.IEAEventsPage orderedUser={orderedUser}/>)
   }
 
 }
