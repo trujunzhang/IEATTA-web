@@ -30,6 +30,9 @@ Telescope.registerComponent('HeaderRightLoginPanel',            require('./heade
 Telescope.registerComponent('HeaderRightUserIconsPanel',        require('./header/HeaderRightUserIconsPanel.jsx').default)
 Telescope.registerComponent('HeaderRightUserPanel',             require('./header/HeaderRightUserPanel.jsx').default)
 
+// reviews
+Telescope.registerComponent('ReviewsItem',                         require('./reviews/ReviewsItem.jsx').default)
+Telescope.registerComponent('ReviewsList',                         require('./reviews/ReviewsList.jsx').default)
 
 // restaurant
 Telescope.registerComponent('IEARestaurantsHome',         require('./restaurant/IEARestaurantsHome.jsx').default)
