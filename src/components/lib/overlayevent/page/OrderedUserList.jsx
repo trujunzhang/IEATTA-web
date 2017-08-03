@@ -18,13 +18,15 @@ class OrderedUserList extends Component {
     };
     this.state = {
       terms: terms,
-      listTask: byListId(props.listContainerTasks, terms)
+      listTask: byListId(props.listContainerTasks, terms),
+      ready: false
     }
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      listTask: byListId(nextProps.listContainerTasks, this.state.terms)
+      listTask: byListId(nextProps.listContainerTasks, this.state.terms),
+      ready: true
     })
   }
 
@@ -42,18 +44,14 @@ class OrderedUserList extends Component {
 
   render() {
 
-    const {listTask} = this.state
+    const {listTask, ready} = this.state
 
     const {
       results,
-      ready,
       totalCount,
-      limit,
-      firstPagination,
     } = listTask
 
     let hasMore = !ready && totalCount !== results.length;
-
 
     return (
       <div className="ysection">
