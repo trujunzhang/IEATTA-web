@@ -1,6 +1,6 @@
 import Telescope from '../../../lib'
 import React, {Component} from 'react'
-import Posts from '../../../../lib/posts'
+import Posts from '../../../lib/posts'
 import {withRouter} from 'react-router'
 
 class ReviewsItem extends Component {
