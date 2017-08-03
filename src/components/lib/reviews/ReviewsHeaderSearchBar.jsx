@@ -5,7 +5,7 @@ import Posts from '../../../lib/posts'
 
 import {withRouter} from 'react-router'
 
-class ReviewsHeaderView extends Component {
+export class ReviewsHeaderSearchBar extends Component {
   render() {
     return (
       <div></div>
@@ -14,4 +14,4 @@ class ReviewsHeaderView extends Component {
 }
 
 
-export default ReviewsHeaderView;
+export default ReviewsHeaderSearchBar;
