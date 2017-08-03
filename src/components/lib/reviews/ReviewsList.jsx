@@ -50,7 +50,6 @@ class ReviewsList extends Component {
       totalCount,
     } = listTask;
 
-    debugger
 
     return (
       <ul className="ylist ylist-bordered">

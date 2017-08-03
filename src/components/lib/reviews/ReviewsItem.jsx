@@ -29,8 +29,9 @@ class ReviewsItem extends Component {
 
 
   renderStory() {
-    const {peopleInEvent} = this.props;
-    const {user} = peopleInEvent;
+
+    const {review} = this.props;
+    const {user} = review;
 
     return (
 
@@ -86,9 +87,6 @@ class ReviewsItem extends Component {
   }
 
   render() {
-    const {peopleInEvent} = this.props;
-    const {user} = peopleInEvent;
-
     return (
       <li>
         <div className="ypassport ypassport-slim media-block">
