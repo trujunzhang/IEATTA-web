@@ -36,7 +36,7 @@ class RestaurantsSingleHeader extends Component {
                 <img className="offscreen"
                      width="84"
                      height="303"
-                     src="https://s3-media2.fl.yelpcdn.com/assets/srv0/yelp_design_web/9b34e39ccbeb/assets/img/stars/stars.png"
+                     src="/images/stars/stars.png"
                      alt="5.0 star rating"/>
               </div>
 
