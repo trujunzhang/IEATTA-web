@@ -32,8 +32,6 @@ class OrderedUserItem extends Component {
     const {peopleInEvent} = this.props;
     const {user} = peopleInEvent;
 
-    debugger
-
     return (
 
       <div className="media-story">

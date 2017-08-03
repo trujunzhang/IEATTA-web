@@ -25,6 +25,9 @@
 const Parse = require('parse')
 import type {ThunkAction} from './types'
 
+const slugify = require('slugify')
+const _ = require('underscore')
+
 let {getRestaurantParameters, getEventParameters, getPeopleInEventParameters, getQueryByType} = require('../parse/parseUtiles').default
 
 const {fromParseRestaurant, fromParseEvent, fromParsePeopleInEvent} = require('../reducers/parseModels')
@@ -41,10 +44,7 @@ async function _loadListByType(listTask: Any, objectsQuery: Parse.Query, terms: 
   const skipCount = (pageIndex - 1) * limit
 
   const totalCount = await objectsQuery.count()
-
   const results = await objectsQuery.skip(skipCount).limit(limit).find()
-
-  // debugger
 
   const payload = {
     list: (results || []).map(parseFun),
@@ -83,8 +83,18 @@ function loadEventsList(listTask: Any, terms: Any): ThunkAction {
   return loadListByType(listTask, getEventParameters(terms), terms, fromParseEvent)
 }
 
-function loadPeopleInEventList(listTask: Any, terms: Any): ThunkAction {
-  // debugger
+async function _getUserIds(terms: Any): Promise<Array<string>> {
+  const peopleInEvent = await getPeopleInEventParameters(terms).find()
+  const list = (peopleInEvent || []).map(fromParsePeopleInEvent)
+
+  const ids = _.pluck(list, 'userId')
+
+  debugger
+}
+
+async function loadPeopleInEventList(listTask: Any, terms: Any): ThunkAction {
+  const userIds = await _getUserIds(terms)
+  debugger
   return loadListByType(listTask, getPeopleInEventParameters(terms), terms, fromParsePeopleInEvent)
 }
 
