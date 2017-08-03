@@ -34,6 +34,7 @@ Telescope.registerComponent('HeaderRightUserPanel',             require('./heade
 Telescope.registerComponent('ReviewsList',                         require('./reviews/ReviewsList.jsx').default)
 Telescope.registerComponent('ReviewsHeaderView',                   require('./reviews/ReviewsHeaderView.jsx').default)
 Telescope.registerComponent('ReviewsHeaderSearchBar',              require('./reviews/ReviewsHeaderSearchBar.jsx').default)
+Telescope.registerComponent('ReviewsHeaderRightSortView',          require('./reviews/ReviewsHeaderRightSortView.jsx').default)
 Telescope.registerComponent('ReviewsItem',                         require('./reviews/ReviewsItem.jsx').default)
 
 // restaurant

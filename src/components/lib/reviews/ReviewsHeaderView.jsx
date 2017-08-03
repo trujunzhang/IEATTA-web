@@ -27,7 +27,7 @@ class ReviewsHeaderView extends Component {
               <div className="arrange arrange--middle u-space-b1">
 
                 <Telescope.components.ReviewsHeaderSearchBar/>
-                {/*{this.renderHeaderSort()}*/}
+                <Telescope.components.ReviewsHeaderRightSortView/>
 
               </div>
             </div>
