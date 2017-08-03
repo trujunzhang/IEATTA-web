@@ -52,8 +52,8 @@ class ReviewsList extends Component {
 
     return (
       <ul className="ylist ylist-bordered">
-        {results.map(event =>
-          <Telescope.components.EventsItem key={event.id} event={event}/>
+        {results.map(review =>
+          <Telescope.components.ReviewsItem key={review.id} review={review}/>
         )}
       </ul>
     )
@@ -76,18 +76,12 @@ class ReviewsList extends Component {
     let hasMore = !ready && totalCount !== results.length;
 
     return (
-      <div className="ysection">
+      <div className="ysection reviews">
 
-        <div className="arrange arrange--12 arrange--baseline">
-
-          <div className="arrange_unit nowrap">
-            <h3 className="subscribe-list_title">Who's in?</h3>
-          </div>
-
+        <div className="arrange">
           <div className="arrange_unit arrange_unit--fill">
-            <span>90 responses</span>
+            <h2>Reviews</h2>
           </div>
-
         </div>
 
         {this.renderRows()}

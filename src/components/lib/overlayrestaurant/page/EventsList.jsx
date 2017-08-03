@@ -63,11 +63,10 @@ class EventsList extends Component {
   }
 
   render() {
-    const {listTask} = this.state;
+    const {listTask, ready} = this.state;
 
     const {
       results,
-      ready,
       totalCount,
     } = listTask
 
@@ -93,20 +92,11 @@ class EventsList extends Component {
   }
 
   renderContent() {
-    const {
-      listId,
-      showHeader = false,
-      title,
-      showClose = false,
-      infinite = false,
-      dismissBanner = null
-    } = this.props
 
-    const {listTask} = this.state
+    const {listTask, ready} = this.state
 
     const {
       results,
-      ready,
       totalCount,
       limit,
       firstPagination,
