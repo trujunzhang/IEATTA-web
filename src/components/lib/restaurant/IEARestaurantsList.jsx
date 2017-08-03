@@ -34,11 +34,8 @@ class IEARestaurantsList extends Component {
 
   render() {
     const {
-      showHeader = false,
       title,
-      showClose = false,
       infinite = false,
-      dismissBanner = null
     } = this.props
 
     const {listTask} = this.state
@@ -64,16 +61,21 @@ class IEARestaurantsList extends Component {
         </section>
       )
     } else if (!!results && !!results.length) {
+
       return (
-        <Telescope.components.RestaurantsHomeList
-          infinite={infinite}
-          results={results}
-          limit={limit}
-          hasMore={hasMore}
-          ready={ready}
-          title={title}
-          listId={id}
-          loadMore={this.loadMore.bind(this)}/>
+
+        <ul className="ylist ylist-bordered search-results">
+          {results.map((item, index) =>
+            <Telescope.components.RestaurantsItem
+              listId={id}
+              key={item.id}
+              index={index}
+              restaurant={item}
+              canEdit={false}/>
+          )}
+
+        </ul>
+
       )
     } else {
       return (
