@@ -193,6 +193,6 @@ export function fromParsePeopleInEvent(map: Object): PeopleInEvent {
     // Pointer
     restaurantId: map.get('restaurant') && map.get('restaurant').id,
     eventId: map.get('event') && map.get('event').id,
-    userId: map.get('user') && map.get('user').id,
+    user: map.get('user') && fromParseUser(map.get('user'))
   }
 }

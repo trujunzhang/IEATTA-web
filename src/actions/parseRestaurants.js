@@ -25,10 +25,8 @@
 const Parse = require('parse')
 import type {ThunkAction} from './types'
 
-const slugify = require('slugify')
-const _ = require('underscore')
 
-let {getRestaurantParameters, getEventParameters, getPeopleInEventParameters, getUsersParameters, getQueryByType} = require('../parse/parseUtiles').default
+const {getRestaurantParameters, getEventParameters, getPeopleInEventParameters, getUsersParameters, getQueryByType} = require('../parse/parseUtiles').default
 
 const {fromParseRestaurant, fromParseEvent, fromParsePeopleInEvent, fromParseUser} = require('../reducers/parseModels')
 
@@ -81,44 +79,8 @@ function loadEventsList(listTask: Any, terms: Any): ThunkAction {
   return loadListByType(listTask, getEventParameters(terms), terms, fromParseEvent)
 }
 
-async function _loadPeopleInEventList(listTask: Any, terms: Any, type: Any = LIST_VIEW_LOADED_BY_TYPE): Promise<Array<Action>> {
-  const peopleInEvent = await getPeopleInEventParameters(terms).find()
-  const list = (peopleInEvent || []).map(fromParsePeopleInEvent)
-  const userIds = _.pluck(list, 'userId')
-  const userTerms = {userIds: userIds}
-
-
-  const objectsQuery = getUsersParameters(userTerms)
-  const totalCount = await objectsQuery.count()
-  const results = await objectsQuery.find()
-
-
-  const payload = {
-    list: (results || []).map(fromParseUser),
-    listTask: listTask,
-    listId: terms.listId,
-    limit: terms.limit,
-    totalCount: totalCount
-  }
-
-
-  const action = {type, payload}
-
-  return Promise.all([
-    Promise.resolve(action)
-  ])
-}
-
 function loadPeopleInEventList(listTask: Any, terms: Any): ThunkAction {
-  return (dispatch) => {
-    const action = _loadPeopleInEventList(listTask, terms)
-    action.then(
-      ([result]) => {
-        dispatch(result)
-      }
-    )
-    return action
-  }
+  return loadListByType(listTask, getPeopleInEventParameters(terms), terms, fromParsePeopleInEvent)
 }
 
 export default {

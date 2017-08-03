@@ -20,10 +20,9 @@ export default class UsersParameters {
 
   addParameters(terms: Any) {
 
-    if (terms.userIds) { // related posts
-      this.query.include(terms.useIds)
+    if (terms.parseUsers) { // related posts
+      this.query.include('objectId', terms.parseUsers)
     }
-
 
     return this
   }

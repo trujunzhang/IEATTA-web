@@ -9,7 +9,8 @@ import {withRouter} from 'react-router'
 class OrderedUserItem extends Component {
 
   renderLeft() {
-    const {user} = this.props;
+    const {peopleInEvent} = this.props;
+    const {user} = peopleInEvent;
 
     return (
 
@@ -38,7 +39,8 @@ class OrderedUserItem extends Component {
 
 
   renderStory() {
-    const {user} = this.props;
+    const {peopleInEvent} = this.props;
+    const {user} = peopleInEvent;
 
     return (
 
