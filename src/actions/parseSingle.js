@@ -44,6 +44,7 @@ const {
   PARSE_TOPICS,
   PARSE_RESTAURANTS,
   PARSE_EVENTS,
+  PARSE_RECIPE,
   PARSE_COMMENTS,
 } = require('../lib/constants').default
 
@@ -53,7 +54,6 @@ function loadParseObject(type: string, query: Parse.Query, objectId: string, par
     return query.get(objectId, {
       success: (object) => {
         const model = parseFun(object);
-        // Flow can't guarantee {type, list} is a valid action
         const payload = {objectId, model}
         dispatch({type, payload})
       },
@@ -79,6 +79,10 @@ export default {
 
   loadEventPage: (objectId: string): ThunkAction => {
     return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_EVENTS, ['restaurant', 'photos']), objectId, fromParseEvent)
+  },
+
+  loadOrderedUserPage: (objectId: string): ThunkAction => {
+    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_USERS, ['photos']), objectId, fromParseUser)
   }
 
 }

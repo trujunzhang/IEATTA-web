@@ -9,17 +9,23 @@ class IEAOrderedUsers extends Component {
   constructor(props, context) {
     super(props)
 
+    // path: 'ordereduser/(:uid)/(:uslug)/(:eid)/(:eslug)/(:rid)/(:rslug)',
+
     this.state = this.initialState = {
+      uid: props.params.uid,
+      uslug: props.params.uslug,
       eid: props.params.eid,
       eslug: props.params.eslug,
+      rid: props.params.rid,
+      rslug: props.params.rslug,
       isFetching: true,
-      event: null
+      orderedUser: null
     }
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      event: getModelByObjectId(nextProps, this.state.eid, this.state.event),
+      orderedUser: getModelByObjectId(nextProps, this.state.eid, this.state.orderedUser),
       isFetching: false
     })
   }
