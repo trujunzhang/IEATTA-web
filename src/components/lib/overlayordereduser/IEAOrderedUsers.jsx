@@ -17,13 +17,17 @@ class IEAOrderedUsers extends Component {
       eid: props.params.eid,
       rid: props.params.rid,
       orderedUser: null,
+      forEvent: null,
+      forRestaurant: null,
       ready: false
     }
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      orderedUser: getModelByObjectId(nextProps, this.state.eid, this.state.orderedUser),
+      orderedUser: getModelByObjectId(nextProps, this.state.uid, this.state.orderedUser),
+      forEvent: getModelByObjectId(nextProps, this.state.eid, this.state.forEvent),
+      forRestaurant: getModelByObjectId(nextProps, this.state.rid, this.state.forRestaurant),
       ready: true
     })
   }
