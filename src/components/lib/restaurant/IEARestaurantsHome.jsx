@@ -5,33 +5,48 @@ import {withRouter} from 'react-router'
 
 let md5 = require('blueimp-md5')
 
+const {loadRestaurantsList} = require('../../../actions').default
+const {byListId} = require('../../filter/filterPosts').default
+
 /**
  * Make day wise groups on category pages, remove calendar widget from tag and source pages
  * So calendar will only show on “Homepage” and “Category” page
  * Homepage and category pages will have day wise groups
  */
 class IEARestaurantsHome extends Component {
+
   constructor(props) {
     super(props)
 
-    this.state = this.initialState = {
-      // Navigation menu
+    const {params, location} = props;
+
+    const terms = {
+      ...params,
+      limit: 10,
       listId: 'single-list-view-for-restaurants'
+    }
+    this.state = {
+      terms: terms,
+      listTask: byListId(props.listContainerTasks, terms)
     }
   }
 
-  renderPostList(key) {
-    const {params, location} = this.props,
-      limit = Telescope.settings.get('postsPerPage', 10)
+  componentWillReceiveProps(nextProps) {
+    // debugger
+    this.setState({
+      listTask: byListId(nextProps.listContainerTasks, this.state.terms)
+    })
+  }
 
-    const terms = {...params, limit: limit, listId: this.state.listId}
+  componentDidMount() {
+    this.loadMore()
+  }
 
-    return (
-      <Telescope.components.IEARestaurantsList
-        key={key}
-        terms={terms}
-      />
-    )
+  loadMore() {
+    const nextListTask = this.state.listTask
+    nextListTask['ready'] = false
+    this.setState({listTask: nextListTask})
+    this.props.dispatch(loadRestaurantsList(nextListTask, this.state.terms))
   }
 
   renderLeft() {
@@ -39,7 +54,13 @@ class IEARestaurantsHome extends Component {
       <div className="column column-alpha ">
         <div className="results-wrapper indexed-biz-archive" id="restaurants_list_results">
           <div className="search-results-content">
-            {this.renderPostList('list')}
+
+            <Telescope.components.IEARestaurantsList
+              key={"restaurantsList"}
+              listTask={this.state.listTask}
+              loadMore={this.loadMore.bind(this)}
+            />
+
           </div>
         </div>
       </div>
@@ -49,7 +70,7 @@ class IEARestaurantsHome extends Component {
   renderRight() {
     return (
       <div className="column column-beta ">
-        <Telescope.components.RestaurantsListRightMap listId={this.state.listId}/>
+        <Telescope.components.RestaurantsListRightMap listId={this.state.terms.listId}/>
       </div>
     )
   }
@@ -72,4 +93,14 @@ class IEARestaurantsHome extends Component {
   }
 }
 
-export default withRouter(IEARestaurantsHome)
+
+const {connect} = require('react-redux')
+
+function select(store) {
+  return {
+    listContainerTasks: store.listContainerTasks
+  }
+}
+
+export default withRouter(connect(select)(IEARestaurantsHome))
+
