@@ -6,8 +6,8 @@ import {withRouter} from 'react-router'
 class ReviewsItem extends Component {
 
   renderLeft() {
-    const {peopleInEvent} = this.props;
-    const {user} = peopleInEvent;
+    const {review} = this.props;
+    const {user} = review;
 
     return (
 
