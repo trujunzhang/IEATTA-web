@@ -18,18 +18,12 @@ class EventsDetail extends Component {
     )
   }
 
-  renderLeftBottomReviewsSection() {
-    return (
-      <div className="ysection">
-      </div>
-    )
-  }
-
   renderLeftPanel() {
     return (
       <div className="column column-alpha column--responsive">
         {this.renderLeftTopSection()}
-        {this.renderLeftBottomReviewsSection()}
+
+        <Telescope.components.ReviewsList forObject={this.props.event} reviewType="event"/>
       </div>
     )
   }

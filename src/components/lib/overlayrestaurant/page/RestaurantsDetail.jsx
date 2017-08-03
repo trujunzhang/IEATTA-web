@@ -8,7 +8,7 @@ class RestaurantsDetail extends Component {
   renderLeftPanel() {
     return (
       <div className="column column-alpha column--responsive">
-        {/*<Telescope.components.EventsList {...this.props}/>*/}
+        <Telescope.components.EventsList {...this.props}/>
 
         <Telescope.components.ReviewsList forObject={this.props.restaurant} reviewType="restaurant"/>
 
