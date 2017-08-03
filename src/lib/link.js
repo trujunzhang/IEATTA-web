@@ -26,5 +26,8 @@ export function cleanUpQuery(router) {
   router.push(obj)
 }
 
+export function getRestaurantLink(restaurant) {
+  return `/biz/${restaurant.id}/${restaurant.displayName}`
+}
 
 

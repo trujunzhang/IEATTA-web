@@ -1,13 +1,14 @@
 import Telescope from '../index'
 import React, {Component} from 'react'
 import Posts from '../../../lib/posts'
+import Photos from '../../../lib/photos'
 import Users from '../../../lib/users'
+import {getRestaurantLink} from '../../../lib/link'
 import {withRouter} from 'react-router'
 
 import {Link} from 'react-router'
 
 import {FormattedMessage, FormattedRelative} from 'react-intl'
-import moment from 'moment'
 
 class RestaurantsItem extends Component {
 
@@ -26,26 +27,24 @@ class RestaurantsItem extends Component {
   }
 
   renderLeft() {
-    const {listId, restaurant, index} = this.props,
-      link = `/biz/${restaurant.id}/${restaurant.displayName}`
-    // debugger
+    const {listId, restaurant, index} = this.props;
 
     return (
       <div className="main-attributes">
         <div className="media-block media-block--12">
           <div className="media-avatar">
             <div className="photo-box pb-90s">
-              <Link className="js-analytics-click" to={link}>
+              <Link className="js-analytics-click" to={getRestaurantLink(restaurant)}>
                 <img alt={restaurant.displayName}
                      className="photo-box-img" height="90" width="90"
-                     src={Posts.getListThumbnailUrl(restaurant)}/>
+                     src={Photos.getListThumbnailUrl(restaurant)}/>
               </Link>
             </div>
           </div>
           <div className="media-story">
             <h3 className="search-result-title">
               <span className="indexed-biz-name">{`${index + 1}.`}
-                <Link className="biz-name js-analytics-click" to={link}>
+                <Link className="biz-name js-analytics-click" to={getRestaurantLink(restaurant)}>
                   <span>{restaurant.displayName}</span>
                 </Link>
               </span>
@@ -119,7 +118,11 @@ class RestaurantsItem extends Component {
     }
 
     return (
-      <li className="regular-search-result">
+      <li
+        onMouseEnter={() => {
+          debugger
+        }}
+        className="regular-search-result">
         <div className="search-result natural-search-result">
           <div className="biz-listing-large">
             {this.renderLeft()}

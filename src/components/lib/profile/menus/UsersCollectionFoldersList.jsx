@@ -2,7 +2,6 @@ import Telescope from '../../index'
 import React, {Component} from 'react'
 import Posts from '../../../../lib/posts'
 import Users from '../../../../lib/users'
-import Folders from '../../../../lib/folder'
 
 
 /**
