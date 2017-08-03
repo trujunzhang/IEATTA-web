@@ -11,9 +11,10 @@ class OrderedUserList extends Component {
     super(props)
 
     const terms = {
-      listId: 'single-list-view-for-ordered-users',
+      listId: 'ordered-users-list-view-for-' + props.event.id,
       limit: 10,
-      eventId: props.event.id
+      eventId: props.event.id,
+      restaurantId: props.event.restaurant.id
     };
     this.state = {
       terms: terms,

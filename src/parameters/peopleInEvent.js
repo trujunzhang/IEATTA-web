@@ -1,7 +1,7 @@
 const Parse = require('parse')
 import moment from 'moment'
 
-let {ParseRestaurant, ParseFolder, ParseUser} = require('../parse/objects').default
+let {ParseRestaurant, ParseEvent, ParseFolder, ParseUser} = require('../parse/objects').default
 
 /**
  * The states were interested in
@@ -20,9 +20,13 @@ export default class PeopleInEventParameters {
 
   addParameters(terms: Any) {
 
-    if (terms.related) {
+    if (terms.eventId) {
+      this.query.equalTo('event', ParseEvent.createWithoutData(terms.eventId))
     }
 
+    if (terms.restaurantId) {
+      this.query.equalTo('restaurant', ParseRestaurant.createWithoutData(terms.restaurantId))
+    }
 
     return this
   }
