@@ -2,6 +2,7 @@ import Telescope from '../../lib'
 import React, {Component} from 'react'
 import Photos from '../../../lib/photos'
 import Posts from '../../../lib/posts'
+import Reviews from '../../../lib/reviews'
 
 import {withRouter} from 'react-router'
 
@@ -56,13 +57,31 @@ class ReviewsItem extends Component {
 
 
   renderStory() {
-
     const {review} = this.props;
-    const {user} = review;
+    const htmlBody = Reviews.getHtmlBody(review);
 
     return (
-      <div></div>
+      <div className="review-wrapper">
+        <div className="review-content">
 
+          <div className="biz-rating biz-rating-large clearfix">
+            <div>
+              <div className="i-stars i-stars--regular-1 rating-large" title="1.0 star rating">
+                <img className="offscreen" height="303"
+                     src="https://s3-media2.fl.yelpcdn.com/assets/srv0/yelp_design_web/9b34e39ccbeb/assets/img/stars/stars.png"
+                     width="84" alt="1.0 star rating"/>
+              </div>
+
+            </div>
+            <span className="rating-qualifier">
+        6/11/2017
+    </span>
+          </div>
+
+          <div className="post_page_body" dangerouslySetInnerHTML={htmlBody}/>
+        </div>
+        <Telescope.components.ReviewsItemButtonsPanel/>
+      </div>
     )
   }
 
