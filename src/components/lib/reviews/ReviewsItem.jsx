@@ -22,7 +22,9 @@ class ReviewsItem extends Component {
                 <a
                   className="js-analytics-click"
                   data-analytics-label="user-photo">
-                  <img alt="Krystal X." className="photo-box-img" height="60"
+                  <img alt={user.username} className="photo-box-img"
+                       width="60"
+                       height="60"
                        src={Photos.getListThumbnailUrl(user)}/>
                 </a>
               </div>

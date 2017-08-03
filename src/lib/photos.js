@@ -10,10 +10,14 @@ const Photos = {}
 Photos.config = {}
 
 Photos.getListThumbnailUrl = function (item) {
-  const photos = item.photos,
-    firstPhoto = photos.length > 0 ? photos[0] : {}
+  const photos = item.photos;
 
-  return firstPhoto.url || '';
+  if (photos.length > 0) {
+    const firstPhoto = photos[0];
+    return firstPhoto.thumbnail.url;
+  }
+
+  return '';
 }
 
 
