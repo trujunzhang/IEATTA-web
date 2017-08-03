@@ -1,7 +1,7 @@
 import Telescope from '../../lib'
 import React, {Component} from 'react'
 
-const {loadEventPage} = require('../../../actions').default
+const {loadOrderedUserPage} = require('../../../actions').default
 
 const {getModelByObjectId} = require('../../filter/filterPosts')
 
@@ -9,9 +9,7 @@ class IEAOrderedUsers extends Component {
   constructor(props, context) {
     super(props)
 
-    // path: 'ordereduser/(:uid)/(:uslug)/(:eid)/(:eslug)/(:rid)/(:rslug)',
-
-    debugger
+    // path: 'ordereduser/(:uid)/(:uslug)/(:eid)/(:rid)',
 
     this.state = this.initialState = {
       uid: props.params.uid,
@@ -31,7 +29,7 @@ class IEAOrderedUsers extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(loadEventPage(this.state.eid))
+    this.props.dispatch(loadOrderedUserPage(this.state.uid))
   }
 
   render() {
