@@ -1,8 +1,6 @@
 import moment from 'moment'
 
-const {ParseRestaurant, ParseEvent, ParseUser, ParseReview} = require('../parse/objects').default
-
-const Parse = require('parse')
+const {ParseRestaurant, ParseEvent, ParseRecipe, ParseUser, ParseReview} = require('../parse/objects').default
 
 /**
  * The states were interested in
@@ -15,13 +13,20 @@ export default class ReviewsParameters {
   }
 
   addParameters(terms: Any) {
-    debugger
-
     if (terms.reviewType) {
       this.query.equalTo('reviewType', terms.reviewType)
-      if (terms.forObjectId) {
-
-        this.query.equalTo('restaurant', ParseRestaurant.createWithoutData(terms.restaurantId))
+      if (terms.forObject) {
+        switch (terms.reviewType) {
+          case 'restaurant':
+            this.query.equalTo('restaurant', ParseRestaurant.createWithoutData(terms.forObject.id))
+            break;
+          case 'event':
+            this.query.equalTo('event', ParseEvent.createWithoutData(terms.forObject.id))
+            break;
+          case 'recipe':
+            this.query.equalTo('recipe', ParseRecipe.createWithoutData(terms.forObject.id))
+            break;
+        }
       }
     }
 
