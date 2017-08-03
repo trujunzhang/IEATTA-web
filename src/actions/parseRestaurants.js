@@ -26,7 +26,14 @@ const Parse = require('parse')
 import type {ThunkAction} from './types'
 
 
-const {getRestaurantParameters, getEventParameters, getPeopleInEventParameters, getUsersParameters, getQueryByType} = require('../parse/parseUtiles').default
+const {
+  getRestaurantParameters,
+  getReviewsParameters,
+  getEventParameters,
+  getPeopleInEventParameters,
+  getUsersParameters,
+  getQueryByType
+} = require('../parse/parseUtiles').default
 
 const {fromParseRestaurant, fromParseEvent, fromParsePeopleInEvent, fromParseUser} = require('../reducers/parseModels')
 
@@ -81,6 +88,10 @@ function loadEventsList(listTask: Any, terms: Any): ThunkAction {
 
 function loadPeopleInEventList(listTask: Any, terms: Any): ThunkAction {
   return loadListByType(listTask, getPeopleInEventParameters(terms), terms, fromParsePeopleInEvent)
+}
+
+function loadReviewsList(listTask: Any, terms: Any): ThunkAction {
+  return loadListByType(listTask, getReviewsParameters(terms), terms, fromParsePeopleInEvent)
 }
 
 export default {

@@ -30,6 +30,7 @@ const ParseRestaurant = Parse.Object.extend('Restaurant')
 const ParseEvent = Parse.Object.extend('Event')
 const ParsePeopleInEvent = Parse.Object.extend('PeopleInEvent')
 const ParseUser = Parse.Object.extend('User')
+const ParseReview = Parse.Object.extend('Review')
 const ParseHistory = Parse.Object.extend('History')
 const ParseTopic = Parse.Object.extend('Topic')
 const ParseFolder = Parse.Object.extend('Folder')
@@ -42,6 +43,7 @@ export default {
   ParseEvent,
   ParsePeopleInEvent,
   ParseUser,
+  ParseReview,
   ParseHistory,
   ParseTopic,
   ParseFolder,
