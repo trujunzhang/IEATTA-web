@@ -98,9 +98,14 @@ export class ReviewsHeaderRightSortView extends Component {
   }
 
   renderSortButton() {
+    /* DropDown prefix is so IMPORTANT */
     return (
-      <a onClick={this.onSortPress.bind(this)} className="dropdown_toggle-action">
-        <span className="dropdown_toggle-text js-dropdown-toggle-text">Yelp Sort</span>
+      <a onClick={this.onSortPress.bind(this)}
+         id="review-header-sort-button"
+         className="dropdown_toggle-action"
+         data-dropdown-prefix="Sort by ">
+        <span className="dropdown_toggle-text js-dropdown-toggle-text"
+              data-dropdown-initial-text="Yelp Sort">Yelp Sort</span>
         <span
           id="icon_14X14"
           className="icon icon--14-triangle-down icon--size-14 icon--currentColor u-triangle-direction-down dropdown_arrow">
@@ -120,7 +125,6 @@ export class ReviewsHeaderRightSortView extends Component {
           <div className="dropdown js-dropdown dropdown--tab dropdown--arrow dropdown--hover dropdown--restricted">
 
             <div className="dropdown_toggle js-dropdown-toggle">
-              <label>{'Sort by'}</label>
               {this.renderSortButton()}
             </div>
 
