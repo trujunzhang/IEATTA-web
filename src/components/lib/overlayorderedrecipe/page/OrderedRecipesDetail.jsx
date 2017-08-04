@@ -25,7 +25,7 @@ class OrderedRecipesDetail extends Component {
 
     return (
       <div className="column column-beta column--responsive official-events">
-
+        <Telescope.components.F8RestaurantMapSection restaurant={this.props.recipe.restaurant}/>
       </div>
     )
   }

@@ -168,7 +168,7 @@ class RestaurantsSingleHeader extends Component {
   renderBizPageSubheaderLeft() {
     return (
       <div className="mapbox-container">
-        <Telescope.components.F8RestaurantMapSection  {...this.props}/>
+        <Telescope.components.F8RestaurantMapSection  {...this.props} showEditButton={true}/>
       </div>
     )
   }

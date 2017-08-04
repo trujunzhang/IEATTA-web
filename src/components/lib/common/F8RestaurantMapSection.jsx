@@ -25,8 +25,23 @@ class F8RestaurantMapSection extends Component {
     )
   }
 
+  renderRightEditButton() {
+    return (
+      <a href="/biz_attribute?biz_id=30jrTz8vh1xSXdtXMvt-mA" className="link-more icon-wrapper mapbox-edit">
+            <span id="icon_14X14"
+                  className="icon icon--14-pencil icon--size-14 icon--linked u-space-r-half">
+              <svg className="icon_svg">
+                <path
+                  d="M12.95 3.05c0-.512-.195-1.023-.586-1.414a1.996 1.996 0 0 0-2.83 0L8.122 3.05 2.465 8.707 1.05 12.95l4.243-1.414L10.95 5.88l1.414-1.416c.39-.39.586-.902.586-1.414zm-8.197 7.61l-2.122.71.71-2.123 5.49-5.49 1.415 1.415-5.49 5.49z"/>
+              </svg>
+            </span>
+        <span>Edit</span>
+      </a>
+    )
+  }
+
   renderBottomText() {
-    const {restaurant} = this.props;
+    const {restaurant, showEditButton} = this.props;
     const rows = restaurant.address.split(',')
     return (
       <ul>
@@ -38,16 +53,7 @@ class F8RestaurantMapSection extends Component {
                 d="M14 7A5 5 0 0 0 4 7c0 1.97 1.15 3.658 2.806 4.472h-.17L9 16l2.363-4.528h-.17C12.85 10.658 14 8.97 14 7zM9 5a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/>
             </svg>
           </span>
-          <a href="/biz_attribute?biz_id=30jrTz8vh1xSXdtXMvt-mA" className="link-more icon-wrapper mapbox-edit">
-            <span id="icon_14X14"
-                  className="icon icon--14-pencil icon--size-14 icon--linked u-space-r-half">
-              <svg className="icon_svg">
-                <path
-                  d="M12.95 3.05c0-.512-.195-1.023-.586-1.414a1.996 1.996 0 0 0-2.83 0L8.122 3.05 2.465 8.707 1.05 12.95l4.243-1.414L10.95 5.88l1.414-1.416c.39-.39.586-.902.586-1.414zm-8.197 7.61l-2.122.71.71-2.123 5.49-5.49 1.415 1.415-5.49 5.49z"/>
-              </svg>
-            </span>
-            <span>Edit</span>
-          </a>
+          {showEditButton ? this.renderRightEditButton() : null}
           <div className="map-box-address u-space-l4">
             <strong className="street-address">
               {rows.map((item, index) => {
