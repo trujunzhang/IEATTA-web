@@ -8,10 +8,12 @@ import Photos from '../../../../lib/photos'
 class OrderedUsersSingleHeader extends Component {
 
   renderColumnOne() {
+    const {orderedUser} = this.props;
+
     return (
       <div className="user-profile_info arrange_unit">
         <h1>Sahithi P.</h1>
-        <h3 className="user-location alternate">Sunnyvale, CA</h3>
+        <h3 className="user-location alternate">{orderedUser.username || ''}</h3>
         <div className="clearfix">
 
           <ul className="user-passport-stats">
@@ -29,7 +31,8 @@ class OrderedUsersSingleHeader extends Component {
     </g>
     </svg>
 </span>
-              <strong>13</strong> Friends
+              <strong>13</strong>
+              Friends
             </li>
             <li className="review-count">
             <span
@@ -204,7 +207,7 @@ class OrderedUsersSingleHeader extends Component {
               <a
                 href="/user_photos?userid=JffflxAtMCm_GQf5OrImig"
                 className="ordered-user-avator">
-                <img alt={orderedUser.username||""}
+                <img alt={orderedUser.username || ""}
                      className="photo-box-img"
                      width="250"
                      height="250"
