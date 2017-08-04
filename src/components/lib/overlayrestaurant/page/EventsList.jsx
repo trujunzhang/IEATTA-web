@@ -71,7 +71,6 @@ class EventsList extends Component {
           <h2>Events</h2>
         </div>
       </div>
-
     )
   }
 
@@ -91,9 +90,10 @@ class EventsList extends Component {
 
         {this.renderTitle()}
         {this.renderRows()}
+        {this.renderEmptySection()}
 
         <div className="u-space-t2 u-space-b2">
-          <a href="/events/sf/browse">View all events in San Francisco</a>
+          {/*<a href="/events/sf/browse">View all events in San Francisco</a>*/}
         </div>
 
       </div>

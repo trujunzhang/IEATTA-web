@@ -66,8 +66,9 @@ class EventsItem extends Component {
 
           <div className="post_page_body" dangerouslySetInnerHTML={htmlBody}/>
 
-          <a href="/events/sf/browse?c=3">Performing Arts</a>
-          <span className="u-text-subtle u-space-l1">36 are interested!</span>
+
+          {/*<a href="/events/sf/browse?c=3">Performing Arts</a>*/}
+          {/*<span className="u-text-subtle u-space-l1">36 are interested!</span>*/}
 
         </div>
       </div>
