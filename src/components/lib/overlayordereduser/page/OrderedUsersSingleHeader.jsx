@@ -13,7 +13,6 @@ class OrderedUsersSingleHeader extends Component {
         <h3 className="user-location alternate">Sunnyvale, CA</h3>
         <div className="clearfix">
 
-
           <ul className="user-passport-stats">
             <li className="friend-count">
             <span
@@ -193,14 +192,16 @@ class OrderedUsersSingleHeader extends Component {
   }
 
   renderLeftUserAvator() {
+    const {orderedUser} = this.props;
+
     return (
       <div className="user-profile_avatar">
         <div
           className="photo-slideshow photo-slideshow--full-width photo-slideshow--rounded js-photo-slideshow-user-details">
-          <div className="photo-slideshow_slide is-active" id="test-user-avator">
+          <div className="photo-slideshow_slide is-active">
             <div className="photo-slideshow_image">
-              <a href="/user_photos?userid=JffflxAtMCm_GQf5OrImig">
-
+              <a className="ordered-user-avator"
+                href="/user_photos?userid=JffflxAtMCm_GQf5OrImig">
                 <img alt="Sahithi P." className="photo-box-img" height="250"
                      src="https://s3-media2.fl.yelpcdn.com/photo/cFR_s8fhR5u8pX2imu9dzw/ls.jpg" width="250"/>
               </a>
