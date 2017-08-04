@@ -15,8 +15,6 @@ export default class RecipesParameters {
 
   addParameters(terms: Any) {
 
-    debugger
-
     if (terms.orderedUserId) {
       this.query.equalTo('user', ParseUser.createWithoutData(terms.orderedUserId))
     }
