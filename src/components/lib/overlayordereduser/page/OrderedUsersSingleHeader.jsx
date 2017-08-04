@@ -196,7 +196,7 @@ class OrderedUsersSingleHeader extends Component {
   }
 
   renderLeftUserAvator() {
-    const {orderedUser} = this.props;
+    const orderedUser = this.props.orderedUser || {};
 
     return (
       <div className="user-profile_avatar">
