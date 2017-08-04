@@ -19,9 +19,7 @@ class RestaurantsItem extends Component {
 
     return (
       <div className="biz-rating biz-rating-large clearfix">
-        <div className={`i-stars i-stars--regular-${reviews} rating-large`} title={`${reviews}.0 star rating`}>
-          <Telescope.components.F8StarIcon/>
-        </div>
+        <Telescope.components.F8StarIcon rate="3" iconType="regular"/>
         <span className="review-count rating-qualifier">{`${reviews} reviews`}</span>
       </div>
     )

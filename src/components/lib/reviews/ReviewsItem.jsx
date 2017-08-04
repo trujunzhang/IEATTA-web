@@ -61,8 +61,8 @@ class ReviewsItem extends Component {
       {rate} = review;
 
     const htmlBody = Reviews.getHtmlBody(review);
-    const rateClass = "i-stars i-stars--regular-" + rate + " rating-large";
-    const rateTitle = rate + ".0 star rating";
+    //const rateClass = "i-stars i-stars--regular-" + rate + " rating-large";
+    // const rateTitle = rate + ".0 star rating";
 
     return (
       <div className="review-wrapper">
@@ -70,14 +70,12 @@ class ReviewsItem extends Component {
 
           <div className="biz-rating biz-rating-large clearfix">
             <div>
-              <div className={rateClass} title={rateTitle}>
-                <img className="offscreen"
-                     width="84"
-                     height="303"
-                     src="/images/stars/stars.png"
-                     alt={rateTitle}/>
-              </div>
-
+              <Telescope.components.F8StarIcon
+                rate={rate}
+                iconType="regular"
+                iconWidth="84"
+                iconHeight="303"
+              />
             </div>
             <span className="rating-qualifier">
         6/11/2017
