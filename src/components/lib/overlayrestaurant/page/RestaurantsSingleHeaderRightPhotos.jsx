@@ -12,7 +12,6 @@ class RestaurantsSingleHeaderRightPhotos extends Component {
     const photoLength = photos.length;
     return (
 
-
       <div className="js-photo photo photo-3 photo-grid">
 
         <div className="showcase-photo-box">
