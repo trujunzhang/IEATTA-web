@@ -9,10 +9,11 @@
 // Leaflet
 @import "leaflet";
 @import "search";
+@import "wwwpkg";
 // Bootstrap
+@import "yelp/user_details-pkg";
 @import "yelp/biz_details-pkg";
 @import "yelp/events-pkg";
 //@import "yelp/home-pkg";
-@import "wwwpkg";
-@import "eu_cookie_notice";
+//@import "eu_cookie_notice";
 @import "sprite";

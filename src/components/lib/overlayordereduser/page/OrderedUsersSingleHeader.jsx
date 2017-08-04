@@ -17,7 +17,7 @@ class OrderedUsersSingleHeader extends Component {
           <ul className="user-passport-stats">
             <li className="friend-count">
             <span
-              id="icon_fill_24X24 "
+              id="icon_fill_24X24"
               className="icon icon--24-friends icon--size-24">
     <svg className="icon_svg">
         <g>
@@ -33,7 +33,7 @@ class OrderedUsersSingleHeader extends Component {
             </li>
             <li className="review-count">
             <span
-              id="icon_fill_24X24 "
+              id="icon_fill_24X24"
               className="icon icon--24-review icon--size-24">
     <svg className="icon_svg">
     <path
@@ -44,7 +44,7 @@ class OrderedUsersSingleHeader extends Component {
             </li>
             <li className="photo-count">
             <span
-              id="icon_fill_24X24 "
+              id="icon_fill_24X24"
               className="icon icon--24-camera icon--size-24">
     <svg className="icon_svg">
     <path
@@ -117,6 +117,52 @@ class OrderedUsersSingleHeader extends Component {
 
           </li>
 
+
+          <li>
+
+
+            <a className="arrange arrange--middle send-pm"
+               href="/mail?action_send_form=1&amp;dst=JffflxAtMCm_GQf5OrImig&amp;return_url=/user_details?userid=JffflxAtMCm_GQf5OrImig"
+               rel="Sahithi P.">
+              <div className="action-link_icon arrange_unit">
+            <span
+              id="icon_18X18"
+              className="icon icon--18-speech icon--size-18 icon--currentColor">
+    <svg className="icon_svg">
+    <path d="M2 4v6a2 2 0 0 0 2 2h1v3l4-3h5a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/>
+    </svg>
+</span>
+              </div>
+              <div className="action-link_label arrange_unit arrange_unit--fill">
+                Send message
+              </div>
+            </a>
+
+          </li>
+
+
+          <li>
+
+
+            <a className="arrange arrange--middle send-pm"
+               href="/mail?action_send_form=1&amp;dst=JffflxAtMCm_GQf5OrImig&amp;return_url=/user_details?userid=JffflxAtMCm_GQf5OrImig"
+               rel="Sahithi P.">
+              <div className="action-link_icon arrange_unit">
+            <span
+              id="icon_18X18"
+              className="icon icon--18-speech icon--size-18 icon--currentColor">
+    <svg className="icon_svg">
+    <path d="M2 4v6a2 2 0 0 0 2 2h1v3l4-3h5a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/>
+    </svg>
+</span>
+              </div>
+              <div className="action-link_label arrange_unit arrange_unit--fill">
+                Send message
+              </div>
+            </a>
+
+          </li>
+
           <li>
 
 
@@ -149,9 +195,22 @@ class OrderedUsersSingleHeader extends Component {
   renderLeftUserAvator() {
     return (
       <div className="user-profile_avatar">
-        <img alt="Sahithi P." className="photo-box-img" height="250"
-             src="https://s3-media2.fl.yelpcdn.com/photo/cFR_s8fhR5u8pX2imu9dzw/ls.jpg" width="250"/>
+        <div
+          className="photo-slideshow photo-slideshow--full-width photo-slideshow--rounded js-photo-slideshow-user-details">
+          <div className="photo-slideshow_slide is-active" id="test-user-avator">
+            <div className="photo-slideshow_image">
+              <a href="/user_photos?userid=JffflxAtMCm_GQf5OrImig">
+
+                <img alt="Sahithi P." className="photo-box-img" height="250"
+                     src="https://s3-media2.fl.yelpcdn.com/photo/cFR_s8fhR5u8pX2imu9dzw/ls.jpg" width="250"/>
+              </a>
+
+            </div>
+          </div>
+        </div>
       </div>
+
+
     )
   }
 
