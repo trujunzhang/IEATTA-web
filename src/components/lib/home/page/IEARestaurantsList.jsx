@@ -28,7 +28,7 @@ class IEARestaurantsList extends Component {
           <ReactLoading type="bars" color="#444"/>
         </section>
       )
-    } else if (!!results && !!results.length && false) {
+    } else if (!!results && !!results.length) {
 
       return (
 
