@@ -166,7 +166,7 @@ class OrderedRecipesSingleHeader extends Component {
   renderBizPageSubheaderLeft() {
     return (
       <div className="mapbox-container">
-        <Telescope.components.RestaurantsPageMap restaurant={this.props.recipe.restaurant}/>
+        <Telescope.components.F8RestaurantMapSection restaurant={this.props.recipe.restaurant}/>
       </div>
     )
   }

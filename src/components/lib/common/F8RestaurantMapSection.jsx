@@ -1,9 +1,9 @@
-import Telescope from '../../../lib'
+import Telescope from '../index'
 import React, {Component} from 'react'
 
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
 
-class RestaurantsPageMap extends Component {
+class F8RestaurantMapSection extends Component {
 
   renderTopMap() {
     const {restaurant} = this.props;
@@ -96,4 +96,4 @@ class RestaurantsPageMap extends Component {
   }
 }
 
-export default RestaurantsPageMap;
+export default F8RestaurantMapSection;

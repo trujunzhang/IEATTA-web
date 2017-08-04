@@ -22,6 +22,7 @@ Telescope.registerComponent('UsersBlurryImageAvatar',           require('./exten
 Telescope.registerComponent('Layout',                           require('./common/Layout.jsx').default)
 Telescope.registerComponent('F8StarIcon',                       require('./common/F8StarIcon.jsx').default)
 Telescope.registerComponent('F8SingleHeaderRightPhotos',        require('./common/F8SingleHeaderRightPhotos.jsx').default)
+Telescope.registerComponent('F8RestaurantMapSection',                 require('./common/F8RestaurantMapSection.jsx').default)
 Telescope.registerComponent('Error404',                         require('./common/Error404.jsx').default)
 Telescope.registerComponent('App',                              require('./common/App.js').default)
 
@@ -55,7 +56,6 @@ Telescope.registerComponent('IEARestaurantsLayout',               require('./ove
 
 // overlayRestaurant(page)
 Telescope.registerComponent('RestaurantsDetail',                  require('./overlayrestaurant/page/RestaurantsDetail.jsx').default)
-Telescope.registerComponent('RestaurantsPageMap',                 require('./overlayrestaurant/page/RestaurantsPageMap.jsx').default)
 Telescope.registerComponent('EventsItem',                         require('./overlayrestaurant/page/EventsItem.jsx').default)
 Telescope.registerComponent('EventsList',                         require('./overlayrestaurant/page/EventsList.jsx').default)
 Telescope.registerComponent('RestaurantsSingleHeader',            require('./overlayrestaurant/page/RestaurantsSingleHeader.jsx').default)
