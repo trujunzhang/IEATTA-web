@@ -41,7 +41,7 @@ class RecipesItem extends Component {
                                      data-analytics-label="biz-name"
                                      href="/biz/san-tung-san-francisco-2"
                                      data-hovercard-id="UM8uywr0zv0EnxZh7DB9nA">
-                                    <span>San Tung</span>
+                                    <span>{recipe.displayName}</span>
                                   </a>
 </span>
 

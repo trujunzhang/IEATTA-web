@@ -55,8 +55,8 @@ class RecipesList extends Component {
 
     return (
       <ul className="ylist ylist-bordered">
-        {results.map(recipe =>
-          <Telescope.components.RecipesItem key={recipe.id} recipe={recipe}/>
+        {results.map((recipe,index) =>
+          <Telescope.components.RecipesItem key={recipe.id} recipe={recipe} index={index}/>
         )}
       </ul>
 
