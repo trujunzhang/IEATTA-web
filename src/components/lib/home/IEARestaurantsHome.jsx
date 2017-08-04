@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 
 import {withRouter} from 'react-router'
 
-let md5 = require('blueimp-md5')
+const md5 = require('blueimp-md5')
 
 const {loadRestaurantsList} = require('../../../actions').default
 const {byListId, getDefaultListTask, generateMarkers, getMarker} = require('../../filter/filterPosts')

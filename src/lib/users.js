@@ -1,7 +1,8 @@
 import Telescope from '../components/lib/index'
 import React from 'react'
-let _ = require('underscore')
-let md5 = require('blueimp-md5')
+
+const _ = require('underscore')
+const md5 = require('blueimp-md5')
 
 const Users = {}
 

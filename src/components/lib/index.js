@@ -44,13 +44,13 @@ Telescope.registerComponent('ReviewsItem',                         require('./re
 Telescope.registerComponent('ReviewsItemButtonsPanel',             require('./reviews/ReviewsItemButtonsPanel.jsx').default)
 
 // restaurant
-Telescope.registerComponent('IEARestaurantsHome',         require('./restaurant/IEARestaurantsHome.jsx').default)
-Telescope.registerComponent('RestaurantsItem',            require('./restaurant/RestaurantsItem.jsx').default)
-Telescope.registerComponent('RestaurantsListRightMap',    require('./restaurant/RestaurantsListRightMap.jsx').default)
-Telescope.registerComponent('IEARestaurantsList',         require('./restaurant/IEARestaurantsList.jsx').default)
-Telescope.registerComponent('RestaurantsLoading',         require('./restaurant/RestaurantsLoading.jsx').default)
-Telescope.registerComponent('RestaurantsLoadMore',        require('./restaurant/RestaurantsLoadMore.jsx').default)
-Telescope.registerComponent('RestaurantsNoResults',       require('./restaurant/RestaurantsNoResults.jsx').default)
+Telescope.registerComponent('IEARestaurantsHome',         require('./home/IEARestaurantsHome.jsx').default)
+Telescope.registerComponent('RestaurantsItem',            require('./home/page/RestaurantsItem.jsx').default)
+Telescope.registerComponent('RestaurantsListRightMap',    require('./home/page/RestaurantsListRightMap.jsx').default)
+Telescope.registerComponent('IEARestaurantsList',         require('./home/page/IEARestaurantsList.jsx').default)
+Telescope.registerComponent('RestaurantsLoading',         require('./home/RestaurantsLoading.jsx').default)
+Telescope.registerComponent('RestaurantsLoadMore',        require('./home/RestaurantsLoadMore.jsx').default)
+Telescope.registerComponent('RestaurantsNoResults',       require('./home/page/RestaurantsNoResults.jsx').default)
 
 // overlayRestaurant
 Telescope.registerComponent('DetailedRestaurant',                 require('./overlayrestaurant/DetailedRestaurant.jsx').default)

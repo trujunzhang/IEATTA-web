@@ -1,9 +1,9 @@
-import Telescope from '../index'
+import Telescope from '../../index'
 import React, {Component} from 'react'
-import Posts from '../../../lib/posts'
-import Users from '../../../lib/users'
+import Posts from '../../../../lib/posts'
+import Users from '../../../../lib/users'
 
-import MarkerClusterGroup from '../../vendor/react-leaflet-markercluster/react-leaflet-markercluster'
+import MarkerClusterGroup from '../../../vendor/react-leaflet-markercluster/react-leaflet-markercluster'
 
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
 
