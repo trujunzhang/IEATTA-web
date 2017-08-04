@@ -17,15 +17,13 @@ class EventsList extends Component {
     };
     this.state = {
       terms: terms,
-      listTask: byListId(props.listContainerTasks, terms),
-      ready: false
+      listTask: byListId(props.listContainerTasks, terms)
     }
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      listTask: byListId(nextProps.listContainerTasks, this.state.terms),
-      ready: true
+      listTask: byListId(nextProps.listContainerTasks, this.state.terms)
     })
   }
 
@@ -59,14 +57,30 @@ class EventsList extends Component {
   }
 
   renderEmptySection() {
+    return (
+      <div>
 
+      </div>
+    )
+  }
+
+  renderTitle() {
+    return (
+      <div className="arrange">
+        <div className="arrange_unit arrange_unit--fill">
+          <h2>Events</h2>
+        </div>
+      </div>
+
+    )
   }
 
   render() {
-    const {listTask, ready} = this.state;
+    const {listTask} = this.state;
 
     const {
       results,
+      ready,
       totalCount,
     } = listTask
 
@@ -75,12 +89,7 @@ class EventsList extends Component {
     return (
       <div className="ysection events">
 
-        <div className="arrange">
-          <div className="arrange_unit arrange_unit--fill">
-            <h2>Events</h2>
-          </div>
-        </div>
-
+        {this.renderTitle()}
         {this.renderRows()}
 
         <div className="u-space-t2 u-space-b2">
@@ -92,11 +101,11 @@ class EventsList extends Component {
   }
 
   renderContent() {
-
-    const {listTask, ready} = this.state
+    const {listTask} = this.state
 
     const {
       results,
+      ready,
       totalCount,
       limit,
       firstPagination,
