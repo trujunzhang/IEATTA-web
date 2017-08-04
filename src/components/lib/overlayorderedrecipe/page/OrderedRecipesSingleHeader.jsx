@@ -13,7 +13,7 @@ class OrderedRecipesSingleHeader extends Component {
 
         <div className="u-space-t1">
           <h1 className="biz-page-title embossed-text-white shortenough">
-            {recipe.displayName}
+            {recipe.displayName || ''}
           </h1>
           <div className="u-nowrap claim-status_teaser js-claim-status-hover">
         <span id="icon_18X18"

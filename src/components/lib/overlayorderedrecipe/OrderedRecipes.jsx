@@ -39,7 +39,7 @@ class OrderedRecipes extends Component {
       )
     }
 
-    return (<Telescope.components.IEAOrderedRecipesLayout {...this.props} />)
+    return (<Telescope.components.IEAOrderedRecipesLayout {...this.state} />)
   }
 
 }

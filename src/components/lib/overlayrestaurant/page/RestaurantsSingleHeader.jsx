@@ -8,6 +8,7 @@ class RestaurantsSingleHeader extends Component {
 
   renderBizPageHeaderLeft() {
     const {restaurant} = this.props;
+
     return (
       <div className="biz-page-header-left claim-status">
 
