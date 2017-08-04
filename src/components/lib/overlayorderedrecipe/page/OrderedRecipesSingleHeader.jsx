@@ -8,9 +8,6 @@ class OrderedRecipesSingleHeader extends Component {
 
   renderBizPageHeaderLeft() {
     const {recipe} = this.props;
-
-    debugger
-
     return (
       <div className="biz-page-header-left claim-status">
 
