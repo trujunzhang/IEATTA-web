@@ -16,11 +16,29 @@ class RestaurantsDetail extends Component {
     )
   }
 
+
+  renderRightTopTitle() {
+    return (
+      <div className="arrange arrange--12 arrange--baseline">
+
+        <div className="arrange_unit nowrap">
+          <h3 className="subscribe-list_title">Ordered Recipes Recently</h3>
+        </div>
+
+      </div>
+
+    )
+  }
+
+
   renderRightPanel() {
+    const {restaurant} = this.props;
+
     return (
       <div className="column column-beta column--responsive official-events">
 
-        <Telescope.components.RecipesList {...this.props}/>
+        {this.renderRightTopTitle()}
+        <Telescope.components.RecipesList forRestaurant={restaurant}/>
 
       </div>
     )

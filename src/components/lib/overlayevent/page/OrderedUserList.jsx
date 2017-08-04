@@ -77,23 +77,29 @@ class OrderedUserList extends Component {
     return null;
   }
 
-  render() {
+  renderTitle() {
+    return (
+      <div className="arrange arrange--12 arrange--baseline">
 
+        <div className="arrange_unit nowrap">
+          <h3 className="subscribe-list_title">Who's in?</h3>
+        </div>
+
+        <div className="arrange_unit arrange_unit--fill">
+          <span>90 responses</span>
+        </div>
+
+      </div>
+
+    )
+  }
+
+  render() {
 
     return (
       <div className="ysection">
 
-        <div className="arrange arrange--12 arrange--baseline">
-
-          <div className="arrange_unit nowrap">
-            <h3 className="subscribe-list_title">Who's in?</h3>
-          </div>
-
-          <div className="arrange_unit arrange_unit--fill">
-            <span>90 responses</span>
-          </div>
-
-        </div>
+        {this.renderTitle()}
 
         {this.renderRows()}
 
