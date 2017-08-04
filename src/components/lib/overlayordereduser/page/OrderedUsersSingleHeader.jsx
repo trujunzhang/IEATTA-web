@@ -204,7 +204,6 @@ class OrderedUsersSingleHeader extends Component {
           {this.renderColumnTwo()}
         </div>
 
-
         <Telescope.components.F8UserAvatorSection user={this.props.orderedUser}/>
 
       </div>
