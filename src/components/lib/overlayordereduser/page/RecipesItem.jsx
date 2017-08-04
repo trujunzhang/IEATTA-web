@@ -13,8 +13,6 @@ class RecipesItem extends Component {
   renderLeftAvator() {
     const {recipe} = this.props;
 
-    debugger
-
     return (
       <div className="media-avatar">
 
