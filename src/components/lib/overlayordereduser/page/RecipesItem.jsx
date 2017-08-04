@@ -9,8 +9,7 @@ import {withRouter} from 'react-router'
 class RecipesItem extends Component {
 
   renderLeftAvator() {
-    const {peopleInEvent} = this.props;
-    const {user} = peopleInEvent;
+    const {recipe} = this.props;
 
     return (
       <div className="media-avatar">
@@ -19,11 +18,11 @@ class RecipesItem extends Component {
           <a href="/biz/san-tung-san-francisco-2"
              className="js-analytics-click"
           >
-            <img alt="San Tung"
+            <img alt={recipe.displayName}
                  className="photo-box-img"
                  width="90"
                  height="90"
-                 src="https://s3-media2.fl.yelpcdn.com/bphoto/P5_EgBQbRm9Am9Mmynvwxw/90s.jpg"
+                 src={Photos.getListThumbnailUrl(recipe)}/>
             />
           </a>
         </div>
@@ -33,8 +32,7 @@ class RecipesItem extends Component {
 
 
   renderStory() {
-    const {peopleInEvent} = this.props;
-    const {user} = peopleInEvent;
+    const {recipe} = this.props;
 
     return (
       <div className="media-story">
