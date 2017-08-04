@@ -2,15 +2,17 @@ import Telescope from '../index'
 import React, {Component} from 'react'
 import Photos from '../../../lib/photos'
 
-import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
+import {Link} from 'react-router'
 
 class F8UserAvatorSection extends Component {
 
   renderLeftUserAvator() {
     const user = this.props.user || {};
+    const sectionClass = "user-profile_avatar-section"
+    // const sectionClass = ""
 
     return (
-      <div className="user-profile_avatar">
+      <div className={sectionClass}>
         <div
           className="photo-slideshow photo-slideshow--full-width photo-slideshow--rounded js-photo-slideshow-user-details">
           <div className="photo-slideshow_slide is-active">
@@ -29,8 +31,6 @@ class F8UserAvatorSection extends Component {
           </div>
         </div>
       </div>
-
-
     )
   }
 

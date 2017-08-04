@@ -53,6 +53,5 @@ export function getOrderedUserLink(user, peopleInEvent) {
  */
 export function getOrderedRecipeLink(recipe) {
   const {restaurant, event, user} = recipe;
-  debugger
   return `/orderedrecipe/${recipe.id}/${recipe.displayName}`
 }
