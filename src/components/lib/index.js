@@ -74,7 +74,7 @@ Telescope.registerComponent('EventsSingleHeader',            require('./overlaye
 Telescope.registerComponent('EventsSingleHeaderRightMap',    require('./overlayevent/page/EventsSingleHeaderRightMap.jsx').default)
 
 // overlayOrderedUser
-Telescope.registerComponent('IEAOrderedUsers',               require('./overlayordereduser/IEAOrderedUsers.jsx').default)
+Telescope.registerComponent('OrderedUsers',                  require('./overlayordereduser/OrderedUsers.jsx').default)
 
 // overlayOrderedUser(page)
 Telescope.registerComponent('OrderedUsersDetail',                        require('./overlayordereduser/page/OrderedUsersDetail.jsx').default)
@@ -84,6 +84,8 @@ Telescope.registerComponent('OrderedUsersSingleHeader',                  require
 Telescope.registerComponent('OrderedUsersSingleHeaderRightMap',          require('./overlayordereduser/page/OrderedUsersSingleHeaderRightMap.jsx').default)
 Telescope.registerComponent('RecipesItem',                               require('./overlayordereduser/page/RecipesItem.jsx').default)
 Telescope.registerComponent('RecipesList',                               require('./overlayordereduser/page/RecipesList.jsx').default)
+
+
 
 // profile
 Telescope.registerComponent('UserProfileHeader',                   require('./profile/UserProfileHeader.jsx').default)

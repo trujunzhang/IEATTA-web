@@ -5,7 +5,7 @@ import Photos from '../../../lib/photos'
 import Posts from '../../../lib/posts'
 import OrderedUsers from '../../../lib/events'
 
-class IEAOrderedUsersLayout extends Component {
+class OrderedUsersLayout extends Component {
 
   render() {
     return (
@@ -27,4 +27,4 @@ class IEAOrderedUsersLayout extends Component {
   }
 }
 
-export default IEAOrderedUsersLayout;
+export default OrderedUsersLayout;

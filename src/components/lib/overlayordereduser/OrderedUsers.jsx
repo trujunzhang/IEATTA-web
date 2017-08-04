@@ -5,7 +5,7 @@ const {loadOrderedUserPage, loadEventPage, loadRestaurantPage} = require('../../
 
 const {getModelByObjectId} = require('../../filter/filterPosts')
 
-class IEAOrderedUsers extends Component {
+class OrderedUsers extends Component {
   constructor(props, context) {
     super(props)
 
@@ -49,7 +49,7 @@ class IEAOrderedUsers extends Component {
       )
     }
 
-    return (<Telescope.components.IEAOrderedUsersLayout {...this.state}/>)
+    return (<Telescope.components.OrderedUsersLayout {...this.state}/>)
   }
 
 }
@@ -62,5 +62,5 @@ function select(store) {
   }
 }
 
-export default connect(select)(IEAOrderedUsers)
+export default connect(select)(OrderedUsers)
 
