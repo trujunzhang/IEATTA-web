@@ -3,9 +3,7 @@ const md5 = require('blueimp-md5')
 import moment from 'moment'
 
 const Recipes = {
-  config: {
-    dateFormat: 'dddd, DD MMM, h:mm a'
-  }
+  config: {}
 }
 
 Recipes.getUpdatedAtFormat = function (recipe) {
@@ -13,8 +11,6 @@ Recipes.getUpdatedAtFormat = function (recipe) {
 
   //for example: "Saturday, 1 Jul, 12:00 am"
   const day = moment(start).format('MM/DD/YYYY')
-
-  debugger
 
   return day;
 }
