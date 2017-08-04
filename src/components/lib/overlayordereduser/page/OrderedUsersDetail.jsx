@@ -141,6 +141,11 @@ class OrderedUsersDetail extends Component {
 
           <div className="user-details-overview_activity">
 
+
+          </div>
+
+          <div className="user-details-overview_sidebar">
+
           </div>
 
         </div>
