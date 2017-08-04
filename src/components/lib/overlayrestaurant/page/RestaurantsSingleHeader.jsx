@@ -180,7 +180,9 @@ class RestaurantsSingleHeader extends Component {
         </div>
 
         <div className="biz-page-subheader">
+
           {this.renderBizPageSubheaderLeft()}
+
           <Telescope.components.RestaurantsSingleHeaderRightPhotos  {...this.props}/>
         </div>
       </div>
