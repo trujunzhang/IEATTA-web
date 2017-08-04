@@ -8,8 +8,12 @@ import {withRouter} from 'react-router'
 class ReviewsHeaderView extends Component {
 
   renderTitle() {
+    const {
+      reviewTitle = 'wanghao'
+    } = this.props;
+
     return (
-      <h2>Recommended Reviews <b>for Chef Cho</b></h2>
+      <h2>Recommended Reviews <b>{'for ' + reviewTitle}</b></h2>
     )
   }
 

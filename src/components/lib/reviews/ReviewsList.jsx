@@ -79,7 +79,7 @@ class ReviewsList extends Component {
 
     return (
       <div className="feed">
-        <Telescope.components.ReviewsHeaderView/>
+        <Telescope.components.ReviewsHeaderView  {...this.props}/>
 
         <div className="review-list" id="position-relative">
 

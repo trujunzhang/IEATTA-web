@@ -19,11 +19,16 @@ class EventsDetail extends Component {
   }
 
   renderLeftPanel() {
+    const {event} = this.props;
+    const reviewTitle = event.displayName;
+
     return (
       <div className="column column-alpha column--responsive">
         {this.renderLeftTopSection()}
 
-        <Telescope.components.ReviewsList forObject={this.props.event} reviewType="event"/>
+        <Telescope.components.ReviewsList forObject={this.props.event}
+                                          reviewType="event"
+                                          reviewTitle={reviewTitle}/>
       </div>
     )
   }

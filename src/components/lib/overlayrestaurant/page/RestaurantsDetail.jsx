@@ -6,11 +6,16 @@ import Users from '../../../../lib/users'
 class RestaurantsDetail extends Component {
 
   renderLeftPanel() {
+    const {restaurant} = this.props;
+    const reviewTitle = restaurant.displayName;
+
     return (
       <div className="column column-alpha column--responsive">
         <Telescope.components.EventsList {...this.props}/>
 
-        <Telescope.components.ReviewsList forObject={this.props.restaurant} reviewType="restaurant"/>
+        <Telescope.components.ReviewsList forObject={this.props.restaurant}
+                                          reviewType="restaurant"
+                                          reviewTitle={reviewTitle}/>
 
       </div>
     )
