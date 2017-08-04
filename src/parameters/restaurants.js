@@ -23,20 +23,6 @@ export default class RestaurantsParameters {
       if (typeof userId === 'undefined') {
         throw new Error('You need to set a proper User Id before query posts')
       }
-      switch (terms.userProfileType) {
-        case USERPROFILE_TYPE_UPVOTE:
-          this.query.containedIn('upvoters', [ParseUser.createWithoutData(userId)])
-          break
-        case USERPROFILE_TYPE_DOWNVOTE:
-          this.query.containedIn('downvoters', [ParseUser.createWithoutData(userId)])
-          break
-        case USERPROFILE_TYPE_SUBMITTED_POSTS:
-
-          break
-        case USERPROFILE_TYPE_FOLDER_LIST:
-
-          break
-      }
     }
 
     if (terms.related) { // related posts

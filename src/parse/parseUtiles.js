@@ -2,7 +2,14 @@ const Parse = require('parse')
 
 let Parameters = require('../parameters').default
 
-let {ParseRestaurant, ParseEvent, ParseUser, ParsePeopleInEvent, ParseReview} = require('./objects').default
+let {
+  ParseRestaurant,
+  ParseEvent,
+  ParseUser,
+  ParsePeopleInEvent,
+  ParseReview,
+  ParseRecipe
+} = require('./objects').default
 
 /**
  * The states were interested in
@@ -12,7 +19,8 @@ const {
   PARSE_EVENTS,
   PARSE_PEOPLE_IN_EVENTS,
   PARSE_USERS,
-  PARSE_REVIEW,
+  PARSE_REVIEWS,
+  PARSE_RECIPES
 } = require('../lib/constants').default
 
 function getQueryByType(type: string, includes: Array = []) {
@@ -30,8 +38,11 @@ function getQueryByType(type: string, includes: Array = []) {
     case PARSE_PEOPLE_IN_EVENTS:
       query = new Parse.Query(ParsePeopleInEvent)
       break;
-    case PARSE_REVIEW:
+    case PARSE_REVIEWS:
       query = new Parse.Query(ParseReview)
+      break;
+    case PARSE_RECIPES:
+      query = new Parse.Query(ParseRecipe)
       break;
   }
 
@@ -66,7 +77,13 @@ function getPeopleInEventParameters(terms) {
 }
 
 function getReviewsParameters(terms) {
-  return new Parameters.Reviews(getQueryByType(PARSE_REVIEW, ['restaurant', 'event', 'recipe', 'user', 'user.photos']))
+  return new Parameters.Reviews(getQueryByType(PARSE_REVIEWS, ['restaurant', 'event', 'recipe', 'user', 'user.photos']))
+    .addParameters(terms)
+    .end()
+}
+
+function getRecipesParameters(terms) {
+  return new Parameters.Recipes(getQueryByType(PARSE_RECIPES, ['restaurant', 'event', 'recipe', 'user', 'user.photos']))
     .addParameters(terms)
     .end()
 }
@@ -78,4 +95,5 @@ export default {
   getReviewsParameters,
   getUsersParameters,
   getPeopleInEventParameters,
+  getRecipesParameters
 }

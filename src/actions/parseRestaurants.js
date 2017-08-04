@@ -28,6 +28,7 @@ import type {ThunkAction} from './types'
 const {
   getRestaurantParameters,
   getReviewsParameters,
+  getRecipesParameters,
   getEventParameters,
   getPeopleInEventParameters,
   getUsersParameters,
@@ -99,9 +100,14 @@ function loadReviewsList(listTask: Any, terms: Any): ThunkAction {
   return loadListByType(listTask, getReviewsParameters(terms), terms, fromParseReview)
 }
 
+function loadRecipesList(listTask: Any, terms: Any): ThunkAction {
+  return loadListByType(listTask, getRecipesParameters(terms), terms, fromParseReview)
+}
+
 export default {
   loadRestaurantsList,
   loadEventsList,
   loadPeopleInEventList,
-  loadReviewsList
+  loadReviewsList,
+  loadRecipesList
 }
