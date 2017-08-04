@@ -23,7 +23,6 @@ class RecipesItem extends Component {
                  width="90"
                  height="90"
                  src={Photos.getListThumbnailUrl(recipe)}/>
-            />
           </a>
         </div>
       </div>
