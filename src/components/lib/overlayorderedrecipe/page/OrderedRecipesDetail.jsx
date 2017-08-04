@@ -32,7 +32,7 @@ class OrderedRecipesDetail extends Component {
 
         <div className="ylist ylist-bordered">
           <Telescope.components.F8SectionHeaderTitle title={"Related Recipes"}/>
-          <Telescope.components.RecipesList forUser={recipe.user} showTitle={false}/>
+          <Telescope.components.RecipesList orderedUser={recipe.user} showTitle={false}/>
         </div>
       </div>
     )
