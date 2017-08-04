@@ -33,15 +33,15 @@ class OrderedRecipes extends Component {
   render() {
     const {ready, recipe} = this.state;
 
-    if (!ready) {
-      return (
-        <div className="placeholder_1WOC3">
-          <div className="loader_54XfI animationRotate loader_OEQVm"/>
-        </div>
-      )
+    if (!!recipe) {
+      return (<Telescope.components.IEAOrderedRecipesLayout {...this.state} />)
     }
 
-    return (<Telescope.components.IEAOrderedRecipesLayout {...this.state} />)
+    return (
+      <div className="placeholder_1WOC3">
+        <div className="loader_54XfI animationRotate loader_OEQVm"/>
+      </div>
+    )
   }
 
 }
