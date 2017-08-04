@@ -51,16 +51,21 @@ export type Event = {
   restaurant: Restaurant;
 }
 
+
 export type Recipe = {
+  // Basic Fields
   id: string;
-  displayname: string;
-  slug: string;
+  createdAt: Date;
+  updatedAt: Date;
+  // Attributes
+  displayName: string;
   price: string;
+  // Point
   photos: Array<Photo>;
-  restaurant: Post;
+  // Relation
+  restaurant: Restaurant;
   event: Event;
   user: User;
-  status: string;
 }
 
 
@@ -147,16 +152,23 @@ export function fromParsePhoto(map: Object): Photo {
   };
 }
 
+
 export function fromParseRecipe(map: Object): Recipe {
   return {
+    // Basic Fields
     id: map.id,
-    name: map.get('name'),
-    description: map.get('description'),
-    slug: map.get('slug'),
-    status: map.get('status'),
-    visible: map.get('visible'),
-    posts: (map.get('posts') || []).map(fromParseRestaurant)
-  };
+    createdAt: map.get('createdAt'),
+    updatedAt: map.get('updatedAt'),
+    // Attributes
+    displayName: map.get('displayName'),
+    price: map.get('price'),
+    // Pointer
+    photos: (map.get('photos') || []).map(fromParsePhoto),
+    // Relations
+    restaurant: map.get('restaurant') && fromParseRestaurant(map.get('restaurant')),
+    event: map.get('event') && fromParseRestaurant(map.get('event')),
+    user: map.get('user') && fromParseRestaurant(map.get('user'))
+  }
 }
 
 

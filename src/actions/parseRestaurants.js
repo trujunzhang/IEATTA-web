@@ -21,6 +21,7 @@
  *
  * @flow
  */
+import {fromParseRecipe} from "../reducers/parseModels";
 
 const Parse = require('parse')
 import type {ThunkAction} from './types'
@@ -65,6 +66,8 @@ async function _loadListByType(listTask: Any, objectsQuery: Parse.Query, terms: 
     totalCount: totalCount
   }
 
+  debugger
+
   const action = {type, payload}
 
   return Promise.all([
@@ -101,7 +104,7 @@ function loadReviewsList(listTask: Any, terms: Any): ThunkAction {
 }
 
 function loadRecipesList(listTask: Any, terms: Any): ThunkAction {
-  return loadListByType(listTask, getRecipesParameters(terms), terms, fromParseReview)
+  return loadListByType(listTask, getRecipesParameters(terms), terms, fromParseRecipe)
 }
 
 export default {
