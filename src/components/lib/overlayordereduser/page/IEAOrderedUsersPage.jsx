@@ -11,8 +11,11 @@ class IEAOrderedUsersPage extends Component {
     return (
 
       <div className="main-content-wrap main-content-wrap--full">
+
         <div className="top-shelf top-shelf-grey">
+
           <Telescope.components.OrderedUsersSingleHeader {...this.props}/>
+
         </div>
 
         <div id="super-container" className="content-container">
