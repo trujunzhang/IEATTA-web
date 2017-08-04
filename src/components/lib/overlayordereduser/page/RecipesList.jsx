@@ -51,6 +51,9 @@ class RecipesList extends Component {
 
   renderRows() {
     const {listTask} = this.state;
+    const {
+      showRightTime = false
+    } = this.props;
 
     const {
       results,
@@ -60,7 +63,10 @@ class RecipesList extends Component {
     return (
       <ul className="ylist ylist-bordered">
         {results.map((recipe, index) =>
-          <Telescope.components.RecipesItem key={recipe.id} recipe={recipe} index={index}/>
+          <Telescope.components.RecipesItem key={recipe.id}
+                                            recipe={recipe}
+                                            index={index}
+                                            showRightTime={showRightTime}/>
         )}
       </ul>
 

@@ -96,6 +96,10 @@ class RecipesItem extends Component {
   }
 
   render() {
+    const {
+      showRightTime
+    } = this.props;
+
     return (
       <li className="js-bookmark-row">
         <div className="bookmark-listing">
@@ -113,7 +117,7 @@ class RecipesItem extends Component {
               </div>
             </div>
 
-            {this.renderRightTime()}
+            {showRightTime ? this.renderRightTime() : null}
 
           </div>
         </div>
