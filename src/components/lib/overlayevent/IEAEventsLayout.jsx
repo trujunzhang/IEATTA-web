@@ -1,15 +1,10 @@
-import Telescope from '../../../lib'
+import Telescope from '../index'
 import React, {Component} from 'react'
-import Users from '../../../../lib/users'
-import Photos from '../../../../lib/photos'
-import Posts from '../../../../lib/posts'
-import Events from '../../../../lib/events'
 
-class IEAEventsPage extends Component {
+class IEAEventsLayout extends Component {
 
   render() {
     return (
-
       <div className="main-content-wrap main-content-wrap--full">
         <div className="top-shelf top-shelf-grey">
           <Telescope.components.EventsSingleHeader {...this.props}/>
@@ -24,4 +19,4 @@ class IEAEventsPage extends Component {
   }
 }
 
-export default IEAEventsPage;
+export default IEAEventsLayout;

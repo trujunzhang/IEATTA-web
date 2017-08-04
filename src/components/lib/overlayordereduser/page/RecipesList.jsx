@@ -10,15 +10,20 @@ class RecipesList extends Component {
   constructor(props) {
     super(props)
 
-    const {forEvent, forRestaurant, orderedUser} = props;
+    const forEvent = props.forEvent || {};
+    const forRestaurant = props.forRestaurant || {};
+    const orderedUser = props.orderedUser || {};
+
+    const orderedUserId = orderedUser.id || '';
+    const eventId = forEvent.id || '';
+    const restaurantId = forRestaurant.id || '';
 
     const terms = {
-
-      listId: `ordered-recipes-list-view-for-${orderedUser.id}-e-${forEvent.id}-r-${forRestaurant.id}`,
+      listId: `ordered-recipes-list-view-for-${orderedUserId}-e-${eventId}-r-${restaurantId}`,
       limit: 10,
-      orderedUserId: orderedUser.id,
-      eventId: forEvent.id,
-      restaurantId: forRestaurant.id
+      orderedUserId: orderedUserId,
+      eventId: eventId,
+      restaurantId: restaurantId
     };
     this.state = {
       terms: terms,
@@ -55,7 +60,7 @@ class RecipesList extends Component {
 
     return (
       <ul className="ylist ylist-bordered">
-        {results.map((recipe,index) =>
+        {results.map((recipe, index) =>
           <Telescope.components.RecipesItem key={recipe.id} recipe={recipe} index={index}/>
         )}
       </ul>

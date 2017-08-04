@@ -66,7 +66,7 @@ Telescope.registerComponent('DetailedEvent',                 require('./overlaye
 
 // overlayEvent(page)
 Telescope.registerComponent('EventsDetail',                  require('./overlayevent/page/EventsDetail.jsx').default)
-Telescope.registerComponent('IEAEventsPage',                 require('./overlayevent/page/IEAEventsPage.jsx').default)
+Telescope.registerComponent('IEAEventsLayout',               require('./overlayevent/IEAEventsLayout.jsx').default)
 Telescope.registerComponent('EventsSingleHeaderLeftPanel',   require('./overlayevent/page/EventsSingleHeaderLeftPanel.jsx').default)
 Telescope.registerComponent('OrderedUserItem',               require('./overlayevent/page/OrderedUserItem.jsx').default)
 Telescope.registerComponent('OrderedUserList',               require('./overlayevent/page/OrderedUserList.jsx').default)

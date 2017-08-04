@@ -174,6 +174,7 @@ class OrderedUsersDetail extends Component {
             <div className="user-details-bookmarks_content js-user-details-bookmarks_content">
               <Telescope.components.RecipesList {...this.props}/>
             </div>
+
             {this.renderRightSidebar()}
           </div>
         </div>

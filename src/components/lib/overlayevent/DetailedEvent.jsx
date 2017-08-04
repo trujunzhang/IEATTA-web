@@ -39,7 +39,7 @@ class DetailedEvent extends Component {
       )
     }
 
-    return (<Telescope.components.IEAEventsPage event={event}/>)
+    return (<Telescope.components.IEAEventsLayout event={event}/>)
   }
 
 }
