@@ -8,7 +8,7 @@ class F8UserAvatorSection extends Component {
 
   renderLeftUserAvator() {
     const user = this.props.user || {};
-    const sectionClass = "user-profile_avatar-section"
+    const sectionClass = "user-profile_avatar"
     // const sectionClass = ""
 
     return (
