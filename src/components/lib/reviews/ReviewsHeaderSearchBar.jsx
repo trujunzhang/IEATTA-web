@@ -6,6 +6,23 @@ import Posts from '../../../lib/posts'
 import {withRouter} from 'react-router'
 
 export class ReviewsHeaderSearchBar extends Component {
+  constructor(props) {
+    super(props);
+    let query = props.router.location.query.query;
+    if (!!props.router.location.query.topicId) {
+      query = "";
+    }
+    this.state = this.initialState = {
+      search: query || ''
+    }
+  }
+
+  componentWillReceiveProps(nextProps, nextContext) {
+    if ((!!nextProps.router.location.query.topicId) || (!nextProps.router.location.query.query)) {
+      this.setState({search: ''});
+    }
+  }
+
   renderButton() {
     return (
       <button type="submit" value="submit" className="ybtn ybtn--primary ybtn--small">
@@ -23,6 +40,23 @@ export class ReviewsHeaderSearchBar extends Component {
     )
   }
 
+
+  search(e) {
+    const input = e.target.value;
+    this.setState({search: input});
+
+    this.searchQuery(input);
+  }
+
+  searchQuery(input) {
+    const router = this.props.router,
+      query = input === '' ? {} : {query: input};
+
+    delayEvent(function () {
+    }, 700);
+  }
+
+
   renderForm() {
     return (
       <div className="yform yform--continuous arrange"
@@ -31,10 +65,11 @@ export class ReviewsHeaderSearchBar extends Component {
 
         <div className="arrange_unit arrange_unit--fill">
           <input
-            type="text"
-            placeholder="Search within the reviews"
             name="q"
-            value=""
+            autoFocus
+            value={this.state.search}
+            onChange={this.search.bind(this)}
+            placeholder="Search within the reviews"
           />
         </div>
         <div className="arrange_unit">
