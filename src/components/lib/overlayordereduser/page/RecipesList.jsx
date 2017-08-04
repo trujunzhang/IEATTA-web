@@ -27,15 +27,13 @@ class RecipesList extends Component {
     };
     this.state = {
       terms: terms,
-      listTask: byListId(props.listContainerTasks, terms),
-      ready: false
+      listTask: byListId(props.listContainerTasks, terms)
     }
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      listTask: byListId(nextProps.listContainerTasks, this.state.terms),
-      ready: true
+      listTask: byListId(nextProps.listContainerTasks, this.state.terms)
     })
   }
 
@@ -52,10 +50,11 @@ class RecipesList extends Component {
   }
 
   renderRows() {
-    const {listTask, ready} = this.state
+    const {listTask} = this.state;
 
     const {
-      results
+      results,
+      ready
     } = listTask
 
     return (
@@ -69,10 +68,11 @@ class RecipesList extends Component {
   }
 
   renderEmptySection() {
-    const {listTask, ready} = this.state
+    const {listTask} = this.state;
 
     const {
       results,
+      ready,
       totalCount,
     } = listTask
 
