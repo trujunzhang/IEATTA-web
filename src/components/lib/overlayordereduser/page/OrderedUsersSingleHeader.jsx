@@ -8,7 +8,7 @@ import Photos from '../../../../lib/photos'
 class OrderedUsersSingleHeader extends Component {
 
   renderColumnOne() {
-    const {orderedUser} = this.props;
+    const orderedUser = this.props.orderedUser || {};
 
     return (
       <div className="user-profile_info arrange_unit">
