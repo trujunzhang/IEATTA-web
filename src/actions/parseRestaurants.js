@@ -66,8 +66,6 @@ async function _loadListByType(listTask: Any, objectsQuery: Parse.Query, terms: 
     totalCount: totalCount
   }
 
-  debugger
-
   const action = {type, payload}
 
   return Promise.all([
