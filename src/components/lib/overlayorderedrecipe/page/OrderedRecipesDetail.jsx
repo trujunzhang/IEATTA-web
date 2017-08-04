@@ -11,9 +11,12 @@ class OrderedRecipesDetail extends Component {
 
     return (
       <div className="column column-alpha column--responsive">
-        <Telescope.components.ReviewsList forObject={this.props.recipe}
-                                          reviewType="recipe"
-                                          reviewTitle={reviewTitle}/>
+
+        <Telescope.components.ReviewsList
+          key={recipe.id}
+          forObject={this.props.recipe}
+          reviewType="recipe"
+          reviewTitle={reviewTitle}/>
 
       </div>
     )
@@ -27,12 +30,12 @@ class OrderedRecipesDetail extends Component {
       <div className="column column-beta column--responsive official-events">
         <div className="ylist ylist-bordered" id="ordered-user-on-recipe-panel">
           <Telescope.components.F8SectionHeaderTitle title={"Ordered User"}/>
-          <Telescope.components.F8UserAvatorSection user={this.props.recipe.user} sectionClass=""/>
+          <Telescope.components.F8UserAvatorSection key={recipe.id} user={this.props.recipe.user} sectionClass=""/>
         </div>
 
         <div className="ylist ylist-bordered">
           <Telescope.components.F8SectionHeaderTitle title={"Related Recipes"}/>
-          <Telescope.components.RecipesList orderedUser={recipe.user} showTitle={false}/>
+          <Telescope.components.RecipesList key={recipe.id} orderedUser={recipe.user} showTitle={false}/>
         </div>
       </div>
     )
