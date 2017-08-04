@@ -40,6 +40,7 @@ const {
   LIST_VIEW_LOADED_RESTAURANTS,
   DASHBOARD_LOADED_PAGINATION,
   OVERLAY_LOADED_MODEL_PAGE,
+  OVERLAY_LOADED_MODEL_RESET,
   USERPROFILE_LOADED,
   PARSE_USERS,
   PARSE_TOPICS,
@@ -88,5 +89,11 @@ export default {
 
   loadOrderedRecipePage: (objectId: string): ThunkAction => {
     return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_RECIPES, ['restaurant', 'event', 'user', 'photos']), objectId, fromParseRecipe)
+  },
+
+  resetLoadPage: Action => {
+    return {
+      type: OVERLAY_LOADED_MODEL_RESET,
+    }
   }
 }

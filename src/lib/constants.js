@@ -88,7 +88,7 @@ export default keyMirror({
 
   // Detailed Page(Posts,Events)
   OVERLAY_LOADED_MODEL_PAGE: null,
-  OVERLAY_LOADED_EVENT_PAGE: null,
+  OVERLAY_LOADED_MODEL_RESET: null,
 
   SET_PLATFORM: null,
   SET_VERSION: null,
