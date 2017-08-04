@@ -31,7 +31,7 @@ class RestaurantsPageMap extends Component {
     return (
       <ul>
         <li className="u-relative">
-          <span aria-hidden="true" id="icon_18X18"
+          <span id="icon_18X18"
                 className="icon icon--18-marker icon--size-18 u-absolute u-sticky-top">
             <svg className="icon_svg">
               <path
@@ -39,7 +39,7 @@ class RestaurantsPageMap extends Component {
             </svg>
           </span>
           <a href="/biz_attribute?biz_id=30jrTz8vh1xSXdtXMvt-mA" className="link-more icon-wrapper mapbox-edit">
-            <span aria-hidden="true" id="icon_14X14"
+            <span id="icon_14X14"
                   className="icon icon--14-pencil icon--size-14 icon--linked u-space-r-half">
               <svg className="icon_svg">
                 <path
@@ -60,7 +60,7 @@ class RestaurantsPageMap extends Component {
 
         <li className="clearfix">
           <div>
-            <span aria-hidden="true" id="icon_18X18"
+            <span id="icon_18X18"
                   className="icon icon--18-directions icon--size-18">
               <svg className="icon_svg">
                 <path

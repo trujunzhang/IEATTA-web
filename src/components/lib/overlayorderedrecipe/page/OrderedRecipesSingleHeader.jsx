@@ -16,7 +16,7 @@ class OrderedRecipesSingleHeader extends Component {
             {recipe.displayName}
           </h1>
           <div className="u-nowrap claim-status_teaser js-claim-status-hover">
-        <span aria-hidden="true" id="icon_18X18"
+        <span id="icon_18X18"
               className="icon icon--18-checkmark-badged icon--size-18 icon--blue-dark claim-status_icon u-space-r1 claim-status_icon--claimed">
           <svg className="icon_svg">
             <path
@@ -47,7 +47,7 @@ class OrderedRecipesSingleHeader extends Component {
 
             <div className="rating-details">
               <a className="chiclet-link chiclet-link--with-text show-tooltip js-rating-details">
-            <span aria-hidden="true" id="icon_14X14"
+            <span id="icon_14X14"
                   className="icon icon--14-histogram icon--size-14 icon--currentColor">
               <svg className="icon_svg">
                 <path d="M9 11V5h2v6H9zM6 3h2v8H6V3zM3 7h2v4H3V7z"/>
@@ -71,7 +71,7 @@ class OrderedRecipesSingleHeader extends Component {
             </span>
 
             <a className="edit-category chiclet-link chiclet-link--with-text show-tooltip">
-              <span aria-hidden="true" id="icon_14X14"
+              <span id="icon_14X14"
                     className="icon icon--14-pencil icon--size-14 icon--currentColor">
                 <svg className="icon_svg">
                   <path
@@ -96,7 +96,7 @@ class OrderedRecipesSingleHeader extends Component {
       <div className="biz-page-header-right u-relative">
         <div className="biz-page-actions nowrap">
           <a className="ybtn ybtn--primary war-button">
-            <span aria-hidden="true" id="icon_24X24"
+            <span id="icon_24X24"
                   className="icon icon--24-star icon--size-24 icon--currentColor u-space-r-half icon--fallback-inverted">
               <svg className="icon_svg">
                 <path
@@ -109,7 +109,7 @@ class OrderedRecipesSingleHeader extends Component {
 
             <a className="ybtn ybtn--small add-photo-button"
                href="/biz_user_photos/30jrTz8vh1xSXdtXMvt-mA/upload">
-              <span aria-hidden="true" id="icon_18X18"
+              <span id="icon_18X18"
                     className="icon icon--18-add-photo icon--size-18 icon--currentColor">
                 <svg className="icon_svg">
                   <path
@@ -122,7 +122,7 @@ class OrderedRecipesSingleHeader extends Component {
             <a className="ybtn ybtn--small share-icon js-business-send-to-friend"
                data-pop-uri="/send_to_friend/business/30jrTz8vh1xSXdtXMvt-mA" data-ro-mode-action="share a business"
                href="/biz_share/30jrTz8vh1xSXdtXMvt-mA" data-component-bound="true">
-              <span aria-hidden="true" id="icon_18X18"
+              <span id="icon_18X18"
                     className="icon icon--18-share icon--size-18 icon--currentColor">
                 <svg className="icon_svg">
                   <path
@@ -138,7 +138,7 @@ class OrderedRecipesSingleHeader extends Component {
                data-signup-object="biz_id:30jrTz8vh1xSXdtXMvt-mA"
                href="/signup?return_url=%2Fbiz%2F30jrTz8vh1xSXdtXMvt-mA"
                data-component-bound="true">
-              <span aria-hidden="true" id="icon_18X18"
+              <span id="icon_18X18"
                     className="icon icon--18-bookmark icon--size-18 icon--currentColor">
                 <svg className="icon_svg">
                   <path

@@ -83,7 +83,7 @@ class HeaderContentSearchBar extends Component {
                     <button className="ybtn ybtn--primary main-search_submit main-header_button"
                             id="header-search-submit" tabIndex="3" title="Search" type="submit" value="submit">
                             <span className="main-search_action-icon-wrap js-search-icon-wrap">
-                                <span aria-hidden="true" id="icon_24X24"
+                                <span id="icon_24X24"
                                       className="icon icon--24-search icon--size-24 icon--inverse icon--fallback-inverted">
                                   <svg className="icon_svg">
                                     <path

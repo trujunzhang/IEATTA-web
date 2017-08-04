@@ -14,7 +14,7 @@ class RestaurantsListRightMap extends Component {
     return (
       <div className="map-header clearfix">
         <a className="mo-map-trigger">
-            <span aria-hidden="true" id="icon_24X24"
+            <span id="icon_24X24"
                   className="icon icon--24-chevron-left icon--size-24 mo-map-icon">
               <svg className="icon_svg">
                 <path d="M14.475 18.364l1.414-1.414L10.94 12l4.95-4.95-1.415-1.414L8.11 12l6.365 6.364z"/>
