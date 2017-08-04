@@ -49,7 +49,7 @@ class IEAOrderedUsers extends Component {
       )
     }
 
-    return (<Telescope.components.IEAOrderedUsersPage {...this.state}/>)
+    return (<Telescope.components.IEAOrderedUsersLayout {...this.state}/>)
   }
 
 }

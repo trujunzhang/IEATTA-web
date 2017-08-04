@@ -1,11 +1,11 @@
-import Telescope from '../../../lib'
+import Telescope from '../index'
 import React, {Component} from 'react'
-import Users from '../../../../lib/users'
-import Photos from '../../../../lib/photos'
-import Posts from '../../../../lib/posts'
-import OrderedUsers from '../../../../lib/events'
+import Users from '../../../lib/users'
+import Photos from '../../../lib/photos'
+import Posts from '../../../lib/posts'
+import OrderedUsers from '../../../lib/events'
 
-class IEAOrderedUsersPage extends Component {
+class IEAOrderedUsersLayout extends Component {
 
   render() {
     return (
@@ -27,4 +27,4 @@ class IEAOrderedUsersPage extends Component {
   }
 }
 
-export default IEAOrderedUsersPage;
+export default IEAOrderedUsersLayout;
