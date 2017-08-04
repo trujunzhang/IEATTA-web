@@ -10,7 +10,7 @@ const Photos = {}
 Photos.config = {}
 
 Photos.getListThumbnailUrl = function (item) {
-  const photos = item.photos;
+  const photos = item.photos || [];
 
   if (photos.length > 0) {
     const firstPhoto = photos[0];

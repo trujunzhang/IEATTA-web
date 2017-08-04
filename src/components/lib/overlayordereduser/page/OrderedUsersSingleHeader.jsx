@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 import {FormattedMessage, FormattedRelative} from 'react-intl'
 import Posts from '../../../../lib/posts'
 import Users from '../../../../lib/users'
+import Photos from '../../../../lib/photos'
 
 class OrderedUsersSingleHeader extends Component {
 
@@ -200,10 +201,14 @@ class OrderedUsersSingleHeader extends Component {
           className="photo-slideshow photo-slideshow--full-width photo-slideshow--rounded js-photo-slideshow-user-details">
           <div className="photo-slideshow_slide is-active">
             <div>
-              <a className="ordered-user-avator"
-                 href="/user_photos?userid=JffflxAtMCm_GQf5OrImig">
-                <img alt="Sahithi P." className="photo-box-img" height="250"
-                     src="https://s3-media2.fl.yelpcdn.com/photo/cFR_s8fhR5u8pX2imu9dzw/ls.jpg" width="250"/>
+              <a
+                href="/user_photos?userid=JffflxAtMCm_GQf5OrImig"
+                className="ordered-user-avator">
+                <img alt={orderedUser.username||""}
+                     className="photo-box-img"
+                     width="250"
+                     height="250"
+                     src={Photos.getListThumbnailUrl(orderedUser)}/>
               </a>
 
             </div>
