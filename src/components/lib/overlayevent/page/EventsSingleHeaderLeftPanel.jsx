@@ -67,15 +67,13 @@ class EventsSingleHeaderLeftPanel extends Component {
               </Link>
             </div>
             <div className="biz-rating biz-rating-medium clearfix">
-
-              <div className="i-stars i-stars--small-3-half rating" title="3.5 star rating">
-                <img className="offscreen"
-                     width="84"
-                     height="303"
-                     src="/images/stars/stars.png"
-                     alt="3.5 star rating"/>
-              </div>
-
+              <Telescope.components.F8StarIcon
+                rate={3}
+                iconExtension="rating"
+                iconType="small"
+                iconWidth="84"
+                iconHeight="303"
+              />
               <span className="review-count rating-qualifier">{0 + " reviews"}</span>
 
             </div>

@@ -31,15 +31,13 @@ class RestaurantsSingleHeader extends Component {
         <div className="biz-main-info embossed-text-white">
           <div className="rating-info clearfix">
             <div className="biz-rating biz-rating-very-large clearfix">
-
-              <div className="i-stars i-stars--large-5 rating-very-large" title="5.0 star rating">
-                <img className="offscreen"
-                     width="84"
-                     height="303"
-                     src="/images/stars/stars.png"
-                     alt="5.0 star rating"/>
-              </div>
-
+              <Telescope.components.F8StarIcon
+                rate={0}
+                iconExtension="rating-very-large"
+                iconType="large"
+                iconWidth="84"
+                iconHeight="303"
+              />
               <span className="review-count rating-qualifier">
                 130 reviews
               </span>
