@@ -19,7 +19,7 @@ class IEAOrderedUsersPage extends Component {
         </div>
 
         <div id="super-container" className="content-container">
-          {/*<Telescope.components.OrderedUsersDetail {...this.props}/>*/}
+          <Telescope.components.OrderedUsersDetail {...this.props}/>
         </div>
       </div>
 
