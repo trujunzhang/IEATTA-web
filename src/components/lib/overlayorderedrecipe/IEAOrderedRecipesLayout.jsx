@@ -15,7 +15,7 @@ class IEAOrderedRecipesLayout extends Component {
           </div>
 
           <div id="super-container" className="content-container">
-            {/*<Telescope.components.OrderedRecipesDetail {...this.props}/>*/}
+            <Telescope.components.OrderedRecipesDetail {...this.props}/>
           </div>
 
         </div>
