@@ -1,6 +1,7 @@
 import Telescope from '../../../lib'
 import React, {Component} from 'react'
 import Posts from '../../../../lib/posts'
+import Recipes from '../../../../lib/recipes'
 import Photos from '../../../../lib/photos'
 
 
@@ -49,16 +50,16 @@ class RecipesItem extends Component {
         </div>
         <div className="biz-rating biz-rating-large clearfix">
 
+          <Telescope.components.F8StarIcon
+            rate={1}
+            iconType="regular"
+            iconWidth="84"
+            iconHeight="303"
+          />
 
-          <div className="i-stars i-stars--regular-4 rating-large" title="4.0 star rating">
-            <img className="offscreen" height="303"
-                 src="https://s3-media2.fl.yelpcdn.com/assets/srv0/yelp_design_web/9b34e39ccbeb/assets/img/stars/stars.png"
-                 width="84"
-                 alt="4.0 star rating"/>
-          </div>
           <div itemProp="ratingValue" content="4.0">
               <span className="review-count rating-qualifier">
-            <span itemProp="reviewCount">5565</span> reviews</span>
+            <span itemProp="reviewCount">5</span> reviews</span>
           </div>
 
         </div>
@@ -66,8 +67,7 @@ class RecipesItem extends Component {
 
         <div className="price-category">
                     <span className="category-str-list">
-                    <a href="/search?find_loc=San+Francisco%2C+CA&amp;cflt=chinese">xxx</a>,
-                    <a href="/search?find_loc=San+Francisco%2C+CA&amp;cflt=chicken_wings">Chicken Wings</a>
+                      {"$. " + recipe.price}
     </span>
 
         </div>
@@ -81,11 +81,14 @@ class RecipesItem extends Component {
   }
 
   renderRightTime() {
+
+    const {recipe} = this.props;
+
     return (
 
       <div className="arrange_unit nowrap">
         <div className="subtle-text">
-          4/28/2017
+          {Recipes.getUpdatedAtFormat(recipe)}
         </div>
       </div>
 
