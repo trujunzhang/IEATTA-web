@@ -216,21 +216,26 @@ class OrderedUsersSingleHeader extends Component {
 
   renderUserProfileContainer() {
     return (
-      <div className="user-profile_container">
-        {this.renderLeftUserAvator()}
+      <div className="ordered-user-profile">
+        <div className="user-profile_container">
+          {this.renderLeftUserAvator()}
+        </div>
       </div>
     )
   }
 
   render() {
     return (
-      <div className="content-container">
-        {this.renderUserProfileContainer()}
+      <div className="content-container" style={{height: '184px'}}>
 
         <div className="user-profile_content-wrapper arrange arrange--bottom arrange--30">
+          <div className="user-profile_avatar-dummy arrange_unit"/>
           {this.renderColumnOne()}
           {this.renderColumnTwo()}
         </div>
+
+        {this.renderUserProfileContainer()}
+
       </div>
     )
 
