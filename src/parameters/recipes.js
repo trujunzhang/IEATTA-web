@@ -18,15 +18,15 @@ export default class RecipesParameters {
     debugger
 
     if (terms.orderedUserId) {
-      this.query.include('user', ParseUser.createWithoutData(terms.orderedUserId))
+      this.query.equalTo('user', ParseUser.createWithoutData(terms.orderedUserId))
     }
 
     if (terms.eventId) {
-      this.query.include('event', ParseEvent.createWithoutData(terms.eventId))
+      this.query.equalTo('event', ParseEvent.createWithoutData(terms.eventId))
     }
 
     if (terms.restaurantId) {
-      this.query.include('restaurant', ParseRestaurant.createWithoutData(terms.restaurantId))
+      this.query.equalTo('restaurant', ParseRestaurant.createWithoutData(terms.restaurantId))
     }
 
     return this
