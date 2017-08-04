@@ -25,6 +25,7 @@ class OrderedRecipesDetail extends Component {
 
     return (
       <div className="column column-beta column--responsive official-events">
+        <Telescope.components.F8SectionHeaderTitle title={"Ordered User"}/>
         <Telescope.components.F8UserAvatorSection user={this.props.recipe.user} sectionClass=""/>
       </div>
     )
