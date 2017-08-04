@@ -92,19 +92,6 @@ class RecipesList extends Component {
     return null;
   }
 
-  renderRightTopTitle() {
-    return (
-      <div className="arrange arrange--12 arrange--baseline">
-
-        <div className="arrange_unit nowrap">
-          <h3 className="subscribe-list_title">Ordered Recipes Recently</h3>
-        </div>
-
-      </div>
-
-    )
-  }
-
 
   render() {
     const {
@@ -114,7 +101,10 @@ class RecipesList extends Component {
     return (
       <div className="ysection">
 
-        {showTitle ? this.renderRightTopTitle() : null}
+
+        {showTitle ? (
+          <Telescope.components.F8SectionHeaderTitle title={"Ordered Recipes Recently"}/>
+        ) : null}
 
         {this.renderRows()}
 

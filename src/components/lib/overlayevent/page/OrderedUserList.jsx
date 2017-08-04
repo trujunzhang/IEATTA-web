@@ -82,7 +82,7 @@ class OrderedUserList extends Component {
     return (
       <div className="ysection">
 
-        <Telescope.components.F8SectionHeaderTitle title={"Who's inxx?"}/>
+        <Telescope.components.F8SectionHeaderTitle title={"Who's in?"}/>
 
         {this.renderRows()}
 
