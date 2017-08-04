@@ -8,6 +8,7 @@ import {withRouter} from 'react-router'
 export class ReviewsHeaderSearchBar extends Component {
   constructor(props) {
     super(props);
+
     let query = props.router.location.query.query;
     if (!!props.router.location.query.topicId) {
       query = "";
@@ -52,8 +53,8 @@ export class ReviewsHeaderSearchBar extends Component {
     const router = this.props.router,
       query = input === '' ? {} : {query: input};
 
-    delayEvent(function () {
-    }, 700);
+    // delayEvent(function () {
+    // }, 700);
   }
 
 
@@ -65,6 +66,7 @@ export class ReviewsHeaderSearchBar extends Component {
 
         <div className="arrange_unit arrange_unit--fill">
           <input
+            type="text"
             name="q"
             autoFocus
             value={this.state.search}
@@ -94,4 +96,4 @@ export class ReviewsHeaderSearchBar extends Component {
 }
 
 
-export default ReviewsHeaderSearchBar;
+export default withRouter(ReviewsHeaderSearchBar);
