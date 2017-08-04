@@ -1,6 +1,8 @@
 import Telescope from '../../../lib'
 import React, {Component} from 'react'
 
+import ReactLoading from 'react-loading'
+
 const {loadEventsList} = require('../../../../actions').default
 
 const {byListId} = require('../../../filter/filterPosts')
@@ -116,7 +118,7 @@ class EventsList extends Component {
     if (!ready) {
       return (
         <section className="results_37tfm">
-          <Telescope.components.RestaurantsLoading id='load.more.hint.posts'/>
+          <ReactLoading type="bars" color="#444"/>
         </section>
       )
     }

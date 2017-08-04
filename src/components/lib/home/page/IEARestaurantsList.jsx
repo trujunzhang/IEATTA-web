@@ -2,8 +2,7 @@ import Telescope from '../../index'
 import React, {Component} from 'react'
 import Posts from '../../../../lib/posts'
 
-const {loadRestaurantsList} = require('../../../../actions/index').default
-const {byListId} = require('../../../filter/filterPosts')
+import ReactLoading from 'react-loading'
 
 class IEARestaurantsList extends Component {
 
@@ -26,10 +25,10 @@ class IEARestaurantsList extends Component {
     if (showReady) {
       return (
         <section className='results_37tfm'>
-          <Telescope.components.RestaurantsLoading id={'load.more.hint.posts'}/>
+          <ReactLoading type="bars" color="#444"/>
         </section>
       )
-    } else if (!!results && !!results.length) {
+    } else if (!!results && !!results.length && false) {
 
       return (
 
