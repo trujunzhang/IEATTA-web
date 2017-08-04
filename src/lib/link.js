@@ -45,3 +45,12 @@ export function getOrderedUserLink(user, peopleInEvent) {
   return `/ordereduser/${user.id}/${user.username}/${peopleInEvent.eventId}/${peopleInEvent.restaurantId}`
 }
 
+/**
+ *
+ * @param user
+ * @param peopleInEvent
+ * @returns {string}
+ */
+export function getOrderedRecipeLink(user, peopleInEvent) {
+  return `/ordereduser/${user.id}/${user.username}/${peopleInEvent.eventId}/${peopleInEvent.restaurantId}`
+}

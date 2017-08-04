@@ -4,8 +4,9 @@ import Posts from '../../../../lib/posts'
 import Recipes from '../../../../lib/recipes'
 import Photos from '../../../../lib/photos'
 
-
+import {Link} from 'react-router'
 import {withRouter} from 'react-router'
+import {getOrderedRecipeLink} from '../../../../lib/link'
 
 class RecipesItem extends Component {
 
@@ -16,15 +17,15 @@ class RecipesItem extends Component {
       <div className="media-avatar">
 
         <div className="photo-box pb-90s">
-          <a href="/biz/san-tung-san-francisco-2"
-             className="js-analytics-click"
-          >
+          <Link
+            className="js-analytics-click"
+            to={getOrderedRecipeLink(recipe)}>
             <img alt={recipe.displayName}
                  className="photo-box-img"
                  width="90"
                  height="90"
                  src={Photos.getListThumbnailUrl(recipe)}/>
-          </a>
+          </Link>
         </div>
       </div>
     )
