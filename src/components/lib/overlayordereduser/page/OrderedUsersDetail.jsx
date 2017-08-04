@@ -135,29 +135,33 @@ class OrderedUsersDetail extends Component {
   }
 
   renderRightPanel() {
-    return (
-      <div classname="column column-beta ">
-        <div classname="user-details-overview">
+    const {forEvent, forRestaurant, orderedUser} = this.props;
+    if (!!forEvent && !!forRestaurant && !!orderedUser) {
+      return (
+        <div className="column column-beta ">
+          <div className="user-details-overview">
 
-          <div className="user-details-overview_activity">
+            <div className="user-details-overview_activity">
+              <Telescope.components.RecipesList {...this.props}/>
+            </div>
 
+            <div className="user-details-overview_sidebar">
+
+            </div>
 
           </div>
-
-          <div className="user-details-overview_sidebar">
-
-          </div>
-
         </div>
-      </div>
-    )
+
+      )
+    }
+    return null;
   }
 
   render() {
     return (
       <div className="clearfix layout-block layout-n user-details_container">
         {this.renderLeftPanel()}
-        {/*{this.renderRightPanel()}*/}
+        {this.renderRightPanel()}
       </div>
     )
   }

@@ -10,11 +10,15 @@ class RecipesList extends Component {
   constructor(props) {
     super(props)
 
+    const {forEvent, forRestaurant, orderedUser} = props;
+
     const terms = {
-      listId: 'ordered-recipes-list-view-for-' + props.orderedUsers.id,
+
+      listId: `ordered-recipes-list-view-for-${orderedUser.id}-e-${forEvent.id}-r-${forRestaurant.id}`,
       limit: 10,
-      eventId: props.event.id,
-      restaurantId: props.event.restaurant.id
+      orderedUserId: orderedUser.id,
+      eventId: forEvent.id,
+      restaurantId: forRestaurant.id
     };
     this.state = {
       terms: terms,
