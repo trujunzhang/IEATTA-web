@@ -35,8 +35,12 @@ class F8UserAvatorSection extends Component {
   }
 
   render() {
+    const {
+      sectionClass = "ordered-user-profile"
+    } = this.props;
+
     return (
-      <div className="ordered-user-profile">
+      <div className={sectionClass}>
         <div className="user-profile_container">
           {this.renderLeftUserAvator()}
         </div>
