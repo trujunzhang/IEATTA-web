@@ -1,10 +1,10 @@
-import Telescope from '../../../lib'
+import Telescope from '../index'
 import React, {Component} from 'react'
 import {FormattedMessage, FormattedRelative} from 'react-intl'
-import Posts from '../../../../lib/posts'
-import Users from '../../../../lib/users'
+import Posts from '../../../lib/posts'
+import Users from '../../../lib/users'
 
-class RestaurantsSingleHeaderRightPhotos extends Component {
+class F8SingleHeaderRightPhotos extends Component {
 
   renderSeeAll() {
     const {restaurant} = this.props;
@@ -217,4 +217,4 @@ class RestaurantsSingleHeaderRightPhotos extends Component {
 
 }
 
-export default RestaurantsSingleHeaderRightPhotos;
+export default F8SingleHeaderRightPhotos;

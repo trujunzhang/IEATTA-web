@@ -21,6 +21,7 @@ Telescope.registerComponent('UsersBlurryImageAvatar',           require('./exten
 // common
 Telescope.registerComponent('Layout',                           require('./common/Layout.jsx').default)
 Telescope.registerComponent('F8StarIcon',                       require('./common/F8StarIcon.jsx').default)
+Telescope.registerComponent('F8SingleHeaderRightPhotos',        require('./common/F8SingleHeaderRightPhotos.jsx').default)
 Telescope.registerComponent('Error404',                         require('./common/Error404.jsx').default)
 Telescope.registerComponent('App',                              require('./common/App.js').default)
 
@@ -50,23 +51,22 @@ Telescope.registerComponent('RestaurantsNoResults',       require('./restaurant/
 
 // overlayRestaurant
 Telescope.registerComponent('DetailedRestaurant',                 require('./overlayrestaurant/DetailedRestaurant.jsx').default)
+Telescope.registerComponent('IEARestaurantsLayout',               require('./overlayrestaurant/IEARestaurantsLayout.jsx').default)
 
 // overlayRestaurant(page)
 Telescope.registerComponent('RestaurantsDetail',                  require('./overlayrestaurant/page/RestaurantsDetail.jsx').default)
-Telescope.registerComponent('IEARestaurantsLayout',               require('./overlayrestaurant/IEARestaurantsLayout.jsx').default)
 Telescope.registerComponent('RestaurantsPageMap',                 require('./overlayrestaurant/page/RestaurantsPageMap.jsx').default)
 Telescope.registerComponent('EventsItem',                         require('./overlayrestaurant/page/EventsItem.jsx').default)
 Telescope.registerComponent('EventsList',                         require('./overlayrestaurant/page/EventsList.jsx').default)
 Telescope.registerComponent('RestaurantsSingleHeader',            require('./overlayrestaurant/page/RestaurantsSingleHeader.jsx').default)
-Telescope.registerComponent('RestaurantsSingleHeaderRightPhotos', require('./overlayrestaurant/page/RestaurantsSingleHeaderRightPhotos.jsx').default)
 
 
 // overlayEvent
 Telescope.registerComponent('DetailedEvent',                 require('./overlayevent/DetailedEvent.jsx').default)
+Telescope.registerComponent('IEAEventsLayout',               require('./overlayevent/IEAEventsLayout.jsx').default)
 
 // overlayEvent(page)
 Telescope.registerComponent('EventsDetail',                  require('./overlayevent/page/EventsDetail.jsx').default)
-Telescope.registerComponent('IEAEventsLayout',               require('./overlayevent/IEAEventsLayout.jsx').default)
 Telescope.registerComponent('EventsSingleHeaderLeftPanel',   require('./overlayevent/page/EventsSingleHeaderLeftPanel.jsx').default)
 Telescope.registerComponent('OrderedUserItem',               require('./overlayevent/page/OrderedUserItem.jsx').default)
 Telescope.registerComponent('OrderedUserList',               require('./overlayevent/page/OrderedUserList.jsx').default)
@@ -75,10 +75,10 @@ Telescope.registerComponent('EventsSingleHeaderRightMap',    require('./overlaye
 
 // overlayOrderedUser
 Telescope.registerComponent('OrderedUsers',                              require('./overlayordereduser/OrderedUsers.jsx').default)
+Telescope.registerComponent('IEAOrderedUsersLayout',                     require('./overlayordereduser/IEAOrderedUsersLayout.jsx').default)
 
 // overlayOrderedUser(page)
 Telescope.registerComponent('OrderedUsersDetail',                        require('./overlayordereduser/page/OrderedUsersDetail.jsx').default)
-Telescope.registerComponent('IEAOrderedUsersLayout',                     require('./overlayordereduser/IEAOrderedUsersLayout.jsx').default)
 Telescope.registerComponent('OrderedUsersSingleHeaderLeftPanel',         require('./overlayordereduser/page/OrderedUsersSingleHeaderLeftPanel.jsx').default)
 Telescope.registerComponent('OrderedUsersSingleHeader',                  require('./overlayordereduser/page/OrderedUsersSingleHeader.jsx').default)
 Telescope.registerComponent('OrderedUsersSingleHeaderRightMap',          require('./overlayordereduser/page/OrderedUsersSingleHeaderRightMap.jsx').default)
