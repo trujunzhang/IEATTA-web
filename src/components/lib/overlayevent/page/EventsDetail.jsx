@@ -11,7 +11,7 @@ class EventsDetail extends Component {
     const htmlBody = Events.getWantBody(event);
 
     return (
-      <div className="ysection">
+      <div className="ysection" id="event-want-panel">
         <h3>What/Why:</h3>
         <div className="post_page_body" dangerouslySetInnerHTML={htmlBody}/>
       </div>
