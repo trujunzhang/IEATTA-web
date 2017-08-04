@@ -1,9 +1,9 @@
-import Telescope from '../../../lib'
+import Telescope from '../index'
 import React, {Component} from 'react'
-import Posts from '../../../../lib/posts'
-import Users from '../../../../lib/users'
+import Posts from '../../../lib/posts'
+import Users from '../../../lib/users'
 
-class IEARestaurantsPage extends Component {
+class IEARestaurantsLayout extends Component {
 
   render() {
     return (
@@ -24,4 +24,4 @@ class IEARestaurantsPage extends Component {
   }
 }
 
-export default IEARestaurantsPage;
+export default IEARestaurantsLayout;
