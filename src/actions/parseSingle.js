@@ -21,6 +21,7 @@
  *
  * @flow
  */
+import {fromParseRecipe} from "../reducers/parseModels";
 
 
 const Parse = require('parse')
@@ -44,7 +45,7 @@ const {
   PARSE_TOPICS,
   PARSE_RESTAURANTS,
   PARSE_EVENTS,
-  PARSE_RECIPE,
+  PARSE_RECIPES,
   PARSE_COMMENTS,
 } = require('../lib/constants').default
 
@@ -83,6 +84,9 @@ export default {
 
   loadOrderedUserPage: (objectId: string): ThunkAction => {
     return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_USERS, ['photos']), objectId, fromParseUser)
-  }
+  },
 
+  loadOrderedRecipePage: (objectId: string): ThunkAction => {
+    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_RECIPES, ['restaurant', 'event', 'user', 'photos']), objectId, fromParseRecipe)
+  }
 }
