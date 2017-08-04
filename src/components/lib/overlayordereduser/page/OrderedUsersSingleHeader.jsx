@@ -199,9 +199,9 @@ class OrderedUsersSingleHeader extends Component {
         <div
           className="photo-slideshow photo-slideshow--full-width photo-slideshow--rounded js-photo-slideshow-user-details">
           <div className="photo-slideshow_slide is-active">
-            <div className="photo-slideshow_image">
+            <div>
               <a className="ordered-user-avator"
-                href="/user_photos?userid=JffflxAtMCm_GQf5OrImig">
+                 href="/user_photos?userid=JffflxAtMCm_GQf5OrImig">
                 <img alt="Sahithi P." className="photo-box-img" height="250"
                      src="https://s3-media2.fl.yelpcdn.com/photo/cFR_s8fhR5u8pX2imu9dzw/ls.jpg" width="250"/>
               </a>
