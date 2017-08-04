@@ -81,24 +81,12 @@ class RecipesList extends Component {
     return null;
   }
 
-  renderTitle() {
-    return (
-      <div className="section-header section-header--complex section-header--no-spacing">
-        <div className="arrange arrange--middle arrange--12">
-          <div className="arrange_unit nowrap">
-            <h2 className="section-header_title">Ordered Recipes</h2>
-          </div>
-        </div>
-      </div>
-    )
-  }
 
   render() {
 
     return (
       <div className="ysection">
 
-        {this.renderTitle()}
 
         {this.renderRows()}
 

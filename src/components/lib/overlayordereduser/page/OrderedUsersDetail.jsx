@@ -134,21 +134,45 @@ class OrderedUsersDetail extends Component {
     )
   }
 
+
+  renderTitle() {
+    return (
+      <div className="section-header section-header--complex section-header--no-spacing">
+        <div className="arrange arrange--middle arrange--12">
+          <div className="arrange_unit nowrap">
+            <h2 className="section-header_title">Ordered Recipes</h2>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  renderRightSidebar() {
+    return (
+      <div className="user-details-bookmarks_sidebar">
+        <div className="bookmarks-map-wrapper js-bookmarks-map-wrapper"
+             id="ordered-user-container-right-sider-map">
+          <Telescope.components.OrderedUserRightMap {...this.props}/>
+        </div>
+      </div>
+
+    )
+  }
+
   renderRightPanel() {
     const {forEvent, forRestaurant, orderedUser} = this.props;
     if (!!forEvent && !!forRestaurant && !!orderedUser) {
       return (
         <div className="column column-beta ">
-          <div className="user-details-overview">
 
-            <div className="user-details-overview_activity">
+          {this.renderTitle()}
+
+          <div className="user-details_bookmarks js-user-details_bookmarks">
+
+            <div className="user-details-bookmarks_content js-user-details-bookmarks_content">
               <Telescope.components.RecipesList {...this.props}/>
             </div>
-
-            <div className="user-details-overview_sidebar">
-
-            </div>
-
+            {this.renderRightSidebar()}
           </div>
         </div>
 
