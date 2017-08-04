@@ -18,8 +18,8 @@ class RestaurantsSingleHeader extends Component {
           </h1>
           <div className="u-nowrap claim-status_teaser js-claim-status-hover">
         <span
-              id="icon_18X18"
-              className="icon icon--18-checkmark-badged icon--size-18 icon--blue-dark claim-status_icon u-space-r1 claim-status_icon--claimed">
+          id="icon_18X18"
+          className="icon icon--18-checkmark-badged icon--size-18 icon--blue-dark claim-status_icon u-space-r1 claim-status_icon--claimed">
           <svg className="icon_svg">
             <path
               d="M9 1a8 8 0 1 0 0 16A8 8 0 0 0 9 1zm3.96 6.28l-4.808 4.807-3.112-3.11a.8.8 0 1 1 1.13-1.132l1.982 1.98 3.677-3.677a.8.8 0 1 1 1.13 1.13z"/>
@@ -185,7 +185,7 @@ class RestaurantsSingleHeader extends Component {
 
           {this.renderBizPageSubheaderLeft()}
 
-          <Telescope.components.F8SingleHeaderRightPhotos  {...this.props}/>
+          <Telescope.components.F8SingleHeaderRightPhotos photos={this.props.restaurant.photos} photoType="restaurant"/>
         </div>
       </div>
     )

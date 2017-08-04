@@ -7,8 +7,7 @@ import Users from '../../../lib/users'
 class F8SingleHeaderRightPhotos extends Component {
 
   renderSeeAll() {
-    const {restaurant} = this.props;
-    const {photos} = restaurant;
+    const {photos, photoType} = this.props;
     const photoLength = photos.length;
     return (
 
@@ -51,8 +50,7 @@ class F8SingleHeaderRightPhotos extends Component {
   }
 
   renderSeeAllButton() {
-    const {restaurant} = this.props;
-    const {photos} = restaurant;
+    const {photos, photoType} = this.props;
     const photoLength = photos.length;
 
     return (
@@ -71,8 +69,7 @@ class F8SingleHeaderRightPhotos extends Component {
   }
 
   renderFirstThumbnail() {
-    const {restaurant} = this.props;
-    const {photos} = restaurant;
+    const {photos, photoType} = this.props;
     const thumbnail01 = photos[0].thumbnail._url;
     return (
       <div className="js-photo photo photo-1">
@@ -129,8 +126,7 @@ class F8SingleHeaderRightPhotos extends Component {
   }
 
   renderSecondThumbnail() {
-    const {restaurant} = this.props;
-    const {photos} = restaurant;
+    const {photos, photoType} = this.props;
     const thumbnail02 = photos[1].thumbnail._url;
     return (
       <div className="js-photo photo photo-2">
@@ -189,8 +185,7 @@ class F8SingleHeaderRightPhotos extends Component {
 
 
   render() {
-    const {restaurant} = this.props;
-    const {photos} = restaurant;
+    const {photos, photoType} = this.props;
     const photoLength = photos.length;
     return (
       <div className="showcase-container">
