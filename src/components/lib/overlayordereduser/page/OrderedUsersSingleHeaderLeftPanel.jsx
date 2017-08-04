@@ -147,11 +147,10 @@ class OrderedUsersSingleHeaderLeftPanel extends Component {
   render() {
     return (
 
-      <div className="event-details_info-card card card--horizontal" style={{width: '640', height: '300'}}>
+      <div className="event-details_info-card card card--horizontal"
+           style={{width: '640', height: '300'}}>
         <div className="card_photo responsive-hidden-small">
-
           {this.renderLeft()}
-
         </div>
 
         {this.renderRight()}
