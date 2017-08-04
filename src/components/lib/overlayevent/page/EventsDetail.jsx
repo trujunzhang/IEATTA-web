@@ -37,9 +37,14 @@ class EventsDetail extends Component {
   }
 
   renderRightPanel() {
+    const {forRestaurant, event} = this.props;
+    debugger
+
     return (
       <div className="column column-beta column--responsive">
         {this.renderRightTopUsersSection()}
+
+        <Telescope.components.RecipesList forRestaurant={forRestaurant} forEvent={event} showTitle={true}/>
 
       </div>
     )

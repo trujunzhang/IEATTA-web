@@ -86,12 +86,29 @@ class RecipesList extends Component {
     return null;
   }
 
+  renderRightTopTitle() {
+    return (
+      <div className="arrange arrange--12 arrange--baseline">
+
+        <div className="arrange_unit nowrap">
+          <h3 className="subscribe-list_title">Ordered Recipes Recently</h3>
+        </div>
+
+      </div>
+
+    )
+  }
+
 
   render() {
+    const {
+      showTitle = false,
+    } = this.props;
 
     return (
       <div className="ysection">
 
+        {showTitle ? this.renderRightTopTitle() : null}
 
         {this.renderRows()}
 
