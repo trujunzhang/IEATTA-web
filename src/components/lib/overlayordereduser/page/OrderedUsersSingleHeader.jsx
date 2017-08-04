@@ -3,7 +3,6 @@ import React, {Component} from 'react'
 import {FormattedMessage, FormattedRelative} from 'react-intl'
 import Posts from '../../../../lib/posts'
 import Users from '../../../../lib/users'
-import Photos from '../../../../lib/photos'
 
 class OrderedUsersSingleHeader extends Component {
 
@@ -195,44 +194,6 @@ class OrderedUsersSingleHeader extends Component {
     )
   }
 
-  renderLeftUserAvator() {
-    const orderedUser = this.props.orderedUser || {};
-
-    return (
-      <div className="user-profile_avatar">
-        <div
-          className="photo-slideshow photo-slideshow--full-width photo-slideshow--rounded js-photo-slideshow-user-details">
-          <div className="photo-slideshow_slide is-active">
-            <div>
-              <a
-                href="/user_photos?userid=JffflxAtMCm_GQf5OrImig"
-                className="ordered-user-avator">
-                <img alt={orderedUser.username || ""}
-                     className="photo-box-img"
-                     width="250"
-                     height="250"
-                     src={Photos.getListThumbnailUrl(orderedUser)}/>
-              </a>
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-    )
-  }
-
-  renderUserProfileContainer() {
-    return (
-      <div className="ordered-user-profile">
-        <div className="user-profile_container">
-          {this.renderLeftUserAvator()}
-        </div>
-      </div>
-    )
-  }
-
   render() {
     return (
       <div className="content-container" style={{height: '184px'}}>
@@ -243,7 +204,8 @@ class OrderedUsersSingleHeader extends Component {
           {this.renderColumnTwo()}
         </div>
 
-        {this.renderUserProfileContainer()}
+
+        <Telescope.components.F8UserAvatorSection user={this.props.orderedUser}/>
 
       </div>
     )
