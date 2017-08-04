@@ -39,7 +39,7 @@ class DetailedRestaurant extends Component {
       )
     }
 
-    return (<Telescope.components.IEARestaurantsLayout restaurant={restaurant}/>)
+    return (<Telescope.components.IEARestaurantsLayout  {...this.props}/>)
   }
 
 }

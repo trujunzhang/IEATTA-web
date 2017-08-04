@@ -47,10 +47,12 @@ export function getOrderedUserLink(user, peopleInEvent) {
 
 /**
  *
- * @param user
- * @param peopleInEvent
+ * path: 'orderedrecipe/(:oid)/(:oid)
+ * @param recipe
  * @returns {string}
  */
-export function getOrderedRecipeLink(user, peopleInEvent) {
-  return `/ordereduser/${user.id}/${user.username}/${peopleInEvent.eventId}/${peopleInEvent.restaurantId}`
+export function getOrderedRecipeLink(recipe) {
+  const {restaurant, event, user} = recipe;
+  debugger
+  return `/orderedrecipe/${recipe.id}/${recipe.displayName}`
 }

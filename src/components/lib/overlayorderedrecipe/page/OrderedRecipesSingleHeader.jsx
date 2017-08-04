@@ -7,13 +7,13 @@ import Users from '../../../../lib/users'
 class OrderedRecipesSingleHeader extends Component {
 
   renderBizPageHeaderLeft() {
-    const {restaurant} = this.props;
+    const {recipe} = this.props;
     return (
       <div className="biz-page-header-left claim-status">
 
         <div className="u-space-t1">
           <h1 className="biz-page-title embossed-text-white shortenough">
-            {restaurant.displayName}
+            {recipe.displayName}
           </h1>
           <div className="u-nowrap claim-status_teaser js-claim-status-hover">
         <span aria-hidden="true" id="icon_18X18"
@@ -166,7 +166,7 @@ class OrderedRecipesSingleHeader extends Component {
   renderBizPageSubheaderLeft() {
     return (
       <div className="mapbox-container">
-        <Telescope.components.RestaurantsPageMap  {...this.props}/>
+        <Telescope.components.RestaurantsPageMap restaurant={this.props.recipe.restaurant}/>
       </div>
     )
   }
@@ -183,7 +183,7 @@ class OrderedRecipesSingleHeader extends Component {
 
           {this.renderBizPageSubheaderLeft()}
 
-          <Telescope.components.RestaurantsSingleHeaderRightPhotos  {...this.props}/>
+          {/*<Telescope.components.RestaurantsSingleHeaderRightPhotos  {...this.props}/>*/}
         </div>
       </div>
     )

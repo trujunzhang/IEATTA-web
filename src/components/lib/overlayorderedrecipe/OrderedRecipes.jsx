@@ -1,7 +1,7 @@
 import Telescope from '../../lib'
 import React, {Component} from 'react'
 
-const {loadRestaurantPage} = require('../../../actions').default
+const {loadRecipePage} = require('../../../actions').default
 
 const {getModelByObjectId} = require('../../filter/filterPosts')
 
@@ -10,22 +10,22 @@ class OrderedRecipes extends Component {
     super(props)
 
     this.state = this.initialState = {
-      rid: props.params.rid,
-      rslug: props.params.rslug,
-      restaurant: null,
+      oid: props.params.oid,
+      oslug: props.params.oslug,
+      recipe: null,
       ready: false
     }
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      restaurant: getModelByObjectId(nextProps, this.state.rid, this.state.restaurant),
+      restaurant: getModelByObjectId(nextProps, this.state.oid, this.state.recipe),
       ready: true
     })
   }
 
   componentDidMount() {
-    this.props.dispatch(loadRestaurantPage(this.state.rid))
+    this.props.dispatch(loadRecipePage(this.state.rid))
   }
 
   render() {
@@ -39,7 +39,7 @@ class OrderedRecipes extends Component {
       )
     }
 
-    return (<Telescope.components.IEARestaurantsLayout restaurant={restaurant}/>)
+    return (<Telescope.components.IEAOrderedRecipesLayout {...this.props} />)
   }
 
 }

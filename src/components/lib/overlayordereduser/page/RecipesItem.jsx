@@ -13,6 +13,8 @@ class RecipesItem extends Component {
   renderLeftAvator() {
     const {recipe} = this.props;
 
+    debugger
+
     return (
       <div className="media-avatar">
 
@@ -39,13 +41,15 @@ class RecipesItem extends Component {
       <div className="media-story">
         <div className="media-title clearfix">
                                 <span className="indexed-biz-name">1.
-                                  <a className="biz-name js-analytics-click"
-                                     data-analytics-label="biz-name"
-                                     href="/biz/san-tung-san-francisco-2"
-                                     data-hovercard-id="UM8uywr0zv0EnxZh7DB9nA">
+
+                                  <Link
+                                    className="biz-name js-analytics-click"
+                                    to={getOrderedRecipeLink(recipe)}>
+
                                     <span>{recipe.displayName}</span>
-                                  </a>
-</span>
+                                  </Link>
+
+                                </span>
 
 
         </div>
@@ -82,14 +86,11 @@ class RecipesItem extends Component {
   }
 
   renderRightTime() {
-
-    const {recipe} = this.props;
-
     return (
 
       <div className="arrange_unit nowrap">
         <div className="subtle-text">
-          {Recipes.getUpdatedAtFormat(recipe)}
+          {Recipes.getUpdatedAtFormat(this.props.recipe)}
         </div>
       </div>
 

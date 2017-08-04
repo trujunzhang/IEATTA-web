@@ -53,8 +53,8 @@ const createRoutes = (store) => {
           component: Telescope.components.OrderedUsers
         },
         {
-          // http://localhost:3000/ordereduser/aGkde8iuL6/Jaron%20Lawrence/p25iag5OcM/OnNGSfwoou
-          path: 'orderedrecipe/(:oid)/(:uid)/(:uslug)/(:eid)/(:rid)',
+          // http://localhost:3000/orderedrecipe/SMHughBGNh/Jaron%20Lawrence/p25iag5OcM/OnNGSfwoou
+          path: 'orderedrecipe/(:oid)/(:oslug)',
           component: Telescope.components.OrderedRecipes
         },
         {
