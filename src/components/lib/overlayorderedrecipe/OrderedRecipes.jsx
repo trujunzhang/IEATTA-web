@@ -11,6 +11,7 @@ class OrderedRecipes extends Component {
 
     props.dispatch(resetLoadPage())
 
+
     this.state = this.initialState = {
       oid: props.params.oid,
       oslug: props.params.oslug,
@@ -24,6 +25,19 @@ class OrderedRecipes extends Component {
       recipe: getModelByObjectId(nextProps, this.state.oid, this.state.recipe),
       ready: true
     })
+
+    const currentOID = nextProps.params.oid;
+    if (currentOID !== this.state.oid) {
+
+      this.setState({
+        oid: nextProps.params.oid,
+        oslug: nextProps.params.oslug,
+        ready: false
+      })
+
+      nextProps.dispatch(loadOrderedRecipePage(currentOID))
+    }
+
   }
 
   componentDidMount() {
