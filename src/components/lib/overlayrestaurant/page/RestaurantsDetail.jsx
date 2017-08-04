@@ -19,7 +19,9 @@ class RestaurantsDetail extends Component {
   renderRightPanel() {
     return (
       <div className="column column-beta column--responsive official-events">
-
+        <div className="mapbox-container">
+          <Telescope.components.RestaurantsPageMap  {...this.props}/>
+        </div>
       </div>
     )
   }

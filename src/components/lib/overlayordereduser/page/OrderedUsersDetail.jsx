@@ -152,7 +152,9 @@ class OrderedUsersDetail extends Component {
       <div className="user-details-bookmarks_sidebar">
         <div className="bookmarks-map-wrapper js-bookmarks-map-wrapper"
              id="ordered-user-container-right-sider-map">
-          <Telescope.components.OrderedUserRightMap {...this.props}/>
+
+          <Telescope.components.RestaurantsPageMap restaurant={this.props.forRestaurant}/>
+
         </div>
       </div>
 
