@@ -2,7 +2,6 @@ import Telescope from '../../index'
 import React, {Component} from 'react'
 import Posts from '../../../../lib/posts'
 
-import ReactLoading from 'react-loading'
 
 class IEARestaurantsList extends Component {
 
@@ -22,10 +21,10 @@ class IEARestaurantsList extends Component {
 
     const showReady = Posts.showReady(results, hasMore, ready, totalCount, limit, firstPagination)
 
-    if (showReady) {
+    if (showReady || true) {
       return (
-        <section className='results_37tfm'>
-          <ReactLoading type="bars" color="#444"/>
+        <section className='restaurants-list-loading-panel'>
+          <Telescope.components.F8LoadingView/>
         </section>
       )
     } else if (!!results && !!results.length) {
