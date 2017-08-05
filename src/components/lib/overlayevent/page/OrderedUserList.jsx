@@ -48,6 +48,12 @@ class OrderedUserList extends Component {
       ready
     } = listTask
 
+    if (!ready) {
+      return (
+        <Telescope.components.F8LoadingView/>
+      )
+    }
+
     return (
       <ul className="ylist">
         {results.map(peopleInEvent =>
