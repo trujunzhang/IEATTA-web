@@ -17,15 +17,13 @@ class ReviewsList extends Component {
     };
     this.state = {
       terms: terms,
-      listTask: byListId(props.listContainerTasks, terms),
-      ready: false
+      listTask: byListId(props.listContainerTasks, terms)
     }
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      listTask: byListId(nextProps.listContainerTasks, this.state.terms),
-      ready: true
+      listTask: byListId(nextProps.listContainerTasks, this.state.terms)
     })
   }
 
@@ -43,13 +41,19 @@ class ReviewsList extends Component {
 
 
   renderRows() {
-    const {listTask, ready} = this.state;
+    const {listTask} = this.state;
 
     const {
       results,
+      ready,
       totalCount,
     } = listTask;
 
+    if (!ready) {
+      return (
+        <Telescope.components.F8LoadingView/>
+      )
+    }
 
     return (
 
@@ -67,10 +71,11 @@ class ReviewsList extends Component {
 
 
   render() {
-    const {listTask, ready} = this.state
+    const {listTask} = this.state
 
     const {
       results,
+      ready,
       totalCount,
       limit,
     } = listTask
