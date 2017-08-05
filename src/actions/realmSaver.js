@@ -22,24 +22,53 @@
  * @flow
  */
 
-const loginActions = require('./login').default
-const loginCommonActions = require('./loginCommon').default
-const facebookLoginActions = require('./facebookLogin').default
-const parseSingleActions = require('./parseSingle').default
-const parseRestaurantsActions = require('./parseRestaurants').default
-const parseUsersActions = require('./parseUsers').default
-const voingtActions = require('./voting').default
-const globalActions = require('./global').default
-const realmSaveActions = require('./realmSaver').default
+'use strict';
+
+
+const _ = require('underscore')
+import type {Action, ThunkAction} from './types'
+
+const {
+    RestaurantService, EventService, PeopleInEventService,
+    RecipeService,
+    PhotoService,
+    UserService,
+    ReviewService
+} = require('../parse/realmApi').default
+
+const {getLocalImageUri} = require('../parse/fsApi')
+
+/**
+ * The states were interested in
+ */
+const {
+    QUERY_REVIEWS,
+} = require('../lib/constants').default
+
+async function _saveRealmRestaurant(model: object): Promise<Array<Action>> {
+    const results = ReviewService.findBymodel(model)
+    const action = {
+        type: QUERY_REVIEWS,
+        payload: {forObjectId: model.forObjectId, reviewType: model.reviewType, results}
+    }
+    return Promise.all([
+        Promise.resolve(action)
+    ])
+}
+
+function saveRealmRestaurant(model: object): ThunkAction {
+    return (dispatch) => {
+        const action = _saveRealmRestaurant(model)
+
+        action.then(
+            ([result]) => {
+                dispatch(result)
+            }
+        )
+        return action
+    }
+}
 
 export default {
-  ...loginActions,
-  ...loginCommonActions,
-  ...facebookLoginActions,
-  ...parseSingleActions,
-  ...parseRestaurantsActions,
-  ...parseUsersActions,
-  ...voingtActions,
-  ...globalActions,
-  ...realmSaveActions,
+    saveRealmRestaurant,
 }

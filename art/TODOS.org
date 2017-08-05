@@ -7,5 +7,8 @@
    2. build react-native apps
 
 * 03/07/2017
-   1. add reviews list
-   2.
+   1. (*)add reviews list
+
+* 05/07/2017
+   1. edit restaurant
+
