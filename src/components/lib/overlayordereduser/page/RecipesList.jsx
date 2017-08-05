@@ -60,6 +60,12 @@ class RecipesList extends Component {
       ready
     } = listTask
 
+    if (!ready) {
+      return (
+        <Telescope.components.F8LoadingView/>
+      )
+    }
+
     return (
       <ul className="ylist ylist-bordered">
         {results.map((recipe, index) =>

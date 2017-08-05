@@ -49,7 +49,7 @@ class ReviewsList extends Component {
       totalCount,
     } = listTask;
 
-    if (!ready) {
+    if (!ready ) {
       return (
         <Telescope.components.F8LoadingView/>
       )
