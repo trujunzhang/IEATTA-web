@@ -1,8 +1,6 @@
 import Telescope from '../../../lib'
 import React, {Component} from 'react'
 
-import ReactLoading from 'react-loading'
-
 const {loadEventsList} = require('../../../../actions').default
 
 const {byListId} = require('../../../filter/filterPosts')
@@ -49,6 +47,12 @@ class EventsList extends Component {
       totalCount,
     } = listTask;
 
+    if (!ready ) {
+      return (
+        <Telescope.components.F8LoadingView/>
+      )
+    }
+
     return (
       <ul className="ylist ylist-bordered">
         {results.map(event =>
@@ -87,10 +91,12 @@ class EventsList extends Component {
 
     let hasMore = !ready && totalCount !== results.length;
 
+
     return (
       <div className="ysection events">
 
         {this.renderTitle()}
+
         {this.renderRows()}
         {this.renderEmptySection()}
 
@@ -115,28 +121,7 @@ class EventsList extends Component {
 
     let hasMore = !ready && totalCount !== results.length;
 
-    if (!ready) {
-      return (
-        <section className="results_37tfm">
-          <ReactLoading type="bars" color="#444"/>
-        </section>
-      )
-    }
-    else if (!!results && !!results.length) {
-      return (
-        <div>
-          {results.map(event =>
-            <Telescope.components.EventsItem key={event.id} event={event}/>
-          )}
-        </div>
-      )
-    } else {
-      return (
-        <section className="results_37tfm">
-          <Telescope.components.RestaurantsNoResults relatedList={true}/>
-        </section>
-      )
-    }
+
   }
 }
 

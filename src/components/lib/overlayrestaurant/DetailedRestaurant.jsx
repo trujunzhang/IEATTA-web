@@ -1,8 +1,9 @@
 import Telescope from '../../lib'
 import React, {Component} from 'react'
 
-const {loadRestaurantPage} = require('../../../actions').default
+import ReactLoading from 'react-loading'
 
+const {loadRestaurantPage} = require('../../../actions').default
 const {getModelByObjectId} = require('../../filter/filterPosts')
 
 class DetailedRestaurant extends Component {
@@ -31,15 +32,13 @@ class DetailedRestaurant extends Component {
   render() {
     const {ready, restaurant} = this.state;
 
-    if (!ready) {
-      return (
-        <div className="placeholder_1WOC3">
-          <div className="loader_54XfI animationRotate loader_OEQVm"/>
-        </div>
-      )
+    if (!!restaurant) {
+      return (<Telescope.components.IEARestaurantsLayout  {...this.state}/>)
     }
 
-    return (<Telescope.components.IEARestaurantsLayout  {...this.state}/>)
+
+    return (<Telescope.components.F8LoadingView loadingClass="placeholder_1WOC3"/>)
+
   }
 
 }
