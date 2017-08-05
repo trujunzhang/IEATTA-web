@@ -40,14 +40,15 @@ class EventsList extends Component {
   }
 
   renderRows() {
-    const {listTask, ready} = this.state;
+    const {listTask} = this.state;
 
     const {
       results,
+      ready,
       totalCount,
     } = listTask;
 
-    if (!ready ) {
+    if (!ready) {
       return (
         <Telescope.components.F8LoadingView/>
       )
