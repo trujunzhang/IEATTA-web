@@ -7,3 +7,10 @@
 
 ** Ordered User
   $ https://www.yelp.com/user_details_bookmarks?userid=JffflxAtMCm_GQf5OrImig
+
+
+
+** Edit Restaurant
+  $ https://www.yelp.com/biz_attribute?biz_id=M_gXR06xYBuZrcEDZAvVGg
+
+
