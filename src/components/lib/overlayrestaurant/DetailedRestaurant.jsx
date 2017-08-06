@@ -10,12 +10,18 @@ class DetailedRestaurant extends Component {
   constructor(props, context) {
     super(props)
 
+    const path = props.location.pathname;
+
+
     this.state = this.initialState = {
       rid: props.params.rid,
       rslug: props.params.rslug,
       restaurant: null,
+      isEdit: path.indexOf('edit/') !== -1,
       ready: false
     }
+
+
   }
 
   componentWillReceiveProps(nextProps) {
