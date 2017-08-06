@@ -55,6 +55,7 @@ Telescope.registerComponent('RestaurantsNoResults',       require('./home/page/R
 // overlayRestaurant
 Telescope.registerComponent('DetailedRestaurant',                 require('./overlayrestaurant/DetailedRestaurant.jsx').default)
 Telescope.registerComponent('IEARestaurantsLayout',               require('./overlayrestaurant/IEARestaurantsLayout.jsx').default)
+Telescope.registerComponent('IEAEditRestaurant',                  require('./overlayrestaurant/IEAEditRestaurant.jsx').default)
 
 // overlayRestaurant(page)
 Telescope.registerComponent('RestaurantsDetail',                      require('./overlayrestaurant/page/RestaurantsDetail.jsx').default)

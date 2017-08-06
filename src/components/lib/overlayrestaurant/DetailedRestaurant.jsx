@@ -22,7 +22,6 @@ class DetailedRestaurant extends Component {
       ready: false
     }
 
-
   }
 
   componentWillReceiveProps(nextProps) {
@@ -37,9 +36,12 @@ class DetailedRestaurant extends Component {
   }
 
   render() {
-    const {ready, restaurant} = this.state;
+    const {ready, restaurant, isEdit} = this.state;
 
     if (!!restaurant) {
+      if (isEdit) {
+
+      }
       return (<Telescope.components.IEARestaurantsLayout  {...this.state}/>)
     }
 
