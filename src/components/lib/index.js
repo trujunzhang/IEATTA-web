@@ -57,10 +57,11 @@ Telescope.registerComponent('DetailedRestaurant',                 require('./ove
 Telescope.registerComponent('IEARestaurantsLayout',               require('./overlayrestaurant/IEARestaurantsLayout.jsx').default)
 
 // overlayRestaurant(page)
-Telescope.registerComponent('RestaurantsDetail',                  require('./overlayrestaurant/page/RestaurantsDetail.jsx').default)
-Telescope.registerComponent('EventsItem',                         require('./overlayrestaurant/page/EventsItem.jsx').default)
-Telescope.registerComponent('EventsList',                         require('./overlayrestaurant/page/EventsList.jsx').default)
-Telescope.registerComponent('RestaurantsSingleHeader',            require('./overlayrestaurant/page/RestaurantsSingleHeader.jsx').default)
+Telescope.registerComponent('RestaurantsDetail',                      require('./overlayrestaurant/page/RestaurantsDetail.jsx').default)
+Telescope.registerComponent('EventsItem',                             require('./overlayrestaurant/page/EventsItem.jsx').default)
+Telescope.registerComponent('EventsList',                             require('./overlayrestaurant/page/EventsList.jsx').default)
+Telescope.registerComponent('RestaurantsSingleHeader',                require('./overlayrestaurant/page/RestaurantsSingleHeader.jsx').default)
+Telescope.registerComponent('RestaurantsSingleHeaderTopLeftPanel',    require('./overlayrestaurant/page/RestaurantsSingleHeaderTopLeftPanel.jsx').default)
 
 
 // overlayEvent

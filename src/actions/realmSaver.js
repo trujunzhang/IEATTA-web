@@ -28,15 +28,6 @@
 const _ = require('underscore')
 import type {Action, ThunkAction} from './types'
 
-const {
-    RestaurantService, EventService, PeopleInEventService,
-    RecipeService,
-    PhotoService,
-    UserService,
-    ReviewService
-} = require('../parse/realmApi').default
-
-const {getLocalImageUri} = require('../parse/fsApi')
 
 /**
  * The states were interested in
@@ -46,7 +37,7 @@ const {
 } = require('../lib/constants').default
 
 async function _saveRealmRestaurant(model: object): Promise<Array<Action>> {
-    const results = ReviewService.findBymodel(model)
+    const results = {}
     const action = {
         type: QUERY_REVIEWS,
         payload: {forObjectId: model.forObjectId, reviewType: model.reviewType, results}
