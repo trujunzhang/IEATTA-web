@@ -6,15 +6,25 @@ import Users from '../../../../lib/users'
 
 class RestaurantsSingleHeaderTopLeftPanel extends Component {
 
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      restaurantName: props.restaurant.displayName
+    }
+  }
+
+
   render() {
     const {restaurant} = this.props;
+    const rate = 1;
 
     return (
       <div className="biz-page-header-left claim-status">
 
         <div className="u-space-t1">
           <h1 className="biz-page-title embossed-text-white shortenough">
-            {restaurant.displayName || ''}
+            {this.state.restaurantName}
           </h1>
           <div className="u-nowrap claim-status_teaser js-claim-status-hover">
         <span
@@ -41,27 +51,12 @@ class RestaurantsSingleHeaderTopLeftPanel extends Component {
                 iconHeight="303"
               />
               <span className="review-count rating-qualifier">
-                130 reviews
+                {`${rate} reviews`}
               </span>
 
             </div>
 
-
-            <div className="rating-details">
-              <a className="chiclet-link chiclet-link--with-text show-tooltip js-rating-details">
-            <span id="icon_14X14"
-                  className="icon icon--14-histogram icon--size-14 icon--currentColor">
-              <svg className="icon_svg">
-                <path d="M9 11V5h2v6H9zM6 3h2v8H6V3zM3 7h2v4H3V7z"/>
-              </svg>
-            </span>
-                Details
-                <span className="tooltip-wrapper">
-                <span className="tooltip">Rating details</span>
-            </span>
-              </a>
-            </div>
-
+            {this.renderRatingDetails()}
           </div>
 
           <div className="price-category">
@@ -93,6 +88,25 @@ class RestaurantsSingleHeaderTopLeftPanel extends Component {
     )
   }
 
+  renderRatingDetails() {
+    return (
+      <div className="rating-details">
+        <a className="chiclet-link chiclet-link--with-text show-tooltip js-rating-details">
+            <span id="icon_14X14"
+                  className="icon icon--14-histogram icon--size-14 icon--currentColor">
+              <svg className="icon_svg">
+                <path d="M9 11V5h2v6H9zM6 3h2v8H6V3zM3 7h2v4H3V7z"/>
+              </svg>
+            </span>
+          Details
+          <span className="tooltip-wrapper">
+                <span className="tooltip">Rating details</span>
+            </span>
+        </a>
+      </div>
+
+    )
+  }
 }
 
 
