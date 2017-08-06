@@ -204,3 +204,10 @@ input.header_content_middle_input {
   width: 200px;
 }
 
+// Mapbox
+.mapbox-map {
+  .leaflet-container {
+    height: 100%;
+  }
+}
+

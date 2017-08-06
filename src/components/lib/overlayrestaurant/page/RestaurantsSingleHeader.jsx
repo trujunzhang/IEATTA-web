@@ -77,15 +77,6 @@ class RestaurantsSingleHeader extends Component {
     )
   }
 
-
-  renderBizPageSubheaderLeft() {
-    return (
-      <div className="mapbox-container">
-        <Telescope.components.F8RestaurantMapSection  {...this.props} showEditButton={true}/>
-      </div>
-    )
-  }
-
   render() {
     return (
       <div className="content-container">
@@ -98,8 +89,13 @@ class RestaurantsSingleHeader extends Component {
 
         <div className="biz-page-subheader">
 
-          {this.renderBizPageSubheaderLeft()}
+          {/*Left Panel*/}
+          <div className="mapbox-container">
+            <Telescope.components.F8RestaurantMapSection  {...this.props} showEditButton={true}/>
+          </div>
 
+
+          {/*Right Panel*/}
           <Telescope.components.F8SingleHeaderRightPhotos photos={this.props.restaurant.photos} photoType="restaurant"/>
         </div>
       </div>
