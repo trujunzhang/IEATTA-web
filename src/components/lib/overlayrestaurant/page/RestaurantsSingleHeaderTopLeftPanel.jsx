@@ -1,25 +1,11 @@
 import Telescope from '../../../lib'
 import React, {Component} from 'react'
-import {FormattedMessage, FormattedRelative} from 'react-intl'
-import Posts from '../../../../lib/posts'
-import Users from '../../../../lib/users'
 
 class RestaurantsSingleHeaderTopLeftPanel extends Component {
-
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      restaurantName: props.restaurant.displayName,
-      isEditing: false
-    }
-  }
-
 
   render() {
     const {restaurant} = this.props;
     const rate = 1;
-
 
     return (
       <div className="biz-page-header-left claim-status">
@@ -88,10 +74,6 @@ class RestaurantsSingleHeaderTopLeftPanel extends Component {
     )
   }
 
-  onEditButtonPress() {
-    this.setState({isEditing: true})
-  }
-
   renderEditButton() {
     return (
       <a onClick={this.onEditButtonPress.bind(this)}
@@ -113,34 +95,11 @@ class RestaurantsSingleHeaderTopLeftPanel extends Component {
   }
 
 
-  onKeyDownForFolderNameInput(e) {
-    if (e.key === 'Enter' && e.shiftKey === false) {
-      e.preventDefault();
-
-      this.setState({isEditing: false});
-
-    }
-  }
-
-
   renderRestaurantTitle() {
-    if (this.state.isEditing) {
-      return (
-        <input
-          type="text"
-          maxLength="80"
-          name="name"
-          value={this.state.restaurantName}
-          onChange={(e) => this.setState({restaurantName: e.target.value})}
-          onKeyDown={this.onKeyDownForFolderNameInput.bind(this)}/>
-      )
-    }
-
-
     return (
       <div className="u-space-t1">
         <h1 className="biz-page-title embossed-text-white shortenough">
-          {this.state.restaurantName}
+          {this.props.restaurant.displayName}
         </h1>
         <div className="u-nowrap claim-status_teaser js-claim-status-hover">
         <span
