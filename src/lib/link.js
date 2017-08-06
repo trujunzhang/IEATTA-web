@@ -56,7 +56,6 @@ export function getOrderedRecipeLink(recipe) {
   return `/orderedrecipe/${recipe.id}/${recipe.displayName}`
 }
 
-export function getEditRestaurantLink(recipe) {
-  const {restaurant, event, user} = recipe;
-  return `/orderedrecipe/${recipe.id}/${recipe.displayName}`
+export function getEditRestaurantLink(restaurant) {
+  return `/edit/biz/${restaurant.id}/${restaurant.displayName}`
 }
