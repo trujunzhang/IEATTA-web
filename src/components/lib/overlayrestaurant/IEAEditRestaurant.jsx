@@ -21,6 +21,18 @@ class IEAEditRestaurant extends Component {
 
   }
 
+  renderLeft() {
+    return (
+
+    )
+  }
+
+  renderRight() {
+    return (
+
+    )
+  }
+
   render() {
     return (
       <div></div>
