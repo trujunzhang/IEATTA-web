@@ -1,0 +1,319 @@
+<div class="main-content-wrap main-content-wrap--full">
+
+  <div id="super-container" class="content-container">
+
+    <div id="alert-container">
+
+    </div>
+
+
+    <div class="container">
+      <div class="clearfix layout-block layout-full" id="update-biz-details">
+        <div class="column column-alpha ">
+          <h2>Update Business Details</h2>
+          <p>Any suggested changes to a business page must first be verified by Yelp’s moderators.</p>
+
+
+          <form action="/biz_attribute" class="biz-attrib-form yform" id="biz_attrib_form" method="POST"
+                name="biz_attrib_form" data-component-bound="true">
+            <input type="hidden" name="csrftok" class="csrftok"
+                   value="f28ca6b3c2e7db1c70ad7e23e511692c0c52e2384c36085699ae0faf2b5584f6">
+
+            {restaurant-right-map.html}
+
+            <ul>
+
+              <li class="BusinessName">
+                <label for="attr_BusinessName">Business Name</label>
+
+                <span class="placeholder-sub help-block">
+                        Mel’s Diner
+                    </span>
+                <input class="text" id="attr_BusinessName" name="BusinessName" placeholder="Mel’s Diner" type="text"
+                       value="Los Cabos"
+                       style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAfBJREFUWAntVk1OwkAUZkoDKza4Utm61iP0AqyIDXahN2BjwiHYGU+gizap4QDuegWN7lyCbMSlCQjU7yO0TOlAi6GwgJc0fT/fzPfmzet0crmD7HsFBAvQbrcrw+Gw5fu+AfOYvgylJ4TwCoVCs1ardYTruqfj8fgV5OUMSVVT93VdP9dAzpVvm5wJHZFbg2LQ2pEYOlZ/oiDvwNcsFoseY4PBwMCrhaeCJyKWZU37KOJcYdi27QdhcuuBIb073BvTNL8ln4NeeR6NRi/wxZKQcGurQs5oNhqLshzVTMBewW/LMU3TTNlO0ieTiStjYhUIyi6DAp0xbEdgTt+LE0aCKQw24U4llsCs4ZRJrYopB6RwqnpA1YQ5NGFZ1YQ41Z5S8IQQdP5laEBRJcD4Vj5DEsW2gE6s6g3d/YP/g+BDnT7GNi2qCjTwGd6riBzHaaCEd3Js01vwCPIbmWBRx1nwAN/1ov+/drgFWIlfKpVukyYihtgkXNp4mABK+1GtVr+SBhJDbBIubVw+Cd/TDgKO2DPiN3YUo6y/nDCNEIsqTKH1en2tcwA9FKEItyDi3aIh8Gl1sRrVnSDzNFDJT1bAy5xpOYGn5fP5JuL95ZjMIn1ya7j5dPGfv0A5eAnpZUY3n5jXcoec5J67D9q+VuAPM47D3XaSeL4AAAAASUVORK5CYII=&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;">
+
+              </li>
+
+
+              <li class="BusinessStreetAddress1">
+                <label for="attr_BusinessStreetAddress1">Address 1</label>
+
+                <span class="placeholder-sub help-block">
+                        123 Main St
+                    </span>
+                <input class="text" id="attr_BusinessStreetAddress1" name="BusinessStreetAddress1"
+                       placeholder="123 Main St" type="text" value="3283 Walnut Ave">
+
+              </li>
+
+
+              <li class="BusinessStreetAddress2">
+                <label for="attr_BusinessStreetAddress2">Address 2</label>
+
+                <span class="placeholder-sub help-block">
+                        Ste 200
+                    </span>
+                <input class="text" id="attr_BusinessStreetAddress2" name="BusinessStreetAddress2" placeholder="Ste 200"
+                       type="text">
+
+              </li>
+
+
+              <li class="BusinessCity">
+                <label for="attr_BusinessCity">City</label>
+
+                <span class="placeholder-sub help-block">
+                        San Francisco
+                    </span>
+                <input class="text" id="attr_BusinessCity" name="BusinessCity" placeholder="San Francisco" type="text"
+                       value="Fremont">
+
+              </li>
+
+
+              <li class="BusinessZipCode">
+                <label for="attr_BusinessZipCode">ZIP</label>
+
+                <span class="placeholder-sub help-block">
+                        94103
+                    </span>
+                <input class="text" id="attr_BusinessZipCode" name="BusinessZipCode" placeholder="94103" type="text"
+                       value="94538">
+
+              </li>
+
+
+              <input type="hidden" name="BusinessCountry" value="US" disabled="">
+
+
+              <li class="BusinessPhoneNumber">
+                <label for="attr_BusinessPhoneNumber">Phone</label>
+
+                <span class="placeholder-sub help-block">
+                        (555) 555-5555
+                    </span>
+                <input class="text" id="attr_BusinessPhoneNumber" name="BusinessPhoneNumber"
+                       placeholder="(555) 555-5555" type="text" value="(510) 796-5635">
+
+              </li>
+
+
+              <li class="BusinessUrl">
+                <label for="attr_BusinessUrl">Web Address</label>
+
+                <span class="placeholder-sub help-block">
+                        http://www.companyaddress.com
+                    </span>
+                <input class="text" id="attr_BusinessUrl" name="BusinessUrl" placeholder="http://www.companyaddress.com"
+                       type="text" value="">
+
+              </li>
+
+
+              <li class="MenuUrl">
+                <label for="attr_MenuUrl">Menu Web Address</label>
+
+                <span class="placeholder-sub help-block">
+                        http://www.companyaddress.com/menu.html
+                    </span>
+                <input class="text" id="attr_MenuUrl" name="MenuUrl"
+                       placeholder="http://www.companyaddress.com/menu.html" type="text" value="">
+
+              </li>
+
+
+              <li class="BusinessCategoryYelp">
+                <label for="attr_BusinessCategoryYelp">Categories</label>
+
+                <div id="BusinessCategoryYelp_categories">
+                  <span class="help-block">Select up to 3 categories. The more specific the better.</span>
+                  <div class="js-category-picker new-category-picker" data-component-bound="true">
+                    <div class="js-selected-categories">
+                      <div class="js-category-name category-name">Restaurants<span
+                        class="icon icon--24-chevron-right icon--size-24 icon--currentColor" aria-hidden="true"
+                        style="width: 24px; height: 24px;"><svg class="icon_svg"><use
+                        xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#24x24_chevron_right"></use></svg></span>Mexican<input
+                        type="hidden" name="BusinessCategoryYelp" value="5WfAGDDGX7iwTC6cE5yxvQ"><a href="javascript:;"
+                                                                                                    class="remove-category read-more">Remove</a>
+                      </div>
+                    </div>
+
+                    <div class="js-category-decorator category-input-wrapper">
+                      <input type="text" class="js-category-picker-input hidden" placeholder="Add another category"
+                             maxlength="64" autocomplete="off">
+                      <span aria-hidden="true" style="width: 18px; height: 18px;"
+                            class="icon icon--18-warning icon--size-18 icon--error js-error-icon hidden">
+    <svg class="icon_svg">
+        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#18x18_warning"></use>
+    </svg>
+</span>
+                      <p class="text-error js-error-msg hidden">You have not selected a category yet.</p>
+                    </div>
+
+                    <a href="javascript:;" class="link-more js-add-category">Add another category</a>
+                    <div class="js-category-suggestions autocomplete_choices category-choices"></div>
+
+                  </div>
+
+                </div>
+
+              </li>
+
+              <li id="js-business-closed-moved" class="business-closed-moved " data-component-bound="true">
+                <fieldset>
+                  <label class="">
+                    <input id="business-closed-moved-checkbox" type="checkbox">
+                    <span>Business Closed or Moved</span>
+                  </label>
+                </fieldset>
+
+                <ul class="clearfix hidden">
+                  <li>
+                    <label>
+                      <input id="business-perm-closed-option" type="radio" name="biz_closed_moved" value="perm_closed"
+                             class="">
+                      Permanently Closed
+                    </label>
+                    <input id="business-perm-closed-field" type="hidden" name="BusinessClosed" disabled="disabled">
+
+                  </li>
+                  <li>
+                    <label>
+                      <input id="business-moved-option" type="radio" name="biz_closed_moved" value="moved_to" class="">
+                      Moved to New Location
+                    </label>
+
+                    <div id="movedto-business-finder-container" class="hidden">
+                      <div class="island selected-business finder-passport" style="display:none"
+                           data-component-bound="true">
+                        <a class="js-change smaller chooseagain pull-right" href="javascript:">Change</a>
+                        <strong class="autofill-business-name"></strong>
+                        <div class="autofill-rating"></div>
+                        <span class="finder-review-count"></span>
+                        <address class="autofill-address"></address>
+                      </div>
+
+                      <div class="business_finder clearfix" data-component-bound="true">
+                        <div class="form_container arrange arrange--stack-small arrange--6">
+                          <div class="arrange_unit search-biz-name">
+                            <label class="query_label">Business Name</label>
+                            <input type="text" name="query" class="text" placeholder="Mel's Diner, Max's">
+                          </div>
+                          <div class="arrange_unit search-location">
+                            <label class="location_label">Near</label>
+                            <input type="text" name="location" class="text" placeholder="New York, NY">
+                          </div>
+                          <div class="arrange_unit submit_container">
+                            <button type="submit" value="submit"
+                                    class="ybtn ybtn--small searchButton ybtn-full-responsive-small ybtn-disabled"
+                                    disabled="disabled"><span>Search</span></button>
+                            <span class="js-loading-animation throbber" style="display: none;"></span>
+                          </div>
+                        </div>
+                        <div class="results_container"></div>
+                      </div>
+
+                    </div>
+                    <input id="business-moved-field" type="hidden" name="BusinessMovedTo" disabled="disabled" value="">
+
+                  </li>
+                  <li>
+                    <label>
+                      <input id="business-temp-closed-option" type="radio" name="biz_closed_moved" value="temp_closed"
+                             class="">
+                      Temporarily Closed
+                    </label>
+                    <div id="js-business-date-picker" class="business-date-picker hidden" data-component-bound="true">
+                      Closed Until
+                      <div class="nested-icon-label date-picker">
+        <span aria-hidden="true" style="width: 18px; height: 18px;"
+              class="icon icon--18-reservation icon--size-18 cal-icon">
+    <svg class="icon_svg">
+        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#18x18_reservation"></use>
+    </svg>
+</span>
+                        <input class="date-input " data-date-format="M/d/yyyy" id="BusinessTempClosed_month_day_year"
+                               name="BusinessTempClosed_month_day_year" title="mm/dd/yyyy" type="text" value="">
+                      </div>
+
+                    </div>
+
+                  </li>
+                </ul>
+              </li>
+
+              <li id="js-business-container" class="business-container " data-component-bound="true">
+                <fieldset>
+                  <label class="">
+                    <input id="business-container-checkbox" type="checkbox">
+                    <span>Business is inside a Mall or Airport</span>
+                  </label>
+                </fieldset>
+                <div id="container-business-finder-container" class="hidden">
+                  <div class="island selected-business finder-passport" style="display:none"
+                       data-component-bound="true">
+                    <a class="js-change smaller chooseagain pull-right" href="javascript:">Change</a>
+                    <strong class="autofill-business-name"></strong>
+                    <div class="autofill-rating"></div>
+                    <span class="finder-review-count"></span>
+                    <address class="autofill-address"></address>
+                  </div>
+
+                  <div class="business_finder clearfix" data-component-bound="true">
+                    <div class="form_container arrange arrange--stack-small arrange--6">
+                      <div class="arrange_unit search-biz-name">
+                        <label class="query_label">Business Name</label>
+                        <input type="text" name="query" class="text" placeholder="Mel's Diner, Max's">
+                      </div>
+                      <div class="arrange_unit search-location">
+                        <label class="location_label">Near</label>
+                        <input type="text" name="location" class="text" placeholder="New York, NY">
+                      </div>
+                      <div class="arrange_unit submit_container">
+                        <button type="submit" value="submit"
+                                class="ybtn ybtn--small searchButton ybtn-full-responsive-small ybtn-disabled"
+                                disabled="disabled"><span>Search</span></button>
+                        <span class="js-loading-animation throbber" style="display: none;"></span>
+                      </div>
+                    </div>
+                    <div class="results_container"></div>
+                  </div>
+
+                </div>
+                <input id="business-container-field" type="hidden" name="BusinessContainer" disabled="disabled"
+                       value="">
+              </li>
+
+              <li class="is-dup-biz">
+                <fieldset>
+                  <label for="isDupBusiness">
+                    <input id="isDupBusiness" type="checkbox" name="is_duplicate_business">
+                    <span>This is a duplicate of another business on Yelp</span>
+                  </label>
+                </fieldset>
+              </li>
+
+              <li class="biz-edit-description js-biz-description" data-component-bound="true">
+                <label class="" for="biz_description">Please provide additional context to help us verify this
+                  change:</label>
+                <span class="help-inline">Optional</span>
+                <textarea name="description" id="biz_description"></textarea>
+                <span class="info-field">&nbsp;</span>
+              </li>
+            </ul>
+
+            <div class="form-footer">
+              <input type="hidden" name="return_url" value="https://www.yelp.com/biz/los-cabos-fremont">
+              <button id="submit-biz-details-changes" name="action_submit" type="submit" value="Submit Changes"
+                      class="ybtn ybtn--primary"><span>Submit Changes</span></button>
+              <a href="https://www.yelp.com/biz/los-cabos-fremont">Cancel</a>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
