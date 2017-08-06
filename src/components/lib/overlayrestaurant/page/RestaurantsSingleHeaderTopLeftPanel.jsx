@@ -10,7 +10,8 @@ class RestaurantsSingleHeaderTopLeftPanel extends Component {
     super(props)
 
     this.state = {
-      restaurantName: props.restaurant.displayName
+      restaurantName: props.restaurant.displayName,
+      isEditing: false
     }
   }
 
@@ -102,9 +103,14 @@ class RestaurantsSingleHeaderTopLeftPanel extends Component {
     )
   }
 
+  onEditButtonPress() {
+    this.setState({isEditing: true})
+  }
+
   renderEditButton() {
     return (
-      <a className="edit-category chiclet-link chiclet-link--with-text show-tooltip">
+      <a onClick={this.onEditButtonPress.bind(this)}
+         className="edit-category chiclet-link chiclet-link--with-text show-tooltip">
               <span id="icon_14X14"
                     className="icon icon--14-pencil icon--size-14 icon--currentColor">
                 <svg className="icon_svg">
