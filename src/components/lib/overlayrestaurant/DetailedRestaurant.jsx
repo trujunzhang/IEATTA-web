@@ -7,6 +7,7 @@ const {loadRestaurantPage} = require('../../../actions').default
 const {getModelByObjectId} = require('../../filter/filterPosts')
 
 class DetailedRestaurant extends Component {
+
   constructor(props, context) {
     super(props)
 
