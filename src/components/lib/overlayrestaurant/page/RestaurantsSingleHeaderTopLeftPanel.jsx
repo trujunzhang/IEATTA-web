@@ -112,7 +112,31 @@ class RestaurantsSingleHeaderTopLeftPanel extends Component {
     )
   }
 
+
+  onKeyDownForFolderNameInput(e) {
+    if (e.key === 'Enter' && e.shiftKey === false) {
+      e.preventDefault();
+
+      this.setState({isEditing: false});
+
+    }
+  }
+
+
   renderRestaurantTitle() {
+    if (this.state.isEditing) {
+      return (
+        <input
+          type="text"
+          maxLength="80"
+          name="name"
+          value={this.state.restaurantName}
+          onChange={(e) => this.setState({restaurantName: e.target.value})}
+          onKeyDown={this.onKeyDownForFolderNameInput.bind(this)}/>
+      )
+    }
+
+
     return (
       <div className="u-space-t1">
         <h1 className="biz-page-title embossed-text-white shortenough">
