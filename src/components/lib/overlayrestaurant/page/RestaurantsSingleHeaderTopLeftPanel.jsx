@@ -76,8 +76,8 @@ class RestaurantsSingleHeaderTopLeftPanel extends Component {
 
   renderEditButton() {
     return (
-      <a onClick={this.onEditButtonPress.bind(this)}
-         className="edit-category chiclet-link chiclet-link--with-text show-tooltip">
+      <a
+        className="edit-category chiclet-link chiclet-link--with-text show-tooltip">
               <span id="icon_14X14"
                     className="icon icon--14-pencil icon--size-14 icon--currentColor">
                 <svg className="icon_svg">
