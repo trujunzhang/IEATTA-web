@@ -106,7 +106,7 @@ class UserLoginMain extends Component {
     renderLeftPanel() {
         return (
             <div className="signup-wrapper">
-                <div className="signup-flow on-flow-start " data-component-bound="true">
+                <div className="signup-flow on-flow-start " >
 
                     {this.renderLeftLoginForm()}
 

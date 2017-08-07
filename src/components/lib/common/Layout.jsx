@@ -13,24 +13,24 @@ class Layout extends Component {
     if (pathname.indexOf('/management') !== -1) {
       return (
         <div id="admin-dashboard" className="hold-transition skin-blue sidebar-mini">
-          { this.props.children}
+          {this.props.children}
         </div>
       )
     }
     if (pathname.indexOf('login') !== -1 || pathname.indexOf('signup') !== -1) {
       return (
         <div id='web-app-panel'>
-          { this.props.children}
+          {this.props.children}
         </div>
       )
     }
     return (
-      <div id="wrap" className="lang-en" data-component-bound="true">
+      <div id="wrap" className="lang-en">
         <div className="page-header">
-          <Telescope.components.HeaderContent />
+          <Telescope.components.HeaderContent/>
         </div>
 
-        { this.props.children}
+        {this.props.children}
 
       </div>
     )

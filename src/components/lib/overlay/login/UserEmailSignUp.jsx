@@ -66,7 +66,7 @@ class UserEmailSignUp extends Component {
 
   render() {
     return (
-      <div className="login" data-component-bound="true">
+      <div className="login" >
         <div className="signup-form-container">
 
           <div className="header">
@@ -74,7 +74,7 @@ class UserEmailSignUp extends Component {
             <p className="subheading">Connect with great local businesses</p>
           </div>
 
-          <p className="fb-start" data-component-bound="true">
+          <p className="fb-start" >
             <button
               onClick={(e) => {
                 this.props.loginViaSocial('facebook')
@@ -118,7 +118,7 @@ class UserEmailSignUp extends Component {
   renderForm() {
     return (
       <form className="yform signup-form  city-hidden" id="signup-form" method="POST">
-        <div className="js-password-meter-container" data-component-bound="true">
+        <div className="js-password-meter-container" >
           <ul className="inline-layout clearfix">
             <li>
               <label className="placeholder-sub">First Name</label>

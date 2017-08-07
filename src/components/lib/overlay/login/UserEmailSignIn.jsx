@@ -67,7 +67,7 @@ class UserEmailSignIn extends Component {
 
   render() {
     return (
-      <div className="login" data-component-bound="true">
+      <div className="login" >
         <div className="signup-form-container">
           <div className="header">
             <h2>Log In to IEATTA</h2>
@@ -81,7 +81,7 @@ class UserEmailSignIn extends Component {
           </div>
 
           <ul className="ylist">
-            <li className="fb-login" data-component-bound="true">
+            <li className="fb-login" >
               <button
                 onClick={(e) => {
                   this.props.loginViaSocial('facebook')

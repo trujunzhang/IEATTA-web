@@ -15,7 +15,9 @@ class IEAEditRestaurant extends Component {
     const {restaurant} = this.props;
 
     this.state = this.initialState = {
-      displayName: restaurant.displayName
+      displayName: restaurant.displayName,
+      address: restaurant.address,
+      geoLocation: restaurant.geoLocation
     }
 
   }
@@ -24,28 +26,27 @@ class IEAEditRestaurant extends Component {
     return (
       <ul>
         <li className="BusinessName">
-          <label
-          >Business Name</label>
+          <label>Restaurant Name</label>
 
-          <span className="placeholder-sub help-block">
-                        Mel’s Diner
-                    </span>
-          <input className="text" id="attr_BusinessName" name="BusinessName" placeholder="Mel’s Diner" type="text"
-                 value="Los Cabos"
+          <input className="text"
+                 id="attr_BusinessName"
+                 name="BusinessName"
+                 placeholder={this.props.restaurant.displayName}
+                 type="text"
+                 value={this.state.displayName}
           />
         </li>
 
 
         <li className="BusinessStreetAddress1">
-          <label
-          >Address 1</label>
+          <label>Address 1</label>
 
-          <span className="placeholder-sub help-block">
-                        123 Main St
-                    </span>
-          <input className="text" id="attr_BusinessStreetAddress1" name="BusinessStreetAddress1"
-                 placeholder="123 Main St" type="text" value="3283 Walnut Ave"/>
-
+          <input className="text"
+                 id="attr_BusinessStreetAddress1"
+                 name="BusinessStreetAddress1"
+                 placeholder="123 Main St"
+                 type="text"
+                 value="3283 Walnut Ave"/>
         </li>
 
 
@@ -68,10 +69,28 @@ class IEAEditRestaurant extends Component {
 
   renderRight() {
     return (
-      <div className="map-wrapper pull-right" data-component-bound="true">
-        <div className="map-container yelp-map-container" data-component-bound="true">
+      <div className="map-wrapper pull-right">
+        <div className="map-container yelp-map-container">
+          <Telescope.components.F8RestaurantMapSection  {...this.props} showEditButton={true} onlyMap={true}/>
         </div>
+        {this.renderRightBottom()}
       </div>
+    )
+  }
+
+  renderRightBottom() {
+    return (
+      <a className="show-locator-popup pull-right">
+                <span
+                  id="icon_18X18"
+                  className="icon icon--18-marker icon--size-18 icon--neutral-gray u-space-r-half">
+    <svg className="icon_svg">
+    <path
+      d="M14 7A5 5 0 0 0 4 7c0 1.97 1.15 3.658 2.806 4.472h-.17L9 16l2.363-4.528h-.17C12.85 10.658 14 8.97 14 7zM9 5a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/>
+    </svg>
+</span>
+        Fix incorrect map marker
+      </a>
     )
   }
 
@@ -81,7 +100,7 @@ class IEAEditRestaurant extends Component {
         className="biz-attrib-form yform"
         id="biz_attrib_form"
         method="POST"
-        name="biz_attrib_form" data-component-bound="true">
+        name="biz_attrib_form">
 
         {this.renderRight()}
 

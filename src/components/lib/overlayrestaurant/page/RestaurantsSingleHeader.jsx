@@ -36,7 +36,7 @@ class RestaurantsSingleHeader extends Component {
 
             <a className="ybtn ybtn--small share-icon js-business-send-to-friend"
                data-pop-uri="/send_to_friend/business/30jrTz8vh1xSXdtXMvt-mA" data-ro-mode-action="share a business"
-               href="/biz_share/30jrTz8vh1xSXdtXMvt-mA" data-component-bound="true">
+               href="/biz_share/30jrTz8vh1xSXdtXMvt-mA" >
               <span id="icon_18X18"
                     className="icon icon--18-share icon--size-18 icon--currentColor">
                 <svg className="icon_svg">
@@ -52,7 +52,7 @@ class RestaurantsSingleHeader extends Component {
                data-bookmark-button-position="action-bar" data-ro-mode-action="add a bookmark"
                data-signup-object="biz_id:30jrTz8vh1xSXdtXMvt-mA"
                href="/signup?return_url=%2Fbiz%2F30jrTz8vh1xSXdtXMvt-mA"
-               data-component-bound="true">
+               >
               <span id="icon_18X18"
                     className="icon icon--18-bookmark icon--size-18 icon--currentColor">
                 <svg className="icon_svg">

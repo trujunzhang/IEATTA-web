@@ -42,7 +42,7 @@ class RestaurantsListRightMap extends Component {
 
     const mapProps = (!!defaultMarker ) ? {center: defaultMarker} : {};
     return (
-      <div id="map-container" className="yelp-map-container" data-component-bound="true">
+      <div id="map-container" className="yelp-map-container" >
         <Map
           {...mapProps}
           zoom={18} maxZoom={18}>
@@ -64,7 +64,7 @@ class RestaurantsListRightMap extends Component {
 
     return (
       <div className="map-wrapper">
-        <div className="search-map transform-style-support" data-component-bound="true">
+        <div className="search-map transform-style-support" >
           {this.renderHeader()}
           {this.renderContent()}
         </div>

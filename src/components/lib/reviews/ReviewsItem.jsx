@@ -13,7 +13,7 @@ class ReviewsItem extends Component {
     const {user} = review;
 
     return (
-      <div className="review-sidebar" data-component-bound="true">
+      <div className="review-sidebar" >
 
         <div className="review-sidebar-content">
 

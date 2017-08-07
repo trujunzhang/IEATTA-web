@@ -85,10 +85,16 @@ class F8RestaurantMapSection extends Component {
   }
 
   render() {
+    const {
+      onlyMap = false
+    } = this.props;
+
+    if (onlyMap) {
+      return this.renderTopMap()
+    }
+
     return (
-      <div className="mapbox"
-           data-lightbox-page-title="Directions - My Two Cents - Mid-Wilshire - Los Angeles, CA, United States"
-           data-map-library="google" data-component-bound="true">
+      <div className="mapbox">
         <div className="mapbox-map">
           {this.renderTopMap()}
         </div>

@@ -19,7 +19,7 @@ class ReviewsHeaderView extends Component {
 
   render() {
     return (
-      <div className="feed_header" data-component-bound="true">
+      <div className="feed_header" >
         <div className="section-header section-header--no-spacing">
 
           {this.renderTitle()}
