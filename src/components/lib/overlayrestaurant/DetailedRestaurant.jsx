@@ -11,14 +11,11 @@ class DetailedRestaurant extends Component {
   constructor(props, context) {
     super(props)
 
-    const path = props.location.pathname;
-
-
     this.state = this.initialState = {
       rid: props.params.rid,
       rslug: props.params.rslug,
       restaurant: null,
-      isEdit: path.indexOf('edit/') !== -1,
+      isEdit: props.location.pathname.indexOf('edit/') !== -1,
       ready: false
     }
 
@@ -27,7 +24,8 @@ class DetailedRestaurant extends Component {
   componentWillReceiveProps(nextProps) {
     this.setState({
       restaurant: getModelByObjectId(nextProps, this.state.rid, this.state.restaurant),
-      ready: true
+      ready: true,
+      isEdit: nextProps.location.pathname.indexOf('edit/') !== -1,
     })
   }
 
