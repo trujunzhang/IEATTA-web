@@ -31,6 +31,9 @@
 ** react-onclickoutside
   [https://github.com/Pomax/react-onclickoutside]
 
+** react-redux-i18n
+  [https://github.com/zoover/react-redux-i18n]
+
 ** React.js with sass
 
 *** create-react-app-sass
