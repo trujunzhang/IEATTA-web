@@ -68,6 +68,15 @@ const createRoutes = (store) => {
     }
   ];
 
+
+  const playgroundRoutes = [
+    {
+      // http://localhost:3000/playground
+      path: 'playground',
+      component: Telescope.components.TcombCommonExample
+    }
+  ];
+
   const routes = [
     {
       path: '/',
@@ -79,6 +88,7 @@ const createRoutes = (store) => {
         ...loginRoutes,
         ...overlayRoutes,
         ...editRoutes,
+        ...playgroundRoutes,
         {
           // http://localhost:3000/user_details?userid=t3cu9DxXtGyaPIWNvPOXxA
           path: 'user_details',

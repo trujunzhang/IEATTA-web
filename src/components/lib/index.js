@@ -134,6 +134,7 @@ Telescope.registerComponent('SubmitAnArticle',                   require('./arti
 // users
 Telescope.registerComponent('UsersMenu',               require('./users/UsersMenu.jsx').default)
 
-
+// playground
+Telescope.registerComponent('TcombCommonExample',               require('./playground/tcomb/TcombCommonExample.jsx').default)
 
 export default Telescope
