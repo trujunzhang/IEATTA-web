@@ -24,9 +24,6 @@ class RestaurantForm extends Component {
    */
   render() {
 
-    let options = {
-      fields: {}
-    }
 
     // const label = I18n.t('FieldValidation.valid_password');
     // debugger
@@ -34,20 +31,25 @@ class RestaurantForm extends Component {
     let displayName = {
       label: I18n.t('editRestaurant.displayName'),
       editable: !this.props.form.isFetching,
-      // hasError: this.props.form.fields.displayNameHasError,
-      hasError: true,
-      // error: I18n.t(this.props.form.fields.displayNameErrorMsg)
-      error: "errorxxx "
+      hasError: this.props.form.fields.displayNameHasError,
+      // hasError: true,
+      error: I18n.t(this.props.form.fields.displayNameErrorMsg),
+      // error: "errorxxx ",
+      attrs: {
+        placeholder: I18n.t('editRestaurant.displayNamePlaceHolder')
+      }
     }
 
     const editRestaurantForm = t.struct({
       displayName: t.String
     })
 
-    options.fields['displayName'] = displayName
-    // options.fields['displayName'].placeholder = I18n.t('editRestaurant.displayNamePlaceHolder')
-    // options.fields['displayName'].attrs['placeholder'] = "place-wh"
 
+    let options = {
+      fields: {
+        displayName: displayName
+      }
+    }
 
     /**
      * ### Return

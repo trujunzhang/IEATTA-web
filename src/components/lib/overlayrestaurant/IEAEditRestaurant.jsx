@@ -37,7 +37,7 @@ class IEAEditRestaurant extends Component {
       }
     }
     props.actions.toggleEditModelType(MENU_ITEM_ADD_OR_EDIT_RESTAURANT);
-    props.actions.onEditModelFormFieldChange('displayName', props.restaurant.displayName || '', true)
+    // props.actions.onEditModelFormFieldChange('displayName', props.restaurant.displayName || '', true)
 
   }
 
