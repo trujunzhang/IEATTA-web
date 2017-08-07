@@ -1,18 +1,19 @@
 import Telescope from '../../../lib'
 import React, {Component} from 'react'
 
+
+// import t from '../../../vendor/tcomb-form'
+import t from 'tcomb-form';
+
+const Form = t.form.Form;
+
 /**
  * ### Translations
  */
-// const I18n = require('react-native-i18n')
+const I18n = require('react-i18n')
 // import Translations from '../../../../lib/Translations'
 
 // I18n.translations = Translations
-
-/**
- *  The fantastic little form library
- */
-// const t = require('../../../vendor/tcomb-form')
 
 
 class RestaurantForm extends Component {
@@ -34,20 +35,21 @@ class RestaurantForm extends Component {
       fields: {}
     }
 
-    // let displayName = {
-    // label: I18n.t('editRestaurant.displayName'),
-    // editable: !this.props.form.isFetching,
-    // hasError: this.props.form.fields.displayNameHasError,
-    // error: I18n.t(this.props.form.fields.displayNameErrorMsg)
-    // }
+    let displayName = {
+      // label: I18n.t('editRestaurant.displayName'),
+      label: "wanghao",
+      editable: !this.props.form.isFetching,
+      hasError: this.props.form.fields.displayNameHasError,
+      // error: I18n.t(this.props.form.fields.displayNameErrorMsg)
+    }
 
-    // const editRestaurantForm = t.struct({
-    //   displayName: t.String
-    // })
+    const editRestaurantForm = t.struct({
+      displayName: t.String
+    })
 
-    // options.fields['displayName'] = displayName
+    options.fields['displayName'] = displayName
     // options.fields['displayName'].placeholder = I18n.t('editRestaurant.displayNamePlaceHolder')
-    // options.fields['displayName'].autoCapitalize = 'none'
+    // options.fields['displayName'].attrs['placeholder'] = "place-wh"
 
 
     /**
@@ -55,7 +57,12 @@ class RestaurantForm extends Component {
      * returns the Form component with the correct structures
      */
     return (
-      <div>xxx</div>
+      <Form ref='form'
+            type={editRestaurantForm}
+            options={options}
+            value={this.props.value}
+            onChange={this.props.onChange}
+      />
     )
   }
 }

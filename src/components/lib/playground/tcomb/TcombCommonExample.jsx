@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 
-import t from '../../../vendor/tcomb-form'
+// import t from '../../../vendor/tcomb-form'
+
+import t from 'tcomb-form';
 
 const Form = t.form.Form;
-
 
 // define your domain model with tcomb
 // https://github.com/gcanti/tcomb
@@ -13,11 +14,24 @@ const Person = t.struct({
 });
 
 
+const options = {
+  fields: {
+    name: {
+      attrs: {
+        autoFocus: true,
+        placeholder: 'Type your name here',
+        onBlur: () => {
+          console.log('onBlur on name field!');
+        }
+      }
+    }
+  }
+};
+
+
 class TcombCommonExample extends Component {
   constructor(props, context) {
     super(props)
-
-    debugger
   }
 
   save() {
@@ -32,12 +46,35 @@ class TcombCommonExample extends Component {
 
   render() {
     return (
-      <div>
-        <Form
-          ref="form"
-          type={Person}
-        />
-        <button onClick={this.save.bind(this)}>Save</button>
+
+      <div className="main-content-wrap main-content-wrap--full">
+
+        <div id="super-container" className="content-container">
+
+
+          <div className="container">
+            <div className="clearfix layout-block layout-full" id="update-biz-details">
+
+              <div className="column column-alpha ">
+
+                <div
+                  className="biz-attrib-form yform"
+                  id="biz_attrib_form"
+                  method="POST"
+                  name="biz_attrib_form">
+
+                  <Form
+                    ref="form"
+                    type={Person}
+                    options={options}
+                  />
+                  <button onClick={this.save.bind(this)}>Save</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     )
   }

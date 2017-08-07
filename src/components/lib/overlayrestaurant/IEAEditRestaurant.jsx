@@ -154,7 +154,7 @@ class IEAEditRestaurant extends Component {
 
   renderContent() {
     return (
-      <form
+      <div
         className="biz-attrib-form yform"
         id="biz_attrib_form"
         method="POST"
@@ -164,7 +164,7 @@ class IEAEditRestaurant extends Component {
 
         {this.renderLeft()}
 
-      </form>
+      </div>
 
     )
   }
