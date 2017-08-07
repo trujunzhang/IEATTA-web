@@ -7,14 +7,7 @@ import t from 'tcomb-form';
 
 const Form = t.form.Form;
 
-/**
- * ### Translations
- */
-const I18n = require('react-i18n')
-// import Translations from '../../../../lib/Translations'
-
-// I18n.translations = Translations
-
+const I18n = require('react-redux-i18n').I18n;
 
 class RestaurantForm extends Component {
 
@@ -34,6 +27,9 @@ class RestaurantForm extends Component {
     let options = {
       fields: {}
     }
+
+    const label = I18n.t('FieldValidation.valid_password');
+    debugger
 
     let displayName = {
       // label: I18n.t('editRestaurant.displayName'),

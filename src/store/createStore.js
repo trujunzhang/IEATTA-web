@@ -1,11 +1,13 @@
-import { applyMiddleware, compose, createStore as createReduxStore } from 'redux'
-import { browserHistory } from 'react-router'
+import {applyMiddleware, compose, createStore as createReduxStore} from 'redux'
+import {browserHistory} from 'react-router'
 import thunk from 'redux-thunk'
 import rootReducer from '../reducers'
 import promise from './promise'
-import { updateLocation } from './location'
-import { persistStore, autoRehydrate } from 'redux-persist'
+import {updateLocation} from './location'
+import {persistStore, autoRehydrate} from 'redux-persist'
 
+import {loadTranslations, setLocale, syncTranslationWithStore, i18nReducer} from 'react-redux-i18n';
+import Translations from '../lib/Translations'
 
 // Logger with default options
 import logger from 'redux-logger'
@@ -40,6 +42,11 @@ const createStore = (initialState = {}) => {
     )
   )
   store.asyncReducers = {}
+
+  // i18n
+  syncTranslationWithStore(store);
+  store.dispatch(loadTranslations(Translations));
+  store.dispatch(setLocale('en'));
 
   // To unsubscribe, invoke `store.unsubscribeHistory()` anytime
   store.unsubscribeHistory = browserHistory.listen(updateLocation(store))
