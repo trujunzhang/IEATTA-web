@@ -37,7 +37,7 @@ class IEAEditRestaurant extends Component {
       }
     }
     props.actions.toggleEditModelType(MENU_ITEM_ADD_OR_EDIT_RESTAURANT);
-    // props.actions.onEditModelFormFieldChange('displayName', props.restaurant.displayName || '', true)
+    props.actions.onEditModelFormFieldChange('displayName', props.restaurant.displayName || '', true)
 
   }
 
@@ -80,50 +80,22 @@ class IEAEditRestaurant extends Component {
     )
   }
 
-  renderLeftxxx() {
+
+  renderLeftButton() {
     return (
-      <ul>
-        <li className="BusinessName">
-          <label>Restaurant Name</label>
-
-          <input className="text"
-                 id="attr_BusinessName"
-                 name="BusinessName"
-                 placeholder={this.props.restaurant.displayName}
-                 type="text"
-                 value={this.state.displayName}
-          />
-        </li>
-
-
-        <li className="BusinessStreetAddress1">
-          <label>Address 1</label>
-
-          <input className="text"
-                 id="attr_BusinessStreetAddress1"
-                 name="BusinessStreetAddress1"
-                 placeholder="123 Main St"
-                 type="text"
-                 value="3283 Walnut Ave"/>
-        </li>
-
-
-        <li className="BusinessStreetAddress2">
-          <label
-          >Address 2</label>
-
-          <span className="placeholder-sub help-block">
-                        Ste 200
-                    </span>
-          <input className="text" id="attr_BusinessStreetAddress2" name="BusinessStreetAddress2" placeholder="Ste 200"
-                 type="text"/>
-
-        </li>
-
-      </ul>
-
+      <div className="form-footer">
+        <button id="submit-biz-details-changes"
+                name="action_submit"
+                type="submit"
+                value="Submit Changes"
+                className="ybtn ybtn--primary">
+          <span>Submit Changes</span>
+        </button>
+        <a href="https://www.yelp.com/biz/los-cabos-fremont">Cancel</a>
+      </div>
     )
   }
+
 
   renderRight() {
     return (
@@ -163,6 +135,7 @@ class IEAEditRestaurant extends Component {
         {this.renderRight()}
 
         {this.renderLeft()}
+        {this.renderLeftButton()}
 
       </div>
 
