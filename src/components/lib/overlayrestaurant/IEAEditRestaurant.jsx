@@ -1,7 +1,27 @@
 import Telescope from '../../lib'
 import React, {Component} from 'react'
 
-import ReactLoading from 'react-loading'
+
+/**
+ * ### Translations
+ */
+// const I18n = require('react-i18n')
+// import Translations from '../../../lib/Translations'
+
+// I18n.translations = Translations
+
+/**
+ * The states were interested in
+ */
+const {
+  MENU_ITEM_ADD_OR_EDIT_RESTAURANT,
+  // Sections
+  SECTION_PHOTOS_BROWSER_FOR_RESTAURANT,
+  // Model Form Type
+  MODEL_FORM_TYPE_NEW,
+  MODEL_FORM_TYPE_EDIT,
+} = require('../../../lib/constants').default
+
 
 const {loadRestaurantPage} = require('../../../actions').default
 const {getModelByObjectId} = require('../../filter/filterPosts')
@@ -11,18 +31,56 @@ class IEAEditRestaurant extends Component {
   constructor(props, context) {
     super(props)
 
-
-    const {restaurant} = this.props;
-
-    this.state = this.initialState = {
-      displayName: restaurant.displayName,
-      address: restaurant.address,
-      geoLocation: restaurant.geoLocation
+    this.state = {
+      value: {
+        displayName: props.editModel.form.fields.displayName,
+      }
     }
+    props.actions.toggleEditModelType(MENU_ITEM_ADD_OR_EDIT_RESTAURANT);
+    props.actions.onEditModelFormFieldChange('displayName', props.restaurant.displayName || '', true)
 
   }
 
+  /**
+   * ### componentWillReceiveProps
+   * As the properties are validated they will be set here.
+   */
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      value: {
+        displayName: nextProps.editModel.form.fields.displayName,
+      }
+    })
+  }
+
+  /**
+   * ### onChange
+   *
+   * As the user enters keys, this is called for each key stroke.
+   * Rather then publish the rules for each of the fields, I find it
+   * better to display the rules required as long as the field doesn't
+   * meet the requirements.
+   * *Note* that the fields are validated by the authReducer
+   */
+  onChange(value) {
+    if (value.displayName !== '') {
+      this.props.actions.onEditModelFormFieldChange('displayName', value.displayName)
+    }
+    this.setState(
+      {value}
+    )
+  }
+
   renderLeft() {
+    return (
+      <Telescope.components.RestaurantForm
+        form={this.props.editModel.form}
+        value={this.state.value}
+        onChange={this.onChange.bind(this)}/>
+    )
+  }
+
+  renderLeftxxx() {
     return (
       <ul>
         <li className="BusinessName">
@@ -138,4 +196,26 @@ class IEAEditRestaurant extends Component {
 }
 
 
-export default IEAEditRestaurant;
+/**
+ * ## Imports
+ *
+ * Redux
+ */
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
+
+import * as editModelActions from '../../../reducers/editModel/editModelActions'
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(editModelActions, dispatch)
+  }
+}
+
+function select(store) {
+  return {
+    editModel: store.editModel
+  };
+}
+
+export default connect(select, mapDispatchToProps)(IEAEditRestaurant)

@@ -1,8 +1,24 @@
 import keyMirror from 'key-mirror'
 
 export default keyMirror({
-  // Parse Object
 
+  // Home More Menus
+  MENU_ITEM_ADD_OR_EDIT_RESTAURANT: null,
+  MENU_ITEM_ADD_OR_EDIT_EVENT: null,
+  MENU_ITEM_ADD_OR_EDIT_RECIPE: null,
+  MENU_ITEM_ADD_OR_EDIT_USER: null,
+  MENU_ITEM_ADD_OR_EDIT_REVIEW: null,
+  MENU_ITEM_SEARCH_RESTAURANTS: null,
+  MENU_ITEM_MANAGE_FRIENDS: null,
+  MENU_ITEM_READ_REVIEWS: null,
+
+  // Model Form Mode
+  MODEL_FORM_TYPE_NEW: null,
+  MODEL_FORM_TYPE_EDIT: null,
+
+  // Edit Model
+  EDIT_MODEL_TOGGLE_TYPE: null,
+  ON_EDIT_MODEL_FORM_FIELD_CHANGE: null,
 
   // Parse Object
   PARSE_CONFIGURE: null,

@@ -13,6 +13,7 @@ const rootReducer = combineReducers({
   popModels: require('./popModels').default,
   detailedModelsOverlay: require('./detailedModelsOverlay').default,
   user: require('./user').default,
+  editModel: require('./editModel/editModelReducer').default,
   userProfileTask: require('./userProfile').default,
   auth: require('./auth/authReducer').default,
   dashboard: require('./dashboard/dashboardReducer').default,
