@@ -16,8 +16,11 @@
  * The actions supported
  */
 const {
-    ON_EDIT_MODEL_FORM_FIELD_CHANGE,
-    EDIT_MODEL_TOGGLE_TYPE,
+  ON_EDIT_MODEL_FORM_FIELD_CHANGE,
+  EDIT_MODEL_TOGGLE_TYPE,
+  UPDATE_MODEL_REQUEST,
+  UPDATE_MODEL_SUCCESS,
+  UPDATE_MODEL_FAILURE,
 } = require('../../lib/constants').default
 
 
@@ -29,10 +32,10 @@ const _ = require('underscore')
  */
 
 export function toggleEditModelType(tag) {
-    return {
-        type: EDIT_MODEL_TOGGLE_TYPE,
-        payload: tag
-    }
+  return {
+    type: EDIT_MODEL_TOGGLE_TYPE,
+    payload: tag
+  }
 }
 
 /**
@@ -40,8 +43,31 @@ export function toggleEditModelType(tag) {
  * Set the payload so the reducer can work on it
  */
 export function onEditModelFormFieldChange(field, value, ignoreValidation = false) {
-    return {
-        type: ON_EDIT_MODEL_FORM_FIELD_CHANGE,
-        payload: {field: field, value: value, ignoreValidation: ignoreValidation}
-    }
+  return {
+    type: ON_EDIT_MODEL_FORM_FIELD_CHANGE,
+    payload: {field: field, value: value, ignoreValidation: ignoreValidation}
+  }
+}
+
+
+/**
+ * ## Login actions
+ */
+export function updateModelRequest() {
+  return {
+    type: UPDATE_MODEL_REQUEST
+  }
+}
+
+export function updateModelSuccess() {
+  return {
+    type: UPDATE_MODEL_SUCCESS
+  }
+}
+
+export function updateModelFailure(error) {
+  return {
+    type: UPDATE_MODEL_FAILURE,
+    payload: error
+  }
 }

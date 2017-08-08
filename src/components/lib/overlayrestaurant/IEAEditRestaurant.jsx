@@ -11,6 +11,9 @@ import {withRouter} from 'react-router'
 
 // I18n.translations = Translations
 
+const {logInWithPassword, timeout} = require('../../../actions')
+
+
 /**
  * The states were interested in
  */
@@ -78,14 +81,43 @@ class IEAEditRestaurant extends Component {
   }
 
 
+  async onButtonPress() {
+    const {dispatch} = this.props;
+
+    let displayName = this.props.auth.form.fields.displayName;
+
+    this.props.actions.loginRequest();
+
+    try {
+      await Promise.race([
+        dispatch(updateRestaurant(displayName)),
+        timeout(15000),
+      ]);
+    } catch (e) {
+      this.props.actions.loginFailure(e);
+      const message = e.message || e;
+      if (message !== 'Timed out' && message !== 'Canceled by user') {
+        // alert(message);
+        // console.warn(e);
+      }
+    } finally {
+      this.props.actions.loginSuccess();
+      this._isMounted && this.setState({isLoading: false});
+    }
+  }
+
+
   renderLeftButton() {
     return (
       <div className="form-footer">
-        <button id="submit-biz-details-changes"
-                name="action_submit"
-                type="submit"
-                value="Submit Changes"
-                className="ybtn ybtn--primary">
+        <button
+          onClick={this.onButtonPress.bind(this)}
+          disabled={!this.props.auth.form.isValid || this.props.auth.form.isFetching}
+          id="submit-biz-details-changes"
+          name="action_submit"
+          type="submit"
+          value="Submit Changes"
+          className="ybtn ybtn--primary">
           <span>Submit Changes</span>
         </button>
         <a onClick={this.props.goBack}>
