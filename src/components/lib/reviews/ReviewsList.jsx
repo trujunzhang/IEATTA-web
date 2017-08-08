@@ -49,24 +49,25 @@ class ReviewsList extends Component {
       totalCount,
     } = listTask;
 
-    if (!ready ) {
+    if (!ready) {
       return (
         <Telescope.components.F8LoadingView/>
       )
+    } else if (!!results && results.length) {
+      return (
+        <ul className="ylist ylist-bordered reviews">
+          {results.map(review =>
+            <Telescope.components.ReviewsItem key={review.id} review={review}/>
+          )}
+        </ul>
+      )
+    } else {
+      return (
+        <Telescope.components.F8EmptySection
+          title={`No reviews`}
+          text="You can add new reviews clicking the 'Add review' button."/>
+      )
     }
-
-    return (
-
-      <ul className="ylist ylist-bordered reviews" >
-        {results.map(review =>
-          <Telescope.components.ReviewsItem key={review.id} review={review}/>
-        )}
-      </ul>
-    )
-  }
-
-  renderEmptySection() {
-
   }
 
 

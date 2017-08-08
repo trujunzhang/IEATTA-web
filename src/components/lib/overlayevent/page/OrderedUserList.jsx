@@ -75,9 +75,9 @@ class OrderedUserList extends Component {
 
     if (ready && results.length === 0) {
       return (
-        <div>
-          <p>No users</p>
-        </div>
+        <Telescope.components.F8EmptySection
+          title={`No Users ordered`}
+          text="You can add new users clicking the 'Add user' button."/>
       )
     }
     return null;
