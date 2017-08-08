@@ -49,8 +49,7 @@ class IEARestaurantsList extends Component {
         <section className="results_37tfm">
           <Telescope.components.F8EmptySection
             title={`No restaurants now`}
-            text="You can add new restaurants on your mobile phones."
-          />
+            text="You can add new restaurants on your mobile phones."/>
         </section>
       )
     }

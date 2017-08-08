@@ -52,15 +52,21 @@ class EventsList extends Component {
       return (
         <Telescope.components.F8LoadingView/>
       )
+    } else if (!!results && results.length) {
+      return (
+        <ul className="ylist ylist-bordered">
+          {results.map(event =>
+            <Telescope.components.EventsItem key={event.id} event={event}/>
+          )}
+        </ul>
+      )
+    } else {
+      return (
+        <Telescope.components.F8EmptySection
+          title={`No Events`}
+          text="You can add new events clicking the 'Add Event' button."/>
+      )
     }
-
-    return (
-      <ul className="ylist ylist-bordered">
-        {results.map(event =>
-          <Telescope.components.EventsItem key={event.id} event={event}/>
-        )}
-      </ul>
-    )
   }
 
   renderEmptySection() {
