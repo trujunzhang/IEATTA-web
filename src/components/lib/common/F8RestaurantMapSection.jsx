@@ -10,6 +10,7 @@ class F8RestaurantMapSection extends Component {
 
   renderTopMap() {
     const {restaurant} = this.props;
+
     const latitude = restaurant.geoLocation.latitude;
     const longitude = restaurant.geoLocation.longitude;
     const position = [latitude, longitude];
