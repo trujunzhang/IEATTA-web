@@ -84,35 +84,41 @@ class IEAEditRestaurant extends Component {
   async onButtonPress() {
     const {dispatch} = this.props;
 
-    let displayName = this.props.auth.form.fields.displayName;
+    let displayName = this.props.editModel.form.fields.displayName;
 
-    this.props.actions.loginRequest();
+    this.props.actions.updateModelRequest();
 
-    try {
-      await Promise.race([
-        dispatch(updateRestaurant(displayName)),
-        timeout(15000),
-      ]);
-    } catch (e) {
-      this.props.actions.loginFailure(e);
-      const message = e.message || e;
-      if (message !== 'Timed out' && message !== 'Canceled by user') {
-        // alert(message);
-        // console.warn(e);
-      }
-    } finally {
-      this.props.actions.loginSuccess();
-      this._isMounted && this.setState({isLoading: false});
-    }
+    debugger
+
+    // try {
+    //   // await Promise.race([
+    //   //   dispatch(updateRestaurant(displayName)),
+    //   //   timeout(15000),
+    //   // ]);
+    // } catch (e) {
+    //   this.props.actions.updateModelFailure(e);
+    //   const message = e.message || e;
+    //   if (message !== 'Timed out' && message !== 'Canceled by user') {
+    //     // alert(message);
+    //     // console.warn(e);
+    //   }
+    // } finally {
+    //   this.props.actions.updateModelSuccess();
+    //   // this._isMounted && this.setState({isLoading: false});
+    // }
   }
 
 
   renderLeftButton() {
+    const {editModel} = this.props;
+    const isDisabled = (!editModel.form.isValid || editModel.form.isFetching);
+
+
     return (
       <div className="form-footer">
         <button
           onClick={this.onButtonPress.bind(this)}
-          disabled={!this.props.auth.form.isValid || this.props.auth.form.isFetching}
+          disabled={isDisabled}
           id="submit-biz-details-changes"
           name="action_submit"
           type="submit"

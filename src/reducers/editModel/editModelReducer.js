@@ -77,6 +77,8 @@ function editModelReducer(state = initialState, action) {
     case SET_STATE:
       let form = JSON.parse(action.payload).auth.form
 
+      debugger
+
       let next = state.setIn(['form', 'state'], form.state)
         .setIn(['form', 'disabled'], form.disabled)
         .setIn(['form', 'error'], form.error)
