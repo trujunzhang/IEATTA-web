@@ -38,11 +38,11 @@ class IEARestaurantsHome extends Component {
     const markers = generateMarkers(nextProps.listContainerTasks, this.state.terms, this.state.listTask);
     const defaultMarker = markers.length > 0 ? markers[0] : null;
 
-    this.setState({
-      listTask: listTask,
-      markers: markers,
-      defaultMarker: defaultMarker
-    })
+    // this.setState({
+    //   listTask: listTask,
+    //   markers: markers,
+    //   defaultMarker: defaultMarker
+    // })
   }
 
   componentDidMount() {

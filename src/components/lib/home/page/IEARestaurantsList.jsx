@@ -21,7 +21,7 @@ class IEARestaurantsList extends Component {
 
     const showReady = Posts.showReady(results, hasMore, ready, totalCount, limit, firstPagination)
 
-    if (showReady) {
+    if (showReady && false) {
       return (
         <section className='restaurants-list-loading-panel'>
           <Telescope.components.F8LoadingView/>
@@ -43,12 +43,14 @@ class IEARestaurantsList extends Component {
           )}
 
         </ul>
-
       )
     } else {
       return (
         <section className="results_37tfm">
-          <Telescope.components.RestaurantsNoResults relatedList={false}/>
+          <Telescope.components.F8EmptySection
+            title={`No restaurants now`}
+            text="You can add new restaurants on your mobile phones."
+          />
         </section>
       )
     }
