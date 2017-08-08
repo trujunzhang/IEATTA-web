@@ -1,6 +1,7 @@
 import Telescope from '../../lib'
 import React, {Component} from 'react'
 
+import {withRouter} from 'react-router'
 
 /**
  * ### Translations
@@ -21,7 +22,6 @@ const {
   MODEL_FORM_TYPE_NEW,
   MODEL_FORM_TYPE_EDIT,
 } = require('../../../lib/constants').default
-
 
 
 class IEAEditRestaurant extends Component {
@@ -88,7 +88,9 @@ class IEAEditRestaurant extends Component {
                 className="ybtn ybtn--primary">
           <span>Submit Changes</span>
         </button>
-        <a href="https://www.yelp.com/biz/los-cabos-fremont">Cancel</a>
+        <a onClick={this.props.goBack}>
+          Cancel
+        </a>
       </div>
     )
   }
@@ -182,10 +184,11 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-function select(store) {
+function select(store, ownProps) {
   return {
-    editModel: store.editModel
+    editModel: store.editModel,
+    goBack: ownProps.router.goBack
   };
 }
 
-export default connect(select, mapDispatchToProps)(IEAEditRestaurant)
+export default withRouter(connect(select, mapDispatchToProps)(IEAEditRestaurant));
