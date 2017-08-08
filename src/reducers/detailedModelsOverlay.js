@@ -31,7 +31,8 @@ import type {Action} from '../actions/types'
  */
 const {
   OVERLAY_LOADED_MODEL_PAGE,
-  OVERLAY_LOADED_MODEL_RESET
+  OVERLAY_LOADED_MODEL_RESET,
+  SAVED_MODEL_REQUEST
 } = require('../lib/constants').default
 
 const initialState = {
@@ -40,6 +41,16 @@ const initialState = {
 
 function detailedModelsOverlay(state: State = initialState, action: Action): State {
   if (action.type === OVERLAY_LOADED_MODEL_PAGE) {
+    const nextState = Object.assign({}, state, {
+      currentModel: action.payload
+    })
+    return nextState
+  }
+
+  /**
+   * Update the current model after saved the model.
+   */
+  if (action.type === SAVED_MODEL_REQUEST) {
     const nextState = Object.assign({}, state, {
       currentModel: action.payload
     })
