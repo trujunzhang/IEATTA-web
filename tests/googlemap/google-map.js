@@ -21,9 +21,9 @@ const client = new Client();
 
 function getGoogleAddres() {
 // direct way
-//   client.get("http://maps.googleapis.com/maps/api/geocode/json?latlng=35.1330343,-90.0625056", function (data, response) {
-  client.get("http://maps.googleapis.com/maps/api/geocode/json?latlng=3.889385,102.460485", function (data, response) {
-  // client.get("http://maps.googleapis.com/maps/api/geocode/json?latlng=32.399995,120.555723", function (data, response) {
+  client.get("http://maps.googleapis.com/maps/api/geocode/json?latlng=35.1330343,-90.0625056", function (data, response) {
+    // client.get("http://maps.googleapis.com/maps/api/geocode/json?latlng=3.889385,102.460485", function (data, response) {
+    // client.get("http://maps.googleapis.com/maps/api/geocode/json?latlng=32.399995,120.555723", function (data, response) {
     const final = parse_address(data);
 
     debugger
@@ -48,7 +48,15 @@ function googleMap_rest() {
 function parse_address(response) {
   const results = response.results;
 
-  let final = {};
+  let final = {// length(7)
+    'street_number': '',
+    'route': '',
+    'locality': '',
+    "sublocality": '',
+    'country': '',
+    'postal_code': '',
+    'administrative_area': ''
+  };
 
   const item = results[0];
   const value = item.formatted_address;
