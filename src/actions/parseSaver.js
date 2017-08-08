@@ -61,7 +61,7 @@ async function _updateRestaurant(model: object): Promise<Array<Action>> {
 
   const action = {
     type: SAVED_MODEL_REQUEST,
-    payload: {objectId: model.objectId, model: restaurant}
+    payload: {objectId: model.objectId, model: fromParseRestaurant(restaurant)}
   }
   return Promise.all([
     Promise.resolve(action)
