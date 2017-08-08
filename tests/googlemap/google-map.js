@@ -15,47 +15,70 @@
  * authActions
  */
 
+const Client = require('node-rest-client').Client;
+
+const client = new Client();
+
+function getGoogleAddres() {
+// direct way
+//   client.get("http://maps.googleapis.com/maps/api/geocode/json?latlng=35.1330343,-90.0625056", function (data, response) {
+  client.get("http://maps.googleapis.com/maps/api/geocode/json?latlng=3.889385,102.460485", function (data, response) {
+    const final = parse_address(data);
+
+    debugger
+
+    // parsed response body as js object
+    console.log(data);
+    // raw response
+    console.log(response);
+  });
+}
+
+setTimeout(getGoogleAddres, 3000);
+
+
 // import GoogleMapResults from './google-map-results.json'
 const GoogleMapResults = require('./google-map-results.json'); //with path
+
+function googleMap_rest() {
+
+}
 
 function parse_address(response) {
   const results = response.results;
 
   let final = {};
+  debugger
 
-  results.map((item, index) => {
-    const types = item.types.join(',');
-    const value = item.formatted_address;
+  const item = results[0];
+  const value = item.formatted_address;
+  const component = item.address_components;
 
-    if (types.indexOf('premise') !== -1) {
-      const component = item.address_components;
+  debugger
 
-      // step1: get the whole address.
-      final['address'] = value;
-      // step2: get the detailed info.
-
-      component.map((data, index) => {
-        const dataTypes = data.types.join(';')
-        if (dataTypes.indexOf('street_number') !== -1) {
-          final['street_number'] = data.short_name;
-        } else if (dataTypes.indexOf('route') !== -1) {
-          final['route'] = data.short_name;
-        } else if (dataTypes.indexOf('locality') !== -1) {
-          final['locality'] = data.short_name;
-        } else if (dataTypes.indexOf('country') !== -1) {
-          final['country'] = data.short_name;
-        } else if (dataTypes.indexOf('postal_code') !== -1) {
-          final['postal_code'] = data.short_name;
-        } else if (dataTypes.indexOf('administrative_area_level_1') !== -1) {
-          final['administrative_area'] = data.short_name;
-        }
-      })
+  // step1: get the whole address.
+  final['address'] = value;
+  // step2: get the detailed info.
+  component.map((data, index) => {
+    const dataTypes = data.types.join(';')
+    if (dataTypes.indexOf('street_number') !== -1) {
+      final['street_number'] = data.long_name;
+    } else if (dataTypes.indexOf('route') !== -1) {
+      final['route'] = data.long_name;
+    } else if (dataTypes.indexOf('locality') !== -1) {
+      final['locality'] = data.long_name;
+    } else if (dataTypes.indexOf('country') !== -1) {
+      final['country'] = data.short_name;
+    } else if (dataTypes.indexOf('postal_code') !== -1) {
+      final['postal_code'] = data.short_name;
+    } else if (dataTypes.indexOf('administrative_area_level_1') !== -1) {
+      final['administrative_area'] = data.short_name;
     }
   })
 
   return final;
 }
 
-const final = parse_address(GoogleMapResults)
-console.log(JSON.stringify(final))
+// const final = parse_address(GoogleMapResults)
+// console.log(JSON.stringify(final))
 
