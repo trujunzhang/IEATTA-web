@@ -49,30 +49,38 @@ const {
   PARSE_EVENTS,
   PARSE_RECIPES,
   PARSE_COMMENTS,
+  SAVED_MODEL_REQUEST,
 } = require('../lib/constants').default
 
 
-function _updateRestaurant(model: object): ThunkAction {
-  return (dispatch) => {
-    return getQueryByType(PARSE_RESTAURANTS).get(model.objectId, {
-      success: (object) => {
-        debugger
+async function _updateRestaurant(model: object): Promise<Array<Action>> {
+  const restaurant = await getQueryByType(PARSE_RESTAURANTS).get(model.objectId)
+  restaurant.set('displayName', model.displayName)
 
-        const model = parseFun(object);
-        const payload = {objectId, model}
-        dispatch({type, payload})
-      },
-      error: (error) => {
-        debugger
+  await restaurant.save()
+
+  const action = {
+    type: SAVED_MODEL_REQUEST,
+    payload: {}
+  }
+  return Promise.all([
+    Promise.resolve(action)
+  ])
+}
+
+function updateRestaurant(model: object): ThunkAction {
+  return (dispatch) => {
+    const action = _updateRestaurant(model)
+
+    action.then(
+      ([result]) => {
+        dispatch(result)
       }
-    })
+    )
+    return action
   }
 }
 
-
 export default {
-  updateRestaurant: (model: object): ThunkAction => {
-    debugger
-    return _updateRestaurant(model)
-  },
+  updateRestaurant,
 }
