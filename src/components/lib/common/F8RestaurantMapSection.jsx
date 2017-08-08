@@ -1,7 +1,7 @@
 import Telescope from '../index'
 import React, {Component} from 'react'
 
-import {getEditRestaurantLink} from '../../../../lib/link'
+import {getEditRestaurantLink} from '../../../lib/link'
 import {Link} from 'react-router'
 
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet'

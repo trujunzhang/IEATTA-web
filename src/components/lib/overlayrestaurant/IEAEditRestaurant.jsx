@@ -23,8 +23,6 @@ const {
 } = require('../../../lib/constants').default
 
 
-const {loadRestaurantPage} = require('../../../actions').default
-const {getModelByObjectId} = require('../../filter/filterPosts')
 
 class IEAEditRestaurant extends Component {
 
@@ -38,7 +36,6 @@ class IEAEditRestaurant extends Component {
     }
     props.actions.toggleEditModelType(MENU_ITEM_ADD_OR_EDIT_RESTAURANT);
     props.actions.onEditModelFormFieldChange('displayName', props.restaurant.displayName || '', true)
-
   }
 
   /**
