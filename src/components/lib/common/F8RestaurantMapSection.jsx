@@ -1,6 +1,9 @@
 import Telescope from '../index'
 import React, {Component} from 'react'
 
+import {getEditRestaurantLink} from '../../../../lib/link'
+import {Link} from 'react-router'
+
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
 
 class F8RestaurantMapSection extends Component {
@@ -26,8 +29,11 @@ class F8RestaurantMapSection extends Component {
   }
 
   renderRightEditButton() {
+    const {restaurant} = this.props;
+
     return (
-      <a href="/biz_attribute?biz_id=30jrTz8vh1xSXdtXMvt-mA" className="link-more icon-wrapper mapbox-edit">
+      <Link to={getEditRestaurantLink(restaurant)}
+            className="link-more icon-wrapper mapbox-edit">
             <span id="icon_14X14"
                   className="icon icon--14-pencil icon--size-14 icon--linked u-space-r-half">
               <svg className="icon_svg">
@@ -36,13 +42,14 @@ class F8RestaurantMapSection extends Component {
               </svg>
             </span>
         <span>Edit</span>
-      </a>
+      </Link>
     )
   }
 
   renderBottomText() {
     const {restaurant, showEditButton} = this.props;
     const rows = restaurant.address.split(',')
+
     return (
       <ul>
         <li className="u-relative">
