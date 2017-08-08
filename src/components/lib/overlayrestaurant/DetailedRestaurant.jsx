@@ -38,7 +38,8 @@ class DetailedRestaurant extends Component {
 
     if (!!restaurant) {
       if (isEdit) {
-        return (<Telescope.components.IEAEditRestaurant  {...this.state}/>)
+        return (<Telescope.components.IEAEditRestaurant  {...this.state}
+                                                         dispatch={this.props.dispatch}/>)
       }
       return (<Telescope.components.IEARestaurantsLayout  {...this.state}/>)
     }

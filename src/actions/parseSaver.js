@@ -39,6 +39,9 @@ const {
 async function _updateRestaurant(model: object): Promise<Array<Action>> {
   const results = {}
 
+  debugger
+
+
   const action = {
     type: QUERY_REVIEWS,
     payload: {}
