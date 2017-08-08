@@ -11,7 +11,7 @@ import {withRouter} from 'react-router'
 
 // I18n.translations = Translations
 
-const {updateRestaurant, timeout} = require('../../../actions')
+const {updateRestaurant, timeout} = require('../../../actions').default
 
 
 /**
