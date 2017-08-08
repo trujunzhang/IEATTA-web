@@ -28,9 +28,9 @@ const facebookLoginActions = require('./facebookLogin').default
 const parseSingleActions = require('./parseSingle').default
 const parseRestaurantsActions = require('./parseRestaurants').default
 const parseUsersActions = require('./parseUsers').default
-const voingtActions = require('./voting').default
+const votingtActions = require('./voting').default
 const globalActions = require('./global').default
-const realmSaveActions = require('./parseSaver').default
+const parseSaveActions = require('./parseSaver').default
 
 export default {
   ...loginActions,
@@ -39,7 +39,7 @@ export default {
   ...parseSingleActions,
   ...parseRestaurantsActions,
   ...parseUsersActions,
-  ...voingtActions,
+  ...votingtActions,
   ...globalActions,
-  ...realmSaveActions,
+  ...parseSaveActions,
 }
