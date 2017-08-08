@@ -18,7 +18,7 @@ class F8RestaurantMapSection extends Component {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>
         <Marker position={position}>
           <Popup>
-            <span>A pretty CSS3 popup.<br/>Easily customizable.</span>
+            <span>{restaurant.displayName}<br/>{restaurant.address}</span>
           </Popup>
         </Marker>
       </Map>
