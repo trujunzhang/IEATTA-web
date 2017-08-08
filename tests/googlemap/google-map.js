@@ -23,6 +23,7 @@ function getGoogleAddres() {
 // direct way
 //   client.get("http://maps.googleapis.com/maps/api/geocode/json?latlng=35.1330343,-90.0625056", function (data, response) {
   client.get("http://maps.googleapis.com/maps/api/geocode/json?latlng=3.889385,102.460485", function (data, response) {
+  // client.get("http://maps.googleapis.com/maps/api/geocode/json?latlng=32.399995,120.555723", function (data, response) {
     const final = parse_address(data);
 
     debugger
@@ -48,23 +49,24 @@ function parse_address(response) {
   const results = response.results;
 
   let final = {};
-  debugger
 
   const item = results[0];
   const value = item.formatted_address;
   const component = item.address_components;
 
-  debugger
-
   // step1: get the whole address.
   final['address'] = value;
   // step2: get the detailed info.
   component.map((data, index) => {
-    const dataTypes = data.types.join(';')
+    const dataTypes = data.types.join(';');
+
+
     if (dataTypes.indexOf('street_number') !== -1) {
       final['street_number'] = data.long_name;
     } else if (dataTypes.indexOf('route') !== -1) {
       final['route'] = data.long_name;
+    } else if (dataTypes.indexOf('sublocality') !== -1) {
+      final['sublocality'] = data.long_name;
     } else if (dataTypes.indexOf('locality') !== -1) {
       final['locality'] = data.long_name;
     } else if (dataTypes.indexOf('country') !== -1) {
