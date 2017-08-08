@@ -21,7 +21,7 @@ class IEARestaurantsList extends Component {
 
     const showReady = Posts.showReady(results, hasMore, ready, totalCount, limit, firstPagination)
 
-    if (showReady && false) {
+    if (showReady) {
       return (
         <section className='restaurants-list-loading-panel'>
           <Telescope.components.F8LoadingView/>
