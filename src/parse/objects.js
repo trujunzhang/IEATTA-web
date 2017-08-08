@@ -32,6 +32,7 @@ const ParsePeopleInEvent = Parse.Object.extend('PeopleInEvent')
 const ParseUser = Parse.Object.extend('User')
 const ParseReview = Parse.Object.extend('Review')
 const ParseRecipe = Parse.Object.extend('Recipe')
+const ParseRecord = Parse.Object.extend('Record')
 
 
 export default {
@@ -41,4 +42,5 @@ export default {
   ParseUser,
   ParseReview,
   ParseRecipe,
+  ParseRecord,
 }

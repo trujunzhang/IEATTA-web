@@ -8,7 +8,8 @@ let {
   ParseUser,
   ParsePeopleInEvent,
   ParseReview,
-  ParseRecipe
+  ParseRecipe,
+  ParseRecord
 } = require('./objects').default
 
 /**
@@ -20,7 +21,8 @@ const {
   PARSE_PEOPLE_IN_EVENTS,
   PARSE_USERS,
   PARSE_REVIEWS,
-  PARSE_RECIPES
+  PARSE_RECIPES,
+  PARSE_RECORDS
 } = require('../lib/constants').default
 
 function getQueryByType(type: string, includes: Array = []) {
@@ -43,6 +45,9 @@ function getQueryByType(type: string, includes: Array = []) {
       break;
     case PARSE_RECIPES:
       query = new Parse.Query(ParseRecipe)
+      break;
+    case PARSE_RECORDS:
+      query = new Parse.Query(ParseRecord)
       break;
   }
 
@@ -88,6 +93,13 @@ function getRecipesParameters(terms) {
     .end()
 }
 
+async function updateParseRecord(recordType, parseInstance) {
+  const record = await getQueryByType(PARSE_RECORDS).equalTo(recordType, parseInstance).first()
+  if (!!record) {
+    await record.save()
+  }
+}
+
 export default {
   getQueryByType,
   getRestaurantParameters,
@@ -95,5 +107,7 @@ export default {
   getReviewsParameters,
   getUsersParameters,
   getPeopleInEventParameters,
-  getRecipesParameters
+  getRecipesParameters,
+  // Update the model's record after saved it.
+  updateParseRecord,
 }

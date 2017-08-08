@@ -30,7 +30,7 @@ import type {Action, ThunkAction} from './types'
 
 
 let {ParseUser} = require('../parse/objects').default
-let {getUsersParameters, getQueryByType} = require('../parse/parseUtiles').default
+let {getUsersParameters, getQueryByType, updateParseRecord} = require('../parse/parseUtiles').default
 
 const {fromParseUser, fromParseRestaurant, fromParseEvent} = require('../reducers/parseModels')
 
@@ -58,6 +58,8 @@ async function _updateRestaurant(model: object): Promise<Array<Action>> {
   restaurant.set('displayName', model.displayName)
 
   await restaurant.save()
+
+  await updateParseRecord('restaurant', restaurant)
 
   const action = {
     type: SAVED_MODEL_REQUEST,
