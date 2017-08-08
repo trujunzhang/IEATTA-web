@@ -82,7 +82,7 @@ class IEAEditRestaurant extends Component {
 
 
   async onButtonPress() {
-    const {dispatch} = this.props;
+    const {dispatch, restaurant} = this.props;
 
     let displayName = this.props.editModel.form.fields.displayName;
 
@@ -92,13 +92,14 @@ class IEAEditRestaurant extends Component {
 
     try {
       await Promise.race([
-        dispatch(updateRestaurant(displayName)),
+        dispatch(updateRestaurant({objectId: restaurant.id, displayName: displayName})),
         timeout(15000),
       ]);
     } catch (e) {
       this.props.actions.updateModelFailure(e);
       const message = e.message || e;
       if (message !== 'Timed out' && message !== 'Canceled by user') {
+        debugger
         // alert(message);
         // console.warn(e);
       }

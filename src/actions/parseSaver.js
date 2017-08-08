@@ -29,42 +29,50 @@ const _ = require('underscore')
 import type {Action, ThunkAction} from './types'
 
 
+let {ParseUser} = require('../parse/objects').default
+let {getUsersParameters, getQueryByType} = require('../parse/parseUtiles').default
+
+const {fromParseUser, fromParseRestaurant, fromParseEvent} = require('../reducers/parseModels')
+
 /**
  * The states were interested in
  */
 const {
-  QUERY_REVIEWS,
+  LIST_VIEW_LOADED_RESTAURANTS,
+  DASHBOARD_LOADED_PAGINATION,
+  OVERLAY_LOADED_MODEL_PAGE,
+  OVERLAY_LOADED_MODEL_RESET,
+  USERPROFILE_LOADED,
+  PARSE_USERS,
+  PARSE_TOPICS,
+  PARSE_RESTAURANTS,
+  PARSE_EVENTS,
+  PARSE_RECIPES,
+  PARSE_COMMENTS,
 } = require('../lib/constants').default
 
-async function _updateRestaurant(model: object): Promise<Array<Action>> {
-  const results = {}
 
-  debugger
-
-
-  const action = {
-    type: QUERY_REVIEWS,
-    payload: {}
-  }
-
-  return Promise.all([
-    Promise.resolve(action)
-  ])
-}
-
-function updateRestaurant(model: object): ThunkAction {
+function _updateRestaurant(model: object): ThunkAction {
   return (dispatch) => {
-    const action = _updateRestaurant(model)
+    return getQueryByType(PARSE_RESTAURANTS).get(model.objectId, {
+      success: (object) => {
+        debugger
 
-    action.then(
-      ([result]) => {
-        dispatch(result)
+        const model = parseFun(object);
+        const payload = {objectId, model}
+        dispatch({type, payload})
+      },
+      error: (error) => {
+        debugger
       }
-    )
-    return action
+    })
   }
 }
+
 
 export default {
-  updateRestaurant,
+  updateRestaurant: (model: object): ThunkAction => {
+    debugger
+    return _updateRestaurant(model)
+  },
 }
