@@ -30,7 +30,7 @@ const parseRestaurantsActions = require('./parseRestaurants').default
 const parseUsersActions = require('./parseUsers').default
 const voingtActions = require('./voting').default
 const globalActions = require('./global').default
-const realmSaveActions = require('./realmSaver').default
+const realmSaveActions = require('./parseSaver').default
 
 export default {
   ...loginActions,

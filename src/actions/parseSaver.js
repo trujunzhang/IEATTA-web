@@ -33,33 +33,35 @@ import type {Action, ThunkAction} from './types'
  * The states were interested in
  */
 const {
-    QUERY_REVIEWS,
+  QUERY_REVIEWS,
 } = require('../lib/constants').default
 
-async function _saveRealmRestaurant(model: object): Promise<Array<Action>> {
-    const results = {}
-    const action = {
-        type: QUERY_REVIEWS,
-        payload: {forObjectId: model.forObjectId, reviewType: model.reviewType, results}
-    }
-    return Promise.all([
-        Promise.resolve(action)
-    ])
+async function _updateRestaurant(model: object): Promise<Array<Action>> {
+  const results = {}
+
+  const action = {
+    type: QUERY_REVIEWS,
+    payload: {}
+  }
+
+  return Promise.all([
+    Promise.resolve(action)
+  ])
 }
 
-function saveRealmRestaurant(model: object): ThunkAction {
-    return (dispatch) => {
-        const action = _saveRealmRestaurant(model)
+function updateRestaurant(model: object): ThunkAction {
+  return (dispatch) => {
+    const action = _updateRestaurant(model)
 
-        action.then(
-            ([result]) => {
-                dispatch(result)
-            }
-        )
-        return action
-    }
+    action.then(
+      ([result]) => {
+        dispatch(result)
+      }
+    )
+    return action
+  }
 }
 
 export default {
-    saveRealmRestaurant,
+  updateRestaurant,
 }

@@ -11,7 +11,7 @@ import {withRouter} from 'react-router'
 
 // I18n.translations = Translations
 
-const {logInWithPassword, timeout} = require('../../../actions')
+const {updateRestaurant, timeout} = require('../../../actions')
 
 
 /**
@@ -90,22 +90,22 @@ class IEAEditRestaurant extends Component {
 
     debugger
 
-    // try {
-    //   // await Promise.race([
-    //   //   dispatch(updateRestaurant(displayName)),
-    //   //   timeout(15000),
-    //   // ]);
-    // } catch (e) {
-    //   this.props.actions.updateModelFailure(e);
-    //   const message = e.message || e;
-    //   if (message !== 'Timed out' && message !== 'Canceled by user') {
-    //     // alert(message);
-    //     // console.warn(e);
-    //   }
-    // } finally {
-    //   this.props.actions.updateModelSuccess();
-    //   // this._isMounted && this.setState({isLoading: false});
-    // }
+    try {
+      await Promise.race([
+        dispatch(updateRestaurant(displayName)),
+        timeout(15000),
+      ]);
+    } catch (e) {
+      this.props.actions.updateModelFailure(e);
+      const message = e.message || e;
+      if (message !== 'Timed out' && message !== 'Canceled by user') {
+        // alert(message);
+        // console.warn(e);
+      }
+    } finally {
+      this.props.actions.updateModelSuccess();
+      // this._isMounted && this.setState({isLoading: false});
+    }
   }
 
 
