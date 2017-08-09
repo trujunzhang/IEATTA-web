@@ -50,12 +50,13 @@ class F8SingleHeaderRightPhotos extends Component {
   }
 
   renderSeeAllButton() {
-    const {photos, photoType} = this.props;
+    const {photos, photoType, forObject} = this.props;
     const photoLength = photos.length;
 
-
     return (
-      <a className="see-more show-all-overlay">
+      <Link
+        className="see-more show-all-overlay"
+        to={getPhotosBrowserLink(firstPhoto, photoType, forObject)}>
                     <span id="icon_24X24"
                           style={{display: 'block'}}
                           className="icon icon--24-grid icon--size-24 icon--inverse icon--fallback-inverted show-all-overlay_icon">
@@ -64,7 +65,7 @@ class F8SingleHeaderRightPhotos extends Component {
                     </svg>
                   </span>
         {"See all " + photoLength}
-      </a>
+      </Link>
 
     )
   }
