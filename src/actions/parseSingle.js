@@ -28,8 +28,8 @@ const Parse = require('parse')
 
 import type {ThunkAction} from './types'
 
-let {ParseUser} = require('../parse/objects').default
-let {getUsersParameters, getQueryByType} = require('../parse/parseUtiles').default
+const {ParseUser} = require('../parse/objects').default
+const {getUsersParameters, getQueryByType} = require('../parse/parseUtiles').default
 
 const {fromParseUser, fromParseRestaurant, fromParseEvent} = require('../reducers/parseModels')
 
@@ -76,7 +76,7 @@ export default {
   },
 
   loadRestaurantPage: (objectId: string): ThunkAction => {
-    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_RESTAURANTS), objectId, fromParseRestaurant)
+    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_RESTAURANTS, ['photos']), objectId, fromParseRestaurant)
   },
 
   loadEventPage: (objectId: string): ThunkAction => {
@@ -88,7 +88,7 @@ export default {
   },
 
   loadOrderedRecipePage: (objectId: string): ThunkAction => {
-    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_RECIPES, ['restaurant', 'event', 'user']), objectId, fromParseRecipe)
+    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_RECIPES, ['restaurant', 'event', 'user', 'photos']), objectId, fromParseRecipe)
   },
 
   resetLoadPage: Action => {
