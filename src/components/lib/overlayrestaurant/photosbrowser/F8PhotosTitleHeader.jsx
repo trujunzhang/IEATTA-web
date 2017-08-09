@@ -84,7 +84,6 @@ class F8PhotosTitleHeader extends Component {
   render() {
     return (
       <div className="js-media-landing_header media-landing_header" data-component-bound="true">
-
         <h1 className="js-media-landing_header_title">Photos for Roma Antica</h1>
         {this.renderBottom()}
       </div>
