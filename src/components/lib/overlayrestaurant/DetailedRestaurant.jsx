@@ -8,8 +8,10 @@ const {
 
 const {
   PAGE_MAIN_FORM,
-  PAGE_EDIT_FORM,
+  PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY,
   PAGE_PHOTOS_BROWSER_FORM,
+  PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY,
+  PAGE_EDIT_FORM,
   PAGE_OVERLAY_SELECTED_PHOTO_FORM,
   PAGE_ONLY_SELECTED_PHOTO_FORM,
 } = require('../../../lib/constants').default
@@ -96,23 +98,25 @@ class DetailedRestaurant extends Component {
     const {isPhotoBrowser, isPhotoBrowserSelectionId, photos, ready, restaurant, pageForm} = this.state;
 
     if (!!restaurant && !!photos) {
-
       switch (pageForm) {
         case PAGE_MAIN_FORM:
-          return (
-            <div>
+          return (<div>
               <Telescope.components.IEARestaurantsLayout  {...this.state}/>
             </div>
           )
+        case PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY:
+          return (<div>
+              <Telescope.components.IEARestaurantsLayout  {...this.state}/>
+              <Telescope.components.IEAPhotosSelectionLayout {...this.state}/>
+            </div>
+          )
         case PAGE_PHOTOS_BROWSER_FORM:
-          return (
-            <div>
+          return (<div>
               <Telescope.components.IEAPhotosBrowserLayout {...this.state}/>
             </div>
           )
-        case  PAGE_EDIT_FORM:
-          return (
-            <Telescope.components.IEAEditRestaurant
+        case PAGE_EDIT_FORM:
+          return (<Telescope.components.IEAEditRestaurant
               {...this.state}
               dispatch={this.props.dispatch}/>
           )
