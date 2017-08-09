@@ -5,7 +5,11 @@ import ReactLoading from 'react-loading'
 
 const {loadRestaurantPage} = require('../../../actions').default
 const {getModelByObjectId} = require('../../filter/filterPosts')
-const {checkEdit, checkPhotosBrowser, checkPhotosBrowserSelection} = require('../../filter/filterRoutes')
+const {
+  checkEdit,
+  checkPhotosBrowser,
+  checkPhotosBrowserSelection
+} = require('../../filter/filterRoutes')
 
 class DetailedRestaurant extends Component {
 
@@ -18,7 +22,7 @@ class DetailedRestaurant extends Component {
       restaurant: null,
       isEdit: checkEdit(props),
       isPhotoBrowser: checkPhotosBrowser(props),
-      isPhotoBrowserSelection: checkPhotosBrowserSelection(props),
+      isPhotoBrowserSelectionId: checkPhotosBrowserSelection(props),
       ready: false
     }
   }
@@ -29,7 +33,7 @@ class DetailedRestaurant extends Component {
       ready: true,
       isEdit: checkEdit(nextProps),
       isPhotoBrowser: checkPhotosBrowser(nextProps),
-      isPhotoBrowserSelection: checkPhotosBrowserSelection(nextProps),
+      isPhotoBrowserSelectionId: checkPhotosBrowserSelection(nextProps),
     })
   }
 

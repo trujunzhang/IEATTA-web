@@ -53,8 +53,6 @@ class F8SingleHeaderRightPhotos extends Component {
     const {photos, photoType} = this.props;
     const photoLength = photos.length;
 
-    debugger
-
     return (
       <a className="see-more show-all-overlay">
                     <span id="icon_24X24"

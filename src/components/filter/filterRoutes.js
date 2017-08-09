@@ -36,6 +36,10 @@ export function checkPhotosBrowser(props: Object) {
 }
 
 export function checkPhotosBrowserSelection(props: Object) {
-  return props.location.pathname.indexOf('edit/') !== -1;
+  const query = props.location.query;
+  if (!!query && !!query.select) {
+    return query.select;
+  }
+  return null;
 }
 
