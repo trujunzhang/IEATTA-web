@@ -54,7 +54,7 @@ class DetailedRestaurant extends Component {
 
   componentDidMount() {
     this.props.dispatch(loadRestaurantPage(this.state.rid))
-    this.props.dispatch(loadPhotosBrowser(this.state.rid))
+    // this.props.dispatch(loadPhotosBrowser(this.state.rid))
   }
 
   render() {
@@ -67,7 +67,6 @@ class DetailedRestaurant extends Component {
       }
       return (<Telescope.components.IEARestaurantsLayout  {...this.state}/>)
     }
-
 
     return (<Telescope.components.F8LoadingView loadingClass="placeholder_1WOC3"/>)
 
