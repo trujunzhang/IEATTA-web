@@ -71,7 +71,7 @@ class DetailedRestaurant extends Component {
 
       if (isPhotoBrowser) {
         if (!!isPhotoBrowserSelectionId) {
-          return (<Telescope.components.IEARestaurantsLayout  {...this.state}/>)
+          return (<Telescope.components.IEAPhotosSelectionLayout {...this.state}/>)
         } else {
           return (<Telescope.components.IEAPhotosBrowserLayout {...this.state}/>)
         }
