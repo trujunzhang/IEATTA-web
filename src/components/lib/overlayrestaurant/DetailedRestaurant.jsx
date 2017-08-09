@@ -49,6 +49,7 @@ class DetailedRestaurant extends Component {
       isPhotoBrowserSelectionId: checkPhotosBrowserSelection(props),
       photosTerms: photoTerms,
       ready: false,
+      photoType: 'restaurant'
     }
   }
 
