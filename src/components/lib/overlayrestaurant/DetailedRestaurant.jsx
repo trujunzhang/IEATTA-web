@@ -8,7 +8,8 @@ const {
   loadPhotosBrowser
 } = require('../../../actions').default
 
-const {getModelByObjectId} = require('../../filter/filterPosts')
+const {getModelByObjectId, getDefaultListTask, byListId} = require('../../filter/filterPosts')
+
 const {
   checkEdit,
   checkPhotosBrowser,
@@ -20,25 +21,39 @@ class DetailedRestaurant extends Component {
   constructor(props, context) {
     super(props)
 
+
+    const photoTerms = {
+      listId: 'photos-list-view-for-restaurants-' + props.params.rid,
+      forObjectId: props.params.rid,
+      photoType: 'restaurant',
+      allItems: true
+    }
+
     this.state = this.initialState = {
       rid: props.params.rid,
       rslug: props.params.rslug,
       restaurant: null,
+      photosListTask: getDefaultListTask(photoTerms),
       photos: null,
       isEdit: checkEdit(props),
       isPhotoBrowser: checkPhotosBrowser(props),
       isPhotoBrowserSelectionId: checkPhotosBrowserSelection(props),
-      ready: false
+      photosTerms: photoTerms,
+      ready: false,
     }
   }
 
   componentWillReceiveProps(nextProps) {
     const isPhotoBrowser = checkPhotosBrowser(nextProps);
     const isPhotoBrowserSelectionId = checkPhotosBrowserSelection(nextProps);
+    const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms, this.state.photosListTask);
+
+    debugger
 
     this.setState({
       restaurant: getModelByObjectId(nextProps, this.state.rid, this.state.restaurant),
       photos: null,
+      photosListTask: photosListTask,
       ready: true,
       isEdit: checkEdit(nextProps),
       isPhotoBrowser: isPhotoBrowser,
@@ -48,7 +63,7 @@ class DetailedRestaurant extends Component {
 
   componentDidMount() {
     // this.props.dispatch(loadRestaurantPage(this.state.rid))
-    this.props.dispatch(loadPhotosBrowser(this.state.rid))
+    this.props.dispatch(loadPhotosBrowser(this.state.photosTerms))
   }
 
   render() {

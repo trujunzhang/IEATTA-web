@@ -54,11 +54,20 @@ const {
 } = require('../lib/constants').default
 
 async function _loadListByType(listTask: Any, objectsQuery: Parse.Query, terms: Any, parseFun: Any, type: Any): Promise<Array<Action>> {
-  const {pageIndex, limit} = listTask
+  const {
+    pageIndex,
+    limit,
+    allItems = false
+  } = listTask
   const skipCount = (pageIndex - 1) * limit
 
   const totalCount = await objectsQuery.count()
-  const results = await objectsQuery.skip(skipCount).limit(limit).find()
+  let results = [];
+  if (allItems) {
+    results = await objectsQuery.find()
+  } else {
+    results = await objectsQuery.skip(skipCount).limit(limit).find()
+  }
 
   const payload = {
     list: (results || []).map(parseFun),
@@ -107,8 +116,8 @@ function loadRecipesList(listTask: Any, terms: Any): ThunkAction {
   return loadListByType(listTask, getRecipesParameters(terms), terms, fromParseRecipe)
 }
 
-function loadPhotosBrowser(listTask: Any, terms: Any): ThunkAction {
-  return loadListByType(listTask, getPhotosParameters(terms), terms, fromParsePhoto, LOADED_PHOTOS_BROWSER)
+function loadPhotosBrowser(terms: Any): ThunkAction {
+  return loadListByType(terms, getPhotosParameters(terms), terms, fromParsePhoto)
 }
 
 export default {

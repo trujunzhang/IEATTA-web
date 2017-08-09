@@ -21,15 +21,17 @@ export default class photosParameters {
 
   addParameters(terms: Any) {
 
-    if (terms.photoType) {
+    if (!!terms.photoType) {
       this.query.equalTo('photoType', terms.photoType)
-      switch (terms.photoType) {
-        case 'restaurant':
-          this.query.equalTo('restaurant', ParseRestaurant.createWithoutData(terms.forObject.id))
-          break;
-        case 'recipe':
-          this.query.equalTo('recipe', ParseRecipe.createWithoutData(terms.forObject.id))
-          break;
+      if (!!terms.forObjectId) {
+        switch (terms.photoType) {
+          case 'restaurant':
+            this.query.equalTo('restaurant', ParseRestaurant.createWithoutData(terms.forObjectId))
+            break;
+          case 'recipe':
+            this.query.equalTo('recipe', ParseRecipe.createWithoutData(terms.forObjectId))
+            break;
+        }
       }
     }
 

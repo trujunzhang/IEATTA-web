@@ -62,9 +62,7 @@ function paginationReducer(state: State = initialState, action): State {
 
       return nextState
     }
-    case LOADED_PHOTOS_BROWSER: {
-      return Map({})
-    }
+
 
     case LIST_VIEW_RESET_ALL_POSTS: {
       return Map({})

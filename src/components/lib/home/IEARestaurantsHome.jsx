@@ -25,6 +25,7 @@ class IEARestaurantsHome extends Component {
       limit: 10,
       listId: 'single-list-view-for-restaurants'
     }
+
     this.state = {
       terms: terms,
       listTask: getDefaultListTask(terms),
