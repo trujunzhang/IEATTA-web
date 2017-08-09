@@ -31,7 +31,7 @@ const {
   PAGE_EDIT_FORM,
   PAGE_OVERLAY_SELECTED_PHOTO_FORM,
   PAGE_ONLY_SELECTED_PHOTO_FORM,
-} = require('../../../actions').default
+} = require('../../lib/constants').default
 
 
 export function checkEdit(props: Object) {

@@ -8,12 +8,13 @@ const {
   PAGE_EDIT_FORM,
   PAGE_OVERLAY_SELECTED_PHOTO_FORM,
   PAGE_ONLY_SELECTED_PHOTO_FORM,
-} = require('../../../actions').default
+} = require('../../../lib/constants').default
 
 
 const {getModelByObjectId, getDefaultListTask, byListId} = require('../../filter/filterPosts')
 
 const {
+  getPageFormType,
   checkEdit,
   checkPhotosBrowser,
   checkPhotosBrowserSelection
@@ -37,11 +38,10 @@ class DetailedRestaurant extends Component {
       restaurant: null,
       photosListTask: getDefaultListTask(photoTerms),
       photos: null,
-      isEdit: checkEdit(props),
+      pageForm: getPageFormType(props),
       isPhotoBrowser: checkPhotosBrowser(props),
       isPhotoBrowserSelectionId: checkPhotosBrowserSelection(props),
       photosTerms: photoTerms,
-      pageForm: PAGE_MAIN_FORM,
       ready: false,
     }
   }
@@ -56,7 +56,7 @@ class DetailedRestaurant extends Component {
       photosListTask: photosListTask,
       photos: photosListTask.results,
       ready: true,
-      isEdit: checkEdit(nextProps),
+      pageForm: getPageFormType(props),
       isPhotoBrowser: isPhotoBrowser,
       isPhotoBrowserSelectionId: isPhotoBrowserSelectionId
     })
@@ -89,16 +89,18 @@ class DetailedRestaurant extends Component {
   }
 
   render() {
-    const {isPhotoBrowser, isPhotoBrowserSelectionId, photos, ready, restaurant, isEdit} = this.state;
+    const {isPhotoBrowser, isPhotoBrowserSelectionId, photos, ready, restaurant, pageForm} = this.state;
 
     if (!!restaurant && !!photos) {
-      if (isEdit) {
-        return (<Telescope.components.IEAEditRestaurant
-          {...this.state}
-          dispatch={this.props.dispatch}/>)
-      }
 
-      return this.renderNormal()
+      switch (pageForm) {
+        case PAGE_MAIN_FORM:
+          return this.renderNormal();
+        case  PAGE_EDIT_FORM:
+          return (<Telescope.components.IEAEditRestaurant
+            {...this.state}
+            dispatch={this.props.dispatch}/>)
+      }
     }
 
     return (<Telescope.components.F8LoadingView loadingClass="placeholder_1WOC3"/>)
