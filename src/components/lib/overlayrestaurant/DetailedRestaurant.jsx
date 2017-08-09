@@ -44,7 +44,7 @@ class DetailedRestaurant extends Component {
       restaurant: null,
       photosListTask: getDefaultListTask(photoTerms),
       photos: null,
-      pageForm: getPageFormType(props, ''),
+      pageForm: getPageFormType(props, null),
       isPhotoBrowser: checkPhotosBrowser(props),
       isPhotoBrowserSelectionId: checkPhotosBrowserSelection(props),
       photosTerms: photoTerms,

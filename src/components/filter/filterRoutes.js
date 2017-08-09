@@ -59,15 +59,18 @@ export function getPageFormType(props: Object, lastFormType: Any) {
   const isPhotoBrowserSelectionId = checkPhotosBrowserSelection(props);
   if (!!isPhotoBrowserSelectionId) {
     if (lastFormType === PAGE_MAIN_FORM) {
-      debugger
       return PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY;
     }
+    if (!!lastFormType) {
+      return lastFormType;
+    }
   }
+
+  debugger
 
   const isPhotoBrowser = checkPhotosBrowser(props);
 
   if (isPhotoBrowser) return PAGE_PHOTOS_BROWSER_FORM;
-
 
   return PAGE_MAIN_FORM;
 }
