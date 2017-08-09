@@ -116,6 +116,12 @@ class DetailedRestaurant extends Component {
               <Telescope.components.IEAPhotosSelectionLayout {...this.state}/>
             </div>
           )
+        case PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY:
+          return (<div>
+              <Telescope.components.IEAPhotosBrowserLayout {...this.state}/>
+              <Telescope.components.IEAPhotosSelectionLayout {...this.state}/>
+            </div>
+          )
         case PAGE_PHOTOS_BROWSER_FORM:
           return (<div>
               <Telescope.components.IEAPhotosBrowserLayout {...this.state}/>

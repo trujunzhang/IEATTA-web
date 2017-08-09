@@ -61,6 +61,9 @@ export function getPageFormType(props: Object, lastFormType: Any) {
     if (lastFormType === PAGE_MAIN_FORM) {
       return PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY;
     }
+    else if (lastFormType === PAGE_PHOTOS_BROWSER_FORM) {
+      return PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY;
+    }
     if (!!lastFormType) {
       return lastFormType;
     }
