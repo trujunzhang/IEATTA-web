@@ -3,11 +3,14 @@ import React, {Component} from 'react'
 import Posts from '../../../lib/posts'
 import Users from '../../../lib/users'
 
+import {withRouter} from 'react-router'
+
 class IEAPhotosSelectionLayout extends Component {
 
   renderCloseButton() {
     return (
-      <div className="lightbox-close">
+      <div className="lightbox-close"
+           onClick={this.props.goBack}>
         Close
         <span className="icon icon--24-close icon--size-24 icon--currentColor u-space-l-half"
               id="icon_24X24 ">
@@ -60,4 +63,13 @@ class IEAPhotosSelectionLayout extends Component {
   }
 }
 
-export default IEAPhotosSelectionLayout;
+
+import {connect} from 'react-redux'
+
+function select(store, ownProps) {
+  return {
+    goBack: ownProps.router.goBack
+  };
+}
+
+export default withRouter(connect(select)(IEAPhotosSelectionLayout));
