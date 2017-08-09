@@ -20,7 +20,7 @@
  */
 const {
   LIST_VIEW_LOADED_RESTAURANTS
-} = require('../../../lib/constants').default
+} = require('../../lib/constants').default
 
 /**
  * ## Class under test
@@ -29,7 +29,7 @@ const {
  * formValidation and fieldValidation objects, so we're testing them
  * as well
  */
-const paginationReducer = require('../paginationReducer').default
+const paginationReducer = require('../listContainerReducer').default
 /**
  * ## Tests
  *

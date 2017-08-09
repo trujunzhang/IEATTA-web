@@ -30,6 +30,7 @@ const {
   getRestaurantParameters,
   getReviewsParameters,
   getRecipesParameters,
+  getPhotosParameters,
   getEventParameters,
   getPeopleInEventParameters,
   getUsersParameters,
@@ -115,5 +116,6 @@ export default {
   loadEventsList,
   loadPeopleInEventList,
   loadReviewsList,
-  loadRecipesList
+  loadRecipesList,
+  loadPhotosBrowser,
 }

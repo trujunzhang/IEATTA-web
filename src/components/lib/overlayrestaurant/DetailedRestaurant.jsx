@@ -3,7 +3,11 @@ import React, {Component} from 'react'
 
 import ReactLoading from 'react-loading'
 
-const {loadRestaurantPage} = require('../../../actions').default
+const {
+  loadRestaurantPage,
+  loadPhotosBrowser
+} = require('../../../actions').default
+
 const {getModelByObjectId} = require('../../filter/filterPosts')
 const {
   checkEdit,
@@ -50,6 +54,7 @@ class DetailedRestaurant extends Component {
 
   componentDidMount() {
     this.props.dispatch(loadRestaurantPage(this.state.rid))
+    this.props.dispatch(loadPhotosBrowser(this.state.rid))
   }
 
   render() {

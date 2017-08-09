@@ -19,8 +19,7 @@ const rootReducer = combineReducers({
   editModel: require('./editModel/editModelReducer').default,
   userProfileTask: require('./userProfile').default,
   auth: require('./auth/authReducer').default,
-  dashboard: require('./dashboard/dashboardReducer').default,
-  listContainerTasks: require('./pagination/paginationReducer').default,
+  listContainerTasks: require('./listContainerReducer').default,
   i18n: i18nReducer
 })
 

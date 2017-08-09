@@ -98,6 +98,12 @@ function getRecipesParameters(terms) {
     .end()
 }
 
+function getPhotosParameters(terms) {
+  return new Parameters.Photos(getQueryByType(PARSE_PHOTOS))
+    .addParameters(terms)
+    .end()
+}
+
 async function updateParseRecord(recordType, parseInstance) {
   const record = await getQueryByType(PARSE_RECORDS).equalTo(recordType, parseInstance).first()
   if (!!record) {
@@ -110,6 +116,7 @@ export default {
   getRestaurantParameters,
   getEventParameters,
   getReviewsParameters,
+  getPhotosParameters,
   getUsersParameters,
   getPeopleInEventParameters,
   getRecipesParameters,

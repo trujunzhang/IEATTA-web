@@ -11,7 +11,7 @@
  * formValidation for setting the form's valid flag
  */
 
-import type {Action} from '../../actions/types'
+import type {Action} from '../actions/types'
 
 const {Map, List} = require('immutable')
 
@@ -23,7 +23,7 @@ const initialState = Map({})
 const {
   LIST_VIEW_LOADED_BY_TYPE,
   LIST_VIEW_RESET_ALL_POSTS,
-} = require('../../lib/constants').default
+} = require('../lib/constants').default
 
 /**
  * ## authReducer function
