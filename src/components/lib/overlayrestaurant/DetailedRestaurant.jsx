@@ -99,6 +99,11 @@ class DetailedRestaurant extends Component {
 
     if (!!restaurant && !!photos) {
       switch (pageForm) {
+        case PAGE_ONLY_SELECTED_PHOTO_FORM:
+          return (<div>
+              <Telescope.components.IEARestaurantsLayout  {...this.state}/>
+            </div>
+          )
         case PAGE_MAIN_FORM:
           return (<div>
               <Telescope.components.IEARestaurantsLayout  {...this.state}/>

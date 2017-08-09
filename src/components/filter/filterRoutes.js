@@ -64,6 +64,7 @@ export function getPageFormType(props: Object, lastFormType: Any) {
     if (!!lastFormType) {
       return lastFormType;
     }
+    return PAGE_ONLY_SELECTED_PHOTO_FORM;
   }
 
   const isPhotoBrowser = checkPhotosBrowser(props);
