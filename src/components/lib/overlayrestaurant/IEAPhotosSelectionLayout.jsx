@@ -23,9 +23,9 @@ class IEAPhotosSelectionLayout extends Component {
   renderContent() {
     return (
       <div className="media-lightbox">
-        <div className="media-details js-media-details js-media-details-template" data-component-bound="true">
+        <div className="media-details js-media-details js-media-details-template">
           <div className="media-details_container media-details_container--embed media-details_container--with-sidebar">
-            <div className="media-container js-media-container" data-component-bound="true">
+            <div className="media-container js-media-container">
               <div className="media-details-grid">
 
                 <Telescope.components.F8PhotosSelectLeftPanel {...this.props}/>
