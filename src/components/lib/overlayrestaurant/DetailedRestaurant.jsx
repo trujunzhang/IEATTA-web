@@ -1,7 +1,10 @@
 import Telescope from '../../lib'
 import React, {Component} from 'react'
 
-import ReactLoading from 'react-loading'
+const {
+  loadRestaurantPage,
+  loadPhotosBrowser
+} = require('../../../actions').default
 
 const {
   PAGE_MAIN_FORM,
@@ -56,7 +59,7 @@ class DetailedRestaurant extends Component {
       photosListTask: photosListTask,
       photos: photosListTask.results,
       ready: true,
-      pageForm: getPageFormType(props),
+      pageForm: getPageFormType(nextProps),
       isPhotoBrowser: isPhotoBrowser,
       isPhotoBrowserSelectionId: isPhotoBrowserSelectionId
     })
