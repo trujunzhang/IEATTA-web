@@ -24,7 +24,14 @@
 'use strict'
 
 
-let _ = require('underscore')
+const _ = require('underscore')
+
+const {
+  PAGE_MAIN_FORM,
+  PAGE_EDIT_FORM,
+  PAGE_OVERLAY_SELECTED_PHOTO_FORM,
+  PAGE_ONLY_SELECTED_PHOTO_FORM,
+} = require('../../../actions').default
 
 
 export function checkEdit(props: Object) {
@@ -43,3 +50,10 @@ export function checkPhotosBrowserSelection(props: Object) {
   return null;
 }
 
+export function getPageFormType(props: Object) {
+  const isEdit = checkEdit(props);
+
+  if (isEdit) return PAGE_EDIT_FORM;
+
+  return PAGE_MAIN_FORM;
+}

@@ -4,9 +4,12 @@ import React, {Component} from 'react'
 import ReactLoading from 'react-loading'
 
 const {
-  loadRestaurantPage,
-  loadPhotosBrowser
+  PAGE_MAIN_FORM,
+  PAGE_EDIT_FORM,
+  PAGE_OVERLAY_SELECTED_PHOTO_FORM,
+  PAGE_ONLY_SELECTED_PHOTO_FORM,
 } = require('../../../actions').default
+
 
 const {getModelByObjectId, getDefaultListTask, byListId} = require('../../filter/filterPosts')
 
@@ -20,7 +23,6 @@ class DetailedRestaurant extends Component {
 
   constructor(props, context) {
     super(props)
-
 
     const photoTerms = {
       listId: 'photos-list-view-for-restaurants-' + props.params.rid,
@@ -39,6 +41,7 @@ class DetailedRestaurant extends Component {
       isPhotoBrowser: checkPhotosBrowser(props),
       isPhotoBrowserSelectionId: checkPhotosBrowserSelection(props),
       photosTerms: photoTerms,
+      pageForm: PAGE_MAIN_FORM,
       ready: false,
     }
   }

@@ -2,6 +2,12 @@ import keyMirror from 'key-mirror'
 
 export default keyMirror({
 
+  // Page form types
+  PAGE_MAIN_FORM: null,
+  PAGE_EDIT_FORM: null,
+  PAGE_OVERLAY_SELECTED_PHOTO_FORM: null,
+  PAGE_ONLY_SELECTED_PHOTO_FORM: null,
+
   // Home More Menus
   MENU_ITEM_ADD_OR_EDIT_RESTAURANT: null,
   MENU_ITEM_ADD_OR_EDIT_EVENT: null,
