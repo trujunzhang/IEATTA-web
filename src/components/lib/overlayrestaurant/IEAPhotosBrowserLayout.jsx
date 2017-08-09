@@ -4,6 +4,27 @@ import Posts from '../../../lib/posts'
 import Users from '../../../lib/users'
 
 class IEAPhotosBrowserLayout extends Component {
+  renderFooter() {
+    return (
+      <div className="media-landing_footer">
+
+        <div className="media-pager">
+
+          <div className="pagination-block">
+            <div className="arrange arrange--stack arrange--baseline arrange--6">
+              <div className="page-of-pages arrange_unit arrange_unit--fill">
+                Page 1 of 1
+              </div>
+
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+    )
+  }
 
   render() {
     return (
@@ -15,7 +36,14 @@ class IEAPhotosBrowserLayout extends Component {
             <div className="js-media-landing_container">
 
               <Telescope.components.F8PhotosTitleHeader {...this.state}/>
-              <Telescope.components.F8PhotosCollectionView {...this.state}/>
+
+              <div className="media-landing js-media-landing">
+
+                <Telescope.components.F8PhotosCollectionView {...this.state}/>
+
+                {this.renderFooter()}
+
+              </div>
 
             </div>
           </div>
