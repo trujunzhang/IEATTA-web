@@ -16,7 +16,7 @@ class DetailedRestaurant extends Component {
       rid: props.params.rid,
       rslug: props.params.rslug,
       restaurant: null,
-      isEdit: props.location.pathname.indexOf('edit/') !== -1,
+      isEdit: checkEdit(props),
       ready: false
     }
 
@@ -26,7 +26,7 @@ class DetailedRestaurant extends Component {
     this.setState({
       restaurant: getModelByObjectId(nextProps, this.state.rid, this.state.restaurant),
       ready: true,
-      isEdit: nextProps.location.pathname.indexOf('edit/') !== -1,
+      isEdit: checkEdit(nextProps)
     })
   }
 
