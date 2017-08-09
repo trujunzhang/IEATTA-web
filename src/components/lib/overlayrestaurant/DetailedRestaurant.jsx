@@ -5,6 +5,7 @@ import ReactLoading from 'react-loading'
 
 const {loadRestaurantPage} = require('../../../actions').default
 const {getModelByObjectId} = require('../../filter/filterPosts')
+const {checkEdit, checkPhotoBrowser, checkPHotoBrowserSelection} = require('../../filter/filterRoutes')
 
 class DetailedRestaurant extends Component {
 

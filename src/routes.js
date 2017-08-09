@@ -34,13 +34,29 @@ const createRoutes = (store) => {
       component: Telescope.components.UserLoginMain
     },
   ];
-  const overlayRoutes = [
+  const restaurantRoutes = [
     {
       // http://localhost:3000/biz/xxxxx
       // https://www.yelp.com.sg/biz/my-two-cents-los-angeles-3
       path: 'biz/(:rid)/(:rslug)',
       component: Telescope.components.DetailedRestaurant
     },
+    {
+      // http://localhost:3000/biz/xxxxx
+      // https://www.yelp.com.sg/biz/my-two-cents-los-angeles-3
+      path: 'edit/biz/(:rid)/(:rslug)',
+      component: Telescope.components.DetailedRestaurant
+    },
+    {
+      // http://localhost:3000/biz_photos/xxx
+      // https://www.yelp.com/biz_photos/roma-antica-san-francisco-3
+      // https://www.yelp.com/biz_photos/roma-antica-san-francisco-3?select=x57_yoZarQuIn9y1r2jsQw
+      path: 'biz_photos/(:rid)/(:rslug)',
+      component: Telescope.components.DetailedRestaurant
+    },
+  ];
+
+  const overlayRoutes = [
     {
       // http://localhost:3000/events/px09dUf7tw/xxx
       // https://www.yelp.com/events/pleasanton-alameda-county-fair-6
@@ -56,15 +72,6 @@ const createRoutes = (store) => {
       // http://localhost:3000/orderedrecipe/SMHughBGNh/Jaron%20Lawrence/p25iag5OcM/OnNGSfwoou
       path: 'orderedrecipe/(:oid)/(:oslug)',
       component: Telescope.components.OrderedRecipes
-    }
-  ];
-
-  const editRoutes = [
-    {
-      // http://localhost:3000/biz/xxxxx
-      // https://www.yelp.com.sg/biz/my-two-cents-los-angeles-3
-      path: 'edit/biz/(:rid)/(:rslug)',
-      component: Telescope.components.DetailedRestaurant
     }
   ];
 
@@ -86,8 +93,8 @@ const createRoutes = (store) => {
 
       childRoutes: [
         ...loginRoutes,
+        ...restaurantRoutes,
         ...overlayRoutes,
-        ...editRoutes,
         ...playgroundRoutes,
         {
           // http://localhost:3000/user_details?userid=t3cu9DxXtGyaPIWNvPOXxA
