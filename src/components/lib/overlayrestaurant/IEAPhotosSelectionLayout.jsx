@@ -28,13 +28,16 @@ class IEAPhotosSelectionLayout extends Component {
             <div className="media-container js-media-container" data-component-bound="true">
               <div className="media-details-grid">
 
+                <Telescope.components.F8PhotosSelectLeftPanel {...this.props}/>
                 {/*{01-left-panel.html}*/}
 
+                <Telescope.components.F8PhotosSelectRightPanel {...this.props}/>
                 {/*{02-right-panel.html}*/}
 
               </div>
             </div>
 
+            <Telescope.components.F8PhotosSelectNavigatorBar {...this.props}/>
             {/*{03-left-right-navigator.html}*/}
 
           </div>
