@@ -28,13 +28,24 @@ class DetailedRestaurant extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    const isPhotoBrowser = checkPhotosBrowser(nextProps);
+    const isPhotoBrowserSelectionId = checkPhotosBrowserSelection(nextProps);
+
     this.setState({
       restaurant: getModelByObjectId(nextProps, this.state.rid, this.state.restaurant),
       ready: true,
       isEdit: checkEdit(nextProps),
-      isPhotoBrowser: checkPhotosBrowser(nextProps),
-      isPhotoBrowserSelectionId: checkPhotosBrowserSelection(nextProps),
+      isPhotoBrowser: isPhotoBrowser,
+      isPhotoBrowserSelectionId: isPhotoBrowserSelectionId
     })
+    // Check if the last is not the photos browser.
+    if (!this.state.isPhotoBrowser && isPhotoBrowser) {
+      if (!this.state.isPhotoBrowserSelectionId && !!isPhotoBrowserSelectionId) {
+
+      } else {
+
+      }
+    }
   }
 
   componentDidMount() {
