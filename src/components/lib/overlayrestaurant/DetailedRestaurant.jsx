@@ -64,24 +64,38 @@ class DetailedRestaurant extends Component {
     this.props.dispatch(loadPhotosBrowser(this.state.photosTerms))
   }
 
+  renderNormal() {
+
+    const {isPhotoBrowser, isPhotoBrowserSelectionId, photos, ready, restaurant, isEdit} = this.state;
+
+    const content = (isPhotoBrowser) ?
+      (<Telescope.components.IEAPhotosBrowserLayout {...this.state}/>) :
+      (<Telescope.components.IEARestaurantsLayout  {...this.state}/>)
+
+    const overLayout =
+      (!!isPhotoBrowserSelectionId) ?
+        (<Telescope.components.IEAPhotosSelectionLayout {...this.state}/>) :
+        null
+
+    return (
+      <div>
+        {content}
+        {overLayout}
+      </div>
+    )
+  }
+
   render() {
     const {isPhotoBrowser, isPhotoBrowserSelectionId, photos, ready, restaurant, isEdit} = this.state;
 
     if (!!restaurant && !!photos) {
-
-      if (isPhotoBrowser) {
-        if (!!isPhotoBrowserSelectionId) {
-          return (<Telescope.components.IEAPhotosSelectionLayout {...this.state}/>)
-        } else {
-          return (<Telescope.components.IEAPhotosBrowserLayout {...this.state}/>)
-        }
-      }
       if (isEdit) {
         return (<Telescope.components.IEAEditRestaurant
           {...this.state}
           dispatch={this.props.dispatch}/>)
       }
-      return (<Telescope.components.IEARestaurantsLayout  {...this.state}/>)
+
+      return this.renderNormal()
     }
 
     return (<Telescope.components.F8LoadingView loadingClass="placeholder_1WOC3"/>)
