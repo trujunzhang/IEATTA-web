@@ -48,7 +48,8 @@ const createRoutes = (store) => {
       component: Telescope.components.DetailedRestaurant
     },
     {
-      // http://localhost:3000/biz_photos/xxx
+      // http://localhost:3000/biz_photos/OnNGSfwoou/Forno%20Vecchio
+      // http://localhost:3000/biz_photos/OnNGSfwoou/Forno%20Vecchio?select=Px63VDvuud
       // https://www.yelp.com/biz_photos/roma-antica-san-francisco-3
       // https://www.yelp.com/biz_photos/roma-antica-san-francisco-3?select=x57_yoZarQuIn9y1r2jsQw
       path: 'biz_photos/(:rid)/(:rslug)',
