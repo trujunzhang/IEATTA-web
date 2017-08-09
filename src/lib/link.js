@@ -59,3 +59,22 @@ export function getOrderedRecipeLink(recipe) {
 export function getEditRestaurantLink(restaurant) {
   return `/edit/biz/${restaurant.id}/${restaurant.displayName}`
 }
+
+/**
+ * http://localhost:3000/biz_photos/OnNGSfwoou/Forno%20Vecchio?select=Px63VDvuud
+ *
+ * @param photo
+ * @param photoType
+ * @returns {string}
+ */
+export function getPhotosBrowserSelectionLink(photo, photoType) {
+  const subDomain = {
+    'restaurant': 'biz_photo'
+  }
+  return `/${subDomain[photoType]}/${restaurant.id}/${restaurant.displayName}`
+}
+
+
+export function getPhotosBrowserLink(photo, photoType) {
+  return `/edit/biz/${restaurant.id}/${restaurant.displayName}`
+}

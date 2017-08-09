@@ -1,8 +1,8 @@
 import Telescope from '../index'
 import React, {Component} from 'react'
-import {FormattedMessage, FormattedRelative} from 'react-intl'
-import Posts from '../../../lib/posts'
-import Users from '../../../lib/users'
+
+import {getPhotosBrowserLink, getPhotosBrowserSelectionLink} from '../../../lib/link'
+import {Link} from 'react-router'
 
 class F8SingleHeaderRightPhotos extends Component {
 
@@ -53,6 +53,7 @@ class F8SingleHeaderRightPhotos extends Component {
     const {photos, photoType} = this.props;
     const photoLength = photos.length;
 
+
     return (
       <a className="see-more show-all-overlay">
                     <span id="icon_24X24"
@@ -70,18 +71,22 @@ class F8SingleHeaderRightPhotos extends Component {
 
   renderFirstThumbnail() {
     const {photos, photoType} = this.props;
-    const thumbnail01 = photos[0].thumbnail._url;
+    const firstPhoto = photos[0];
+    const thumbnail01 = firstPhoto.thumbnail._url;
+
+    debugger
+
     return (
       <div className="js-photo photo photo-1">
         <div className="showcase-photo-box">
-          <a href="/biz_photos/my-two-cents-los-angeles-3?select=idHB5V5yEhk5Jmfc8d2luw">
+          <Link to={getPhotosBrowserSelectionLink(firstPhoto, photoType)}>
             <img
               alt="Photo of My Two Cents - Los Angeles, CA, United States. Chic, upscale - modern contemporary vibe. This &quot;ain't yo Mama's&quot; soul food kitchen.  This is 2017's take on Mississippi!"
               className="photo-box-img"
               height="250"
               src={thumbnail01}
               width="250"/>
-          </a>
+          </Link>
 
         </div>
 
