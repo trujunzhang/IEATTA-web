@@ -63,7 +63,7 @@ function getQueryByType(type: string, includes: Array = []) {
 }
 
 function getRestaurantParameters(terms) {
-  return new Parameters.Posts(getQueryByType(PARSE_RESTAURANTS))
+  return new Parameters.Posts(getQueryByType(PARSE_RESTAURANTS,['photos']))
     .addParameters(terms)
     .end()
 }
