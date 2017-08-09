@@ -7,17 +7,18 @@ class IEAPhotosBrowserLayout extends Component {
 
   render() {
     return (
-      <div className="biz-country-us">
+      <div className="main-content-wrap main-content-wrap--full">
 
-        <div className="main-content-wrap main-content-wrap--full">
-          <div className="top-shelf">
-            <Telescope.components.RestaurantsSingleHeader {...this.props}/>
+        <div id="super-container" className="content-container">
+
+          <div className="container">
+            <div className="js-media-landing_container">
+
+              <Telescope.components.F8PhotosTitleHeader {...this.state}/>
+              <Telescope.components.F8PhotosCollectionView {...this.state}/>
+
+            </div>
           </div>
-
-          <div id="super-container" className="content-container">
-            <Telescope.components.RestaurantsDetail {...this.props}/>
-          </div>
-
         </div>
       </div>
     )
