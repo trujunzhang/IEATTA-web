@@ -138,4 +138,12 @@ Telescope.registerComponent('UsersMenu',               require('./users/UsersMen
 // playground
 Telescope.registerComponent('TcombCommonExample',               require('./playground/tcomb/TcombCommonExample.jsx').default)
 
+// Photos browser
+Telescope.registerComponent('IEAPhotosSelectionLayout',               require('./overlayrestaurant/IEAPhotosSelectionLayout.jsx').default)
+Telescope.registerComponent('IEAPhotosBrowserLayout',                 require('./overlayrestaurant/IEAPhotosBrowserLayout.jsx').default)
+
+Telescope.registerComponent('F8PhotosCollectionView',                 require('./overlayrestaurant/photos/F8PhotosCollectionView.jsx').default)
+Telescope.registerComponent('F8PhotosTitleHeader',                    require('./overlayrestaurant/photos/F8PhotosTitleHeader.jsx').default)
+
+
 export default Telescope
