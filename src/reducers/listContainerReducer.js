@@ -23,6 +23,7 @@ const initialState = Map({})
 const {
   LIST_VIEW_LOADED_BY_TYPE,
   LIST_VIEW_RESET_ALL_POSTS,
+  LOADED_PHOTOS_BROWSER,
 } = require('../lib/constants').default
 
 /**
@@ -58,6 +59,9 @@ function paginationReducer(state: State = initialState, action): State {
 
       let nextState = state.set(listId, nextTask)
       return nextState
+    }
+    case LOADED_PHOTOS_BROWSER: {
+      return Map({})
     }
 
     case LIST_VIEW_RESET_ALL_POSTS: {
