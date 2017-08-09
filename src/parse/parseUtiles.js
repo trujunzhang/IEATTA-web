@@ -9,7 +9,8 @@ let {
   ParsePeopleInEvent,
   ParseReview,
   ParseRecipe,
-  ParseRecord
+  ParseRecord,
+  ParsePhoto,
 } = require('./objects').default
 
 /**
@@ -22,14 +23,15 @@ const {
   PARSE_USERS,
   PARSE_REVIEWS,
   PARSE_RECIPES,
-  PARSE_RECORDS
+  PARSE_RECORDS,
+  PARSE_PHOTOS,
 } = require('../lib/constants').default
 
 function getQueryByType(type: string, includes: Array = []) {
   let query = null;
   switch (type) {
     case PARSE_RESTAURANTS:
-      query = new Parse.Query(ParseRestaurant).include('photos')
+      query = new Parse.Query(ParseRestaurant)
       break;
     case PARSE_EVENTS:
       query = new Parse.Query(ParseEvent)
@@ -48,6 +50,9 @@ function getQueryByType(type: string, includes: Array = []) {
       break;
     case PARSE_RECORDS:
       query = new Parse.Query(ParseRecord)
+      break;
+    case PARSE_PHOTOS:
+      query = new Parse.Query(ParsePhoto)
       break;
   }
 

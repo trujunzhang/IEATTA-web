@@ -19,10 +19,10 @@ export default keyMirror({
   // Edit Model
   EDIT_MODEL_TOGGLE_TYPE: null,
   ON_EDIT_MODEL_FORM_FIELD_CHANGE: null,
-  UPDATE_MODEL_REQUEST:null,
-  SAVED_MODEL_REQUEST:null,
-  UPDATE_MODEL_SUCCESS:null,
-  UPDATE_MODEL_FAILURE:null,
+  UPDATE_MODEL_REQUEST: null,
+  SAVED_MODEL_REQUEST: null,
+  UPDATE_MODEL_SUCCESS: null,
+  UPDATE_MODEL_FAILURE: null,
 
   // Parse Object
   PARSE_CONFIGURE: null,
@@ -105,6 +105,7 @@ export default keyMirror({
   LIST_VIEW_LOADED_RECIPES: null,
   LIST_VIEW_LOADED_USERS: null,
   LIST_VIEW_RESET_ALL_POSTS: null,
+  LOADED_PHOTOS_BROWSER: null,
 
   // Detailed Page(Posts,Events)
   OVERLAY_LOADED_MODEL_PAGE: null,

@@ -16,6 +16,7 @@ export default class ReviewsParameters {
     if (terms.reviewType) {
       this.query.equalTo('reviewType', terms.reviewType)
       if (terms.forObject) {
+
         switch (terms.reviewType) {
           case 'restaurant':
             this.query.equalTo('restaurant', ParseRestaurant.createWithoutData(terms.forObject.id))
@@ -27,6 +28,7 @@ export default class ReviewsParameters {
             this.query.equalTo('recipe', ParseRecipe.createWithoutData(terms.forObject.id))
             break;
         }
+
       }
     }
 

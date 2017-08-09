@@ -49,9 +49,10 @@ const {
  */
 const {
   LIST_VIEW_LOADED_BY_TYPE,
+  LOADED_PHOTOS_BROWSER,
 } = require('../lib/constants').default
 
-async function _loadListByType(listTask: Any, objectsQuery: Parse.Query, terms: Any, parseFun: Any, type: Any = LIST_VIEW_LOADED_BY_TYPE): Promise<Array<Action>> {
+async function _loadListByType(listTask: Any, objectsQuery: Parse.Query, terms: Any, parseFun: Any, type: Any): Promise<Array<Action>> {
   const {pageIndex, limit} = listTask
   const skipCount = (pageIndex - 1) * limit
 
@@ -73,9 +74,9 @@ async function _loadListByType(listTask: Any, objectsQuery: Parse.Query, terms: 
   ])
 }
 
-function loadListByType(listTask: Any, objectsQuery: Parse.Query, terms: Any, parseFun: Any): ThunkAction {
+function loadListByType(listTask: Any, objectsQuery: Parse.Query, terms: Any, parseFun: Any, type: Any = LIST_VIEW_LOADED_BY_TYPE): ThunkAction {
   return (dispatch) => {
-    const action = _loadListByType(listTask, objectsQuery, terms, parseFun)
+    const action = _loadListByType(listTask, objectsQuery, terms, parseFun, type)
     action.then(
       ([result]) => {
         dispatch(result)
@@ -103,6 +104,10 @@ function loadReviewsList(listTask: Any, terms: Any): ThunkAction {
 
 function loadRecipesList(listTask: Any, terms: Any): ThunkAction {
   return loadListByType(listTask, getRecipesParameters(terms), terms, fromParseRecipe)
+}
+
+function loadPhotosBrowser(listTask: Any, terms: Any): ThunkAction {
+  return loadListByType(listTask, getRecipesParameters(terms), terms, fromParseRecipe, LOADED_PHOTOS_BROWSER)
 }
 
 export default {

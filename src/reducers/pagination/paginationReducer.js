@@ -60,7 +60,6 @@ function paginationReducer(state: State = initialState, action): State {
       return nextState
     }
 
-
     case LIST_VIEW_RESET_ALL_POSTS: {
       return Map({})
     }
