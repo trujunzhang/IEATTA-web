@@ -13,7 +13,7 @@ const {
   PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY,
   PAGE_EDIT_FORM,
   PAGE_OVERLAY_SELECTED_PHOTO_FORM,
-  PAGE_ONLY_SELECTED_PHOTO_FORM,
+  PAGE_SINGLE_SELECTED_PHOTO_FORM,
 } = require('../../../lib/constants').default
 
 
@@ -99,9 +99,9 @@ class DetailedRestaurant extends Component {
 
     if (!!restaurant && !!photos) {
       switch (pageForm) {
-        case PAGE_ONLY_SELECTED_PHOTO_FORM:
+        case PAGE_SINGLE_SELECTED_PHOTO_FORM:
           return (<div>
-              <Telescope.components.IEARestaurantsLayout  {...this.state}/>
+              <Telescope.components.IEAPhotosSingleLayout {...this.state}/>
             </div>
           )
         case PAGE_MAIN_FORM:

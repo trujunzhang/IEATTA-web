@@ -33,10 +33,15 @@ class IEAPhotosSingleLayout extends Component {
 
   render() {
     return (
+      <div className="main-content-wrap main-content-wrap--full">
 
-      <div id="lightbox" className="lightbox is-enabled lightbox--media-details" data-component-bound="true">
-        <div id="lightbox-inner" className="lightbox-inner">
-          {this.renderContent()}
+        <div id="super-container" className="content-container">
+
+          <div className="container media-details js-media-details">
+
+            <Telescope.components.F8PhotosSingleTop {...this.props}/>
+
+          </div>
         </div>
       </div>
     )

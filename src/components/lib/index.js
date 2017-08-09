@@ -138,9 +138,10 @@ Telescope.registerComponent('UsersMenu',               require('./users/UsersMen
 // playground
 Telescope.registerComponent('TcombCommonExample',               require('./playground/tcomb/TcombCommonExample.jsx').default)
 
-// Photos browser
+// Photos layout
 Telescope.registerComponent('IEAPhotosSelectionLayout',               require('./overlayrestaurant/IEAPhotosSelectionLayout.jsx').default)
 Telescope.registerComponent('IEAPhotosBrowserLayout',                 require('./overlayrestaurant/IEAPhotosBrowserLayout.jsx').default)
+Telescope.registerComponent('IEAPhotosSingleLayout',                  require('./overlayrestaurant/IEAPhotosSingleLayout.jsx').default)
 
 // Photos Browser
 Telescope.registerComponent('F8PhotosCollectionView',                 require('./overlayrestaurant/photosbrowser/F8PhotosCollectionView.jsx').default)
@@ -152,5 +153,7 @@ Telescope.registerComponent('F8PhotosSelectLeftPanelFooterView',          requir
 Telescope.registerComponent('F8PhotosSelectRightPanel',                   require('./overlayrestaurant/photosselect/F8PhotosSelectRightPanel.jsx').default)
 Telescope.registerComponent('F8PhotosSelectNavigatorBar',                 require('./overlayrestaurant/photosselect/F8PhotosSelectNavigatorBar.jsx').default)
 
+// Photos Single
+Telescope.registerComponent('F8PhotosSingleTop',                      require('./overlayrestaurant/photossingle/F8PhotosSingleTop.jsx').default)
 
 export default Telescope

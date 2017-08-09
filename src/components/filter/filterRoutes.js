@@ -33,7 +33,7 @@ const {
   PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY,
   PAGE_EDIT_FORM,
   PAGE_OVERLAY_SELECTED_PHOTO_FORM,
-  PAGE_ONLY_SELECTED_PHOTO_FORM,
+  PAGE_SINGLE_SELECTED_PHOTO_FORM,
 } = require('../../lib/constants').default
 
 
@@ -64,7 +64,7 @@ export function getPageFormType(props: Object, lastFormType: Any) {
     if (!!lastFormType) {
       return lastFormType;
     }
-    return PAGE_ONLY_SELECTED_PHOTO_FORM;
+    return PAGE_SINGLE_SELECTED_PHOTO_FORM;
   }
 
   const isPhotoBrowser = checkPhotosBrowser(props);
