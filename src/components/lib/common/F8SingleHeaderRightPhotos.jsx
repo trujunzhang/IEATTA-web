@@ -70,16 +70,13 @@ class F8SingleHeaderRightPhotos extends Component {
   }
 
   renderFirstThumbnail() {
-    const {photos, photoType} = this.props;
+    const {photos, photoType, forObject} = this.props;
     const firstPhoto = photos[0];
     const thumbnail01 = firstPhoto.thumbnail._url;
-
-    debugger
-
     return (
       <div className="js-photo photo photo-1">
         <div className="showcase-photo-box">
-          <Link to={getPhotosBrowserSelectionLink(firstPhoto, photoType)}>
+          <Link to={getPhotosBrowserSelectionLink(firstPhoto, photoType, forObject)}>
             <img
               alt="Photo of My Two Cents - Los Angeles, CA, United States. Chic, upscale - modern contemporary vibe. This &quot;ain't yo Mama's&quot; soul food kitchen.  This is 2017's take on Mississippi!"
               className="photo-box-img"
@@ -131,21 +128,21 @@ class F8SingleHeaderRightPhotos extends Component {
   }
 
   renderSecondThumbnail() {
-    const {photos, photoType} = this.props;
-    const thumbnail02 = photos[1].thumbnail._url;
+    const {photos, photoType, forObject} = this.props;
+    const secondPhoto = photos[0];
+    const thumbnail02 = secondPhoto.thumbnail._url;
     return (
       <div className="js-photo photo photo-2">
         <div className="showcase-photo-box">
-          <a href="/biz_photos/my-two-cents-los-angeles-3?select=GW7w6RYB9U1RyNEhCTZjwA">
 
+          <Link to={getPhotosBrowserSelectionLink(secondPhoto, photoType, forObject)}>
             <img
               alt="Photo of My Two Cents - Los Angeles, CA, United States. BBQ fried chicken with fries and sweet potato crumble"
               className="photo-box-img"
               height="250"
               src={thumbnail02}
               width="250"/>
-
-          </a>
+          </Link>
 
         </div>
 

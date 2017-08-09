@@ -65,13 +65,14 @@ export function getEditRestaurantLink(restaurant) {
  *
  * @param photo
  * @param photoType
+ * @param forObject
  * @returns {string}
  */
-export function getPhotosBrowserSelectionLink(photo, photoType) {
+export function getPhotosBrowserSelectionLink(photo, photoType, forObject) {
   const subDomain = {
     'restaurant': 'biz_photo'
   }
-  return `/${subDomain[photoType]}/${restaurant.id}/${restaurant.displayName}`
+  return `/${subDomain[photoType]}/${forObject.id}/${forObject.displayName}?select=${photo.id}`
 }
 
 
