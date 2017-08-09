@@ -29,6 +29,7 @@ const _ = require('underscore')
 const {
   PAGE_MAIN_FORM,
   PAGE_EDIT_FORM,
+  PAGE_PHOTOS_BROWSER_FORM,
   PAGE_OVERLAY_SELECTED_PHOTO_FORM,
   PAGE_ONLY_SELECTED_PHOTO_FORM,
 } = require('../../lib/constants').default
@@ -51,9 +52,10 @@ export function checkPhotosBrowserSelection(props: Object) {
 }
 
 export function getPageFormType(props: Object) {
-  const isEdit = checkEdit(props);
+  if (checkEdit(props)) return PAGE_EDIT_FORM;
 
-  if (isEdit) return PAGE_EDIT_FORM;
+  if (checkPhotosBrowser(props)) return PAGE_PHOTOS_BROWSER_FORM;
+
 
   return PAGE_MAIN_FORM;
 }

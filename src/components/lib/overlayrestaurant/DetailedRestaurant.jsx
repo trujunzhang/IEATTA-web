@@ -9,6 +9,7 @@ const {
 const {
   PAGE_MAIN_FORM,
   PAGE_EDIT_FORM,
+  PAGE_PHOTOS_BROWSER_FORM,
   PAGE_OVERLAY_SELECTED_PHOTO_FORM,
   PAGE_ONLY_SELECTED_PHOTO_FORM,
 } = require('../../../lib/constants').default
@@ -98,11 +99,23 @@ class DetailedRestaurant extends Component {
 
       switch (pageForm) {
         case PAGE_MAIN_FORM:
-          return this.renderNormal();
+          return (
+            <div>
+              <Telescope.components.IEARestaurantsLayout  {...this.state}/>
+            </div>
+          )
+        case PAGE_PHOTOS_BROWSER_FORM:
+          return (
+            <div>
+              <Telescope.components.IEAPhotosBrowserLayout {...this.state}/>
+            </div>
+          )
         case  PAGE_EDIT_FORM:
-          return (<Telescope.components.IEAEditRestaurant
-            {...this.state}
-            dispatch={this.props.dispatch}/>)
+          return (
+            <Telescope.components.IEAEditRestaurant
+              {...this.state}
+              dispatch={this.props.dispatch}/>
+          )
       }
     }
 
