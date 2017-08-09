@@ -17,16 +17,19 @@ class DetailedRestaurant extends Component {
       rslug: props.params.rslug,
       restaurant: null,
       isEdit: checkEdit(props),
+      isPhotoBrowser: checkPhotoBrowser(props),
+      isPhotoBrowserSelection: checkPHotoBrowserSelection(props),
       ready: false
     }
-
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
       restaurant: getModelByObjectId(nextProps, this.state.rid, this.state.restaurant),
       ready: true,
-      isEdit: checkEdit(nextProps)
+      isEdit: checkEdit(nextProps),
+      isPhotoBrowser: checkPhotoBrowser(nextProps),
+      isPhotoBrowserSelection: checkPHotoBrowserSelection(nextProps),
     })
   }
 
