@@ -56,7 +56,7 @@ class F8SingleHeaderRightPhotos extends Component {
     return (
       <Link
         className="see-more show-all-overlay"
-        to={getPhotosBrowserLink(firstPhoto, photoType, forObject)}>
+        to={getPhotosBrowserLink(photoType, forObject)}>
                     <span id="icon_24X24"
                           style={{display: 'block'}}
                           className="icon icon--24-grid icon--size-24 icon--inverse icon--fallback-inverted show-all-overlay_icon">

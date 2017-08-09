@@ -76,6 +76,6 @@ export function getPhotosBrowserSelectionLink(photo, photoType, forObject) {
   return `/${subDomainPhotos[photoType]}/${forObject.id}/${forObject.displayName}?select=${photo.id}`
 }
 
-export function getPhotosBrowserLink(photo, photoType) {
+export function getPhotosBrowserLink( photoType,forObject) {
   return `/${subDomainPhotos[photoType]}/${forObject.id}/${forObject.displayName}`
 }
