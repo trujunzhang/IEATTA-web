@@ -97,7 +97,7 @@ class RestaurantsSingleHeader extends Component {
 
 
           {/*Right Panel*/}
-          <Telescope.components.F8SingleHeaderRightPhotos photos={restaurant.photos}
+          <Telescope.components.F8SingleHeaderRightPhotos photos={this.props.photos}
                                                           photoType="restaurant"
                                                           forObject={restaurant}/>
         </div>

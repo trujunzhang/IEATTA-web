@@ -48,12 +48,9 @@ class DetailedRestaurant extends Component {
     const isPhotoBrowserSelectionId = checkPhotosBrowserSelection(nextProps);
     const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms, this.state.photosListTask);
 
-    debugger
-
     this.setState({
       restaurant: getModelByObjectId(nextProps, this.state.rid, this.state.restaurant),
-      photos: null,
-      photosListTask: photosListTask,
+      photos: photosListTask.results,
       ready: true,
       isEdit: checkEdit(nextProps),
       isPhotoBrowser: isPhotoBrowser,
@@ -62,14 +59,15 @@ class DetailedRestaurant extends Component {
   }
 
   componentDidMount() {
-    // this.props.dispatch(loadRestaurantPage(this.state.rid))
+    this.props.dispatch(loadRestaurantPage(this.state.rid))
     this.props.dispatch(loadPhotosBrowser(this.state.photosTerms))
   }
 
   render() {
-    const {isPhotoBrowser, isPhotoBrowserSelectionId, ready, restaurant, isEdit} = this.state;
+    const {isPhotoBrowser, isPhotoBrowserSelectionId, photos, ready, restaurant, isEdit} = this.state;
 
-    if (!!restaurant) {
+    if (!!restaurant && !!photos) {
+
       if (isPhotoBrowser) {
         if (!!isPhotoBrowserSelectionId) {
           return (<Telescope.components.IEARestaurantsLayout  {...this.state}/>)
@@ -95,7 +93,8 @@ const {connect} = require('react-redux')
 
 function select(store) {
   return {
-    detailedModelsOverlay: store.detailedModelsOverlay
+    detailedModelsOverlay: store.detailedModelsOverlay,
+    listContainerTasks: store.listContainerTasks
   }
 }
 
