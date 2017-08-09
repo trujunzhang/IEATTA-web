@@ -1,3 +1,4 @@
+import Telescope from '../../../lib'
 import React, {Component} from 'react';
 
 class F8PhotosSelectLeftPanel extends Component {
