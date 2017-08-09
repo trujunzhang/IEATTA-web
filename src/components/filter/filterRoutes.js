@@ -31,11 +31,11 @@ export function checkEdit(props: Object) {
   return props.location.pathname.indexOf('edit/') !== -1;
 }
 
-export function checkPhotoBroswer(props: Object) {
+export function checkPhotosBrowser(props: Object) {
   return props.location.pathname.indexOf('biz_photos/') !== -1;
 }
 
-export function checkPhotoBroswerSelection(props: Object) {
+export function checkPhotosBrowserSelection(props: Object) {
   return props.location.pathname.indexOf('edit/') !== -1;
 }
 
