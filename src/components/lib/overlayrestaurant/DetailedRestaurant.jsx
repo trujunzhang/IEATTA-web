@@ -50,6 +50,7 @@ class DetailedRestaurant extends Component {
 
     this.setState({
       restaurant: getModelByObjectId(nextProps, this.state.rid, this.state.restaurant),
+      photosListTask: photosListTask,
       photos: photosListTask.results,
       ready: true,
       isEdit: checkEdit(nextProps),

@@ -30,7 +30,7 @@ const {
  * @param {Object} state - initialState
  * @param {Object} action - type and payload
  */
-function paginationReducer(state: State = initialState, action): State {
+function listContainerReducer(state: State = initialState, action): State {
   switch (action.type) {
     /**
      * ### Requests start
@@ -65,7 +65,7 @@ function paginationReducer(state: State = initialState, action): State {
 
 
     case LIST_VIEW_RESET_ALL_POSTS: {
-      return Map({})
+      return {};
     }
 
   }
@@ -75,4 +75,4 @@ function paginationReducer(state: State = initialState, action): State {
   return state
 }
 
-export default paginationReducer
+export default listContainerReducer;
