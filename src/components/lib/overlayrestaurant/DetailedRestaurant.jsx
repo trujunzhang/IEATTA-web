@@ -24,6 +24,7 @@ class DetailedRestaurant extends Component {
       rid: props.params.rid,
       rslug: props.params.rslug,
       restaurant: null,
+      photos: null,
       isEdit: checkEdit(props),
       isPhotoBrowser: checkPhotosBrowser(props),
       isPhotoBrowserSelectionId: checkPhotosBrowserSelection(props),
@@ -37,33 +38,34 @@ class DetailedRestaurant extends Component {
 
     this.setState({
       restaurant: getModelByObjectId(nextProps, this.state.rid, this.state.restaurant),
+      photos: null,
       ready: true,
       isEdit: checkEdit(nextProps),
       isPhotoBrowser: isPhotoBrowser,
       isPhotoBrowserSelectionId: isPhotoBrowserSelectionId
     })
-    // Check if the last is not the photos browser.
-    if (!this.state.isPhotoBrowser && isPhotoBrowser) {
-      if (!this.state.isPhotoBrowserSelectionId && !!isPhotoBrowserSelectionId) {
-
-      } else {
-
-      }
-    }
   }
 
   componentDidMount() {
-    this.props.dispatch(loadRestaurantPage(this.state.rid))
-    // this.props.dispatch(loadPhotosBrowser(this.state.rid))
+    // this.props.dispatch(loadRestaurantPage(this.state.rid))
+    this.props.dispatch(loadPhotosBrowser(this.state.rid))
   }
 
   render() {
-    const {ready, restaurant, isEdit} = this.state;
+    const {isPhotoBrowser, isPhotoBrowserSelectionId, ready, restaurant, isEdit} = this.state;
 
     if (!!restaurant) {
+      if (isPhotoBrowser) {
+        if (!!isPhotoBrowserSelectionId) {
+          return (<Telescope.components.IEARestaurantsLayout  {...this.state}/>)
+        } else {
+          return (<Telescope.components.IEARestaurantsLayout  {...this.state}/>)
+        }
+      }
       if (isEdit) {
-        return (<Telescope.components.IEAEditRestaurant  {...this.state}
-                                                         dispatch={this.props.dispatch}/>)
+        return (<Telescope.components.IEAEditRestaurant
+          {...this.state}
+          dispatch={this.props.dispatch}/>)
       }
       return (<Telescope.components.IEARestaurantsLayout  {...this.state}/>)
     }

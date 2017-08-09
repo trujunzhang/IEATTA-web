@@ -21,7 +21,7 @@
  *
  * @flow
  */
-import {fromParseRecipe} from "../reducers/parseModels";
+import {fromParsePhoto, fromParseRecipe} from "../reducers/parseModels";
 
 const Parse = require('parse')
 import type {ThunkAction} from './types'
@@ -108,7 +108,7 @@ function loadRecipesList(listTask: Any, terms: Any): ThunkAction {
 }
 
 function loadPhotosBrowser(listTask: Any, terms: Any): ThunkAction {
-  return loadListByType(listTask, getRecipesParameters(terms), terms, fromParseRecipe, LOADED_PHOTOS_BROWSER)
+  return loadListByType(listTask, getPhotosParameters(terms), terms, fromParsePhoto, LOADED_PHOTOS_BROWSER)
 }
 
 export default {

@@ -44,7 +44,6 @@ export function byListId(listContainerTasks: Any, terms: Any, lastTask: Any) {
   const {listId, limit} = terms;
 
   const taskObject = convertToObject(listContainerTasks)
-
   let task = taskObject[listId]
   if (!!task) {
     return task

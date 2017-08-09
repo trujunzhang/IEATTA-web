@@ -13,9 +13,8 @@
 
 import type {Action} from '../actions/types'
 
-const {Map, List} = require('immutable')
 
-const initialState = Map({})
+const initialState = {}
 
 /**
  * The states were interested in
@@ -40,24 +39,27 @@ function paginationReducer(state: State = initialState, action): State {
     case LIST_VIEW_LOADED_BY_TYPE: {
       const {list, listTask, listId, limit, totalCount} = action.payload
 
-      let nextTask = state.get(listId)
-      if (!!nextTask && false) {
-        nextTask = nextTask.set('results', nextTask.get('results').concat(list))
-          .set('pageIndex', listTask.pageIndex + 1)
-          .set('totalCount', totalCount)
-      } else {
-        nextTask = Map({
-          id: listId,
-          ready: true,
-          totalCount: totalCount,
-          limit: limit,
-          pageIndex: listTask.pageIndex + 1,
-          firstPagination: false,
-          results: list
-        })
-      }
+      // let nextTask = state.get(listId)
+      // if (!!nextTask && false) {
+      //   nextTask = nextTask.set('results', nextTask.get('results').concat(list))
+      //     .set('pageIndex', listTask.pageIndex + 1)
+      //     .set('totalCount', totalCount)
+      // } else {
+      // }
 
-      let nextState = state.set(listId, nextTask)
+      let nextTask = {};
+      nextTask[listId] = {
+        id: listId,
+        ready: true,
+        totalCount: totalCount,
+        limit: limit,
+        pageIndex: listTask.pageIndex + 1,
+        firstPagination: false,
+        results: list
+      };
+
+      const nextState = nextTask;
+
       return nextState
     }
     case LOADED_PHOTOS_BROWSER: {
