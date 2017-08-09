@@ -28,8 +28,10 @@ const _ = require('underscore')
 
 const {
   PAGE_MAIN_FORM,
-  PAGE_EDIT_FORM,
+  PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY,
   PAGE_PHOTOS_BROWSER_FORM,
+  PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY,
+  PAGE_EDIT_FORM,
   PAGE_OVERLAY_SELECTED_PHOTO_FORM,
   PAGE_ONLY_SELECTED_PHOTO_FORM,
 } = require('../../lib/constants').default
@@ -51,10 +53,20 @@ export function checkPhotosBrowserSelection(props: Object) {
   return null;
 }
 
-export function getPageFormType(props: Object) {
+export function getPageFormType(props: Object, lastFormType: Any) {
   if (checkEdit(props)) return PAGE_EDIT_FORM;
 
-  if (checkPhotosBrowser(props)) return PAGE_PHOTOS_BROWSER_FORM;
+  const isPhotoBrowserSelectionId = checkPhotosBrowserSelection(props);
+  if (!!isPhotoBrowserSelectionId) {
+    if (lastFormType === PAGE_MAIN_FORM) {
+      debugger
+      return PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY;
+    }
+  }
+
+  const isPhotoBrowser = checkPhotosBrowser(props);
+
+  if (isPhotoBrowser) return PAGE_PHOTOS_BROWSER_FORM;
 
 
   return PAGE_MAIN_FORM;

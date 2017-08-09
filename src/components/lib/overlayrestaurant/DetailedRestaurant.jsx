@@ -42,7 +42,7 @@ class DetailedRestaurant extends Component {
       restaurant: null,
       photosListTask: getDefaultListTask(photoTerms),
       photos: null,
-      pageForm: getPageFormType(props),
+      pageForm: getPageFormType(props, ''),
       isPhotoBrowser: checkPhotosBrowser(props),
       isPhotoBrowserSelectionId: checkPhotosBrowserSelection(props),
       photosTerms: photoTerms,
@@ -60,7 +60,7 @@ class DetailedRestaurant extends Component {
       photosListTask: photosListTask,
       photos: photosListTask.results,
       ready: true,
-      pageForm: getPageFormType(nextProps),
+      pageForm: getPageFormType(nextProps, this.state.pageForm),
       isPhotoBrowser: isPhotoBrowser,
       isPhotoBrowserSelectionId: isPhotoBrowserSelectionId
     })
