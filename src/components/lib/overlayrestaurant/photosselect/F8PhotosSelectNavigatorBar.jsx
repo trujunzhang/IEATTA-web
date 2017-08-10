@@ -3,13 +3,12 @@ import React, {Component} from 'react';
 
 class F8PhotosSelectNavigatorBar extends Component {
   render() {
-    const {photos} = this.props;
-
     return (
       <div className="media-nav js-media-nav" data-component-bound="true">
         <a
+          onClick={this.props.onPreIconClick}
           className="media-nav_link media-nav_link--prev js-media-nav_link--prev is-hovered"
-          href="/biz_photos/roma-antica-san-francisco-3?select=x57_yoZarQuIn9y1r2jsQw" title="Prev">
+          title="Prev">
             <span
               id="icon_48X48"
               className="icon icon--48-chevron-left icon--size-48 icon--inverse icon--fallback-inverted">
@@ -22,7 +21,8 @@ class F8PhotosSelectNavigatorBar extends Component {
 
 
         <a className="media-nav_link media-nav_link--next js-media-nav_link--next"
-           href="/biz_photos/roma-antica-san-francisco-3?select=k_pkaj9TkIRUQTGyPCrS4A" title="Next">
+           onClick={this.props.onNextIconClick}
+           title="Next">
             <span
               id="icon_48X48"
               className="icon icon--48-chevron-right icon--size-48 icon--inverse icon--fallback-inverted">

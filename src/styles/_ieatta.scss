@@ -27,10 +27,12 @@
   width: 14px;
   height: 14px;
 }
+
 #icon_48X48 {
   width: 48px;
   height: 48px;
 }
+
 #icon_18X18 {
   width: 18px;
   height: 18px;
@@ -214,7 +216,7 @@ input.header_content_middle_input {
   }
 }
 
-.biz-page-header-left, .form-footer {
+.biz-page-header-left, .form-footer, .media-nav_link {
   a:hover {
     cursor: pointer;
   }

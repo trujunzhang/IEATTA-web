@@ -113,13 +113,19 @@ class DetailedRestaurant extends Component {
         case PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY:
           return (<div>
               <Telescope.components.IEARestaurantsLayout  {...this.state}/>
-              <Telescope.components.IEAPhotosSelectionLayout {...this.state}/>
+              <Telescope.components.IEAPhotosSelectionLayout
+                {...this.state}/>
+              onPreIconClick={this.onPreIconClick.bind(this)}
+              onNextIconClick={this.onNextIconClick.bind(this)}
             </div>
           )
         case PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY:
           return (<div>
               <Telescope.components.IEAPhotosBrowserLayout {...this.state}/>
-              <Telescope.components.IEAPhotosSelectionLayout {...this.state}/>
+              <Telescope.components.IEAPhotosSelectionLayout
+                {...this.state}/>
+              onPreIconClick={this.onPreIconClick.bind(this)}
+              onNextIconClick={this.onNextIconClick.bind(this)}
             </div>
           )
         case PAGE_PHOTOS_BROWSER_FORM:
@@ -136,7 +142,14 @@ class DetailedRestaurant extends Component {
     }
 
     return (<Telescope.components.F8LoadingView loadingClass="placeholder_1WOC3"/>)
+  }
 
+  onPreIconClick() {
+    debugger
+  }
+
+  onNextIconClick() {
+    debugger
   }
 
 }
