@@ -15,7 +15,6 @@ class F8PhotosSelectPage extends Component {
     this.props.router.push({pathname: lastUrl})
   }
 
-
   render() {
     return (
       <div className="media-details_container media-details_container--embed media-details_container--with-sidebar">
