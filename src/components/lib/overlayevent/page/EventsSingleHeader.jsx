@@ -19,7 +19,6 @@ class EventsSingleHeader extends Component {
     )
   }
 
-
   render() {
     return (
       <div className="content-container">
