@@ -1,3 +1,4 @@
+import Telescope from '../../index'
 import React, {Component} from 'react';
 import Photos from '../../../../lib/photos'
 
@@ -41,12 +42,7 @@ class F8PhotosTitleHeader extends Component {
           <div className="biz-rating biz-rating-medium clearfix">
 
 
-            <div className="i-stars i-stars--small-5 rating" title="5.0 star rating">
-              <img className="offscreen" height="303"
-                   src="https://s3-media2.fl.yelpcdn.com/assets/srv0/yelp_design_web/9b34e39ccbeb/assets/img/stars/stars.png"
-                   width="84" alt="5.0 star rating"/>
-            </div>
-
+            <Telescope.components.F8StarIcon rate="3" iconType="small" iconExtension="rating"/>
 
             <span className="review-count rating-qualifier">
     <span
