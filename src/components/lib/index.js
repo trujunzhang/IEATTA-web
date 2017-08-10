@@ -27,6 +27,7 @@ Telescope.registerComponent('F8UserAvatorSection',              require('./commo
 Telescope.registerComponent('F8LoadingView',                    require('./common/F8LoadingView.jsx').default)
 Telescope.registerComponent('F8EmptySection',                   require('./common/F8EmptySection.jsx').default)
 Telescope.registerComponent('F8SectionHeaderTitle',             require('./common/F8SectionHeaderTitle.jsx').default)
+Telescope.registerComponent('F8PageHeaderButtonsSection',       require('./common/F8PageHeaderButtonsSection.jsx').default)
 Telescope.registerComponent('Error404',                         require('./common/Error404.jsx').default)
 Telescope.registerComponent('App',                              require('./common/App.js').default)
 
