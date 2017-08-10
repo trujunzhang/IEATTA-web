@@ -82,7 +82,10 @@ class DetailedRestaurant extends Component {
       switch (pageForm) {
         case PAGE_SINGLE_SELECTED_PHOTO_FORM:
           return (<div>
-              <Telescope.components.IEAPhotosSingleLayout {...this.state}/>
+              <Telescope.components.IEAPhotosSingleLayout
+                {...this.state}
+                forObject={restaurant}
+              />
             </div>
           )
         case PAGE_MAIN_FORM:

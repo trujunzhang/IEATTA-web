@@ -3,17 +3,19 @@ import React, {Component} from 'react';
 import Photos from '../../../../lib/photos'
 
 class F8PhotosSelectLeftPanel extends Component {
-  render() {
-    const {photos, selectPhotoIndex} = this.props;
-    const currentPhoto = photos[selectPhotoIndex];
 
+  render() {
+    const {photos, selectPhotoIndex, forObject} = this.props;
+    const currentPhoto = photos[selectPhotoIndex];
+    // alt="Photo of Roma Antica - San Francisco, CA, United States"
+    const alt = `Photo of ${forObject.displayName}`;
     return (
 
       <div className="media-details-grid_main">
         <div className="media js-media-photo">
 
           <img
-            alt="Photo of Roma Antica - San Francisco, CA, United States"
+            alt={alt}
             className="photo-box-img"
             src={Photos.getThumbnailUrl(currentPhoto)}/>
         </div>
