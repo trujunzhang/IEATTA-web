@@ -35,12 +35,10 @@ class F8PhotosSelectNavigatorBar extends Component {
   }
 
   renderNextIcon() {
-    const {photosListTask, photoType, selectPhotoIndex, forObject} = this.props;
+    const {photosListTask, selectPhotoIndex} = this.props;
     const photos = photosListTask.results;
 
-    const totalPhotosLength = photos.length;
-
-    const haveNextIcon = (selectPhotoIndex < totalPhotosLength - 1)
+    const haveNextIcon = (selectPhotoIndex < photos.length - 1)
 
     const nextClass = 'media-nav_link media-nav_link--next js-media-nav_link--next ' + (
       haveNextIcon ? "" : " is-disabled"

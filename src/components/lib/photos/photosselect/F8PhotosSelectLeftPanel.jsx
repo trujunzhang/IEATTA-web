@@ -13,15 +13,18 @@ class F8PhotosSelectLeftPanel extends Component {
     // alt="Photo of Roma Antica - San Francisco, CA, United States"
     const alt = `Photo of ${forObject.displayName}`;
 
-    return (
+    const haveNextIcon = (selectPhotoIndex < photos.length - 1)
+    const linkProps = (haveNextIcon) ? {onClick: this.props.onNextIconClick} : {};
 
+    return (
       <div className="media-details-grid_main">
         <div className="media js-media-photo">
-
-          <img
-            alt={alt}
-            className="photo-box-img"
-            src={Photos.getOriginalUrl(currentPhoto)}/>
+          <a {...linkProps}>
+            <img
+              alt={alt}
+              className="photo-box-img"
+              src={Photos.getOriginalUrl(currentPhoto)}/>
+          </a>
         </div>
 
         <Telescope.components.F8PhotosSelectLeftPanelFooterView {...this.props}/>
