@@ -6,7 +6,8 @@ import {geDetailedModelLink} from '../../../../lib/link'
 
 class F8PhotosSingleTop extends Component {
   render() {
-    const {photos, photoType, forObject} = this.props;
+    const {photosListTask, photoType, forObject} = this.props;
+    const photos = photosListTask.results;
 
     return (
       <div className="media-details_header">

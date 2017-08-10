@@ -6,9 +6,8 @@ import {Link} from 'react-router'
 
 class F8PhotosSelectLeftPanelFooterView extends Component {
 
-
   renderLeft() {
-    const {photos, photoType, forObject} = this.props;
+    const {photoType, forObject} = this.props;
     return (
       <li>
         <Link
@@ -31,7 +30,9 @@ class F8PhotosSelectLeftPanelFooterView extends Component {
   }
 
   renderMiddle() {
-    const {photos, photoType, forObject, selectPhotoIndex} = this.props;
+    const {photosListTask, photoType, selectPhotoIndex, forObject} = this.props;
+    const photos = photosListTask.results;
+
     return (
       <li className="media-footer_count">
                       <span className="media-count js-media-count">
