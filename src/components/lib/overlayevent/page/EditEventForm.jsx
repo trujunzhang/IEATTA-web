@@ -20,19 +20,13 @@ class EditEventForm extends Component {
    */
   render() {
 
-
-    // const label = I18n.t('FieldValidation.valid_password');
-    // debugger
-
     let displayName = {
-      label: I18n.t('editRestaurant.displayName'),
+      label: I18n.t('editEvent.displayName'),
       editable: !this.props.form.isFetching,
       hasError: this.props.form.fields.displayNameHasError,
-      // hasError: true,
       error: I18n.t(this.props.form.fields.displayNameErrorMsg),
-      // error: "errorxxx ",
       attrs: {
-        placeholder: I18n.t('editRestaurant.displayNamePlaceHolder')
+        placeholder: I18n.t('editEvent.displayNamePlaceHolder')
       }
     }
 
