@@ -38,14 +38,12 @@ class OrderedRecipes extends Component {
   constructor(props, context) {
     super(props)
 
-
     const photoTerms = {
       listId: 'photos-list-view-for-restaurants-' + props.params.oid,
       forObjectId: props.params.oid,
       photoType: 'recipe',
       allItems: true
     }
-
 
     this.state = this.initialState = {
       oid: props.params.oid,

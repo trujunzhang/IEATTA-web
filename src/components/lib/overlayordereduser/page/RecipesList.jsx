@@ -61,9 +61,7 @@ class RecipesList extends Component {
     } = listTask
 
     if (!ready) {
-      return (
-        <Telescope.components.F8LoadingView/>
-      )
+      return (<Telescope.components.F8LoadingView/>)
     }
 
     return (

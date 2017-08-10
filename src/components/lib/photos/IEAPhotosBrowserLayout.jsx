@@ -26,6 +26,20 @@ class IEAPhotosBrowserLayout extends Component {
     )
   }
 
+  renderContent() {
+    const {photosListTask} = this.props;
+    const {
+      results,
+      ready
+    } = photosListTask;
+
+    if (!ready) {
+      return (<Telescope.components.F8LoadingView/>)
+    }
+
+    return (<Telescope.components.F8PhotosCollectionView {...this.props}/>)
+  }
+
   render() {
     return (
       <div className="main-content-wrap main-content-wrap--full">
@@ -39,8 +53,7 @@ class IEAPhotosBrowserLayout extends Component {
 
               <div className="media-landing js-media-landing">
 
-                {/*<Telescope.components.F8PhotosCollectionView {...this.props}/>*/}
-
+                {this.renderContent()}
                 {this.renderFooter()}
 
               </div>

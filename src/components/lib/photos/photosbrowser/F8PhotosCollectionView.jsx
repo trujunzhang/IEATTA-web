@@ -7,8 +7,7 @@ class F8PhotosCollectionView extends Component {
 
   renderRow(photo) {
     const thumbnail = photo.thumbnail._url;
-    const forObject = this.props.restaurant;
-    const photoType= this.props.photoType;
+    const {forObject, photoType} = this.props;
 
     return (
       <li data-photo-id="x57_yoZarQuIn9y1r2jsQw">
@@ -29,12 +28,13 @@ class F8PhotosCollectionView extends Component {
   }
 
   render() {
-    const {photos} = this.props;
+    const {photosListTask} = this.props;
+    const {results} = photosListTask;
 
     return (
       <div className="media-landing_gallery photos">
         <ul className="photo-box-grid photo-box-grid--highlight photo-box-grid--small clearfix lightbox-media-parent">
-          {photos.map((photo, item) => {
+          {results.map((photo, item) => {
             return this.renderRow(photo)
           })}
         </ul>
