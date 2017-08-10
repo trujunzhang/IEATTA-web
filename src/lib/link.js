@@ -57,7 +57,6 @@ export function getOrderedUserLink(user, peopleInEvent) {
  * @returns {string}
  */
 export function getOrderedRecipeLink(recipe) {
-  const {restaurant, event, user} = recipe;
   return `/orderedrecipe/${recipe.id}/${recipe.displayName}`
 }
 
