@@ -23,8 +23,10 @@
  */
 'use strict'
 
-
 const _ = require('underscore')
+
+import {SubDomainPhotos} from '../../actions/types'
+
 
 const {
   PAGE_MAIN_FORM,
@@ -41,8 +43,9 @@ export function checkEdit(props: Object) {
   return props.location.pathname.indexOf('edit/') !== -1;
 }
 
-export function checkPhotosBrowser(props: Object) {
-  return props.location.pathname.indexOf('biz_photos/') !== -1;
+export function checkPhotosBrowser(pageType: string, props: Object) {
+  const subDomain = SubDomainPhotos[pageType];
+  return props.location.pathname.indexOf(subDomain + '/') !== -1;
 }
 
 export function checkPhotosBrowserSelection(props: Object) {
@@ -53,7 +56,7 @@ export function checkPhotosBrowserSelection(props: Object) {
   return null;
 }
 
-export function getPageFormType(props: Object, lastFormType: Any) {
+export function getPageFormType(pageType, props: Object, lastFormType: Any) {
   if (checkEdit(props)) return PAGE_EDIT_FORM;
 
   const isPhotoBrowserSelectionId = checkPhotosBrowserSelection(props);
@@ -70,7 +73,7 @@ export function getPageFormType(props: Object, lastFormType: Any) {
     return PAGE_SINGLE_SELECTED_PHOTO_FORM;
   }
 
-  const isPhotoBrowser = checkPhotosBrowser(props);
+  const isPhotoBrowser = checkPhotosBrowser(pageType, props);
 
   if (isPhotoBrowser) return PAGE_PHOTOS_BROWSER_FORM;
 

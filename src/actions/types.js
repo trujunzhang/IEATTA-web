@@ -27,47 +27,51 @@ type ParseObject = Object;
 
 
 export type Action =
-    { type: 'LOADED_ABOUT', list: Array<ParseObject> }
-    | { type: 'LOADED_CACHES', list: Array<ParseObject> }
-    | { type: 'LOADED_HISTORIES', list: Array<ParseObject> }
-    | { type: 'LIST_VIEW_LOADED_RESTAURANTS', list: Array<ParseObject> }
-    | { type: 'LOADED_FOLDERS', list: Array<ParseObject> }
-    | { type: 'LOADED_COMMENTS', list: Array<ParseObject> }
-    | { type: 'LOADED_MESSAGES', list: Array<ParseObject> }
-    | { type: 'SHIPPINGS_STATUS', tab: 'created' | 'ordered' | 'request' }
-    | { type: 'LOADED_SHIPPING_TASKS', list: Array<ParseObject> }
-    | { type: 'SHIPPING_TASKS_STATUS', tab: 'order' | 'request' | 'accept' | 'decline' | 'assigned' | 'start' | 'end' }
-    | { type: 'LOADED_APP_USERS', list: Array<ParseObject> }
-    | { type: 'LOADED_FRIENDS_SCHEDULES', list: Array<{ id: string; name: string; schedule: { [key: string]: boolean }; }> }
-    | { type: 'LOADED_CONFIG', config: ParseObject }
-    | { type: 'LOADED_SESSIONS', list: Array<ParseObject> }
-    | { type: 'LOADED_SURVEYS', list: Array<Object> }
-    | { type: 'SUBMITTED_SURVEY_ANSWERS', id: string; }
-    | { type: 'LOGGED_IN', source: ?string; data: { id: string; name: string; loginType: string; email: string; slug: string} }
-    | { type: 'LOG_IN_PASSWORD', username: ?string; password: ?string }
-    | { type: 'RESTORED_SCHEDULE', list: Array<ParseObject> }
-    | { type: 'SKIPPED_LOGIN' }
-    | { type: 'LOGGED_OUT' }
-    | { type: 'SESSION_ADDED', id: string }
-    | { type: 'SESSION_REMOVED', id: string }
-    | { type: 'SET_SHARING', enabled: boolean }
-    | { type: 'APPLY_TOPICS_FILTER', topics: { [key: string]: boolean } }
-    | { type: 'CLEAR_FILTER' }
-    | { type: 'SWITCH_DAY', day: 1 | 2 }
-    | { type: 'SWITCH_TAB', tab: 'houseback' | 'box' | 'list' | 'manuser' | 'conversation' }
-    | { type: 'TURNED_ON_PUSH_NOTIFICATIONS' }
-    | { type: 'REGISTERED_PUSH_NOTIFICATIONS' }
-    | { type: 'SKIPPED_PUSH_NOTIFICATIONS' }
-    | { type: 'RECEIVED_PUSH_NOTIFICATION', notification: Object }
-    | { type: 'SEEN_ALL_NOTIFICATIONS' }
-    | { type: 'RESET_NUXES' },
-    | { type: 'OVERLAY_MODEL_PUSH' },
-    | { type: 'OVERLAY_MODEL_DISMISS' },
-    | { type: 'GET_OVERLAY_MODEL' },
-    ;
-
+  { type: 'LOADED_ABOUT', list: Array<ParseObject> }
+  | { type: 'LOADED_CACHES', list: Array<ParseObject> }
+  | { type: 'LOADED_HISTORIES', list: Array<ParseObject> }
+  | { type: 'LIST_VIEW_LOADED_RESTAURANTS', list: Array<ParseObject> }
+  | { type: 'LOADED_FOLDERS', list: Array<ParseObject> }
+  | { type: 'LOADED_COMMENTS', list: Array<ParseObject> }
+  | { type: 'LOADED_MESSAGES', list: Array<ParseObject> }
+  | { type: 'SHIPPINGS_STATUS', tab: 'created' | 'ordered' | 'request' }
+  | { type: 'LOADED_SHIPPING_TASKS', list: Array<ParseObject> }
+  | { type: 'SHIPPING_TASKS_STATUS', tab: 'order' | 'request' | 'accept' | 'decline' | 'assigned' | 'start' | 'end' }
+  | { type: 'LOADED_APP_USERS', list: Array<ParseObject> }
+  | { type: 'LOADED_FRIENDS_SCHEDULES', list: Array<{ id: string; name: string; schedule: { [key: string]: boolean }; }> }
+  | { type: 'LOADED_CONFIG', config: ParseObject }
+  | { type: 'LOADED_SESSIONS', list: Array<ParseObject> }
+  | { type: 'LOADED_SURVEYS', list: Array<Object> }
+  | { type: 'SUBMITTED_SURVEY_ANSWERS', id: string; }
+  | { type: 'LOGGED_IN', source: ?string; data: { id: string; name: string; loginType: string; email: string; slug: string } }
+  | { type: 'LOG_IN_PASSWORD', username: ?string; password: ?string }
+  | { type: 'RESTORED_SCHEDULE', list: Array<ParseObject> }
+  | { type: 'SKIPPED_LOGIN' }
+  | { type: 'LOGGED_OUT' }
+  | { type: 'SESSION_ADDED', id: string }
+  | { type: 'SESSION_REMOVED', id: string }
+  | { type: 'SET_SHARING', enabled: boolean }
+  | { type: 'APPLY_TOPICS_FILTER', topics: { [key: string]: boolean } }
+  | { type: 'CLEAR_FILTER' }
+  | { type: 'SWITCH_DAY', day: 1 | 2 }
+  | { type: 'SWITCH_TAB', tab: 'houseback' | 'box' | 'list' | 'manuser' | 'conversation' }
+  | { type: 'TURNED_ON_PUSH_NOTIFICATIONS' }
+  | { type: 'REGISTERED_PUSH_NOTIFICATIONS' }
+  | { type: 'SKIPPED_PUSH_NOTIFICATIONS' }
+  | { type: 'RECEIVED_PUSH_NOTIFICATION', notification: Object }
+  | { type: 'SEEN_ALL_NOTIFICATIONS' }
+  | { type: 'RESET_NUXES' }
+  | { type: 'OVERLAY_MODEL_PUSH' }
+  | { type: 'OVERLAY_MODEL_DISMISS' }
+  | { type: 'GET_OVERLAY_MODEL' }
+  ;
 
 export type Dispatch = (action: Action | ThunkAction | PromiseAction | Array<Action>) => any;
 export type GetState = () => Object;
 export type ThunkAction = (dispatch: Dispatch, getState: GetState) => any;
 export type PromiseAction = Promise<Action>;
+
+export const SubDomainPhotos = {
+  'restaurant': 'biz_photos',
+  'recipe': 'recipe_photos',
+}

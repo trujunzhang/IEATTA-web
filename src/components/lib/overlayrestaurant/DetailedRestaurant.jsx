@@ -54,7 +54,7 @@ class DetailedRestaurant extends Component {
       // photos
       photosListTask: getDefaultListTask(photoTerms),
       photos: null,
-      pageForm: getPageFormType(props, null),
+      pageForm: getPageFormType('restaurant', props, null),
       photosTerms: photoTerms,
       photoType: 'restaurant',
       onPreIconClick: this.onPreIconClick.bind(this),
@@ -73,7 +73,7 @@ class DetailedRestaurant extends Component {
       // photos
       photosListTask: photosListTask,
       photos: photosListTask.results,
-      pageForm: getPageFormType(nextProps, this.state.pageForm),
+      pageForm: getPageFormType('restaurant', nextProps, this.state.pageForm),
       selectPhotoIndex: getSelectPhoto(nextProps, photosListTask, this.state.selectPhotoIndex)
     })
   }

@@ -1,9 +1,6 @@
 let _ = require('underscore')
 
-const subDomainPhotos = {
-  'restaurant': 'biz_photos',
-  'recipe': 'recipe_photos',
-}
+import {SubDomainPhotos} from '../actions/types'
 
 function adjustNewQuery(router, newQuery) {
   const query = _.clone(router.location.query)
@@ -73,11 +70,11 @@ export function getEditRestaurantLink(restaurant) {
  * @returns {string}
  */
 export function getPhotosBrowserSelectionLink(photo, photoType, forObject) {
-  return `/${subDomainPhotos[photoType]}/${forObject.id}/${forObject.displayName}?select=${photo.id}`
+  return `/${SubDomainPhotos[photoType]}/${forObject.id}/${forObject.displayName}?select=${photo.id}`
 }
 
 export function getPhotosBrowserLink(photoType, forObject) {
-  return `/${subDomainPhotos[photoType]}/${forObject.id}/${forObject.displayName}`
+  return `/${SubDomainPhotos[photoType]}/${forObject.id}/${forObject.displayName}`
 }
 
 export function geDetailedModelLink(modelType, forObject) {
