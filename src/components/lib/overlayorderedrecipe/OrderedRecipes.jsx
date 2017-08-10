@@ -111,6 +111,15 @@ class OrderedRecipes extends Component {
           return (
             (<Telescope.components.IEAOrderedRecipesLayout {...this.state} />)
           )
+        case PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY:
+          return (<div>
+              <Telescope.components.IEAOrderedRecipesLayout {...this.state}/>
+              <Telescope.components.IEAPhotosSelectionLayout
+                {...this.state}/>
+            </div>
+          )
+        case PAGE_PHOTOS_BROWSER_FORM:
+          return (<Telescope.components.IEAPhotosBrowserLayout {...this.state}/>)
       }
     }
 
