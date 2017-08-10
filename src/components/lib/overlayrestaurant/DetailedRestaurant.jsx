@@ -82,7 +82,7 @@ class DetailedRestaurant extends Component {
   }
 
   render() {
-    const {photosListTask, restaurant, pageForm, selectPhotoIndex} = this.state;
+    const {photosListTask, restaurant, pageForm} = this.state;
 
     if (!!restaurant && !!photosListTask.ready) {
       switch (pageForm) {

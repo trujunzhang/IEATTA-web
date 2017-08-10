@@ -94,9 +94,9 @@ class OrderedRecipes extends Component {
   }
 
   render() {
-    const {photosListTask, recipe, pageForm, selectPhotoIndex} = this.state;
+    const {photosListTask, recipe, pageForm} = this.state;
 
-    if (!!recipe && !!photos) {
+    if (!!recipe && !!photosListTask.ready) {
       switch (pageForm) {
         case PAGE_SINGLE_SELECTED_PHOTO_FORM:
           return (<Telescope.components.IEAPhotosSingleLayout {...this.state}/>)
