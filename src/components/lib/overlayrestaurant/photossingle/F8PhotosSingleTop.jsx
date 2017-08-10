@@ -1,8 +1,13 @@
 import Telescope from '../../../lib'
 import React, {Component} from 'react';
 
+import {Link} from 'react-router'
+import {getRestaurantLink} from '../../../../lib/link'
+
 class F8PhotosSingleTop extends Component {
   render() {
+    const forObject = this.props.restaurant;
+    const {photos, photoType} = this.props;
 
     return (
       <div className="media-details_header">
@@ -11,8 +16,9 @@ class F8PhotosSingleTop extends Component {
             <div className="arrange_unit arrange_unit--fill">
               <ul className="breadcrumbs">
                 <li>
-                  <a href="/biz/roma-antica-san-francisco-3">Roma Antica</a>
-
+                  <Link to={getRestaurantLink(forObject)}>
+                    {forObject.displayName}
+                  </Link>
                 </li>
                 <li>
                                 <span
@@ -21,13 +27,14 @@ class F8PhotosSingleTop extends Component {
     <svg className="icon_svg">
     <path d="M9.525 5.636L8.11 7.05 13.06 12l-4.95 4.95 1.415 1.414L15.89 12 9.524 5.636z"/>
     </svg>
-</span>Photos &amp; Videos
-
-
+</span>
+                  {'Photos'}
                 </li>
               </ul>
 
-              <h1 className="media-header_title h2">21 photos for Roma Antica</h1>
+              <h1 className="media-header_title h2">
+                {photos.length + " photos for " + forObject.displayName}
+              </h1>
             </div>
             <div className="arrange_unit nowrap media-header_actions">
 
