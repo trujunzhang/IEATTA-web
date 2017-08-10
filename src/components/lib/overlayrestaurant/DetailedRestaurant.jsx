@@ -66,7 +66,7 @@ class DetailedRestaurant extends Component {
       photosListTask: photosListTask,
       photos: photosListTask.results,
       pageForm: getPageFormType(nextProps, this.state.pageForm),
-      selectPhotoIndex: getSelectPhoto(nextProps, photosListTask, this.state.selectPhoto)
+      selectPhotoIndex: getSelectPhoto(nextProps, photosListTask, this.state.selectPhotoIndex)
     })
   }
 
