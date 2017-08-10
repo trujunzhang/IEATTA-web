@@ -4,6 +4,8 @@ import {FormattedMessage, FormattedRelative} from 'react-intl'
 import Posts from '../../../../lib/posts'
 import Users from '../../../../lib/users'
 
+import {getEditEventLink} from '../../../../lib/link'
+
 class EventsSingleHeader extends Component {
 
   renderTopTitle() {
@@ -20,6 +22,8 @@ class EventsSingleHeader extends Component {
   }
 
   render() {
+    const {event} = this.props;
+
     return (
       <div className="content-container">
 
@@ -29,7 +33,7 @@ class EventsSingleHeader extends Component {
           <Telescope.components.F8PageHeaderButtonsSection
             {...this.props}
             showEdit={true}
-            editLink={}
+            editLink={getEditEventLink(event)}
           />
         </div>
 

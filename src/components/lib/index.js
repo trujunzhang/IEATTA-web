@@ -61,7 +61,7 @@ Telescope.registerComponent('IEAEditRestaurant',                  require('./ove
 
 // overlayRestaurant(page)
 Telescope.registerComponent('RestaurantsDetail',                      require('./overlayrestaurant/page/RestaurantsDetail.jsx').default)
-Telescope.registerComponent('RestaurantForm',                         require('./overlayrestaurant/page/RestaurantForm.jsx').default)
+Telescope.registerComponent('RestaurantForm',                         require('./overlayrestaurant/page/EditRestaurantForm.jsx').default)
 Telescope.registerComponent('EventsItem',                             require('./overlayrestaurant/page/EventsItem.jsx').default)
 Telescope.registerComponent('EventsList',                             require('./overlayrestaurant/page/EventsList.jsx').default)
 Telescope.registerComponent('RestaurantsSingleHeader',                require('./overlayrestaurant/page/RestaurantsSingleHeader.jsx').default)

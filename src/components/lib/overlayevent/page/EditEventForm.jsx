@@ -9,12 +9,8 @@ const Form = t.form.Form;
 
 const I18n = require('react-redux-i18n').I18n;
 
-class RestaurantForm extends Component {
+class EditEventForm extends Component {
 
-  constructor(props, context) {
-    super(props)
-
-  }
 
   /**
    * ## render
@@ -40,7 +36,7 @@ class RestaurantForm extends Component {
       }
     }
 
-    const editRestaurantForm = t.struct({
+    const editEditEventForm = t.struct({
       displayName: t.String
     })
 
@@ -57,7 +53,7 @@ class RestaurantForm extends Component {
      */
     return (
       <Form ref='form'
-            type={editRestaurantForm}
+            type={editEditEventForm}
             options={options}
             value={this.props.value}
             onChange={this.props.onChange}
@@ -66,4 +62,4 @@ class RestaurantForm extends Component {
   }
 }
 
-export default RestaurantForm;
+export default EditEventForm;

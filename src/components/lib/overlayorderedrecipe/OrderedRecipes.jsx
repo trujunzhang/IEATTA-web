@@ -67,8 +67,8 @@ class OrderedRecipes extends Component {
       recipe: getModelByObjectId(nextProps, this.state.oid, this.state.recipe),
       forObject: getModelByObjectId(nextProps, this.state.oid, this.state.forObject),
       // photos
-      photosListTask: photosListTask,
       pageForm: getPageFormType('recipe', nextProps, this.state.pageForm),
+      photosListTask: photosListTask,
       selectPhotoIndex: getSelectPhoto(nextProps, photosListTask, this.state.selectPhotoIndex)
     })
 

@@ -67,8 +67,8 @@ class DetailedRestaurant extends Component {
       restaurant: getModelByObjectId(nextProps, this.state.rid, this.state.restaurant),
       forObject: getModelByObjectId(nextProps, this.state.rid, this.state.forObject),
       // photos
-      photosListTask: photosListTask,
       pageForm: getPageFormType('restaurant', nextProps, this.state.pageForm),
+      photosListTask: photosListTask,
       selectPhotoIndex: getSelectPhoto(nextProps, photosListTask, this.state.selectPhotoIndex)
     })
   }

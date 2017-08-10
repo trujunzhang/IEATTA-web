@@ -1,9 +1,37 @@
 import Telescope from '../../lib'
 import React, {Component} from 'react'
 
-const {loadEventPage} = require('../../../actions').default
+const {
+  loadEventPage,
+  loadRestaurantPage,
+  loadPhotosBrowser
+} = require('../../../actions').default
 
-const {getModelByObjectId} = require('../../filter/filterPosts')
+const {
+  PAGE_MAIN_FORM,
+  PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY,
+  PAGE_PHOTOS_BROWSER_FORM,
+  PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY,
+  PAGE_EDIT_FORM,
+  PAGE_OVERLAY_SELECTED_PHOTO_FORM,
+  PAGE_SINGLE_SELECTED_PHOTO_FORM,
+} = require('../../../lib/constants').default
+
+
+const {
+  getModelByObjectId,
+  getDefaultListTask,
+  byListId
+} = require('../../filter/filterPosts')
+
+const {
+  generatePhotoTerm,
+  getPageFormType,
+  getSelectPhoto,
+  checkEdit,
+  checkPhotosBrowser,
+  checkPhotosBrowserSelection
+} = require('../../filter/filterRoutes')
 
 class DetailedEvent extends Component {
   constructor(props, context) {
@@ -12,13 +40,16 @@ class DetailedEvent extends Component {
     this.state = this.initialState = {
       eid: props.params.eid,
       eslug: props.params.eslug,
-      event: null
+      event: null,
+      // Common
+      pageForm: getPageFormType('event', props, null),
     }
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
       event: getModelByObjectId(nextProps, this.state.eid, this.state.event),
+      pageForm: getPageFormType('event', nextProps, this.state.pageForm),
     })
   }
 
@@ -30,7 +61,15 @@ class DetailedEvent extends Component {
     const {event} = this.state;
 
     if (!!event) {
-      return (<Telescope.components.IEAEventsLayout event={event}/>)
+      switch (pageForm) {
+        case PAGE_MAIN_FORM:
+          return (<Telescope.components.IEAEventsLayout event={event}/>)
+        case PAGE_EDIT_FORM:
+          return (<Telescope.components.IEAEditRestaurant
+              {...this.state}
+              dispatch={this.props.dispatch}/>
+          )
+      }
     }
 
     return (

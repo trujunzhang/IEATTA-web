@@ -73,7 +73,7 @@ class IEAEditRestaurant extends Component {
 
   renderLeft() {
     return (
-      <Telescope.components.RestaurantForm
+      <Telescope.components.EditRestaurantForm
         form={this.props.editModel.form}
         value={this.state.value}
         onChange={this.onChange.bind(this)}/>
@@ -87,8 +87,6 @@ class IEAEditRestaurant extends Component {
     let displayName = this.props.editModel.form.fields.displayName;
 
     this.props.actions.updateModelRequest();
-
-    debugger
 
     try {
       await Promise.race([
