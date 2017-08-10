@@ -89,15 +89,9 @@ class DetailedRestaurant extends Component {
     if (!!restaurant && !!photos) {
       switch (pageForm) {
         case PAGE_SINGLE_SELECTED_PHOTO_FORM:
-          return (<div>
-              <Telescope.components.IEAPhotosSingleLayout {...this.state}/>
-            </div>
-          )
+          return (<Telescope.components.IEAPhotosSingleLayout {...this.state}/>)
         case PAGE_MAIN_FORM:
-          return (<div>
-              <Telescope.components.IEARestaurantsLayout  {...this.state}/>
-            </div>
-          )
+          return (<Telescope.components.IEARestaurantsLayout  {...this.state}/>)
         case PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY:
           return (<div>
               <Telescope.components.IEARestaurantsLayout  {...this.state}/>
@@ -113,10 +107,7 @@ class DetailedRestaurant extends Component {
             </div>
           )
         case PAGE_PHOTOS_BROWSER_FORM:
-          return (<div>
-              <Telescope.components.IEAPhotosBrowserLayout {...this.state}/>
-            </div>
-          )
+          return (<Telescope.components.IEAPhotosBrowserLayout {...this.state}/>)
         case PAGE_EDIT_FORM:
           return (<Telescope.components.IEAEditRestaurant
               {...this.state}
@@ -148,7 +139,7 @@ class DetailedRestaurant extends Component {
     this.setState({selectPhotoIndex: nextIndex})
 
     this.props.router.push({pathname: this.props.location.pathname, query: {select: photos[nextIndex].id}})
- }
+  }
 
 }
 
