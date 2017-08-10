@@ -5,8 +5,11 @@ import Photos from '../../../../lib/photos'
 class F8PhotosSelectLeftPanel extends Component {
 
   render() {
-    const {photos, selectPhotoIndex, forObject} = this.props;
+    const {photosListTask, selectPhotoIndex, forObject} = this.props;
+    const photos = photosListTask.results;
+
     const currentPhoto = photos[selectPhotoIndex];
+
     // alt="Photo of Roma Antica - San Francisco, CA, United States"
     const alt = `Photo of ${forObject.displayName}`;
 
