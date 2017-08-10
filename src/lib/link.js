@@ -1,7 +1,8 @@
 let _ = require('underscore')
 
 const subDomainPhotos = {
-  'restaurant': 'biz_photos'
+  'restaurant': 'biz_photos',
+  'recipe': 'recipe_photos',
 }
 
 function adjustNewQuery(router, newQuery) {
@@ -76,6 +77,6 @@ export function getPhotosBrowserSelectionLink(photo, photoType, forObject) {
   return `/${subDomainPhotos[photoType]}/${forObject.id}/${forObject.displayName}?select=${photo.id}`
 }
 
-export function getPhotosBrowserLink( photoType,forObject) {
+export function getPhotosBrowserLink(photoType, forObject) {
   return `/${subDomainPhotos[photoType]}/${forObject.id}/${forObject.displayName}`
 }

@@ -34,6 +34,7 @@ const createRoutes = (store) => {
       component: Telescope.components.UserLoginMain
     },
   ];
+
   const restaurantRoutes = [
     {
       // http://localhost:3000/biz/xxxxx
@@ -57,6 +58,29 @@ const createRoutes = (store) => {
     },
   ];
 
+
+  const recipeRoutes = [
+    {
+      // http://localhost:3000/orderedrecipe/SMHughBGNh/Jaron%20Lawrence/p25iag5OcM/OnNGSfwoou
+      path: 'orderedrecipe/(:oid)/(:oslug)',
+      component: Telescope.components.OrderedRecipes
+    },
+    {
+      // http://localhost:3000/biz/xxxxx
+      // https://www.yelp.com.sg/biz/my-two-cents-los-angeles-3
+      path: 'edit/recipe/(:rid)/(:rslug)',
+      component: Telescope.components.DetailedRestaurant
+    },
+    {
+      // http://localhost:3000/recipe_photos/OnNGSfwoou/Forno%20Vecchio
+      // http://localhost:3000/recipe_photos/OnNGSfwoou/Forno%20Vecchio?select=Px63VDvuud
+      // https://www.yelp.com/recipe_photos/roma-antica-san-francisco-3
+      // https://www.yelp.com/recipe_photos/roma-antica-san-francisco-3?select=x57_yoZarQuIn9y1r2jsQw
+      path: 'recipe_photos/(:rid)/(:rslug)',
+      component: Telescope.components.OrderedRecipes
+    },
+  ];
+
   const overlayRoutes = [
     {
       // http://localhost:3000/events/px09dUf7tw/xxx
@@ -69,11 +93,6 @@ const createRoutes = (store) => {
       path: 'ordereduser/(:uid)/(:uslug)/(:eid)/(:rid)',
       component: Telescope.components.OrderedUsers
     },
-    {
-      // http://localhost:3000/orderedrecipe/SMHughBGNh/Jaron%20Lawrence/p25iag5OcM/OnNGSfwoou
-      path: 'orderedrecipe/(:oid)/(:oslug)',
-      component: Telescope.components.OrderedRecipes
-    }
   ];
 
 
@@ -95,6 +114,7 @@ const createRoutes = (store) => {
       childRoutes: [
         ...loginRoutes,
         ...restaurantRoutes,
+        ...recipeRoutes,
         ...overlayRoutes,
         ...playgroundRoutes,
         {
