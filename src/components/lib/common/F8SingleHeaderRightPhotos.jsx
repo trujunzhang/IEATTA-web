@@ -1,5 +1,6 @@
 import Telescope from '../index'
 import React, {Component} from 'react'
+import Photos from '../../../lib/photos'
 
 import {getPhotosBrowserLink, getPhotosBrowserSelectionLink} from '../../../lib/link'
 import {Link} from 'react-router'
@@ -73,7 +74,7 @@ class F8SingleHeaderRightPhotos extends Component {
   renderFirstThumbnail() {
     const {photos, photoType, forObject} = this.props;
     const firstPhoto = photos[0];
-    const thumbnail01 = firstPhoto.thumbnail._url;
+
     return (
       <div className="js-photo photo photo-1">
         <div className="showcase-photo-box">
@@ -81,9 +82,9 @@ class F8SingleHeaderRightPhotos extends Component {
             <img
               alt="Photo of My Two Cents - Los Angeles, CA, United States. Chic, upscale - modern contemporary vibe. This &quot;ain't yo Mama's&quot; soul food kitchen.  This is 2017's take on Mississippi!"
               className="photo-box-img"
+              width="250"
               height="250"
-              src={thumbnail01}
-              width="250"/>
+              src={Photos.getPhotoThumbnailByPosition(this.props.photos, 0)}/>
           </Link>
 
         </div>
@@ -130,8 +131,7 @@ class F8SingleHeaderRightPhotos extends Component {
 
   renderSecondThumbnail() {
     const {photos, photoType, forObject} = this.props;
-    const secondPhoto = photos[0];
-    const thumbnail02 = secondPhoto.thumbnail._url;
+    const secondPhoto = photos[1];
     return (
       <div className="js-photo photo photo-2">
         <div className="showcase-photo-box">
@@ -140,9 +140,9 @@ class F8SingleHeaderRightPhotos extends Component {
             <img
               alt="Photo of My Two Cents - Los Angeles, CA, United States. BBQ fried chicken with fries and sweet potato crumble"
               className="photo-box-img"
+              width="250"
               height="250"
-              src={thumbnail02}
-              width="250"/>
+              src={Photos.getPhotoThumbnailByPosition(this.props.photos, 1)}/>
           </Link>
 
         </div>

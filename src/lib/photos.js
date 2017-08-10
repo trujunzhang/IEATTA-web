@@ -29,5 +29,10 @@ Photos.getListThumbnailUrl = function (item) {
   return '';
 }
 
+Photos.getPhotoThumbnailByPosition = function (photos, index) {
+  const firstPhoto = photos[index];
+  return Photos.getThumbnailUrl(firstPhoto)
+}
+
 
 export default Photos
