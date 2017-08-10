@@ -12,7 +12,6 @@ class DetailedEvent extends Component {
     this.state = this.initialState = {
       eid: props.params.eid,
       eslug: props.params.eslug,
-      isFetching: true,
       event: null
     }
   }
@@ -20,7 +19,6 @@ class DetailedEvent extends Component {
   componentWillReceiveProps(nextProps) {
     this.setState({
       event: getModelByObjectId(nextProps, this.state.eid, this.state.event),
-      isFetching: false
     })
   }
 
@@ -29,17 +27,17 @@ class DetailedEvent extends Component {
   }
 
   render() {
-    const {isFetching, event} = this.state;
+    const {event} = this.state;
 
-    if (isFetching) {
-      return (
-        <div className="placeholder_1WOC3">
-          <div className="loader_54XfI animationRotate loader_OEQVm"/>
-        </div>
-      )
+    if (!!event) {
+      return (<Telescope.components.IEAEventsLayout event={event}/>)
     }
 
-    return (<Telescope.components.IEAEventsLayout event={event}/>)
+    return (
+      <div className="placeholder_1WOC3">
+        <div className="loader_54XfI animationRotate loader_OEQVm"/>
+      </div>
+    )
   }
 
 }
