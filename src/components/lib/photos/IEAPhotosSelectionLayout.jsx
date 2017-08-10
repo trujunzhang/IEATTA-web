@@ -8,6 +8,7 @@ import {Link} from 'react-router'
 import {getPhotoSelectBackLink} from '../../../lib/link'
 
 class IEAPhotosSelectionLayout extends Component {
+
   renderCloseButton() {
     const {photoType, forObject, pageForm} = this.props;
 
