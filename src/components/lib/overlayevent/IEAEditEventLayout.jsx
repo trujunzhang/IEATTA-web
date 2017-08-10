@@ -160,7 +160,6 @@ class IEAEditEventLayout extends Component {
               <div className="column column-alpha ">
 
                 <h2>Update Event Details</h2>
-                <p>Any suggested changes to a business page must first be verified by Yelp’s moderators.</p>
 
                 {this.renderContent()}
 
