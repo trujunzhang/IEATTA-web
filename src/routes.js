@@ -123,6 +123,7 @@ const createRoutes = (store) => {
         ...loginRoutes,
         ...restaurantRoutes,
         ...recipeRoutes,
+        ...eventRoutes,
         ...overlayRoutes,
         ...playgroundRoutes,
         {
