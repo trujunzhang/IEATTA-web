@@ -68,7 +68,7 @@ const createRoutes = (store) => {
     {
       // http://localhost:3000/biz/xxxxx
       // https://www.yelp.com.sg/biz/my-two-cents-los-angeles-3
-      path: 'edit/recipe/(:rid)/(:rslug)',
+      path: 'edit/recipe/(:oid)/(:oslug)',
       component: Telescope.components.DetailedRestaurant
     },
     {
@@ -76,7 +76,7 @@ const createRoutes = (store) => {
       // http://localhost:3000/recipe_photos/OnNGSfwoou/Forno%20Vecchio?select=Px63VDvuud
       // https://www.yelp.com/recipe_photos/roma-antica-san-francisco-3
       // https://www.yelp.com/recipe_photos/roma-antica-san-francisco-3?select=x57_yoZarQuIn9y1r2jsQw
-      path: 'recipe_photos/(:rid)/(:rslug)',
+      path: 'recipe_photos/(:oid)/(:oslug)',
       component: Telescope.components.OrderedRecipes
     },
   ];

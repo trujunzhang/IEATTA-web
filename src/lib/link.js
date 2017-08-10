@@ -80,3 +80,15 @@ export function getPhotosBrowserSelectionLink(photo, photoType, forObject) {
 export function getPhotosBrowserLink(photoType, forObject) {
   return `/${subDomainPhotos[photoType]}/${forObject.id}/${forObject.displayName}`
 }
+
+export function geDetailedModelLink(modelType, forObject) {
+  switch (modelType) {
+    case 'restaurant':
+      return getRestaurantLink(forObject)
+    case 'recipe':
+      return getOrderedRecipeLink(forObject)
+  }
+  throw new Error('You need to set a proper photo type!')
+}
+
+

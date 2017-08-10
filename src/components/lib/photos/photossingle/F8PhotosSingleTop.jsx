@@ -2,11 +2,11 @@ import Telescope from '../../index'
 import React, {Component} from 'react';
 
 import {Link} from 'react-router'
-import {getRestaurantLink} from '../../../../lib/link'
+import {geDetailedModelLink} from '../../../../lib/link'
 
 class F8PhotosSingleTop extends Component {
   render() {
-    const {photos, photoType,forObject } = this.props;
+    const {photos, photoType, forObject} = this.props;
 
     return (
       <div className="media-details_header">
@@ -15,7 +15,7 @@ class F8PhotosSingleTop extends Component {
             <div className="arrange_unit arrange_unit--fill">
               <ul className="breadcrumbs">
                 <li>
-                  <Link to={getRestaurantLink(forObject)}>
+                  <Link to={geDetailedModelLink(photoType, forObject)}>
                     {forObject.displayName}
                   </Link>
                 </li>

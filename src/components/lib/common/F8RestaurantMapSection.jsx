@@ -11,6 +11,10 @@ class F8RestaurantMapSection extends Component {
   renderTopMap() {
     const {restaurant} = this.props;
 
+    if (typeof restaurant === 'undefined') {
+      throw new Error('You need to set a proper restaurant!')
+    }
+
     const latitude = restaurant.geoLocation.latitude;
     const longitude = restaurant.geoLocation.longitude;
     const position = [latitude, longitude];

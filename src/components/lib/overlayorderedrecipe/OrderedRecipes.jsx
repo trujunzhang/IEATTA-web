@@ -102,7 +102,11 @@ class OrderedRecipes extends Component {
 
     if (!!recipe && !!photos) {
 
+      // debugger
+
       switch (pageForm) {
+        case PAGE_SINGLE_SELECTED_PHOTO_FORM:
+          return (<Telescope.components.IEAPhotosSingleLayout {...this.state}/>)
         case PAGE_MAIN_FORM:
           return (
             (<Telescope.components.IEAOrderedRecipesLayout {...this.state} />)
