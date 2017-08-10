@@ -1,29 +1,82 @@
 import Telescope from '../../lib'
 import React, {Component} from 'react'
 
-const {resetLoadPage, loadOrderedRecipePage} = require('../../../actions').default
+import {withRouter} from 'react-router'
 
-const {getModelByObjectId} = require('../../filter/filterPosts')
+const {
+  loadOrderedRecipePage,
+  loadPhotosBrowser
+} = require('../../../actions').default
+
+const {
+  PAGE_MAIN_FORM,
+  PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY,
+  PAGE_PHOTOS_BROWSER_FORM,
+  PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY,
+  PAGE_EDIT_FORM,
+  PAGE_OVERLAY_SELECTED_PHOTO_FORM,
+  PAGE_SINGLE_SELECTED_PHOTO_FORM,
+} = require('../../../lib/constants').default
+
+
+const {
+  getModelByObjectId,
+  getDefaultListTask,
+  byListId
+} = require('../../filter/filterPosts')
+
+const {
+  getPageFormType,
+  getSelectPhoto,
+  checkEdit,
+  checkPhotosBrowser,
+  checkPhotosBrowserSelection
+} = require('../../filter/filterRoutes')
+
 
 class OrderedRecipes extends Component {
   constructor(props, context) {
     super(props)
 
-    props.dispatch(resetLoadPage())
+
+    const photoTerms = {
+      listId: 'photos-list-view-for-restaurants-' + props.params.oid,
+      forObjectId: props.params.oid,
+      photoType: 'recipe',
+      allItems: true
+    }
 
 
     this.state = this.initialState = {
       oid: props.params.oid,
       oslug: props.params.oslug,
+      // Detailed object
       recipe: null,
-      ready: false
+      forObject: null,
+      // photos
+      photosListTask: getDefaultListTask(photoTerms),
+      photos: null,
+      pageForm: getPageFormType(props, null),
+      photosTerms: photoTerms,
+      photoType: 'restaurant',
+      onPreIconClick: this.onPreIconClick.bind(this),
+      onNextIconClick: this.onNextIconClick.bind(this),
+      selectPhotoIndex: -1
     }
   }
 
   componentWillReceiveProps(nextProps) {
+    const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms, this.state.photosListTask);
+
     this.setState({
+      // Detailed object
       recipe: getModelByObjectId(nextProps, this.state.oid, this.state.recipe),
-      ready: true
+      forObject: getModelByObjectId(nextProps, this.state.oid, this.state.forObject),
+      // photos
+      photosListTask: photosListTask,
+      photos: photosListTask.results,
+      pageForm: getPageFormType(nextProps, this.state.pageForm),
+      selectPhotoIndex: getSelectPhoto(nextProps, photosListTask, this.state.selectPhotoIndex)
     })
 
     const currentOID = nextProps.params.oid;
@@ -32,7 +85,6 @@ class OrderedRecipes extends Component {
       this.setState({
         oid: nextProps.params.oid,
         oslug: nextProps.params.oslug,
-        ready: false
       })
 
       nextProps.dispatch(loadOrderedRecipePage(currentOID))
@@ -42,12 +94,14 @@ class OrderedRecipes extends Component {
 
   componentDidMount() {
     this.props.dispatch(loadOrderedRecipePage(this.state.oid))
+    this.props.dispatch(loadPhotosBrowser(this.state.photosTerms))
   }
 
   render() {
-    const {ready, recipe} = this.state;
+    const {photos, recipe, pageForm, selectPhotoIndex} = this.state;
 
     if (!!recipe) {
+
       return (<Telescope.components.IEAOrderedRecipesLayout {...this.state} />)
     }
 
@@ -58,15 +112,38 @@ class OrderedRecipes extends Component {
     )
   }
 
+  onPreIconClick() {
+    const {photos, restaurant, pageForm, selectPhotoIndex} = this.state;
+    const totalPhotosLength = photos.length;
+
+    let preIndex = selectPhotoIndex - 1;
+    if (preIndex < 0) preIndex = 0;
+    this.setState({selectPhotoIndex: preIndex})
+
+    this.props.router.push({pathname: this.porps.location.pathname, query: {select: photos[preIndex].id}})
+  }
+
+  onNextIconClick() {
+    const {photos, selectPhotoIndex} = this.state;
+    const totalPhotosLength = photos.length;
+
+    let nextIndex = selectPhotoIndex + 1;
+    if (nextIndex >= totalPhotosLength) nextIndex = totalPhotosLength - 1;
+    this.setState({selectPhotoIndex: nextIndex})
+
+    this.props.router.push({pathname: this.props.location.pathname, query: {select: photos[nextIndex].id}})
+  }
+
 }
 
 const {connect} = require('react-redux')
 
 function select(store) {
   return {
-    detailedModelsOverlay: store.detailedModelsOverlay
+    detailedModelsOverlay: store.detailedModelsOverlay,
+    listContainerTasks: store.listContainerTasks
   }
 }
 
-export default connect(select)(OrderedRecipes)
+export default withRouter(connect(select)(OrderedRecipes));
 

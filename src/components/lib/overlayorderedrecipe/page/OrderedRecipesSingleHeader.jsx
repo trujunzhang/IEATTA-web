@@ -184,7 +184,7 @@ class OrderedRecipesSingleHeader extends Component {
 
           {this.renderBizPageSubheaderLeft()}
 
-          <Telescope.components.F8SingleHeaderRightPhotos photos={recipe.photos}
+          <Telescope.components.F8SingleHeaderRightPhotos photos={this.props.photos}
                                                           photoType="recipe"
                                                           forObject={recipe}
           />

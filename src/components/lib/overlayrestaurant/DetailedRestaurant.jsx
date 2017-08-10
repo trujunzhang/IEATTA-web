@@ -48,8 +48,10 @@ class DetailedRestaurant extends Component {
     this.state = this.initialState = {
       rid: props.params.rid,
       rslug: props.params.rslug,
+      // Detailed object
       restaurant: null,
       forObject: null,
+      // photos
       photosListTask: getDefaultListTask(photoTerms),
       photos: null,
       pageForm: getPageFormType(props, null),
@@ -65,8 +67,10 @@ class DetailedRestaurant extends Component {
     const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms, this.state.photosListTask);
 
     this.setState({
+      // Detailed object
       restaurant: getModelByObjectId(nextProps, this.state.rid, this.state.restaurant),
       forObject: getModelByObjectId(nextProps, this.state.rid, this.state.forObject),
+      // photos
       photosListTask: photosListTask,
       photos: photosListTask.results,
       pageForm: getPageFormType(nextProps, this.state.pageForm),
@@ -144,7 +148,7 @@ class DetailedRestaurant extends Component {
     this.setState({selectPhotoIndex: nextIndex})
 
     this.props.router.push({pathname: this.props.location.pathname, query: {select: photos[nextIndex].id}})
-  }
+ }
 
 }
 
