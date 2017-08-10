@@ -6,7 +6,7 @@ import Users from '../../../lib/users'
 class IEAPhotosSingleLayout extends Component {
 
   renderContent() {
-    const {photos, selectPhotoIndex} = this.props;
+    const {selectPhotoIndex} = this.props;
 
     if (selectPhotoIndex !== -1) {
       return (
