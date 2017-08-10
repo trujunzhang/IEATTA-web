@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 import Photos from '../../../lib/photos'
 
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
+import {Link} from 'react-router'
 
 class F8PageHeaderButtonsSection extends Component {
 
