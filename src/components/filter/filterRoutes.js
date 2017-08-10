@@ -88,7 +88,6 @@ export function getSelectPhoto(props: Any, photosListTask: Any, lastPhotoIndex) 
       const selectedIndex = _.findLastIndex(results, {
         id: isPhotoBrowserSelectionId
       });
-
       return selectedIndex;
     }
   }
