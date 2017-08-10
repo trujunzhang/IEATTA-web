@@ -26,12 +26,15 @@ class F8PhotosTitleHeader extends Component {
   }
 
   renderObjectStory() {
+    const {photos, photoType, forObject} = this.props;
+
     return (
       <div className="media-story">
         <div className="media-title clearfix">
-          <a className="biz-name js-analytics-click" data-analytics-label="biz-name"
-             href="/biz/roma-antica-san-francisco-3"
-             data-hovercard-id="wuDfO9BuLXh37gA1JpznGQ"><span>Roma Antica</span></a>
+
+          <Link className="biz-name js-analytics-click" to={getRestaurantLink(forObject)}>
+            <span>{forObject.displayName}</span>
+          </Link>
 
         </div>
         <div className="biz-passport_rating">
