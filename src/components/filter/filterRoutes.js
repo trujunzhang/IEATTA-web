@@ -86,7 +86,7 @@ export function getSelectPhoto(props: Any, photosListTask: Any, lastPhoto) {
         id: isPhotoBrowserSelectionId
       });
 
-      return results[selectedIndex];
+      return selectedIndex;
     }
   }
 

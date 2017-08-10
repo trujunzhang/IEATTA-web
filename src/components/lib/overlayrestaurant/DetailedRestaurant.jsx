@@ -54,7 +54,7 @@ class DetailedRestaurant extends Component {
       photoType: 'restaurant',
       onPreIconClick: this.onPreIconClick.bind(this),
       onNextIconClick: this.onNextIconClick.bind(this),
-      selectPhoto: null
+      selectPhotoIndex: -1
     }
   }
 
@@ -66,7 +66,7 @@ class DetailedRestaurant extends Component {
       photosListTask: photosListTask,
       photos: photosListTask.results,
       pageForm: getPageFormType(nextProps, this.state.pageForm),
-      selectPhoto: getSelectPhoto(nextProps,photosListTask, this.state.selectPhoto)
+      selectPhotoIndex: getSelectPhoto(nextProps, photosListTask, this.state.selectPhoto)
     })
   }
 
@@ -76,7 +76,7 @@ class DetailedRestaurant extends Component {
   }
 
   render() {
-    const {photos, restaurant, pageForm} = this.state;
+    const {photos, restaurant, pageForm, selectPhotoIndex} = this.state;
 
     if (!!restaurant && !!photos) {
       switch (pageForm) {
