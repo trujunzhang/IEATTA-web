@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 class F8PhotosSelectNavigatorBar extends Component {
   render() {
     return (
-      <div className="media-nav js-media-nav" data-component-bound="true">
+      <div className="media-nav js-media-nav" >
         <a
           onClick={this.props.onPreIconClick}
           className="media-nav_link media-nav_link--prev js-media-nav_link--prev is-hovered"
@@ -34,9 +34,6 @@ class F8PhotosSelectNavigatorBar extends Component {
         </a>
 
       </div>
-
-
-
     );
   }
 }
