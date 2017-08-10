@@ -39,7 +39,7 @@ const {
 
 
 import type {Action} from '../actions/types'
-let slugify = require('slugify')
+const slugify = require('slugify')
 
 export type State = {
   isLoggedIn: boolean,

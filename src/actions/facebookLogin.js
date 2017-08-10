@@ -50,7 +50,7 @@ const {
   LOGGED_OUT,
 } = require('../lib/constants').default
 
-let slugify = require('slugify')
+const slugify = require('slugify')
 // const FacebookSDK = require('FacebookSDK')
 const {updateInstallation} = require('./installation')
 

@@ -38,7 +38,7 @@ const {
   SET_SHARING,
 } = require('../lib/constants').default
 
-let slugify = require('slugify')
+const slugify = require('slugify')
 const {updateInstallation} = require('./installation')
 
 const {fromParseUser} = require('../reducers/parseModels')

@@ -1,20 +1,8 @@
-let _ = require('underscore')
+const _ = require('underscore')
+
+const slugify = require('slugify')
 
 import {SubDomainPhotos} from '../actions/types'
-
-function adjustNewQuery(router, newQuery) {
-  const query = _.clone(router.location.query)
-  if (query.before && query.after) {
-    newQuery['before'] = query.before
-    newQuery['after'] = query.after
-  }
-}
-
-export function pushForTopic(router, topic) {
-  const obj = {pathname: `/topic/${topic.id}/${topic.name}`, query: {}}
-  adjustNewQuery(router, obj.query)
-  router.push(obj)
-}
 
 export function showDetailedPagePath(router, post) {
   const {location} = router
@@ -22,18 +10,12 @@ export function showDetailedPagePath(router, post) {
   router.push(obj)
 }
 
-export function cleanUpQuery(router) {
-  const {location} = router
-  const obj = {pathname: location.pathname, query: {}}
-  router.push(obj)
-}
-
 export function getRestaurantLink(restaurant) {
-  return `/biz/${restaurant.id}/${restaurant.displayName}`
+  return `/biz/${restaurant.id}/${slugify(restaurant.displayName)}`
 }
 
 export function getEventLink(event) {
-  return `/events/${event.id}/${event.displayName}`
+  return `/events/${event.id}/${slugify(event.displayName)}`
 }
 
 /**
@@ -44,7 +26,7 @@ export function getEventLink(event) {
  * @returns {string}
  */
 export function getOrderedUserLink(user, peopleInEvent) {
-  return `/ordereduser/${user.id}/${user.username}/${peopleInEvent.eventId}/${peopleInEvent.restaurantId}`
+  return `/ordereduser/${user.id}/${slugify(user.username)}/${peopleInEvent.eventId}/${peopleInEvent.restaurantId}`
 }
 
 /**
@@ -54,11 +36,11 @@ export function getOrderedUserLink(user, peopleInEvent) {
  * @returns {string}
  */
 export function getOrderedRecipeLink(recipe) {
-  return `/orderedrecipe/${recipe.id}/${recipe.displayName}`
+  return `/orderedrecipe/${recipe.id}/${slugify(recipe.displayName)}`
 }
 
 export function getEditRestaurantLink(restaurant) {
-  return `/edit/biz/${restaurant.id}/${restaurant.displayName}`
+  return `/edit/biz/${restaurant.id}/${slugify(restaurant.displayName)}`
 }
 
 /**
@@ -70,11 +52,11 @@ export function getEditRestaurantLink(restaurant) {
  * @returns {string}
  */
 export function getPhotosBrowserSelectionLink(photo, photoType, forObject) {
-  return `/${SubDomainPhotos[photoType]}/${forObject.id}/${forObject.displayName}?select=${photo.id}`
+  return `/${SubDomainPhotos[photoType]}/${forObject.id}/${slugify(forObject.displayName)}?select=${photo.id}`
 }
 
 export function getPhotosBrowserLink(photoType, forObject) {
-  return `/${SubDomainPhotos[photoType]}/${forObject.id}/${forObject.displayName}`
+  return `/${SubDomainPhotos[photoType]}/${forObject.id}/${slugify(forObject.displayName)}`
 }
 
 export function geDetailedModelLink(modelType, forObject) {

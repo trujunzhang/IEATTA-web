@@ -35,7 +35,7 @@ const {
 const {User, fromParseUser} = require('./parseModels')
 
 import type {Action} from '../actions/types'
-let slugify = require('slugify')
+const slugify = require('slugify')
 
 export type State = {
   ready: boolean,
