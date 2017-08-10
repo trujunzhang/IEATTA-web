@@ -9,6 +9,10 @@ const Photos = {}
  */
 Photos.config = {}
 
+Photos.getThumbnailUrl = function (photo) {
+  return photo.thumbnail.url;
+}
+
 Photos.getListThumbnailUrl = function (item) {
   const photos = item.photos || [];
 

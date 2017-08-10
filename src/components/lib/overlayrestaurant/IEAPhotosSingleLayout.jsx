@@ -6,9 +6,9 @@ import Users from '../../../lib/users'
 class IEAPhotosSingleLayout extends Component {
 
   renderContent() {
-    const {photos, restaurant, pageForm, selectPhotoIndex} = this.props;
+    const {photos, selectPhotoIndex} = this.props;
 
-    if (!!selectPhotoIndex && selectPhotoIndex !== -1) {
+    if (selectPhotoIndex !== -1) {
       return (
         <div
           className="media-details_container media-details_container--fixed-height media-details_container--with-sidebar">
