@@ -13,10 +13,10 @@ class IEAPhotosSelectionLayout extends Component {
            onClick={this.props.goBack}>
         Close
         <span className="icon icon--24-close icon--size-24 icon--currentColor u-space-l-half"
-              id="icon_24X24 ">
+              id="icon_24X24">
         <svg className="icon_svg">
-    <path
-      d="M17.657 19.07L12 13.415 6.343 19.07 4.93 17.658 10.585 12 4.93 6.343 6.342 4.93 12 10.585l5.657-5.657L19.07 6.34 13.416 12l5.657 5.657-1.413 1.414z"/>
+       <path
+         d="M17.657 19.07L12 13.415 6.343 19.07 4.93 17.658 10.585 12 4.93 6.343 6.342 4.93 12 10.585l5.657-5.657L19.07 6.34 13.416 12l5.657 5.657-1.413 1.414z"/>
         </svg>
       </span>
       </div>
