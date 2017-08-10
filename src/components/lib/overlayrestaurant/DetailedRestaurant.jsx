@@ -20,12 +20,12 @@ const {
 const {
   getModelByObjectId,
   getDefaultListTask,
-  getSelectPhoto,
   byListId
 } = require('../../filter/filterPosts')
 
 const {
   getPageFormType,
+  getSelectPhoto,
   checkEdit,
   checkPhotosBrowser,
   checkPhotosBrowserSelection
@@ -53,7 +53,8 @@ class DetailedRestaurant extends Component {
       photosTerms: photoTerms,
       photoType: 'restaurant',
       onPreIconClick: this.onPreIconClick.bind(this),
-      onNextIconClick: this.onNextIconClick.bind(this)
+      onNextIconClick: this.onNextIconClick.bind(this),
+      selectPhoto: null
     }
   }
 
@@ -65,6 +66,7 @@ class DetailedRestaurant extends Component {
       photosListTask: photosListTask,
       photos: photosListTask.results,
       pageForm: getPageFormType(nextProps, this.state.pageForm),
+      selectPhoto: getSelectPhoto(nextProps,photosListTask, this.state.selectPhoto)
     })
   }
 

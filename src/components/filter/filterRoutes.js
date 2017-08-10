@@ -76,3 +76,20 @@ export function getPageFormType(props: Object, lastFormType: Any) {
 
   return PAGE_MAIN_FORM;
 }
+
+export function getSelectPhoto(props: Any, photosListTask: Any, lastPhoto) {
+  const {results} = photosListTask;
+  if (results && results.length > 0) {
+    const isPhotoBrowserSelectionId = checkPhotosBrowserSelection(props);
+    if (!!isPhotoBrowserSelectionId && isPhotoBrowserSelectionId !== '') {
+      const selectedIndex = _.findLastIndex(results, {
+        id: isPhotoBrowserSelectionId
+      });
+
+      return results[selectedIndex];
+    }
+  }
+
+
+  return lastPhoto;
+}
