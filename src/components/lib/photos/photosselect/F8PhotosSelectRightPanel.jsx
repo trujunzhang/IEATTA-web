@@ -3,8 +3,6 @@ import React, {Component} from 'react';
 
 class F8PhotosSelectRightPanel extends Component {
   render() {
-    const {photos} = this.props;
-
     return (
 
       <div className="media-details-grid_side media-details-grid_side--with-local-ads">

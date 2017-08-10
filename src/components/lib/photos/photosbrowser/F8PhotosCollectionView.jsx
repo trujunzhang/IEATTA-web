@@ -29,12 +29,12 @@ class F8PhotosCollectionView extends Component {
 
   render() {
     const {photosListTask} = this.props;
-    const {results} = photosListTask;
+    const photos = photosListTask.results;
 
     return (
       <div className="media-landing_gallery photos">
         <ul className="photo-box-grid photo-box-grid--highlight photo-box-grid--small clearfix lightbox-media-parent">
-          {results.map((photo, item) => {
+          {photos.map((photo, item) => {
             return this.renderRow(photo)
           })}
         </ul>

@@ -8,7 +8,8 @@ import {geDetailedModelLink} from '../../../../lib/link'
 class F8PhotosTitleHeader extends Component {
 
   renderObjectAvator() {
-    const {photos, photoType, forObject} = this.props;
+    const {photoType, forObject} = this.props;
+
     return (
       <div className="media-avatar">
         <div className="photo-box pb-30s">
@@ -27,7 +28,7 @@ class F8PhotosTitleHeader extends Component {
   }
 
   renderObjectStory() {
-    const {photos, photoType, forObject} = this.props;
+    const {photoType, forObject} = this.props;
 
     return (
       <div className="media-story">
@@ -57,7 +58,7 @@ class F8PhotosTitleHeader extends Component {
   }
 
   renderBottom() {
-    const {photos, photoType, forObject} = this.props;
+    const {photoType, forObject} = this.props;
 
     return (
       <div className="section-header media-header--tabbed">
@@ -99,7 +100,7 @@ class F8PhotosTitleHeader extends Component {
 
 
   render() {
-    const {photos, photoType, forObject} = this.props;
+    const {photoType, forObject} = this.props;
 
     return (
       <div className="js-media-landing_header media-landing_header">
