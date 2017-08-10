@@ -1,4 +1,4 @@
-import Telescope from '../../../lib'
+import Telescope from '../../index'
 import React, {Component} from 'react';
 
 import {getPhotosBrowserLink, getPhotosBrowserSelectionLink} from '../../../../lib/link'

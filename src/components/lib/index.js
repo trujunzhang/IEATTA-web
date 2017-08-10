@@ -139,21 +139,21 @@ Telescope.registerComponent('UsersMenu',               require('./users/UsersMen
 Telescope.registerComponent('TcombCommonExample',               require('./playground/tcomb/TcombCommonExample.jsx').default)
 
 // Photos layout
-Telescope.registerComponent('IEAPhotosSelectionLayout',               require('./overlayrestaurant/IEAPhotosSelectionLayout.jsx').default)
-Telescope.registerComponent('IEAPhotosBrowserLayout',                 require('./overlayrestaurant/IEAPhotosBrowserLayout.jsx').default)
-Telescope.registerComponent('IEAPhotosSingleLayout',                  require('./overlayrestaurant/IEAPhotosSingleLayout.jsx').default)
+Telescope.registerComponent('IEAPhotosSelectionLayout',               require('./photos/IEAPhotosSelectionLayout.jsx').default)
+Telescope.registerComponent('IEAPhotosBrowserLayout',                 require('./photos/IEAPhotosBrowserLayout.jsx').default)
+Telescope.registerComponent('IEAPhotosSingleLayout',                  require('./photos/IEAPhotosSingleLayout.jsx').default)
 
 // Photos Browser
-Telescope.registerComponent('F8PhotosCollectionView',                 require('./overlayrestaurant/photosbrowser/F8PhotosCollectionView.jsx').default)
-Telescope.registerComponent('F8PhotosTitleHeader',                    require('./overlayrestaurant/photosbrowser/F8PhotosTitleHeader.jsx').default)
+Telescope.registerComponent('F8PhotosCollectionView',                 require('./photos/photosbrowser/F8PhotosCollectionView.jsx').default)
+Telescope.registerComponent('F8PhotosTitleHeader',                    require('./photos/photosbrowser/F8PhotosTitleHeader.jsx').default)
 
 // Photos Select
-Telescope.registerComponent('F8PhotosSelectLeftPanel',                    require('./overlayrestaurant/photosselect/F8PhotosSelectLeftPanel.jsx').default)
-Telescope.registerComponent('F8PhotosSelectLeftPanelFooterView',          require('./overlayrestaurant/photosselect/F8PhotosSelectLeftPanelFooterView.jsx').default)
-Telescope.registerComponent('F8PhotosSelectRightPanel',                   require('./overlayrestaurant/photosselect/F8PhotosSelectRightPanel.jsx').default)
-Telescope.registerComponent('F8PhotosSelectNavigatorBar',                 require('./overlayrestaurant/photosselect/F8PhotosSelectNavigatorBar.jsx').default)
+Telescope.registerComponent('F8PhotosSelectLeftPanel',                    require('./photos/photosselect/F8PhotosSelectLeftPanel.jsx').default)
+Telescope.registerComponent('F8PhotosSelectLeftPanelFooterView',          require('./photos/photosselect/F8PhotosSelectLeftPanelFooterView.jsx').default)
+Telescope.registerComponent('F8PhotosSelectRightPanel',                   require('./photos/photosselect/F8PhotosSelectRightPanel.jsx').default)
+Telescope.registerComponent('F8PhotosSelectNavigatorBar',                 require('./photos/photosselect/F8PhotosSelectNavigatorBar.jsx').default)
 
 // Photos Single
-Telescope.registerComponent('F8PhotosSingleTop',                      require('./overlayrestaurant/photossingle/F8PhotosSingleTop.jsx').default)
+Telescope.registerComponent('F8PhotosSingleTop',                      require('./photos/photossingle/F8PhotosSingleTop.jsx').default)
 
 export default Telescope

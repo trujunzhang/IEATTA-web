@@ -1,4 +1,4 @@
-import Telescope from '../../../lib'
+import Telescope from '../../index'
 import React, {Component} from 'react';
 
 class F8PhotosSelectNavigatorBar extends Component {
