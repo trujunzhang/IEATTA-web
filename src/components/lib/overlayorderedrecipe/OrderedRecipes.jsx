@@ -58,7 +58,7 @@ class OrderedRecipes extends Component {
       photos: null,
       pageForm: getPageFormType(props, null),
       photosTerms: photoTerms,
-      photoType: 'restaurant',
+      photoType: 'recipe',
       onPreIconClick: this.onPreIconClick.bind(this),
       onNextIconClick: this.onNextIconClick.bind(this),
       selectPhotoIndex: -1
