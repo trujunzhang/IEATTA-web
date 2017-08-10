@@ -6,8 +6,7 @@ import {getRestaurantLink} from '../../../../lib/link'
 
 class F8PhotosSingleTop extends Component {
   render() {
-    const forObject = this.props.restaurant;
-    const {photos, photoType} = this.props;
+    const {photos, photoType,forObject } = this.props;
 
     return (
       <div className="media-details_header">
