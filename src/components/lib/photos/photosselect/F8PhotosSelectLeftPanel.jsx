@@ -9,6 +9,7 @@ class F8PhotosSelectLeftPanel extends Component {
     const currentPhoto = photos[selectPhotoIndex];
     // alt="Photo of Roma Antica - San Francisco, CA, United States"
     const alt = `Photo of ${forObject.displayName}`;
+
     return (
 
       <div className="media-details-grid_main">
