@@ -11,11 +11,6 @@ const I18n = require('react-redux-i18n').I18n;
 
 class EditRestaurantForm extends Component {
 
-  constructor(props, context) {
-    super(props)
-
-  }
-
   /**
    * ## render
    *

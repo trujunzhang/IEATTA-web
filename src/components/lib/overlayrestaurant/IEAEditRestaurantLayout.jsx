@@ -165,7 +165,6 @@ class IEAEditRestaurantLayout extends Component {
       <div
         className="biz-attrib-form yform"
         id="biz_attrib_form"
-        method="POST"
         name="biz_attrib_form">
 
         {this.renderRight()}
@@ -183,7 +182,6 @@ class IEAEditRestaurantLayout extends Component {
       <div className="main-content-wrap main-content-wrap--full">
 
         <div id="super-container" className="content-container">
-
 
           <div className="container">
             <div className="clearfix layout-block layout-full" id="update-biz-details">
