@@ -4,12 +4,10 @@ import Posts from '../../../lib/posts'
 import Users from '../../../lib/users'
 
 import {Link} from 'react-router'
-import {withRouter} from 'react-router'
 
 import {getPhotoSelectBackLink} from '../../../lib/link'
 
 class IEAPhotosSelectionLayout extends Component {
-
   renderCloseButton() {
     const {photoType, forObject, pageForm} = this.props;
 
@@ -32,23 +30,9 @@ class IEAPhotosSelectionLayout extends Component {
     return (
       <div className="media-lightbox">
         <div className="media-details js-media-details js-media-details-template">
-          <div className="media-details_container media-details_container--embed media-details_container--with-sidebar">
-            <div className="media-container js-media-container">
-              <div className="media-details-grid">
 
-                <Telescope.components.F8PhotosSelectLeftPanel {...this.props}/>
-                {/*{01-left-panel.html}*/}
+          <Telescope.components.F8PhotosSelectPage {...this.props}/>
 
-                <Telescope.components.F8PhotosSelectRightPanel {...this.props}/>
-                {/*{02-right-panel.html}*/}
-
-              </div>
-            </div>
-
-            <Telescope.components.F8PhotosSelectNavigatorBar {...this.props}/>
-            {/*{03-left-right-navigator.html}*/}
-
-          </div>
         </div>
       </div>
 
@@ -69,12 +53,4 @@ class IEAPhotosSelectionLayout extends Component {
 }
 
 
-import {connect} from 'react-redux'
-
-function select(store, ownProps) {
-  return {
-    goBack: ownProps.router.goBack
-  };
-}
-
-export default withRouter(connect(select)(IEAPhotosSelectionLayout));
+export default IEAPhotosSelectionLayout;
