@@ -39,7 +39,7 @@ class IEAPhotosBrowserLayout extends Component {
 
               <div className="media-landing js-media-landing">
 
-                <Telescope.components.F8PhotosCollectionView {...this.props}/>
+                {/*<Telescope.components.F8PhotosCollectionView {...this.props}/>*/}
 
                 {this.renderFooter()}
 

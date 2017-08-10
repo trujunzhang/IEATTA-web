@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import Photos from '../../../../lib/photos'
 
 import {Link} from 'react-router'
-import {getRestaurantLink} from '../../../../lib/link'
+import {geDetailedModelLink} from '../../../../lib/link'
 
 class F8PhotosTitleHeader extends Component {
 
@@ -13,7 +13,7 @@ class F8PhotosTitleHeader extends Component {
       <div className="media-avatar">
         <div className="photo-box pb-30s">
 
-          <Link className="js-analytics-click" to={getRestaurantLink(forObject)}>
+          <Link className="js-analytics-click" to={geDetailedModelLink(photoType, forObject)}>
             <img alt={forObject.displayName}
                  className="photo-box-img"
                  width="30"
@@ -33,14 +33,13 @@ class F8PhotosTitleHeader extends Component {
       <div className="media-story">
         <div className="media-title clearfix">
 
-          <Link className="biz-name js-analytics-click" to={getRestaurantLink(forObject)}>
+          <Link className="biz-name js-analytics-click" to={geDetailedModelLink(photoType, forObject)}>
             <span>{forObject.displayName}</span>
           </Link>
 
         </div>
         <div className="biz-passport_rating">
           <div className="biz-rating biz-rating-medium clearfix">
-
 
             <Telescope.components.F8StarIcon rate="3" iconType="small" iconExtension="rating"/>
 

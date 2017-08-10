@@ -56,7 +56,7 @@ class OrderedRecipes extends Component {
       // photos
       photosListTask: getDefaultListTask(photoTerms),
       photos: null,
-      pageForm: getPageFormType('recipe',props, null),
+      pageForm: getPageFormType('recipe', props, null),
       photosTerms: photoTerms,
       photoType: 'recipe',
       onPreIconClick: this.onPreIconClick.bind(this),
@@ -75,7 +75,7 @@ class OrderedRecipes extends Component {
       // photos
       photosListTask: photosListTask,
       photos: photosListTask.results,
-      pageForm: getPageFormType('recipe',nextProps, this.state.pageForm),
+      pageForm: getPageFormType('recipe', nextProps, this.state.pageForm),
       selectPhotoIndex: getSelectPhoto(nextProps, photosListTask, this.state.selectPhotoIndex)
     })
 
@@ -101,9 +101,6 @@ class OrderedRecipes extends Component {
     const {photos, recipe, pageForm, selectPhotoIndex} = this.state;
 
     if (!!recipe && !!photos) {
-
-      debugger
-
       switch (pageForm) {
         case PAGE_SINGLE_SELECTED_PHOTO_FORM:
           return (<Telescope.components.IEAPhotosSingleLayout {...this.state}/>)
