@@ -53,7 +53,6 @@ class DetailedRestaurant extends Component {
       forObject: null,
       // photos
       photosListTask: getDefaultListTask(photoTerms),
-      photos: null,
       pageForm: getPageFormType('restaurant', props, null),
       photosTerms: photoTerms,
       photoType: 'restaurant',
@@ -72,7 +71,6 @@ class DetailedRestaurant extends Component {
       forObject: getModelByObjectId(nextProps, this.state.rid, this.state.forObject),
       // photos
       photosListTask: photosListTask,
-      photos: photosListTask.results,
       pageForm: getPageFormType('restaurant', nextProps, this.state.pageForm),
       selectPhotoIndex: getSelectPhoto(nextProps, photosListTask, this.state.selectPhotoIndex)
     })
@@ -84,9 +82,9 @@ class DetailedRestaurant extends Component {
   }
 
   render() {
-    const {photos, restaurant, pageForm, selectPhotoIndex} = this.state;
+    const {photosListTask, restaurant, pageForm, selectPhotoIndex} = this.state;
 
-    if (!!restaurant && !!photos) {
+    if (!!restaurant && !!photosListTask.ready) {
       switch (pageForm) {
         case PAGE_SINGLE_SELECTED_PHOTO_FORM:
           return (<Telescope.components.IEAPhotosSingleLayout {...this.state}/>)
@@ -119,7 +117,8 @@ class DetailedRestaurant extends Component {
   }
 
   onPreIconClick() {
-    const {photos, restaurant, pageForm, selectPhotoIndex} = this.state;
+    const {photosListTask, selectPhotoIndex} = this.state;
+    const photos = photosListTask.results;
     const totalPhotosLength = photos.length;
 
     let preIndex = selectPhotoIndex - 1;
@@ -130,7 +129,8 @@ class DetailedRestaurant extends Component {
   }
 
   onNextIconClick() {
-    const {photos, selectPhotoIndex} = this.state;
+    const {photosListTask, selectPhotoIndex} = this.state;
+    const photos = photosListTask.results;
     const totalPhotosLength = photos.length;
 
     let nextIndex = selectPhotoIndex + 1;

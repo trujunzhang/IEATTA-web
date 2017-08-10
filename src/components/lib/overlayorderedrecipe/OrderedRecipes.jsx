@@ -53,7 +53,6 @@ class OrderedRecipes extends Component {
       forObject: null,
       // photos
       photosListTask: getDefaultListTask(photoTerms),
-      photos: null,
       pageForm: getPageFormType('recipe', props, null),
       photosTerms: photoTerms,
       photoType: 'recipe',
@@ -72,7 +71,6 @@ class OrderedRecipes extends Component {
       forObject: getModelByObjectId(nextProps, this.state.oid, this.state.forObject),
       // photos
       photosListTask: photosListTask,
-      photos: photosListTask.results,
       pageForm: getPageFormType('recipe', nextProps, this.state.pageForm),
       selectPhotoIndex: getSelectPhoto(nextProps, photosListTask, this.state.selectPhotoIndex)
     })
@@ -96,7 +94,7 @@ class OrderedRecipes extends Component {
   }
 
   render() {
-    const {photos, recipe, pageForm, selectPhotoIndex} = this.state;
+    const {photosListTask, recipe, pageForm, selectPhotoIndex} = this.state;
 
     if (!!recipe && !!photos) {
       switch (pageForm) {
@@ -132,8 +130,8 @@ class OrderedRecipes extends Component {
   }
 
   onPreIconClick() {
-    const {photos, restaurant, pageForm, selectPhotoIndex} = this.state;
-    const totalPhotosLength = photos.length;
+    const {photosListTask, selectPhotoIndex} = this.state;
+    const photos = photosListTask.results;
 
     let preIndex = selectPhotoIndex - 1;
     if (preIndex < 0) preIndex = 0;
@@ -143,8 +141,8 @@ class OrderedRecipes extends Component {
   }
 
   onNextIconClick() {
-    const {photos, selectPhotoIndex} = this.state;
-    const totalPhotosLength = photos.length;
+    const {photosListTask, selectPhotoIndex} = this.state;
+    const photos = photosListTask.results;
 
     let nextIndex = selectPhotoIndex + 1;
     if (nextIndex >= totalPhotosLength) nextIndex = totalPhotosLength - 1;
