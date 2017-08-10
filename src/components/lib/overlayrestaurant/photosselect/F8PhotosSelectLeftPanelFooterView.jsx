@@ -30,6 +30,23 @@ class F8PhotosSelectLeftPanelFooterView extends Component {
     )
   }
 
+  renderMiddle() {
+    const {photos, photoType, forObject, selectPhotoIndex} = this.props;
+    return (
+      <li className="media-footer_count">
+                      <span className="media-count js-media-count">
+                        <span
+                          className="media-count_current">{selectPhotoIndex + 1}</span> of <span
+                        className="media-count_total">
+                        {photos.length}
+                        </span>
+                      </span>
+
+      </li>
+
+    )
+  }
+
   render() {
     const {photos, photoType, forObject} = this.props;
 
@@ -37,12 +54,9 @@ class F8PhotosSelectLeftPanelFooterView extends Component {
       <div className="media-footer photo-box-overlay">
         <ul className="media-footer_inner">
           {this.renderLeft()}
-          <li className="media-footer_count">
-                      <span className="media-count js-media-count"><span
-                        className="media-count_current">2</span> of <span
-                        className="media-count_total">21</span></span>
 
-          </li>
+          {this.renderMiddle()}
+
           <li className="media-footer_actions">
             <ul className="media-actions">
 
