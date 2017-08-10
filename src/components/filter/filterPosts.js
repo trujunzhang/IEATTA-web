@@ -90,3 +90,7 @@ export function getMarker(restaurant: Object) {
   return {lat: restaurant.geoLocation.latitude, lng: restaurant.geoLocation.longitude}
 }
 
+export function getSelectPhoto(photos: Array,selectId:String) {
+
+}
+

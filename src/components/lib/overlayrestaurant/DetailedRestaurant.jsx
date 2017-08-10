@@ -17,7 +17,12 @@ const {
 } = require('../../../lib/constants').default
 
 
-const {getModelByObjectId, getDefaultListTask, byListId} = require('../../filter/filterPosts')
+const {
+  getModelByObjectId,
+  getDefaultListTask,
+  getSelectPhoto,
+  byListId
+} = require('../../filter/filterPosts')
 
 const {
   getPageFormType,
@@ -45,8 +50,6 @@ class DetailedRestaurant extends Component {
       photosListTask: getDefaultListTask(photoTerms),
       photos: null,
       pageForm: getPageFormType(props, null),
-      isPhotoBrowser: checkPhotosBrowser(props),
-      isPhotoBrowserSelectionId: checkPhotosBrowserSelection(props),
       photosTerms: photoTerms,
       ready: false,
       photoType: 'restaurant',
@@ -56,8 +59,6 @@ class DetailedRestaurant extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const isPhotoBrowser = checkPhotosBrowser(nextProps);
-    const isPhotoBrowserSelectionId = checkPhotosBrowserSelection(nextProps);
     const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms, this.state.photosListTask);
 
     this.setState({
@@ -66,8 +67,6 @@ class DetailedRestaurant extends Component {
       photos: photosListTask.results,
       ready: true,
       pageForm: getPageFormType(nextProps, this.state.pageForm),
-      isPhotoBrowser: isPhotoBrowser,
-      isPhotoBrowserSelectionId: isPhotoBrowserSelectionId
     })
   }
 
@@ -76,29 +75,8 @@ class DetailedRestaurant extends Component {
     this.props.dispatch(loadPhotosBrowser(this.state.photosTerms))
   }
 
-  renderNormal() {
-
-    const {isPhotoBrowser, isPhotoBrowserSelectionId, photos, ready, restaurant, isEdit} = this.state;
-
-    const content = (isPhotoBrowser) ?
-      (<Telescope.components.IEAPhotosBrowserLayout {...this.state}/>) :
-      (<Telescope.components.IEARestaurantsLayout  {...this.state}/>)
-
-    const overLayout =
-      (!!isPhotoBrowserSelectionId) ?
-        (<Telescope.components.IEAPhotosSelectionLayout {...this.state}/>) :
-        null
-
-    return (
-      <div>
-        {content}
-        {overLayout}
-      </div>
-    )
-  }
-
   render() {
-    const {isPhotoBrowser, isPhotoBrowserSelectionId, photos, ready, restaurant, pageForm} = this.state;
+    const {photos, ready, restaurant, pageForm} = this.state;
 
     if (!!restaurant && !!photos) {
       switch (pageForm) {
