@@ -4,6 +4,18 @@ const slugify = require('slugify')
 
 import {SubDomainPhotos} from '../actions/types'
 
+
+const {
+  PAGE_MAIN_FORM,
+  PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY,
+  PAGE_PHOTOS_BROWSER_FORM,
+  PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY,
+  PAGE_EDIT_FORM,
+  PAGE_OVERLAY_SELECTED_PHOTO_FORM,
+  PAGE_SINGLE_SELECTED_PHOTO_FORM,
+} = require('../lib/constants').default
+
+
 export function showDetailedPagePath(router, post) {
   const {location} = router
   const obj = {pathname: location.pathname, query: {postId: post.id}}
@@ -67,6 +79,16 @@ export function geDetailedModelLink(modelType, forObject) {
       return getOrderedRecipeLink(forObject)
   }
   throw new Error('You need to set a proper photo type!')
+}
+
+export function getPhotoSelectBackLink(pageForm, photoType, forObject) {
+  switch (pageForm) {
+    case PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY:
+      return geDetailedModelLink(photoType, forObject)
+    case PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY:
+      return getPhotosBrowserLink(photoType, forObject)
+  }
+
 }
 
 

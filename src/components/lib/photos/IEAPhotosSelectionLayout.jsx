@@ -6,15 +6,15 @@ import Users from '../../../lib/users'
 import {Link} from 'react-router'
 import {withRouter} from 'react-router'
 
-import {geDetailedModelLink, getRestaurantLink} from '../../../lib/link'
+import {getPhotoSelectBackLink} from '../../../lib/link'
 
 class IEAPhotosSelectionLayout extends Component {
 
   renderCloseButton() {
-    const {photoType, forObject} = this.props;
+    const {photoType, forObject, pageForm} = this.props;
 
     return (
-      <Link className="lightbox-close" to={geDetailedModelLink(photoType, forObject)}>
+      <Link className="lightbox-close" to={getPhotoSelectBackLink(pageForm, photoType, forObject)}>
         {'Close'}
         <span className="icon icon--24-close icon--size-24 icon--currentColor u-space-l-half"
               id="icon_24X24">

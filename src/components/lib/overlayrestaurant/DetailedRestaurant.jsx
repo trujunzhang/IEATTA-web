@@ -86,20 +86,22 @@ class DetailedRestaurant extends Component {
         case PAGE_SINGLE_SELECTED_PHOTO_FORM:
           return (<Telescope.components.IEAPhotosSingleLayout {...this.state}/>)
         case PAGE_MAIN_FORM:
-          return (<Telescope.components.IEARestaurantsLayout  {...this.state}/>)
         case PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY:
           return (<div>
               <Telescope.components.IEARestaurantsLayout  {...this.state}/>
-              <Telescope.components.IEAPhotosSelectionLayout
-                {...this.state}/>
+              {
+                (pageForm === PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY) &&
+                <Telescope.components.IEAPhotosSelectionLayout {...this.state}/>}
             </div>
           )
         case PAGE_PHOTOS_BROWSER_FORM:
-          return (<Telescope.components.IEAPhotosBrowserLayout {...this.state}/>)
         case PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY:
           return (<div>
               <Telescope.components.IEAPhotosBrowserLayout {...this.state}/>
-              <Telescope.components.IEAPhotosSelectionLayout {...this.state}/>
+              {
+                (pageForm === PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY) &&
+                <Telescope.components.IEAPhotosSelectionLayout {...this.state}/>
+              }
             </div>
           )
         case PAGE_EDIT_FORM:
