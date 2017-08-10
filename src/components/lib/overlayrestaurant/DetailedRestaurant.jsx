@@ -49,7 +49,9 @@ class DetailedRestaurant extends Component {
       isPhotoBrowserSelectionId: checkPhotosBrowserSelection(props),
       photosTerms: photoTerms,
       ready: false,
-      photoType: 'restaurant'
+      photoType: 'restaurant',
+      onPreIconClick: this.onPreIconClick.bind(this),
+      onNextIconClick: this.onNextIconClick.bind(this)
     }
   }
 
@@ -115,8 +117,6 @@ class DetailedRestaurant extends Component {
               <Telescope.components.IEARestaurantsLayout  {...this.state}/>
               <Telescope.components.IEAPhotosSelectionLayout
                 {...this.state}/>
-              onPreIconClick={this.onPreIconClick.bind(this)}
-              onNextIconClick={this.onNextIconClick.bind(this)}
             </div>
           )
         case PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY:
@@ -124,8 +124,6 @@ class DetailedRestaurant extends Component {
               <Telescope.components.IEAPhotosBrowserLayout {...this.state}/>
               <Telescope.components.IEAPhotosSelectionLayout
                 {...this.state}/>
-              onPreIconClick={this.onPreIconClick.bind(this)}
-              onNextIconClick={this.onNextIconClick.bind(this)}
             </div>
           )
         case PAGE_PHOTOS_BROWSER_FORM:

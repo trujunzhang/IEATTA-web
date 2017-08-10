@@ -3,6 +3,8 @@ import React, {Component} from 'react';
 
 class F8PhotosSelectNavigatorBar extends Component {
   render() {
+    debugger
+
     return (
       <div className="media-nav js-media-nav" >
         <a
