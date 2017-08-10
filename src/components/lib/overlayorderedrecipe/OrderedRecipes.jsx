@@ -26,6 +26,7 @@ const {
 } = require('../../filter/filterPosts')
 
 const {
+  generatePhotoTerm,
   getPageFormType,
   getSelectPhoto,
   checkEdit,
@@ -38,12 +39,7 @@ class OrderedRecipes extends Component {
   constructor(props, context) {
     super(props)
 
-    const photoTerms = {
-      listId: 'photos-list-view-for-restaurants-' + props.params.oid,
-      forObjectId: props.params.oid,
-      photoType: 'recipe',
-      allItems: true
-    }
+    const photosTerms = generatePhotoTerm('recipe', props.params.oid)
 
     this.state = this.initialState = {
       oid: props.params.oid,
@@ -52,13 +48,14 @@ class OrderedRecipes extends Component {
       recipe: null,
       forObject: null,
       // photos
-      photosListTask: getDefaultListTask(photoTerms),
+      photosTerms: photosTerms,
+      photosListTask: getDefaultListTask(photosTerms),
+      selectPhotoIndex: -1,
+      // Common
       pageForm: getPageFormType('recipe', props, null),
-      photosTerms: photoTerms,
       photoType: 'recipe',
       onPreIconClick: this.onPreIconClick.bind(this),
-      onNextIconClick: this.onNextIconClick.bind(this),
-      selectPhotoIndex: -1
+      onNextIconClick: this.onNextIconClick.bind(this)
     }
   }
 
@@ -77,13 +74,22 @@ class OrderedRecipes extends Component {
 
     const currentOID = nextProps.params.oid;
     if (currentOID !== this.state.oid) {
+      const photosTerms = generatePhotoTerm('recipe', currentOID)
 
       this.setState({
         oid: nextProps.params.oid,
         oslug: nextProps.params.oslug,
+        // Detailed object
+        recipe: null,
+        forObject: null,
+        // photos
+        photosTerms: photosTerms,
+        photosListTask: getDefaultListTask(photosTerms),
+        selectPhotoIndex: -1,
       })
 
       nextProps.dispatch(loadOrderedRecipePage(currentOID))
+      this.props.dispatch(loadPhotosBrowser(photosTerms))
     }
 
   }

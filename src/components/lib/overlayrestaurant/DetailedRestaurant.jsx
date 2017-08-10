@@ -26,6 +26,7 @@ const {
 } = require('../../filter/filterPosts')
 
 const {
+  generatePhotoTerm,
   getPageFormType,
   getSelectPhoto,
   checkEdit,
@@ -38,12 +39,7 @@ class DetailedRestaurant extends Component {
   constructor(props, context) {
     super(props)
 
-    const photoTerms = {
-      listId: 'photos-list-view-for-restaurants-' + props.params.rid,
-      forObjectId: props.params.rid,
-      photoType: 'restaurant',
-      allItems: true
-    }
+    const photosTerms = generatePhotoTerm('restaurant', props.params.rid)
 
     this.state = this.initialState = {
       rid: props.params.rid,
@@ -52,13 +48,14 @@ class DetailedRestaurant extends Component {
       restaurant: null,
       forObject: null,
       // photos
-      photosListTask: getDefaultListTask(photoTerms),
+      photosTerms: photosTerms,
+      photosListTask: getDefaultListTask(photosTerms),
+      selectPhotoIndex: -1,
+      // Common
       pageForm: getPageFormType('restaurant', props, null),
-      photosTerms: photoTerms,
       photoType: 'restaurant',
       onPreIconClick: this.onPreIconClick.bind(this),
       onNextIconClick: this.onNextIconClick.bind(this),
-      selectPhotoIndex: -1
     }
   }
 

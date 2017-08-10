@@ -96,3 +96,14 @@ export function getSelectPhoto(props: Any, photosListTask: Any, lastPhotoIndex) 
 
   return lastPhotoIndex;
 }
+
+export function generatePhotoTerm(photoType, forObjectId) {
+  const photoTerms = {
+    listId: 'photos-list-view-for-objectId-' + forObjectId,
+    forObjectId: forObjectId,
+    photoType: photoType,
+    allItems: true
+  }
+
+  return photoTerms;
+}
