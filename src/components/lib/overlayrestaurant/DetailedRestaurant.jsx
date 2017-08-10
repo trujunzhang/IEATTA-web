@@ -1,6 +1,8 @@
 import Telescope from '../../lib'
 import React, {Component} from 'react'
 
+import {withRouter} from 'react-router'
+
 const {
   loadRestaurantPage,
   loadPhotosBrowser
@@ -84,9 +86,7 @@ class DetailedRestaurant extends Component {
       switch (pageForm) {
         case PAGE_SINGLE_SELECTED_PHOTO_FORM:
           return (<div>
-              <Telescope.components.IEAPhotosSingleLayout
-                {...this.state}
-              />
+              <Telescope.components.IEAPhotosSingleLayout {...this.state}/>
             </div>
           )
         case PAGE_MAIN_FORM:
@@ -125,11 +125,25 @@ class DetailedRestaurant extends Component {
   }
 
   onPreIconClick() {
-    debugger
+    const {photos, restaurant, pageForm, selectPhotoIndex} = this.state;
+    const totalPhotosLength = photos.length;
+
+    let preIndex = selectPhotoIndex - 1;
+    if (preIndex < 0) preIndex = 0;
+    this.setState({selectPhotoIndex: preIndex})
+
+    this.props.router.push({pathname: this.route.location.pathname, query: {select: photos[preIndex].id}})
   }
 
   onNextIconClick() {
-    debugger
+    const {photos, selectPhotoIndex} = this.state;
+    const totalPhotosLength = photos.length;
+
+    let nextIndex = selectPhotoIndex - 1;
+    if (nextIndex >= totalPhotosLength) nextIndex = totalPhotosLength - 1;
+    this.setState({selectPhotoIndex: nextIndex})
+
+    this.props.router.push({pathname: this.route.location.pathname, query: {select: photos[nextIndex].id}})
   }
 
 }
@@ -143,5 +157,5 @@ function select(store) {
   }
 }
 
-export default connect(select)(DetailedRestaurant)
+export default withRouter(connect(select)(DetailedRestaurant));
 
