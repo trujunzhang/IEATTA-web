@@ -5,6 +5,7 @@ import Photos from '../../../lib/photos'
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
 
 class F8PageHeaderButtonsSection extends Component {
+
   renderWriteAReview() {
     return (
       <a className="ybtn ybtn--primary war-button">

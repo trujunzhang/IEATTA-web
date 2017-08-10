@@ -58,6 +58,20 @@ const createRoutes = (store) => {
     },
   ];
 
+  const eventRoutes = [
+    {
+      // http://localhost:3000/events/px09dUf7tw/xxx
+      // https://www.yelp.com/events/pleasanton-alameda-county-fair-6
+      path: 'events/(:eid)/(:eslug)',
+      component: Telescope.components.DetailedEvent
+    },
+    {
+      // http://localhost:3000/events/px09dUf7tw/xxx
+      // https://www.yelp.com/events/pleasanton-alameda-county-fair-6
+      path: 'edit/event/(:eid)/(:eslug)',
+      component: Telescope.components.DetailedEvent
+    }
+  ];
 
   const recipeRoutes = [
     {
@@ -82,12 +96,6 @@ const createRoutes = (store) => {
   ];
 
   const overlayRoutes = [
-    {
-      // http://localhost:3000/events/px09dUf7tw/xxx
-      // https://www.yelp.com/events/pleasanton-alameda-county-fair-6
-      path: 'events/(:eid)/(:eslug)',
-      component: Telescope.components.DetailedEvent
-    },
     {
       // http://localhost:3000/ordereduser/aGkde8iuL6/Jaron%20Lawrence/p25iag5OcM/OnNGSfwoou
       path: 'ordereduser/(:uid)/(:uslug)/(:eid)/(:rid)',

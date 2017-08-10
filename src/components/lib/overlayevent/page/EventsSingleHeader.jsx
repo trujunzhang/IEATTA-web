@@ -26,7 +26,11 @@ class EventsSingleHeader extends Component {
         <div className="event-details_header ysection">
           {this.renderTopTitle()}
 
-          <Telescope.components.F8PageHeaderButtonsSection {...this.props}/>
+          <Telescope.components.F8PageHeaderButtonsSection
+            {...this.props}
+            showEdit={true}
+            editLink={}
+          />
         </div>
 
         <div
