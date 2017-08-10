@@ -105,7 +105,7 @@ class DetailedRestaurant extends Component {
             </div>
           )
         case PAGE_EDIT_FORM:
-          return (<Telescope.components.IEAEditRestaurant
+          return (<Telescope.components.IEAEditRestaurantLayout
               {...this.state}
               dispatch={this.props.dispatch}/>
           )

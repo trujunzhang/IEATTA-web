@@ -58,14 +58,14 @@ class DetailedEvent extends Component {
   }
 
   render() {
-    const {event} = this.state;
+    const {event, pageForm} = this.state;
 
     if (!!event) {
       switch (pageForm) {
         case PAGE_MAIN_FORM:
           return (<Telescope.components.IEAEventsLayout event={event}/>)
         case PAGE_EDIT_FORM:
-          return (<Telescope.components.IEAEditRestaurant
+          return (<Telescope.components.IEAEditEventLayout
               {...this.state}
               dispatch={this.props.dispatch}/>
           )

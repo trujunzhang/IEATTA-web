@@ -27,7 +27,7 @@ const {
 } = require('../../../lib/constants').default
 
 
-class IEAEditRestaurant extends Component {
+class IEAEditEventLayout extends Component {
 
   constructor(props, context) {
     super(props)
@@ -73,7 +73,7 @@ class IEAEditRestaurant extends Component {
 
   renderLeft() {
     return (
-      <Telescope.components.EditRestaurantForm
+      <Telescope.components.EditEventForm
         form={this.props.editModel.form}
         value={this.state.value}
         onChange={this.onChange.bind(this)}/>
@@ -190,7 +190,7 @@ class IEAEditRestaurant extends Component {
 
               <div className="column column-alpha ">
 
-                <h2>Update Business Details</h2>
+                <h2>Update Event Details</h2>
                 <p>Any suggested changes to a business page must first be verified by Yelp’s moderators.</p>
 
                 {this.renderContent()}
@@ -228,4 +228,4 @@ function select(store, ownProps) {
   };
 }
 
-export default withRouter(connect(select, mapDispatchToProps)(IEAEditRestaurant));
+export default withRouter(connect(select, mapDispatchToProps)(IEAEditEventLayout));
