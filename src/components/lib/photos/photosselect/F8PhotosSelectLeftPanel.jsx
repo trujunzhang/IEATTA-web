@@ -17,7 +17,7 @@ class F8PhotosSelectLeftPanel extends Component {
           <img
             alt={alt}
             className="photo-box-img"
-            src={Photos.getThumbnailUrl(currentPhoto)}/>
+            src={Photos.getOriginalUrl(currentPhoto)}/>
         </div>
 
         <Telescope.components.F8PhotosSelectLeftPanelFooterView {...this.props}/>

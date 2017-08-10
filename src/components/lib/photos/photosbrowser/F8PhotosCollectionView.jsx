@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Photos from '../../../../lib/photos'
 
 import {getPhotosBrowserLink, getPhotosBrowserSelectionLink} from '../../../../lib/link'
 import {Link} from 'react-router'
@@ -6,7 +7,6 @@ import {Link} from 'react-router'
 class F8PhotosCollectionView extends Component {
 
   renderRow(photo) {
-    const thumbnail = photo.thumbnail._url;
     const {forObject, photoType} = this.props;
 
     return (
@@ -18,7 +18,7 @@ class F8PhotosCollectionView extends Component {
               width="226"
               height="226"
               className="photo-box-img"
-              src={thumbnail}/>
+              src={Photos.getThumbnailUrl(photo)}/>
           </Link>
         </div>
 
