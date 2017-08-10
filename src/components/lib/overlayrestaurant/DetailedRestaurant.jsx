@@ -47,6 +47,7 @@ class DetailedRestaurant extends Component {
       rid: props.params.rid,
       rslug: props.params.rslug,
       restaurant: null,
+      forObject: null,
       photosListTask: getDefaultListTask(photoTerms),
       photos: null,
       pageForm: getPageFormType(props, null),
@@ -63,6 +64,7 @@ class DetailedRestaurant extends Component {
 
     this.setState({
       restaurant: getModelByObjectId(nextProps, this.state.rid, this.state.restaurant),
+      forObject: getModelByObjectId(nextProps, this.state.rid, this.state.forObject),
       photosListTask: photosListTask,
       photos: photosListTask.results,
       pageForm: getPageFormType(nextProps, this.state.pageForm),
@@ -84,7 +86,6 @@ class DetailedRestaurant extends Component {
           return (<div>
               <Telescope.components.IEAPhotosSingleLayout
                 {...this.state}
-                forObject={restaurant}
               />
             </div>
           )

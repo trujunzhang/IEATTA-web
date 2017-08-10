@@ -1,26 +1,42 @@
 import Telescope from '../../../lib'
 import React, {Component} from 'react';
 
+import {getPhotosBrowserLink, getPhotosBrowserSelectionLink} from '../../../../lib/link'
+import {Link} from 'react-router'
+
 class F8PhotosSelectLeftPanelFooterView extends Component {
+
+
+  renderLeft() {
+    const {photos, photoType, forObject} = this.props;
+    return (
+      <li>
+        <Link
+          className="media-nav_link--browse-all"
+          to={getPhotosBrowserLink(photoType, forObject)}>
+
+            <span
+              id="icon_18X18"
+              className="icon icon--18-grid icon--size-18 icon--inverse icon--fallback-inverted u-space-r-half">
+                  <svg className="icon_svg">
+                        <path d="M10 15v-5h5v5h-5zm0-12h5v5h-5V3zm-7 7h5v5H3v-5zm0-7h5v5H3V3z"/>
+                   </svg>
+             </span>
+          {'Browse all'}
+        </Link>
+
+      </li>
+
+    )
+  }
+
   render() {
-    const {photos} = this.props;
+    const {photos, photoType, forObject} = this.props;
 
     return (
       <div className="media-footer photo-box-overlay">
         <ul className="media-footer_inner">
-          <li>
-            <a href="/biz_photos/roma-antica-san-francisco-3"
-               className="media-nav_link--browse-all">
-            <span
-              id="icon_18X18"
-              className="icon icon--18-grid icon--size-18 icon--inverse icon--fallback-inverted u-space-r-half">
-    <svg className="icon_svg">
-    <path d="M10 15v-5h5v5h-5zm0-12h5v5h-5V3zm-7 7h5v5H3v-5zm0-7h5v5H3V3z"/>
-    </svg>
-</span>Browse all
-            </a>
-
-          </li>
+          {this.renderLeft()}
           <li className="media-footer_count">
                       <span className="media-count js-media-count"><span
                         className="media-count_current">2</span> of <span
