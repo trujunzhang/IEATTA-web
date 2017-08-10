@@ -35,10 +35,12 @@ class IEAEditEventLayout extends Component {
     this.state = {
       value: {
         displayName: props.editModel.form.fields.displayName,
+        eventWhat: props.editModel.form.fields.eventWhat,
       }
     }
     props.actions.toggleEditModelType(MENU_ITEM_ADD_OR_EDIT_RESTAURANT);
     props.actions.onEditModelFormFieldChange('displayName', props.event.displayName || '', true)
+    props.actions.onEditModelFormFieldChange('eventWhat', props.event.want || '', true)
   }
 
   /**
@@ -49,6 +51,7 @@ class IEAEditEventLayout extends Component {
     this.setState({
       value: {
         displayName: nextProps.editModel.form.fields.displayName,
+        eventWhat: nextProps.editModel.form.fields.eventWhat,
       }
     })
   }
@@ -65,6 +68,9 @@ class IEAEditEventLayout extends Component {
   onChange(value) {
     if (value.displayName !== '') {
       this.props.actions.onEditModelFormFieldChange('displayName', value.displayName)
+    }
+    if (value.eventWhat !== '') {
+      this.props.actions.onEditModelFormFieldChange('eventWhat', value.eventWhat)
     }
     this.setState(
       {value}

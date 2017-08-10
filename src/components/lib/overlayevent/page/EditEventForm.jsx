@@ -2,7 +2,7 @@ import Telescope from '../../../lib'
 import React, {Component} from 'react'
 
 
-// import t from '../../../vendor/tcomb-form'
+// import t from '../../../vendor/tcomb-form/main'
 import t from 'tcomb-form';
 
 const Form = t.form.Form;
@@ -30,14 +30,39 @@ class EditEventForm extends Component {
       }
     }
 
+    const myTemplate = t.form.Form.templates.textbox.clone({
+      // override just the input default implementation (labels, help, error will be preserved)
+      renderInput: (locals) => {
+        return (
+          <textarea
+            className="review-textarea expanded placeholder"
+            id="review-text"
+            name="comment"
+            placeholder="Your review helps others learn about great local businesses. employees."
+          >
+            </textarea>
+        )
+      }
+    })
+
+    let eventWhat = {
+      label: I18n.t('editEvent.eventWhat'),
+      editable: !this.props.form.isFetching,
+      hasError: this.props.form.fields.eventWhatHasError,
+      error: I18n.t(this.props.form.fields.eventWhatErrorMsg),
+      template: myTemplate
+    }
+
     const editEditEventForm = t.struct({
-      displayName: t.String
+      displayName: t.String,
+      eventWhat: t.String,
     })
 
 
     let options = {
       fields: {
-        displayName: displayName
+        displayName: displayName,
+        eventWhat: eventWhat
       }
     }
 
