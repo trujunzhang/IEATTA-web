@@ -51,7 +51,6 @@ class DetailedRestaurant extends Component {
       photos: null,
       pageForm: getPageFormType(props, null),
       photosTerms: photoTerms,
-      ready: false,
       photoType: 'restaurant',
       onPreIconClick: this.onPreIconClick.bind(this),
       onNextIconClick: this.onNextIconClick.bind(this)
@@ -65,7 +64,6 @@ class DetailedRestaurant extends Component {
       restaurant: getModelByObjectId(nextProps, this.state.rid, this.state.restaurant),
       photosListTask: photosListTask,
       photos: photosListTask.results,
-      ready: true,
       pageForm: getPageFormType(nextProps, this.state.pageForm),
     })
   }
@@ -76,7 +74,7 @@ class DetailedRestaurant extends Component {
   }
 
   render() {
-    const {photos, ready, restaurant, pageForm} = this.state;
+    const {photos, restaurant, pageForm} = this.state;
 
     if (!!restaurant && !!photos) {
       switch (pageForm) {
