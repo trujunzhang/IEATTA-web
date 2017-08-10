@@ -4,18 +4,23 @@ import React, {Component} from 'react';
 class F8PhotosSelectNavigatorBar extends Component {
 
   renderPreIcon() {
-    const {photos, selectPhotoIndex} = this.props;
-    const totalPhotosLength = photos.length;
+    const {photosListTask, photoType, selectPhotoIndex, forObject} = this.props;
+    const photos = photosListTask.results;
 
-    // const preClass = 'media-nav_link media-nav_link--prev js-media-nav_link--prev is-disabled'
+    const totalPhotosLength = photos.length;
+    const havePreIcon = (selectPhotoIndex > 0)
+
     const preClass = 'media-nav_link media-nav_link--prev js-media-nav_link--prev ' + (
-      selectPhotoIndex > 0 ? "" : " is-disabled"
+      havePreIcon ? "" : " is-disabled"
     )
 
+    const linkProps = (havePreIcon) ? {onClick: this.props.onPreIconClick} : {};
+
     return (
-      <a onClick={this.props.onPreIconClick}
-         className={preClass}
-         title="Prev">
+      <a
+        {...linkProps}
+        className={preClass}
+        title="Prev">
             <span
               id="icon_48X48"
               className="icon icon--48-chevron-left icon--size-48 icon--inverse icon--fallback-inverted">
@@ -30,17 +35,23 @@ class F8PhotosSelectNavigatorBar extends Component {
   }
 
   renderNextIcon() {
-    const {photos, selectPhotoIndex} = this.props;
+    const {photosListTask, photoType, selectPhotoIndex, forObject} = this.props;
+    const photos = photosListTask.results;
+
     const totalPhotosLength = photos.length;
-    // const preClass = 'media-nav_link media-nav_link--prev js-media-nav_link--prev is-disabled'
+
+    const haveNextIcon = (selectPhotoIndex < totalPhotosLength - 1)
+
     const nextClass = 'media-nav_link media-nav_link--next js-media-nav_link--next ' + (
-      selectPhotoIndex < totalPhotosLength - 1 ? "" : " is-disabled"
+      haveNextIcon ? "" : " is-disabled"
     )
+
+    const linkProps = (haveNextIcon) ? {onClick: this.props.onNextIconClick} : {};
 
     return (
       <a
+        {...linkProps}
         className={nextClass}
-        onClick={this.props.onNextIconClick}
         title="Next">
             <span
               id="icon_48X48"
@@ -56,9 +67,6 @@ class F8PhotosSelectNavigatorBar extends Component {
   }
 
   render() {
-    const {photos, selectPhotoIndex} = this.props;
-    const totalPhotosLength = photos.length;
-
     return (
       <div className="media-nav js-media-nav">
         {this.renderPreIcon()}
