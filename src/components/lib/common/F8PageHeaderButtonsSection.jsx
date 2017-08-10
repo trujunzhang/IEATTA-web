@@ -5,11 +5,9 @@ import Photos from '../../../lib/photos'
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
 
 class F8PageHeaderButtonsSection extends Component {
-  render() {
-
+  renderWriteAReview() {
     return (
-      <div className="biz-page-actions nowrap">
-        <a className="ybtn ybtn--primary war-button">
+      <a className="ybtn ybtn--primary war-button">
             <span id="icon_24X24"
                   className="icon icon--24-star icon--size-24 icon--currentColor u-space-r-half icon--fallback-inverted">
               <svg className="icon_svg">
@@ -17,13 +15,37 @@ class F8PageHeaderButtonsSection extends Component {
                   d="M12 1.5l2.61 6.727 6.89.53-5.278 4.688 1.65 7.055L12 16.67 6.13 20.5l1.648-7.055L2.5 8.757l6.89-.53L12 1.5z"/>
               </svg>
             </span>
-          Write a Review
-        </a>
+        Write a Review
+      </a>
+    )
+  }
+
+  renderEditButton() {
+    return (
+      <a className="edit-category chiclet-link chiclet-link--with-text show-tooltip"
+         style={{float: 'left'}}>
+        <span id="icon_14X14" className="icon icon--14-pencil icon--size-14 icon--currentColor">
+          <svg className="icon_svg">
+            <path
+              d="M12.95 3.05c0-.512-.195-1.023-.586-1.414a1.996 1.996 0 0 0-2.83 0L8.122 3.05 2.465 8.707 1.05 12.95l4.243-1.414L10.95 5.88l1.414-1.416c.39-.39.586-.902.586-1.414zm-8.197 7.61l-2.122.71.71-2.123 5.49-5.49 1.415 1.415-5.49 5.49z"/>
+          </svg>
+        </span>
+        Edit
+      </a>
+    )
+  }
+
+  render() {
+    return (
+      <div className="biz-page-actions nowrap">
+
+        {this.renderWriteAReview()}
+
+        {this.renderEditButton()}
 
         <span className="ybtn-group clearfix">
 
-            <a className="ybtn ybtn--small add-photo-button"
-               href="/biz_user_photos/30jrTz8vh1xSXdtXMvt-mA/upload">
+            <a className="ybtn ybtn--small add-photo-button">
               <span id="icon_18X18"
                     className="icon icon--18-add-photo icon--size-18 icon--currentColor">
                 <svg className="icon_svg">
@@ -34,9 +56,7 @@ class F8PageHeaderButtonsSection extends Component {
               Add Photo
             </a>
 
-            <a className="ybtn ybtn--small share-icon js-business-send-to-friend"
-               data-pop-uri="/send_to_friend/business/30jrTz8vh1xSXdtXMvt-mA" data-ro-mode-action="share a business"
-               href="/biz_share/30jrTz8vh1xSXdtXMvt-mA">
+            <a className="ybtn ybtn--small share-icon js-business-send-to-friend">
               <span id="icon_18X18"
                     className="icon icon--18-share icon--size-18 icon--currentColor">
                 <svg className="icon_svg">
@@ -45,14 +65,9 @@ class F8PageHeaderButtonsSection extends Component {
                 </svg>
               </span>
               <span className="js-popup-link-text">Share</span>
-              <span className="offscreen">, Opens a popup</span>
             </a>
 
-            <a className="ybtn ybtn--small bookmark-button js-action-bar-bookmark-button not-bookmarked"
-               data-bookmark-button-position="action-bar" data-ro-mode-action="add a bookmark"
-               data-signup-object="biz_id:30jrTz8vh1xSXdtXMvt-mA"
-               href="/signup?return_url=%2Fbiz%2F30jrTz8vh1xSXdtXMvt-mA"
-            >
+            <a className="ybtn ybtn--small bookmark-button js-action-bar-bookmark-button not-bookmarked">
               <span id="icon_18X18"
                     className="icon icon--18-bookmark icon--size-18 icon--currentColor">
                 <svg className="icon_svg">
@@ -61,7 +76,6 @@ class F8PageHeaderButtonsSection extends Component {
                 </svg>
               </span>
             <span className="js-popup-link-text">Bookmark</span>
-            <span className="offscreen">, Opens a popup</span>
             </a>
 
           </span>
