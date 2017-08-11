@@ -28,6 +28,7 @@ class DetailedReview extends Component {
       reviewType: props.params.reviewType,
       forObjectId: props.params.forObjectId,
       forObject: null,
+      review: {},
       // Common
       pageForm: getPageFormType(props.params.reviewType, props, null),
     }

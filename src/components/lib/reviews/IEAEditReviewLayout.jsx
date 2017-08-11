@@ -34,14 +34,14 @@ class IEAEditReviewLayout extends Component {
     this.state = {
       editModel: this.pageForm,
       value: {
-        rate: props.editModel.form.fields.displayName,
-        body: props.editModel.form.fields.eventWhat,
+        reviewRating: props.editModel.form.fields.reviewRating,
+        reviewBody: props.editModel.form.fields.reviewBody,
       }
     }
 
     props.actions.toggleEditModelType(MENU_ITEM_ADD_OR_EDIT_RESTAURANT);
-    props.actions.onEditModelFormFieldChange('rate', props.event.rate || 0, true)
-    props.actions.onEditModelFormFieldChange('body', props.event.body || '', true)
+    props.actions.onEditModelFormFieldChange('reviewRating', props.review.rate || 0, true)
+    props.actions.onEditModelFormFieldChange('reviewBody', props.review.body || '', true)
   }
 
   /**
