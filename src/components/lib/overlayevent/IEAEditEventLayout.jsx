@@ -117,7 +117,7 @@ class IEAEditEventLayout extends Component {
   renderLeftButton() {
     const {editModel} = this.props;
     const isDisabled = (!editModel.form.isValid || editModel.form.isFetching);
-
+    const isNewModel = true;
 
     return (
       <div className="form-footer">
@@ -129,7 +129,7 @@ class IEAEditEventLayout extends Component {
           type="submit"
           value="Submit Changes"
           className="ybtn ybtn--primary">
-          <span>Submit Changes</span>
+          <span>{`${isNewModel ? 'Create' : 'Update'} Event`}</span>
         </button>
         <a onClick={this.props.goBack}>
           Cancel
@@ -141,11 +141,24 @@ class IEAEditEventLayout extends Component {
   renderContent() {
     return (
       <div
-        className="event-attrib-form yform"
-        id="event_attrib_form"
-        name="event_attrib_form">
+        className="yform create-event-container js-event-create-form"
+        id="create_event"
+        name="create_event">
 
         {this.renderLeft()}
+
+        <label>When</label>
+
+        <div className="js-event-set-date event-calendar-fields">
+          <div className="js-event-start-date-container date-container">
+            <Telescope.components.F8CalenderView/>
+          </div>
+          <div className="js-event-end-date-container date-container" data-component-bound="true">
+            <strong className="create-event-date-middle-link">to</strong>
+            <Telescope.components.F8CalenderView/>
+          </div>
+        </div>
+
         {this.renderLeftButton()}
 
       </div>
@@ -159,18 +172,22 @@ class IEAEditEventLayout extends Component {
 
         <div id="super-container" className="content-container">
 
+          <div className="container create-event-page">
 
-          <div className="container">
-            <div className="clearfix layout-block layout-full" id="update-biz-details">
+
+            <div className="section-header">
+              <h2>Submit an Event</h2>
+            </div>
+
+            <div className="clearfix layout-block layout-a">
+
 
               <div className="column column-alpha ">
-
-                <h2>Update Event Details</h2>
-
                 {this.renderContent()}
-
               </div>
+
             </div>
+
           </div>
         </div>
       </div>

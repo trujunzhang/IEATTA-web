@@ -120,10 +120,10 @@
       "displayNamePlaceHolder": "restaurant name"
     },
     "editEvent": {
-      "displayName": "name",
-      "displayNamePlaceHolder": "event name",
-      "eventWhat": "why/what",
-      "eventWhatPlaceHolder": "why/what event",
+      "displayName": "Event Name",
+      "displayNamePlaceHolder": "",
+      "eventWhat": "What & Why",
+      "eventWhatPlaceHolder": "Sell it!  This is the reason this event is not to be missed - in your words.",
       "start": "start date",
       "end": "end date"
     },
