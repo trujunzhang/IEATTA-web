@@ -19,9 +19,10 @@ const myDescriptionTemplate = t.form.Form.templates.textbox.clone({
         className="review-textarea expanded placeholder"
         placeholder={eventWantPlaceHolder}
         id="description"
-        name="description">
-            {locals.value}
-            </textarea>
+        defaultValue={locals.value}
+        // onChange={locals.onChange}
+        value={locals.value}
+        name="description"/>
     )
   }
 })
