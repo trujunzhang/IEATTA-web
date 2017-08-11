@@ -98,7 +98,6 @@ class IEAEditEventLayout extends Component {
     const eventStart = this.props.editModel.form.fields.start;
     const eventEnd = this.props.editModel.form.fields.end;
 
-
     this.props.actions.updateModelRequest();
 
     try {

@@ -49,6 +49,12 @@ const createRoutes = (store) => {
       component: Telescope.components.DetailedRestaurant
     },
     {
+      // http://localhost:3000/biz/xxxxx
+      // https://www.yelp.com.sg/biz/my-two-cents-los-angeles-3
+      path: 'new/biz',
+      component: Telescope.components.DetailedRestaurant
+    },
+    {
       // http://localhost:3000/biz_photos/OnNGSfwoou/Forno%20Vecchio
       // http://localhost:3000/biz_photos/OnNGSfwoou/Forno%20Vecchio?select=Px63VDvuud
       // https://www.yelp.com/biz_photos/roma-antica-san-francisco-3
@@ -74,7 +80,7 @@ const createRoutes = (store) => {
     {
       // http://localhost:3000/events/px09dUf7tw/xxx
       // https://www.yelp.com/events/pleasanton-alameda-county-fair-6
-      path: 'edit/event/for/restaurant/(:rid)/(:rslug)',
+      path: 'new/event/(:rid)/(:rslug)',
       component: Telescope.components.DetailedEvent
     }
   ];

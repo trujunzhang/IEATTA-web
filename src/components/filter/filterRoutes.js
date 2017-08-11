@@ -34,12 +34,12 @@ const {
   PAGE_PHOTOS_BROWSER_FORM,
   PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY,
   PAGE_EDIT_FORM,
+  PAGE_NEW_FORM,
   PAGE_OVERLAY_SELECTED_PHOTO_FORM,
   PAGE_SINGLE_SELECTED_PHOTO_FORM,
 } = require('../../lib/constants').default
 
-
-export function checkEdit(props: Object) {
+export function checkEditModel(props: Object) {
   return props.location.pathname.indexOf('edit/') !== -1;
 }
 
@@ -57,7 +57,9 @@ export function checkPhotosBrowserSelection(props: Object) {
 }
 
 export function getPageFormType(pageType, props: Object, lastFormType: Any) {
-  if (checkEdit(props)) return PAGE_EDIT_FORM;
+  if (checkEditModel(props)) {
+    return PAGE_EDIT_FORM;
+  }
 
   const isPhotoBrowserSelectionId = checkPhotosBrowserSelection(props);
   if (!!isPhotoBrowserSelectionId) {
