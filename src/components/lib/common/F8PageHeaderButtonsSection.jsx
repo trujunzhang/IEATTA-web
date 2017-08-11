@@ -2,16 +2,20 @@ import Telescope from '../index'
 import React, {Component} from 'react'
 import Photos from '../../../lib/photos'
 
+import {
+  getNewReviewLink
+} from '../../../lib/link'
+
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
 import {Link} from 'react-router'
 
 class F8PageHeaderButtonsSection extends Component {
 
   renderWriteAReview() {
-    const {photoType} = this.props;
+    const {photoType, forObject} = this.props;
 
     return (
-      <a className="ybtn ybtn--primary war-button">
+      <Link className="ybtn ybtn--primary war-button" to={getNewReviewLink(photoType, forObject)}>
             <span id="icon_24X24"
                   className="icon icon--24-star icon--size-24 icon--currentColor u-space-r-half icon--fallback-inverted">
               <svg className="icon_svg">
@@ -19,15 +23,14 @@ class F8PageHeaderButtonsSection extends Component {
                   d="M12 1.5l2.61 6.727 6.89.53-5.278 4.688 1.65 7.055L12 16.67 6.13 20.5l1.648-7.055L2.5 8.757l6.89-.53L12 1.5z"/>
               </svg>
             </span>
-        Write a Review
-      </a>
+        {"Write a Review"}
+      </Link>
     )
   }
 
   renderEditButton() {
-    const {editLink} = this.props;
     return (
-      <Link to={editLink}
+      <Link to={this.props.editLink}
             className="edit-category chiclet-link chiclet-link--with-text show-tooltip"
             style={{float: 'left'}}>
         <span id="icon_14X14" className="icon icon--14-pencil icon--size-14 icon--currentColor">

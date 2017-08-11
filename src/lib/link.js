@@ -64,6 +64,10 @@ export function getNewEventLink(restaurant) {
   return `/edit/event/for/restaurant/${restaurant.id}/${slugify(restaurant.displayName)}`
 }
 
+export function getNewReviewLink(reviewType, forObject) {
+  return `/new/review/${reviewType}/${recipe.id}`
+}
+
 /**
  * http://localhost:3000/biz_photos/OnNGSfwoou/Forno%20Vecchio?select=Px63VDvuud
  *
