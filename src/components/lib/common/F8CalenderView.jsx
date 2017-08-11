@@ -48,11 +48,10 @@ class F8CalenderView extends Component {
    * As the properties are validated they will be set here.
    */
   componentWillReceiveProps(nextProps) {
+    const newValue = {};
+    newValue[this.state.field] = nextProps.editModel.form.fields[this.state.field];
     this.setState({
-      value: {
-        eventWhat: ''
-        // eventWhat: nextProps.editModel.form.fields.eventWhat,
-      }
+      value: newValue
     })
   }
 
@@ -66,26 +65,22 @@ class F8CalenderView extends Component {
    * *Note* that the fields are validated by the authReducer
    */
   onChange(value) {
+    debugger
+
     if (value.eventWhat !== '') {
       // this.props.actions.onEditModelFormFieldChange('eventWhat', value.eventWhat)
     }
-    this.setState(
-      {value}
-    )
-  }
-
-  onStartChange() {
-
   }
 
   render() {
+    const currentDate = moment(this.state.value[this.state.field]);
 
     const calendar = (<Calendar
       style={{zIndex: 1000}}
       dateInputPlaceholder="please input"
       formatter={getFormat(true)}
       timePicker={timePickerElement}
-      defaultValue={moment(new Date())}
+      defaultValue={currentDate}
       showDateInput={false}
       disabledDate={false}
     />);
@@ -94,8 +89,8 @@ class F8CalenderView extends Component {
         animation="slide-up"
         disabled={false}
         calendar={calendar}
-        value={moment(new Date())}
-        onChange={this.onStartChange.bind(this)}
+        value={currentDate}
+        onChange={this.onChange.bind(this)}
       >
         {
           ({value}) => {
