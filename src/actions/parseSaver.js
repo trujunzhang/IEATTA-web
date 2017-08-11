@@ -122,8 +122,6 @@ function updateEvent(model: object): ThunkAction {
 async function _updateRecipe(model: object): Promise<Array<Action>> {
   const recipe = await getQueryByType(PARSE_RECIPES).get(model.objectId)
 
-  debugger
-
   recipe.set('displayName', model.displayName)
   recipe.set('price', model.price)
 
@@ -152,8 +150,44 @@ function updateRecipe(model: object): ThunkAction {
   }
 }
 
+
+async function _createNewReview(model: object): Promise<Array<Action>> {
+  const recipe = await getQueryByType(PARSE_RECIPES).get(model.objectId)
+
+  recipe.set('displayName', model.displayName)
+  recipe.set('price', model.price)
+
+  await recipe.save()
+
+  await updateParseRecord('recipe', recipe)
+
+  const action = {
+    type: SAVED_MODEL_REQUEST,
+    payload: {objectId: model.objectId, model: fromParseRecipe(recipe)}
+  }
+  return Promise.all([
+    Promise.resolve(action)
+  ])
+}
+
+
+function createNewReview(model: object): ThunkAction {
+  return (dispatch) => {
+    const action = _createNewReview(model)
+    action.then(
+      ([result]) => {
+        dispatch(result)
+      }
+    )
+    return action
+  }
+}
+
 export default {
+  // Update
   updateRestaurant,
   updateEvent,
   updateRecipe,
+  // Create
+  createNewReview,
 }

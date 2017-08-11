@@ -11,7 +11,10 @@ import {withRouter} from 'react-router'
 
 // I18n.translations = Translations
 
-const {updateEvent, timeout} = require('../../../actions').default
+const {
+  createNewReview,
+  timeout
+} = require('../../../actions').default
 
 
 /**
@@ -51,8 +54,8 @@ class IEAEditReviewLayout extends Component {
   componentWillReceiveProps(nextProps) {
     this.setState({
       value: {
-        rate: nextProps.editModel.form.fields.rate,
-        body: nextProps.editModel.form.fields.body,
+        reviewRating: nextProps.editModel.form.fields.reviewRating,
+        reviewBody: nextProps.editModel.form.fields.reviewBody,
       }
     })
   }
@@ -67,8 +70,8 @@ class IEAEditReviewLayout extends Component {
    * *Note* that the fields are validated by the authReducer
    */
   onChange(value) {
-    if (value.body !== '') {
-      this.props.actions.onEditModelFormFieldChange('body', value.body)
+    if (value.reviewBody !== '') {
+      this.props.actions.onEditModelFormFieldChange('reviewBody', value.reviewBody)
     }
 
     this.setState(
@@ -87,17 +90,18 @@ class IEAEditReviewLayout extends Component {
 
 
   async onButtonPress() {
-    const {dispatch, event} = this.props;
+    const {dispatch, forObject} = this.props;
 
-    const objectId = event.id;
-    const rate = this.props.editModel.form.fields.rate;
-    const body = this.props.editModel.form.fields.body;
+    const forObjectId = forObject.id;
+    const reviewType = this.state.reviewType;
+    const reviewRating = this.props.editModel.form.fields.reviewRating;
+    const reviewBody = this.props.editModel.form.fields.reviewBody;
 
     this.props.actions.updateModelRequest();
 
     try {
       await Promise.race([
-        dispatch(updateEvent({objectId, displayName, eventWhat, eventStart, eventEnd})),
+        dispatch(createNewReview({forObjectId, reviewType, reviewRating, reviewBody})),
         timeout(15000),
       ]);
     } catch (e) {

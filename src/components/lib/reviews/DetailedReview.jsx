@@ -27,6 +27,7 @@ class DetailedReview extends Component {
     this.state = this.initialState = {
       reviewType: props.params.reviewType,
       forObjectId: props.params.forObjectId,
+      // Page models
       forObject: null,
       review: {},
       // Common
@@ -36,7 +37,9 @@ class DetailedReview extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({
+      // Page models
       forObject: getModelByObjectId(nextProps, this.state.forObjectId, this.state.forObject),
+      // Common
       pageForm: getPageFormType(this.state.reviewType, nextProps, this.state.pageForm),
     })
   }
