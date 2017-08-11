@@ -11,8 +11,7 @@ import {withRouter} from 'react-router'
 
 // I18n.translations = Translations
 
-const {updateRestaurant, timeout} = require('../../../actions').default
-
+const {updateRecipe, timeout} = require('../../../actions').default
 
 const {
   isNewModelPage
@@ -94,7 +93,7 @@ class IEAEditRecipeLayout extends Component {
 
     try {
       await Promise.race([
-        dispatch(updateRestaurant({objectId, displayName, price})),
+        dispatch(updateRecipe({objectId, displayName, price})),
         timeout(15000),
       ]);
     } catch (e) {
