@@ -63,10 +63,12 @@ class RecipesSingleHeaderTopLeftPanel extends Component {
   }
 
   renderPriceInfo() {
+    const {recipe} = this.props;
+
     return (
       <div className="price-category">
                     <span className="bullet-after">
-                      <span className="business-attribute price-range">$$</span>
+                      <span className="business-attribute price-range">{`$$ ${recipe.price} `}</span>
                     </span>
         <span className="category-str-list">
                     <a>Recipe</a>
