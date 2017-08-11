@@ -153,7 +153,7 @@ class IEAEditEventLayout extends Component {
           <div className="js-event-start-date-container date-container">
             <Telescope.components.F8CalenderView/>
           </div>
-          <div className="js-event-end-date-container date-container" data-component-bound="true">
+          <div className="js-event-end-date-container date-container">
             <strong className="create-event-date-middle-link">to</strong>
             <Telescope.components.F8CalenderView/>
           </div>
@@ -180,7 +180,6 @@ class IEAEditEventLayout extends Component {
             </div>
 
             <div className="clearfix layout-block layout-a">
-
 
               <div className="column column-alpha ">
                 {this.renderContent()}
