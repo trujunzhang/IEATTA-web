@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 
 import {withRouter} from 'react-router'
 
-const MaskedInput = require('react-text-mask');
+import MaskedInput from 'react-text-mask';
 
 /**
  * ### Translations
@@ -145,6 +145,20 @@ class IEAEditRecipeLayout extends Component {
         name="biz_attrib_form">
 
         {this.renderLeft()}
+
+        <label>Price</label>
+
+        <div className="js-event-set-date event-calendar-fields">
+          <div className="js-event-start-date-container date-container">
+
+            <MaskedInput
+              className='form-control'
+              type='text'
+            />
+
+          </div>
+        </div>
+
         {this.renderLeftButton()}
 
       </div>
