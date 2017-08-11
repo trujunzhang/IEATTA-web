@@ -1,9 +1,9 @@
-import Telescope from '../../lib'
+import Telescope from '../../index'
 import React, {Component} from 'react'
 
-const {loadReviewsList} = require('../../../actions').default
+const {loadReviewsList} = require('../../../../actions/index').default
 
-const {byListId} = require('../../filter/filterPosts')
+const {byListId} = require('../../../filter/filterPosts')
 
 class ReviewsList extends Component {
 

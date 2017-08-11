@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import Telescope from '../../lib'
-import Posts from '../../../lib/posts'
+import Telescope from '../../index'
+import Posts from '../../../../lib/posts'
 
 import onClickOutside from 'react-onclickoutside'
 

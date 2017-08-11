@@ -1,8 +1,8 @@
-import Telescope from '../../lib'
+import Telescope from '../../index'
 import React, {Component} from 'react'
-import Photos from '../../../lib/photos'
-import Posts from '../../../lib/posts'
-import Reviews from '../../../lib/reviews'
+import Photos from '../../../../lib/photos'
+import Posts from '../../../../lib/posts'
+import Reviews from '../../../../lib/reviews'
 
 import {withRouter} from 'react-router'
 

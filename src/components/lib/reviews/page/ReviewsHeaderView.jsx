@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import Telescope from '../../lib'
+import Telescope from '../../index'
 
-import Posts from '../../../lib/posts'
+import Posts from '../../../../lib/posts'
 
 import {withRouter} from 'react-router'
 

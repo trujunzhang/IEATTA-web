@@ -40,12 +40,12 @@ Telescope.registerComponent('HeaderRightUserIconsPanel',        require('./heade
 Telescope.registerComponent('HeaderRightUserPanel',             require('./header/HeaderRightUserPanel.jsx').default)
 
 // reviews
-Telescope.registerComponent('ReviewsList',                         require('./reviews/ReviewsList.jsx').default)
-Telescope.registerComponent('ReviewsHeaderView',                   require('./reviews/ReviewsHeaderView.jsx').default)
-Telescope.registerComponent('ReviewsHeaderSearchBar',              require('./reviews/ReviewsHeaderSearchBar.jsx').default)
-Telescope.registerComponent('ReviewsHeaderRightSortView',          require('./reviews/ReviewsHeaderRightSortView.jsx').default)
-Telescope.registerComponent('ReviewsItem',                         require('./reviews/ReviewsItem.jsx').default)
-Telescope.registerComponent('ReviewsItemButtonsPanel',             require('./reviews/ReviewsItemButtonsPanel.jsx').default)
+Telescope.registerComponent('ReviewsList',                         require('./reviews/page/ReviewsList.jsx').default)
+Telescope.registerComponent('ReviewsHeaderView',                   require('./reviews/page/ReviewsHeaderView.jsx').default)
+Telescope.registerComponent('ReviewsHeaderSearchBar',              require('./reviews/page/ReviewsHeaderSearchBar.jsx').default)
+Telescope.registerComponent('ReviewsHeaderRightSortView',          require('./reviews/page/ReviewsHeaderRightSortView.jsx').default)
+Telescope.registerComponent('ReviewsItem',                         require('./reviews/page/ReviewsItem.jsx').default)
+Telescope.registerComponent('ReviewsItemButtonsPanel',             require('./reviews/page/ReviewsItemButtonsPanel.jsx').default)
 
 // restaurant
 Telescope.registerComponent('IEARestaurantsHome',         require('./home/IEARestaurantsHome.jsx').default)
