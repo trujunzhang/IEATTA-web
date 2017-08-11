@@ -8,13 +8,13 @@ import {Link} from 'react-router'
 class RecipesSingleHeaderTopLeftPanel extends Component {
 
   render() {
-    const {restaurant} = this.props;
+    const {recipe} = this.props;
     const rate = 1;
 
     return (
       <div className="biz-page-header-left claim-status">
 
-        {this.renderRestaurantTitle()}
+        {this.renderRecipeTitle()}
 
         <div className="biz-main-info embossed-text-white">
           <div className="rating-info clearfix">
@@ -69,7 +69,7 @@ class RecipesSingleHeaderTopLeftPanel extends Component {
                       <span className="business-attribute price-range">$$</span>
                     </span>
         <span className="category-str-list">
-                    <a>Restaurant</a>
+                    <a>Recipe</a>
             </span>
 
         {this.renderEditButton()}
@@ -101,7 +101,7 @@ class RecipesSingleHeaderTopLeftPanel extends Component {
   }
 
 
-  renderRestaurantTitle() {
+  renderRecipeTitle() {
     return (
       <div className="u-space-t1">
         <h1 className="biz-page-title embossed-text-white shortenough">

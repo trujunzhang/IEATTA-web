@@ -176,7 +176,8 @@ class OrderedRecipesSingleHeader extends Component {
     return (
       <div className="content-container">
         <div className="biz-page-header clearfix">
-          {this.renderBizPageHeaderLeft()}
+          <Telescope.components.RecipesSingleHeaderTopLeftPanel  {...this.props}/>
+
           {this.renderBizPageHeaderRight()}
         </div>
 
