@@ -142,17 +142,28 @@ class IEAEditReviewLayout extends Component {
     )
   }
 
+  renderSectionTitle() {
+    return (
+      <div>
+        <label>Your review</label>
+      </div>
+    )
+  }
+
   renderContent() {
     return (
-      <div
-        className="yform create-event-container js-event-create-form"
-        id="create_event"
-        name="create_event">
+      <div className="yform" id="review_rate_form" name="review_rate_form">
+        {this.renderTopSection()}
 
-        {this.renderLeft()}
+        <div className="write-review integrated-rating-comment ysection js-war-compose_review-section expanded">
 
-        {this.renderLeftButton()}
+          {this.renderSectionTitle()}
 
+          {this.renderLeft()}
+
+          {this.renderLeftButton()}
+
+        </div>
       </div>
 
     )
@@ -190,6 +201,12 @@ class IEAEditReviewLayout extends Component {
         </div>
       </div>
     );
+  }
+
+  renderTopSection() {
+    return (
+      <Telescope.components.EditReviewTopSection  {...this.props}/>
+    )
   }
 }
 

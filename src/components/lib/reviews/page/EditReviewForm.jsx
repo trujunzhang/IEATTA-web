@@ -15,14 +15,16 @@ const myDescriptionTemplate = t.form.Form.templates.textbox.clone({
   // override just the input default implementation (labels, help, error will be preserved)
   renderInput: (locals) => {
     return (
+      <div className="review-widget">
       <textarea
         className="review-textarea expanded placeholder"
         placeholder={reviewBodyPlaceHolder}
-        id="description"
+        id="review-text"
         defaultValue={locals.value}
         // onChange={locals.onChange}
         value={locals.value}
         name="description"/>
+      </div>
     )
   }
 })
@@ -40,7 +42,6 @@ class EditReviewForm extends Component {
 
 
     let reviewBody = {
-      label: I18n.t('editReview.reviewBody'),
       editable: !this.props.form.isFetching,
       hasError: this.props.form.fields.reviewBodyHasError,
       error: I18n.t(this.props.form.fields.reviewBodyErrorMsg),
@@ -52,6 +53,7 @@ class EditReviewForm extends Component {
     })
 
     let options = {
+      auto: 'placeholders',
       fields: {
         reviewBody: reviewBody
       }
