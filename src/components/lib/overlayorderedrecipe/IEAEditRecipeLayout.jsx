@@ -112,8 +112,8 @@ class IEAEditRecipeLayout extends Component {
       this.props.actions.updateModelFailure(e);
       const message = e.message || e;
       if (message !== 'Timed out' && message !== 'Canceled by user') {
-        debugger
-        // alert(message);
+        // debugger
+        alert(message);
         // console.warn(e);
       }
     } finally {
