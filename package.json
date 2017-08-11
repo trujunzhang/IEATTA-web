@@ -75,6 +75,7 @@
     "tcomb-form": "^0.9.17",
     "tcomb-form-templates-bootstrap": "^0.2.0",
     "tcomb-validation": "^3.0.0",
+    "text-mask-addons": "^3.6.0",
     "twit": "^2.2.9",
     "twitter-node-client": "0.0.6",
     "undefined": "^0.1.0",

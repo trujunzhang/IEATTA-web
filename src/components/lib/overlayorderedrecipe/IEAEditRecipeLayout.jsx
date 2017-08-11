@@ -4,6 +4,12 @@ import React, {Component} from 'react'
 import {withRouter} from 'react-router'
 
 import MaskedInput from 'react-text-mask';
+import createNumberMask from 'text-mask-addons/dist/createNumberMask';
+
+const numberMask = createNumberMask({
+  prefix: '',
+  suffix: ''
+})
 
 /**
  * ### Translations
@@ -152,6 +158,9 @@ class IEAEditRecipeLayout extends Component {
           <div className="js-event-start-date-container date-container">
 
             <MaskedInput
+              mask={numberMask}
+              guide={false}
+              placeholder="Enter a price number"
               className='form-control'
               type='text'
             />
