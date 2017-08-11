@@ -33,7 +33,7 @@ class EventsSingleHeader extends Component {
           <Telescope.components.F8PageHeaderButtonsSection
             {...this.props}
             showEdit={true}
-            editLink={getEditEventLink(event)}
+            editLink={getEditEventLink(event, event.restaurant)}
           />
         </div>
 

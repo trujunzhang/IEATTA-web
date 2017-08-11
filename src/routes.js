@@ -70,6 +70,12 @@ const createRoutes = (store) => {
       // https://www.yelp.com/events/pleasanton-alameda-county-fair-6
       path: 'edit/event/(:eid)/(:eslug)',
       component: Telescope.components.DetailedEvent
+    },
+    {
+      // http://localhost:3000/events/px09dUf7tw/xxx
+      // https://www.yelp.com/events/pleasanton-alameda-county-fair-6
+      path: 'edit/event/for/restaurant/(:rid)/(:rslug)',
+      component: Telescope.components.DetailedEvent
     }
   ];
 
