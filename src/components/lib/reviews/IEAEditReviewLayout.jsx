@@ -81,7 +81,7 @@ class IEAEditReviewLayout extends Component {
 
   renderLeft() {
     return (
-      <Telescope.components.EditReviwForm
+      <Telescope.components.EditReviewForm
         form={this.props.editModel.form}
         value={this.state.value}
         onChange={this.onChange.bind(this)}/>
@@ -133,7 +133,7 @@ class IEAEditReviewLayout extends Component {
           type="submit"
           value="Submit Changes"
           className="ybtn ybtn--primary">
-          <span>{`${isNewModelPage(this.state.pageForm) ? 'Create' : 'Update'} Event`}</span>
+          <span>{`${isNewModelPage(this.state.pageForm) ? 'Create' : 'Update'} Review`}</span>
         </button>
         <a onClick={this.props.goBack}>
           {'Cancel'}

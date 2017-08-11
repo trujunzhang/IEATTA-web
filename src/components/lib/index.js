@@ -46,12 +46,11 @@ Telescope.registerComponent('ReviewsHeaderSearchBar',              require('./re
 Telescope.registerComponent('ReviewsHeaderRightSortView',          require('./reviews/page/ReviewsHeaderRightSortView.jsx').default)
 Telescope.registerComponent('ReviewsItem',                         require('./reviews/page/ReviewsItem.jsx').default)
 Telescope.registerComponent('ReviewsItemButtonsPanel',             require('./reviews/page/ReviewsItemButtonsPanel.jsx').default)
+Telescope.registerComponent('EditReviewForm',                      require('./reviews/page/EditReviewForm.jsx').default)
 
 // reviews edit
 Telescope.registerComponent('DetailedReview',                          require('./reviews/DetailedReview.jsx').default)
 Telescope.registerComponent('IEAEditReviewLayout',                     require('./reviews/IEAEditReviewLayout.jsx').default)
-
-Telescope.registerComponent('EditReviewForm',                          require('./reviews/page/EditReviewForm.jsx').default)
 
 // restaurant
 Telescope.registerComponent('IEARestaurantsHome',         require('./home/IEARestaurantsHome.jsx').default)

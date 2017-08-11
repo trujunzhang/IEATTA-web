@@ -9,7 +9,7 @@ const Form = t.form.Form;
 
 const I18n = require('react-redux-i18n').I18n;
 
-const eventWantPlaceHolder = I18n.t('editEvent.eventWhatPlaceHolder');
+const reviewBodyPlaceHolder = I18n.t('editReview.reviewBodyPlaceHolder');
 
 const myDescriptionTemplate = t.form.Form.templates.textbox.clone({
   // override just the input default implementation (labels, help, error will be preserved)
@@ -17,7 +17,7 @@ const myDescriptionTemplate = t.form.Form.templates.textbox.clone({
     return (
       <textarea
         className="review-textarea expanded placeholder"
-        placeholder={eventWantPlaceHolder}
+        placeholder={reviewBodyPlaceHolder}
         id="description"
         defaultValue={locals.value}
         // onChange={locals.onChange}
@@ -38,33 +38,22 @@ class EditReviewForm extends Component {
    */
   render() {
 
-    let displayName = {
-      label: I18n.t('editEvent.displayName'),
-      editable: !this.props.form.isFetching,
-      hasError: this.props.form.fields.displayNameHasError,
-      error: I18n.t(this.props.form.fields.displayNameErrorMsg),
-      attrs: {
-        placeholder: I18n.t('editEvent.displayNamePlaceHolder')
-      }
-    }
 
-    let eventWhat = {
-      label: I18n.t('editEvent.eventWhat'),
+    let reviewBody = {
+      label: I18n.t('editReview.reviewBody'),
       editable: !this.props.form.isFetching,
-      hasError: this.props.form.fields.eventWhatHasError,
-      error: I18n.t(this.props.form.fields.eventWhatErrorMsg),
+      hasError: this.props.form.fields.reviewBodyHasError,
+      error: I18n.t(this.props.form.fields.reviewBodyErrorMsg),
       template: myDescriptionTemplate
     }
 
     const editReviewForm = t.struct({
-      displayName: t.String,
-      eventWhat: t.String,
+      reviewBody: t.String,
     })
 
     let options = {
       fields: {
-        displayName: displayName,
-        eventWhat: eventWhat
+        reviewBody: reviewBody
       }
     }
 
