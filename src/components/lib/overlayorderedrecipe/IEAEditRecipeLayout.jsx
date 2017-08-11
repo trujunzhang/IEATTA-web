@@ -3,6 +3,8 @@ import React, {Component} from 'react'
 
 import {withRouter} from 'react-router'
 
+const MaskedInput = require('react-text-mask');
+
 /**
  * ### Translations
  */
@@ -36,6 +38,7 @@ class IEAEditRecipeLayout extends Component {
         price: props.editModel.form.fields.price,
       }
     }
+
     props.actions.toggleEditModelType(MENU_ITEM_ADD_OR_EDIT_RESTAURANT);
     props.actions.onEditModelFormFieldChange('displayName', props.recipe.displayName || '', true)
     props.actions.onEditModelFormFieldChange('price', props.recipe.price || '', true)
