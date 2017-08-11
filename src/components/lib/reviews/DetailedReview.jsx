@@ -61,10 +61,7 @@ class DetailedReview extends Component {
       switch (pageForm) {
         case PAGE_EDIT_FORM:
         case PAGE_NEW_FORM:
-
-          debugger
-
-          return (<Telescope.components.IEAEditEventLayout
+          return (<Telescope.components.IEAEditReviewLayout
               {...this.state}
               dispatch={this.props.dispatch}/>
           )
