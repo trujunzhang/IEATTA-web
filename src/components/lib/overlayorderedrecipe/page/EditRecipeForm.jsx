@@ -1,8 +1,6 @@
 import Telescope from '../../../lib'
 import React, {Component} from 'react'
 
-
-// import t from '../../../vendor/tcomb-form'
 import t from 'tcomb-form';
 
 const Form = t.form.Form;
@@ -20,16 +18,16 @@ class EditRecipeForm extends Component {
   render() {
 
     let displayName = {
-      label: I18n.t('editRestaurant.displayName'),
+      label: I18n.t('editRecipe.displayName'),
       editable: !this.props.form.isFetching,
       hasError: this.props.form.fields.displayNameHasError,
       error: I18n.t(this.props.form.fields.displayNameErrorMsg),
       attrs: {
-        placeholder: I18n.t('editRestaurant.displayNamePlaceHolder')
+        placeholder: I18n.t('editRecipe.displayNamePlaceHolder')
       }
     }
 
-    const editEditRestaurantForm = t.struct({
+    const editRecipeForm = t.struct({
       displayName: t.String
     })
 
@@ -46,7 +44,7 @@ class EditRecipeForm extends Component {
      */
     return (
       <Form ref='form'
-            type={editEditRestaurantForm}
+            type={editRecipeForm}
             options={options}
             value={this.props.value}
             onChange={this.props.onChange}

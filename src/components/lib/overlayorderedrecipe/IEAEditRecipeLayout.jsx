@@ -38,7 +38,7 @@ class IEAEditRecipeLayout extends Component {
       }
     }
     props.actions.toggleEditModelType(MENU_ITEM_ADD_OR_EDIT_RESTAURANT);
-    props.actions.onEditModelFormFieldChange('displayName', props.restaurant.displayName || '', true)
+    props.actions.onEditModelFormFieldChange('displayName', props.recipe.displayName || '', true)
   }
 
   /**
@@ -73,7 +73,7 @@ class IEAEditRecipeLayout extends Component {
 
   renderLeft() {
     return (
-      <Telescope.components.EditRestaurantForm
+      <Telescope.components.EditRecipeForm
         form={this.props.editModel.form}
         value={this.state.value}
         onChange={this.onChange.bind(this)}/>
@@ -82,7 +82,7 @@ class IEAEditRecipeLayout extends Component {
 
 
   async onButtonPress() {
-    const {dispatch, restaurant} = this.props;
+    const {dispatch, recipe} = this.props;
 
     const displayName = this.props.editModel.form.fields.displayName;
 
@@ -90,7 +90,7 @@ class IEAEditRecipeLayout extends Component {
 
     try {
       await Promise.race([
-        dispatch(updateRestaurant({objectId: restaurant.id, displayName: displayName})),
+        dispatch(updateRestaurant({objectId: recipe.id, displayName: displayName})),
         timeout(15000),
       ]);
     } catch (e) {
@@ -112,7 +112,6 @@ class IEAEditRecipeLayout extends Component {
     const {editModel} = this.props;
     const isDisabled = (!editModel.form.isValid || editModel.form.isFetching);
 
-
     return (
       <div className="form-footer">
         <button
@@ -129,34 +128,6 @@ class IEAEditRecipeLayout extends Component {
           Cancel
         </a>
       </div>
-    )
-  }
-
-
-  renderRight() {
-    return (
-      <div className="map-wrapper pull-right">
-        <div className="map-container yelp-map-container">
-          <Telescope.components.F8RestaurantMapSection  {...this.props} showEditButton={true} onlyMap={true}/>
-        </div>
-        {this.renderRightBottom()}
-      </div>
-    )
-  }
-
-  renderRightBottom() {
-    return (
-      <a className="show-locator-popup pull-right">
-                <span
-                  id="icon_18X18"
-                  className="icon icon--18-marker icon--size-18 icon--neutral-gray u-space-r-half">
-    <svg className="icon_svg">
-    <path
-      d="M14 7A5 5 0 0 0 4 7c0 1.97 1.15 3.658 2.806 4.472h-.17L9 16l2.363-4.528h-.17C12.85 10.658 14 8.97 14 7zM9 5a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/>
-    </svg>
-</span>
-        Fix incorrect map marker
-      </a>
     )
   }
 
