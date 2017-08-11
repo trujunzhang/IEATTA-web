@@ -34,12 +34,13 @@ class F8CalenderView extends Component {
   constructor(props, context) {
     super(props)
 
-    this.state = {
-      value: {
-        eventWhat: ''
-      }
-    }
-    // props.actions.onEditModelFormFieldChange('eventWhat', props.event.want || '', true)
+    const field = props.field;
+    const value = {};
+    value[field] = props.event[field] || new Date()
+
+    this.state = {field, value}
+
+    props.actions.onEditModelFormFieldChange(field, value[field], true)
   }
 
   /**
@@ -66,7 +67,7 @@ class F8CalenderView extends Component {
    */
   onChange(value) {
     if (value.eventWhat !== '') {
-      this.props.actions.onEditModelFormFieldChange('eventWhat', value.eventWhat)
+      // this.props.actions.onEditModelFormFieldChange('eventWhat', value.eventWhat)
     }
     this.setState(
       {value}
