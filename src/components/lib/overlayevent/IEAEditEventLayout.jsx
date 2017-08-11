@@ -19,12 +19,13 @@ const {updateEvent, timeout} = require('../../../actions').default
  */
 const {
   MENU_ITEM_ADD_OR_EDIT_RESTAURANT,
-  // Sections
-  SECTION_PHOTOS_BROWSER_FOR_RESTAURANT,
-  // Model Form Type
-  MODEL_FORM_TYPE_NEW,
-  MODEL_FORM_TYPE_EDIT,
+  PAGE_EDIT_FORM,
+  PAGE_NEW_FORM,
 } = require('../../../lib/constants').default
+
+const {
+  isNewModelPage
+} = require('../../filter/filterRoutes')
 
 
 class IEAEditEventLayout extends Component {
@@ -33,6 +34,7 @@ class IEAEditEventLayout extends Component {
     super(props)
 
     this.state = {
+      editModel: this.pageForm,
       value: {
         displayName: props.editModel.form.fields.displayName,
         eventWhat: props.editModel.form.fields.eventWhat,
@@ -123,7 +125,7 @@ class IEAEditEventLayout extends Component {
   renderLeftButton() {
     const {editModel} = this.props;
     const isDisabled = (!editModel.form.isValid || editModel.form.isFetching);
-    const isNewModel = true;
+    const isNewModel = isNewModelPage(this.state.pageForm);
 
     return (
       <div className="form-footer">
@@ -172,7 +174,18 @@ class IEAEditEventLayout extends Component {
     )
   }
 
+
+  renderTitle() {
+    const isNewModel = isNewModelPage(this.state.pageForm);
+    return (
+      <div className="section-header">
+        <h2>{`${isNewModel ? 'Submit' : 'Update'} an Event`}</h2>
+      </div>
+    )
+  }
+
   render() {
+
     return (
       <div className="main-content-wrap main-content-wrap--full">
 
@@ -180,10 +193,7 @@ class IEAEditEventLayout extends Component {
 
           <div className="container create-event-page">
 
-
-            <div className="section-header">
-              <h2>Submit an Event</h2>
-            </div>
+            {this.renderTitle()}
 
             <div className="clearfix layout-block layout-a">
 

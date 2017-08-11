@@ -62,6 +62,7 @@ class DetailedEvent extends Component {
         case PAGE_MAIN_FORM:
           return (<Telescope.components.IEAEventsLayout event={event}/>)
         case PAGE_EDIT_FORM:
+        case PAGE_NEW_FORM:
           return (<Telescope.components.IEAEditEventLayout
               {...this.state}
               dispatch={this.props.dispatch}/>

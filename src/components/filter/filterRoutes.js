@@ -111,3 +111,7 @@ export function generatePhotoTerm(photoType, forObjectId) {
 
   return photoTerms;
 }
+
+export function isNewModelPage(pageForm) {
+  return (pageForm === PAGE_NEW_FORM);
+}
