@@ -30,16 +30,17 @@ class EditEventForm extends Component {
       }
     }
 
-    const myTemplate = t.form.Form.templates.textbox.clone({
+    const myDescriptionTemplate = t.form.Form.templates.textbox.clone({
       // override just the input default implementation (labels, help, error will be preserved)
       renderInput: (locals) => {
         return (
           <textarea
             className="review-textarea expanded placeholder"
-            id="review-text"
-            name="comment"
-            placeholder="Your review helps others learn about great local businesses. employees."
+            id="description"
+            name="description"
+            placeholder={I18n.t('editEvent.eventWhatPlaceHolder')}
           >
+            {locals.value}
             </textarea>
         )
       }
@@ -50,7 +51,7 @@ class EditEventForm extends Component {
       editable: !this.props.form.isFetching,
       hasError: this.props.form.fields.eventWhatHasError,
       error: I18n.t(this.props.form.fields.eventWhatErrorMsg),
-      template: myTemplate
+      template: myDescriptionTemplate
     }
 
     const editEditEventForm = t.struct({
