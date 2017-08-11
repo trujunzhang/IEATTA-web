@@ -65,7 +65,7 @@ export function getNewEventLink(restaurant) {
 }
 
 export function getNewReviewLink(reviewType, forObject) {
-  return `/new/review/${reviewType}/${recipe.id}`
+  return `/new/review/${reviewType}/${forObject.id}`
 }
 
 /**
