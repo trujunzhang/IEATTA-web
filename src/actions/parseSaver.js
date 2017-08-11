@@ -122,6 +122,8 @@ function updateEvent(model: object): ThunkAction {
 async function _updateRecipe(model: object): Promise<Array<Action>> {
   const recipe = await getQueryByType(PARSE_RECIPES).get(model.objectId)
 
+  debugger
+
   recipe.set('displayName', model.displayName)
   recipe.set('price', model.price)
 

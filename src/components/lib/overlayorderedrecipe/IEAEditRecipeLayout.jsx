@@ -10,6 +10,7 @@ const numberMask = createNumberMask({
   prefix: '$',
   suffix: '',
   allowDecimal: true,
+  requireDecimal: true,
   integerLimit: 3
 })
 
@@ -146,7 +147,13 @@ class IEAEditRecipeLayout extends Component {
   }
 
   onPriceChange(e) {
-    debugger
+    const newValue = e.target.value.replace('$', '')
+    this.setState({
+      value:
+        Object.assign({}, this.state.value, {
+          price: newValue
+        })
+    })
   }
 
   renderContent() {
