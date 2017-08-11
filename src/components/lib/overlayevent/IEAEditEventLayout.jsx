@@ -151,11 +151,11 @@ class IEAEditEventLayout extends Component {
 
         <div className="js-event-set-date event-calendar-fields">
           <div className="js-event-start-date-container date-container">
-            <Telescope.components.F8CalenderView/>
+            <Telescope.components.F8CalenderView field="start"/>
           </div>
           <div className="js-event-end-date-container date-container">
             <strong className="create-event-date-middle-link">to</strong>
-            <Telescope.components.F8CalenderView/>
+            <Telescope.components.F8CalenderView field="end"/>
           </div>
         </div>
 
