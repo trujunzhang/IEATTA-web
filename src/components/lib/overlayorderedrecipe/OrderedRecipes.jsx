@@ -19,7 +19,6 @@ const {
   PAGE_SINGLE_SELECTED_PHOTO_FORM,
 } = require('../../../lib/constants').default
 
-
 const {
   getModelByObjectId,
   getDefaultListTask,
@@ -31,7 +30,6 @@ const {
   getPageFormType,
   getSelectPhoto,
 } = require('../../filter/filterRoutes')
-
 
 class OrderedRecipes extends Component {
   constructor(props, context) {

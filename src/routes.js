@@ -92,10 +92,8 @@ const createRoutes = (store) => {
       component: Telescope.components.OrderedRecipes
     },
     {
-      // http://localhost:3000/biz/xxxxx
-      // https://www.yelp.com.sg/biz/my-two-cents-los-angeles-3
       path: 'edit/recipe/(:oid)/(:oslug)',
-      component: Telescope.components.DetailedRestaurant
+      component: Telescope.components.OrderedRecipes
     },
     {
       // http://localhost:3000/recipe_photos/OnNGSfwoou/Forno%20Vecchio
