@@ -110,7 +110,7 @@ class IEAEditEventLayout extends Component {
       this.props.actions.updateModelFailure(e);
       const message = e.message || e;
       if (message !== 'Timed out' && message !== 'Canceled by user') {
-        debugger
+        // debugger
         alert(message);
         // console.warn(e);
       }
