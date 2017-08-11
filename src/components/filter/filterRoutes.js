@@ -43,6 +43,10 @@ export function checkEditModel(props: Object) {
   return props.location.pathname.indexOf('edit/') !== -1;
 }
 
+export function checkNewModel(props: Object) {
+  return props.location.pathname.indexOf('new/') !== -1;
+}
+
 export function checkPhotosBrowser(pageType: string, props: Object) {
   const subDomain = SubDomainPhotos[pageType];
   return props.location.pathname.indexOf(subDomain + '/') !== -1;
@@ -57,9 +61,8 @@ export function checkPhotosBrowserSelection(props: Object) {
 }
 
 export function getPageFormType(pageType, props: Object, lastFormType: Any) {
-  if (checkEditModel(props)) {
-    return PAGE_EDIT_FORM;
-  }
+  if (checkEditModel(props)) return PAGE_EDIT_FORM;
+  if (checkNewModel(props)) return PAGE_NEW_FORM;
 
   const isPhotoBrowserSelectionId = checkPhotosBrowserSelection(props);
   if (!!isPhotoBrowserSelectionId) {
