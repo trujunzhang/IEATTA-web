@@ -20,8 +20,6 @@ const {
 
 const {
   getModelByObjectId,
-  getDefaultListTask,
-  byListId
 } = require('../../filter/filterPosts')
 
 const {

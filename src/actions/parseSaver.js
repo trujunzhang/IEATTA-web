@@ -84,8 +84,6 @@ function updateRestaurant(model: object): ThunkAction {
 
 
 async function _updateEvent(model: object): Promise<Array<Action>> {
-  debugger
-
   const event = await getQueryByType(PARSE_EVENTS).get(model.objectId)
   event.set('displayName', model.displayName)
   event.set('want', model.eventWhat)
