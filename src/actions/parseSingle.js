@@ -95,5 +95,7 @@ export default {
     return {
       type: OVERLAY_LOADED_MODEL_RESET,
     }
-  }
+  },
+
+
 }

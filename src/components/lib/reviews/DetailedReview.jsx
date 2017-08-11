@@ -2,20 +2,14 @@ import Telescope from '../../lib'
 import React, {Component} from 'react'
 
 const {
-  loadEventPage,
   loadRestaurantPage,
-  loadPhotosBrowser
+  loadEventPage,
+  loadOrderedRecipePage,
 } = require('../../../actions').default
 
 const {
-  PAGE_MAIN_FORM,
-  PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY,
-  PAGE_PHOTOS_BROWSER_FORM,
-  PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY,
   PAGE_EDIT_FORM,
   PAGE_NEW_FORM,
-  PAGE_OVERLAY_SELECTED_PHOTO_FORM,
-  PAGE_SINGLE_SELECTED_PHOTO_FORM,
 } = require('../../../lib/constants').default
 
 const {
@@ -23,9 +17,7 @@ const {
 } = require('../../filter/filterPosts')
 
 const {
-  generatePhotoTerm,
   getPageFormType,
-  getSelectPhoto,
 } = require('../../filter/filterRoutes')
 
 class DetailedReview extends Component {
@@ -33,32 +25,45 @@ class DetailedReview extends Component {
     super(props)
 
     this.state = this.initialState = {
-      eid: props.params.eid,
-      eslug: props.params.eslug,
-      event: null,
+      reviewType: props.params.reviewType,
+      forObjectId: props.params.forObjectId,
+      forObject: null,
       // Common
-      pageForm: getPageFormType('event', props, null),
+      pageForm: getPageFormType(props.params.reviewType, props, null),
     }
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      event: getModelByObjectId(nextProps, this.state.eid, this.state.event),
-      pageForm: getPageFormType('event', nextProps, this.state.pageForm),
+      forObject: getModelByObjectId(nextProps, this.state.forObjectId, this.state.forObject),
+      pageForm: getPageFormType(this.state.reviewType, nextProps, this.state.pageForm),
     })
   }
 
   componentDidMount() {
-    this.props.dispatch(loadEventPage(this.state.eid))
+    switch (this.state.reviewType) {
+      case 'restaurant':
+        this.props.dispatch(loadRestaurantPage(this.state.forObjectId))
+        break;
+      case 'event':
+        this.props.dispatch(loadEventPage(this.state.forObjectId))
+        break;
+      case 'recipe':
+        this.props.dispatch(loadOrderedRecipePage(this.state.forObjectId))
+        break;
+    }
   }
 
   render() {
-    const {event, pageForm} = this.state;
+    const {forObject, pageForm} = this.state;
 
-    if (!!event) {
+    if (!!forObject) {
       switch (pageForm) {
         case PAGE_EDIT_FORM:
         case PAGE_NEW_FORM:
+
+          debugger
+
           return (<Telescope.components.IEAEditEventLayout
               {...this.state}
               dispatch={this.props.dispatch}/>
