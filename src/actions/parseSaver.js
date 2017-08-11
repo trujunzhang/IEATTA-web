@@ -73,7 +73,40 @@ async function _updateRestaurant(model: object): Promise<Array<Action>> {
 function updateRestaurant(model: object): ThunkAction {
   return (dispatch) => {
     const action = _updateRestaurant(model)
+    action.then(
+      ([result]) => {
+        dispatch(result)
+      }
+    )
+    return action
+  }
+}
 
+
+async function _updateEvent(model: object): Promise<Array<Action>> {
+  const event = await getQueryByType(PARSE_EVENTS).get(model.objectId)
+  event.set('displayName', model.displayName)
+  event.set('want', model.want)
+  event.set('start', model.start)
+  event.set('end', model.end)
+
+  await event.save()
+
+  await updateParseRecord('event', event)
+
+  const action = {
+    type: SAVED_MODEL_REQUEST,
+    payload: {objectId: model.objectId, model: fromParseEvent(event)}
+  }
+  return Promise.all([
+    Promise.resolve(action)
+  ])
+}
+
+
+function updateEvent(model: object): ThunkAction {
+  return (dispatch) => {
+    const action = _updateEvent(model)
     action.then(
       ([result]) => {
         dispatch(result)
@@ -85,4 +118,5 @@ function updateRestaurant(model: object): ThunkAction {
 
 export default {
   updateRestaurant,
+  updateEvent,
 }

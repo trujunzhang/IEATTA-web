@@ -84,7 +84,7 @@ class IEAEditRestaurantLayout extends Component {
   async onButtonPress() {
     const {dispatch, restaurant} = this.props;
 
-    let displayName = this.props.editModel.form.fields.displayName;
+    const displayName = this.props.editModel.form.fields.displayName;
 
     this.props.actions.updateModelRequest();
 

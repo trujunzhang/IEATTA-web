@@ -92,7 +92,11 @@ class IEAEditEventLayout extends Component {
   async onButtonPress() {
     const {dispatch, event} = this.props;
 
-    let displayName = this.props.editModel.form.fields.displayName;
+    const displayName = this.props.editModel.form.fields.displayName;
+    const eventWhat = this.props.editModel.form.fields.eventWhat;
+    const eventStart = this.props.editModel.form.fields.start;
+    const eventEnd = this.props.editModel.form.fields.end;
+
 
     this.props.actions.updateModelRequest();
 
