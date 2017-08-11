@@ -138,8 +138,6 @@ class IEAEditRecipeLayout extends Component {
         id="biz_attrib_form"
         name="biz_attrib_form">
 
-        {this.renderRight()}
-
         {this.renderLeft()}
         {this.renderLeftButton()}
 

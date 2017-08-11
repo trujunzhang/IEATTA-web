@@ -116,8 +116,8 @@
       "valid_password_again": "Passwords must match"
     },
     "editRestaurant": {
-      "displayName": "name",
-      "displayNamePlaceHolder": "restaurant name"
+      "displayName": "Restaurant Name",
+      "displayNamePlaceHolder": ""
     },
     "editEvent": {
       "displayName": "Event Name",
@@ -128,12 +128,12 @@
       "end": "end date"
     },
     "editRecipe": {
-      "displayName": "name",
-      "displayNamePlaceHolder": "recipe name"
+      "displayName": "Recipe Name",
+      "displayNamePlaceHolder": ""
     },
     "editUser": {
-      "displayName": "name",
-      "displayNamePlaceHolder": "user name"
+      "displayName": "User Name",
+      "displayNamePlaceHolder": ""
     },
     "editReview": {
       "reviewBody": "Your review",

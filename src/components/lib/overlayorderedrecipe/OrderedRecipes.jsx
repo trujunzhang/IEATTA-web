@@ -122,6 +122,12 @@ class OrderedRecipes extends Component {
               }
             </div>
           )
+        case PAGE_EDIT_FORM:
+        case PAGE_NEW_FORM:
+          return (<Telescope.components.IEAEditRecipeLayout
+              {...this.state}
+              dispatch={this.props.dispatch}/>
+          )
       }
     }
 
