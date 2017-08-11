@@ -49,7 +49,7 @@ class IEAEditRecipeLayout extends Component {
 
     props.actions.toggleEditModelType(MENU_ITEM_ADD_OR_EDIT_RESTAURANT);
     props.actions.onEditModelFormFieldChange('displayName', props.recipe.displayName || '', true)
-    props.actions.onEditModelFormFieldChange('price', props.recipe.price || '', true)
+    props.actions.onEditModelFormFieldChange('price', props.recipe.price || 0, true)
   }
 
   /**
@@ -145,6 +145,10 @@ class IEAEditRecipeLayout extends Component {
     )
   }
 
+  onPriceChange(e) {
+    debugger
+  }
+
   renderContent() {
     return (
       <div
@@ -165,6 +169,8 @@ class IEAEditRecipeLayout extends Component {
               placeholder="Enter a price number"
               className='form-control'
               type='text'
+              value={this.state.value.price}
+              onChange={this.onPriceChange.bind(this)}
             />
 
           </div>
