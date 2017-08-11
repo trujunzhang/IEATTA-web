@@ -19,8 +19,6 @@ const {updateEvent, timeout} = require('../../../actions').default
  */
 const {
   MENU_ITEM_ADD_OR_EDIT_RESTAURANT,
-  PAGE_EDIT_FORM,
-  PAGE_NEW_FORM,
 } = require('../../../lib/constants').default
 
 const {
@@ -125,7 +123,6 @@ class IEAEditEventLayout extends Component {
   renderLeftButton() {
     const {editModel} = this.props;
     const isDisabled = (!editModel.form.isValid || editModel.form.isFetching);
-    const isNewModel = isNewModelPage(this.state.pageForm);
 
     return (
       <div className="form-footer">
@@ -137,10 +134,10 @@ class IEAEditEventLayout extends Component {
           type="submit"
           value="Submit Changes"
           className="ybtn ybtn--primary">
-          <span>{`${isNewModel ? 'Create' : 'Update'} Event`}</span>
+          <span>{`${isNewModelPage(this.state.pageForm) ? 'Create' : 'Update'} Event`}</span>
         </button>
         <a onClick={this.props.goBack}>
-          Cancel
+          {'Cancel'}
         </a>
       </div>
     )
@@ -176,10 +173,9 @@ class IEAEditEventLayout extends Component {
 
 
   renderTitle() {
-    const isNewModel = isNewModelPage(this.state.pageForm);
     return (
       <div className="section-header">
-        <h2>{`${isNewModel ? 'Submit' : 'Update'} an Event`}</h2>
+        <h2>{`${isNewModelPage(this.state.pageForm) ? 'Submit' : 'Update'} an Event`}</h2>
       </div>
     )
   }

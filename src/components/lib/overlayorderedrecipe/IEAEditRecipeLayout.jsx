@@ -14,16 +14,15 @@ import {withRouter} from 'react-router'
 const {updateRestaurant, timeout} = require('../../../actions').default
 
 
+const {
+  isNewModelPage
+} = require('../../filter/filterRoutes')
+
 /**
  * The states were interested in
  */
 const {
   MENU_ITEM_ADD_OR_EDIT_RESTAURANT,
-  // Sections
-  SECTION_PHOTOS_BROWSER_FOR_RESTAURANT,
-  // Model Form Type
-  MODEL_FORM_TYPE_NEW,
-  MODEL_FORM_TYPE_EDIT,
 } = require('../../../lib/constants').default
 
 
@@ -35,10 +34,12 @@ class IEAEditRecipeLayout extends Component {
     this.state = {
       value: {
         displayName: props.editModel.form.fields.displayName,
+        price: props.editModel.form.fields.price,
       }
     }
     props.actions.toggleEditModelType(MENU_ITEM_ADD_OR_EDIT_RESTAURANT);
     props.actions.onEditModelFormFieldChange('displayName', props.recipe.displayName || '', true)
+    props.actions.onEditModelFormFieldChange('price', props.recipe.price || '', true)
   }
 
   /**
@@ -49,6 +50,7 @@ class IEAEditRecipeLayout extends Component {
     this.setState({
       value: {
         displayName: nextProps.editModel.form.fields.displayName,
+        price: nextProps.editModel.form.fields.price,
       }
     })
   }
@@ -84,13 +86,15 @@ class IEAEditRecipeLayout extends Component {
   async onButtonPress() {
     const {dispatch, recipe} = this.props;
 
+    const objectId = recipe.id;
     const displayName = this.props.editModel.form.fields.displayName;
+    const price = this.props.editModel.form.fields.price;
 
     this.props.actions.updateModelRequest();
 
     try {
       await Promise.race([
-        dispatch(updateRestaurant({objectId: recipe.id, displayName: displayName})),
+        dispatch(updateRestaurant({objectId, displayName, price})),
         timeout(15000),
       ]);
     } catch (e) {
@@ -122,7 +126,7 @@ class IEAEditRecipeLayout extends Component {
           type="submit"
           value="Submit Changes"
           className="ybtn ybtn--primary">
-          <span>Submit Changes</span>
+          <span>{`${isNewModelPage(this.state.pageForm) ? 'Create Recipe' : 'Submit Changes'}`}</span>
         </button>
         <a onClick={this.props.goBack}>
           Cancel
@@ -143,6 +147,15 @@ class IEAEditRecipeLayout extends Component {
 
       </div>
 
+    )
+  }
+
+
+  renderTitle() {
+    return (
+      <div className="section-header">
+        <h2>{`${isNewModelPage(this.state.pageForm) ? 'Submit' : 'Update'} a Recipe`}</h2>
+      </div>
     )
   }
 

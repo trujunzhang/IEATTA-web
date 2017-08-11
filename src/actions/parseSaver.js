@@ -22,11 +22,13 @@
  * @flow
  */
 
+
 'use strict';
 
 
 const _ = require('underscore')
 import type {Action, ThunkAction} from './types'
+import {fromParseRecipe} from "../reducers/parseModels";
 
 
 let {ParseUser} = require('../parse/objects').default
@@ -116,7 +118,40 @@ function updateEvent(model: object): ThunkAction {
   }
 }
 
+
+async function _updateRecipe(model: object): Promise<Array<Action>> {
+  const recipe = await getQueryByType(PARSE_RECIPES).get(model.objectId)
+
+  recipe.set('displayName', model.displayName)
+  recipe.set('price', model.price)
+
+  await recipe.save()
+
+  await updateParseRecord('recipe', recipe)
+
+  const action = {
+    type: SAVED_MODEL_REQUEST,
+    payload: {objectId: model.objectId, model: fromParseRecipe(recipe)}
+  }
+  return Promise.all([
+    Promise.resolve(action)
+  ])
+}
+
+function updateRecipe(model: object): ThunkAction {
+  return (dispatch) => {
+    const action = _updateRecipe(model)
+    action.then(
+      ([result]) => {
+        dispatch(result)
+      }
+    )
+    return action
+  }
+}
+
 export default {
   updateRestaurant,
   updateEvent,
+  updateRecipe,
 }
