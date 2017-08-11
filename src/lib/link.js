@@ -56,6 +56,10 @@ export function getEditEventLink(event) {
   return `/edit/event/${event.id}/${slugify(event.displayName)}`
 }
 
+export function getEditRecipeLink(recipe) {
+  return `/edit/recipe/${recipe.id}/${slugify(recipe.displayName)}`
+}
+
 export function getNewEventLink(restaurant) {
   return `/edit/event/for/restaurant/${restaurant.id}/${slugify(restaurant.displayName)}`
 }
@@ -95,5 +99,6 @@ export function getPhotoSelectBackLink(pageForm, photoType, forObject) {
   }
 
 }
+
 
 

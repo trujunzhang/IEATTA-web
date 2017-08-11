@@ -67,7 +67,7 @@ class OrderedRecipesSingleHeader extends Component {
                       <span className="business-attribute price-range">$$</span>
                     </span>
             <span className="category-str-list">
-                    <a>Restaurant</a>
+                    <a>Recipe</a>
             </span>
 
             <a className="edit-category chiclet-link chiclet-link--with-text show-tooltip">
