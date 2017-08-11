@@ -31,7 +31,17 @@ import type {Action, ThunkAction} from './types'
 import {fromParseRecipe} from "../reducers/parseModels";
 
 
-let {ParseUser} = require('../parse/objects').default
+let {
+  ParseRestaurant,
+  ParseEvent,
+  ParsePeopleInEvent,
+  ParseUser,
+  ParseReview,
+  ParseRecipe,
+  ParseRecord,
+  ParsePhoto,
+
+} = require('../parse/objects').default
 let {getUsersParameters, getQueryByType, updateParseRecord} = require('../parse/parseUtiles').default
 
 const {fromParseUser, fromParseRestaurant, fromParseEvent} = require('../reducers/parseModels')
@@ -152,14 +162,27 @@ function updateRecipe(model: object): ThunkAction {
 
 
 async function _createNewReview(model: object): Promise<Array<Action>> {
-  const recipe = await getQueryByType(PARSE_RECIPES).get(model.objectId)
+  const review = new ParseReview()
 
-  recipe.set('displayName', model.displayName)
-  recipe.set('price', model.price)
+  review.set('rate', model.reviewRating)
+  review.set('body', model.reviewBody)
+  review.set('reviewType', model.reviewType)
 
-  await recipe.save()
+  switch (model.reviewType) {
+    case "restaurant":
+      review.set('restaurant', ParseRestaurant.createWithoutData(model.forObjectId))
+      break;
+    case "event":
+      review.set('event', ParseEvent.createWithoutData(model.forObjectId))
+      break;
+    case "recipe":
+      review.set('recipe', ParseRecipe.createWithoutData(model.forObjectId))
+      break;
+  }
 
-  await updateParseRecord('recipe', recipe)
+  await review.save()
+
+  await updateParseRecord('review', review)
 
   const action = {
     type: SAVED_MODEL_REQUEST,
