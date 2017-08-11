@@ -7,8 +7,10 @@ import MaskedInput from 'react-text-mask';
 import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 
 const numberMask = createNumberMask({
-  prefix: '',
-  suffix: ''
+  prefix: '$',
+  suffix: '',
+  allowDecimal: true,
+  integerLimit: 3
 })
 
 /**
