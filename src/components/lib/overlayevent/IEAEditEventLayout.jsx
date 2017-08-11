@@ -11,7 +11,7 @@ import {withRouter} from 'react-router'
 
 // I18n.translations = Translations
 
-const {updateRestaurant, timeout} = require('../../../actions').default
+const {updateEvent, timeout} = require('../../../actions').default
 
 
 /**
@@ -92,6 +92,7 @@ class IEAEditEventLayout extends Component {
   async onButtonPress() {
     const {dispatch, event} = this.props;
 
+    const objectId = event.id;
     const displayName = this.props.editModel.form.fields.displayName;
     const eventWhat = this.props.editModel.form.fields.eventWhat;
     const eventStart = this.props.editModel.form.fields.start;
@@ -102,7 +103,7 @@ class IEAEditEventLayout extends Component {
 
     try {
       await Promise.race([
-        dispatch(updateRestaurant({objectId: event.id, displayName: displayName})),
+        dispatch(updateEvent({objectId, displayName, eventWhat, eventStart, eventEnd})),
         timeout(15000),
       ]);
     } catch (e) {
@@ -110,7 +111,7 @@ class IEAEditEventLayout extends Component {
       const message = e.message || e;
       if (message !== 'Timed out' && message !== 'Canceled by user') {
         debugger
-        // alert(message);
+        alert(message);
         // console.warn(e);
       }
     } finally {

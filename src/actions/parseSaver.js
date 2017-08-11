@@ -86,9 +86,9 @@ function updateRestaurant(model: object): ThunkAction {
 async function _updateEvent(model: object): Promise<Array<Action>> {
   const event = await getQueryByType(PARSE_EVENTS).get(model.objectId)
   event.set('displayName', model.displayName)
-  event.set('want', model.want)
-  event.set('start', model.start)
-  event.set('end', model.end)
+  event.set('want', model.eventWhat)
+  event.set('start', model.eventStart)
+  event.set('end', model.eventEnd)
 
   await event.save()
 
