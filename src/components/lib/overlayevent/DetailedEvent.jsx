@@ -38,6 +38,7 @@ class DetailedEvent extends Component {
       event: null,
       // Common
       pageForm: getPageFormType('event', props, null),
+      photoType: 'event',
     }
   }
 

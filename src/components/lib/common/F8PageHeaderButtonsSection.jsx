@@ -8,6 +8,8 @@ import {Link} from 'react-router'
 class F8PageHeaderButtonsSection extends Component {
 
   renderWriteAReview() {
+    const {photoType} = this.props;
+
     return (
       <a className="ybtn ybtn--primary war-button">
             <span id="icon_24X24"
