@@ -38,6 +38,7 @@ class IEAEditEventLayout extends Component {
         eventWhat: props.editModel.form.fields.eventWhat,
       }
     }
+
     props.actions.toggleEditModelType(MENU_ITEM_ADD_OR_EDIT_RESTAURANT);
     props.actions.onEditModelFormFieldChange('displayName', props.event.displayName || '', true)
     props.actions.onEditModelFormFieldChange('eventWhat', props.event.want || '', true)
@@ -72,6 +73,7 @@ class IEAEditEventLayout extends Component {
     if (value.eventWhat !== '') {
       this.props.actions.onEditModelFormFieldChange('eventWhat', value.eventWhat)
     }
+
     this.setState(
       {value}
     )

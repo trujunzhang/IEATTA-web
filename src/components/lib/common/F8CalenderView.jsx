@@ -66,7 +66,7 @@ class F8CalenderView extends Component {
     const newValue = {};
     newValue[this.state.field] = value.toDate()
 
-    this.props.actions.onEditModelFormFieldChange(this.state.field, value.toDate(), false)
+    this.props.actions.onEditModelFormFieldChange(this.state.field, value.toDate(), true)
 
     this.setState({value: newValue})
   }

@@ -9,6 +9,23 @@ const Form = t.form.Form;
 
 const I18n = require('react-redux-i18n').I18n;
 
+const eventWantPlaceHolder = I18n.t('editEvent.eventWhatPlaceHolder');
+
+const myDescriptionTemplate = t.form.Form.templates.textbox.clone({
+  // override just the input default implementation (labels, help, error will be preserved)
+  renderInput: (locals) => {
+    return (
+      <textarea
+        className="review-textarea expanded placeholder"
+        placeholder={eventWantPlaceHolder}
+        id="description"
+        name="description">
+            {locals.value}
+            </textarea>
+    )
+  }
+})
+
 class EditEventForm extends Component {
 
 
@@ -30,22 +47,6 @@ class EditEventForm extends Component {
       }
     }
 
-    const myDescriptionTemplate = t.form.Form.templates.textbox.clone({
-      // override just the input default implementation (labels, help, error will be preserved)
-      renderInput: (locals) => {
-        return (
-          <textarea
-            className="review-textarea expanded placeholder"
-            id="description"
-            name="description"
-            placeholder={I18n.t('editEvent.eventWhatPlaceHolder')}
-          >
-            {locals.value}
-            </textarea>
-        )
-      }
-    })
-
     let eventWhat = {
       label: I18n.t('editEvent.eventWhat'),
       editable: !this.props.form.isFetching,
@@ -54,11 +55,10 @@ class EditEventForm extends Component {
       template: myDescriptionTemplate
     }
 
-    const editEditEventForm = t.struct({
+    const editEventForm = t.struct({
       displayName: t.String,
       eventWhat: t.String,
     })
-
 
     let options = {
       fields: {
@@ -73,7 +73,7 @@ class EditEventForm extends Component {
      */
     return (
       <Form ref='form'
-            type={editEditEventForm}
+            type={editEventForm}
             options={options}
             value={this.props.value}
             onChange={this.props.onChange}
