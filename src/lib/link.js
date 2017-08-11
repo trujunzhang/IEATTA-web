@@ -59,6 +59,10 @@ export function getEditEventLink(event) {
   return `/edit/event/${event.id}/${slugify(event.displayName)}`
 }
 
+export function getNewEventLink(restaurant) {
+  return `/edit/event/for/restaurant/${restaurant.id}/${slugify(restaurant.displayName)}`
+}
+
 /**
  * http://localhost:3000/biz_photos/OnNGSfwoou/Forno%20Vecchio?select=Px63VDvuud
  *
