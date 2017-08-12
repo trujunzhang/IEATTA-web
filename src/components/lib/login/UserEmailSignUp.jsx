@@ -106,7 +106,7 @@ class UserEmailSignUp extends Component {
         <div className="js-password-meter-container">
 
           <label className="placeholder-sub">User Name</label>
-          <input id="email" name="email" placeholder="Email" required="required" type="email" value=""/>
+          <input id="email" name="email" placeholder="User Name" required="required" type="email" value=""/>
 
           <label className="placeholder-sub">Email</label>
           <input id="email" name="email" placeholder="Email" required="required" type="email" value=""/>
