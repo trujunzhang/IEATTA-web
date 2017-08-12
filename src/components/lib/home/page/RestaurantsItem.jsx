@@ -2,7 +2,6 @@ import Telescope from '../../index'
 import React, {Component} from 'react'
 import Posts from '../../../../lib/posts'
 import Photos from '../../../../lib/photos'
-import Users from '../../../../lib/users'
 
 import {getRestaurantLink} from '../../../../lib/link'
 import {withRouter} from 'react-router'

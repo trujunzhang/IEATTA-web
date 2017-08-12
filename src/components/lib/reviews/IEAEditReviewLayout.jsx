@@ -213,6 +213,8 @@ class IEAEditReviewLayout extends Component {
   }
 
   renderTopSection() {
+    const {forObject, reviewType} = this.props;
+
     return (
       <Telescope.components.EditReviewTopSection  {...this.props}/>
     )
