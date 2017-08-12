@@ -122,7 +122,9 @@ class UserEmailSignIn extends Component {
 
   renderForm() {
     return (
-      <form className="yform" id="ajax-login" method="POST">
+      <div className="yform"
+           id="ajax-login">
+
         <label className="placeholder-sub">Email</label>
         <input
           id="email"
@@ -148,6 +150,7 @@ class UserEmailSignIn extends Component {
         {this.renderForgot()}
 
         <div className="captcha login-captcha"/>
+
         <p className="legal-copy legal-left">
           {'By logging in, you agree to IEATT’s '}
           <a className="legal-link" href="https://www.yelp.com.sg/static?p=tos">
@@ -159,10 +162,12 @@ class UserEmailSignIn extends Component {
           </a>
           {"."}
         </p>
+
         <button type="submit" value="submit" className="ybtn ybtn--primary submit ybtn-full">
           <span>Log In</span>
         </button>
-      </form>
+
+      </div>
     )
   }
 
