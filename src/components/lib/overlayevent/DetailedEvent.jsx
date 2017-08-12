@@ -35,7 +35,9 @@ class DetailedEvent extends Component {
     this.state = this.initialState = {
       eid: props.params.eid,
       eslug: props.params.eslug,
+      // Detailed object
       event: null,
+      forObject: null,
       // Common
       pageForm: getPageFormType('event', props, null),
       photoType: 'event',
@@ -44,7 +46,10 @@ class DetailedEvent extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({
+      // Detailed object
       event: getModelByObjectId(nextProps, this.state.eid, this.state.event),
+      forObject: getModelByObjectId(nextProps, this.state.eid, this.state.forObject),
+      // Common
       pageForm: getPageFormType('event', nextProps, this.state.pageForm),
     })
   }
