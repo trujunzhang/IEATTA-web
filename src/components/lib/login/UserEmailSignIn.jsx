@@ -58,6 +58,7 @@ class UserEmailSignIn extends Component {
         this.setState({errorMessage: errorMessage})
       } else {
         this.props.actions.loginSuccess()
+        this.props.router.push({pathname: '/'})
       }
     }
   }

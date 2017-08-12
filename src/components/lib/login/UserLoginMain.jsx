@@ -114,8 +114,7 @@ class UserLoginMain extends Component {
       case LOGIN_FORM_TYPE_LOGIN:
         return (
           <Telescope.components.UserEmailSignIn
-            actions={this.props.actions}
-            auth={this.props.auth}
+            {...this.props}
             loginViaSocial={this.loginViaSocial.bind(this)}
             toggleEvent={this.switchFormState.bind(this)}/>
         )
