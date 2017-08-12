@@ -220,6 +220,8 @@ class IEAEditReviewLayout extends Component {
         return (<Telescope.components.EditReviewTopRestaurant {...this.props}/>)
       case "recipe":
         return (<Telescope.components.EditReviewTopRecipe {...this.props}/>)
+      case "event":
+        return (<Telescope.components.EditReviewTopEvent {...this.props}/>)
     }
 
   }
