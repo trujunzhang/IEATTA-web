@@ -70,11 +70,15 @@ class HeaderRightUserPanel extends Component {
             <div className="media-avatar responsive-photo-box js-analytics-click"
                  data-analytics-label="about_me">
               <div className="photo-box pb-60s" data-hovercard-id="XA2GwN6Ov4QwEuY2Pzwx4w">
-                <a href="/user_details?userid=kIEHaO2vd6Lic4rwkMgH6Q" className="js-analytics-click"
+                <a href="/user_details?userid=kIEHaO2vd6Lic4rwkMgH6Q"
+                   className="js-analytics-click"
                    data-analytics-label="user-photo">
-                  <img alt="Trujun Z." className="photo-box-img" height="60"
+                  <img alt="Trujun Z."
+                       className="photo-box-img"
+                       height="60"
                        src="https://s3-media1.fl.yelpcdn.com/photo/Hjd0EAdSH-gYJbRBF5nAnw/60s.jpg"
-                       width="60"/>
+                       width="60"
+                  />
 
                 </a>
 
@@ -87,7 +91,7 @@ class HeaderRightUserPanel extends Component {
                 <li className="user-name">
                   <a className="user-display-name js-analytics-click"
                      href="/user_details?userid=kIEHaO2vd6Lic4rwkMgH6Q"
-                     data-hovercard-id="XA2GwN6Ov4QwEuY2Pzwx4w" data-analytics-label="about_me"
+                     data-hovercard-id="XA2GwN6Ov4QwEuY2Pzwx4w"
                      id="dropdown_user-name">Trujun Z.</a>
                 </li>
                 <li className="user-location responsive-hidden-small">
@@ -134,7 +138,7 @@ class HeaderRightUserPanel extends Component {
         <ul className="drop-menu-group--nav drop-menu-group">
           <li className="drop-down-menu-link">
             <a className="js-analytics-click arrange arrange--middle arrange--6"
-               href="/user_details?userid=kIEHaO2vd6Lic4rwkMgH6Q" data-analytics-label="dropdown_about-me">
+               href="/user_details?userid=kIEHaO2vd6Lic4rwkMgH6Q">
               <strong className="arrange_unit">
                                 <span id="icon_24X24"
                                       className="icon icon--24-profile icon--size-24 u-space-r1">
@@ -157,7 +161,8 @@ class HeaderRightUserPanel extends Component {
           </li>
 
           <li className="drop-down-menu-link">
-            <a className="js-analytics-click arrange arrange--middle arrange--6" href="/find_friends"
+            <a className="js-analytics-click arrange arrange--middle arrange--6"
+               href="/find_friends"
                data-analytics-label="dropdown_find-friends">
               <strong className="arrange_unit">
                                 <span id="icon_24X24"
@@ -187,7 +192,8 @@ class HeaderRightUserPanel extends Component {
 
 
           <li className="drop-down-menu-link hidden-non-responsive-block responsive-visible-medium-block">
-            <a className="js-analytics-click arrange arrange--middle arrange--6" href="/talk"
+            <a className="js-analytics-click arrange arrange--middle arrange--6"
+               href="/talk"
                data-analytics-label="">
               <strong className="arrange_unit">
                                 <span id="icon_24X24"
@@ -263,21 +269,34 @@ class HeaderRightUserPanel extends Component {
           </li>
 
         </ul>
-
-        <ul className="drop-menu-group">
-          <li className="drop-down-menu-link drop-down-menu-link--logout">
-
-
-            <form action="https://www.yelp.com/logout" id="logout-form" method="POST" name="logout-form">
-              <input type="hidden" name="csrftok" className="csrftok"
-                     value="fabf8521d8b5251f1c9ab7c0e5a6537f1aa712021ed2d4a4cafa7e19f69f455c"/>
-              <button type="submit" className="u-pseudo-link js-analytics-click" id="header-log-out"
-                      data-analytics-label="logout">Log Out
-              </button>
-            </form>
-          </li>
-        </ul>
+        {this.renderLogOut()}
       </div>
+    )
+  }
+
+  onLogOutPress() {
+
+  }
+
+  renderLogOut() {
+    return (
+      <ul className="drop-menu-group">
+        <li className="drop-down-menu-link drop-down-menu-link--logout">
+
+          <div
+            id="logout-form"
+            name="logout-form">
+            <button
+              onClick={this.onLogOutPress.bind(this)}
+              type="submit"
+              className="u-pseudo-link js-analytics-click"
+              id="header-log-out">
+              {"Log Out"}
+            </button>
+          </div>
+
+        </li>
+      </ul>
     )
   }
 
@@ -305,10 +324,8 @@ class HeaderRightUserPanel extends Component {
           </div>
         </div>
       </div>
-
     )
   }
-
 }
 
 export default onClickOutside(HeaderRightUserPanel)
