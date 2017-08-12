@@ -85,4 +85,4 @@ function user(state: State = initialState, action: Action): State {
   return state
 }
 
-export default user
+export default user;
