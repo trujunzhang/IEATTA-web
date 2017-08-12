@@ -74,25 +74,7 @@ class UserEmailSignUp extends Component {
             <p className="subheading">Connect with great local businesses</p>
           </div>
 
-          <p className="fb-start">
-            <button
-              onClick={(e) => {
-                this.props.loginViaSocial('facebook')
-              }}
-              type="submit" value="submit" className="ybtn ybtn--social ybtn--facebook ybtn-full">
-              <span>
-                <div className="u-text-centered">
-              <span id="login_facebook_icon"
-                    aria-hidden="true"
-                    className="icon icon--24-facebook icon--size-24 icon--currentColor">
-                <svg className="icon_svg">
-                  <path
-                    d="M13 21v-8h3.15l.412-3H13V7.547C13 6.62 13.65 6 14.98 6H17V3.126C16 3.086 15.493 3 14.323 3 11.88 3 10 4.49 10 7.23V10H7v3h3v8h3z"/>
-                </svg>
-              </span> Sign Up with Facebook</div>
-              </span>
-            </button>
-          </p>
+          {this.renderFacebookSection()}
 
           <p className="legal-copy">Don't worry, we never post without your permission.</p>
 
@@ -103,6 +85,7 @@ class UserEmailSignUp extends Component {
           {this.renderForm()}
 
         </div>
+
         <div className="sub-text-box">
           <small className="subtle-text">{'Already on IEATTA? '}
             <a onClick={(e) => {
@@ -117,24 +100,14 @@ class UserEmailSignUp extends Component {
 
   renderForm() {
     return (
-      <form className="yform signup-form  city-hidden" id="signup-form" method="POST">
+      <div className="yform signup-form  city-hidden"
+           id="signup-form">
+
         <div className="js-password-meter-container">
-          <ul className="inline-layout clearfix">
-            <li>
-              <label className="placeholder-sub">First Name</label>
-              <input id="first_name"
-                     name="first_name"
-                     placeholder="First Name"
-                     required="required" type="text" value=""
-                     className="login_input_email"/>
-            </li>
 
-            <li>
-              <label className="placeholder-sub">Last Name</label>
-              <input id="last_name" name="last_name" placeholder="Last Name" required="required" type="text" value=""/>
-            </li>
+          <label className="placeholder-sub">User Name</label>
+          <input id="email" name="email" placeholder="Email" required="required" type="email" value=""/>
 
-          </ul>
           <label className="placeholder-sub">Email</label>
           <input id="email" name="email" placeholder="Email" required="required" type="email" value=""/>
 
@@ -148,15 +121,44 @@ class UserEmailSignUp extends Component {
         <p className="legal-copy legal-left">
           {'By signing up, you agree to IEATTA’s '}
           <a className="legal-link" href="https://www.yelp.com.sg/static?p=tos">
-            {'Terms of Service'}</a>
+            {'Terms of Service'}
+          </a>
           {' and '}
-          <a className="legal-link" href="/tos/privacy_en_ie_20160131">Privacy Policy</a>{'.'}
+          <a className="legal-link" href="/tos/privacy_en_ie_20160131">Privacy Policy</a>
+          {'.'}
         </p>
-        <button id="signup-button" type="submit" value="Sign Up"
+        <button id="signup-button"
+                type="submit"
+                value="Sign Up"
                 className="ybtn ybtn--primary disable-on-submit submit signup-button">
           <span>Sign Up</span>
         </button>
-      </form>
+      </div>
+    )
+  }
+
+  renderFacebookSection() {
+    return (
+      <p className="fb-start">
+        <button
+          onClick={(e) => {
+            this.props.loginViaSocial('facebook')
+          }}
+          type="submit" value="submit" className="ybtn ybtn--social ybtn--facebook ybtn-full">
+              <span>
+                <div className="u-text-centered">
+              <span id="login_facebook_icon"
+                    aria-hidden="true"
+                    className="icon icon--24-facebook icon--size-24 icon--currentColor">
+                <svg className="icon_svg">
+                  <path
+                    d="M13 21v-8h3.15l.412-3H13V7.547C13 6.62 13.65 6 14.98 6H17V3.126C16 3.086 15.493 3 14.323 3 11.88 3 10 4.49 10 7.23V10H7v3h3v8h3z"/>
+                </svg>
+              </span> Sign Up with Facebook</div>
+              </span>
+        </button>
+      </p>
+
     )
   }
 }
