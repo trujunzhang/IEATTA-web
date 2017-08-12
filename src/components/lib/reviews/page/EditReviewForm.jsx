@@ -3,6 +3,8 @@ import React, {Component} from 'react'
 
 const I18n = require('react-redux-i18n').I18n;
 
+import onClickOutside from 'react-onclickoutside'
+
 const reviewBodyPlaceHolder = I18n.t('editReview.reviewBodyPlaceHolder');
 
 class EditReviewForm extends Component {
@@ -14,7 +16,14 @@ class EditReviewForm extends Component {
     this.state = {
       rateStarHoverIndex: 0,
       rateStarSelectIndex: 0,
+      hasFormFocus: false
     }
+  }
+
+
+  handleClickOutside(e) {
+    this.setState({hasFormFocus: false})
+    this.refs.reviewBodyRef.blur();
   }
 
   onMouseEnterHandler(index) {
@@ -31,8 +40,11 @@ class EditReviewForm extends Component {
 
   onRateStarPress(index) {
     this.setState({
-      rateStarSelectIndex: index
+      rateStarSelectIndex: index,
+      hasFormFocus: true
     });
+
+    this.refs.reviewBodyRef.focus();
   }
 
   renderRating() {
@@ -90,19 +102,23 @@ class EditReviewForm extends Component {
    */
   render() {
     const reviewBody = this.props.form.fields.reviewBody;
+    const {hasFormFocus} = this.state;
+    const formClass = `rating-and-comment pseudo-input${hasFormFocus ? " focused" : ""}`;
+    const currentReviewBodyPlaceHolder = hasFormFocus ? "" : reviewBodyPlaceHolder;
 
     /**
      * ### Return
      * returns the Form component with the correct structures
      */
     return (
-      <div className="rating-and-comment pseudo-input focused">
+      <div className={formClass}>
         {this.renderRating()}
 
         <div className="review-widget">
         <textarea
+          ref={'reviewBodyRef'}
           className="review-textarea expanded placeholder"
-          placeholder={reviewBodyPlaceHolder}
+          placeholder={currentReviewBodyPlaceHolder}
           id="review-text"
           defaultValue={reviewBody}
           // onChange={locals.onChange}
@@ -115,4 +131,4 @@ class EditReviewForm extends Component {
   }
 }
 
-export default EditReviewForm;
+export default onClickOutside(EditReviewForm);
