@@ -80,7 +80,7 @@ export default {
   },
 
   loadEventPage: (objectId: string): ThunkAction => {
-    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_EVENTS, ['restaurant', 'photos']), objectId, fromParseEvent)
+    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_EVENTS, ['restaurant', 'restaurant.photos']), objectId, fromParseEvent)
   },
 
   loadOrderedUserPage: (objectId: string): ThunkAction => {
