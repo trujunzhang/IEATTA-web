@@ -36,8 +36,6 @@ class IEAEditReviewLayout extends Component {
 
     this.state = {
       pageForm: props.pageForm,
-      rateStarHoverIndex: 0,
-      rateStarSelectIndex: 0,
       value: {
         reviewRating: props.editModel.form.fields.reviewRating,
         reviewBody: props.editModel.form.fields.reviewBody,
@@ -78,15 +76,6 @@ class IEAEditReviewLayout extends Component {
 
     this.setState(
       {value}
-    )
-  }
-
-  renderFormBody() {
-    return (
-      <Telescope.components.EditReviewForm
-        form={this.props.editModel.form}
-        value={this.state.value}
-        onChange={this.onChange.bind(this)}/>
     )
   }
 
@@ -157,71 +146,6 @@ class IEAEditReviewLayout extends Component {
     )
   }
 
-  onMouseEnterHandler(index) {
-    this.setState({
-      rateStarHoverIndex: index
-    });
-  }
-
-  onMouseLeaveHandler() {
-    this.setState({
-      rateStarHoverIndex: -1
-    });
-  }
-
-  onRateStarPress(index) {
-    this.setState({
-      rateStarSelectIndex: index
-    });
-  }
-
-  renderRating() {
-    const rateStarLabels = [
-      'Select your rating.',
-      "Eek! Methinks not.",
-      "Meh. I've experienced better.",
-      "A-OK.",
-      "Yay! I'm a fan.",
-      "Woohoo! As good as it gets!"
-    ]
-    const {rateStarHoverIndex, rateStarSelectIndex} = this.state;
-    let currentRateIndex = rateStarSelectIndex;
-    if (rateStarHoverIndex !== -1) {
-      currentRateIndex = rateStarHoverIndex;
-    }
-
-    return (
-      <div className="arrange arrange--middle">
-        <div className="arrange_unit arrange_unit--fill">
-          <div className="clearfix">
-
-            <fieldset className="star-selector js-star-selector">
-              <ul
-                className={`star-selector_stars i-selector-stars js-star-selector_stars i-selector-stars--extra-large-${currentRateIndex}`}>
-                {[1, 2, 3, 4, 5].map((item, index) => {
-                  return (
-                    <li key={index}
-                        onMouseEnter={() => this.onMouseEnterHandler(index + 1)}
-                        onMouseLeave={this.onMouseLeaveHandler.bind(this)}
-                        onClick={() => this.onRateStarPress(index + 1)}
-                        className="star-selector_star js-star-selector_star show-tooltip">
-                    </li>
-                  )
-                })}
-              </ul>
-              <p className="star-selector_description js-star-selector_description">
-                {rateStarLabels[currentRateIndex]}
-              </p>
-            </fieldset>
-
-
-          </div>
-
-        </div>
-      </div>
-    )
-  }
-
   renderForm() {
     return (
       <div className="yform" id="review_rate_form" name="review_rate_form">
@@ -231,12 +155,12 @@ class IEAEditReviewLayout extends Component {
           {this.renderFormTitle()}
 
           <div className="js-character-counter">
-            <div className="rating-and-comment pseudo-input">
 
-              {this.renderRating()}
-              {this.renderFormBody()}
+            <Telescope.components.EditReviewForm
+              form={this.props.editModel.form}
+              value={this.state.value}
+              onChange={this.onChange.bind(this)}/>
 
-            </div>
           </div>
         </div>
 
