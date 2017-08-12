@@ -25,14 +25,16 @@ class UserLoginMain extends Component {
     const {location} = props,
       {pathname} = location
 
+    const formState = (pathname.indexOf('login') !== -1) ? LOGIN_FORM_TYPE_LOGIN : LOGIN_FORM_TYPE_REGISTER;
     this.state = this.initialState = {
       // formState: LOGIN_FORM_TYPE_LOGIN,
-      formState: (pathname.indexOf('login') !== -1) ? LOGIN_FORM_TYPE_LOGIN : LOGIN_FORM_TYPE_REGISTER,
+      formState: formState
     }
+
+    this.toggleFormState(formState)
   }
 
-  switchFormState(e, state) {
-    e.preventDefault()
+  toggleFormState(state) {
     switch (state) {
       case LOGIN_FORM_TYPE_REGISTER:
         this.props.actions.registerState()
@@ -41,11 +43,15 @@ class UserLoginMain extends Component {
         this.props.actions.loginState()
         break;
     }
+  }
 
+  switchFormState(e, state) {
+    e.preventDefault()
+    this.toggleFormState(state);
     this.setState({formState: state})
   }
 
-  async loginViaSocial(type = 'facebook') {
+  async loginViaSocial() {
     let errorMessage = null
 
     try {
@@ -153,6 +159,14 @@ class UserLoginMain extends Component {
  */
 const {connect} = require('react-redux')
 
+import * as authActions from '../../../reducers/auth/authActions'
+import {bindActionCreators} from 'redux'
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(authActions, dispatch),
+  }
+}
 
 function select(store) {
   return {
@@ -160,6 +174,6 @@ function select(store) {
   }
 }
 
-export default withRouter(connect(select)(UserLoginMain))
+export default withRouter(connect(select, mapDispatchToProps)(UserLoginMain))
 
 

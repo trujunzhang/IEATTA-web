@@ -24,8 +24,6 @@ const {
  * @param {Object} state - the Redux state object
  */
 export default function formValidation (state) {
-  debugger
-
   switch (state.form.state) {
     /**
      * ### Logout has no fields, so always valid
