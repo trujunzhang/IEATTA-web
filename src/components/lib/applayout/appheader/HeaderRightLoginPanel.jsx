@@ -2,18 +2,17 @@ import Telescope from '../../index'
 import React, {Component} from 'react'
 import {Link} from 'react-router'
 
-const {pushModel} = require('../../../../actions/index').default
-
 class HeaderRightLoginPanel extends Component {
 
   renderTop() {
     return (
       <ul className="header-nav">
         <li className="header-nav_item responsive-hidden-small js-analytics-click">
-          <a className="ybtn ybtn--primary main-header_button header-nav_button--sign-up js-sign-up-button"
-             href="/signup" id="header-sign-up">
-            Sign Up
-          </a>
+          <Link className="ybtn ybtn--primary main-header_button header-nav_button--sign-up js-sign-up-button"
+                to="/signup"
+                id="header-sign-up">
+            {"Sign Up"}
+          </Link>
         </li>
       </ul>
     )
@@ -23,9 +22,10 @@ class HeaderRightLoginPanel extends Component {
     return (
       <ul className="header-nav margin-left-8">
         <li className="header-nav_item">
-          <a className="header-nav_link header-nav_link--log-in js-log-in-button" href="/login">
-            Log In
-          </a>
+          <Link className="header-nav_link header-nav_link--log-in js-log-in-button"
+                to="/login">
+            {"Log In"}
+          </Link>
         </li>
       </ul>
     )
@@ -48,4 +48,4 @@ class HeaderRightLoginPanel extends Component {
 
 }
 
-export default HeaderRightLoginPanel
+export default HeaderRightLoginPanel;
