@@ -109,7 +109,8 @@ class UserEmailSignIn extends Component {
 
         </div>
         <div className="sub-text-box">
-          <small className="subtle-text">{'New to IEATTA? '}
+          <small className="subtle-text">
+            {'New to IEATTA? '}
             <a onClick={(e) => {
               this.props.toggleEvent(e, LOGIN_FORM_TYPE_REGISTER)
             }}
@@ -125,7 +126,6 @@ class UserEmailSignIn extends Component {
 
     return (
       <div className="yform" id="ajax-login">
-
 
         <Telescope.components.LoginRender
           formType={LOGIN}
@@ -149,7 +149,9 @@ class UserEmailSignIn extends Component {
           {"."}
         </p>
 
-        <button type="submit" value="submit" className="ybtn ybtn--primary submit ybtn-full">
+        <button type="submit"
+                onClick={this.onButtonPress.bind(this)}
+                value="submit" className="ybtn ybtn--primary submit ybtn-full">
           <span>Log In</span>
         </button>
 
