@@ -32,12 +32,15 @@ Telescope.registerComponent('F8PageHeaderButtonsSection',       require('./commo
 Telescope.registerComponent('Error404',                         require('./common/Error404.jsx').default)
 Telescope.registerComponent('App',                              require('./common/App.js').default)
 
-// header
+// header(app)
 Telescope.registerComponent('HeaderContent',                    require('./applayout/appheader/HeaderContent.jsx').default)
 Telescope.registerComponent('HeaderContentSearchBar',           require('./applayout/appheader/HeaderContentSearchBar.jsx').default)
 Telescope.registerComponent('HeaderRightLoginPanel',            require('./applayout/appheader/HeaderRightLoginPanel.jsx').default)
 Telescope.registerComponent('HeaderRightUserIconsPanel',        require('./applayout/appheader/HeaderRightUserIconsPanel.jsx').default)
 Telescope.registerComponent('HeaderRightUserPanel',             require('./applayout/appheader/HeaderRightUserPanel.jsx').default)
+
+// header(login)
+Telescope.registerComponent('LoginHeaderContent',               require('./applayout/loginheader/LoginHeaderContent.jsx').default)
 
 // reviews
 Telescope.registerComponent('ReviewsList',                         require('./reviews/page/ReviewsList.jsx').default)
