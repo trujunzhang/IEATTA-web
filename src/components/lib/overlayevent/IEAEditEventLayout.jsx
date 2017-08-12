@@ -32,7 +32,7 @@ class IEAEditEventLayout extends Component {
     super(props)
 
     this.state = {
-      editModel: this.pageForm,
+      pageForm: props.pageForm,
       value: {
         displayName: props.editModel.form.fields.displayName,
         eventWhat: props.editModel.form.fields.eventWhat,

@@ -35,7 +35,7 @@ class IEAEditReviewLayout extends Component {
     super(props)
 
     this.state = {
-      editModel: this.pageForm,
+      pageForm: props.pageForm,
       value: {
         reviewRating: props.editModel.form.fields.reviewRating,
         reviewBody: props.editModel.form.fields.reviewBody,
@@ -79,7 +79,7 @@ class IEAEditReviewLayout extends Component {
     )
   }
 
-  renderLeft() {
+  renderFormBody() {
     return (
       <Telescope.components.EditReviewForm
         form={this.props.editModel.form}
@@ -124,25 +124,30 @@ class IEAEditReviewLayout extends Component {
     const isDisabled = (!editModel.form.isValid || editModel.form.isFetching);
 
     return (
-      <div className="form-footer">
-        <button
-          onClick={this.onButtonPress.bind(this)}
-          disabled={isDisabled}
-          id="submit-biz-details-changes"
-          name="action_submit"
-          type="submit"
-          value="Submit Changes"
-          className="ybtn ybtn--primary">
-          <span>{`${isNewModelPage(this.state.pageForm) ? 'Create' : 'Update'} Review`}</span>
-        </button>
-        <a onClick={this.props.goBack}>
-          {'Cancel'}
-        </a>
+      <div className="ysection">
+        <div className="arrange arrange--middle arrange--30">
+          <div className="arrange_unit nowrap">
+
+            <p className="action-buttons below-the-fold">
+              <button
+                onClick={this.onButtonPress.bind(this)}
+                value="submit"
+                className="ybtn ybtn--primary ybtn--small ybtn-full-responsive-small">
+                <span>{`${isNewModelPage(this.state.pageForm) ? 'Post' : 'Update'} Review`}</span>
+              </button>
+              <a onClick={this.props.goBack}>
+                {'Cancel'}
+              </a>
+            </p>
+
+          </div>
+        </div>
+        <small className="subtle-text">* You can always edit or remove reviews later.</small>
       </div>
     )
   }
 
-  renderSectionTitle() {
+  renderFormTitle() {
     return (
       <div>
         <label>Your review</label>
@@ -150,22 +155,81 @@ class IEAEditReviewLayout extends Component {
     )
   }
 
-  renderContent() {
+  renderRating() {
+    return (
+      <div className="arrange arrange--middle">
+        <div className="arrange_unit arrange_unit--fill">
+
+
+          <div className="clearfix">
+
+            <fieldset className="star-selector js-star-selector" data-original-rating="0" data-component-bound="true">
+              <legend className="star-selector_legend offscreen">Rating</legend>
+              <ul
+                className="star-selector_stars i-selector-stars js-star-selector_stars i-selector-stars--extra-large-0">
+                <li className="star-selector_star js-star-selector_star show-tooltip" data-label="Eek! Methinks not.">
+                  <input className="star-selector_input js-star-selector_input" id="rating-1" name="rating" type="radio"
+                         value="1"/>
+                  <label className="star-selector_label" for="rating-1">1 (Eek! Methinks not.)</label>
+                </li>
+                <li className="star-selector_star js-star-selector_star show-tooltip"
+                    data-label="Meh. I've experienced better.">
+                  <input className="star-selector_input js-star-selector_input" id="rating-2" name="rating" type="radio"
+                         value="2"/>
+                  <label className="star-selector_label" for="rating-2">2 (Meh. I've experienced better.)</label>
+                </li>
+                <li className="star-selector_star js-star-selector_star show-tooltip" data-label="A-OK.">
+                  <input className="star-selector_input js-star-selector_input" id="rating-3" name="rating" type="radio"
+                         value="3"/>
+                  <label className="star-selector_label" for="rating-3">3 (A-OK.)</label>
+                </li>
+                <li className="star-selector_star js-star-selector_star show-tooltip" data-label="Yay! I'm a fan.">
+                  <input className="star-selector_input js-star-selector_input" id="rating-4" name="rating" type="radio"
+                         value="4"/>
+                  <label className="star-selector_label" for="rating-4">4 (Yay! I'm a fan.)</label>
+                </li>
+                <li className="star-selector_star js-star-selector_star show-tooltip star-selector_star--last"
+                    data-label="Woohoo! As good as it gets!">
+                  <input className="star-selector_input js-star-selector_input" id="rating-5" name="rating" type="radio"
+                         value="5"/>
+                  <label className="star-selector_label" for="rating-5">5 (Woohoo! As good as it gets!)</label>
+                </li>
+              </ul>
+              <p className="star-selector_description js-star-selector_description">Select your rating.</p>
+            </fieldset>
+
+
+          </div>
+
+        </div>
+      </div>
+    )
+  }
+
+  renderForm() {
     return (
       <div className="yform" id="review_rate_form" name="review_rate_form">
-        {this.renderTopSection()}
 
         <div className="write-review integrated-rating-comment ysection js-war-compose_review-section expanded">
 
-          {this.renderSectionTitle()}
+          {this.renderFormTitle()}
 
-          {this.renderLeft()}
+          <div className="js-character-counter" data-component-bound="true">
+            <div className="rating-and-comment pseudo-input">
+
+              {this.renderRating()}
+              {this.renderFormBody()}
+
+            </div>
+          </div>
+        </div>
+
+        <div className="js-war-compose_survey-section ysection">
 
           {this.renderLeftButton()}
 
         </div>
       </div>
-
     )
   }
 
@@ -173,7 +237,21 @@ class IEAEditReviewLayout extends Component {
   renderTitle() {
     return (
       <div className="section-header">
-        <h2>{`${isNewModelPage(this.state.pageForm) ? 'Submit' : 'Update'} an Review`}</h2>
+        <h2>{`${isNewModelPage(this.state.pageForm) ? 'Write' : 'Update'} an Review`}</h2>
+      </div>
+    )
+  }
+
+
+  renderLeftPanel() {
+    return (
+
+      <div className="clearfix layout-block layout-a layout-border column--responsive">
+
+        {this.renderTitle()}
+        {this.renderTopSection()}
+
+        {this.renderForm()}
       </div>
     )
   }
@@ -185,19 +263,8 @@ class IEAEditReviewLayout extends Component {
 
         <div id="super-container" className="content-container">
 
-          <div className="container create-event-page">
+          {this.renderLeftPanel()}
 
-            {this.renderTitle()}
-
-            <div className="clearfix layout-block layout-a">
-
-              <div className="column column-alpha ">
-                {this.renderContent()}
-              </div>
-
-            </div>
-
-          </div>
         </div>
       </div>
     );
