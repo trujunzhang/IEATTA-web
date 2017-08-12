@@ -1,10 +1,10 @@
-import Telescope from '../index'
+import Telescope from '../../index'
 import React, {Component} from 'react'
 import {Link} from 'react-router'
 
 import onClickOutside from 'react-onclickoutside'
 
-const {pushModel} = require('../../../actions/index').default
+const {pushModel} = require('../../../../actions/index').default
 
 class HeaderRightUserPanel extends Component {
 

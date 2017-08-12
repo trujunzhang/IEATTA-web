@@ -33,11 +33,11 @@ Telescope.registerComponent('Error404',                         require('./commo
 Telescope.registerComponent('App',                              require('./common/App.js').default)
 
 // header
-Telescope.registerComponent('HeaderContent',                    require('./header/HeaderContent.jsx').default)
-Telescope.registerComponent('HeaderContentSearchBar',           require('./header/HeaderContentSearchBar.jsx').default)
-Telescope.registerComponent('HeaderRightLoginPanel',            require('./header/HeaderRightLoginPanel.jsx').default)
-Telescope.registerComponent('HeaderRightUserIconsPanel',        require('./header/HeaderRightUserIconsPanel.jsx').default)
-Telescope.registerComponent('HeaderRightUserPanel',             require('./header/HeaderRightUserPanel.jsx').default)
+Telescope.registerComponent('HeaderContent',                    require('./applayout/appheader/HeaderContent.jsx').default)
+Telescope.registerComponent('HeaderContentSearchBar',           require('./applayout/appheader/HeaderContentSearchBar.jsx').default)
+Telescope.registerComponent('HeaderRightLoginPanel',            require('./applayout/appheader/HeaderRightLoginPanel.jsx').default)
+Telescope.registerComponent('HeaderRightUserIconsPanel',        require('./applayout/appheader/HeaderRightUserIconsPanel.jsx').default)
+Telescope.registerComponent('HeaderRightUserPanel',             require('./applayout/appheader/HeaderRightUserPanel.jsx').default)
 
 // reviews
 Telescope.registerComponent('ReviewsList',                         require('./reviews/page/ReviewsList.jsx').default)

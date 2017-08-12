@@ -1,8 +1,7 @@
-import Telescope from '../index'
+import Telescope from '../../index'
 import React, {Component} from 'react'
 import {Link} from 'react-router'
 
-const {pushModel} = require('../../../actions/index').default
 
 class HeaderContent extends Component {
 
@@ -23,7 +22,7 @@ class HeaderContent extends Component {
   renderLeft() {
     return (
       <div className="arrange_unit main-header--full_arrange_unit">
-        <div className="main-header_logo js-analytics-click" id="logo" data-analytics-label="logo">
+        <div className="main-header_logo js-analytics-click" id="logo">
           <a href="/">Yelp</a>
         </div>
       </div>
@@ -32,8 +31,6 @@ class HeaderContent extends Component {
 
 
   render() {
-    // const {} = this
-
     return (
       <div className="main-header main-content-wrap js-main-header webview-hidden">
         <div className="main-header_wrapper">
