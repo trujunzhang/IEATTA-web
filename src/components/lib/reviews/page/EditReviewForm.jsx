@@ -44,6 +44,7 @@ class EditReviewForm extends Component {
       hasFormFocus: true
     });
 
+    this.props.actions.onEditModelFormFieldChange('reviewRating', index)
     this.refs.reviewBodyRef.focus();
   }
 
@@ -117,9 +118,6 @@ class EditReviewForm extends Component {
      */
     return (
       <div className={formClass}>
-        <div>
-          <p>{reviewBody}</p>
-        </div>
         {this.renderRating()}
 
         <div className="review-widget">
