@@ -16,7 +16,7 @@ class EditReviewTopRecipe extends Component {
             <div className="photo-box pb-60s">
 
               <a className="js-analytics-click">
-                <img alt="Wayfare Tavern"
+                <img alt={forObject.displayName}
                      className="photo-box-img"
                      width="60"
                      height="60"
