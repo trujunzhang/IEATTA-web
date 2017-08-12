@@ -30,7 +30,7 @@ class EditReviewTopRestaurant extends Component {
           <div className="media-story">
             <div className="media-title clearfix">
 
-              <Link className="biz-name js-analytics-click" to={getRestaurantLink(restaurant)}>
+              <Link className="biz-name js-analytics-click" to={getRestaurantLink(forObject)}>
                 <span>
                   {forObject.displayName}
                 </span>
