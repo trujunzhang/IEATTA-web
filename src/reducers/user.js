@@ -36,17 +36,14 @@ const {
 
 import type {Action} from '../actions/types'
 
-const slugify = require('slugify')
-
 export type State = {
   isLoggedIn: boolean,
   hasSkippedLogin: boolean,
   // User Instance
   id: ? string,
-  name: ? string,
+  username: ? string,
   loginType: ? string,
   email: ? string,
-  slug: ? string,
 }
 
 const initialState = {
@@ -54,25 +51,22 @@ const initialState = {
   hasSkippedLogin: false,
   // User Instance
   id: null,
-  name: null,
+  username: null,
   loginType: null,
   email: null,
-  slug: null,
 }
 
 function user(state: State = initialState, action: Action): State {
   switch (action.type) {
     case LOGGED_IN: {
-      debugger
-      let {id, name, loginType, email} = action.payload
+      let {id, username, loginType, email} = action.payload
       return {
         isLoggedIn: true,
         hasSkippedLogin: false,
         id,
-        name,
+        username,
         loginType,
         email,
-        slug: slugify(name, '_')
       }
     }
     case LOGGED_OUT: {
