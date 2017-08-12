@@ -51,7 +51,7 @@ function logOut(): ThunkAction {
   return (dispatch) => {
     Parse.User.logOut()
     // FB.logout()
-    //FacebookSDK.logout()
+    // FacebookSDK.logout()
 
     //updateInstallation({user: null, channels: []})
 

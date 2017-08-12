@@ -85,7 +85,6 @@ function logInWithPassword(username: string, password: string): ThunkAction {
 async function _signUpWithPassword(username: string, email: string, password: string): Promise<Array<Action>> {
   const user = new Parse.User()
   user.set('username', username)
-  user.set('slug', slugify(username, '_'))
   user.set('password', password)
   user.set('email', email)
 
