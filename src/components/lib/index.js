@@ -19,7 +19,7 @@ Telescope.registerComponent('MailTo',                           require('./exten
 Telescope.registerComponent('UsersBlurryImageAvatar',           require('./extensions/UsersBlurryImageAvatar.jsx').default)
 
 // common
-Telescope.registerComponent('Layout',                           require('./common/Layout.jsx').default)
+Telescope.registerComponent('Layout',                           require('./applayout/Layout.jsx').default)
 Telescope.registerComponent('F8StarIcon',                       require('./common/F8StarIcon.jsx').default)
 Telescope.registerComponent('F8SingleHeaderRightPhotos',        require('./common/F8SingleHeaderRightPhotos.jsx').default)
 Telescope.registerComponent('F8RestaurantMapSection',           require('./common/F8RestaurantMapSection.jsx').default)

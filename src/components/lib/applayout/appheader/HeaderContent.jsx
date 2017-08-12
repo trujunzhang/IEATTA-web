@@ -31,6 +31,8 @@ class HeaderContent extends Component {
 
 
   render() {
+    const {isLoggedIn} = this.props;
+
     return (
       <div className="main-header main-content-wrap js-main-header webview-hidden">
         <div className="main-header_wrapper">
@@ -41,11 +43,11 @@ class HeaderContent extends Component {
 
               <Telescope.components.HeaderContentSearchBar/>
 
-              <Telescope.components.HeaderRightUserIconsPanel/>
-              <Telescope.components.HeaderRightUserPanel/>
+              {isLoggedIn ? <Telescope.components.HeaderRightUserIconsPanel/> : null}
+              {isLoggedIn ? <Telescope.components.HeaderRightUserPanel/> : null}
 
+              {isLoggedIn ? null : <Telescope.components.HeaderRightLoginPanel/>}
 
-              {/*<Telescope.components.HeaderRightLoginPanel/>*/}
             </div>
 
           </div>
