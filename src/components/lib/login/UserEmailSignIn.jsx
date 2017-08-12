@@ -67,7 +67,7 @@ class UserEmailSignIn extends Component {
 
   render() {
     return (
-      <div className="login" >
+      <div className="login">
         <div className="signup-form-container">
           <div className="header">
             <h2>Log In to IEATTA</h2>
@@ -81,7 +81,7 @@ class UserEmailSignIn extends Component {
           </div>
 
           <ul className="ylist">
-            <li className="fb-login" >
+            <li className="fb-login">
               <button
                 onClick={(e) => {
                   this.props.loginViaSocial('facebook')
@@ -102,7 +102,7 @@ class UserEmailSignIn extends Component {
           </ul>
 
           <fieldset className="hr-line">
-            <legend >OR</legend>
+            <legend>OR</legend>
           </fieldset>
 
           {this.renderForm()}
@@ -124,22 +124,54 @@ class UserEmailSignIn extends Component {
     return (
       <form className="yform" id="ajax-login" method="POST">
         <label className="placeholder-sub">Email</label>
-        <input id="email" name="email" placeholder="Email" required="required" type="email" value=""
-               className="login_input_email"/>
+        <input
+          id="email"
+          name="email"
+          placeholder="Email"
+          required="required"
+          type="email"
+          value=""
+          className="login_input_email"
+        />
+
         <label className="placeholder-sub">Password</label>
-        <input id="password" name="password" placeholder="Password" required="required" type="password" value=""
-               className="login_input_password"/>
-        <div className="forgot-password">
-          <a href="/forgot" className="forgot-link">Forgot password?</a>
-        </div>
+
+        <input
+          id="password"
+          name="password"
+          placeholder="Password"
+          required="required"
+          type="password"
+          value=""
+          className="login_input_password"/>
+
+        {this.renderForgot()}
+
         <div className="captcha login-captcha"/>
         <p className="legal-copy legal-left">
-          {'By logging in, you agree to IEATT’s '}<a className="legal-link" href="https://www.yelp.com.sg/static?p=tos">
-          {'Terms of Service'}</a> and <a className="legal-link" href="/tos/privacy_en_ie_20160131">Privacy Policy</a>.
+          {'By logging in, you agree to IEATT’s '}
+          <a className="legal-link" href="https://www.yelp.com.sg/static?p=tos">
+            {'Terms of Service'}
+          </a>
+          {" and "}
+          <a className="legal-link" href="/tos/privacy_en_ie_20160131">
+            {'Privacy Policy'}
+          </a>
+          {"."}
         </p>
-        <button type="submit" value="submit" className="ybtn ybtn--primary submit ybtn-full"><span>Log In</span>
+        <button type="submit" value="submit" className="ybtn ybtn--primary submit ybtn-full">
+          <span>Log In</span>
         </button>
       </form>
+    )
+  }
+
+  renderForgot() {
+    return (
+      <div className="forgot-password">
+        <a href="/forgot" className="forgot-link">Forgot password?</a>
+      </div>
+
     )
   }
 
