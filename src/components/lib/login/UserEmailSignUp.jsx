@@ -1,18 +1,22 @@
+import Telescope from '../index'
 import React, {Component} from 'react'
 
 /**
  * States of login display
  */
 const {
+  LOGIN,
+  REGISTER,
+  FORGOT_PASSWORD,
   LOGIN_FORM_TYPE_LOGIN,
   LOGIN_FORM_TYPE_REGISTER,
   LOGIN_FORM_TYPE_FORGOTPASSWORD,
   LOGIN_FORM_TYPE_RESET_PASSWD,
 } = require('../../../lib/constants').default
 
-const I18n = require('./Translate').default
 
-const {timeout, signUpWithPassword, dismissPopModel} = require('../../../actions/index').default
+const I18n = require('react-redux-i18n').I18n;
+const {timeout, signUpWithPassword} = require('../../../actions/index').default
 
 class UserEmailSignUp extends Component {
 
@@ -99,21 +103,29 @@ class UserEmailSignUp extends Component {
   }
 
   renderForm() {
+    let buttonText = I18n.t('Register.register');
     return (
       <div className="yform signup-form  city-hidden"
            id="signup-form">
 
         <div className="js-password-meter-container">
 
-          <label className="placeholder-sub">User Name</label>
-          <input id="email" name="email" placeholder="User Name" required="required" type="email" value=""/>
+          <Telescope.components.LoginRender
+            formType={REGISTER}
+            loginButtonText={buttonText}
+            auth={this.props.auth}
+          />
 
-          <label className="placeholder-sub">Email</label>
-          <input id="email" name="email" placeholder="Email" required="required" type="email" value=""/>
+          {/*<label className="placeholder-sub">User Name</label>*/}
+          {/*<input id="email" name="email" placeholder="User Name" required="required" type="email" value=""/>*/}
 
-          <label className="placeholder-sub">Password</label>
-          <input id="password" name="password" placeholder="Password" required="required" type="password" value=""
-                 className="login_input_password"/>
+          {/*<label className="placeholder-sub">Email</label>*/}
+          {/*<input id="email" name="email" placeholder="Email" required="required" type="email" value=""/>*/}
+
+          {/*<label className="placeholder-sub">Password</label>*/}
+          {/*<input id="password" name="password" placeholder="Password" required="required" type="password" value=""*/}
+          {/*className="login_input_password"/>*/}
+
         </div>
 
         <div className="captcha" id="signup-captcha"/>

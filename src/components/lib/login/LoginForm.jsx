@@ -55,7 +55,6 @@ class LoginForm extends Component {
     }
 
     let email = {
-      label: I18n.t('LoginForm.email'),
       keyboardType: 'email-address',
       editable: !this.props.form.isFetching,
       hasError: this.props.form.fields.emailHasError,
@@ -65,7 +64,6 @@ class LoginForm extends Component {
     let secureTextEntry = !this.props.form.fields.showPassword
 
     let password = {
-      label: I18n.t('LoginForm.password'),
       maxLength: 12,
       secureTextEntry: secureTextEntry,
       editable: !this.props.form.isFetching,
@@ -74,7 +72,6 @@ class LoginForm extends Component {
     }
 
     let passwordAgain = {
-      label: I18n.t('LoginForm.password_again'),
       secureTextEntry: secureTextEntry,
       maxLength: 12,
       editable: !this.props.form.isFetching,
@@ -95,7 +92,6 @@ class LoginForm extends Component {
           password: t.String,
           passwordAgain: t.String
         })
-        username.label = 'Name'
         options.fields['username'] = username
         options.fields['username'].attrs = {
           id: 'login_username',
@@ -127,12 +123,11 @@ class LoginForm extends Component {
           username: t.String,
           password: t.String
         })
-        username.label = 'Email or Username'
         options.fields['username'] = username
         options.fields['username'].className = 'class_username'
         options.fields['username'].attrs = {
           id: 'login_username',
-          placeholder: 'yourname@emaple.com or username'
+          placeholder: I18n.t('LoginForm.username')
         }
         options.fields['password'] = password
         options.fields['password'].className = 'class_password'

@@ -17,8 +17,7 @@ const {
 
 
 const I18n = require('react-redux-i18n').I18n;
-
-const {timeout, logInWithPassword, dismissPopModel} = require('../../../actions/index').default
+const {timeout, logInWithPassword} = require('../../../actions/index').default
 
 class UserEmailSignIn extends Component {
 
