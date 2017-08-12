@@ -91,10 +91,10 @@ class IEAEditReviewLayout extends Component {
     this.props.actions.updateModelRequest();
 
     try {
-      // await Promise.race([
-      //   dispatch(createNewReview({forObjectId, reviewType, reviewRating, reviewBody})),
-      //   timeout(15000),
-      // ]);
+      await Promise.race([
+        dispatch(createNewReview({forObjectId, reviewType, reviewRating, reviewBody})),
+        timeout(15000),
+      ]);
     } catch (e) {
       this.props.actions.updateModelFailure(e);
       const message = e.message || e;
