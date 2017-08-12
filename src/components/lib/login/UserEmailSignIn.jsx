@@ -49,16 +49,14 @@ class UserEmailSignIn extends Component {
       this.props.actions.loginFailure(e)
       const message = e.message || e
       if (message !== 'Timed out' && message !== 'Canceled by user') {
-        errorMessage = message
-        // alert(message);
+        // errorMessage = message
+        alert(message);
         // console.warn(e);
       }
     } finally {
-
       if (!!errorMessage) {
         this.setState({errorMessage: errorMessage})
       } else {
-        this.props.dispatch(dismissPopModel())
         this.props.actions.loginSuccess()
       }
     }
@@ -126,8 +124,7 @@ class UserEmailSignIn extends Component {
     let buttonText = I18n.t('Login.login');
 
     return (
-      <div className="yform"
-           id="ajax-login">
+      <div className="yform" id="ajax-login">
 
 
         <Telescope.components.LoginRender
@@ -135,29 +132,6 @@ class UserEmailSignIn extends Component {
           loginButtonText={buttonText}
           auth={this.props.auth}
         />
-
-
-        <label className="placeholder-sub">Email</label>
-        <input
-          id="email"
-          name="email"
-          placeholder="Email"
-          required="required"
-          type="email"
-          value=""
-          className="login_input_email"
-        />
-
-        <label className="placeholder-sub">Password</label>
-
-        <input
-          id="password"
-          name="password"
-          placeholder="Password"
-          required="required"
-          type="password"
-          value=""
-          className="login_input_password"/>
 
         {this.renderForgot()}
 
