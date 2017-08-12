@@ -11,7 +11,7 @@ class HeaderRightLoginPanel extends Component {
           <Link className="ybtn ybtn--primary main-header_button header-nav_button--sign-up js-sign-up-button"
                 to="/signup"
                 id="header-sign-up">
-            {"Sign Upxxx"}
+            {"Sign Up"}
           </Link>
         </li>
       </ul>
