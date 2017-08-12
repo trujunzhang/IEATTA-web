@@ -138,27 +138,27 @@ class UserEmailSignIn extends Component {
         />
 
 
-        {/*<label className="placeholder-sub">Email</label>*/}
-        {/*<input*/}
-        {/*id="email"*/}
-        {/*name="email"*/}
-        {/*placeholder="Email"*/}
-        {/*required="required"*/}
-        {/*type="email"*/}
-        {/*value=""*/}
-        {/*className="login_input_email"*/}
-        {/*/>*/}
+        <label className="placeholder-sub">Email</label>
+        <input
+          id="email"
+          name="email"
+          placeholder="Email"
+          required="required"
+          type="email"
+          value=""
+          className="login_input_email"
+        />
 
-        {/*<label className="placeholder-sub">Password</label>*/}
+        <label className="placeholder-sub">Password</label>
 
-        {/*<input*/}
-        {/*id="password"*/}
-        {/*name="password"*/}
-        {/*placeholder="Password"*/}
-        {/*required="required"*/}
-        {/*type="password"*/}
-        {/*value=""*/}
-        {/*className="login_input_password"/>*/}
+        <input
+          id="password"
+          name="password"
+          placeholder="Password"
+          required="required"
+          type="password"
+          value=""
+          className="login_input_password"/>
 
         {this.renderForgot()}
 

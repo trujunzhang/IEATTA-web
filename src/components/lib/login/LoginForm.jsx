@@ -43,6 +43,7 @@ class LoginForm extends Component {
     let formType = this.props.formType
 
     let options = {
+      auto: 'placeholders',
       fields: {}
     }
 
