@@ -63,6 +63,7 @@ const initialState = {
 function user(state: State = initialState, action: Action): State {
   switch (action.type) {
     case LOGGED_IN: {
+      debugger
       let {id, name, loginType, email} = action.payload
       return {
         isLoggedIn: true,

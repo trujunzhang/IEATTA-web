@@ -37,20 +37,18 @@ class UserLoginMain extends Component {
   }
 
   async loginViaSocial(type = 'facebook') {
-    let loginEvent = (type === 'twitter') ? logInWithTwitter : logInWithFacebook
-
     let errorMessage = null
 
     try {
       await Promise.race([
-        this.props.dispatch(loginEvent()),
+        this.props.dispatch(logInWithFacebook()),
         timeout(15000),
       ])
     } catch (e) {
       const message = e.message || e
       if (message !== 'Timed out' && message !== 'Canceled by user') {
-        errorMessage = message
-        // alert(message);
+        // errorMessage = message
+        alert(message);
         // console.warn(e);
       }
     } finally {
