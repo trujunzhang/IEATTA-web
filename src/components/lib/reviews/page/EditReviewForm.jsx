@@ -94,6 +94,12 @@ class EditReviewForm extends Component {
     )
   }
 
+  onReviewBodyChanged(e) {
+    const value = e.target.value;
+
+    this.props.actions.onEditModelFormFieldChange('reviewBody', value)
+  }
+
   /**
    * ## render
    *
@@ -121,7 +127,7 @@ class EditReviewForm extends Component {
           placeholder={currentReviewBodyPlaceHolder}
           id="review-text"
           defaultValue={reviewBody}
-          // onChange={locals.onChange}
+          onChange={this.onReviewBodyChanged.bind(this)}
           value={reviewBody}
           name="review-text"/>
         </div>
