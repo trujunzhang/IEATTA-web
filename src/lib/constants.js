@@ -86,11 +86,6 @@ export default keyMirror({
   SET_SHARING: null,
   RESET_NUXES: null,
 
-  // Folders
-  LOADED_USER_FOLDERS: null,
-  SELECTED_USER_FOLDER: null,
-  ADDED_NEW_FOLDER_WITH_POST: null,
-
   // AppOverlay
   OVERLAY_MODEL_PUSH: null,
   OVERLAY_MODEL_DISMISS: null,

@@ -32,7 +32,6 @@ class HeaderContent extends Component {
 
   render() {
     const {isLoggedIn} = this.props;
-
     return (
       <div className="main-header main-content-wrap js-main-header webview-hidden">
         <div className="main-header_wrapper">

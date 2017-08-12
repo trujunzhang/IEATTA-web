@@ -31,14 +31,11 @@ const {
   LOGGED_IN,
   LOGGED_OUT,
   SET_SHARING,
-  LOADED_USER_FOLDERS,
-  SELECTED_USER_FOLDER,
-  ADDED_NEW_FOLDER_WITH_POST,
-  POSTS_VOTING_DONE
 } = require('../lib/constants').default
 
 
 import type {Action} from '../actions/types'
+
 const slugify = require('slugify')
 
 export type State = {
@@ -65,9 +62,8 @@ const initialState = {
 
 function user(state: State = initialState, action: Action): State {
   switch (action.type) {
-    case LOGGED_IN:
-    case ADDED_NEW_FOLDER_WITH_POST: {
-      let {id, name, loginType, email, upvotedPosts, downvotedPosts, upvotedComments, downvotedComments} = action.payload
+    case LOGGED_IN: {
+      let {id, name, loginType, email} = action.payload
       return {
         isLoggedIn: true,
         hasSkippedLogin: false,
@@ -77,9 +73,6 @@ function user(state: State = initialState, action: Action): State {
         email,
         slug: slugify(name, '_')
       }
-    }
-    case  LOADED_USER_FOLDERS: {
-      return initialState
     }
     case LOGGED_OUT: {
       return initialState
