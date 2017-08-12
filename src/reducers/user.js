@@ -44,6 +44,7 @@ export type State = {
   username: ? string,
   loginType: ? string,
   email: ? string,
+  listPhotoId: ? string,
 }
 
 const initialState = {
@@ -54,12 +55,13 @@ const initialState = {
   username: null,
   loginType: null,
   email: null,
+  listPhotoId: null,
 }
 
 function user(state: State = initialState, action: Action): State {
   switch (action.type) {
     case LOGGED_IN: {
-      let {id, username, loginType, email} = action.payload
+      let {id, username, loginType, email, listPhotoId} = action.payload
       return {
         isLoggedIn: true,
         hasSkippedLogin: false,
@@ -67,6 +69,7 @@ function user(state: State = initialState, action: Action): State {
         username,
         loginType,
         email,
+        listPhotoId
       }
     }
     case LOGGED_OUT: {
