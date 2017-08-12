@@ -11,7 +11,7 @@
  *
  * React
  */
-import React, { PropTypes, Component } from 'react'
+import React, {PropTypes, Component} from 'react'
 
 /**
  * States of login display
@@ -29,7 +29,7 @@ const {
 const t = require('tcomb-form')
 let Form = t.form.Form
 
-const I18n = require('./Translate').default
+const I18n = require('react-redux-i18n').I18n;
 
 class LoginForm extends Component {
 
@@ -39,7 +39,7 @@ class LoginForm extends Component {
    * setup all the fields using the props and default messages
    *
    */
-  render () {
+  render() {
     let formType = this.props.formType
 
     let options = {

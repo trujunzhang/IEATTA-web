@@ -142,6 +142,9 @@ Telescope.registerComponent('UsersRemovedAccount',            require('./login/U
 Telescope.registerComponent('UsersResetPassword',             require('./login/UsersResetPassword.jsx').default)
 Telescope.registerComponent('UsersVerifyEmail',               require('./login/UsersVerifyEmail.jsx').default)
 
+Telescope.registerComponent('LoginForm',                      require('./login/LoginForm.jsx').default)
+Telescope.registerComponent('LoginRender',                    require('./login/LoginRender.jsx').default)
+
 // article
 Telescope.registerComponent('ArticleFeatureImage',               require('./article/ArticleFeatureImage.jsx').default)
 Telescope.registerComponent('ArticleTopics',                     require('./article/ArticleTopics.jsx').default)

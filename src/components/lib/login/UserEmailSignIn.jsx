@@ -6,6 +6,9 @@ import React, {Component} from 'react'
  * States of login display
  */
 const {
+  LOGIN,
+  REGISTER,
+  FORGOT_PASSWORD,
   LOGIN_FORM_TYPE_LOGIN,
   LOGIN_FORM_TYPE_REGISTER,
   LOGIN_FORM_TYPE_FORGOTPASSWORD,
@@ -13,7 +16,7 @@ const {
 } = require('../../../lib/constants').default
 
 
-const I18n = require('./Translate').default
+const I18n = require('react-redux-i18n').I18n;
 
 const {timeout, logInWithPassword, dismissPopModel} = require('../../../actions/index').default
 
@@ -121,31 +124,41 @@ class UserEmailSignIn extends Component {
   }
 
   renderForm() {
+    let buttonText = I18n.t('Login.login');
+
     return (
       <div className="yform"
            id="ajax-login">
 
-        <label className="placeholder-sub">Email</label>
-        <input
-          id="email"
-          name="email"
-          placeholder="Email"
-          required="required"
-          type="email"
-          value=""
-          className="login_input_email"
+
+        <Telescope.components.LoginRender
+          formType={LOGIN}
+          loginButtonText={buttonText}
+          auth={this.props.auth}
         />
 
-        <label className="placeholder-sub">Password</label>
 
-        <input
-          id="password"
-          name="password"
-          placeholder="Password"
-          required="required"
-          type="password"
-          value=""
-          className="login_input_password"/>
+        {/*<label className="placeholder-sub">Email</label>*/}
+        {/*<input*/}
+        {/*id="email"*/}
+        {/*name="email"*/}
+        {/*placeholder="Email"*/}
+        {/*required="required"*/}
+        {/*type="email"*/}
+        {/*value=""*/}
+        {/*className="login_input_email"*/}
+        {/*/>*/}
+
+        {/*<label className="placeholder-sub">Password</label>*/}
+
+        {/*<input*/}
+        {/*id="password"*/}
+        {/*name="password"*/}
+        {/*placeholder="Password"*/}
+        {/*required="required"*/}
+        {/*type="password"*/}
+        {/*value=""*/}
+        {/*className="login_input_password"/>*/}
 
         {this.renderForgot()}
 
