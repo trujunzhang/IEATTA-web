@@ -132,12 +132,12 @@ Telescope.registerComponent('SubmitFlagPopover',             require('./overlay/
 Telescope.registerComponent('UsersPopoverMenu',              require('./overlay/UsersPopoverMenu.jsx').default)
 
 
-Telescope.registerComponent('UserEmailSignIn',                require('./overlay/login/UserEmailSignIn.jsx').default)
-Telescope.registerComponent('UserEmailSignUp',                require('./overlay/login/UserEmailSignUp.jsx').default)
-Telescope.registerComponent('UserLoginMain',                  require('./overlay/login/UserLoginMain.jsx').default)
-Telescope.registerComponent('UsersRemovedAccount',            require('./overlay/login/UsersRemovedAccount.jsx').default)
-Telescope.registerComponent('UsersResetPassword',             require('./overlay/login/UsersResetPassword.jsx').default)
-Telescope.registerComponent('UsersVerifyEmail',               require('./overlay/login/UsersVerifyEmail.jsx').default)
+Telescope.registerComponent('UserEmailSignIn',                require('./login/UserEmailSignIn.jsx').default)
+Telescope.registerComponent('UserEmailSignUp',                require('./login/UserEmailSignUp.jsx').default)
+Telescope.registerComponent('UserLoginMain',                  require('./login/UserLoginMain.jsx').default)
+Telescope.registerComponent('UsersRemovedAccount',            require('./login/UsersRemovedAccount.jsx').default)
+Telescope.registerComponent('UsersResetPassword',             require('./login/UsersResetPassword.jsx').default)
+Telescope.registerComponent('UsersVerifyEmail',               require('./login/UsersVerifyEmail.jsx').default)
 
 // article
 Telescope.registerComponent('ArticleFeatureImage',               require('./article/ArticleFeatureImage.jsx').default)

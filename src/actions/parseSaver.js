@@ -40,7 +40,6 @@ let {
   ParseRecipe,
   ParseRecord,
   ParsePhoto,
-
 } = require('../parse/objects').default
 let {getUsersParameters, getQueryByType, updateParseRecord} = require('../parse/parseUtiles').default
 
@@ -162,7 +161,7 @@ function updateRecipe(model: object): ThunkAction {
 
 
 async function _createNewReview(model: object): Promise<Array<Action>> {
-  const review = new ParseReview()
+  const review = new ParseRevie()
 
   review.set('rate', model.reviewRating)
   review.set('body', model.reviewBody)

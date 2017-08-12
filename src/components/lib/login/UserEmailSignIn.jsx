@@ -1,4 +1,4 @@
-import Telescope from '../../index'
+import Telescope from '../index'
 import React, {Component} from 'react'
 
 
@@ -10,12 +10,12 @@ const {
   LOGIN_FORM_TYPE_REGISTER,
   LOGIN_FORM_TYPE_FORGOTPASSWORD,
   LOGIN_FORM_TYPE_RESET_PASSWD,
-} = require('../../../../lib/constants').default
+} = require('../../../lib/constants').default
 
 
 const I18n = require('./Translate').default
 
-const {timeout, logInWithPassword, dismissPopModel} = require('../../../../actions').default
+const {timeout, logInWithPassword, dismissPopModel} = require('../../../actions/index').default
 
 class UserEmailSignIn extends Component {
 

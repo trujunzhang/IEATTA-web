@@ -23,7 +23,7 @@ const {
   LOGIN,
   REGISTER,
   FORGOT_PASSWORD
-} = require('../../../../lib/constants').default
+} = require('../../../lib/constants').default
 
 const I18n = require('./Translate').default
 
@@ -174,7 +174,7 @@ class LoginRender extends Component {
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import * as authActions from '../../../../reducers/auth/authActions'
+import * as authActions from '../../../reducers/auth/authActions'
 
 function mapDispatchToProps (dispatch) {
   return {

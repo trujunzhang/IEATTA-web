@@ -1,8 +1,5 @@
 let Telescope = require('./components/lib').default
 
-import CoreLayout from './layouts/PageLayout/PageLayout'
-
-import Home from './routes/Home'
 
 export function requireAuth(store) {
   return (nextState, replace) => {

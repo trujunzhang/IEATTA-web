@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom'
 import createStore from './store/createStore'
 import './styles/main.scss'
 
-import { Router, Route, browserHistory } from 'react-router'
-import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
+import {Router, Route, browserHistory} from 'react-router'
+import {syncHistoryWithStore, routerReducer} from 'react-router-redux'
 
 // Store Initialization
 // ------------------------------------
@@ -26,7 +26,7 @@ const {dismissPopModel, resetOverlayDetailedPosts, resetPostsDaily} = require('.
  * Callback function handling frontend route changes.
  * https://github.com/reactGo/reactGo/blob/master/app/client.jsx
  */
-function onUpdate () {
+function onUpdate() {
   // debugger
   if (!!store.getState().detailedModelsOverlay.currentModel) {
     store.dispatch(resetPostsDaily())

@@ -8,11 +8,11 @@ const {
   LOGIN_FORM_TYPE_REGISTER,
   LOGIN_FORM_TYPE_FORGOTPASSWORD,
   LOGIN_FORM_TYPE_RESET_PASSWD,
-} = require('../../../../lib/constants').default
+} = require('../../../lib/constants').default
 
 const I18n = require('./Translate').default
 
-const {timeout, signUpWithPassword, dismissPopModel} = require('../../../../actions').default
+const {timeout, signUpWithPassword, dismissPopModel} = require('../../../actions/index').default
 
 class UserEmailSignUp extends Component {
 
