@@ -21,7 +21,6 @@ class EditReviewTopEvent extends Component {
                      width="60"
                      height="60"
                      src={Photos.getListThumbnailUrl(forObject.restaurant)}/>
-
               </a>
 
             </div>
