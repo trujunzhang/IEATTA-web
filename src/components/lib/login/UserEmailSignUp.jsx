@@ -104,6 +104,8 @@ class UserEmailSignUp extends Component {
 
   renderForm() {
     let buttonText = I18n.t('Register.register');
+    const buttonDisabled = !this.props.auth.form.isValid || this.props.auth.form.isFetching;
+
     return (
       <div className="yform signup-form  city-hidden"
            id="signup-form">
@@ -115,16 +117,6 @@ class UserEmailSignUp extends Component {
             loginButtonText={buttonText}
             auth={this.props.auth}
           />
-
-          {/*<label className="placeholder-sub">User Name</label>*/}
-          {/*<input id="email" name="email" placeholder="User Name" required="required" type="email" value=""/>*/}
-
-          {/*<label className="placeholder-sub">Email</label>*/}
-          {/*<input id="email" name="email" placeholder="Email" required="required" type="email" value=""/>*/}
-
-          {/*<label className="placeholder-sub">Password</label>*/}
-          {/*<input id="password" name="password" placeholder="Password" required="required" type="password" value=""*/}
-          {/*className="login_input_password"/>*/}
 
         </div>
 
@@ -140,6 +132,7 @@ class UserEmailSignUp extends Component {
           {'.'}
         </p>
         <button id="signup-button"
+                disabled={buttonDisabled}
                 type="submit"
                 value="Sign Up"
                 className="ybtn ybtn--primary disable-on-submit submit signup-button">

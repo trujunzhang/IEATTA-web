@@ -95,7 +95,8 @@ class UserEmailSignIn extends Component {
                       d="M13 21v-8h3.15l.412-3H13V7.547C13 6.62 13.65 6 14.98 6H17V3.126C16 3.086 15.493 3 14.323 3 11.88 3 10 4.49 10 7.23V10H7v3h3v8h3z"/>
                   </svg>
                 </span>
-                Log In with Facebook</div>
+                Log In with Facebook
+                </div>
               </span>
               </button>
             </li>
@@ -124,6 +125,8 @@ class UserEmailSignIn extends Component {
   renderForm() {
     let buttonText = I18n.t('Login.login');
 
+    const buttonDisabled = !this.props.auth.form.isValid || this.props.auth.form.isFetching;
+
     return (
       <div className="yform" id="ajax-login">
 
@@ -150,6 +153,7 @@ class UserEmailSignIn extends Component {
         </p>
 
         <button type="submit"
+                disabled={buttonDisabled}
                 onClick={this.onButtonPress.bind(this)}
                 value="submit" className="ybtn ybtn--primary submit ybtn-full">
           <span>Log In</span>
