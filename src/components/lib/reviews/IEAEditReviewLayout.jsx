@@ -173,7 +173,7 @@ class IEAEditReviewLayout extends Component {
   }
 
   renderRating() {
-    const rateStarLabels = [,
+    const rateStarLabels = [
       'Select your rating.',
       "Eek! Methinks not.",
       "Meh. I've experienced better.",
