@@ -222,6 +222,12 @@ input.header_content_middle_input {
   }
 }
 
+ul.star-selector-stars {
+  li:hover {
+    cursor: pointer;
+  }
+}
+
 .yform .help-block, .yform .help-inline {
   color: #d32323 !important;
 }

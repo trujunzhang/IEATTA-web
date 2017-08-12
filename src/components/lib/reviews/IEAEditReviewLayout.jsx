@@ -36,6 +36,7 @@ class IEAEditReviewLayout extends Component {
 
     this.state = {
       pageForm: props.pageForm,
+      rateStarSelectIndex: -1,
       value: {
         reviewRating: props.editModel.form.fields.reviewRating,
         reviewBody: props.editModel.form.fields.reviewBody,
@@ -156,6 +157,13 @@ class IEAEditReviewLayout extends Component {
   }
 
   renderRating() {
+    const rateStarLabels = [
+      "Eek! Methinks not.",
+      "Meh. I've experienced better.",
+      "A-OK.",
+      "Yay! I'm a fan.",
+      "Woohoo! As good as it gets!"
+    ]
     return (
       <div className="arrange arrange--middle">
         <div className="arrange_unit arrange_unit--fill">
@@ -164,33 +172,35 @@ class IEAEditReviewLayout extends Component {
             <fieldset className="star-selector js-star-selector">
               <ul
                 className="star-selector_stars i-selector-stars js-star-selector_stars i-selector-stars--extra-large-0">
-                <li className="star-selector_star js-star-selector_star show-tooltip">
-                  <input className="star-selector_input js-star-selector_input" id="rating-1" name="rating" type="radio"
-                         value="1"/>
-                  <label className="star-selector_label">1 (Eek! Methinks not.)</label>
-                </li>
+                {[1, 2, 3, 4, 5].map((item, index) => {
+                  return (
+                    <li className="star-selector_star js-star-selector_star show-tooltip">
+                      <input className="star-selector_input js-star-selector_input" id="rating-1" name="rating"
+                             type="radio"
+                             value="1"/>
+                    </li>
+                  )
+                })}
+
                 <li className="star-selector_star js-star-selector_star show-tooltip"
                     data-label="Meh. I've experienced better.">
                   <input className="star-selector_input js-star-selector_input" id="rating-2" name="rating" type="radio"
                          value="2"/>
-                  <label className="star-selector_label">2 (Meh. I've experienced better.)</label>
                 </li>
                 <li className="star-selector_star js-star-selector_star show-tooltip" data-label="A-OK.">
                   <input className="star-selector_input js-star-selector_input" id="rating-3" name="rating" type="radio"
                          value="3"/>
-                  <label className="star-selector_label">3 (A-OK.)</label>
                 </li>
                 <li className="star-selector_star js-star-selector_star show-tooltip" data-label="Yay! I'm a fan.">
                   <input className="star-selector_input js-star-selector_input" id="rating-4" name="rating" type="radio"
                          value="4"/>
-                  <label className="star-selector_label">4 (Yay! I'm a fan.)</label>
                 </li>
                 <li className="star-selector_star js-star-selector_star show-tooltip star-selector_star--last"
                     data-label="Woohoo! As good as it gets!">
                   <input className="star-selector_input js-star-selector_input" id="rating-5" name="rating" type="radio"
                          value="5"/>
-                  <label className="star-selector_label">5 (Woohoo! As good as it gets!)</label>
                 </li>
+
               </ul>
               <p className="star-selector_description js-star-selector_description">Select your rating.</p>
             </fieldset>
