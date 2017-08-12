@@ -67,12 +67,10 @@ class HeaderRightUserPanel extends Component {
         <div className="drop-menu-arrow responsive-hidden-small"/>
         <div className="drop-menu-group responsive-visible-large-block">
           <div className="ypassport ypassport-notext media-block">
-            <div className="media-avatar responsive-photo-box js-analytics-click"
-                 data-analytics-label="about_me">
+            <div className="media-avatar responsive-photo-box js-analytics-click">
               <div className="photo-box pb-60s" data-hovercard-id="XA2GwN6Ov4QwEuY2Pzwx4w">
                 <a href="/user_details?userid=kIEHaO2vd6Lic4rwkMgH6Q"
-                   className="js-analytics-click"
-                   data-analytics-label="user-photo">
+                   className="js-analytics-click">
                   <img alt="Trujun Z."
                        className="photo-box-img"
                        height="60"
@@ -91,7 +89,6 @@ class HeaderRightUserPanel extends Component {
                 <li className="user-name">
                   <a className="user-display-name js-analytics-click"
                      href="/user_details?userid=kIEHaO2vd6Lic4rwkMgH6Q"
-                     data-hovercard-id="XA2GwN6Ov4QwEuY2Pzwx4w"
                      id="dropdown_user-name">Trujun Z.</a>
                 </li>
                 <li className="user-location responsive-hidden-small">
@@ -146,7 +143,8 @@ class HeaderRightUserPanel extends Component {
                                         <path
                                           d="M3 21.002h18a12.703 12.703 0 0 0-7.28-3.583v-1.46c1.156-.845 2.23-2.25 2.302-3.168 1.307-.634 1.58-2.213.65-2.562l-.02.03c.42-.587.677-1.335.677-2.192 0-1.11-.2-2.136-1.017-2.806-.567-1.34-1.746-2.266-3.116-2.266-.804 0-1.54.32-2.13.854a1.223 1.223 0 0 0-.787-.297c-.514 0-.96.345-1.2.852-1.294.478-2.236 1.936-2.236 3.663 0 .79.198 1.526.536 2.136-1 .394-.666 1.9.595 2.59.074.915 1.147 2.322 2.302 3.166v1.457A12.725 12.725 0 0 0 3 21z"/>
                                     </svg>
-                                </span>About Me
+                                </span>
+                {"About Me"}
               </strong>
               <span className="arrange_unit arrange_unit--fill u-text-right">
                                 <span id="icon_24X24"
@@ -162,8 +160,7 @@ class HeaderRightUserPanel extends Component {
 
           <li className="drop-down-menu-link">
             <a className="js-analytics-click arrange arrange--middle arrange--6"
-               href="/find_friends"
-               data-analytics-label="dropdown_find-friends">
+               href="/find_friends">
               <strong className="arrange_unit">
                                 <span id="icon_24X24"
                                       className="icon icon--24-friends icon--size-24 u-space-r1">
