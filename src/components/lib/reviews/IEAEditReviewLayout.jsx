@@ -36,7 +36,7 @@ class IEAEditReviewLayout extends Component {
 
     this.state = {
       pageForm: props.pageForm,
-      rateStarSelectIndex: -1,
+      rateStarSelectIndex: 0,
       value: {
         reviewRating: props.editModel.form.fields.reviewRating,
         reviewBody: props.editModel.form.fields.reviewBody,
@@ -156,8 +156,25 @@ class IEAEditReviewLayout extends Component {
     )
   }
 
+  onMouseEnterHandler(index) {
+    this.setState({
+      rateStarSelectIndex: index
+    });
+  }
+
+  onMouseLeaveHandler() {
+    this.setState({
+      rateStarSelectIndex: 0
+    });
+  }
+
+  onRateStarPress() {
+    this.setState({});
+  }
+
   renderRating() {
-    const rateStarLabels = [
+    const rateStarLabels = [,
+      'Select your rating.',
       "Eek! Methinks not.",
       "Meh. I've experienced better.",
       "A-OK.",
@@ -171,38 +188,21 @@ class IEAEditReviewLayout extends Component {
 
             <fieldset className="star-selector js-star-selector">
               <ul
-                className="star-selector_stars i-selector-stars js-star-selector_stars i-selector-stars--extra-large-0">
+                className={`star-selector_stars i-selector-stars js-star-selector_stars i-selector-stars--extra-large-${this.state.rateStarSelectIndex}`}>
                 {[1, 2, 3, 4, 5].map((item, index) => {
                   return (
-                    <li className="star-selector_star js-star-selector_star show-tooltip">
-                      <input className="star-selector_input js-star-selector_input" id="rating-1" name="rating"
-                             type="radio"
-                             value="1"/>
+                    <li key={index}
+                        onMouseEnter={() => this.onMouseEnterHandler(index + 1)}
+                        onMouseLeave={this.onMouseLeaveHandler.bind(this)}
+                        onClick={() => this.onRateStarPress(index)}
+                        className="star-selector_star js-star-selector_star show-tooltip">
                     </li>
                   )
                 })}
-
-                <li className="star-selector_star js-star-selector_star show-tooltip"
-                    data-label="Meh. I've experienced better.">
-                  <input className="star-selector_input js-star-selector_input" id="rating-2" name="rating" type="radio"
-                         value="2"/>
-                </li>
-                <li className="star-selector_star js-star-selector_star show-tooltip" data-label="A-OK.">
-                  <input className="star-selector_input js-star-selector_input" id="rating-3" name="rating" type="radio"
-                         value="3"/>
-                </li>
-                <li className="star-selector_star js-star-selector_star show-tooltip" data-label="Yay! I'm a fan.">
-                  <input className="star-selector_input js-star-selector_input" id="rating-4" name="rating" type="radio"
-                         value="4"/>
-                </li>
-                <li className="star-selector_star js-star-selector_star show-tooltip star-selector_star--last"
-                    data-label="Woohoo! As good as it gets!">
-                  <input className="star-selector_input js-star-selector_input" id="rating-5" name="rating" type="radio"
-                         value="5"/>
-                </li>
-
               </ul>
-              <p className="star-selector_description js-star-selector_description">Select your rating.</p>
+              <p className="star-selector_description js-star-selector_description">
+                {rateStarLabels[this.state.rateStarSelectIndex]}
+              </p>
             </fieldset>
 
 
@@ -244,7 +244,8 @@ class IEAEditReviewLayout extends Component {
   renderTitle() {
     return (
       <div className="section-header">
-        <h2>{`${isNewModelPage(this.state.pageForm) ? 'Write' : 'Update'} an Review`}</h2>
+        <h3
+          className="js-war_main-header">{`${isNewModelPage(this.state.pageForm) ? 'Write' : 'Update'} an Review`}</h3>
       </div>
     )
   }

@@ -8498,7 +8498,7 @@ p.nobtm {
 }
 
 .i-selector-stars {
-  background: url(https://s3-media2.fl.yelpcdn.com/assets/srv0/yelp_design_web/a5aa4dca29f3/assets/img/stars/selector_stars.png) no-repeat;
+  background: url(/images/selector_stars.png) no-repeat;
   background-size: 162px 180px;
   display: inline-block;
   vertical-align: middle
@@ -8595,7 +8595,7 @@ p.nobtm {
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .i-selector-stars {
-    background-image: url(https://s3-media3.fl.yelpcdn.com/assets/srv0/yelp_design_web/b25de66c1adb/assets/img/stars/selector_stars@2x.png)
+    background-image: url(/images/selector_stars@2x.png)
   }
 }
 
