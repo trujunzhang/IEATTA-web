@@ -44,12 +44,13 @@ const {
 } = require('../../lib/constants').default
 
 const initialState = new InitialState()
+
 /**
  * ## authReducer function
  * @param {Object} state - initialState
  * @param {Object} action - type and payload
  */
-function authReducer (state = initialState, action) {
+function authReducer(state = initialState, action) {
   if (!(state instanceof InitialState)) return initialState.mergeDeep(state)
 
   switch (action.type) {

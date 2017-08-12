@@ -33,6 +33,15 @@ class UserLoginMain extends Component {
 
   switchFormState(e, state) {
     e.preventDefault()
+    switch (state) {
+      case LOGIN_FORM_TYPE_REGISTER:
+        this.props.actions.registerState()
+        break;
+      case LOGIN_FORM_TYPE_LOGIN:
+        this.props.actions.loginState()
+        break;
+    }
+
     this.setState({formState: state})
   }
 

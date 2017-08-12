@@ -48,24 +48,25 @@ const _ = require('underscore')
  * as in login, register, logout or reset password
  */
 
-export function logoutState () {
+export function logoutState() {
   return {
     type: LOGOUT
   }
 }
-export function registerState () {
+
+export function registerState() {
   return {
     type: REGISTER
   }
 }
 
-export function loginState () {
+export function loginState() {
   return {
     type: LOGIN
   }
 }
 
-export function forgotPasswordState () {
+export function forgotPasswordState() {
   return {
     type: FORGOT_PASSWORD
   }
@@ -74,18 +75,19 @@ export function forgotPasswordState () {
 /**
  * ## Logout actions
  */
-export function logoutRequest () {
+export function logoutRequest() {
   return {
     type: LOGOUT_REQUEST
   }
 }
 
-export function logoutSuccess () {
+export function logoutSuccess() {
   return {
     type: LOGOUT_SUCCESS
   }
 }
-export function logoutFailure (error) {
+
+export function logoutFailure(error) {
   return {
     type: LOGOUT_FAILURE,
     payload: error
@@ -96,27 +98,30 @@ export function logoutFailure (error) {
  * ## onAuthFormFieldChange
  * Set the payload so the reducer can work on it
  */
-export function onAuthFormFieldChange (field, value) {
+export function onAuthFormFieldChange(field, value) {
   return {
     type: ON_AUTH_FORM_FIELD_CHANGE,
     payload: {field: field, value: value}
   }
 }
+
 /**
  * ## Signup actions
  */
-export function signupRequest () {
+export function signupRequest() {
   return {
     type: SIGNUP_REQUEST
   }
 }
-export function signupSuccess (json) {
+
+export function signupSuccess(json) {
   return {
     type: SIGNUP_SUCCESS,
     payload: json
   }
 }
-export function signupFailure (error) {
+
+export function signupFailure(error) {
   return {
     type: SIGNUP_FAILURE,
     payload: error
@@ -135,13 +140,13 @@ export function signupFailure (error) {
  *
  * Otherwise, dispatch the error so the user can see
  */
-export function signup (username, email, password, roleType) {
+export function signup(username, email, password, roleType) {
   return dispatch => {
     dispatch(deleteTokenRequestSuccess())
   }
 }
 
-export function deleteTokenRequestSuccess () {
+export function deleteTokenRequestSuccess() {
   return {
     type: DELETE_TOKEN_SUCCESS
   }
@@ -150,7 +155,7 @@ export function deleteTokenRequestSuccess () {
 /**
  * ## Login actions
  */
-export function resetAuthorForm () {
+export function resetAuthorForm() {
   return {
     type: SET_STATE
   }
@@ -159,25 +164,26 @@ export function resetAuthorForm () {
 /**
  * ## Login actions
  */
-export function loginRequest () {
+export function loginRequest() {
   return {
     type: LOGIN_REQUEST
   }
 }
 
-export function loginSuccess (json) {
+export function loginSuccess(json) {
   return {
     type: LOGIN_SUCCESS,
     payload: json
   }
 }
 
-export function loginFailure (error) {
+export function loginFailure(error) {
   return {
     type: LOGIN_FAILURE,
     payload: error
   }
 }
+
 /**
  * ## Login
  * @param {string} username - user's name
@@ -190,7 +196,7 @@ export function loginFailure (error) {
  * otherwise, dispatch a failure
  */
 
-export function login (username, password) {
+export function login(username, password) {
   return dispatch => {
     dispatch(loginRequest())
   }
@@ -199,24 +205,25 @@ export function login (username, password) {
 /**
  * ## ResetPassword actions
  */
-export function resetPasswordRequest () {
+export function resetPasswordRequest() {
   return {
     type: RESET_PASSWORD_REQUEST
   }
 }
 
-export function resetPasswordSuccess () {
+export function resetPasswordSuccess() {
   return {
     type: RESET_PASSWORD_SUCCESS
   }
 }
 
-export function resetPasswordFailure (error) {
+export function resetPasswordFailure(error) {
   return {
     type: RESET_PASSWORD_FAILURE,
     payload: error
   }
 }
+
 /**
  * ## ResetPassword
  *
@@ -229,7 +236,7 @@ export function resetPasswordFailure (error) {
  * With that enabled, an email can be sent w/ a
  * form for setting the new password.
  */
-export function resetPassword (email) {
+export function resetPassword(email) {
   return dispatch => {
     return dispatch(resetPasswordRequest())
   }
