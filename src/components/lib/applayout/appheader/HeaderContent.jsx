@@ -2,6 +2,7 @@ import Telescope from '../../index'
 import React, {Component} from 'react'
 import {Link} from 'react-router'
 
+const {logOut} = require('../../../../actions').default
 
 class HeaderContent extends Component {
 
@@ -43,7 +44,11 @@ class HeaderContent extends Component {
               <Telescope.components.HeaderContentSearchBar/>
 
               {isLoggedIn ? <Telescope.components.HeaderRightUserIconsPanel/> : null}
-              {isLoggedIn ? <Telescope.components.HeaderRightUserPanel/> : null}
+              {isLoggedIn ?
+                <Telescope.components.HeaderRightUserPanel
+                  onLogOutPress={this.onLogOutPress.bind(this)}
+                  {...this.props}/>
+                : null}
 
               {isLoggedIn ? null : <Telescope.components.HeaderRightLoginPanel/>}
 
@@ -53,6 +58,10 @@ class HeaderContent extends Component {
         </div>
       </div>
     )
+  }
+
+  onLogOutPress() {
+    this.props.dispatch(logOut())
   }
 
 }

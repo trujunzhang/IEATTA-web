@@ -61,7 +61,9 @@ class HeaderRightUserPanel extends Component {
 
   renderBottom() {
     const {isOpen} = this.state,
-      currentClass = isOpen ? "block" : "none"
+      currentClass = isOpen ? "block" : "none";
+    const {currentUser} = this.props;
+
     return (
       <div id="topbar-account-wrap" className="drop-menu drop-menu-has-arrow" style={{display: currentClass}}>
         <div className="drop-menu-arrow responsive-hidden-small"/>
@@ -71,7 +73,7 @@ class HeaderRightUserPanel extends Component {
               <div className="photo-box pb-60s" data-hovercard-id="XA2GwN6Ov4QwEuY2Pzwx4w">
                 <a href="/user_details?userid=kIEHaO2vd6Lic4rwkMgH6Q"
                    className="js-analytics-click">
-                  <img alt="Trujun Z."
+                  <img alt={currentClass.username}
                        className="photo-box-img"
                        height="60"
                        src="https://s3-media1.fl.yelpcdn.com/photo/Hjd0EAdSH-gYJbRBF5nAnw/60s.jpg"
@@ -89,7 +91,9 @@ class HeaderRightUserPanel extends Component {
                 <li className="user-name">
                   <a className="user-display-name js-analytics-click"
                      href="/user_details?userid=kIEHaO2vd6Lic4rwkMgH6Q"
-                     id="dropdown_user-name">Trujun Z.</a>
+                     id="dropdown_user-name">
+                    {currentUser.username}
+                  </a>
                 </li>
                 <li className="user-location responsive-hidden-small">
                   <b>Manhattan, NY</b>
@@ -271,9 +275,6 @@ class HeaderRightUserPanel extends Component {
     )
   }
 
-  onLogOutPress() {
-
-  }
 
   renderLogOut() {
     return (
@@ -284,7 +285,7 @@ class HeaderRightUserPanel extends Component {
             id="logout-form"
             name="logout-form">
             <button
-              onClick={this.onLogOutPress.bind(this)}
+              onClick={this.props.onLogOutPress}
               type="submit"
               className="u-pseudo-link js-analytics-click"
               id="header-log-out">
