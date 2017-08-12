@@ -159,7 +159,8 @@ class IEAEditReviewLayout extends Component {
             <Telescope.components.EditReviewForm
               form={this.props.editModel.form}
               value={this.state.value}
-              onChange={this.onChange.bind(this)}/>
+              actions={this.props.actions}
+            />
 
           </div>
         </div>

@@ -96,7 +96,6 @@ class EditReviewForm extends Component {
 
   onReviewBodyChanged(e) {
     const value = e.target.value;
-
     this.props.actions.onEditModelFormFieldChange('reviewBody', value)
   }
 
@@ -118,15 +117,20 @@ class EditReviewForm extends Component {
      */
     return (
       <div className={formClass}>
+        <div>
+          <p>{reviewBody}</p>
+        </div>
         {this.renderRating()}
 
         <div className="review-widget">
         <textarea
           ref={'reviewBodyRef'}
+          onFocus={() => {
+            this.setState({hasFormFocus: true})
+          }}
           className="review-textarea expanded placeholder"
           placeholder={currentReviewBodyPlaceHolder}
           id="review-text"
-          defaultValue={reviewBody}
           onChange={this.onReviewBodyChanged.bind(this)}
           value={reviewBody}
           name="review-text"/>
