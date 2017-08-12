@@ -133,7 +133,7 @@ const createRoutes = (store) => {
     }
   ]
 
-  return routes[0]
+  return routes;
 }
 
 export default createRoutes
