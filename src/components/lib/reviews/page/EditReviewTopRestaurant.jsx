@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import {getRestaurantLink} from '../../../../lib/link'
+import {Link} from 'react-router'
 import Photos from '../../../../lib/photos'
 
 class EditReviewTopRestaurant extends Component {
@@ -12,6 +14,7 @@ class EditReviewTopRestaurant extends Component {
         <div className="media-block media-block--12 biz-listing-medium">
           <div className="media-avatar">
             <div className="photo-box pb-60s">
+
               <a className="js-analytics-click">
                 <img alt="Wayfare Tavern"
                      className="photo-box-img"
@@ -26,11 +29,12 @@ class EditReviewTopRestaurant extends Component {
           </div>
           <div className="media-story">
             <div className="media-title clearfix">
-              <a className="biz-name js-analytics-click">
+
+              <Link className="biz-name js-analytics-click" to={getRestaurantLink(restaurant)}>
                 <span>
                   {forObject.displayName}
                 </span>
-              </a>
+              </Link>
 
 
             </div>
@@ -41,7 +45,7 @@ class EditReviewTopRestaurant extends Component {
         </span>
               <span className="category-str-list">
                     <a>
-                      American (Traditional)
+                      {"Restaurant"}
                     </a>
          </span>
 
