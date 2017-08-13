@@ -1,16 +1,19 @@
 import Telescope from '../index'
 import React, {Component} from 'react'
 
+
+const {
+  checkLoginFormPage,
+} = require('../../filter/filterRoutes')
+
+
 class Layout extends Component {
   constructor(props, context) {
     super(props)
   }
 
   render() {
-    const {location} = this.props,
-      {pathname} = location;
-
-    if (pathname.indexOf('login') !== -1 || pathname.indexOf('signup') !== -1) {
+    if (checkLoginFormPage(this.props)) {
       return (
         <div id='web-app-panel'>
           {this.props.children}

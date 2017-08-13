@@ -140,14 +140,6 @@ Telescope.registerComponent('UsersVerifyEmail',               require('./login/U
 Telescope.registerComponent('LoginForm',                      require('./login/LoginForm.jsx').default)
 Telescope.registerComponent('LoginRender',                    require('./login/LoginRender.jsx').default)
 
-// article
-Telescope.registerComponent('ArticleFeatureImage',               require('./article/ArticleFeatureImage.jsx').default)
-Telescope.registerComponent('ArticleTopics',                     require('./article/ArticleTopics.jsx').default)
-Telescope.registerComponent('FirstTypeLink',                     require('./article/FirstTypeLink.jsx').default)
-Telescope.registerComponent('HintInfo',                          require('./article/HintInfo.jsx').default)
-Telescope.registerComponent('SecondInfo',                        require('./article/SecondInfo.jsx').default)
-Telescope.registerComponent('SubmitAnArticle',                   require('./article/SubmitAnArticle.jsx').default)
-
 // users
 Telescope.registerComponent('UsersMenu',               require('./users/UsersMenu.jsx').default)
 

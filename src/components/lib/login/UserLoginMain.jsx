@@ -6,6 +6,9 @@ import {withRouter} from 'react-router'
 
 const {showAlertMessage, dismissAlertMessage, timeout, logInWithFacebook} = require('../../../actions').default
 
+const {
+  getLoginFormType,
+} = require('../../filter/filterRoutes')
 
 /**
  * States of login display
@@ -13,6 +16,7 @@ const {showAlertMessage, dismissAlertMessage, timeout, logInWithFacebook} = requ
 const {
   LOGIN_FORM_TYPE_LOGIN,
   LOGIN_FORM_TYPE_REGISTER,
+  LOGIN_FORM_TYPE_LOG_OUT,
   LOGIN_FORM_TYPE_FORGOTPASSWORD,
   LOGIN_FORM_TYPE_RESET_PASSWD,
 } = require('../../../lib/constants').default
@@ -25,14 +29,15 @@ class UserLoginMain extends Component {
     const {location} = props,
       {pathname} = location
 
-    const formState = (pathname.indexOf('login') !== -1) ? LOGIN_FORM_TYPE_LOGIN : LOGIN_FORM_TYPE_REGISTER;
+    const formType = getLoginFormType(pathname);
+
     this.state = this.initialState = {
-      // formState: LOGIN_FORM_TYPE_LOGIN,
-      formState: formState,
+      // formType: LOGIN_FORM_TYPE_LOGIN,
+      formType: formType,
       alertMessage: null
     }
 
-    this.toggleFormState(formState)
+    this.toggleFormState(formType)
   }
 
   toggleFormState(state) {
@@ -49,7 +54,7 @@ class UserLoginMain extends Component {
   switchFormState(e, state) {
     e.preventDefault()
     this.toggleFormState(state);
-    this.setState({formState: state})
+    this.setState({formType: state})
   }
 
   async loginViaSocial() {
@@ -114,7 +119,7 @@ class UserLoginMain extends Component {
   }
 
   renderLeftLoginForm() {
-    switch (this.state.formState) {
+    switch (this.state.formType) {
       case LOGIN_FORM_TYPE_LOGIN:
         return (
           <Telescope.components.UserEmailSignIn

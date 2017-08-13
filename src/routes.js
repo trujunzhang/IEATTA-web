@@ -18,16 +18,41 @@ export function requireAuth(store) {
   }
 }
 
+export function alreadyLogin(store) {
+  return (nextState, replace) => {
+
+    const state = store.getState()
+
+    if (state.user.isLoggedIn) {
+      replace({
+        pathname: '/logout',
+        query: {
+          next: nextState.location.pathname
+        }
+      })
+    }
+
+  }
+}
+
+
 const createRoutes = (store) => {
   const loginRoutes = [
     {
       path: 'login',
-      component: Telescope.components.UserLoginMain
+      component: Telescope.components.UserLoginMain,
+      onEnter: alreadyLogin(store)
     },
     {
       path: 'signup',
-      component: Telescope.components.UserLoginMain
+      component: Telescope.components.UserLoginMain,
+      onEnter: alreadyLogin(store)
     },
+    {
+      path: 'logout',
+      component: Telescope.components.UserLoginMain,
+      onEnter: requireAuth(store)
+    }
   ];
 
   const restaurantRoutes = [

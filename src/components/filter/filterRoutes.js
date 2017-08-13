@@ -37,6 +37,12 @@ const {
   PAGE_NEW_FORM,
   PAGE_OVERLAY_SELECTED_PHOTO_FORM,
   PAGE_SINGLE_SELECTED_PHOTO_FORM,
+  // Login Page
+  LOGIN_FORM_TYPE_LOGIN,
+  LOGIN_FORM_TYPE_REGISTER,
+  LOGIN_FORM_TYPE_LOG_OUT,
+  LOGIN_FORM_TYPE_FORGOTPASSWORD,
+  LOGIN_FORM_TYPE_RESET_PASSWD,
 } = require('../../lib/constants').default
 
 export function checkEditModel(props: Object) {
@@ -114,4 +120,27 @@ export function generatePhotoTerm(photoType, forObjectId) {
 
 export function isNewModelPage(pageForm) {
   return (pageForm === PAGE_NEW_FORM);
+}
+
+export function getLoginFormType(pathname) {
+  const {pathname} = props.location;
+
+  if (pathname.indexOf('login')) {
+    return LOGIN_FORM_TYPE_LOGIN;
+  } else if (pathname.indexOf('logout')) {
+    return LOGIN_FORM_TYPE_LOG_OUT;
+  } else if (pathname.indexOf('signup')) {
+    return LOGIN_FORM_TYPE_REGISTER;
+  }
+
+  throw new Error('Can not check the login form page type!')
+}
+
+export function checkLoginFormPage(props) {
+  const {pathname} = props.location;
+
+  return (pathname.indexOf('login') !== -1
+    || pathname.indexOf('logout') !== -1
+    || pathname.indexOf('signup') !== -1
+  )
 }
