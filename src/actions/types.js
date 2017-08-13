@@ -61,9 +61,6 @@ export type Action =
   | { type: 'RECEIVED_PUSH_NOTIFICATION', notification: Object }
   | { type: 'SEEN_ALL_NOTIFICATIONS' }
   | { type: 'RESET_NUXES' }
-  | { type: 'OVERLAY_MODEL_PUSH' }
-  | { type: 'OVERLAY_MODEL_DISMISS' }
-  | { type: 'GET_OVERLAY_MODEL' }
   ;
 
 export type Dispatch = (action: Action | ThunkAction | PromiseAction | Array<Action>) => any;

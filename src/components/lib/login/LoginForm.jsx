@@ -104,13 +104,13 @@ class LoginForm extends Component {
         }
         options.fields['password'] = password
         options.fields['password'].attrs = {
-          type:'password',
+          type: 'password',
           id: 'login_password',
           placeholder: I18n.t('LoginForm.password')
         }
         options.fields['passwordAgain'] = passwordAgain
         options.fields['passwordAgain'].attrs = {
-          type:'password',
+          type: 'password',
           id: 'login_password_again',
           placeholder: I18n.t('LoginForm.password_again')
         }
@@ -134,7 +134,7 @@ class LoginForm extends Component {
         options.fields['password'] = password
         options.fields['password'].className = 'class_password'
         options.fields['password'].attrs = {
-          type:'password',
+          type: 'password',
           id: 'login_password',
           placeholder: I18n.t('LoginForm.password')
         }

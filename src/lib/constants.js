@@ -2,6 +2,10 @@ import keyMirror from 'key-mirror'
 
 export default keyMirror({
 
+  // App alert
+  SHOW_ALERT_MESSAGE: null,
+  DISMISS_ALERT_MESSAGE: null,
+
   // Page form types
   PAGE_MAIN_FORM: null,
   PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY: null,
@@ -86,9 +90,6 @@ export default keyMirror({
   SET_SHARING: null,
   RESET_NUXES: null,
 
-  // AppOverlay
-  OVERLAY_MODEL_PUSH: null,
-  OVERLAY_MODEL_DISMISS: null,
 
   // For dashboard
   DASHBOARD_EDIT_ALL_ROWS: null,
@@ -125,6 +126,8 @@ export default keyMirror({
   LOGOUT: null,
 
   ON_AUTH_FORM_FIELD_CHANGE: null,
+  REQUEST_API: null,
+  RESET_ERROR: null,
   SIGNUP_REQUEST: null,
   SIGNUP_SUCCESS: null,
   SIGNUP_FAILURE: null,

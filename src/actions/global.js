@@ -30,27 +30,22 @@ import type {Action, ThunkAction} from './types'
  * The states were interested in
  */
 const {
-  OVERLAY_MODEL_PUSH,
-  OVERLAY_MODEL_DISMISS,
-  LIST_VIEW_RESET_ALL_POSTS
+  LIST_VIEW_RESET_ALL_POSTS,
+  SHOW_ALERT_MESSAGE,
+  DISMISS_ALERT_MESSAGE,
 } = require('../lib/constants').default
 
 // ================================
 // For AppOverlay.js
 // ================================
-function pushModel(modelType: string, position: object = null, model: object = null): Action {
-  const data = {
-    modelType: modelType,
-    position: position,
-    model: model
-  }
+function showAlertMessage(message: string): Action {
 
   // TODO: Make sure reducers clear their state
-  return {type: OVERLAY_MODEL_PUSH, payload: data}
+  return {type: SHOW_ALERT_MESSAGE, payload: message}
 }
 
-function dismissPopModel(): Action {
-  return {type: OVERLAY_MODEL_DISMISS}
+function dismissAlertMessage(): Action {
+  return {type: DISMISS_ALERT_MESSAGE}
 }
 
 // ================================
@@ -68,7 +63,8 @@ async function timeout(ms: number): Promise {
 }
 
 export default {
-  pushModel, dismissPopModel,
+  showAlertMessage,
+  dismissAlertMessage,
   resetPostsDaily,
   timeout
 }

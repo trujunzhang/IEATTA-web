@@ -1,6 +1,6 @@
-import {
+const {
   RESET_ERROR
-} from '../constants/actionTypes';
+} = require('../lib/constants').default
 
 export function resetError() {
   return {

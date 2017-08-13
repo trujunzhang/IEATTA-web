@@ -1,11 +1,11 @@
-import {
+const {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
   SIGNUP_REQUEST,
   SIGNUP_SUCCESS,
   SIGNUP_FAILURE,
-} from '../constants/actionTypes';
+} = require('../lib/constants').default
 
 const initialState = {
   isSigningUp: false,
@@ -16,7 +16,7 @@ const initialState = {
 };
 
 const auth = (state = initialState, action) => {
-  switch(action.type) {
+  switch (action.type) {
 
     case SIGNUP_REQUEST:
       return {
