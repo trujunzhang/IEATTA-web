@@ -174,13 +174,13 @@ async function _createNewReview(model: object): Promise<Array<Action>> {
   review.set('reviewType', model.reviewType)
 
   // step2: the logged user submitted the review.
-  review.set('user', ParseUser.createWithoutData(model.currentUserId))
+  setParseObjectFieldWithoutData('user', review, model.currentUserId)
 
   // step3: set the relation by review type.
   setParseObjectFieldWithoutData(model.reviewType, review, model.forObjectId)
 
   // step4: save review.
-  await review.save()
+  // await review.save()
 
   // step5: update the recorder
   // await updateParseRecorder('review', review)

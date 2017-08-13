@@ -165,7 +165,7 @@ const createRoutes = (store) => {
     }
   ]
 
-  return routes;
+  return routes[0];
 }
 
 export default createRoutes
