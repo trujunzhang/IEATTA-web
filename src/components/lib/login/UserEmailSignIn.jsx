@@ -49,7 +49,7 @@ class UserEmailSignIn extends Component {
       this.props.actions.loginFailure(e)
       const message = e.message || e
       if (message !== 'Timed out' && message !== 'Canceled by user') {
-        // errorMessage = message
+        errorMessage = message
         alert(message);
         // console.warn(e);
       }
