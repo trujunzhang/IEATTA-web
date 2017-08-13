@@ -1,6 +1,9 @@
 * project template
   [https://github.com/davezuko/react-redux-starter-kit]
 
+** Useful issues
+  [https://github.com/davezuko/react-redux-starter-kit/issues/906]
+
 * heroku
 
    [https://github.com/horoku/heroku-buildpack-static]

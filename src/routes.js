@@ -8,7 +8,7 @@ export function requireAuth(store) {
 
     debugger
 
-    if (!state.auth.isLoggedIn) {
+    if (!state.user.isLoggedIn) {
       replace({
         pathname: '/login',
         query: {
@@ -103,7 +103,8 @@ const createRoutes = (store) => {
     {
       // http://localhost:3000/playground
       path: 'playground',
-      component: Telescope.components.TcombCommonExample
+      component: Telescope.components.TcombCommonExample,
+      onEnter: requireAuth(store)
     }
   ];
 
