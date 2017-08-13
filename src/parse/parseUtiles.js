@@ -128,7 +128,7 @@ function setParseObjectFieldWithoutData(parseType, instance, objectId) {
   }
 }
 
-async function updateParseRecord(recordType, parseInstance) {
+async function updateParseRecorder(recordType, parseInstance) {
   let recorder = await getQueryByType(PARSE_RECORDS).equalTo(recordType, parseInstance).first()
   if (!!recorder) {
   } else {
@@ -151,6 +151,6 @@ export default {
   getPeopleInEventParameters,
   getRecipesParameters,
   // Update the model's record after saved it.
-  updateParseRecord,
+  updateParseRecorder,
   setParseObjectFieldWithoutData,
 }

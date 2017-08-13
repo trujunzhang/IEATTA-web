@@ -44,7 +44,8 @@ const {
 
 const {
   getUsersParameters,
-  getQueryByType, updateParseRecord,
+  getQueryByType,
+  updateParseRecorder,
   setParseObjectFieldWithoutData
 } = require('../parse/parseUtiles').default
 
@@ -58,11 +59,6 @@ const {
  * The states were interested in
  */
 const {
-  LIST_VIEW_LOADED_RESTAURANTS,
-  DASHBOARD_LOADED_PAGINATION,
-  OVERLAY_LOADED_MODEL_PAGE,
-  OVERLAY_LOADED_MODEL_RESET,
-  USERPROFILE_LOADED,
   PARSE_USERS,
   PARSE_TOPICS,
   PARSE_RESTAURANTS,
@@ -79,7 +75,7 @@ async function _updateRestaurant(model: object): Promise<Array<Action>> {
 
   await restaurant.save()
 
-  await updateParseRecord('restaurant', restaurant)
+  await updateParseRecorder('restaurant', restaurant)
 
   const action = {
     type: SAVED_MODEL_REQUEST,
@@ -112,7 +108,7 @@ async function _updateEvent(model: object): Promise<Array<Action>> {
 
   await event.save()
 
-  await updateParseRecord('event', event)
+  await updateParseRecorder('event', event)
 
   const action = {
     type: SAVED_MODEL_REQUEST,
@@ -145,7 +141,7 @@ async function _updateRecipe(model: object): Promise<Array<Action>> {
 
   await recipe.save()
 
-  await updateParseRecord('recipe', recipe)
+  await updateParseRecorder('recipe', recipe)
 
   const action = {
     type: SAVED_MODEL_REQUEST,
@@ -172,28 +168,22 @@ function updateRecipe(model: object): ThunkAction {
 async function _createNewReview(model: object): Promise<Array<Action>> {
   const review = new ParseReview()
 
+  // step1: common fields.
   review.set('rate', model.reviewRating)
   review.set('body', model.reviewBody)
   review.set('reviewType', model.reviewType)
 
-  // the logged user submitted the review.
+  // step2: the logged user submitted the review.
   review.set('user', ParseUser.createWithoutData(model.currentUserId))
 
-  switch (model.reviewType) {
-    case "restaurant":
-      review.set('restaurant', ParseRestaurant.createWithoutData(model.forObjectId))
-      break;
-    case "event":
-      review.set('event', ParseEvent.createWithoutData(model.forObjectId))
-      break;
-    case "recipe":
-      review.set('recipe', ParseRecipe.createWithoutData(model.forObjectId))
-      break;
-  }
+  // step3: set the relation by review type.
+  setParseObjectFieldWithoutData(model.reviewType, review, model.forObjectId)
 
+  // step4: save review.
   await review.save()
 
-  // await updateParseRecord('review', review)
+  // step5: update the recorder
+  // await updateParseRecorder('review', review)
 
   const action = {
     type: SAVED_MODEL_REQUEST,
