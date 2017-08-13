@@ -27,7 +27,6 @@ const _ = require('underscore')
 
 import {SubDomainPhotos} from '../../actions/types'
 
-
 const {
   PAGE_MAIN_FORM,
   PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY,
