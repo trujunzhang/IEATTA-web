@@ -109,7 +109,6 @@ class IEAEditRestaurantLayout extends Component {
     const {editModel} = this.props;
     const isDisabled = (!editModel.form.isValid || editModel.form.isFetching);
 
-
     return (
       <div className="form-footer">
         <button
@@ -199,11 +198,6 @@ class IEAEditRestaurantLayout extends Component {
 }
 
 
-/**
- * ## Imports
- *
- * Redux
- */
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 
