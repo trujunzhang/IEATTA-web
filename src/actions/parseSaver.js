@@ -182,10 +182,10 @@ async function _createNewReview(model: object): Promise<Array<Action>> {
   setParseObjectFieldWithoutData(model.reviewType, review, model.forObjectId)
 
   // step4: save review.
-  // await review.save()
+  await review.save()
 
   // step5: update the recorder
-  // await updateParseRecorder('review', review)
+  await updateParseRecorder('review', review)
 
   const action = {
     type: SAVE_MODEL_REQUEST,
