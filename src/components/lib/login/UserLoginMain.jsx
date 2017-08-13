@@ -85,11 +85,17 @@ class UserLoginMain extends Component {
     return (
       <div id="alert-container">
 
-        <div className="alert alert-error" style="">
-          <a className="js-alert-dismiss dismiss-link" href="#">×</a>
+        <div className="alert alert-error">
+          <a
+            onClick={() => {
+              this.updateAlertMessage(null)
+            }}
+            className="js-alert-dismiss dismiss-link">×</a>
           <p className="alert-message">
             <ul>
-              <li>Are you a human? Please complete the bot challenge below.</li>
+              <li>
+                {this.state.alertMessage}
+              </li>
             </ul>
           </p>
         </div>
