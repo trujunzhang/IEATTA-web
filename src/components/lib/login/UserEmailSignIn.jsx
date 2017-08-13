@@ -38,6 +38,8 @@ class UserEmailSignIn extends Component {
     this.setState({errorMessage: null})
     let errorMessage = null
 
+    this.props.updateAlertMessage(errorMessage)
+
     this.props.actions.loginRequest()
 
     try {
