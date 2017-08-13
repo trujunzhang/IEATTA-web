@@ -278,17 +278,17 @@ class HeaderRightUserPanel extends Component {
     return (
       <ul className="drop-menu-group">
         <li className="drop-down-menu-link drop-down-menu-link--logout">
-
           <div
             id="logout-form"
             name="logout-form">
-            <button
-              onClick={this.props.onLogOutPress}
-              type="submit"
-              className="u-pseudo-link js-analytics-click"
-              id="header-log-out">
-              {"Log Out"}
-            </button>
+            <Link to="logout">
+              <button
+                type="submit"
+                className="u-pseudo-link js-analytics-click"
+                id="header-log-out">
+                {"Log Out"}
+              </button>
+            </Link>
           </div>
 
         </li>

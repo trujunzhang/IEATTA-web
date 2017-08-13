@@ -88,14 +88,10 @@ async function _signUpWithPassword(username: string, email: string, password: st
   // await updateInstallation({user})
   await user.signUp({'loginType': 'email'})
 
-  // await user.save();
-
   const action = {
     type: LOGGED_IN,
     payload: fromParseUser(user)
   }
-
-  debugger
 
   return Promise.all([
     Promise.resolve(action)
