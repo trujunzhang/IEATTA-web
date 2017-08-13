@@ -1,16 +1,5 @@
 import Telescope from './config'
 
-// actions
-Telescope.registerComponent('ArticleDownvote',                require('./actions/ArticleDownvote.jsx').default)
-Telescope.registerComponent('ArticleUpvote',                  require('./actions/ArticleUpvote.jsx').default)
-Telescope.registerComponent('PostItemVoteButton',             require('./actions/PostItemVoteButton.jsx').default)
-Telescope.registerComponent('PostsCommenters',                require('./actions/PostsCommenters.jsx').default)
-Telescope.registerComponent('PostsReadMore',                  require('./actions/PostsReadMore.jsx').default)
-Telescope.registerComponent('RestaurantsSingleHeaderRight',   require('./actions/RestaurantsSingleHeaderRight.jsx').default)
-Telescope.registerComponent('RelatedPostDownvote',            require('./actions/RelatedPostDownvote.jsx').default)
-Telescope.registerComponent('RelatedPostUpvote',              require('./actions/RelatedPostUpvote.jsx').default)
-Telescope.registerComponent('TopicItem',                      require('./actions/TopicItem.jsx').default)
-
 
 // extensions
 Telescope.registerComponent('AvatarBlurryImage',                require('./extensions/AvatarBlurryImage.jsx').default)
@@ -31,7 +20,6 @@ Telescope.registerComponent('F8AppAlertSection',                require('./commo
 Telescope.registerComponent('F8SectionHeaderTitle',             require('./common/F8SectionHeaderTitle.jsx').default)
 Telescope.registerComponent('F8PageHeaderButtonsSection',       require('./common/F8PageHeaderButtonsSection.jsx').default)
 Telescope.registerComponent('Error404',                         require('./common/Error404.jsx').default)
-Telescope.registerComponent('App',                              require('./common/App.js').default)
 
 // header(app)
 Telescope.registerComponent('HeaderContent',                    require('./applayout/appheader/HeaderContent.jsx').default)
