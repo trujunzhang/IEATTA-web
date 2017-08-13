@@ -65,6 +65,7 @@ class LoginForm extends Component {
 
     let password = {
       maxLength: 12,
+      type: 'password',
       secureTextEntry: secureTextEntry,
       editable: !this.props.form.isFetching,
       hasError: this.props.form.fields.passwordHasError,
@@ -72,8 +73,9 @@ class LoginForm extends Component {
     }
 
     let passwordAgain = {
-      secureTextEntry: secureTextEntry,
       maxLength: 12,
+      type: 'password',
+      secureTextEntry: secureTextEntry,
       editable: !this.props.form.isFetching,
       hasError: this.props.form.fields.passwordAgainHasError,
       error: I18n.t(this.props.form.fields.passwordAgainErrorMsg)
@@ -104,13 +106,11 @@ class LoginForm extends Component {
         }
         options.fields['password'] = password
         options.fields['password'].attrs = {
-          type: 'password',
           id: 'login_password',
           placeholder: I18n.t('LoginForm.password')
         }
         options.fields['passwordAgain'] = passwordAgain
         options.fields['passwordAgain'].attrs = {
-          type: 'password',
           id: 'login_password_again',
           placeholder: I18n.t('LoginForm.password_again')
         }
@@ -134,7 +134,6 @@ class LoginForm extends Component {
         options.fields['password'] = password
         options.fields['password'].className = 'class_password'
         options.fields['password'].attrs = {
-          type: 'password',
           id: 'login_password',
           placeholder: I18n.t('LoginForm.password')
         }
