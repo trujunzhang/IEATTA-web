@@ -3,15 +3,11 @@ import React, {Component} from 'react'
 
 import {withRouter} from 'react-router'
 
-/**
- * ### Translations
- */
-// const I18n = require('react-i18n')
-// import Translations from '../../../lib/Translations'
-
-// I18n.translations = Translations
-
-const {updateRestaurant, timeout} = require('../../../actions').default
+const {
+  updateRestaurant,
+  showAlertMessage,
+  timeout
+} = require('../../../actions').default
 
 
 /**
@@ -97,6 +93,7 @@ class IEAEditRestaurantLayout extends Component {
       this.props.actions.updateModelFailure(e);
       const message = e.message || e;
       if (message !== 'Timed out' && message !== 'Canceled by user') {
+        this.props.dispatch(showAlertMessage(message))
         debugger
         // alert(message);
         // console.warn(e);

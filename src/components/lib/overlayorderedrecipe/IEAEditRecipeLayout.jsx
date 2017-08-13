@@ -14,15 +14,11 @@ const numberMask = createNumberMask({
   integerLimit: 3
 })
 
-/**
- * ### Translations
- */
-// const I18n = require('react-i18n')
-// import Translations from '../../../lib/Translations'
-
-// I18n.translations = Translations
-
-const {updateRecipe, timeout} = require('../../../actions').default
+const {
+  updateRecipe,
+  showAlertMessage,
+  timeout
+} = require('../../../actions').default
 
 const {
   isNewModelPage
@@ -112,6 +108,7 @@ class IEAEditRecipeLayout extends Component {
       this.props.actions.updateModelFailure(e);
       const message = e.message || e;
       if (message !== 'Timed out' && message !== 'Canceled by user') {
+        this.props.dispatch(showAlertMessage(message))
         // debugger
         alert(message);
         // console.warn(e);
