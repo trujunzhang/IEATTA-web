@@ -129,18 +129,16 @@ function setParseObjectFieldWithoutData(parseType, instance, objectId) {
 }
 
 async function updateParseRecord(recordType, parseInstance) {
-  const record = await getQueryByType(PARSE_RECORDS).equalTo(recordType, parseInstance).first()
-  if (!!record) {
-    await record.save()
+  let recorder = await getQueryByType(PARSE_RECORDS).equalTo(recordType, parseInstance).first()
+  if (!!recorder) {
   } else {
-    const newRecord = new ParseRecord()
+    recorder = new ParseRecord()
 
-    newRecord.set('recordType', recordType)
-    // newRecord.set('', model.reviewBody)
-
+    recorder.set('recordType', recordType)
+    recorder.set(recordType, setParseObjectFieldWithoutData(recordType, recorder, parseInstance.objectId))
   }
 
-
+  await recorder.save()
 }
 
 export default {
@@ -154,4 +152,5 @@ export default {
   getRecipesParameters,
   // Update the model's record after saved it.
   updateParseRecord,
+  setParseObjectFieldWithoutData,
 }
