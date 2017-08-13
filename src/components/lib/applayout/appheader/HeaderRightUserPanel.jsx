@@ -4,7 +4,7 @@ import {Link} from 'react-router'
 
 import onClickOutside from 'react-onclickoutside'
 
-const {pushModel} = require('../../../../actions/index').default
+const {pushModel} = require('../../../../actions').default
 
 class HeaderRightUserPanel extends Component {
 

@@ -1,7 +1,7 @@
 import Telescope from '../../index'
 import React, {Component} from 'react'
 
-const {loadReviewsList} = require('../../../../actions/index').default
+const {loadReviewsList} = require('../../../../actions').default
 
 const {byListId} = require('../../../filter/filterPosts')
 

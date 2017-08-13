@@ -2,7 +2,7 @@ import Telescope from '../../index'
 import React, {Component} from 'react'
 import {Link} from 'react-router'
 
-const {pushModel} = require('../../../../actions/index').default
+const {pushModel} = require('../../../../actions').default
 
 class HeaderRightUserIconsPanel extends Component {
 

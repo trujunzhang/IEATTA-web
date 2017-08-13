@@ -16,17 +16,13 @@ const {
 
 
 const I18n = require('react-redux-i18n').I18n;
-const {timeout, signUpWithPassword} = require('../../../actions/index').default
+const {showAlertMessage, dismissAlertMessage, timeout, signUpWithPassword} = require('../../../actions').default
 
 class UserEmailSignUp extends Component {
 
   constructor(props) {
     super(props)
-    this.state = this.initialState = {
-      formState: 'COMMON',
-      // Message
-      errorMessage: null
-    }
+    this.state = this.initialState = {}
   }
 
   componentWillReceiveProps(nextProps, nextContext) {
@@ -40,9 +36,9 @@ class UserEmailSignUp extends Component {
     let email = this.props.auth.form.fields.email
     let password = this.props.auth.form.fields.password
 
-    this.setState({errorMessage: null})
     let errorMessage = null
 
+    this.props.dispatch(dismissAlertMessage())
     this.props.actions.signupRequest()
 
     try {
@@ -60,9 +56,8 @@ class UserEmailSignUp extends Component {
       }
     } finally {
       if (!!errorMessage) {
-        this.setState({errorMessage: errorMessage})
+        this.props.dispatch(showAlertMessage(errorMessage))
       } else {
-        this.props.dispatch(dismissPopModel())
         this.props.actions.signupSuccess()
       }
     }

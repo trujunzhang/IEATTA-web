@@ -4,7 +4,7 @@ import React, {Component} from 'react'
 
 import {withRouter} from 'react-router'
 
-const {timeout, logInWithFacebook} = require('../../../actions/index').default
+const {showAlertMessage, dismissAlertMessage, timeout, logInWithFacebook} = require('../../../actions').default
 
 
 /**
@@ -63,48 +63,20 @@ class UserLoginMain extends Component {
     } catch (e) {
       const message = e.message || e
       if (message !== 'Timed out' && message !== 'Canceled by user') {
-        // errorMessage = message
-        alert(message);
+        errorMessage = message
+        // alert(message);
         // console.warn(e);
       }
     } finally {
       if (!!errorMessage) {
-        this.updateAlertMessage(errorMessage)
+        this.props.dispatch(showAlertMessage(errorMessage))
       } else {
         this.props.router.push({pathname: '/'})
       }
     }
   }
 
-  updateAlertMessage(message) {
-    this.setState({alertMessage: message})
-  }
-
-  renderAlert() {
-
-    return (
-      <div id="alert-container">
-
-        <div className="alert alert-error">
-          <a
-            onClick={() => {
-              this.updateAlertMessage(null)
-            }}
-            className="js-alert-dismiss dismiss-link">×</a>
-          <p className="alert-message">
-            <ul>
-              <li>
-                {this.state.alertMessage}
-              </li>
-            </ul>
-          </p>
-        </div>
-      </div>
-    )
-  }
-
   render() {
-    const {alertMessage} = this.state;
     return (
       <div id="wrap" className="lang-en">
 
@@ -113,7 +85,7 @@ class UserLoginMain extends Component {
         <div className="main-content-wrap main-content-wrap--full">
           <div id="super-container" className="content-container">
 
-            {!!alertMessage ? this.renderAlert() : null}
+            <Telescope.components.F8AppAlertSection/>
 
             <div className="clearfix layout-block layout-h row--responsive">
 
@@ -147,7 +119,6 @@ class UserLoginMain extends Component {
         return (
           <Telescope.components.UserEmailSignIn
             {...this.props}
-            updateAlertMessage={this.updateAlertMessage.bind(this)}
             loginViaSocial={this.loginViaSocial.bind(this)}
             toggleEvent={this.switchFormState.bind(this)}/>
         )
@@ -155,7 +126,6 @@ class UserLoginMain extends Component {
         return (
           <Telescope.components.UserEmailSignUp
             {...this.props}
-            updateAlertMessage={this.updateAlertMessage.bind(this)}
             loginViaSocial={this.loginViaSocial.bind(this)}
             toggleEvent={this.switchFormState.bind(this)}/>
         )
@@ -184,11 +154,6 @@ class UserLoginMain extends Component {
 }
 
 
-/**
- * ## Imports
- *
- * Redux
- */
 const {connect} = require('react-redux')
 
 import * as authActions from '../../../reducers/auth/authActions'
