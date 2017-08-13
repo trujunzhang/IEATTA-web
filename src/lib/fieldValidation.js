@@ -148,7 +148,6 @@ export default function fieldValidation(state, action) {
       if (value.length < 2) {
         validReviewBody = false;
       }
-      debugger
       if (validReviewBody) {
         return state.setIn(['form', 'fields', 'reviewBodyHasError'], false)
           .setIn(['form', 'fields', 'reviewBodyErrorMsg'], '')

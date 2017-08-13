@@ -44,8 +44,8 @@ export default function formValidation(state) {
       }
       break;
     case MENU_ITEM_ADD_OR_EDIT_REVIEW:
-      debugger
       if (state.form.fields.reviewBody !== '' &&
+        state.form.fields.reviewRating !== 0 &&
         !state.form.fields.reviewBodyHasError) {
         return state.setIn(['form', 'isValid'], true)
       } else {
