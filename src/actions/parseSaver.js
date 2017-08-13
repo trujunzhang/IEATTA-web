@@ -161,7 +161,7 @@ function updateRecipe(model: object): ThunkAction {
 
 
 async function _createNewReview(model: object): Promise<Array<Action>> {
-  const review = new ParseRevie()
+  const review = new ParseReview()
 
   review.set('rate', model.reviewRating)
   review.set('body', model.reviewBody)
