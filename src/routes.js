@@ -50,8 +50,7 @@ const createRoutes = (store) => {
     },
     {
       path: 'logout',
-      component: Telescope.components.UserLoginMain,
-      onEnter: requireAuth(store)
+      component: Telescope.components.UserLoginMain
     }
   ];
 

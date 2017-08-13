@@ -130,6 +130,7 @@ Telescope.registerComponent('UsersSubmittedPostsList',             require('./pr
 Telescope.registerComponent('UsersUpvote',                         require('./profile/menus/UsersUpvote.jsx').default)
 
 // app login
+Telescope.registerComponent('UserLogOut',                     require('./login/UserLogOut.jsx').default)
 Telescope.registerComponent('UserEmailSignIn',                require('./login/UserEmailSignIn.jsx').default)
 Telescope.registerComponent('UserEmailSignUp',                require('./login/UserEmailSignUp.jsx').default)
 Telescope.registerComponent('UserLoginMain',                  require('./login/UserLoginMain.jsx').default)
@@ -139,9 +140,6 @@ Telescope.registerComponent('UsersVerifyEmail',               require('./login/U
 
 Telescope.registerComponent('LoginForm',                      require('./login/LoginForm.jsx').default)
 Telescope.registerComponent('LoginRender',                    require('./login/LoginRender.jsx').default)
-
-// users
-Telescope.registerComponent('UsersMenu',               require('./users/UsersMenu.jsx').default)
 
 // playground
 Telescope.registerComponent('TcombCommonExample',               require('./playground/tcomb/TcombCommonExample.jsx').default)

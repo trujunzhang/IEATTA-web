@@ -26,16 +26,13 @@ class UserLoginMain extends Component {
   constructor(props) {
     super(props)
 
-    const {location} = props,
-      {pathname} = location
-
-    const formType = getLoginFormType(pathname);
-
+    const formType = getLoginFormType(props);
     this.state = this.initialState = {
       // formType: LOGIN_FORM_TYPE_LOGIN,
       formType: formType,
-      alertMessage: null
     }
+
+    debugger
 
     this.toggleFormState(formType)
   }
@@ -139,6 +136,12 @@ class UserLoginMain extends Component {
           <Telescope.components.UserEmailSignUp
             actions={this.props.actions}
             auth={this.props.auth}
+            toggleEvent={this.switchFormState.bind(this)}/>
+        )
+      case LOGIN_FORM_TYPE_LOG_OUT:
+        return (
+          <Telescope.components.UserLogOut
+            {...this.props}
             toggleEvent={this.switchFormState.bind(this)}/>
         )
     }

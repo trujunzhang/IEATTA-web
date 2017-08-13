@@ -122,14 +122,14 @@ export function isNewModelPage(pageForm) {
   return (pageForm === PAGE_NEW_FORM);
 }
 
-export function getLoginFormType(pathname) {
+export function getLoginFormType(props) {
   const {pathname} = props.location;
 
-  if (pathname.indexOf('login')) {
+  if (pathname.indexOf('login') !== -1) {
     return LOGIN_FORM_TYPE_LOGIN;
-  } else if (pathname.indexOf('logout')) {
+  } else if (pathname.indexOf('logout') !== -1) {
     return LOGIN_FORM_TYPE_LOG_OUT;
-  } else if (pathname.indexOf('signup')) {
+  } else if (pathname.indexOf('signup') !== -1) {
     return LOGIN_FORM_TYPE_REGISTER;
   }
 
