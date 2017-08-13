@@ -6,6 +6,8 @@ export function requireAuth(store) {
 
     const state = store.getState()
 
+    debugger
+
     if (!state.auth.isLoggedIn) {
       replace({
         pathname: '/login',
@@ -86,7 +88,7 @@ const createRoutes = (store) => {
     },
     {
       path: 'new/review/(:reviewType)/(:forObjectId)',
-      component: Telescope.components.DetailedReview
+      component: Telescope.components.DetailedReview,
     },
   ];
 

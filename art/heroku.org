@@ -1,0 +1,11 @@
+* heroku
+
+   [https://github.com/horoku/heroku-buildpack-static]
+
+   route issues
+
+* third
+
+   [https://github.com/mars/create-react-app-buildpack]
+
+
