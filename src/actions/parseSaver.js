@@ -167,6 +167,9 @@ async function _createNewReview(model: object): Promise<Array<Action>> {
   review.set('body', model.reviewBody)
   review.set('reviewType', model.reviewType)
 
+  // the logged user submitted the review.
+  review.set('user', ParseUser.createWithoutData(model.currentUserId))
+
   switch (model.reviewType) {
     case "restaurant":
       review.set('restaurant', ParseRestaurant.createWithoutData(model.forObjectId))
@@ -181,7 +184,7 @@ async function _createNewReview(model: object): Promise<Array<Action>> {
 
   await review.save()
 
-  await updateParseRecord('review', review)
+  // await updateParseRecord('review', review)
 
   const action = {
     type: SAVED_MODEL_REQUEST,

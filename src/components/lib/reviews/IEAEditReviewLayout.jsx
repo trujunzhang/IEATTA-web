@@ -77,6 +77,7 @@ class IEAEditReviewLayout extends Component {
     const {dispatch, forObject} = this.props;
 
     const forObjectId = forObject.id;
+    const currentUserId = this.props.currentUserId;
     const reviewType = this.props.reviewType;
     const reviewRating = this.props.editModel.form.fields.reviewRating;
     const reviewBody = this.props.editModel.form.fields.reviewBody;
@@ -85,7 +86,7 @@ class IEAEditReviewLayout extends Component {
 
     try {
       await Promise.race([
-        dispatch(createNewReview({forObjectId, reviewType, reviewRating, reviewBody})),
+        dispatch(createNewReview({forObjectId, reviewType, reviewRating, reviewBody, currentUserId})),
         timeout(15000),
       ]);
     } catch (e) {
@@ -240,6 +241,7 @@ function mapDispatchToProps(dispatch) {
 
 function select(store, ownProps) {
   return {
+    currentUserId: store.user.id,
     editModel: store.editModel,
     goBack: ownProps.router.goBack
   };

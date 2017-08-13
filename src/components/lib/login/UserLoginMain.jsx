@@ -32,8 +32,6 @@ class UserLoginMain extends Component {
       formType: formType,
     }
 
-    debugger
-
     this.toggleFormState(formType)
   }
 
