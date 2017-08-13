@@ -47,12 +47,12 @@ class UserEmailSignIn extends Component {
       const message = e.message || e
       if (message !== 'Timed out' && message !== 'Canceled by user') {
         errorMessage = message
+        this.props.dispatch(showAlertMessage(errorMessage))
         // alert(message);
         // console.warn(e);
       }
     } finally {
       if (!!errorMessage) {
-        this.props.dispatch(showAlertMessage(errorMessage))
       } else {
         this.props.actions.loginSuccess()
         this.props.router.push({pathname: '/'})

@@ -84,6 +84,7 @@ class IEAEditReviewLayout extends Component {
 
     this.props.actions.updateModelRequest();
 
+    let errorMessage = null
     try {
       await Promise.race([
         dispatch(createNewReview({forObjectId, reviewType, reviewRating, reviewBody, currentUserId})),
@@ -93,13 +94,18 @@ class IEAEditReviewLayout extends Component {
       this.props.actions.updateModelFailure(e);
       const message = e.message || e;
       if (message !== 'Timed out' && message !== 'Canceled by user') {
-        this.props.dispatch(showAlertMessage(message))
+        errorMessage = message;
+        this.props.dispatch(showAlertMessage(errorMessage))
         // debugger
         alert(message);
         // console.warn(e);
       }
     } finally {
-      this.props.actions.updateModelSuccess();
+      if (!!errorMessage) {
+      } else {
+        this.props.actions.updateModelSuccess();
+        this.props.router.goBack();
+      }
       // this._isMounted && this.setState({isLoading: false});
     }
   }
