@@ -28,7 +28,8 @@ class UserLoginMain extends Component {
     const formState = (pathname.indexOf('login') !== -1) ? LOGIN_FORM_TYPE_LOGIN : LOGIN_FORM_TYPE_REGISTER;
     this.state = this.initialState = {
       // formState: LOGIN_FORM_TYPE_LOGIN,
-      formState: formState
+      formState: formState,
+      alertMessage: null
     }
 
     this.toggleFormState(formState)
@@ -68,14 +69,36 @@ class UserLoginMain extends Component {
       }
     } finally {
       if (!!errorMessage) {
-        this.setState({errorMessage: errorMessage})
+        this.updateAlertMessage(errorMessage)
       } else {
         this.props.router.push({pathname: '/'})
       }
     }
   }
 
+  updateAlertMessage(message) {
+    this.setState({alertMessage: message})
+  }
+
+  renderAlert() {
+
+    return (
+      <div id="alert-container">
+
+        <div className="alert alert-error" style="">
+          <a className="js-alert-dismiss dismiss-link" href="#">×</a>
+          <p className="alert-message">
+            <ul>
+              <li>Are you a human? Please complete the bot challenge below.</li>
+            </ul>
+          </p>
+        </div>
+      </div>
+    )
+  }
+
   render() {
+    const {alertMessage} = this.state;
     return (
       <div id="wrap" className="lang-en">
 
@@ -83,6 +106,9 @@ class UserLoginMain extends Component {
 
         <div className="main-content-wrap main-content-wrap--full">
           <div id="super-container" className="content-container">
+
+            {!!alertMessage ? this.renderAlert() : null}
+
             <div className="clearfix layout-block layout-h row--responsive">
 
               <div className="column column-alpha column--responsive">
@@ -115,14 +141,15 @@ class UserLoginMain extends Component {
         return (
           <Telescope.components.UserEmailSignIn
             {...this.props}
+            updateAlertMessage={this.updateAlertMessage.bind(this)}
             loginViaSocial={this.loginViaSocial.bind(this)}
             toggleEvent={this.switchFormState.bind(this)}/>
         )
       case LOGIN_FORM_TYPE_REGISTER:
         return (
           <Telescope.components.UserEmailSignUp
-            actions={this.props.actions}
-            auth={this.props.auth}
+            {...this.props}
+            updateAlertMessage={this.updateAlertMessage.bind(this)}
             loginViaSocial={this.loginViaSocial.bind(this)}
             toggleEvent={this.switchFormState.bind(this)}/>
         )
