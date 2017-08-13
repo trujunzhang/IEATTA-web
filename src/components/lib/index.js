@@ -129,13 +129,7 @@ Telescope.registerComponent('UsersDownvote',                       require('./pr
 Telescope.registerComponent('UsersSubmittedPostsList',             require('./profile/menus/UsersSubmittedPostsList.jsx').default)
 Telescope.registerComponent('UsersUpvote',                         require('./profile/menus/UsersUpvote.jsx').default)
 
-// overlay
-Telescope.registerComponent('AppOverlay',                    require('./overlay/AppOverlay.jsx').default)
-Telescope.registerComponent('MoreTagsPopoverMenu',           require('./overlay/MoreTagsPopoverMenu.jsx').default)
-Telescope.registerComponent('SubmitFlagPopover',             require('./overlay/SubmitFlagPopover.jsx').default)
-Telescope.registerComponent('UsersPopoverMenu',              require('./overlay/UsersPopoverMenu.jsx').default)
-
-
+// app login
 Telescope.registerComponent('UserEmailSignIn',                require('./login/UserEmailSignIn.jsx').default)
 Telescope.registerComponent('UserEmailSignUp',                require('./login/UserEmailSignUp.jsx').default)
 Telescope.registerComponent('UserLoginMain',                  require('./login/UserLoginMain.jsx').default)

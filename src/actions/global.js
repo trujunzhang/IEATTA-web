@@ -35,9 +35,6 @@ const {
   DISMISS_ALERT_MESSAGE,
 } = require('../lib/constants').default
 
-// ================================
-// For AppOverlay.js
-// ================================
 function showAlertMessage(message: string): Action {
 
   // TODO: Make sure reducers clear their state
