@@ -37,7 +37,7 @@ class IEAEditReviewLayout extends Component {
 
     props.actions.toggleEditModelType(MENU_ITEM_ADD_OR_EDIT_RESTAURANT);
     props.actions.onEditModelFormFieldChange('reviewRating', props.review.rate || 0, true)
-    props.actions.onEditModelFormFieldChange('reviewBody', props.review.body || '', true)
+    props.actions.onEditModelFormFieldChange('reviewBody', props.review.body || '')
   }
 
   /**
@@ -107,7 +107,7 @@ class IEAEditReviewLayout extends Component {
 
   renderLeftButton() {
     const {editModel} = this.props;
-    const isDisabled = (!editModel.form.isValid || editModel.form.isFetching);
+    const buttonDisabled = (!editModel.form.isValid || editModel.form.isFetching);
 
     return (
       <div className="ysection">
@@ -118,6 +118,7 @@ class IEAEditReviewLayout extends Component {
               <button
                 onClick={this.onButtonPress.bind(this)}
                 value="submit"
+                disabled={buttonDisabled}
                 className="ybtn ybtn--primary ybtn--small ybtn-full-responsive-small">
                 <span>{`${isNewModelPage(this.state.pageForm) ? 'Post' : 'Update'} Review`}</span>
               </button>
