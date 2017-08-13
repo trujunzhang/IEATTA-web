@@ -6,8 +6,6 @@ export function requireAuth(store) {
 
     const state = store.getState()
 
-    debugger
-
     if (!state.user.isLoggedIn) {
       replace({
         pathname: '/login',
@@ -39,11 +37,13 @@ const createRoutes = (store) => {
     },
     {
       path: 'edit/biz/(:rid)/(:rslug)',
-      component: Telescope.components.DetailedRestaurant
+      component: Telescope.components.DetailedRestaurant,
+      onEnter: requireAuth(store)
     },
     {
       path: 'new/biz',
-      component: Telescope.components.DetailedRestaurant
+      component: Telescope.components.DetailedRestaurant,
+      onEnter: requireAuth(store)
     },
     {
       path: 'biz_photos/(:rid)/(:rslug)',
@@ -58,11 +58,13 @@ const createRoutes = (store) => {
     },
     {
       path: 'edit/event/(:eid)/(:eslug)',
-      component: Telescope.components.DetailedEvent
+      component: Telescope.components.DetailedEvent,
+      onEnter: requireAuth(store)
     },
     {
       path: 'new/event/(:rid)/(:rslug)',
-      component: Telescope.components.DetailedEvent
+      component: Telescope.components.DetailedEvent,
+      onEnter: requireAuth(store)
     }
   ];
 
@@ -73,7 +75,8 @@ const createRoutes = (store) => {
     },
     {
       path: 'edit/recipe/(:oid)/(:oslug)',
-      component: Telescope.components.OrderedRecipes
+      component: Telescope.components.OrderedRecipes,
+      onEnter: requireAuth(store)
     },
     {
       path: 'recipe_photos/(:oid)/(:oslug)',
@@ -84,11 +87,13 @@ const createRoutes = (store) => {
   const reviewRoutes = [
     {
       path: 'edit/review/(:oid)/(:oslug)',
-      component: Telescope.components.DetailedReview
+      component: Telescope.components.DetailedReview,
+      onEnter: requireAuth(store)
     },
     {
       path: 'new/review/(:reviewType)/(:forObjectId)',
       component: Telescope.components.DetailedReview,
+      onEnter: requireAuth(store)
     },
   ];
 
