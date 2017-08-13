@@ -31,7 +31,7 @@ import type {Action, ThunkAction} from './types'
 import {fromParseRecipe} from "../reducers/parseModels";
 
 
-let {
+const {
   ParseRestaurant,
   ParseEvent,
   ParsePeopleInEvent,
@@ -41,9 +41,18 @@ let {
   ParseRecord,
   ParsePhoto,
 } = require('../parse/objects').default
-let {getUsersParameters, getQueryByType, updateParseRecord} = require('../parse/parseUtiles').default
 
-const {fromParseUser, fromParseRestaurant, fromParseEvent} = require('../reducers/parseModels')
+const {
+  getUsersParameters,
+  getQueryByType, updateParseRecord,
+  setParseObjectFieldWithoutData
+} = require('../parse/parseUtiles').default
+
+const {
+  fromParseUser,
+  fromParseRestaurant,
+  fromParseEvent
+} = require('../reducers/parseModels')
 
 /**
  * The states were interested in
