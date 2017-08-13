@@ -63,7 +63,7 @@ function getQueryByType(type: string, includes: Array = []) {
 }
 
 function getRestaurantParameters(terms) {
-  return new Parameters.Posts(getQueryByType(PARSE_RESTAURANTS,['photos']))
+  return new Parameters.Posts(getQueryByType(PARSE_RESTAURANTS, ['photos']))
     .addParameters(terms)
     .end()
 }
@@ -104,11 +104,43 @@ function getPhotosParameters(terms) {
     .end()
 }
 
+
+function setParseObjectFieldWithoutData(parseType, instance, objectId) {
+  switch (parseType) {
+    case "restaurant":
+      instance.set('restaurant', ParseRestaurant.createWithoutData(objectId))
+      break;
+    case "event":
+      instance.set('event', ParseEvent.createWithoutData(objectId))
+      break;
+    case "recipe":
+      instance.set('recipe', ParseRecipe.createWithoutData(objectId))
+      break;
+    case "user":
+      instance.set('user', ParseUser.createWithoutData(objectId))
+      break;
+    case "review":
+      instance.set('review', ParseReview.createWithoutData(objectId))
+      break;
+    default:
+      throw new Error('No matched parseType to create parse without data!')
+      break;
+  }
+}
+
 async function updateParseRecord(recordType, parseInstance) {
   const record = await getQueryByType(PARSE_RECORDS).equalTo(recordType, parseInstance).first()
   if (!!record) {
     await record.save()
+  } else {
+    const newRecord = new ParseRecord()
+
+    newRecord.set('recordType', recordType)
+    // newRecord.set('', model.reviewBody)
+
   }
+
+
 }
 
 export default {
