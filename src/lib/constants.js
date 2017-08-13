@@ -33,8 +33,8 @@ export default keyMirror({
   // Edit Model
   EDIT_MODEL_TOGGLE_TYPE: null,
   ON_EDIT_MODEL_FORM_FIELD_CHANGE: null,
+  SAVE_MODEL_REQUEST: null,
   UPDATE_MODEL_REQUEST: null,
-  SAVED_MODEL_REQUEST: null,
   UPDATE_MODEL_SUCCESS: null,
   UPDATE_MODEL_FAILURE: null,
 

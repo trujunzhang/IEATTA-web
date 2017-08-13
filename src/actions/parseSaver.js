@@ -65,7 +65,9 @@ const {
   PARSE_EVENTS,
   PARSE_RECIPES,
   PARSE_COMMENTS,
-  SAVED_MODEL_REQUEST,
+  // Rest API
+  SAVE_MODEL_REQUEST,
+  UPDATE_MODEL_REQUEST,
 } = require('../lib/constants').default
 
 
@@ -78,7 +80,7 @@ async function _updateRestaurant(model: object): Promise<Array<Action>> {
   await updateParseRecorder('restaurant', restaurant)
 
   const action = {
-    type: SAVED_MODEL_REQUEST,
+    type: UPDATE_MODEL_REQUEST,
     payload: {objectId: model.objectId, model: fromParseRestaurant(restaurant)}
   }
   return Promise.all([
@@ -111,7 +113,7 @@ async function _updateEvent(model: object): Promise<Array<Action>> {
   await updateParseRecorder('event', event)
 
   const action = {
-    type: SAVED_MODEL_REQUEST,
+    type: UPDATE_MODEL_REQUEST,
     payload: {objectId: model.objectId, model: fromParseEvent(event)}
   }
   return Promise.all([
@@ -144,7 +146,7 @@ async function _updateRecipe(model: object): Promise<Array<Action>> {
   await updateParseRecorder('recipe', recipe)
 
   const action = {
-    type: SAVED_MODEL_REQUEST,
+    type: UPDATE_MODEL_REQUEST,
     payload: {objectId: model.objectId, model: fromParseRecipe(recipe)}
   }
   return Promise.all([
@@ -186,8 +188,7 @@ async function _createNewReview(model: object): Promise<Array<Action>> {
   // await updateParseRecorder('review', review)
 
   const action = {
-    type: SAVED_MODEL_REQUEST,
-    payload: {objectId: model.objectId, model: fromParseRecipe(recipe)}
+    type: SAVE_MODEL_REQUEST,
   }
   return Promise.all([
     Promise.resolve(action)
