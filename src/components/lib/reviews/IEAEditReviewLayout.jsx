@@ -14,7 +14,7 @@ const {
  * The states were interested in
  */
 const {
-  MENU_ITEM_ADD_OR_EDIT_RESTAURANT,
+  MENU_ITEM_ADD_OR_EDIT_REVIEW
 } = require('../../../lib/constants').default
 
 const {
@@ -35,7 +35,7 @@ class IEAEditReviewLayout extends Component {
       }
     }
 
-    props.actions.toggleEditModelType(MENU_ITEM_ADD_OR_EDIT_RESTAURANT);
+    props.actions.toggleEditModelType(MENU_ITEM_ADD_OR_EDIT_REVIEW);
     props.actions.onEditModelFormFieldChange('reviewRating', props.review.rate || 0, true)
     props.actions.onEditModelFormFieldChange('reviewBody', props.review.body || '')
   }
