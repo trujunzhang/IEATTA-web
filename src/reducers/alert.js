@@ -13,7 +13,7 @@ export default function error(state = initialState, action) {
   }
 
   if (action.type === SHOW_ALERT_MESSAGE) {
-    return initialState;
+    return {message: action.payload};
   }
 
   return state;

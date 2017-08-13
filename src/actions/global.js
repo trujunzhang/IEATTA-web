@@ -36,8 +36,6 @@ const {
 } = require('../lib/constants').default
 
 function showAlertMessage(message: string): Action {
-
-  // TODO: Make sure reducers clear their state
   return {type: SHOW_ALERT_MESSAGE, payload: message}
 }
 

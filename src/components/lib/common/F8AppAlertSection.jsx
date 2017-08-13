@@ -19,7 +19,7 @@ class F8AppAlertSection extends React.Component {
             <p className="alert-message">
               <ul>
                 <li>
-                  {this.state.alertMessage}
+                  {this.props.appAlert.message}
                 </li>
               </ul>
             </p>
