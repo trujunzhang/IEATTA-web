@@ -9,7 +9,6 @@ const reviewBodyPlaceHolder = I18n.t('editReview.reviewBodyPlaceHolder');
 
 class EditReviewForm extends Component {
 
-
   constructor(props, context) {
     super(props)
 
@@ -19,7 +18,6 @@ class EditReviewForm extends Component {
       hasFormFocus: false
     }
   }
-
 
   handleClickOutside(e) {
     this.setState({hasFormFocus: false})

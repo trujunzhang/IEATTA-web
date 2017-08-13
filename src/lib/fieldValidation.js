@@ -144,10 +144,11 @@ export default function fieldValidation(state, action) {
     }
 
     case ('reviewBody'): {// the same as 'displayName'
-      let validReviewBody = _.isUndefined(validate({eventWhat: value}, displayNameConstraints))
+      let validReviewBody = _.isUndefined(validate({reviewBody: value}, displayNameConstraints))
       if (value.length < 2) {
         validReviewBody = false;
       }
+      debugger
       if (validReviewBody) {
         return state.setIn(['form', 'fields', 'reviewBodyHasError'], false)
           .setIn(['form', 'fields', 'reviewBodyErrorMsg'], '')
