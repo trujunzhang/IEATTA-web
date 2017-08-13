@@ -32,9 +32,9 @@ class UserEmailSignUp extends Component {
   async onButtonPress() {
     const {dispatch} = this.props
 
-    let username = this.props.auth.form.fields.username
-    let email = this.props.auth.form.fields.email
-    let password = this.props.auth.form.fields.password
+    const username = this.props.auth.form.fields.username
+    const email = this.props.auth.form.fields.email
+    const password = this.props.auth.form.fields.password
 
     let errorMessage = null
 
@@ -50,7 +50,7 @@ class UserEmailSignUp extends Component {
       this.props.actions.signupFailure(e)
       const message = e.message || e
       if (message !== 'Timed out' && message !== 'Canceled by user') {
-        errorMessage = message
+        errorMessage = message;
         // alert(message);
         // console.warn(e);
       }
@@ -59,6 +59,7 @@ class UserEmailSignUp extends Component {
         this.props.dispatch(showAlertMessage(errorMessage))
       } else {
         this.props.actions.signupSuccess()
+        this.props.router.push({pathname: '/'})
       }
     }
   }
@@ -130,6 +131,7 @@ class UserEmailSignUp extends Component {
                 disabled={buttonDisabled}
                 type="submit"
                 value="Sign Up"
+                onClick={this.onButtonPress.bind(this)}
                 className="ybtn ybtn--primary disable-on-submit submit signup-button">
           <span>Sign Up</span>
         </button>

@@ -45,10 +45,6 @@ const {fromParseUser} = require('../reducers/parseModels')
 
 import type {Action, ThunkAction} from './types'
 
-function getUserCallback(user) {
-  return fromParseUser(user)
-}
-
 
 async function _logInWithPassword(username: string, password: string): Promise<Array<Action>> {
   const user = new Parse.User()
@@ -59,7 +55,7 @@ async function _logInWithPassword(username: string, password: string): Promise<A
 
   const action = {
     type: LOGGED_IN,
-    payload: getUserCallback(user)
+    payload: fromParseUser(user)
   };
 
   return Promise.all([
@@ -84,6 +80,7 @@ function logInWithPassword(username: string, password: string): ThunkAction {
 
 async function _signUpWithPassword(username: string, email: string, password: string): Promise<Array<Action>> {
   const user = new Parse.User()
+
   user.set('username', username)
   user.set('password', password)
   user.set('email', email)
@@ -91,12 +88,14 @@ async function _signUpWithPassword(username: string, email: string, password: st
   // await updateInstallation({user})
   await user.signUp({'loginType': 'email'})
 
-  await user.save();
+  // await user.save();
 
   const action = {
     type: LOGGED_IN,
-    payload: getUserCallback(user)
+    payload: fromParseUser(user)
   }
+
+  debugger
 
   return Promise.all([
     Promise.resolve(action)
