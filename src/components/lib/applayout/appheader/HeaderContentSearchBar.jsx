@@ -3,6 +3,43 @@ import {withRouter} from 'react-router'
 
 class HeaderContentSearchBar extends Component {
 
+  constructor(props) {
+    super(props);
+
+    let query = props.router.location.query.query;
+    if (!!props.router.location.query.topicId) {
+      query = "";
+    }
+    this.state = this.initialState = {
+      search: query || ''
+    }
+  }
+
+  componentWillReceiveProps(nextProps, nextContext) {
+    if ((!!nextProps.router.location.query.topicId) || (!nextProps.router.location.query.query)) {
+      this.setState({search: ''});
+    }
+  }
+
+  search(e) {
+    const input = e.target.value;
+    this.setState({search: input});
+
+    this.searchQuery(input);
+  }
+
+  searchQuery(input) {
+    const router = this.props.router,
+      query = input === '' ? {} : {query: input};
+
+    const {dispatch} = this.props;
+
+    delayEvent(function () {
+      // dispatch(queryNearRestaurant({search: input}))
+    }, 700)
+  }
+
+
   renderLeftSearchbar() {
     return (
       <div className="arrange_unit main-search_search-field-arrange">
@@ -12,8 +49,8 @@ class HeaderContentSearchBar extends Component {
             <span className="pseudo-input_field-holder">
                   <input maxLength="64"
                          id="find_desc"
-                         autoComplete="off"
-                         value=""
+                         value={this.state.search}
+                         onChange={this.search.bind(this)}
                          placeholder="pizza, pub, Mustafa"
                          className="main-search_field pseudo-input_field"
                   />

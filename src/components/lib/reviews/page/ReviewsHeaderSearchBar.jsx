@@ -7,6 +7,7 @@ const {delayEvent} = require('../../../../lib/utils')
 import {withRouter} from 'react-router'
 
 export class ReviewsHeaderSearchBar extends Component {
+
   constructor(props) {
     super(props);
 
