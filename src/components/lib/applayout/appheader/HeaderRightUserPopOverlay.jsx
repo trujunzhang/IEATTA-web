@@ -246,7 +246,7 @@ class HeaderRightUserPopOverlay extends Component {
   }
 
   handleClickOutside = evt => {
-    this.props.onHandleClickOutsidePress()
+    this.props.onHandleClickOutsidePress(evt)
   }
 }
 

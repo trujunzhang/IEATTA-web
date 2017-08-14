@@ -15,8 +15,21 @@ class HeaderRightUserPanel extends Component {
     };
   }
 
-  onHandleClickOutsidePress() {
+  onHandleClickOutsidePress(evt) {
+    evt.preventDefault();
     this.setState({isOpen: false})
+    evt.stopPropagation();
+  }
+
+  onUserBlockPress(e) {
+    e.preventDefault();
+    const lastState = this.state.isOpen;
+    if (lastState) {
+      this.setState({isOpen: false})
+    } else {
+      this.setState({isOpen: true})
+    }
+    e.stopPropagation();
   }
 
   renderRightNormalUserSection() {
@@ -26,9 +39,7 @@ class HeaderRightUserPanel extends Component {
       currentClass = `ybtn ybtn--primary drop-menu-link user-account_button ${extension}`
 
     return (
-      <a className={currentClass} id="topbar-account-link" onClick={(e) => {
-        this.setState({isOpen: !this.state.isOpen})
-      }}>
+      <a className={currentClass} id="topbar-account-link" onClick={this.onUserBlockPress.bind(this)}>
                 <span className="user-account_avatar responsive-visible-large-block">
                     <Telescope.components.F8PlaceHolderImage
                       alt={currentUser.username}
