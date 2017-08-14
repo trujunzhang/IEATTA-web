@@ -43,7 +43,8 @@ class HeaderContent extends Component {
 
               <Telescope.components.HeaderContentSearchBar/>
 
-              {isLoggedIn ? <Telescope.components.HeaderRightUserIconsPanel/> : null}
+              {isLoggedIn ?
+                <Telescope.components.HeaderRightUserIconsPanel/> : null}
               {isLoggedIn ?
                 <Telescope.components.HeaderRightUserPanel
                   onLogOutPress={this.onLogOutPress.bind(this)}

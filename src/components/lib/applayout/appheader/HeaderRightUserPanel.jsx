@@ -2,6 +2,7 @@ import Telescope from '../../index'
 import React, {Component} from 'react'
 import {Link} from 'react-router'
 
+import Photos from '../../../../lib/photos'
 import onClickOutside from 'react-onclickoutside'
 
 class HeaderRightUserPanel extends Component {
@@ -19,6 +20,7 @@ class HeaderRightUserPanel extends Component {
   }
 
   renderTop() {
+    const {currentUser} = this.props;
     const {isOpen} = this.state,
       extension = isOpen ? ' drop-menu-highlighted' : '',
       currentClass = `ybtn ybtn--primary drop-menu-link user-account_button ${extension}`
@@ -28,11 +30,14 @@ class HeaderRightUserPanel extends Component {
         this.setState({isOpen: !this.state.isOpen})
       }}>
                 <span className="user-account_avatar responsive-visible-large-block">
-                    <img alt="Trujun Z."
-                         className="photo-box-img"
-                         height="90"
-                         src="https://s3-media4.fl.yelpcdn.com/photo/Hjd0EAdSH-gYJbRBF5nAnw/90s.jpg"
-                         width="90"/>
+                    <Telescope.components.F8PlaceHolderImage
+                      alt={currentUser.username}
+                      className="photo-box-img"
+                      height="90"
+                      width="90"
+                      placeholderSource={"/default/user_30_square.png"}
+                      source={Photos.getListThumbnailUrl(currentUser)}
+                    />
                 </span>
         <span id="icon_14X14"
               className="icon icon--14-triangle-down icon--size-14 icon--inverse icon--fallback-inverted u-triangle-direction-down user-account_button-arrow responsive-visible-large-inline-block">
