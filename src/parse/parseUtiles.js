@@ -105,22 +105,22 @@ function getPhotosParameters(terms) {
 }
 
 
-function setParseObjectFieldWithoutData(parseType, instance, objectId) {
+function setParseObjectFieldWithoutData(parseType, instance, parseInstanceId) {
   switch (parseType) {
     case "restaurant":
-      instance.set('restaurant', ParseRestaurant.createWithoutData(objectId))
+      instance.set('restaurant', ParseRestaurant.createWithoutData(parseInstanceId))
       break;
     case "event":
-      instance.set('event', ParseEvent.createWithoutData(objectId))
+      instance.set('event', ParseEvent.createWithoutData(parseInstanceId))
       break;
     case "recipe":
-      instance.set('recipe', ParseRecipe.createWithoutData(objectId))
+      instance.set('recipe', ParseRecipe.createWithoutData(parseInstanceId))
       break;
     case "user":
-      instance.set('user', ParseUser.createWithoutData(objectId))
+      instance.set('user', ParseUser.createWithoutData(parseInstanceId))
       break;
     case "review":
-      instance.set('review', ParseReview.createWithoutData(objectId))
+      instance.set('review', ParseReview.createWithoutData(parseInstanceId))
       break;
     default:
       throw new Error('No matched parseType to create parse without data!')
@@ -135,7 +135,7 @@ async function updateParseRecorder(recordType, parseInstance) {
     recorder = new ParseRecord()
 
     recorder.set('recordType', recordType)
-    recorder.set(recordType, setParseObjectFieldWithoutData(recordType, recorder, parseInstance.objectId))
+    setParseObjectFieldWithoutData(recordType, recorder, parseInstance.id)
   }
 
   await recorder.save()
