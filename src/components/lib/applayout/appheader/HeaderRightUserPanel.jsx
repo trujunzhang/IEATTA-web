@@ -19,7 +19,7 @@ class HeaderRightUserPanel extends Component {
     this.setState({isOpen: false})
   }
 
-  renderTop() {
+  renderRightNormalUserSection() {
     const {currentUser} = this.props;
     const {isOpen} = this.state,
       extension = isOpen ? ' drop-menu-highlighted' : '',
@@ -62,7 +62,7 @@ class HeaderRightUserPanel extends Component {
     )
   }
 
-  renderBottom() {
+  renderUserPopOverlay() {
     const {isOpen} = this.state,
       currentClass = isOpen ? "block" : "none";
     const {currentUser} = this.props;
@@ -317,8 +317,8 @@ class HeaderRightUserPanel extends Component {
             <div className="main-header_account webview-hidden">
 
               <div id="topbar-account-item" className="user-account clearfix drop-menu-origin">
-                {this.renderTop()}
-                {this.renderBottom()}
+                {this.renderRightNormalUserSection()}
+                {this.renderUserPopOverlay()}
               </div>
 
             </div>
