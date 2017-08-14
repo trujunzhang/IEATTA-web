@@ -28,6 +28,7 @@ Telescope.registerComponent('HeaderContentSearchBar',           require('./appla
 Telescope.registerComponent('HeaderRightLoginPanel',            require('./applayout/appheader/HeaderRightLoginPanel.jsx').default)
 Telescope.registerComponent('HeaderRightUserIconsPanel',        require('./applayout/appheader/HeaderRightUserIconsPanel.jsx').default)
 Telescope.registerComponent('HeaderRightUserPanel',             require('./applayout/appheader/HeaderRightUserPanel.jsx').default)
+Telescope.registerComponent('HeaderRightUserPopOverlay',        require('./applayout/appheader/HeaderRightUserPopOverlay.jsx').default)
 
 // header(login)
 Telescope.registerComponent('LoginHeaderContent',               require('./applayout/loginheader/LoginHeaderContent.jsx').default)
