@@ -82,8 +82,8 @@ class ReviewsItem extends Component {
               />
             </div>
             <span className="rating-qualifier">
-        6/11/2017
-    </span>
+              {Reviews.toDateString(review.updatedAt)}
+            </span>
           </div>
 
           <div className="post_page_body" dangerouslySetInnerHTML={htmlBody}/>
