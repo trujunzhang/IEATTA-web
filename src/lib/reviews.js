@@ -5,7 +5,7 @@ import moment from 'moment'
 const Reviews = {
   config: {
     // 6/11/2017
-    dateFormat: 'DD/MMM/YY'
+    dateFormat: 'DD/MM/YYYY'
   }
 }
 
