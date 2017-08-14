@@ -21,7 +21,6 @@ class HeaderContentSearchBar extends Component {
           </label>
           <div
             className="main-search_suggestions suggestions-list-container search-suggestions-list-container hidden">
-            <ul className="suggestions-list" role="listbox"></ul>
           </div>
         </div>
 
@@ -45,9 +44,7 @@ class HeaderContentSearchBar extends Component {
                         </span>
           </label>
           <div
-            className="main-search_suggestions suggestions-list-container location-suggestions-list-container hidden"
-          >
-            <ul className="suggestions-list" role="listbox"></ul>
+            className="main-search_suggestions suggestions-list-container location-suggestions-list-container hidden">
           </div>
         </div>
 
@@ -60,15 +57,19 @@ class HeaderContentSearchBar extends Component {
       <div
         className="arrange_unit arrange_unit--fill align-middle main-header--full_arrange_unit main-header_search-container">
         <div className="main-header_search responsive-hidden-medium-only">
+
           <form method="get" action="/search" id="header_find_form" className="main-search yform u-space-b0"
                 role="search">
             <div className="arrange arrange--stack">
               <div className="arrange_unit arrange_unit--fill">
                 <div className="arrange arrange--equal arrange--stack">
+
                   {this.renderLeftSearchbar()}
+
                   {/*{this.renderRightSearchbar()}*/}
                 </div>
               </div>
+
               <div className="arrange_unit main-search_actions arrange_unit--stack-12">
                 <div className="arrange arrange--wrap arrange--6">
                   <div
@@ -92,31 +93,11 @@ class HeaderContentSearchBar extends Component {
                                 </span>
                                 <span className="u-offscreen">Search</span>
                             </span>
-                      <div className="circle-spinner js-circle-spinner hidden">
-                        <div className="circle-spinner_segment container1">
-                          <div className="circle1"></div>
-                          <div className="circle2"></div>
-                          <div className="circle3"></div>
-                          <div className="circle4"></div>
-                        </div>
-                        <div className="circle-spinner_segment container2">
-                          <div className="circle1"></div>
-                          <div className="circle2"></div>
-                          <div className="circle3"></div>
-                          <div className="circle4"></div>
-                        </div>
-                        <div className="circle-spinner_segment container3">
-                          <div className="circle1"></div>
-                          <div className="circle2"></div>
-                          <div className="circle3"></div>
-                          <div className="circle4"></div>
-                        </div>
-                      </div>
-
                     </button>
                   </div>
                 </div>
               </div>
+
             </div>
           </form>
 

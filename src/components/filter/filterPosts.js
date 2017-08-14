@@ -23,9 +23,9 @@
  */
 'use strict'
 
-let {convertToObject} = require('../../lib/utils')
+const {convertToObject} = require('../../lib/utils')
 
-let _ = require('underscore')
+const _ = require('underscore')
 
 export function getDefaultListTask(terms: Any) {
   const {listId, limit} = terms;

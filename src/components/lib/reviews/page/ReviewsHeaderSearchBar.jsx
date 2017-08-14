@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import Telescope from '../../index'
-
 import Posts from '../../../../lib/posts'
+
+const {delayEvent} = require('../../../../lib/utils')
 
 import {withRouter} from 'react-router'
 
@@ -53,8 +54,11 @@ export class ReviewsHeaderSearchBar extends Component {
     const router = this.props.router,
       query = input === '' ? {} : {query: input};
 
-    // delayEvent(function () {
-    // }, 700);
+    const {dispatch} = this.props;
+
+    delayEvent(function () {
+      // dispatch(queryNearRestaurant({search: input}))
+    }, 700)
   }
 
 
@@ -95,5 +99,6 @@ export class ReviewsHeaderSearchBar extends Component {
   }
 }
 
+const {connect} = require('react-redux')
 
-export default withRouter(ReviewsHeaderSearchBar);
+export default withRouter(connect()(ReviewsHeaderSearchBar))
