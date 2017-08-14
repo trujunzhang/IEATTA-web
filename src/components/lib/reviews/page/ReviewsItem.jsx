@@ -13,7 +13,7 @@ class ReviewsItem extends Component {
     const {user} = review;
 
     return (
-      <div className="review-sidebar" >
+      <div className="review-sidebar">
 
         <div className="review-sidebar-content">
 
@@ -23,10 +23,14 @@ class ReviewsItem extends Component {
                 <a
                   className="js-analytics-click"
                   data-analytics-label="user-photo">
-                  <img alt={user.username} className="photo-box-img"
-                       width="60"
-                       height="60"
-                       src={Photos.getListThumbnailUrl(user)}/>
+                  <Telescope.components.F8PlaceHolderImage
+                    alt={user.username}
+                    className="photo-box-img"
+                    width="60"
+                    height="60"
+                    placeholderSource={"/default/user_30_square.png"}
+                    source={Photos.getListThumbnailUrl(user)}
+                  />
                 </a>
               </div>
 
