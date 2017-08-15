@@ -30,7 +30,7 @@ let _ = require('underscore')
 
 import type {Action, ThunkAction} from './types'
 
-const {User, Post, fromParseUser, fromParseRestaurant} = require('../reducers/parseModels')
+const {User, Post, fromParseUser, fromParseRestaurant} = require('../parse/parseModels')
 
 let {ParseRestaurant, ParseUser} = require('../parse/objects').default
 

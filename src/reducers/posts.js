@@ -36,6 +36,6 @@ const {
   LIST_VIEW_LOADED_RESTAURANTS
 } = require('../lib/constants').default
 
-const {fromParseRestaurant} = require('./parseModels')
+const {fromParseRestaurant} = require('../parse/parseModels')
 
 export default createParseReducer(LIST_VIEW_LOADED_RESTAURANTS, fromParseRestaurant)

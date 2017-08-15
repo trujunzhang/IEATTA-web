@@ -54,7 +54,7 @@ const slugify = require('slugify')
 // const FacebookSDK = require('FacebookSDK')
 const {updateInstallation} = require('./installation')
 
-const {fromParseUser} = require('../reducers/parseModels')
+const {fromParseUser} = require('../parse/parseModels')
 
 import type {Action, ThunkAction} from './types'
 

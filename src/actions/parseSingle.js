@@ -21,7 +21,7 @@
  *
  * @flow
  */
-import {fromParseRecipe} from "../reducers/parseModels";
+import {fromParseRecipe} from "../parse/parseModels";
 
 
 const Parse = require('parse')
@@ -31,7 +31,7 @@ import type {ThunkAction} from './types'
 const {ParseUser} = require('../parse/objects').default
 const {getUsersParameters, getQueryByType} = require('../parse/parseUtiles').default
 
-const {fromParseUser, fromParseRestaurant, fromParseEvent} = require('../reducers/parseModels')
+const {fromParseUser, fromParseRestaurant, fromParseEvent} = require('../parse/parseModels')
 
 /**
  * The states were interested in

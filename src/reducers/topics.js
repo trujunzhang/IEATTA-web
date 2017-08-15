@@ -31,6 +31,6 @@ const {
   DASHBOARD_LOADED_TOPICS
 } = require('../lib/constants').default
 
-const {fromParseTopic} = require('./parseModels')
+const {fromParseTopic} = require('../parse/parseModels')
 
 export default createParseReducer(DASHBOARD_LOADED_TOPICS, fromParseTopic)

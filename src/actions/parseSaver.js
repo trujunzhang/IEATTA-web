@@ -28,7 +28,7 @@
 
 const _ = require('underscore')
 import type {Action, ThunkAction} from './types'
-import {fromParseRecipe} from "../reducers/parseModels";
+import {fromParseRecipe} from "../parse/parseModels";
 
 
 const {
@@ -53,7 +53,7 @@ const {
   fromParseUser,
   fromParseRestaurant,
   fromParseEvent
-} = require('../reducers/parseModels')
+} = require('../parse/parseModels')
 
 /**
  * The states were interested in

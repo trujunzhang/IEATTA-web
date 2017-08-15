@@ -21,7 +21,7 @@
  *
  * @flow
  */
-import {fromParsePhoto, fromParseRecipe} from "../reducers/parseModels";
+import {fromParsePhoto, fromParseRecipe} from "../parse/parseModels";
 
 const Parse = require('parse')
 import type {ThunkAction} from './types'
@@ -43,7 +43,7 @@ const {
   fromParseReview,
   fromParsePeopleInEvent,
   fromParseUser
-} = require('../reducers/parseModels')
+} = require('../parse/parseModels')
 
 /**
  * The states were interested in
