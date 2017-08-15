@@ -1,8 +1,8 @@
 const Parse = require('parse')
 
-let Parameters = require('../parameters').default
+const Parameters = require('../parameters').default
 
-let {
+const {
   ParseRestaurant,
   ParseEvent,
   ParseUser,
@@ -104,6 +104,18 @@ function getPhotosParameters(terms) {
     .end()
 }
 
+async function updateParseRecorder(recordType, parseInstance) {
+  let recorder = await getQueryByType(PARSE_RECORDS).equalTo(recordType, parseInstance).first()
+  if (!!recorder) {
+  } else {
+    recorder = new ParseRecord()
+
+    recorder.set('recordType', recordType)
+    setParseObjectFieldWithoutData(recordType, recorder, parseInstance.id)
+  }
+
+  await recorder.save()
+}
 
 function setParseObjectFieldWithoutData(parseType, instance, parseInstanceId) {
   switch (parseType) {
@@ -126,19 +138,6 @@ function setParseObjectFieldWithoutData(parseType, instance, parseInstanceId) {
       throw new Error('No matched parseType to create parse without data!')
       break;
   }
-}
-
-async function updateParseRecorder(recordType, parseInstance) {
-  let recorder = await getQueryByType(PARSE_RECORDS).equalTo(recordType, parseInstance).first()
-  if (!!recorder) {
-  } else {
-    recorder = new ParseRecord()
-
-    recorder.set('recordType', recordType)
-    setParseObjectFieldWithoutData(recordType, recorder, parseInstance.id)
-  }
-
-  await recorder.save()
 }
 
 export default {
