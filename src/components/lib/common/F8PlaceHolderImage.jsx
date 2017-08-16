@@ -1,15 +1,8 @@
 'use strict';
 
-
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
 
 class F8PlaceHolderImage extends Component {
-  static propTypes = {
-    onLoad: PropTypes.func,
-    onError: PropTypes.func,
-    source: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
-    placeholderSource: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
-  }
 
   constructor(...props) {
     super(...props);
