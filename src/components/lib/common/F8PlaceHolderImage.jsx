@@ -27,11 +27,16 @@ class F8PlaceHolderImage extends Component {
 
   render() {
     const {source} = this.state;
-    return <img {...this.props}
-                src={source}
-                onLoad={this.onLoad.bind(this)}
-                onError={this.onError.bind(this)}
-    />;
+    return (
+      <img
+        width={this.props.width}
+        height={this.props.height}
+        className={this.props.className}
+        alt={this.props.alt}
+        src={source}
+        onLoad={this.onLoad.bind(this)}
+        onError={this.onError.bind(this)}
+      />);
   }
 }
 
