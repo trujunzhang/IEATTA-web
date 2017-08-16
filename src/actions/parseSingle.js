@@ -69,10 +69,8 @@ function loadParseObject(type: string, query: Parse.Query, objectId: string, par
 }
 
 export default {
-  loadUserProfile: (userId: string, slug: string): ThunkAction => {
-    let pageQuery = new Parse.Query(ParseUser).equalTo('objectId', userId)
-
-    return loadParseObject(USERPROFILE_LOADED, pageQuery, userId)
+  loadUserProfilePage: (objectId: string): ThunkAction => {
+    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_USERS, ['photos']), objectId, fromParseUser)
   },
 
   loadRestaurantPage: (objectId: string): ThunkAction => {
@@ -81,10 +79,6 @@ export default {
 
   loadEventPage: (objectId: string): ThunkAction => {
     return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_EVENTS, ['restaurant', 'restaurant.photos']), objectId, fromParseEvent)
-  },
-
-  loadOrderedUserPage: (objectId: string): ThunkAction => {
-    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_USERS, ['photos']), objectId, fromParseUser)
   },
 
   loadOrderedRecipePage: (objectId: string): ThunkAction => {

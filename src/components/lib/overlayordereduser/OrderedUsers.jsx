@@ -1,7 +1,7 @@
 import Telescope from '../../lib'
 import React, {Component} from 'react'
 
-const {loadOrderedUserPage, loadEventPage, loadRestaurantPage} = require('../../../actions').default
+const {loadUserProfilePage, loadEventPage, loadRestaurantPage} = require('../../../actions').default
 
 const {getModelByObjectId} = require('../../filter/filterPosts')
 
@@ -33,7 +33,7 @@ class OrderedUsers extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(loadOrderedUserPage(this.state.uid))
+    this.props.dispatch(loadUserProfilePage(this.state.uid))
     this.props.dispatch(loadRestaurantPage(this.state.rid))
     this.props.dispatch(loadEventPage(this.state.eid))
   }

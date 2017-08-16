@@ -121,10 +121,18 @@ const createRoutes = (store) => {
     },
   ];
 
-  const overlayRoutes = [
+  const orderedUserRoutes = [
     {
       path: 'ordereduser/(:uid)/(:uslug)/(:eid)/(:rid)',
       component: Telescope.components.OrderedUsers
+    },
+  ];
+
+
+  const userProfileRoutes = [
+    {
+      path: 'user_details/(:uid)/(:uslug)',
+      component: Telescope.components.UsersSingle
     },
   ];
 
@@ -150,7 +158,8 @@ const createRoutes = (store) => {
         ...recipeRoutes,
         ...eventRoutes,
         ...reviewRoutes,
-        ...overlayRoutes,
+        ...orderedUserRoutes,
+        ...userProfileRoutes,
         ...playgroundRoutes,
         {
           // http://localhost:3000/user_details?userid=t3cu9DxXtGyaPIWNvPOXxA

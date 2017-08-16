@@ -6,7 +6,7 @@ import {Link} from 'react-router'
 
 import {withRouter} from 'react-router'
 
-const {loadUserProfile} = require('../../../actions').default
+const {loadUserProfilePage} = require('../../../actions').default
 
 class UsersSingle extends Component {
 
@@ -34,6 +34,7 @@ class UsersSingle extends Component {
   }
 
   componentDidMount() {
+    this.props.dispatch(loadUserProfilePage(this.state.uid))
     this.props.dispatch(loadUserProfile(this.props.params.uid, this.props.params.uslug))
   }
 
