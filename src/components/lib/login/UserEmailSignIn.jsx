@@ -82,7 +82,7 @@ class UserEmailSignIn extends Component {
             <li className="fb-login">
               <button
                 onClick={(e) => {
-                  this.props.loginViaSocial()
+                  this.props.loginViaSocial(this.props.dispatch)
                 }}
                 type="submit" value="submit" className="ybtn ybtn--social ybtn--facebook ybtn-full">
                 <span>

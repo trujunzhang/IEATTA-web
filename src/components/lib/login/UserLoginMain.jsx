@@ -52,12 +52,12 @@ class UserLoginMain extends Component {
     this.setState({formType: state})
   }
 
-  async loginViaSocial() {
+  async loginViaSocial(dispatch) {
     let errorMessage = null
 
     try {
       await Promise.race([
-        this.props.dispatch(logInWithFacebook()),
+        dispatch(logInWithFacebook()),
         timeout(15000),
       ])
     } catch (e) {
@@ -69,7 +69,7 @@ class UserLoginMain extends Component {
       }
     } finally {
       if (!!errorMessage) {
-        this.props.dispatch(showAlertMessage(errorMessage))
+        dispatch(showAlertMessage(errorMessage))
       } else {
         this.props.router.push({pathname: '/'})
       }
