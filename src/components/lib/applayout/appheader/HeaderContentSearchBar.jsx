@@ -35,7 +35,7 @@ class HeaderContentSearchBar extends Component {
     const {dispatch} = this.props;
 
     // delayEvent(function () {
-      // dispatch(queryNearRestaurant({search: input}))
+    // dispatch(queryNearRestaurant({search: input}))
     // }, 700)
   }
 
@@ -47,13 +47,13 @@ class HeaderContentSearchBar extends Component {
           <label className="main-search_pseudo-input main-search_pseudo-input--find pseudo-input">
             <span className="pseudo-input_text">Find</span>
             <span className="pseudo-input_field-holder">
-                  {/*<input maxLength="64"*/}
-                         {/*id="find_desc"*/}
-                         {/*value={this.state.search}*/}
-                         {/*onChange={this.search.bind(this)}*/}
-                         {/*placeholder="pizza, pub, Mustafa"*/}
-                         {/*className="main-search_field pseudo-input_field"*/}
-                  {/*/>*/}
+                  <input maxLength="64"
+                         id="find_desc"
+                         value={this.state.search}
+                         onChange={this.search.bind(this)}
+                         placeholder="pizza, pub, Mustafa"
+                         className="main-search_field pseudo-input_field"
+                  />
             </span>
           </label>
         </div>
