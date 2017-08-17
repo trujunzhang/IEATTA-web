@@ -30,13 +30,24 @@ class EditUserForm extends Component {
       }
     }
 
+
+    let email = {
+      keyboardType: 'email-address',
+      editable: !this.props.form.isFetching,
+      hasError: this.props.form.fields.emailHasError,
+      error: I18n.t(this.props.form.fields.emailErrorMsg)
+    }
+
+
     const editUserForm = t.struct({
       username: t.String,
+      email: t.String,
     })
 
     let options = {
       fields: {
         username: username,
+        email: email,
       }
     }
 
