@@ -37,13 +37,14 @@ class UsersSingle extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    debugger
     this.setState({
       userProfile: getModelByObjectId(nextProps, this.state.uid, this.state.userProfile),
     })
   }
 
   componentDidMount() {
-    this.props.dispatch(loadUserProfilePage(this.state.uid))
+    // this.props.dispatch(loadUserProfilePage(this.state.uid))
   }
 
   render() {
