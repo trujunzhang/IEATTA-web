@@ -48,6 +48,7 @@ class UserProfileAboutLayout extends Component {
         <Telescope.components.UserProfileLeftPanel {...this.props} />
 
         {this.renderRightPanel()}
+
       </div>
 
     )
