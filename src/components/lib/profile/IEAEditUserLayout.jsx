@@ -31,7 +31,6 @@ class IEAEditUserLayout extends Component {
       pageForm: props.pageForm,
       value: {
         displayName: props.editModel.form.fields.displayName,
-        eventWhat: props.editModel.form.fields.eventWhat,
       }
     }
 
@@ -81,9 +80,9 @@ class IEAEditUserLayout extends Component {
 
 
   async onButtonPress() {
-    const {dispatch, event} = this.props;
+    const {dispatch, userProfile} = this.props;
 
-    const objectId = event.id;
+    const objectId = userProfile.id;
     const displayName = this.props.editModel.form.fields.displayName;
     const eventWhat = this.props.editModel.form.fields.eventWhat;
     const eventStart = this.props.editModel.form.fields.start;
