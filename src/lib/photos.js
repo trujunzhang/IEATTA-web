@@ -22,11 +22,11 @@ Photos.getThumbnailUrlByReviewType = function (review) {
 
   switch (reviewType) {
     case 'restaurant':
-      return Photos.getThumbnailUrl(review.restaurant);
+      return Photos.getListThumbnailUrl(review.restaurant);
     case 'event':
-      return Photos.getThumbnailUrl(review.event.restaurant);
+      return Photos.getListThumbnailUrl(review.event.restaurant);
     case 'recipe':
-      return Photos.getThumbnailUrl(review.recipe);
+      return Photos.getListThumbnailUrl(review.recipe);
   }
 
 }
@@ -35,6 +35,7 @@ Photos.getListThumbnailUrl = function (item) {
 
   if (photos.length > 0) {
     const firstPhoto = photos[0];
+    debugger
     const _thumbnail = firstPhoto.thumbnail || {};
     return _thumbnail._url || '';
   }
