@@ -33,7 +33,7 @@ class RecipesList extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      listTask: byListId(nextProps.listContainerTasks, this.state.terms,this.state.listTask)
+      listTask: byListId(nextProps.listContainerTasks, this.state.terms, this.state.listTask)
     })
   }
 
@@ -88,9 +88,9 @@ class RecipesList extends Component {
 
     if (ready && results.length === 0) {
       return (
-        <div>
-          <p>No recipes ordered</p>
-        </div>
+        <Telescope.components.F8EmptySection
+          title={''}
+          text="No recipes ordered"/>
       )
     }
     return null;

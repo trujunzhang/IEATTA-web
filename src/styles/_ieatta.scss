@@ -258,3 +258,15 @@ ul.star-selector_stars {
   margin-top: 6px;
   margin-bottom: 4px;
 }
+
+.empty-section {
+  .no-section-title {
+    margin-top: 8px;
+    margin-left: 4px;
+  }
+
+  .no-recent-activity {
+    text-align: center;
+    padding: 35px 0;
+  }
+}
