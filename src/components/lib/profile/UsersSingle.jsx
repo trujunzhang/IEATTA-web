@@ -10,8 +10,9 @@ const {loadUserProfilePage} = require('../../../actions').default
 
 const {
   getPageFormTypeForUserProfile,
-  getModelByObjectId,
 } = require('../../filter/filterRoutes')
+
+const {getModelByObjectId} = require('../../filter/filterPosts')
 
 class UsersSingle extends Component {
 
@@ -43,6 +44,7 @@ class UsersSingle extends Component {
     const {userProfile} = this.state;
 
     if (!!userProfile) {
+      debugger
       return (<Telescope.components.UserProfile{...this.state}/>)
     }
 

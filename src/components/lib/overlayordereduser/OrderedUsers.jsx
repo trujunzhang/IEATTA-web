@@ -1,7 +1,11 @@
 import Telescope from '../../lib'
 import React, {Component} from 'react'
 
-const {loadUserProfilePage, loadEventPage, loadRestaurantPage} = require('../../../actions').default
+const {
+  loadUserProfilePage,
+  loadEventPage,
+  loadRestaurantPage
+} = require('../../../actions').default
 
 const {getModelByObjectId} = require('../../filter/filterPosts')
 
