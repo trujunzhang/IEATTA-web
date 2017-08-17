@@ -43,7 +43,7 @@ class ReviewsList extends Component {
   renderRowItem(review, index) {
     const {forUserProfile} = this.props;
     if (!!forUserProfile) {
-      return (<Telescope.components.ReviewsItem key={review.id} review={review}/>)
+      return (<Telescope.components.ReviewsItemForUserProfile key={review.id} review={review}/>)
     }
     return (<Telescope.components.ReviewsItem key={review.id} review={review}/>)
   }

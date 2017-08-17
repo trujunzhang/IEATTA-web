@@ -5,49 +5,49 @@ import Reviews from '../../../../lib/reviews'
 
 class ReviewsItemForUserProfile extends Component {
 
-  renderLeft() {
+  renderTop() {
     const {review} = this.props;
     const {user} = review;
 
     return (
-      <div className="review-sidebar">
+      <div className="review-topbar">
 
-        <div className="review-sidebar-content">
+        <div className="media-block media-block--12 biz-listing-medium">
 
-          <div className="ypassport media-block">
-            <div className="media-avatar responsive-photo-box">
-              <div className="photo-box pb-60s" data-hovercard-id="YCUg5LPpRgun-AcOFMMS_w">
-                <a
-                  className="js-analytics-click"
-                  data-analytics-label="user-photo">
-                  <Telescope.components.F8PlaceHolderImage
-                    alt={user.username}
-                    className="photo-box-img"
-                    width="60"
-                    height="60"
-                    placeholderSource={"/default/user_30_square.png"}
-                    source={Photos.getListThumbnailUrl(user)}
-                  />
-                </a>
-              </div>
-
+          <div className="media-avatar">
+            <div className="photo-box pb-60s" data-hovercard-id="YCUg5LPpRgun-AcOFMMS_w">
+              <a
+                className="js-analytics-click"
+                data-analytics-label="user-photo">
+                <Telescope.components.F8PlaceHolderImage
+                  alt={user.username}
+                  className="photo-box-img"
+                  width="60"
+                  height="60"
+                  placeholderSource={"/default/user_30_square.png"}
+                  source={Photos.getListThumbnailUrl(user)}
+                />
+              </a>
             </div>
-            <div className="media-story">
-              <ul className="user-passport-info">
-                <li className="user-name">
-                  <a className="user-display-name js-analytics-click"
-                     data-hovercard-id="YCUg5LPpRgun-AcOFMMS_w"
-                     data-analytics-label="about_me" id="dropdown_user-name">
-                    {user.username}
-                  </a>
-                </li>
-                <li className="user-location responsive-hidden-small">
-                  <b>Fremont, CA</b>
-                </li>
-              </ul>
 
-            </div>
           </div>
+
+          <div className="media-story">
+            <ul className="user-passport-info">
+              <li className="user-name">
+                <a className="user-display-name js-analytics-click"
+                   data-hovercard-id="YCUg5LPpRgun-AcOFMMS_w"
+                   data-analytics-label="about_me" id="dropdown_user-name">
+                  {user.username}
+                </a>
+              </li>
+              <li className="user-location responsive-hidden-small">
+                <b>Fremont, CA</b>
+              </li>
+            </ul>
+
+          </div>
+
 
         </div>
       </div>
@@ -91,9 +91,9 @@ class ReviewsItemForUserProfile extends Component {
   render() {
     return (
       <li>
-        <div className="review review--with-sidebar">
+        <div className="review">
 
-          {this.renderLeft()}
+          {this.renderTop()}
           {this.renderStory()}
 
         </div>
