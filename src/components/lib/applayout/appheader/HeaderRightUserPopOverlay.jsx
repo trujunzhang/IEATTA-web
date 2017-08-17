@@ -19,6 +19,7 @@ class HeaderRightUserPopOverlay extends Component {
       <ul className="drop-menu-group--nav drop-menu-group">
         <li className="drop-down-menu-link">
           <Link className="js-analytics-click arrange arrange--middle arrange--6"
+                onClick={this.props.onHandleClickOutsidePress}
                 to={getLoggedUserMenuLink(currentUser, LOGGED_USER_MENU_ABOUT)}>
             <strong className="arrange_unit">
                                 <span id="icon_24X24"

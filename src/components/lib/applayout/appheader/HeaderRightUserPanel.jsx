@@ -15,10 +15,8 @@ class HeaderRightUserPanel extends Component {
     };
   }
 
-  onHandleClickOutsidePress(evt) {
-    evt.preventDefault();
+  onHandleClickOutsidePress() {
     this.setState({isOpen: false})
-    evt.stopPropagation();
   }
 
   onUserBlockPress(e) {
