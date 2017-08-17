@@ -64,8 +64,9 @@ class ReviewsList extends Component {
     } else if (!!results && results.length) {
       return (
         <ul className="ylist ylist-bordered reviews">
-          {results.map((review, index) =>
-            <Telescope.components.ReviewsItem key={review.id} review={review}/>
+          {results.map((review, index) => {
+              return this.renderRowItem(review, index)
+            }
           )}
         </ul>
       )
