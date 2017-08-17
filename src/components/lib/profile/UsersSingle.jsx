@@ -44,7 +44,9 @@ class UsersSingle extends Component {
   }
 
   componentDidMount() {
-    // this.props.dispatch(loadUserProfilePage(this.state.uid))
+    if (!!this.state.uid) {
+      this.props.dispatch(loadUserProfilePage(this.state.uid))
+    }
   }
 
   render() {

@@ -160,9 +160,7 @@ export function getPageFormTypeForUserProfile(props) {
 
 export function getUserQueryId(props) {
   const pathname = props.location.pathname;
-  debugger
   if (pathname.indexOf('profile') !== -1) {
-    debugger
     return props.currentUser.id;
   }
   return props.params.uid;
