@@ -14,7 +14,7 @@ const {
  * The states were interested in
  */
 const {
-  MENU_ITEM_ADD_OR_EDIT_RESTAURANT,
+  MENU_ITEM_ADD_OR_EDIT_USER,
 } = require('../../../lib/constants').default
 
 const {
@@ -35,9 +35,8 @@ class IEAEditUserLayout extends Component {
       }
     }
 
-    props.actions.toggleEditModelType(MENU_ITEM_ADD_OR_EDIT_RESTAURANT);
-    props.actions.onEditModelFormFieldChange('displayName', props.event.displayName || '', true)
-    props.actions.onEditModelFormFieldChange('eventWhat', props.event.want || '', true)
+    props.actions.toggleEditModelType(MENU_ITEM_ADD_OR_EDIT_USER);
+    props.actions.onEditModelFormFieldChange('displayName', props.userProfile.username || '', true)
   }
 
   /**
@@ -48,7 +47,6 @@ class IEAEditUserLayout extends Component {
     this.setState({
       value: {
         displayName: nextProps.editModel.form.fields.displayName,
-        eventWhat: nextProps.editModel.form.fields.eventWhat,
       }
     })
   }
@@ -66,9 +64,6 @@ class IEAEditUserLayout extends Component {
     if (value.displayName !== '') {
       this.props.actions.onEditModelFormFieldChange('displayName', value.displayName)
     }
-    if (value.eventWhat !== '') {
-      this.props.actions.onEditModelFormFieldChange('eventWhat', value.eventWhat)
-    }
 
     this.setState(
       {value}
@@ -77,7 +72,7 @@ class IEAEditUserLayout extends Component {
 
   renderLeft() {
     return (
-      <Telescope.components.EditEventForm
+      <Telescope.components.EditUserForm
         form={this.props.editModel.form}
         value={this.state.value}
         onChange={this.onChange.bind(this)}/>
@@ -131,7 +126,7 @@ class IEAEditUserLayout extends Component {
           type="submit"
           value="Submit Changes"
           className="ybtn ybtn--primary">
-          <span>{`${isNewModelPage(this.state.pageForm) ? 'Create' : 'Update'} Event`}</span>
+          <span>{"Save Changes"}</span>
         </button>
         <a onClick={this.props.goBack}>
           {'Cancel'}
@@ -148,18 +143,6 @@ class IEAEditUserLayout extends Component {
         name="create_event">
 
         {this.renderLeft()}
-
-        <label>When</label>
-
-        <div className="js-event-set-date event-calendar-fields">
-          <div className="js-event-start-date-container date-container">
-            <Telescope.components.F8CalenderView field="start"  {...this.props}/>
-          </div>
-          <div className="js-event-end-date-container date-container">
-            <strong className="create-event-date-middle-link">to</strong>
-            <Telescope.components.F8CalenderView field="end"  {...this.props}/>
-          </div>
-        </div>
 
         {this.renderLeftButton()}
 
@@ -184,14 +167,19 @@ class IEAEditUserLayout extends Component {
 
         <div id="super-container" className="content-container">
 
-          <div className="container create-event-page">
+          <div className="clearfix layout-block layout-n column--responsive account-settings_container">
 
-            {this.renderTitle()}
 
-            <div className="clearfix layout-block layout-a">
+            <div className="column column-beta column--responsive">
+              <div className="account-settings_content">
+                <div className="section-header clearfix">
+                  <h2>Profile</h2>
+                </div>
 
-              <div className="column column-alpha ">
-                {this.renderContent()}
+                {/*{this.renderLeft()}*/}
+
+                {this.renderLeftButton()}
+
               </div>
 
             </div>
