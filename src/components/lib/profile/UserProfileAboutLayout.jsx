@@ -20,14 +20,21 @@ class UserProfileAboutLayout extends Component {
 
 
   render() {
-    const {userProfile} = this.props;
-
     return (
-      <div className="clearfix layout-block layout-n user-details_container">
-        <Telescope.components.OrderedUsersLeftPanel {...this.props} />
 
-        {/*{this.renderRightPanel()}*/}
+      <div className="main-content-wrap main-content-wrap--full">
+
+        <div className="top-shelf top-shelf-grey">
+
+          <Telescope.components.UserProfileSingleHeader {...this.props}/>
+
+        </div>
+
+        <div id="super-container" className="content-container">
+          {/*<Telescope.components.OrderedUsersDetail {...this.props}/>*/}
+        </div>
       </div>
+
     )
   }
 

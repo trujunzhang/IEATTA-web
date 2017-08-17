@@ -25,6 +25,7 @@ class OrderedUsersLayout extends Component {
 
     )
   }
+
 }
 
 export default OrderedUsersLayout;

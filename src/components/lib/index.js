@@ -113,6 +113,10 @@ Telescope.registerComponent('EditRecipeForm',                              requi
 Telescope.registerComponent('UserProfileAboutLayout',              require('./profile/UserProfileAboutLayout.jsx').default)
 Telescope.registerComponent('UsersSingle',                         require('./profile/UsersSingle.jsx').default)
 
+// profile(page)
+Telescope.registerComponent('UserProfileSingleHeader',             require('./profile/page/UserProfileSingleHeader.jsx').default)
+Telescope.registerComponent('UserProfileLeftPanel',                require('./profile/page/UserProfileLeftPanel.jsx').default)
+
 // profile(menus)
 
 
