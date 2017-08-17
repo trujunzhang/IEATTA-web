@@ -4,6 +4,11 @@ import moment from 'moment'
 const Records = require('./records').default
 const Photos = require('./photos').default
 
+import {
+  getRestaurantLink,
+  getEventLink,
+} from './link'
+
 /**
  * The states were interested in
  */
@@ -45,11 +50,38 @@ Reviews.getReviewObjectByType = function (review) {
 
   switch (objectSchemaName) {
     case PARSE_RESTAURANTS:
-      return Photos.getListThumbnailUrl(review.restaurant);
+      return {
+        avatorUrl: Photos.getListThumbnailUrl(review.restaurant),
+        title: review.restaurant.displayName,
+        array: [
+          {
+            title: review.restaurant.displayName,
+            url: getRestaurantLink(review.restaurant)
+          }
+        ],
+        thirdRow: review.restaurant.address
+      }
     case PARSE_EVENTS:
-      return Photos.getListThumbnailUrl(review.event.restaurant);
+      return {
+        avatorUrl: Photos.getListThumbnailUrl(review.event.restaurant),
+        title: review.event.displayName,
+        array: [
+          {
+            title: review.event.restaurant.displayName,
+            url: getRestaurantLink(review.event.restaurant)
+          },
+          {
+            title: review.event.displayName,
+            url: getEventLink(review.event)
+          }
+        ],
+        thirdRow: review.restaurant.address
+      }
     case PARSE_RECIPES:
-      return Photos.getListThumbnailUrl(review.recipe);
+      return {
+        avatorUrl: Photos.getListThumbnailUrl(review.recipe),
+        title: review.recipe.displayName,
+      }
   }
 
 }
