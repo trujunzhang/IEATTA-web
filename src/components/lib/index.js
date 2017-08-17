@@ -40,6 +40,7 @@ Telescope.registerComponent('ReviewsHeaderView',                   require('./re
 Telescope.registerComponent('ReviewsHeaderSearchBar',              require('./reviews/page/ReviewsHeaderSearchBar.jsx').default)
 Telescope.registerComponent('ReviewsHeaderRightSortView',          require('./reviews/page/ReviewsHeaderRightSortView.jsx').default)
 Telescope.registerComponent('ReviewsItem',                         require('./reviews/page/ReviewsItem.jsx').default)
+Telescope.registerComponent('ReviewsItemForUserProfile',           require('./reviews/page/ReviewsItemForUserProfile.jsx').default)
 Telescope.registerComponent('ReviewsItemButtonsPanel',             require('./reviews/page/ReviewsItemButtonsPanel.jsx').default)
 Telescope.registerComponent('EditReviewForm',                      require('./reviews/page/EditReviewForm.jsx').default)
 Telescope.registerComponent('EditReviewTopRestaurant',             require('./reviews/page/EditReviewTopRestaurant.jsx').default)
