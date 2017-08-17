@@ -110,8 +110,7 @@ Telescope.registerComponent('RecipesSingleHeaderTopLeftPanel',             requi
 Telescope.registerComponent('EditRecipeForm',                              require('./overlayorderedrecipe/page/EditRecipeForm.jsx').default)
 
 // profile
-Telescope.registerComponent('UserProfileHeader',                   require('./profile/UserProfileHeader.jsx').default)
-Telescope.registerComponent('UserProfile',                         require('./profile/UserProfile.jsx').default)
+Telescope.registerComponent('UserProfileAboutLayout',              require('./profile/UserProfileAboutLayout.jsx').default)
 Telescope.registerComponent('UsersSingle',                         require('./profile/UsersSingle.jsx').default)
 
 // profile(menus)

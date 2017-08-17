@@ -66,7 +66,7 @@ export default keyMirror({
   USERPROFILE_TYPE_SUBMITTED_POSTS: null,
   USERPROFILE_TYPE_FOLDER_LIST: null,
 
-  // UserProfile Event Type
+  // UserProfileAboutLayout Event Type
   USERPROFILE_RESET: null,
   USERPROFILE_LOADED: null,
 

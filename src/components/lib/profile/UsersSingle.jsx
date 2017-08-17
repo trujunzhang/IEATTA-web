@@ -44,7 +44,7 @@ class UsersSingle extends Component {
     const {userProfile} = this.state;
 
     if (!!userProfile) {
-      return (<Telescope.components.UserProfile{...this.state} {...this.props}/>)
+      return (<Telescope.components.UserProfileAboutLayout{...this.state} {...this.props}/>)
     }
 
     return (

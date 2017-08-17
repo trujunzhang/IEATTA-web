@@ -6,7 +6,7 @@ import {Link} from 'react-router'
 
 import {withRouter} from 'react-router'
 
-class UserProfile extends Component {
+class UserProfileAboutLayout extends Component {
 
   constructor(props) {
     super(props)
@@ -33,5 +33,5 @@ class UserProfile extends Component {
 
 }
 
-export default withRouter(UserProfile)
+export default withRouter(UserProfileAboutLayout)
 
