@@ -26,7 +26,7 @@ class ReviewsItemForUserProfile extends Component {
                   width="60"
                   height="60"
                   placeholderSource={"/default/user_30_square.png"}
-                  source={Photos.getListThumbnailUrl(user)}
+                  source={Photos.getThumbnailUrlByReviewType(review)}
                 />
               </a>
             </div>
