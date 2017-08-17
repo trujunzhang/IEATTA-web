@@ -78,32 +78,8 @@ class OrderedUsersLeftPanel extends Component {
   render() {
 
     return (
-
       <div className="column column-alpha user-details_sidebar">
         {this.renderTitle()}
-
-        <div className="ysection">
-          <ul className="ylist">
-
-            <li>
-
-              <a
-                href="/flag_content?flag_id=JffflxAtMCm_GQf5OrImig&amp;flag_type=user_profile&amp;previous_url=%2Fuser_details%3Fuserid%3DJffflxAtMCm_GQf5OrImig"
-                className="report-user u-text-subtle">
-        <span
-          id="icon_24X24"
-          className="icon icon--14-flag icon--size-14 u-space-r-half">
-    <svg className="icon_svg">
-    <path
-      d="M5 7.69V1.31c2 1.076 4-1.075 6 0v6.38c-2-1.076-4 1.075-6 0zM3.5 13a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 1 0v11a.5.5 0 0 1-.5.5z"/>
-    </svg>
-</span>Report this profile
-              </a>
-
-            </li>
-
-          </ul>
-        </div>
       </div>
 
     )
