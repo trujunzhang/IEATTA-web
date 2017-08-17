@@ -8,7 +8,7 @@ class ReviewsItemForUserProfile extends Component {
   renderTop() {
     const {review} = this.props;
     const {reviewType, event, restaurant, user, recipe} = review;
-
+    const reviewObject = Reviews.getReviewObjectByType(review);
 
     return (
       <div className="review-topbar">
@@ -26,7 +26,7 @@ class ReviewsItemForUserProfile extends Component {
                   width="60"
                   height="60"
                   placeholderSource={"/default/user_30_square.png"}
-                  source={Photos.getThumbnailUrlByReviewType(review)}
+                  source={Reviews.getThumbnailUrlByReviewType(review)}
                 />
               </a>
             </div>
