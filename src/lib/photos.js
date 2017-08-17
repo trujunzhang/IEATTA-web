@@ -1,6 +1,20 @@
 import Telescope from './settings'
-import moment from 'moment'
 
+/**
+ * The states were interested in
+ */
+const {
+  PARSE_RESTAURANTS,
+  PARSE_USERS,
+  PARSE_RECORDS,
+  PARSE_EVENTS,
+  PARSE_RECIPES,
+  PARSE_PHOTOS,
+  PARSE_REVIEWS,
+  PARSE_PEOPLE_IN_EVENTS
+} = require('./constants').default
+
+const Records = require('./records').default
 const Photos = {}
 
 /**
@@ -20,22 +34,24 @@ Photos.getOriginalUrl = function (photo) {
 Photos.getThumbnailUrlByReviewType = function (review) {
   const {reviewType} = review;
 
-  switch (reviewType) {
-    case 'restaurant':
+  const {objectSchemaName} = Records.realmObjects[reviewType]
+
+  switch (objectSchemaName) {
+    case PARSE_RESTAURANTS:
       return Photos.getListThumbnailUrl(review.restaurant);
-    case 'event':
+    case PARSE_EVENTS:
       return Photos.getListThumbnailUrl(review.event.restaurant);
-    case 'recipe':
+    case PARSE_RECIPES:
       return Photos.getListThumbnailUrl(review.recipe);
   }
-
 }
+
+
 Photos.getListThumbnailUrl = function (item) {
   const photos = item.photos || [];
 
   if (photos.length > 0) {
     const firstPhoto = photos[0];
-    debugger
     const _thumbnail = firstPhoto.thumbnail || {};
     return _thumbnail._url || '';
   }

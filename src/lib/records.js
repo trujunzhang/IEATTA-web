@@ -1,3 +1,5 @@
+
+
 /**
  * The states were interested in
  */
@@ -12,7 +14,6 @@ const {
   PARSE_PEOPLE_IN_EVENTS
 } = require('./constants').default
 
-const moment = require('moment')
 
 const Records = {}
 
