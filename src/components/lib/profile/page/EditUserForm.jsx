@@ -20,23 +20,23 @@ class EditUserForm extends Component {
    */
   render() {
 
-    let displayName = {
+    let username = {
       label: I18n.t('editUser.displayName'),
       editable: !this.props.form.isFetching,
-      hasError: this.props.form.fields.displayNameHasError,
-      error: I18n.t(this.props.form.fields.displayNameErrorMsg),
+      hasError: this.props.form.fields.usernameHasError,
+      error: I18n.t(this.props.form.fields.usernameErrorMsg),
       attrs: {
         placeholder: I18n.t('editUser.displayNamePlaceHolder')
       }
     }
 
-    const editEventForm = t.struct({
-      displayName: t.String,
+    const editUserForm = t.struct({
+      username: t.String,
     })
 
     let options = {
       fields: {
-        displayName: displayName,
+        username: username,
       }
     }
 
@@ -46,7 +46,7 @@ class EditUserForm extends Component {
      */
     return (
       <Form ref='form'
-            type={editEventForm}
+            type={editUserForm}
             options={options}
             value={this.props.value}
             onChange={this.props.onChange}

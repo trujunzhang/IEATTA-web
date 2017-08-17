@@ -30,12 +30,12 @@ class IEAEditUserLayout extends Component {
     this.state = {
       pageForm: props.pageForm,
       value: {
-        displayName: props.editModel.form.fields.displayName,
+        username: props.auth.form.fields.username,
       }
     }
 
-    props.actions.toggleEditModelType(MENU_ITEM_ADD_OR_EDIT_USER);
-    props.actions.onEditModelFormFieldChange('displayName', props.userProfile.username || '', true)
+    props.actions.editUserState();
+    props.actions.onAuthFormFieldChange('username', props.userProfile.username || '', true)
   }
 
   /**
@@ -45,7 +45,7 @@ class IEAEditUserLayout extends Component {
   componentWillReceiveProps(nextProps) {
     this.setState({
       value: {
-        displayName: nextProps.editModel.form.fields.displayName,
+        username: nextProps.auth.form.fields.username,
       }
     })
   }
@@ -60,8 +60,8 @@ class IEAEditUserLayout extends Component {
    * *Note* that the fields are validated by the authReducer
    */
   onChange(value) {
-    if (value.displayName !== '') {
-      this.props.actions.onEditModelFormFieldChange('displayName', value.displayName)
+    if (value.username !== '') {
+      this.props.actions.onAuthFormFieldChange('username', value.username)
     }
 
     this.setState(
@@ -72,7 +72,7 @@ class IEAEditUserLayout extends Component {
   renderLeft() {
     return (
       <Telescope.components.EditUserForm
-        form={this.props.editModel.form}
+        form={this.props.auth.form}
         value={this.state.value}
         onChange={this.onChange.bind(this)}/>
     )
@@ -83,16 +83,16 @@ class IEAEditUserLayout extends Component {
     const {dispatch, userProfile} = this.props;
 
     const objectId = userProfile.id;
-    const displayName = this.props.editModel.form.fields.displayName;
-    const eventWhat = this.props.editModel.form.fields.eventWhat;
-    const eventStart = this.props.editModel.form.fields.start;
-    const eventEnd = this.props.editModel.form.fields.end;
+    const username = this.props.auth.form.fields.username;
+    const eventWhat = this.props.auth.form.fields.eventWhat;
+    const eventStart = this.props.auth.form.fields.start;
+    const eventEnd = this.props.auth.form.fields.end;
 
     this.props.actions.updateModelRequest();
 
     try {
       await Promise.race([
-        dispatch(updateEvent({objectId, displayName, eventWhat, eventStart, eventEnd})),
+        dispatch(updateEvent({objectId, username, eventWhat, eventStart, eventEnd})),
         timeout(15000),
       ]);
     } catch (e) {
@@ -112,8 +112,8 @@ class IEAEditUserLayout extends Component {
 
 
   renderLeftButton() {
-    const {editModel} = this.props;
-    const isDisabled = (!editModel.form.isValid || editModel.form.isFetching);
+    const {auth} = this.props;
+    const isDisabled = (!auth.form.isValid || auth.form.isFetching);
 
     return (
       <div className="form-footer">
@@ -181,17 +181,17 @@ class IEAEditUserLayout extends Component {
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 
-import * as editModelActions from '../../../reducers/editModel/editModelActions'
+import * as authActions from '../../../reducers/auth/authActions'
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(editModelActions, dispatch)
+    actions: bindActionCreators(authActions, dispatch),
   }
 }
 
 function select(store, ownProps) {
   return {
-    editModel: store.editModel,
+    auth: store.auth,
     goBack: ownProps.router.goBack
   };
 }

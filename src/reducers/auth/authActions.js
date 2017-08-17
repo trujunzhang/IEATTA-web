@@ -18,6 +18,7 @@ const {
   REGISTER,
   LOGIN,
   FORGOT_PASSWORD,
+  MENU_ITEM_ADD_OR_EDIT_USER,
 
   LOGOUT_REQUEST,
   LOGOUT_SUCCESS,
@@ -63,6 +64,12 @@ export function registerState() {
 export function loginState() {
   return {
     type: LOGIN
+  }
+}
+
+export function editUserState() {
+  return {
+    type: MENU_ITEM_ADD_OR_EDIT_USER
   }
 }
 
