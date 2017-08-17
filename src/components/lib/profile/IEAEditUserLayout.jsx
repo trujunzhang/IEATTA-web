@@ -160,6 +160,9 @@ class IEAEditUserLayout extends Component {
                 <div className="profile-bio yform yform-vertical-spacing" name="profile_bio">
 
                   <div className="profile-bio">
+
+                    <Telescope.components.EditUserProfilePhoto  {...this.props}/>
+
                     {this.renderLeft()}
 
                     {this.renderLeftButton()}
