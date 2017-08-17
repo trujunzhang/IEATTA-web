@@ -67,6 +67,9 @@ class IEAEditUserLayout extends Component {
       this.props.actions.onAuthFormFieldChange('username', value.username)
     }
 
+    if (value.email !== '') {
+      this.props.actions.onAuthFormFieldChange('email', value.email)
+    }
     this.setState(
       {value}
     )
