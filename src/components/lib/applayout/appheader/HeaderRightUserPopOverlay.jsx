@@ -2,17 +2,24 @@ import Telescope from '../../index'
 import React, {Component} from 'react'
 import {Link} from 'react-router'
 
+import {getLoggedUserMenuLink} from '../../../../lib/link'
 import Photos from '../../../../lib/photos'
 import onClickOutside from 'react-onclickoutside'
+
+const {
+  LOGGED_USER_MENU_ABOUT,
+} = require('../../../../lib/constants').default
+
 
 class HeaderRightUserPopOverlay extends Component {
 
   renderMenus() {
+    const {currentUser} = this.props;
     return (
       <ul className="drop-menu-group--nav drop-menu-group">
         <li className="drop-down-menu-link">
-          <a className="js-analytics-click arrange arrange--middle arrange--6"
-             href="/user_details?userid=kIEHaO2vd6Lic4rwkMgH6Q">
+          <Link className="js-analytics-click arrange arrange--middle arrange--6"
+                to={getLoggedUserMenuLink(currentUser, LOGGED_USER_MENU_ABOUT)}>
             <strong className="arrange_unit">
                                 <span id="icon_24X24"
                                       className="icon icon--24-profile icon--size-24 u-space-r1">
@@ -32,7 +39,7 @@ class HeaderRightUserPopOverlay extends Component {
                                     </svg>
                                 </span>
                             </span>
-          </a>
+          </Link>
         </li>
 
         <li className="drop-down-menu-link">

@@ -1,6 +1,8 @@
 import keyMirror from 'key-mirror'
 
 export default keyMirror({
+  // LOGGED user menus
+  LOGGED_USER_MENU_ABOUT: null,
 
   // App alert
   SHOW_ALERT_MESSAGE: null,
