@@ -65,7 +65,6 @@ class OrderedUsersSingleHeader extends Component {
         <h3 className="user-location alternate">{orderedUser.username}</h3>
         {this.renderColumnOneBottom()}
       </div>
-
     )
   }
 
@@ -96,7 +95,7 @@ class OrderedUsersSingleHeader extends Component {
 </span>
               </div>
               <div className="action-link_label arrange_unit arrange_unit--fill">
-                Add friend
+                Add new recipe
               </div>
             </a>
 
