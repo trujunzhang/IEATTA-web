@@ -3,6 +3,7 @@ import keyMirror from 'key-mirror'
 export default keyMirror({
   // LOGGED user menus
   LOGGED_USER_MENU_ABOUT: null,
+  LOGGED_USER_EDIT_FORM: null,
 
   // App alert
   SHOW_ALERT_MESSAGE: null,
@@ -66,7 +67,7 @@ export default keyMirror({
   USERPROFILE_TYPE_SUBMITTED_POSTS: null,
   USERPROFILE_TYPE_FOLDER_LIST: null,
 
-  // UserProfileAboutLayout Event Type
+  // IEAUserProfileAboutLayout Event Type
   USERPROFILE_RESET: null,
   USERPROFILE_LOADED: null,
 

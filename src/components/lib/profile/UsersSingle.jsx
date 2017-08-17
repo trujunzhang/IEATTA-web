@@ -12,6 +12,13 @@ const {
   getPageFormTypeForUserProfile,
 } = require('../../filter/filterRoutes')
 
+
+const {
+  LOGGED_USER_MENU_ABOUT,
+  LOGGED_USER_EDIT_FORM,
+} = require('../../../lib/constants').default
+
+
 const {getModelByObjectId} = require('../../filter/filterPosts')
 
 class UsersSingle extends Component {
@@ -41,10 +48,15 @@ class UsersSingle extends Component {
   }
 
   render() {
-    const {userProfile} = this.state;
+    const {userProfile, pageForm} = this.state;
 
     if (!!userProfile) {
-      return (<Telescope.components.UserProfileAboutLayout{...this.state} {...this.props}/>)
+      switch (pageForm) {
+        case LOGGED_USER_MENU_ABOUT:
+          return (<Telescope.components.UserProfileAboutLayout{...this.state} {...this.props}/>)
+        case LOGGED_USER_EDIT_FORM:
+          return (<Telescope.components.IEAEditUserLayout {...this.state} {...this.props}/>)
+      }
     }
 
     return (

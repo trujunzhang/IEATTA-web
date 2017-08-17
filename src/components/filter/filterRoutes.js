@@ -43,7 +43,8 @@ const {
   LOGIN_FORM_TYPE_FORGOTPASSWORD,
   LOGIN_FORM_TYPE_RESET_PASSWD,
   // User Profile
-  LOGGED_USER_MENU_ABOUT
+  LOGGED_USER_MENU_ABOUT,
+  LOGGED_USER_EDIT_FORM
 } = require('../../lib/constants').default
 
 export function checkEditModel(props: Object) {
@@ -147,7 +148,12 @@ export function checkLoginFormPage(props) {
 }
 
 export function getPageFormTypeForUserProfile(props) {
+  const pathname = props.location.pathname;
   const query = props.location.query;
+
+  if (pathname.indexOf('profile') !== -1) {
+    return LOGGED_USER_EDIT_FORM;
+  }
 
   return LOGGED_USER_MENU_ABOUT;
 }
