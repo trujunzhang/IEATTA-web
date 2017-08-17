@@ -8,6 +8,7 @@ import onClickOutside from 'react-onclickoutside'
 
 const {
   LOGGED_USER_MENU_ABOUT,
+  LOGGED_USER_EDIT_FORM
 } = require('../../../../lib/constants').default
 
 
@@ -73,8 +74,9 @@ class HeaderRightUserPopOverlay extends Component {
         </li>
 
         <li className="drop-down-menu-link">
-          <a className="js-analytics-click arrange arrange--middle arrange--6" href="/profile"
-             data-analytics-label="Zprofile">
+          <Link className="js-analytics-click arrange arrange--middle arrange--6"
+                onClick={this.props.onHandleClickOutsidePress}
+                to={getLoggedUserMenuLink(currentUser, LOGGED_USER_EDIT_FORM)}>
             <strong className="arrange_unit">
                                 <span id="icon_24X24"
                                       className="icon icon--24-settings icon--size-24 u-space-r1">
@@ -93,7 +95,7 @@ class HeaderRightUserPopOverlay extends Component {
                                     </svg>
                                 </span>
                             </span>
-          </a>
+          </Link>
         </li>
 
       </ul>

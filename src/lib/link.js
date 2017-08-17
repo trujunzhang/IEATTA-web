@@ -11,6 +11,7 @@ const {
   PAGE_PHOTOS_BROWSER_FORM,
   PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY,
   LOGGED_USER_MENU_ABOUT,
+  LOGGED_USER_EDIT_FORM,
 } = require('../lib/constants').default
 
 
@@ -109,6 +110,8 @@ export function getLoggedUserMenuLink(currentUser, menuType) {
   switch (menuType) {
     case  LOGGED_USER_MENU_ABOUT:
       return `/user_details/${currentUser.id}/${slugify(currentUser.username)}`
+    case LOGGED_USER_EDIT_FORM:
+      return '/profile'
   }
 }
 

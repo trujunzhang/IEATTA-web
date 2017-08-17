@@ -38,6 +38,7 @@ class UsersSingle extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({
+      pageForm: getPageFormTypeForUserProfile(nextProps),
       userProfile: getModelByObjectId(nextProps, this.state.uid, this.state.userProfile),
     })
 
