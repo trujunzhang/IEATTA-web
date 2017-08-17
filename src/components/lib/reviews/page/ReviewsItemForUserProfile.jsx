@@ -21,12 +21,12 @@ class ReviewsItemForUserProfile extends Component {
                 className="js-analytics-click"
                 data-analytics-label="user-photo">
                 <Telescope.components.F8PlaceHolderImage
-                  alt={user.username}
+                  alt={reviewObject.title}
                   className="photo-box-img"
                   width="60"
                   height="60"
                   placeholderSource={"/default/user_30_square.png"}
-                  source={Reviews.getThumbnailUrlByReviewType(review)}
+                  source={reviewObject.avatorUrl}
                 />
               </a>
             </div>
@@ -39,7 +39,7 @@ class ReviewsItemForUserProfile extends Component {
                 <a className="user-display-name js-analytics-click"
                    data-hovercard-id="YCUg5LPpRgun-AcOFMMS_w"
                    data-analytics-label="about_me" id="dropdown_user-name">
-                  {user.username}
+                  {reviewObject.title}
                 </a>
               </li>
               <li className="user-location responsive-hidden-small">

@@ -75,7 +75,7 @@ Reviews.getReviewObjectByType = function (review) {
             url: getEventLink(review.event)
           }
         ],
-        thirdRow: review.restaurant.address
+        thirdRow: review.event.restaurant.address
       }
     case PARSE_RECIPES:
       return {
