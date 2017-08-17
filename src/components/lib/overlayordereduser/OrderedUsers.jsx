@@ -2,6 +2,7 @@ import Telescope from '../../lib'
 import React, {Component} from 'react'
 
 const {
+  loadPeopleInEventPage,
   loadUserProfilePage,
   loadEventPage,
   loadRestaurantPage
@@ -13,33 +14,29 @@ class OrderedUsers extends Component {
   constructor(props, context) {
     super(props)
 
-    // path: 'ordereduser/(:uid)/(:uslug)/(:eid)/(:rid)',
-
     this.state = this.initialState = {
-      uid: props.params.uid,
-      uslug: props.params.uslug,
-      eid: props.params.eid,
-      rid: props.params.rid,
+      pid: props.params.pid,
       // Detailed object
+      peopleInEvent: null,
       orderedUser: null,
       forEvent: null,
       forRestaurant: null,
     }
-
   }
 
   componentWillReceiveProps(nextProps) {
+    const peopleInEvent = getModelByObjectId(nextProps, this.state.pid, this.state.peopleInEvent)
+
     this.setState({
-      orderedUser: getModelByObjectId(nextProps, this.state.uid, this.state.orderedUser),
-      forEvent: getModelByObjectId(nextProps, this.state.eid, this.state.forEvent),
-      forRestaurant: getModelByObjectId(nextProps, this.state.rid, this.state.forRestaurant),
+      peopleInEvent: peopleInEvent,
+      orderedUser: peopleInEvent.user,
+      forEvent: peopleInEvent.event,
+      forRestaurant: peopleInEvent.restaurant,
     })
   }
 
   componentDidMount() {
-    this.props.dispatch(loadUserProfilePage(this.state.uid))
-    this.props.dispatch(loadRestaurantPage(this.state.rid))
-    this.props.dispatch(loadEventPage(this.state.eid))
+    this.props.dispatch(loadPeopleInEventPage(this.state.pid))
   }
 
   render() {

@@ -112,8 +112,8 @@ export type PeopleInEvent = {
   // Attributes
   //...
   // Pointer
-  restaurantId: string,
-  eventId: string,
+  restaurant: Restaurant,
+  event: Event,
   user: User
 }
 
@@ -224,8 +224,8 @@ export function fromParsePeopleInEvent(map: Object): PeopleInEvent {
     // Attributes
     // ...
     // Pointer
-    restaurantId: map.get('restaurant') && map.get('restaurant').id,
-    eventId: map.get('event') && map.get('event').id,
+    restaurant: map.get('restaurant') && fromParseRestaurant(map.get('restaurant')),
+    event: map.get('event') && fromParseEvent(map.get('event')),
     user: map.get('user') && fromParseUser(map.get('user'))
   }
 }

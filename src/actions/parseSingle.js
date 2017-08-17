@@ -31,7 +31,12 @@ import type {ThunkAction} from './types'
 const {ParseUser} = require('../parse/objects').default
 const {getUsersParameters, getQueryByType} = require('../parse/parseUtiles').default
 
-const {fromParseUser, fromParseRestaurant, fromParseEvent} = require('../parse/parseModels')
+const {
+  fromParseUser,
+  fromParseRestaurant,
+  fromParseEvent,
+  fromParsePeopleInEvent
+} = require('../parse/parseModels')
 
 /**
  * The states were interested in
@@ -45,6 +50,7 @@ const {
   PARSE_USERS,
   PARSE_TOPICS,
   PARSE_RESTAURANTS,
+  PARSE_PEOPLE_IN_EVENTS,
   PARSE_EVENTS,
   PARSE_RECIPES,
   PARSE_COMMENTS,
@@ -52,6 +58,9 @@ const {
 
 
 function loadParseObject(type: string, query: Parse.Query, objectId: string, parseFun: Any): ThunkAction {
+
+  debugger
+
   return (dispatch) => {
     return query.get(objectId, {
       success: (object) => {
@@ -79,6 +88,13 @@ export default {
 
   loadEventPage: (objectId: string): ThunkAction => {
     return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_EVENTS, ['restaurant', 'restaurant.photos']), objectId, fromParseEvent)
+  },
+
+  loadPeopleInEventPage: (objectId: string): ThunkAction => {
+    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_PEOPLE_IN_EVENTS,
+      ['user', 'user.photos', 'event', 'restaurant']),
+      objectId,
+      fromParsePeopleInEvent)
   },
 
   loadOrderedRecipePage: (objectId: string): ThunkAction => {

@@ -123,7 +123,7 @@ const createRoutes = (store) => {
 
   const orderedUserRoutes = [
     {
-      path: 'ordereduser/(:uid)/(:uslug)/(:eid)/(:rid)',
+      path: 'ordereduser/(:pid)',
       component: Telescope.components.OrderedUsers
     },
   ];

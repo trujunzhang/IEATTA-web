@@ -36,7 +36,7 @@ export function getEventLink(event) {
  * @returns {string}
  */
 export function getOrderedUserLink(user, peopleInEvent) {
-  return `/ordereduser/${user.id}/${slugify(user.username)}/${peopleInEvent.eventId}/${peopleInEvent.restaurantId}`
+  return `/ordereduser/${peopleInEvent.id}`
 }
 
 /**
