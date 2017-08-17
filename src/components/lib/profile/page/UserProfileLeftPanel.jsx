@@ -73,6 +73,7 @@ class UserProfileLeftPanel extends Component {
                 <ul className="titled-nav_items">
                   {this.renderProfileView()}
                   {this.renderReviews()}
+                  {this.renderTakenPhotos()}
                 </ul>
               </div>
 
@@ -139,6 +140,36 @@ class UserProfileLeftPanel extends Component {
               <span className="titled-nav_link-label">Reviews</span>
             </div>
 
+
+          </div>
+
+        </a>
+
+      </li>
+    )
+  }
+
+
+  renderTakenPhotos() {
+    return (
+      <li className="titled-nav_item">
+        <a className="titled-nav_link">
+          <div className="titled-nav_link-content arrange arrange--middle arrange--6">
+
+            <div className="arrange_unit">
+                <span
+                  id="icon_24X24"
+                  className="icon icon--24-camera icon--size-24 titled-nav_icon">
+    <svg className="icon_svg">
+       <path
+         d="M19 20H5a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3h2.184A2.99 2.99 0 0 1 10 4h4a2.99 2.99 0 0 1 2.816 2H19a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3zM12.005 8.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9zm0 7a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/>
+        </svg>
+   </span>
+            </div>
+
+            <div className="arrange_unit arrange_unit--fill">
+              <span className="titled-nav_link-label">Taken Photos</span>
+            </div>
 
           </div>
 
