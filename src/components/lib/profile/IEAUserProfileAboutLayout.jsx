@@ -26,15 +26,17 @@ class IEAUserProfileAboutLayout extends Component {
     return (
       <div className="column column-beta ">
 
-        {this.renderTitle()}
 
         <div className="user-details_bookmarks js-user-details_bookmarks">
 
           <div className="user-details-bookmarks_content js-user-details-bookmarks_content">
+
+            {this.renderTitle()}
+
             {/*<Telescope.components.RecipesList {...this.props} showRightTime={true}/>*/}
           </div>
 
-          {/*{this.renderRightSidebar()}*/}
+          <Telescope.components.UserProfileAboutRightPanel {...this.props} />
         </div>
       </div>
 

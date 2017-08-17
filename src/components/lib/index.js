@@ -116,6 +116,7 @@ Telescope.registerComponent('UsersSingle',                         require('./pr
 // profile(page)
 Telescope.registerComponent('UserProfileSingleHeader',             require('./profile/page/UserProfileSingleHeader.jsx').default)
 Telescope.registerComponent('UserProfileLeftPanel',                require('./profile/page/UserProfileLeftPanel.jsx').default)
+Telescope.registerComponent('UserProfileAboutRightPanel',          require('./profile/page/UserProfileAboutRightPanel.jsx').default)
 Telescope.registerComponent('EditUserForm',                        require('./profile/edit/EditUserForm.jsx').default)
 Telescope.registerComponent('EditUserProfilePhoto',                require('./profile/edit/EditUserProfilePhoto.jsx').default)
 
