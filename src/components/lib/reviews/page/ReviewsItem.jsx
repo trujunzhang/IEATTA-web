@@ -3,8 +3,6 @@ import React, {Component} from 'react'
 import Photos from '../../../../lib/photos'
 import Reviews from '../../../../lib/reviews'
 
-import {withRouter} from 'react-router'
-
 class ReviewsItem extends Component {
 
   renderLeft() {
