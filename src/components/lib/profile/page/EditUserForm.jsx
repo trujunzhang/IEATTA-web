@@ -30,23 +30,13 @@ class EditUserForm extends Component {
       }
     }
 
-    let eventWhat = {
-      label: I18n.t('editEvent.eventWhat'),
-      editable: !this.props.form.isFetching,
-      hasError: this.props.form.fields.eventWhatHasError,
-      error: I18n.t(this.props.form.fields.eventWhatErrorMsg),
-      template: myDescriptionTemplate
-    }
-
     const editEventForm = t.struct({
       displayName: t.String,
-      eventWhat: t.String,
     })
 
     let options = {
       fields: {
         displayName: displayName,
-        eventWhat: eventWhat
       }
     }
 

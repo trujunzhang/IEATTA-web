@@ -135,30 +135,6 @@ class IEAEditUserLayout extends Component {
     )
   }
 
-  renderContent() {
-    return (
-      <div
-        className="yform create-event-container js-event-create-form"
-        id="create_event"
-        name="create_event">
-
-        {this.renderLeft()}
-
-        {this.renderLeftButton()}
-
-      </div>
-
-    )
-  }
-
-
-  renderTitle() {
-    return (
-      <div className="section-header">
-        <h2>{`${isNewModelPage(this.state.pageForm) ? 'Submit' : 'Update'} an Event`}</h2>
-      </div>
-    )
-  }
 
   render() {
 
@@ -176,10 +152,16 @@ class IEAEditUserLayout extends Component {
                   <h2>Profile</h2>
                 </div>
 
-                {/*{this.renderLeft()}*/}
+                <div className="profile-bio yform yform-vertical-spacing" name="profile_bio">
 
-                {this.renderLeftButton()}
+                  <div className="profile-bio">
+                    {this.renderLeft()}
 
+                    {this.renderLeftButton()}
+
+                  </div>
+
+                </div>
               </div>
 
             </div>
