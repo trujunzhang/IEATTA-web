@@ -136,6 +136,14 @@ const createRoutes = (store) => {
     },
   ];
 
+  const userEditRoutes = [
+    {
+      path: 'profile/(:uid)/(:uslug)',
+      component: Telescope.components.UsersSingle
+    },
+  ];
+
+
   const playgroundRoutes = [
     {
       // http://localhost:3000/playground
