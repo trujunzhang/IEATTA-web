@@ -10,6 +10,7 @@ class AppFooter extends Component {
         <div className="content-container">
           <div className="main-footer webview-hidden">
 
+            <div className="main-footer_city-landscape-img" role="presentation"/>
 
             <div className="main-footer_copyright">
               Copyright © 2004–2017 Yelp Inc. Yelp,
