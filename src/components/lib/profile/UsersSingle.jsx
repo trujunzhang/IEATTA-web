@@ -44,8 +44,7 @@ class UsersSingle extends Component {
     const {userProfile} = this.state;
 
     if (!!userProfile) {
-      debugger
-      return (<Telescope.components.UserProfile{...this.state}/>)
+      return (<Telescope.components.UserProfile{...this.state} {...this.props}/>)
     }
 
     return (
@@ -66,9 +65,9 @@ const {connect} = require('react-redux')
 
 function select(store) {
   return {
+    detailedModelsOverlay: store.detailedModelsOverlay,
     isLoggedIn: store.user.isLoggedIn || store.user.hasSkippedLogin,
     currentUser: store.user,
-    userProfileTask: store.userProfileTask
   }
 }
 
