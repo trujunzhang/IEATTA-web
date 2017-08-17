@@ -8,6 +8,16 @@ import {withRouter} from 'react-router'
 
 class UserProfileAboutLayout extends Component {
 
+  renderContent() {
+    return (
+      <div className="clearfix layout-block layout-n user-details_container">
+        <Telescope.components.UserProfileLeftPanel {...this.props} />
+
+        {/*{this.renderRightPanel()}*/}
+      </div>
+
+    )
+  }
 
   render() {
 
@@ -22,7 +32,9 @@ class UserProfileAboutLayout extends Component {
         </div>
 
         <div id="super-container" className="content-container">
-          {/*<Telescope.components.OrderedUsersDetail {...this.props}/>*/}
+
+          {this.renderContent()}
+
         </div>
       </div>
 

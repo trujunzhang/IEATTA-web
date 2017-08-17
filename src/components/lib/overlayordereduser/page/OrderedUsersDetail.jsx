@@ -57,11 +57,13 @@ class OrderedUsersDetail extends Component {
 
   render() {
     return (
+
       <div className="clearfix layout-block layout-n user-details_container">
         <Telescope.components.OrderedUsersLeftPanel {...this.props} />
 
         {this.renderRightPanel()}
       </div>
+
     )
   }
 
