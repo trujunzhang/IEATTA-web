@@ -72,7 +72,6 @@ class UserProfileLeftPanel extends Component {
 
                 <ul className="titled-nav_items">
 
-
                   <li className="titled-nav_item">
                     <a className="titled-nav_link is-active"
                        href="/user_details?userid=JffflxAtMCm_GQf5OrImig"
