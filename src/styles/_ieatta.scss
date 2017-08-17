@@ -229,8 +229,12 @@ ul.star-selector_stars {
   }
 }
 
-.form-group {
-  min-height: 84px;
+.profile-bio {
+  .fieldset {
+    div.has-error {
+      min-height: 84px;
+    }
+  }
 }
 
 .yform .help-block, .yform .help-inline {
