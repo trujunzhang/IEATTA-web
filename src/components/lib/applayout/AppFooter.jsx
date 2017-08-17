@@ -15,19 +15,8 @@ class AppFooter extends Component {
 
             <div className="main-footer_copyright">
 
-              {`Copyright © ${moment(new Date()).format("YYYY")} Yelp Inc. Yelp,`}
-
-              <img
-                src="https://s3-media2.fl.yelpcdn.com/assets/srv0/yelp_styleguide/17089be275f0/assets/img/logos/logo_desktop_xsmall_outline.png"
-                alt="Yelp logo"
-                className="main-footer_logo-copyright"
-              />{','}
-              <img
-                src="https://s3-media2.fl.yelpcdn.com/assets/srv0/yelp_styleguide/58cfc999e1f5/assets/img/logos/burst_desktop_xsmall_outline.png"
-                alt="Yelp burst"
-                className="main-footer_logo-burst"
-              />
-              {"and related marks are registered trademarks of Yelp."}
+              {`Copyright © ${moment(new Date()).format("YYYY")} VirtualBreak, LLC. IEATTA,`}
+              {" and related marks are registered trademarks of VirtualBreak, LLC."}
             </div>
 
 
