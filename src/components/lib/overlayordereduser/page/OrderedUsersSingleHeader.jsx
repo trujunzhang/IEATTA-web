@@ -6,17 +6,12 @@ import Users from '../../../../lib/users'
 
 class OrderedUsersSingleHeader extends Component {
 
-  renderColumnOne() {
-    const orderedUser = this.props.orderedUser || {};
-
+  renderColumnOneBottom() {
     return (
-      <div className="user-profile_info arrange_unit">
-        <h1>{orderedUser.username || ''}</h1>
-        <h3 className="user-location alternate">{orderedUser.username || ''}</h3>
-        <div className="clearfix">
+      <div className="clearfix">
 
-          <ul className="user-passport-stats">
-            <li className="friend-count">
+        <ul className="user-passport-stats">
+          <li className="friend-count">
             <span
               id="icon_fill_24X24"
               className="icon icon--24-friends icon--size-24">
@@ -30,10 +25,10 @@ class OrderedUsersSingleHeader extends Component {
     </g>
     </svg>
 </span>
-              <strong>13</strong>
-              Friends
-            </li>
-            <li className="review-count">
+            <strong>13</strong>
+            Friends
+          </li>
+          <li className="review-count">
             <span
               id="icon_fill_24X24"
               className="icon icon--24-review icon--size-24">
@@ -42,9 +37,9 @@ class OrderedUsersSingleHeader extends Component {
       d="M21 6a3 3 0 0 0-3-3H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V6zm-5.88 10.428l-3.16-1.938-3.05 2.01.59-3.457L7 10.596l3.457-.505L11.96 6.5l1.582 3.59 3.458.506-2.5 2.447.62 3.385z"/>
     </svg>
 </span>
-              <strong>8</strong> Reviews
-            </li>
-            <li className="photo-count">
+            <strong>8</strong> Reviews
+          </li>
+          <li className="photo-count">
             <span
               id="icon_fill_24X24"
               className="icon icon--24-camera icon--size-24">
@@ -53,12 +48,22 @@ class OrderedUsersSingleHeader extends Component {
       d="M19 20H5a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3h2.184A2.99 2.99 0 0 1 10 4h4a2.99 2.99 0 0 1 2.816 2H19a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3zM12.005 8.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9zm0 7a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/>
     </svg>
 </span>
-              <strong>6</strong> Photos
-            </li>
-          </ul>
+            <strong>6</strong> Photos
+          </li>
+        </ul>
 
-        </div>
+      </div>
+    )
+  }
 
+  renderColumnOne() {
+    const {orderedUser} = this.props;
+
+    return (
+      <div className="user-profile_info arrange_unit">
+        <h1>{orderedUser.username}</h1>
+        <h3 className="user-location alternate">{orderedUser.username}</h3>
+        {this.renderColumnOneBottom()}
       </div>
 
     )
@@ -72,7 +77,7 @@ class OrderedUsersSingleHeader extends Component {
           <li>
 
             <a className="arrange arrange--middle add-friend"
-               href="/user_add_friend?return_url=/user_details?userid=JffflxAtMCm_GQf5OrImig&amp;userid=JffflxAtMCm_GQf5OrImig"
+
                rel="">
               <div className="action-link_icon arrange_unit">
             <span
