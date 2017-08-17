@@ -19,7 +19,7 @@ class UserProfileLeftPanel extends Component {
                    type="checkbox" role="presentation"/>
 
             <div className="titled-nav-dropdown hidden-non-responsive-block responsive-hidden-large">
-              <label for="titled-nav-909e7717-8ad1-4e9c-ac9c-011d99aeb9f2" className="titled-nav-dropdown_trigger">
+              <label className="titled-nav-dropdown_trigger">
             <span className="arrange arrange--middle titled-nav-dropdown_content">
                 <span className="arrange_unit arrange_unit--fill titled-nav-dropdown_shadow">
                     <span className="titled-nav-dropdown_faded-title">
@@ -74,7 +74,8 @@ class UserProfileLeftPanel extends Component {
 
 
                   <li className="titled-nav_item">
-                    <a className="titled-nav_link is-active" href="/user_details?userid=JffflxAtMCm_GQf5OrImig">
+                    <a className="titled-nav_link is-active"
+                       href="/user_details?userid=JffflxAtMCm_GQf5OrImig">
                       <div className="titled-nav_link-content arrange arrange--middle arrange--6">
 
                         <div className="arrange_unit">

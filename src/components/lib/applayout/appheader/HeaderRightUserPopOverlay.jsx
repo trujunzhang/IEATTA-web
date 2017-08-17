@@ -45,7 +45,7 @@ class HeaderRightUserPopOverlay extends Component {
 
         <li className="drop-down-menu-link">
           <a className="js-analytics-click arrange arrange--middle arrange--6"
-             href="/find_friends">
+             href="/invite_friends">
             <strong className="arrange_unit">
                                 <span id="icon_24X24"
                                       className="icon icon--24-friends icon--size-24 u-space-r1">
@@ -58,62 +58,8 @@ class HeaderRightUserPopOverlay extends Component {
                                               opacity=".502"/>
                                         </g>
                                     </svg>
-                                </span>Find Friends
+                                </span>Invite Friends
             </strong>
-            <span className="arrange_unit arrange_unit--fill u-text-right">
-                                <span id="icon_24X24"
-                                      className="icon icon--24-chevron-right icon--size-24 hidden-non-responsive-inline-block responsive-visible-medium-inline-block">
-                                    <svg className="icon_svg">
-                                        <path
-                                          d="M9.525 5.636L8.11 7.05 13.06 12l-4.95 4.95 1.415 1.414L15.89 12 9.524 5.636z"/>
-                                    </svg>
-                                </span>
-                            </span>
-          </a>
-        </li>
-
-
-        <li className="drop-down-menu-link hidden-non-responsive-block responsive-visible-medium-block">
-          <a className="js-analytics-click arrange arrange--middle arrange--6"
-             href="/talk"
-             data-analytics-label="">
-            <strong className="arrange_unit">
-                                <span id="icon_24X24"
-                                      className="icon icon--24-talk icon--size-24 u-space-r1">
-                                    <svg className="icon_svg">
-                                        <path
-                                          d="M20 17.326V21l-3-3c-2.715 0-5.006-1.504-5.746-3.566C14.047 13.42 16 11.144 16 8.5c0-.142-.015-.282-.026-.422A7.19 7.19 0 0 1 17 8c3.314 0 6 2.24 6 5 0 1.85-1.208 3.46-3 4.326zM8 14c-.08 0-.158-.007-.238-.01L4 17v-3.99c-1.812-.994-3-2.642-3-4.51C1 5.462 4.134 3 8 3s7 2.462 7 5.5S11.866 14 8 14z"/>
-                                    </svg>
-                                </span>Talk
-            </strong>
-            <span className="arrange_unit arrange_unit--fill u-text-right">
-                                <span id="icon_24X24"
-                                      className="icon icon--24-chevron-right icon--size-24 hidden-non-responsive-inline-block responsive-visible-medium-inline-block">
-                                    <svg className="icon_svg">
-                                        <path
-                                          d="M9.525 5.636L8.11 7.05 13.06 12l-4.95 4.95 1.415 1.414L15.89 12 9.524 5.636z"/>
-                                    </svg>
-                                </span>
-                            </span>
-          </a>
-        </li>
-
-        <li className="drop-down-menu-link">
-          <a className="js-analytics-click arrange arrange--middle arrange--6"
-             href="/user_details_cash_back?userid=kIEHaO2vd6Lic4rwkMgH6Q"
-             data-analytics-label="dropdown_rewards-inactive">
-            <strong className="arrange_unit">
-                                <span id="icon_24X24"
-                                      className="icon icon--24-cash-back icon--size-24 u-space-r1">
-                                    <svg className="icon_svg">
-                                        <path
-                                          d="M13.632 11.153c1.49.283 2.765 1.012 2.765 2.752 0 1.683-1.296 2.78-3.402 2.978l.008.89H11.75v-.883c-2.547-.17-3.453-1.584-3.476-2.886h2.113c.03.616.502 1.146 1.41 1.267v-2.495l-.66-.133c-1.44-.29-2.668-1.13-2.668-2.75 0-1.713 1.443-2.66 3.294-2.823v-.91h1.26v.913c1.948.204 3.154 1.35 3.176 2.815h-2.05c-.016-.53-.42-1.083-1.163-1.21v2.34l.645.135zm-.645 4.11c.727-.057 1.252-.495 1.252-1.146 0-.56-.37-.927-1.12-1.125-.045-.006-.09-.02-.135-.028v2.3zm-1.19-6.592c-.66.074-1.148.46-1.148 1.057 0 .494.335.85.98 1.04.052.02.104.036.164.05V8.67zm9.13 4.12l-3.062-3.95h2.06c-1.27-2.854-4.193-4.862-7.603-4.862-4.57 0-8.29 3.6-8.29 8.024 0 4.426 3.72 8.026 8.29 8.026 3.566 0 6.604-2.195 7.772-5.26h2.148C21 18.936 17.026 22 12.322 22c-5.696 0-10.33-4.486-10.33-10S6.626 2 12.322 2c4.554 0 8.418 2.872 9.788 6.84h1.877l-3.06 3.95z"/>
-                                    </svg>
-                                </span>Cash Back
-            </strong>
-            <span className="arrange_unit">
-                                <span className="ybadge ybadge-notification drop-down-menu-link_new-label">NEW</span>
-                            </span>
             <span className="arrange_unit arrange_unit--fill u-text-right">
                                 <span id="icon_24X24"
                                       className="icon icon--24-chevron-right icon--size-24 hidden-non-responsive-inline-block responsive-visible-medium-inline-block">

@@ -168,6 +168,7 @@ const createRoutes = (store) => {
         ...reviewRoutes,
         ...orderedUserRoutes,
         ...userProfileRoutes,
+        ...userEditRoutes,
         ...playgroundRoutes,
         {
           // http://localhost:3000/user_details?userid=t3cu9DxXtGyaPIWNvPOXxA
