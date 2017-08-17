@@ -7,7 +7,9 @@ class ReviewsItemForUserProfile extends Component {
 
   renderTop() {
     const {review} = this.props;
-    const {user} = review;
+    const {reviewType, event, restaurant, user, recipe} = review;
+
+    debugger
 
     return (
       <div className="review-topbar">
@@ -64,7 +66,8 @@ class ReviewsItemForUserProfile extends Component {
     const htmlBody = Reviews.getHtmlBody(review);
 
     return (
-      <div className="review-wrapper">
+      <div className="review-content">
+
         <div className="review-content">
 
           <div className="biz-rating biz-rating-large clearfix">
@@ -84,6 +87,7 @@ class ReviewsItemForUserProfile extends Component {
           <div className="post_page_body" dangerouslySetInnerHTML={htmlBody}/>
         </div>
         <Telescope.components.ReviewsItemButtonsPanel/>
+
       </div>
     )
   }
