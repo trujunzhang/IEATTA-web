@@ -40,6 +40,14 @@ class ReviewsList extends Component {
   }
 
 
+  renderRowItem(review, index) {
+    const {forUserProfile} = this.props;
+    if (!!forUserProfile) {
+      return (<Telescope.components.ReviewsItem key={review.id} review={review}/>)
+    }
+    return (<Telescope.components.ReviewsItem key={review.id} review={review}/>)
+  }
+
   renderRows() {
     const {listTask} = this.state;
 
@@ -56,7 +64,7 @@ class ReviewsList extends Component {
     } else if (!!results && results.length) {
       return (
         <ul className="ylist ylist-bordered reviews">
-          {results.map(review =>
+          {results.map((review, index) =>
             <Telescope.components.ReviewsItem key={review.id} review={review}/>
           )}
         </ul>
