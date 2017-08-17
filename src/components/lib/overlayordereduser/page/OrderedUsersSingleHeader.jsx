@@ -68,6 +68,7 @@ class OrderedUsersSingleHeader extends Component {
     return (
       <div className="user-profile_actions arrange_unit">
         <ul className="action-link-list">
+
           <li>
 
             <a className="arrange arrange--middle add-friend"
@@ -114,52 +115,6 @@ class OrderedUsersSingleHeader extends Component {
               </div>
               <div className="action-link_label arrange_unit arrange_unit--fill">
                 Compliment
-              </div>
-            </a>
-
-          </li>
-
-
-          <li>
-
-
-            <a className="arrange arrange--middle send-pm"
-               href="/mail?action_send_form=1&amp;dst=JffflxAtMCm_GQf5OrImig&amp;return_url=/user_details?userid=JffflxAtMCm_GQf5OrImig"
-               rel="Sahithi P.">
-              <div className="action-link_icon arrange_unit">
-            <span
-              id="icon_18X18"
-              className="icon icon--18-speech icon--size-18 icon--currentColor">
-    <svg className="icon_svg">
-    <path d="M2 4v6a2 2 0 0 0 2 2h1v3l4-3h5a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/>
-    </svg>
-</span>
-              </div>
-              <div className="action-link_label arrange_unit arrange_unit--fill">
-                Send message
-              </div>
-            </a>
-
-          </li>
-
-
-          <li>
-
-
-            <a className="arrange arrange--middle send-pm"
-               href="/mail?action_send_form=1&amp;dst=JffflxAtMCm_GQf5OrImig&amp;return_url=/user_details?userid=JffflxAtMCm_GQf5OrImig"
-               rel="Sahithi P.">
-              <div className="action-link_icon arrange_unit">
-            <span
-              id="icon_18X18"
-              className="icon icon--18-speech icon--size-18 icon--currentColor">
-    <svg className="icon_svg">
-    <path d="M2 4v6a2 2 0 0 0 2 2h1v3l4-3h5a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/>
-    </svg>
-</span>
-              </div>
-              <div className="action-link_label arrange_unit arrange_unit--fill">
-                Send message
               </div>
             </a>
 
