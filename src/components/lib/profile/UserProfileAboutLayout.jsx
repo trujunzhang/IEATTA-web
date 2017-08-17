@@ -47,7 +47,7 @@ class UserProfileAboutLayout extends Component {
       <div className="clearfix layout-block layout-n user-details_container">
         <Telescope.components.UserProfileLeftPanel {...this.props} />
 
-        {/*{this.renderRightPanel()}*/}
+        {this.renderRightPanel()}
       </div>
 
     )
