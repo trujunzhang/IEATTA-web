@@ -105,11 +105,10 @@ export function getPhotoSelectBackLink(pageForm, photoType, forObject) {
 
 }
 
-
 export function getLoggedUserMenuLink(currentUser, menuType) {
   switch (menuType) {
     case  LOGGED_USER_MENU_ABOUT:
-      return `user_details/${currentUser.id}/${slugify(currentUser.username)}`
+      return `/user_details/${currentUser.id}/${slugify(currentUser.username)}`
   }
 }
 
