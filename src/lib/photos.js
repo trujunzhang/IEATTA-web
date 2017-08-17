@@ -17,6 +17,19 @@ Photos.getOriginalUrl = function (photo) {
   return photo.original._url;
 }
 
+Photos.getThumbnailUrlByReviewType = function (review) {
+  const {reviewType} = review;
+
+  switch (reviewType) {
+    case 'restaurant':
+      return Photos.getThumbnailUrl(review.restaurant);
+    case 'event':
+      return Photos.getThumbnailUrl(review.event.restaurant);
+    case 'recipe':
+      return Photos.getThumbnailUrl(review.recipe);
+  }
+
+}
 Photos.getListThumbnailUrl = function (item) {
   const photos = item.photos || [];
 

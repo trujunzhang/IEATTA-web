@@ -9,7 +9,6 @@ class ReviewsItemForUserProfile extends Component {
     const {review} = this.props;
     const {reviewType, event, restaurant, user, recipe} = review;
 
-    debugger
 
     return (
       <div className="review-topbar">
