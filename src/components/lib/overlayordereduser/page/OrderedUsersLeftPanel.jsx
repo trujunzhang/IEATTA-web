@@ -74,9 +74,7 @@ class OrderedUsersLeftPanel extends Component {
   }
 
   renderOrderedDetail() {
-    const {forEvent, forRestaurant} = this.props;
-
-    debugger
+    const {orderedUser, forEvent, forRestaurant} = this.props;
 
     return (
       <div className="ysection">
@@ -96,9 +94,10 @@ class OrderedUsersLeftPanel extends Component {
             <p>{forEvent.displayName}</p>
           </li>
 
+
           <li>
-            <h4>Things I Love</h4>
-            <p>You haven't told us yet ... do tell!</p>
+            <h4>User</h4>
+            <p>{orderedUser.username}</p>
           </li>
 
         </ul>

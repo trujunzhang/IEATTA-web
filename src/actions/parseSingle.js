@@ -59,7 +59,6 @@ const {
 
 function loadParseObject(type: string, query: Parse.Query, objectId: string, parseFun: Any): ThunkAction {
 
-  debugger
 
   return (dispatch) => {
     return query.get(objectId, {
