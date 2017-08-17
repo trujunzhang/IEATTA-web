@@ -8,18 +8,9 @@ import {withRouter} from 'react-router'
 
 class UserProfileAboutLayout extends Component {
 
-  constructor(props) {
-    super(props)
-
-    const {userProfile} = props
-
-    this.state = this.initialState = {
-      userSidebarMenu: Users.userSidebarMenu(userProfile)
-    }
-  }
-
 
   render() {
+
     return (
 
       <div className="main-content-wrap main-content-wrap--full">

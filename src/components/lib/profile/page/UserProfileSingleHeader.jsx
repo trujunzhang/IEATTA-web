@@ -7,7 +7,7 @@ import Users from '../../../../lib/users'
 class UserProfileSingleHeader extends Component {
 
   renderColumnOne() {
-    const userProfile = this.props;
+    const {userProfile} = this.props;
 
     return (
       <div className="user-profile_info arrange_unit">
