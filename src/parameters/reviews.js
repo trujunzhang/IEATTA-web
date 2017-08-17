@@ -13,6 +13,10 @@ export default class ReviewsParameters {
   }
 
   addParameters(terms: Any) {
+
+    if (terms.forUserProfile) {
+      this.query.equalTo('user', ParseUser.createWithoutData(terms.forObject.id))
+    }
     if (terms.reviewType) {
       this.query.equalTo('reviewType', terms.reviewType)
       if (terms.forObject) {
