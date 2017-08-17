@@ -31,11 +31,13 @@ class IEAEditUserLayout extends Component {
       pageForm: props.pageForm,
       value: {
         username: props.auth.form.fields.username,
+        email: props.auth.form.fields.email,
       }
     }
 
     props.actions.editUserState();
     props.actions.onAuthFormFieldChange('username', props.userProfile.username || '', true)
+    props.actions.onAuthFormFieldChange('email', props.userProfile.email || '', true)
   }
 
   /**
@@ -46,6 +48,7 @@ class IEAEditUserLayout extends Component {
     this.setState({
       value: {
         username: nextProps.auth.form.fields.username,
+        email: nextProps.auth.form.fields.email,
       }
     })
   }

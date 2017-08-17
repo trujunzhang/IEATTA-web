@@ -49,7 +49,7 @@
       "register": "注册"
     },
     "FieldValidation": {
-      "valid_user_name": "请输入6-12个字母或数字",
+      "valid_user_name": "请输入6-20个字母或数字",
       "valid_email": "请提供有效邮箱地址",
       "valid_password": "请输入6-12个数字和特殊字符: !@#$%^&*",
       "valid_password_again": "密码不匹配"
@@ -110,7 +110,7 @@
     },
     "FieldValidation": {
       "valid_display_name": "at least more than one with letters or numbers",
-      "valid_user_name": "6-12 in length with letters or numbers",
+      "valid_user_name": "6-20 in length with letters or numbers",
       "valid_email": "Provide valid email",
       "valid_password": "6-12 in length, with a number and special character: !@#$%^&*",
       "valid_password_again": "Passwords must match"
@@ -190,7 +190,7 @@
       "register": "Registre"
     },
     "FieldValidation": {
-      "valid_user_name": "6-12 de longueur avec des lettres ou des chiffres",
+      "valid_user_name": "6-20 de longueur avec des lettres ou des chiffres",
       "valid_email": "Fournir email valide",
       "valid_password": "6-12 en longueur, avec un nombre et un caractère spécial: !@#$%^&*",
       "valid_password_again": "les mots de passe doivent correspondre"
@@ -250,7 +250,7 @@
       "register": "Registrarse"
     },
     "FieldValidation": {
-      "valid_user_name": "6-12 de longitud con letras o números",
+      "valid_user_name": "6-20 de longitud con letras o números",
       "valid_email": "Proveer de correo electrónico válida",
       "valid_password": "6-12 de longitud, con un número y carácter especial: !@#$%^&*",
       "valid_password_again": "Las contraseñas deben coincidir"

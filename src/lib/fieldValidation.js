@@ -32,7 +32,7 @@ const emailConstraints = {
  * ## username validation rule
  * read the message.. ;)
  */
-const usernamePattern = /^[a-zA-Z0-9]{6,12}$/
+const usernamePattern = /^[a-zA]{6,12}$/
 const usernameConstraints = {
   username: {
     format: {
@@ -46,7 +46,7 @@ const usernameConstraints = {
  * ## username validation rule
  * read the message.. ;)
  */
-const displayNamePattern = /^[a-zA-Z0-9]{4,12}$/
+const displayNamePattern = /^[a-zA]{4,12}$/
 const displayNameConstraints = {
   username: {
     format: {
@@ -101,8 +101,9 @@ export default function fieldValidation(state, action) {
      * set the form field error
      */
     case ('username'): {
-      let validUsername = _.isUndefined(validate({username: value},
-        usernameConstraints))
+      // let validUsername = _.isUndefined(validate({username: value},
+      //   usernameConstraints))
+      let validUsername = value.length >= 6 && value.length <= 20;
       if (validUsername) {
         return state.setIn(['form', 'fields', 'usernameHasError'], false)
           .setIn(['form', 'fields', 'usernameErrorMsg'], '')
