@@ -111,14 +111,11 @@ Telescope.registerComponent('EditRecipeForm',                              requi
 
 // profile
 Telescope.registerComponent('UserProfileHeader',                   require('./profile/UserProfileHeader.jsx').default)
-Telescope.registerComponent('UsersProfile',                        require('./profile/UsersProfile.jsx').default)
+Telescope.registerComponent('UserProfile',                         require('./profile/UserProfile.jsx').default)
 Telescope.registerComponent('UsersSingle',                         require('./profile/UsersSingle.jsx').default)
 
 // profile(menus)
-Telescope.registerComponent('UsersCollectionFoldersList',          require('./profile/menus/UsersCollectionFoldersList.jsx').default)
-Telescope.registerComponent('UsersDownvote',                       require('./profile/menus/UsersDownvote.jsx').default)
-Telescope.registerComponent('UsersSubmittedPostsList',             require('./profile/menus/UsersSubmittedPostsList.jsx').default)
-Telescope.registerComponent('UsersUpvote',                         require('./profile/menus/UsersUpvote.jsx').default)
+
 
 // app login
 Telescope.registerComponent('UserLogOut',                     require('./login/UserLogOut.jsx').default)
