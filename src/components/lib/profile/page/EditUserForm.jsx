@@ -21,12 +21,12 @@ class EditUserForm extends Component {
   render() {
 
     let displayName = {
-      label: I18n.t('editEvent.displayName'),
+      label: I18n.t('editUser.displayName'),
       editable: !this.props.form.isFetching,
       hasError: this.props.form.fields.displayNameHasError,
       error: I18n.t(this.props.form.fields.displayNameErrorMsg),
       attrs: {
-        placeholder: I18n.t('editEvent.displayNamePlaceHolder')
+        placeholder: I18n.t('editUser.displayNamePlaceHolder')
       }
     }
 
