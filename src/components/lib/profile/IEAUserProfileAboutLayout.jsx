@@ -32,7 +32,7 @@ class IEAUserProfileAboutLayout extends Component {
           <div className="user-details-bookmarks_content js-user-details-bookmarks_content">
 
             <Telescope.components.ReviewsList forObject={this.props.userProfile}
-                                              forUserProfile="user"
+                                              forUserProfile="userAbout"
                                               reviewTitle={userProfile.username}/>
 
             {/*{this.renderTitle()}*/}
