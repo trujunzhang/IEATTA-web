@@ -9,6 +9,7 @@ Telescope.registerComponent('UsersBlurryImageAvatar',           require('./exten
 
 // common
 Telescope.registerComponent('Layout',                           require('./applayout/Layout.jsx').default)
+Telescope.registerComponent('AppFooter',                        require('./applayout/AppFooter.jsx').default)
 Telescope.registerComponent('F8StarIcon',                       require('./common/F8StarIcon.jsx').default)
 Telescope.registerComponent('F8SingleHeaderRightPhotos',        require('./common/F8SingleHeaderRightPhotos.jsx').default)
 Telescope.registerComponent('F8RestaurantMapSection',           require('./common/F8RestaurantMapSection.jsx').default)

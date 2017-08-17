@@ -17,6 +17,7 @@ class Layout extends Component {
       return (
         <div id='web-app-panel'>
           {this.props.children}
+          <Telescope.components.AppFooter/>
         </div>
       )
     }
@@ -28,6 +29,7 @@ class Layout extends Component {
 
         {this.props.children}
 
+        <Telescope.components.AppFooter/>
       </div>
     )
   }
