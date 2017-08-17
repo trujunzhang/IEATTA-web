@@ -16,11 +16,12 @@ class OrderedUsers extends Component {
       uslug: props.params.uslug,
       eid: props.params.eid,
       rid: props.params.rid,
+      // Detailed object
       orderedUser: null,
       forEvent: null,
       forRestaurant: null,
-      ready: false
     }
+
   }
 
   componentWillReceiveProps(nextProps) {
@@ -28,7 +29,6 @@ class OrderedUsers extends Component {
       orderedUser: getModelByObjectId(nextProps, this.state.uid, this.state.orderedUser),
       forEvent: getModelByObjectId(nextProps, this.state.eid, this.state.forEvent),
       forRestaurant: getModelByObjectId(nextProps, this.state.rid, this.state.forRestaurant),
-      ready: true
     })
   }
 
@@ -39,17 +39,17 @@ class OrderedUsers extends Component {
   }
 
   render() {
-    const {ready, orderedUser, forRestaurant, forEvent} = this.state;
+    const {orderedUser, forRestaurant, forEvent} = this.state;
 
-    if (!ready) {
-      return (
-        <div className="placeholder_1WOC3">
-          <div className="loader_54XfI animationRotate loader_OEQVm"/>
-        </div>
-      )
+    if (!!orderedUser && !!forRestaurant && !!forEvent) {
+      return (<Telescope.components.IEAOrderedUsersLayout {...this.state}/>)
     }
 
-    return (<Telescope.components.IEAOrderedUsersLayout {...this.state}/>)
+    return (
+      <div className="placeholder_1WOC3">
+        <div className="loader_54XfI animationRotate loader_OEQVm"/>
+      </div>
+    )
   }
 
 }

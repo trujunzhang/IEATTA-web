@@ -121,7 +121,7 @@ class UsersProfile extends Component {
     )
   }
 
-  renderCommon() {
+  render() {
     const {userProfile} = this.props
 
     const childrenWithProps = React.Children.map(this.props.children,
@@ -145,17 +145,6 @@ class UsersProfile extends Component {
         </div>
       </div>
     )
-  }
-
-  render() {
-    const {location} = this.props
-    // const isShowDetailedRestaurant = this.context.messages.isShowDetailedRestaurant()
-    // Refresh the page, show the single post detail page.
-    // if (!isShowDetailedRestaurant && !!location.query && !!location.query.postId) {
-    //   return this.renderPostSingle()
-    // }
-
-    return this.renderCommon()
   }
 }
 

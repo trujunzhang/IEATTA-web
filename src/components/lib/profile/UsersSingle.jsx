@@ -8,51 +8,48 @@ import {withRouter} from 'react-router'
 
 const {loadUserProfilePage} = require('../../../actions').default
 
+const {
+  getPageFormTypeForUserProfile,
+  getModelByObjectId,
+} = require('../../filter/filterRoutes')
+
 class UsersSingle extends Component {
 
   constructor(props) {
     super(props)
 
     this.state = this.initialState = {
-      ready: false,
+      uid: props.params.uid,
+      uslug: props.params.uslug,
+      // Detailed object
       userProfile: null,
-      userId: props.params.uid,
-      userSlug: props.params.uslug
+      // Common
+      pageForm: getPageFormTypeForUserProfile(props),
+      ready: false
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    let {userProfile} = nextProps.userProfileTask
-    if (!!userProfile) {
-      if (userProfile.id === this.state.userId) {
-        this.setState({
-          ready: true,
-          userProfile: userProfile
-        })
-      }
-    }
+    this.setState({
+      userProfile: getModelByObjectId(nextProps, this.state.uid, this.state.userProfile),
+    })
   }
 
   componentDidMount() {
     this.props.dispatch(loadUserProfilePage(this.state.uid))
-    this.props.dispatch(loadUserProfile(this.props.params.uid, this.props.params.uslug))
   }
 
   render() {
-    const terms = {"telescope.slug": this.props.params.slug};
-    const path = this.props.location.pathname;
-    const {ready, userProfile, userId, userSlug} = this.state
+    const {userProfile} = this.state;
 
-    if (!ready) {
-      return (
-        <div className="placeholder_1WOC3">
-          <div className="loader_54XfI animationRotate loader_OEQVm">
-          </div>
-        </div>
-      )
+    if (!!userProfile) {
+      return (<Telescope.components.UserProfile{...this.state}/>)
     }
+
     return (
-      <Telescope.components.UsersProfile {...this.props} userProfile={userProfile}/>
+      <div className="placeholder_1WOC3">
+        <div className="loader_54XfI animationRotate loader_OEQVm"/>
+      </div>
     )
   }
 }

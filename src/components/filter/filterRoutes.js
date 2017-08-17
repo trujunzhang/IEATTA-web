@@ -42,6 +42,8 @@ const {
   LOGIN_FORM_TYPE_LOG_OUT,
   LOGIN_FORM_TYPE_FORGOTPASSWORD,
   LOGIN_FORM_TYPE_RESET_PASSWD,
+  // User Profile
+  LOGGED_USER_MENU_ABOUT
 } = require('../../lib/constants').default
 
 export function checkEditModel(props: Object) {
@@ -142,4 +144,10 @@ export function checkLoginFormPage(props) {
     || pathname.indexOf('logout') !== -1
     || pathname.indexOf('signup') !== -1
   )
+}
+
+export function getPageFormTypeForUserProfile(props) {
+  const query = props.location.query;
+
+  return LOGGED_USER_MENU_ABOUT;
 }
