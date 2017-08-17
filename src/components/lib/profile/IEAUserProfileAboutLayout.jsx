@@ -31,7 +31,11 @@ class IEAUserProfileAboutLayout extends Component {
 
           <div className="user-details-bookmarks_content js-user-details-bookmarks_content">
 
-            {this.renderTitle()}
+            <Telescope.components.ReviewsList forObject={this.props.userProfile}
+                                              reviewType="user"
+                                              reviewTitle={userProfile.username}/>
+
+            {/*{this.renderTitle()}*/}
 
             {/*<Telescope.components.RecipesList {...this.props} showRightTime={true}/>*/}
           </div>
