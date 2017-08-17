@@ -8,6 +8,40 @@ import {withRouter} from 'react-router'
 
 class UserProfileAboutLayout extends Component {
 
+
+  renderTitle() {
+    return (
+      <div className="section-header section-header--complex section-header--no-spacing">
+        <div className="arrange arrange--middle arrange--12">
+          <div className="arrange_unit nowrap">
+            <h2 className="section-header_title">Ordered Recipes</h2>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  renderRightPanel() {
+    const {userProfile} = this.props;
+    return (
+      <div className="column column-beta ">
+
+        {this.renderTitle()}
+
+        <div className="user-details_bookmarks js-user-details_bookmarks">
+
+          <div className="user-details-bookmarks_content js-user-details-bookmarks_content">
+            {/*<Telescope.components.RecipesList {...this.props} showRightTime={true}/>*/}
+          </div>
+
+          {/*{this.renderRightSidebar()}*/}
+        </div>
+      </div>
+
+    )
+  }
+
+
   renderContent() {
     return (
       <div className="clearfix layout-block layout-n user-details_container">
