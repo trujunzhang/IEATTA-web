@@ -12,12 +12,10 @@ class OrderedUsersLeftPanel extends Component {
 
         <div className="titled-nav js-titled-nav">
 
-          <input id="titled-nav-909e7717-8ad1-4e9c-ac9c-011d99aeb9f2" className="titled-nav-dropdown_handler"
-                 type="checkbox" role="presentation"/>
-
           <div className="titled-nav_menus">
 
             <div className="titled-nav_menu">
+
               <div className="titled-nav-header">
                 <div className="arrange arrange--top">
 
@@ -32,6 +30,7 @@ class OrderedUsersLeftPanel extends Component {
 
                 </div>
               </div>
+
 
               <ul className="titled-nav_items">
 
@@ -66,7 +65,6 @@ class OrderedUsersLeftPanel extends Component {
               </ul>
             </div>
 
-            <div className="titled-nav-header responsive-hidden-large" role="presentation"></div>
           </div>
         </div>
 
@@ -75,11 +73,46 @@ class OrderedUsersLeftPanel extends Component {
     )
   }
 
+  renderOrderedDetail() {
+    const {forEvent, forRestaurant} = this.props;
+
+    debugger
+
+    return (
+      <div className="ysection">
+
+        <div className="ordered-user-left-header">
+          <h3>Ordered Details</h3>
+        </div>
+
+        <ul className="ylist">
+          <li>
+            <h4>Location</h4>
+            <p>{forRestaurant.address}</p>
+          </li>
+
+          <li>
+            <h4>Event</h4>
+            <p>{forEvent.displayName}</p>
+          </li>
+
+          <li>
+            <h4>Things I Love</h4>
+            <p>You haven't told us yet ... do tell!</p>
+          </li>
+
+        </ul>
+
+      </div>
+    )
+  }
+
   render() {
 
     return (
       <div className="column column-alpha user-details_sidebar">
-        {this.renderTitle()}
+        {/*{this.renderTitle()}*/}
+        {this.renderOrderedDetail()}
       </div>
 
     )
