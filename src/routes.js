@@ -138,7 +138,7 @@ const createRoutes = (store) => {
 
   const userEditRoutes = [
     {
-      path: 'profile/(:uid)/(:uslug)',
+      path: 'profile',
       component: Telescope.components.UsersSingle
     },
   ];

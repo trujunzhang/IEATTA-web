@@ -157,3 +157,11 @@ export function getPageFormTypeForUserProfile(props) {
 
   return LOGGED_USER_MENU_ABOUT;
 }
+
+export function getUserQueryId(props) {
+  const pathname = props.location.pathname;
+  if (pathname.indexOf('profile') !== -1) {
+    return props.currentUser.id;
+  }
+  return props.params.uid;
+}

@@ -10,6 +10,7 @@ const {loadUserProfilePage} = require('../../../actions').default
 
 const {
   getPageFormTypeForUserProfile,
+  getUserQueryId,
 } = require('../../filter/filterRoutes')
 
 
@@ -27,13 +28,11 @@ class UsersSingle extends Component {
     super(props)
 
     this.state = this.initialState = {
-      uid: props.params.uid,
-      uslug: props.params.uslug,
+      uid: getUserQueryId(props),
       // Detailed object
       userProfile: null,
       // Common
       pageForm: getPageFormTypeForUserProfile(props),
-      ready: false
     }
   }
 
@@ -53,7 +52,7 @@ class UsersSingle extends Component {
     if (!!userProfile) {
       switch (pageForm) {
         case LOGGED_USER_MENU_ABOUT:
-          return (<Telescope.components.UserProfileAboutLayout{...this.state} {...this.props}/>)
+          return (<Telescope.components.IEAUserProfileAboutLayout{...this.state} {...this.props}/>)
         case LOGGED_USER_EDIT_FORM:
           return (<Telescope.components.IEAEditUserLayout {...this.state} {...this.props}/>)
       }

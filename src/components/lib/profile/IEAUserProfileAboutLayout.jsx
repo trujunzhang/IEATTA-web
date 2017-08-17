@@ -6,7 +6,7 @@ import {Link} from 'react-router'
 
 import {withRouter} from 'react-router'
 
-class UserProfileAboutLayout extends Component {
+class IEAUserProfileAboutLayout extends Component {
 
 
   renderTitle() {
@@ -78,5 +78,5 @@ class UserProfileAboutLayout extends Component {
 
 }
 
-export default withRouter(UserProfileAboutLayout)
+export default withRouter(IEAUserProfileAboutLayout)
 
