@@ -165,3 +165,12 @@ export function getUserQueryId(props) {
   }
   return props.params.uid;
 }
+
+export function generateTermsForReviewsList(props) {
+  return {
+    ...props,
+    ...props.location.query,
+    listId: 'reviews-list-view-for-' + props.forObject.id,
+    limit: 10
+  };
+}

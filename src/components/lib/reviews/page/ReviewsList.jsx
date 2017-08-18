@@ -1,9 +1,12 @@
 import Telescope from '../../index'
 import React, {Component} from 'react'
 
+import {withRouter} from 'react-router'
+
 const {loadReviewsList} = require('../../../../actions').default
 
 const {byListId} = require('../../../filter/filterPosts')
+const {generateTermsForReviewsList} = require('../../../filter/filterRoutes')
 
 const {
   REVIEW_LIST_TYPE_NORMAL,
@@ -16,11 +19,7 @@ class ReviewsList extends Component {
   constructor(props) {
     super(props)
 
-    const terms = {
-      ...this.props,
-      listId: 'reviews-list-view-for-' + props.forObject.id,
-      limit: 10
-    };
+    const terms = generateTermsForReviewsList(props)
     this.state = {
       terms: terms,
       listTask: byListId(props.listContainerTasks, terms)
@@ -28,7 +27,9 @@ class ReviewsList extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    const terms = generateTermsForReviewsList(nextProps)
     this.setState({
+      terms: terms,
       listTask: byListId(nextProps.listContainerTasks, this.state.terms, this.state.listTask)
     })
   }
@@ -125,4 +126,4 @@ function select(store) {
   }
 }
 
-export default connect(select)(ReviewsList)
+export default withRouter(connect(select)(ReviewsList));
