@@ -1,11 +1,18 @@
-import moment from 'moment'
-
 const {ParseRestaurant, ParseEvent, ParseRecipe, ParseUser, ParseReview} = require('../parse/objects').default
+
+import Reviews from '../lib/reviews'
 
 /**
  * The states were interested in
  */
-const {} = require('../lib/constants').default
+const {
+  // Review Sort
+  REVIEW_SORT_NORMAL,
+  REVIEW_SORT_NEWEST,
+  REVIEW_SORT_OLDEST,
+  REVIEW_SORT_HIGHEST,
+  REVIEW_SORT_LOWEST,
+} = require('../lib/constants').default
 
 export default class ReviewsParameters {
   constructor(query: Parse.Query) {
@@ -15,6 +22,7 @@ export default class ReviewsParameters {
   addParameters(terms: Any) {
 
     if (!!terms.sort_by) {
+      const sortTag = Reviews.getSortTag(terms.sort_by)
       debugger
       // this.query.equalTo('user', ParseUser.createWithoutData(terms.forObject.id))
     }

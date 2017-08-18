@@ -158,4 +158,9 @@ Reviews.getCurrentSelectedDropMenuIndex = function (dropMenus, props) {
   return 0;
 }
 
+Reviews.getSortTag = function (sort) {
+  debugger
+  return _.invert(Reviews.SORT_TAGS)[sort];
+}
+
 export default Reviews;
