@@ -94,7 +94,7 @@ class UserProfileAboutRightPanel extends Component {
     <path d={row.svg}/>
     </svg>
 </span>{row.tag}
-                <strong className="review-votes-title">{reviewRating[row.tag]}</strong>
+                <strong className="margin-left-6">{reviewRating[row.tag]}</strong>
               </li>
             )
           })}
@@ -142,7 +142,7 @@ class UserProfileAboutRightPanel extends Component {
                    </svg>
                 </span>
                 {row.tag}
-                <strong>{userState[row.tag]}</strong>
+                <strong className="margin-left-6">{userState[row.tag]}</strong>
               </li>
             )
           })}
