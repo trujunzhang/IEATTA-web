@@ -116,7 +116,7 @@ export class ReviewsHeaderRightSortView extends Component {
       (isOpening ? "is-active" : "");
 
     return (
-      <div className="arrange_unit u-nowrap">
+      <div className="arrange_unit u-nowrap" id="sort-right-section">
         <div className="feed_sort js-review-feed-sort">
 
           <div className={dropClass}>
