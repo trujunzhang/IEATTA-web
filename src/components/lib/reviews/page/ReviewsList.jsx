@@ -9,7 +9,7 @@ const {
   REVIEW_LIST_TYPE_NORMAL,
   REVIEW_LIST_TYPE_USER_PROFILE_ABOUT,
   REVIEW_LIST_TYPE_USER_PROFILE_REVIEWS,
-} = require('../../../lib/constants').default
+} = require('../../../../lib/constants').default
 
 class ReviewsList extends Component {
 
