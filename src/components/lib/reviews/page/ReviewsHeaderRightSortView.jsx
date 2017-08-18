@@ -49,7 +49,12 @@ export class ReviewsHeaderRightSortView extends Component {
                 <li key={index} className="dropdown_item">
                   <Link className={menuClass}
                         to={location => ({...location, query: Object.assign(location.query, {sort_by: menu.query})})}
-                        onClick={this.handleClickOutside.bind(this)}
+                        onClick={() => {
+                          this.setState({
+                            isOpening: false,
+                            selectedDropDownMenuIndex: index
+                          })
+                        }}
                         id="review-sort-menu-item">
                     <span className="tab-link_label" title={menu.title}>{menu.title}</span>
                   </Link>

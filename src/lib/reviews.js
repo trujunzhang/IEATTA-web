@@ -114,11 +114,11 @@ Reviews.getCurrentSortArray = function (reviewListType) {
   switch (reviewListType) {
     case REVIEW_LIST_TYPE_NORMAL:
       return [
-        {title: 'Normal Sort', query: null},
-        {title: 'Newest First', query: ''},
-        {title: 'Oldest First', query: ''},
-        {title: 'Highest Rated', query: ''},
-        {title: 'Lowest Rated', query: ''},
+        {title: 'Normal Sort', query: 'normal'},
+        {title: 'Newest First', query: 'newest'},
+        {title: 'Oldest First', query: 'oldest'},
+        {title: 'Highest Rated', query: 'highest'},
+        {title: 'Lowest Rated', query: 'lowest'},
       ]
     case REVIEW_LIST_TYPE_USER_PROFILE_ABOUT:
       return [
