@@ -52,12 +52,15 @@ class OrderedUsersSingleHeader extends Component {
   }
 
   renderColumnOne() {
-    const {orderedUser} = this.props;
+    const {orderedUser, peopleInEvent} = this.props;
 
     return (
       <div className="user-profile_info arrange_unit">
         <h1>{orderedUser.username}</h1>
-        <h3 className="user-location alternate">{orderedUser.username}</h3>
+        <span>
+          <h4 className="margin-right-4">{'Ordered at:'}</h4>
+          <h3 className="user-location alternate">{Users.getOrderedUserFormat(peopleInEvent)}</h3>
+        </span>
         {this.renderColumnOneBottom()}
       </div>
     )

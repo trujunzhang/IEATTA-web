@@ -9,7 +9,8 @@ import moment from 'moment'
 const Users = {
   config: {
     // February 2014
-    dateFormat: 'MMMM YYYY'
+    dateFormat: 'MMMM YYYY',
+    orderedDataFormat: 'DD, MMMM, YYYY'
   }
 }
 
@@ -81,18 +82,6 @@ Users.getAvatarObj = function (user) {
 }
 
 /**
- * @summary Get a user's display name (not unique, can take special characters and spaces)
- * @param {Object} user
- */
-Users.getDisplayName = function (user) {
-  if (typeof user === 'undefined') {
-    return ''
-  } else {
-    return user.name
-  }
-}
-
-/**
  * Check the post is for the backend admins.
  * @param location
  * @param user
@@ -110,52 +99,12 @@ Users.checkIsAdmin = function (location, user) {
   return false
 }
 
-Users.openNewBackgroundTab = (element, url) => {
-  window.open(url)
-}
-
-/**
- * ("http://localhost:3000/image/upload/cover/k6ikrrYh9y5ZDvzvR.jpg")
- * @param user
- * @returns {*}
- */
-Users.getUserCoverUrl = (user) => {
-  if (typeof user === 'undefined') {
-    return null
-  }
-  let coverUrls = user.coverUrls || []
-  if (!!coverUrls && coverUrls.length > 0) {
-    return coverUrls[0].url
-  }
-  return null
-}
-
-/**
- * @summary Get a user's Twitter name
- * @param {Object} user
- */
-Users.getTwitterName = function (user) {
-  // return twitter name provided by user, or else the one used for twitter login
-  if (typeof user !== 'undefined') {
-    return ''
-  }
-  return null
-}
-
-/**
- * @summary Get a user's display name (not unique, can take special characters and spaces)
- * @param {Object} user
- */
-Users.getBio = function (user) {
-  if (typeof user === 'undefined') {
-    return ''
-  } else {
-    return ''
-  }
-}
-
 Users.getCreatedAtFormat = function (user) {
   return moment(user.createdAt).format(Users.config.dateFormat)
+}
+
+Users.getOrderedUserFormat = function (peopleInEvent) {
+  return moment(peopleInEvent.createdAt).format(Users.config.orderedDataFormat)
 }
 
 export default Users
