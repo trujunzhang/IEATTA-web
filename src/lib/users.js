@@ -9,7 +9,7 @@ import moment from 'moment'
 const Users = {
   config: {
     // February 2014
-    dateFormat: 'MMM YYYY'
+    dateFormat: 'MMMM YYYY'
   }
 }
 
