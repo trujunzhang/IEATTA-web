@@ -45,16 +45,17 @@ export class ReviewsHeaderRightSortView extends Component {
               const menuClass = "tab-link js-dropdown-link tab-link--dropdown js-tab-link--dropdown" +
                 ((selectedDropDownMenuIndex === index) ? " is-selected" : '');
 
+              const newLocation =
+                {
+                  pathname: this.props.location.pathname,
+                  query: Object.assign(this.props.location.query,
+                    {sort_by: Reviews.SORT_TAGS[menu.queryTag]})
+                };
               return (
                 <li key={index} className="dropdown_item">
                   <Link className={menuClass}
                         onClick={() => {
-
-                          this.props.router.push({
-                            pathname: this.props.location.pathname,
-                            query: Object.assign(this.props.location.query,
-                              {sort_by: Reviews.SORT_TAGS[menu.queryTag]})
-                          })
+                          this.props.router.push(newLocation)
 
                           this.setState({
                             isOpening: false,
