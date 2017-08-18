@@ -42,7 +42,7 @@ class ReviewsList extends Component {
   }
 
   componentDidMount() {
-    const {terms, listTask} = this.state.terms;
+    const {terms, listTask} = this.state;
     this.loadMore(terms, listTask)
   }
 
