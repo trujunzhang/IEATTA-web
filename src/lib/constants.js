@@ -1,6 +1,13 @@
 import keyMirror from 'key-mirror'
 
 export default keyMirror({
+  // Review sort tags
+  REVIEW_SORT_NORMAL: null,
+  REVIEW_SORT_NEWEST: null,
+  REVIEW_SORT_OLDEST: null,
+  REVIEW_SORT_HIGHEST: null,
+  REVIEW_SORT_LOWEST: null,
+
   // Review List Type
   REVIEW_LIST_TYPE_NORMAL: null,
   REVIEW_LIST_TYPE_USER_PROFILE_ABOUT: null,

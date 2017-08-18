@@ -25,6 +25,12 @@ const {
   REVIEW_LIST_TYPE_NORMAL,
   REVIEW_LIST_TYPE_USER_PROFILE_ABOUT,
   REVIEW_LIST_TYPE_USER_PROFILE_REVIEWS,
+  // Review Sort
+  REVIEW_SORT_NORMAL,
+  REVIEW_SORT_NEWEST,
+  REVIEW_SORT_OLDEST,
+  REVIEW_SORT_HIGHEST,
+  REVIEW_SORT_LOWEST,
 } = require('./constants').default
 
 
@@ -32,6 +38,13 @@ const Reviews = {
   config: {
     // 6/11/2017
     dateFormat: 'DD/MM/YYYY'
+  },
+  SORT_TAGS: {
+    REVIEW_SORT_NORMAL: 'normal',
+    REVIEW_SORT_NEWEST: 'newest',
+    REVIEW_SORT_OLDEST: 'oldest',
+    REVIEW_SORT_HIGHEST: 'highest',
+    REVIEW_SORT_LOWEST: 'lowest',
   }
 }
 
@@ -114,25 +127,29 @@ Reviews.getCurrentSortArray = function (reviewListType) {
   switch (reviewListType) {
     case REVIEW_LIST_TYPE_NORMAL:
       return [
-        {title: 'Normal Sort', query: 'normal'},
-        {title: 'Newest First', query: 'newest'},
-        {title: 'Oldest First', query: 'oldest'},
-        {title: 'Highest Rated', query: 'highest'},
-        {title: 'Lowest Rated', query: 'lowest'},
+        {title: 'Normal Sort', queryTag: REVIEW_SORT_NORMAL},
+        {title: 'Newest First', queryTag: REVIEW_SORT_NEWEST},
+        {title: 'Oldest First', queryTag: REVIEW_SORT_OLDEST},
+        {title: 'Highest Rated', queryTag: REVIEW_SORT_HIGHEST},
+        {title: 'Lowest Rated', queryTag: REVIEW_SORT_LOWEST},
       ]
     case REVIEW_LIST_TYPE_USER_PROFILE_ABOUT:
       return [
-        {title: 'Normal Sort', query: 'normal'},
-        {title: 'Newest First', query: 'newest'},
-        {title: 'Oldest First', query: 'oldest'},
-        {title: 'Highest Rated', query: 'highest'},
-        {title: 'Lowest Rated', query: 'lowest'},
+        {title: 'Normal Sort', queryTag: REVIEW_SORT_NORMAL},
+        {title: 'Newest First', queryTag: REVIEW_SORT_NEWEST},
+        {title: 'Oldest First', queryTag: REVIEW_SORT_OLDEST},
+        {title: 'Highest Rated', queryTag: REVIEW_SORT_HIGHEST},
+        {title: 'Lowest Rated', queryTag: REVIEW_SORT_LOWEST},
       ]
 
   }
 }
 
-Reviews.getCurrentSelectedDropMenuIndex = function (dropMenus) {
+Reviews.getCurrentSelectedDropMenuIndex = function (dropMenus, props) {
+  const sort = props.location.query || '';
+  if (sort !== '') {
+    // debugger
+  }
 
   return 0;
 }

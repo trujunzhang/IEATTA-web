@@ -26,7 +26,7 @@ export class ReviewsHeaderRightSortView extends Component {
     this.state = {
       isOpening: false,
       currentDropDownMenus: currentDropDownMenus,
-      selectedDropDownMenuIndex: Reviews.getCurrentSelectedDropMenuIndex(currentDropDownMenus)
+      selectedDropDownMenuIndex: Reviews.getCurrentSelectedDropMenuIndex(currentDropDownMenus, props)
     }
 
   }
@@ -52,7 +52,7 @@ export class ReviewsHeaderRightSortView extends Component {
 
                           this.props.router.push({
                             pathname: this.props.location.pathname,
-                            query: Object.assign(this.props.location.query, {sort_by: menu.query})
+                            query: Object.assign(this.props.location.query, {sort_by: Reviews.config.SORT_TAGS[menu.queryTag]})
                           })
 
                           this.setState({
