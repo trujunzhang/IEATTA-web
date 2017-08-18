@@ -29,7 +29,7 @@ class OrderedUsersSingleHeader extends Component {
     ]
 
     return (
-      <div className="clearfix">
+      <div className="clearfix margin-top-6">
 
         <ul className="user-passport-stats">
 
@@ -57,9 +57,9 @@ class OrderedUsersSingleHeader extends Component {
     return (
       <div className="user-profile_info arrange_unit">
         <h1>{orderedUser.username}</h1>
-        <span>
-          <h4 className="margin-right-4">{'Ordered at:'}</h4>
-          <h3 className="user-location alternate">{Users.getOrderedUserFormat(peopleInEvent)}</h3>
+        <span className="user-location margin-left-4">
+          <strong className="margin-right-4">{'Ordered at:'}</strong>
+          {Users.getOrderedUserFormat(peopleInEvent)}
         </span>
         {this.renderColumnOneBottom()}
       </div>
