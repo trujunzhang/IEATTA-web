@@ -14,7 +14,6 @@ const {
 
 class IEAUserProfileAboutLayout extends Component {
 
-
   renderTitle() {
     return (
       <div className="section-header section-header--complex section-header--no-spacing">
@@ -31,7 +30,6 @@ class IEAUserProfileAboutLayout extends Component {
     const {userProfile} = this.props;
     return (
       <div className="column column-beta ">
-
 
         <div className="user-details_bookmarks js-user-details_bookmarks">
 
