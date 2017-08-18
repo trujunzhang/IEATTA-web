@@ -58,13 +58,11 @@ const {
 } = require('../lib/constants').default
 
 
-function callCloudStatisticMethod(type: string, methodName: string, params: string): ThunkAction {
+function callCloudStatisticMethod(type: string, methodName: string, params: string, objectId: string): ThunkAction {
 
   return (dispatch) => {
     return Parse.Cloud.run(methodName, params, {
       success: (object) => {
-        debugger
-
         const payload = {objectId, object}
         dispatch({type, payload})
       },
@@ -96,7 +94,7 @@ function loadParseObject(type: string, query: Parse.Query, objectId: string, par
 
 export default {
   loadStatisticCloudPage: (userId: string): ThunkAction => {
-    return callCloudStatisticMethod(STATISTIC_CLOUD_MODEL, 'statisticUserState', {userId: userId})
+    return callCloudStatisticMethod(STATISTIC_CLOUD_MODEL, 'statisticUserState', {userId: userId}, userId)
   },
 
   loadUserProfilePage: (objectId: string): ThunkAction => {
