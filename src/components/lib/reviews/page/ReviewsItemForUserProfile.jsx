@@ -69,9 +69,9 @@ class ReviewsItemForUserProfile extends Component {
                 </Link>
               </li>
 
-              <li className="user-location responsive-hidden-small">
-                <b>{review.reviewType}</b>
-              </li>
+              {/*<li className="user-location responsive-hidden-small">*/}
+                {/*<b>{review.reviewType}</b>*/}
+              {/*</li>*/}
 
               <li className="user-location responsive-hidden-small">
                 <b>{reviewObject.thirdRow}</b>

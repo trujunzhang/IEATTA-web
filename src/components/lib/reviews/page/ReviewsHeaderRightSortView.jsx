@@ -20,11 +20,14 @@ export class ReviewsHeaderRightSortView extends Component {
 
     const {params, location} = props;
     const reviewListType = this.props.reviewListType || REVIEW_LIST_TYPE_NORMAL;
+    const currentDropDownMenus = Reviews.getCurrentSortArray(reviewListType);
 
     this.state = {
       isOpening: false,
-
+      currentDropDownMenus: currentDropDownMenus,
+      selectedDropDownMenuIndex: Reviews.getCurrentSelectedDropMenuIndex(currentDropDownMenus)
     }
+
   }
 
   renderDropList() {
@@ -93,7 +96,7 @@ export class ReviewsHeaderRightSortView extends Component {
     return (
       <a onClick={this.onSortPress.bind(this)} id="review-header-sort-button" className="dropdown_toggle-action">
         <span className="dropdown_toggle-text js-dropdown-toggle-text">
-          {"Normal Sort"}
+          {this.state.currentDropDownMenus[this.state.selectedDropDownMenuIndex].title}
         </span>
         <span
           id="icon_14X14"

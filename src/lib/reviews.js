@@ -130,8 +130,11 @@ Reviews.getCurrentSortArray = function (reviewListType) {
       ]
 
   }
+}
 
+Reviews.getCurrentSelectedDropMenuIndex = function (dropMenus) {
 
+  return 0;
 }
 
 export default Reviews;
