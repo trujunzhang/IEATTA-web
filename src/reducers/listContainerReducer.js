@@ -58,6 +58,8 @@ function listContainerReducer(state: State = initialState, action): State {
         results: list
       };
 
+      debugger
+
       const nextState = nextTask;
 
       return nextState

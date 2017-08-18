@@ -58,7 +58,7 @@ class DetailedRestaurant extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms, this.state.photosListTask);
+    const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms.listId, this.state.photosListTask);
 
     this.setState({
       // Detailed object

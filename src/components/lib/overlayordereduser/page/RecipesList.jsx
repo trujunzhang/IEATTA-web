@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 
 const {loadRecipesList} = require('../../../../actions').default
 
-const {byListId} = require('../../../filter/filterPosts')
+const {byListId, getDefaultListTask} = require('../../../filter/filterPosts')
 
 class RecipesList extends Component {
 
@@ -27,13 +27,13 @@ class RecipesList extends Component {
     };
     this.state = {
       terms: terms,
-      listTask: byListId(props.listContainerTasks, terms)
+      listTask: getDefaultListTask(terms),
     }
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      listTask: byListId(nextProps.listContainerTasks, this.state.terms, this.state.listTask)
+      listTask: byListId(nextProps.listContainerTasks, this.state.terms.listId, this.state.listTask)
     })
   }
 

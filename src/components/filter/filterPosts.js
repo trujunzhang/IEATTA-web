@@ -40,26 +40,14 @@ export function getDefaultListTask(terms: Any) {
   }
 }
 
-export function byListId(listContainerTasks: Any, terms: Any, lastTask: Any) {
-  const {listId, limit} = terms;
-
+export function byListId(listContainerTasks: Any, listId, lastTask: Any) {
   const taskObject = convertToObject(listContainerTasks)
   let task = taskObject[listId]
   if (!!task) {
     return task
   }
 
-  if (!!lastTask) return lastTask;
-
-  return {
-    id: listId,
-    ready: false,
-    totalCount: 0,
-    limit: limit,
-    firstPagination: true,
-    pageIndex: 1,
-    results: []
-  }
+  return lastTask;
 }
 
 export function getModelByObjectId(nextProps: Any, forObjectId: string, lastModel: Any) {
@@ -75,8 +63,7 @@ export function getModelByObjectId(nextProps: Any, forObjectId: string, lastMode
   return lastModel;
 }
 
-export function generateMarkers(listContainerTasks: Any, terms: Any, lastModel: Any) {
-  const {listId, limit} = terms;
+export function generateMarkers(listContainerTasks: Any, listId: string) {
   const taskObject = convertToObject(listContainerTasks)
 
   const task = (taskObject[listId] || {})

@@ -5,7 +5,7 @@ import {withRouter} from 'react-router'
 
 const {loadReviewsList} = require('../../../../actions').default
 
-const {byListId} = require('../../../filter/filterPosts')
+const {byListId, getDefaultListTask} = require('../../../filter/filterPosts')
 const {generateTermsForReviewsList} = require('../../../filter/filterRoutes')
 
 const {
@@ -22,36 +22,32 @@ class ReviewsList extends Component {
     const terms = generateTermsForReviewsList(props)
     this.state = {
       terms: terms,
-      listTask: byListId(props.listContainerTasks, terms)
+      listTask: getDefaultListTask(terms),
     }
   }
 
   componentWillReceiveProps(nextProps) {
     const lastSort = this.state.terms.sort_by || '';
-    const terms = generateTermsForReviewsList(nextProps)
-    const newSort = terms.sort_by || '';
-
+    const newTerms = generateTermsForReviewsList(nextProps)
+    const newSort = newTerms.sort_by || '';
 
     this.setState({
-      terms: terms,
-      listTask: byListId(nextProps.listContainerTasks, this.state.terms, this.state.listTask)
+      terms: newTerms,
+      listTask: byListId(nextProps.listContainerTasks, newTerms.listId, this.state.listTask)
     })
 
     if (lastSort !== newSort) {
-      this.loadMore()
+      // this.loadMore(terms, listTask)
     }
   }
 
   componentDidMount() {
-    this.loadMore()
+    const {terms, listTask} = this.state.terms;
+    this.loadMore(terms, listTask)
   }
 
-  loadMore() {
-    const terms = this.state.terms;
-    const nextListTask = this.state.listTask
-    nextListTask['ready'] = false
-    this.setState({listTask: nextListTask})
-    this.props.dispatch(loadReviewsList(nextListTask, terms))
+  loadMore(terms, listTask) {
+    this.props.dispatch(loadReviewsList(listTask, terms))
   }
 
 
