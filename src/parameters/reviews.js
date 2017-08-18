@@ -23,8 +23,22 @@ export default class ReviewsParameters {
 
     if (!!terms.sort_by) {
       const sortTag = Reviews.getSortTag(terms.sort_by)
-      debugger
-      // this.query.equalTo('user', ParseUser.createWithoutData(terms.forObject.id))
+      switch (sortTag) {
+        case REVIEW_SORT_NORMAL:
+          break;
+        case REVIEW_SORT_NEWEST:
+          this.query.descending("updatedAt")
+          break;
+        case REVIEW_SORT_OLDEST:
+          this.query.ascending("updatedAt")
+          break;
+        case REVIEW_SORT_HIGHEST:
+          this.query.descending("rate")
+          break;
+        case REVIEW_SORT_LOWEST:
+          this.query.ascending("rate")
+          break;
+      }
     }
 
     if (!!terms.reviewListType) {
