@@ -21,8 +21,12 @@ const {
   PARSE_RECIPES,
   PARSE_PHOTOS,
   PARSE_REVIEWS,
-  PARSE_PEOPLE_IN_EVENTS
+  PARSE_PEOPLE_IN_EVENTS,
+  REVIEW_LIST_TYPE_NORMAL,
+  REVIEW_LIST_TYPE_USER_PROFILE_ABOUT,
+  REVIEW_LIST_TYPE_USER_PROFILE_REVIEWS,
 } = require('./constants').default
+
 
 const Reviews = {
   config: {
@@ -103,6 +107,30 @@ Reviews.getThumbnailUrlByReviewType = function (review) {
     case PARSE_RECIPES:
       return Photos.getListThumbnailUrl(review.recipe);
   }
+
+}
+
+Reviews.getCurrentSortArray = function (reviewListType) {
+  switch (reviewListType) {
+    case REVIEW_LIST_TYPE_NORMAL:
+      return [
+        {title: 'Normal Sort', query: null},
+        {title: 'Newest First', query: ''},
+        {title: 'Oldest First', query: ''},
+        {title: 'Highest Rated', query: ''},
+        {title: 'Lowest Rated', query: ''},
+      ]
+    case REVIEW_LIST_TYPE_USER_PROFILE_ABOUT:
+      return [
+        {title: 'Normal Sort', query: null},
+        {title: 'Newest First', query: ''},
+        {title: 'Oldest First', query: ''},
+        {title: 'Highest Rated', query: ''},
+        {title: 'Lowest Rated', query: ''},
+      ]
+
+  }
+
 
 }
 

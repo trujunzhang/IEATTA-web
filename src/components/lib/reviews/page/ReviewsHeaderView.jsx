@@ -13,9 +13,9 @@ class ReviewsHeaderView extends Component {
 
   renderTitle() {
     const {reviewTitle} = this.props;
-    const forUserProfile = this.props.forUserProfile || REVIEW_LIST_TYPE_NORMAL;
+    const reviewListType = this.props.reviewListType || REVIEW_LIST_TYPE_NORMAL;
 
-    switch (forUserProfile) {
+    switch (reviewListType) {
       case REVIEW_LIST_TYPE_NORMAL:
         return (<h2>Recommended Reviews <b>{'for ' + reviewTitle}</b></h2>)
       default:
@@ -25,9 +25,9 @@ class ReviewsHeaderView extends Component {
   }
 
   renderContent() {
-    const forUserProfile = this.props.forUserProfile || REVIEW_LIST_TYPE_NORMAL;
+    const reviewListType = this.props.reviewListType || REVIEW_LIST_TYPE_NORMAL;
 
-    switch (forUserProfile) {
+    switch (reviewListType) {
       case REVIEW_LIST_TYPE_NORMAL:
         return (
           <div className="arrange arrange--middle u-space-b1">

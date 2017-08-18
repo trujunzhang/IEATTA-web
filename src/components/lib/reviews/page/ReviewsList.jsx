@@ -47,9 +47,9 @@ class ReviewsList extends Component {
 
 
   renderRowItem(review, index) {
-    const forUserProfile = this.props.forUserProfile || REVIEW_LIST_TYPE_NORMAL;
+    const reviewListType = this.props.reviewListType || REVIEW_LIST_TYPE_NORMAL;
 
-    switch (forUserProfile) {
+    switch (reviewListType) {
       case REVIEW_LIST_TYPE_NORMAL:
         return (<Telescope.components.ReviewsItem key={review.id} review={review}/>)
       case REVIEW_LIST_TYPE_USER_PROFILE_ABOUT:

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Telescope from '../../index'
-import Posts from '../../../../lib/posts'
+import Reviews from '../../../../lib/reviews'
 
 import onClickOutside from 'react-onclickoutside'
 
@@ -19,10 +19,11 @@ export class ReviewsHeaderRightSortView extends Component {
     super(props)
 
     const {params, location} = props;
-    const forUserProfile = this.props.forUserProfile || REVIEW_LIST_TYPE_NORMAL;
+    const reviewListType = this.props.reviewListType || REVIEW_LIST_TYPE_NORMAL;
 
     this.state = {
-      isOpening: false
+      isOpening: false,
+
     }
   }
 
@@ -64,7 +65,6 @@ export class ReviewsHeaderRightSortView extends Component {
 
             </li>
             <li className="dropdown_item" role="presentation">
-
 
               <a className="tab-link js-dropdown-link tab-link--dropdown js-tab-link--dropdown">
                 <span className="tab-link_label" title="Lowest Rated">Lowest Rated</span>
