@@ -136,7 +136,7 @@ class UserProfileAboutRightPanel extends Component {
 
           {userStateRows.map((row, index) => {
             return (
-              <li>
+              <li key={index}>
                 <span id="icon_18X18" className="icon icon--18-light-bulb icon--size-18 u-space-r1">
                    <svg className="icon_svg">
                         <path d={row.svg}/>
