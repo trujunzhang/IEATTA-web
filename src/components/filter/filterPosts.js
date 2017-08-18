@@ -51,11 +51,11 @@ export function byListId(listContainerTasks: Any, listId, lastTask: Any) {
 }
 
 export function getModelByObjectId(nextProps: Any, forObjectId: string, lastModel: Any) {
-  const {detailedModelsOverlay} = nextProps,
-    {currentModel} = detailedModelsOverlay;
+  const {detailedModelsOverlay} = nextProps;
+  const payLoad = detailedModelsOverlay["currentModel"];
 
-  if (!!currentModel) {
-    const {objectId, model} = currentModel;
+  if (!!payLoad) {
+    const {objectId, model} = payLoad;
     if (!!objectId && objectId === forObjectId) {
       return model;
     }
