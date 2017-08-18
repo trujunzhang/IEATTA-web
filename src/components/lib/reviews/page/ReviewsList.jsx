@@ -47,9 +47,7 @@ class ReviewsList extends Component {
 
 
   renderRowItem(review, index) {
-    const {
-      forUserProfile = REVIEW_LIST_TYPE_NORMAL
-    } = this.props;
+    const forUserProfile = this.props.forUserProfile || REVIEW_LIST_TYPE_NORMAL;
 
     switch (forUserProfile) {
       case REVIEW_LIST_TYPE_NORMAL:
