@@ -6,115 +6,64 @@ import Events from '../../../../lib/events'
 
 class UserProfileAboutRightPanel extends Component {
 
+  renderRating() {
+    const rating = {
+      5: 232,
+      4: 244,
+      3: 122,
+      2: 80,
+      1: 10
+    }
+
+    const ratingRow = [
+      {tag: 5, width: '95%'},
+      {tag: 4, width: '69%'},
+      {tag: 3, width: '42%'},
+      {tag: 2, width: '20%'},
+      {tag: 1, width: '10%'},
+    ]
+
+    return (
+      <div className="ysection">
+        <h4>Rating Distribution</h4>
+        <table className="histogram histogram--alternating">
+          <tbody>
+          {ratingRow.map((row, index) => {
+            return (
+              <tr className={`histogram_row histogram_row--${index + 1}`}>
+                <th scope="row" className="histogram_label nowrap">
+                  {`${row.tag} stars`}
+                </th>
+                <td>
+                  <table>
+                    <tbody>
+                    <tr>
+                      <td style={{width: row.width}}>
+                        <div className="histogram_bar"/>
+                      </td>
+                      <td className="histogram_count">{rating[row.tag]}</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            )
+          })}
+
+          </tbody>
+        </table>
+      </div>
+    )
+  }
+
   render() {
+    const {currentUser} = this.props;
+
     return (
       <div className="user-details-overview_sidebar">
 
-        <h3>About Judy L.</h3>
-
-        <div className="ysection">
-          <h4>Rating Distribution</h4>
-          <table className="histogram histogram--alternating">
-
-            <tbody>
-            <tr className="histogram_row histogram_row--1">
-              <th scope="row" className="histogram_label nowrap">
-                5 stars
-              </th>
-              <td>
-                <table>
-                  <tbody>
-                  <tr>
-                    <td style={{width: '95%'}}>
-                      <div className="histogram_bar"></div>
-                    </td>
-                    <td className="histogram_count">232</td>
-                  </tr>
-                  </tbody>
-                </table>
-              </td>
-            </tr>
-
-            <tr className="histogram_row histogram_row--2">
-              <th scope="row" className="histogram_label nowrap">
-                4 stars
-              </th>
-              <td>
-                <table>
-                  <tbody>
-                  <tr>
-                    <td style={{width: '100%'}}>
-                      <div className="histogram_bar"></div>
-                    </td>
-                    <td className="histogram_count">244</td>
-                  </tr>
-                  </tbody>
-                </table>
-              </td>
-            </tr>
-
-            <tr className="histogram_row histogram_row--3">
-              <th scope="row" className="histogram_label nowrap">
-                3 stars
-              </th>
-              <td>
-                <table>
-                  <tbody>
-                  <tr>
-                    <td style={{width: '42%'}}>
-                      <div className="histogram_bar"></div>
-                    </td>
-                    <td className="histogram_count">102</td>
-                  </tr>
-                  </tbody>
-                </table>
-              </td>
-            </tr>
-
-            <tr className="histogram_row histogram_row--4">
-              <th scope="row" className="histogram_label nowrap">
-                2 stars
-              </th>
-              <td>
-                <table>
-                  <tbody>
-                  <tr>
-                    <td style={{width: '20%'}}>
-                      <div className="histogram_bar"></div>
-                    </td>
-                    <td className="histogram_count">49</td>
-                  </tr>
-                  </tbody>
-                </table>
-              </td>
-            </tr>
-
-            <tr className="histogram_row histogram_row--5">
-              <th scope="row" className="histogram_label nowrap">
-                1 star
-              </th>
-              <td>
-                <table>
-                  <tbody>
-                  <tr>
-                    <td style={{width: '10%'}}>
-                      <div className="histogram_bar"></div>
-                    </td>
-                    <td className="histogram_count">24</td>
-                  </tr>
-                  </tbody>
-                </table>
-              </td>
-            </tr>
-            </tbody>
-          </table>
-
-          <a className="js-more-graphs-link">
-            View more graphs
-          </a>
-
-
-        </div>
+        <h3>{`About ${currentUser.username}`}</h3>
+        {this.renderRating()}
 
         <div className="ysection">
           <h4>Review Votes</h4>
@@ -211,7 +160,6 @@ class UserProfileAboutRightPanel extends Component {
 
         </div>
 
-
         <div className="ysection">
           <ul className="ylist">
             <li>
@@ -256,12 +204,6 @@ class UserProfileAboutRightPanel extends Component {
           </ul>
 
         </div>
-
-        <p className="vanity-url">
-          <a className="vanity-url_link" href="https://judyclee.yelp.com">
-            https://judyclee.yelp.com
-          </a>
-        </p>
 
       </div>
     )
