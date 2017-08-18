@@ -31,49 +31,26 @@ export class ReviewsHeaderRightSortView extends Component {
   }
 
   renderDropList() {
-    const {isOpening} = this.state;
-    const dropMenuClass =
-      "dropdown_menu js-dropdown-menu " + (isOpening ? "is-visible" : "");
+    const {isOpening, currentDropDownMenus, selectedDropDownMenuIndex} = this.state;
+    const dropMenuClass = "dropdown_menu js-dropdown-menu " + (isOpening ? "is-visible" : "");
 
     return (
       <div className={dropMenuClass}>
         <div className="dropdown_menu-inner">
           <ul className="dropdown_menu-group">
-            <li className="dropdown_item">
-              <a className="tab-link js-dropdown-link tab-link--dropdown js-tab-link--dropdown">
-                <span className="tab-link_label" title="Yelp Sort">Normal Sort</span>
-              </a>
 
-            </li>
-            <li className="dropdown_item" role="presentation">
+            {currentDropDownMenus.map((menu, index) => {
+              const menuClass = "tab-link js-dropdown-link tab-link--dropdown js-tab-link--dropdown" +
+                ((selectedDropDownMenuIndex === index) ? " is-selected" : '');
+              return (
+                <li key={index} className="dropdown_item">
+                  <a className={menuClass} id="review-sort-menu-item">
+                    <span className="tab-link_label" title={menu.title}>{menu.title}</span>
+                  </a>
 
-              <a className="tab-link js-dropdown-link tab-link--dropdown js-tab-link--dropdown is-selected">
-                <span className="tab-link_label" title="Newest First">Newest First</span>
-              </a>
-
-            </li>
-            <li className="dropdown_item" role="presentation">
-
-
-              <a className="tab-link js-dropdown-link tab-link--dropdown js-tab-link--dropdown">
-                <span className="tab-link_label" title="Oldest First">Oldest First</span>
-              </a>
-
-            </li>
-            <li className="dropdown_item" role="presentation">
-
-              <a className="tab-link js-dropdown-link tab-link--dropdown js-tab-link--dropdown">
-                <span className="tab-link_label" title="Highest Rated">Highest Rated</span>
-              </a>
-
-            </li>
-            <li className="dropdown_item" role="presentation">
-
-              <a className="tab-link js-dropdown-link tab-link--dropdown js-tab-link--dropdown">
-                <span className="tab-link_label" title="Lowest Rated">Lowest Rated</span>
-              </a>
-
-            </li>
+                </li>
+              )
+            })}
 
           </ul>
         </div>

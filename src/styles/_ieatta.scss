@@ -278,3 +278,10 @@ ul.star-selector_stars {
     padding: 35px 0;
   }
 }
+
+.tab-link--dropdown:hover, .tab-link--dropdown:focus, .tab-link--dropdown.is-selected {
+  background-color: #666;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
