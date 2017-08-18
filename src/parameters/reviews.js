@@ -13,7 +13,11 @@ export default class ReviewsParameters {
   }
 
   addParameters(terms: Any) {
-    debugger
+
+    if (!!terms.sort_by) {
+      debugger
+      // this.query.equalTo('user', ParseUser.createWithoutData(terms.forObject.id))
+    }
 
     if (!!terms.reviewListType) {
       this.query.equalTo('user', ParseUser.createWithoutData(terms.forObject.id))
