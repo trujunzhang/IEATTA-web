@@ -28,6 +28,10 @@ class ReviewsList extends Component {
 
   componentWillReceiveProps(nextProps) {
     const terms = generateTermsForReviewsList(nextProps)
+    // const query = terms.
+
+    debugger
+
     this.setState({
       terms: terms,
       listTask: byListId(nextProps.listContainerTasks, this.state.terms, this.state.listTask)

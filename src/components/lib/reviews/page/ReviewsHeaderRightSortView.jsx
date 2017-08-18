@@ -48,8 +48,13 @@ export class ReviewsHeaderRightSortView extends Component {
               return (
                 <li key={index} className="dropdown_item">
                   <Link className={menuClass}
-                        to={location => ({...location, query: Object.assign(location.query, {sort_by: menu.query})})}
                         onClick={() => {
+
+                          this.props.router.push({
+                            pathname: this.props.location.pathname,
+                            query: Object.assign(this.props.location.query, {sort_by: menu.query})
+                          })
+
                           this.setState({
                             isOpening: false,
                             selectedDropDownMenuIndex: index
@@ -64,7 +69,8 @@ export class ReviewsHeaderRightSortView extends Component {
 
           </ul>
         </div>
-      </div>
+      </
+        div>
 
     )
   }
@@ -82,16 +88,16 @@ export class ReviewsHeaderRightSortView extends Component {
     /* DropDown prefix is so IMPORTANT */
     return (
       <a onClick={this.onSortPress.bind(this)} id="review-header-sort-button" className="dropdown_toggle-action">
-        <span className="dropdown_toggle-text js-dropdown-toggle-text">
-          {this.state.currentDropDownMenus[this.state.selectedDropDownMenuIndex].title}
-        </span>
+            <span className="dropdown_toggle-text js-dropdown-toggle-text">
+            {this.state.currentDropDownMenus[this.state.selectedDropDownMenuIndex].title}
+            </span>
         <span
           id="icon_14X14"
           className="icon icon--14-triangle-down icon--size-14 icon--currentColor u-triangle-direction-down dropdown_arrow">
-                  <svg className="icon_svg">
-                       <path d="M7 9L3.5 5h7L7 9z"/>
-                  </svg>
-               </span>
+            <svg className="icon_svg">
+            <path d="M7 9L3.5 5h7L7 9z"/>
+            </svg>
+            </span>
       </a>
     )
   }
@@ -129,5 +135,4 @@ export class ReviewsHeaderRightSortView extends Component {
   }
 }
 
-
-export default onClickOutside(ReviewsHeaderRightSortView);
+export default withRouter(onClickOutside(ReviewsHeaderRightSortView));
