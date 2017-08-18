@@ -39,10 +39,11 @@ class ReviewsList extends Component {
 
     const newSort = newTerms.sort_by || '';
     if (lastSort !== newSort) { // Reset all query parameters container 'pageIndex'.
+      const resetListTask = getDefaultListTask(newTerms);
       this.setState({
-        listTask: getDefaultListTask(newTerms),
+        listTask: resetListTask
       })
-      this.loadMore(newTerms, newListTask)
+      this.loadMore(newTerms, resetListTask)
     }
   }
 
