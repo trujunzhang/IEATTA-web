@@ -71,7 +71,6 @@ class UsersSingle extends Component {
       switch (pageForm) {
         case LOGGED_USER_MENU_ABOUT:
           if (!!this.state.userStatistic) {
-            debugger
             return (<Telescope.components.IEAUserProfileAboutLayout{...this.state} {...this.props}/>)
           }
           break;

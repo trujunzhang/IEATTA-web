@@ -50,7 +50,6 @@ function detailedModelsOverlay(state: State = initialState, action: Action): Sta
   }
 
   if (action.type === STATISTIC_CLOUD_MODEL) {
-    debugger
     const nextState = Object.assign({}, state, {
       statistic: action.payload
     })
