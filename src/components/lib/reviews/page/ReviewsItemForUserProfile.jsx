@@ -3,7 +3,33 @@ import React, {Component} from 'react'
 import Photos from '../../../../lib/photos'
 import Reviews from '../../../../lib/reviews'
 
+import {Link} from 'react-router'
+
 class ReviewsItemForUserProfile extends Component {
+
+  renderBreadCrumbs(breadcrumbs) {
+    return (
+      <ul className="breadcrumbs">
+        <li>
+          <a>
+            Trujun Z.
+          </a>
+
+        </li>
+        <li>
+                                <span
+                                  id="icon_24X24"
+                                  className="icon icon--24-chevron-right icon--size-24 icon--neutral-gray u-space-r-half">
+    <svg className="icon_svg">
+    <path d="M9.525 5.636L8.11 7.05 13.06 12l-4.95 4.95 1.415 1.414L15.89 12 9.524 5.636z"/>
+    </svg>
+</span>Profile photos
+
+
+        </li>
+      </ul>
+    )
+  }
 
   renderTop() {
     const {review} = this.props;
@@ -36,15 +62,21 @@ class ReviewsItemForUserProfile extends Component {
           <div className="media-story">
             <ul className="user-passport-info">
               <li className="user-name">
-                <a className="user-display-name js-analytics-click"
-                   data-hovercard-id="YCUg5LPpRgun-AcOFMMS_w"
-                   data-analytics-label="about_me" id="dropdown_user-name">
+                <Link className="user-display-name js-analytics-click"
+                      to={reviewObject.detailUrl}
+                      id="dropdown_user-name">
                   {reviewObject.title}
-                </a>
+                </Link>
               </li>
+
               <li className="user-location responsive-hidden-small">
-                <b>Fremont, CA</b>
+                <b>{review.reviewType}</b>
               </li>
+
+              <li className="user-location responsive-hidden-small">
+                <b>{reviewObject.thirdRow}</b>
+              </li>
+
             </ul>
 
           </div>
@@ -56,7 +88,6 @@ class ReviewsItemForUserProfile extends Component {
 
     )
   }
-
 
   renderStory() {
     const {review} = this.props,

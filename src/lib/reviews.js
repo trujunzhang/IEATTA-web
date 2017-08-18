@@ -7,6 +7,7 @@ const Photos = require('./photos').default
 import {
   getRestaurantLink,
   getEventLink,
+  getOrderedRecipeLink,
 } from './link'
 
 /**
@@ -53,7 +54,8 @@ Reviews.getReviewObjectByType = function (review) {
       return {
         avatorUrl: Photos.getListThumbnailUrl(review.restaurant),
         title: review.restaurant.displayName,
-        array: [
+        detailUrl: getRestaurantLink(review.restaurant),
+        breadcrumbs: [
           {
             title: review.restaurant.displayName,
             url: getRestaurantLink(review.restaurant)
@@ -65,7 +67,8 @@ Reviews.getReviewObjectByType = function (review) {
       return {
         avatorUrl: Photos.getListThumbnailUrl(review.event.restaurant),
         title: review.event.displayName,
-        array: [
+        detailUrl: getEventLink(review.event),
+        breadcrumbs: [
           {
             title: review.event.restaurant.displayName,
             url: getRestaurantLink(review.event.restaurant)
@@ -81,6 +84,9 @@ Reviews.getReviewObjectByType = function (review) {
       return {
         avatorUrl: Photos.getListThumbnailUrl(review.recipe),
         title: review.recipe.displayName,
+        detailUrl: getOrderedRecipeLink(review.recipe),
+        breadcrumbs: [],
+        thirdRow: `$ ${review.recipe.price}`
       }
   }
 
