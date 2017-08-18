@@ -21,7 +21,6 @@ history.listen((location) => {
     window.scrollTo(0, 0)
   }
 
-
   // debugger
   // analyticsService.track(location.pathname)
 })
