@@ -6,6 +6,12 @@ import {Link} from 'react-router'
 
 import {withRouter} from 'react-router'
 
+const {
+  REVIEW_LIST_TYPE_NORMAL,
+  REVIEW_LIST_TYPE_USER_PROFILE_ABOUT,
+  REVIEW_LIST_TYPE_USER_PROFILE_REVIEWS,
+} = require('../../../lib/constants').default
+
 class IEAUserProfileAboutLayout extends Component {
 
 
@@ -32,7 +38,7 @@ class IEAUserProfileAboutLayout extends Component {
           <div className="user-details-bookmarks_content js-user-details-bookmarks_content">
 
             <Telescope.components.ReviewsList forObject={this.props.userProfile}
-                                              forUserProfile="userAbout"
+                                              forUserProfile={REVIEW_LIST_TYPE_USER_PROFILE_ABOUT}
                                               reviewTitle={userProfile.username}/>
 
             {/*{this.renderTitle()}*/}

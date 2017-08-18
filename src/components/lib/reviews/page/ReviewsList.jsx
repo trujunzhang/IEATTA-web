@@ -5,6 +5,12 @@ const {loadReviewsList} = require('../../../../actions').default
 
 const {byListId} = require('../../../filter/filterPosts')
 
+const {
+  REVIEW_LIST_TYPE_NORMAL,
+  REVIEW_LIST_TYPE_USER_PROFILE_ABOUT,
+  REVIEW_LIST_TYPE_USER_PROFILE_REVIEWS,
+} = require('../../../lib/constants').default
+
 class ReviewsList extends Component {
 
   constructor(props) {
@@ -41,11 +47,16 @@ class ReviewsList extends Component {
 
 
   renderRowItem(review, index) {
-    const {forUserProfile} = this.props;
-    if (!!forUserProfile) {
-      return (<Telescope.components.ReviewsItemForUserProfile key={review.id} review={review}/>)
+    const {
+      forUserProfile = REVIEW_LIST_TYPE_NORMAL
+    } = this.props;
+
+    switch (forUserProfile) {
+      case REVIEW_LIST_TYPE_NORMAL:
+        return (<Telescope.components.ReviewsItem key={review.id} review={review}/>)
+      case REVIEW_LIST_TYPE_USER_PROFILE_ABOUT:
+        return (<Telescope.components.ReviewsItemForUserProfile key={review.id} review={review}/>)
     }
-    return (<Telescope.components.ReviewsItem key={review.id} review={review}/>)
   }
 
   renderRows() {
