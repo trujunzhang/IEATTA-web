@@ -1,25 +1,32 @@
 import React, {Component} from 'react';
 import Telescope from '../../index'
 
-import Posts from '../../../../lib/posts'
-
 import {withRouter} from 'react-router'
+
+const {
+  REVIEW_LIST_TYPE_NORMAL,
+  REVIEW_LIST_TYPE_USER_PROFILE_ABOUT,
+  REVIEW_LIST_TYPE_USER_PROFILE_REVIEWS,
+} = require('../../../../lib/constants').default
 
 class ReviewsHeaderView extends Component {
 
   renderTitle() {
-    const {
-      reviewTitle = 'wanghao'
-    } = this.props;
+    const {reviewTitle} = this.props;
+    const forUserProfile = this.props.forUserProfile || REVIEW_LIST_TYPE_NORMAL;
 
-    return (
-      <h2>Recommended Reviews <b>{'for ' + reviewTitle}</b></h2>
-    )
+    switch (forUserProfile) {
+      case REVIEW_LIST_TYPE_NORMAL:
+        return (<h2>Recommended Reviews <b>{'for ' + reviewTitle}</b></h2>)
+      default:
+        return (<h2>Reviews</h2>)
+    }
+
   }
 
   render() {
     return (
-      <div className="feed_header" >
+      <div className="feed_header">
         <div className="section-header section-header--no-spacing">
 
           {this.renderTitle()}

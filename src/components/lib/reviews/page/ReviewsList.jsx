@@ -55,6 +55,7 @@ class ReviewsList extends Component {
       case REVIEW_LIST_TYPE_USER_PROFILE_ABOUT:
         return (<Telescope.components.ReviewsItemForUserProfile key={review.id} review={review}/>)
     }
+
   }
 
   renderRows() {
