@@ -28,16 +28,18 @@ class ReviewsList extends Component {
 
   componentWillReceiveProps(nextProps) {
     const lastSort = this.state.terms.sort_by || '';
+
     const newTerms = generateTermsForReviewsList(nextProps)
-    const newSort = newTerms.sort_by || '';
+    const newListTask = byListId(nextProps.listContainerTasks, newTerms.listId, this.state.listTask);
 
     this.setState({
       terms: newTerms,
-      listTask: byListId(nextProps.listContainerTasks, newTerms.listId, this.state.listTask)
+      listTask: newListTask
     })
 
+    const newSort = newTerms.sort_by || '';
     if (lastSort !== newSort) {
-      // this.loadMore(terms, listTask)
+      this.loadMore(newTerms, newListTask)
     }
   }
 
