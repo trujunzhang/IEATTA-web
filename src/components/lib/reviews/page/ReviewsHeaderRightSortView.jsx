@@ -71,8 +71,7 @@ export class ReviewsHeaderRightSortView extends Component {
 
           </ul>
         </div>
-      </
-        div>
+      </div>
 
     )
   }
@@ -90,7 +89,9 @@ export class ReviewsHeaderRightSortView extends Component {
     /* DropDown prefix is so IMPORTANT */
     return (
       <a onClick={this.onSortPress.bind(this)} id="review-header-sort-button" className="dropdown_toggle-action">
-            <span className="dropdown_toggle-text js-dropdown-toggle-text">
+            <span
+              id="review-sort-toggle-text"
+              className="dropdown_toggle-text js-dropdown-toggle-text">
             {this.state.currentDropDownMenus[this.state.selectedDropDownMenuIndex].title}
             </span>
         <span
