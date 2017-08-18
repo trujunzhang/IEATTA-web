@@ -6,6 +6,12 @@ import onClickOutside from 'react-onclickoutside'
 
 import {withRouter} from 'react-router'
 
+const {
+  REVIEW_LIST_TYPE_NORMAL,
+  REVIEW_LIST_TYPE_USER_PROFILE_ABOUT,
+  REVIEW_LIST_TYPE_USER_PROFILE_REVIEWS,
+} = require('../../../../lib/constants').default
+
 export class ReviewsHeaderRightSortView extends Component {
 
 
@@ -13,6 +19,7 @@ export class ReviewsHeaderRightSortView extends Component {
     super(props)
 
     const {params, location} = props;
+    const forUserProfile = this.props.forUserProfile || REVIEW_LIST_TYPE_NORMAL;
 
     this.state = {
       isOpening: false
@@ -22,28 +29,21 @@ export class ReviewsHeaderRightSortView extends Component {
   renderDropList() {
     const {isOpening} = this.state;
     const dropMenuClass =
-      "dropdown_menu js-dropdown-menu " +
-      (isOpening ? "is-visible" : "");
+      "dropdown_menu js-dropdown-menu " + (isOpening ? "is-visible" : "");
 
     return (
       <div className={dropMenuClass}>
         <div className="dropdown_menu-inner">
-          <ul className="dropdown_menu-group" role="menu" aria-hidden="false">
-            <li className="dropdown_item" role="presentation">
-              <a className="tab-link js-dropdown-link tab-link--dropdown js-tab-link--dropdown is-selected"
-                 data-review-feed-label="Yelp Sort" data-sort="relevance"
-                 href="https://www.yelp.com/biz/chef-cho-fremont?sort_by=relevance_desc&amp;start=0">
-                <span className="tab-link_label" title="Yelp Sort">Yelp Sort</span>
+          <ul className="dropdown_menu-group">
+            <li className="dropdown_item">
+              <a className="tab-link js-dropdown-link tab-link--dropdown js-tab-link--dropdown">
+                <span className="tab-link_label" title="Yelp Sort">Normal Sort</span>
               </a>
 
             </li>
             <li className="dropdown_item" role="presentation">
 
-
-              <a className="tab-link js-dropdown-link tab-link--dropdown js-tab-link--dropdown"
-                 data-order_by="desc"
-                 data-review-feed-label="Newest First" data-sort="date"
-                 href="https://www.yelp.com/biz/chef-cho-fremont?sort_by=date_desc&amp;start=0">
+              <a className="tab-link js-dropdown-link tab-link--dropdown js-tab-link--dropdown is-selected">
                 <span className="tab-link_label" title="Newest First">Newest First</span>
               </a>
 
@@ -51,21 +51,14 @@ export class ReviewsHeaderRightSortView extends Component {
             <li className="dropdown_item" role="presentation">
 
 
-              <a className="tab-link js-dropdown-link tab-link--dropdown js-tab-link--dropdown"
-                 data-order_by="asc"
-                 data-review-feed-label="Oldest First" data-sort="date"
-                 href="https://www.yelp.com/biz/chef-cho-fremont?sort_by=date_asc&amp;start=0">
+              <a className="tab-link js-dropdown-link tab-link--dropdown js-tab-link--dropdown">
                 <span className="tab-link_label" title="Oldest First">Oldest First</span>
               </a>
 
             </li>
             <li className="dropdown_item" role="presentation">
 
-
-              <a className="tab-link js-dropdown-link tab-link--dropdown js-tab-link--dropdown"
-                 data-order_by="desc"
-                 data-review-feed-label="Highest Rated" data-sort="rating"
-                 href="https://www.yelp.com/biz/chef-cho-fremont?sort_by=rating_desc&amp;start=0">
+              <a className="tab-link js-dropdown-link tab-link--dropdown js-tab-link--dropdown">
                 <span className="tab-link_label" title="Highest Rated">Highest Rated</span>
               </a>
 
@@ -73,24 +66,12 @@ export class ReviewsHeaderRightSortView extends Component {
             <li className="dropdown_item" role="presentation">
 
 
-              <a className="tab-link js-dropdown-link tab-link--dropdown js-tab-link--dropdown"
-                 data-order_by="asc"
-                 data-review-feed-label="Lowest Rated" data-sort="rating"
-                 href="https://www.yelp.com/biz/chef-cho-fremont?sort_by=rating_asc&amp;start=0">
+              <a className="tab-link js-dropdown-link tab-link--dropdown js-tab-link--dropdown">
                 <span className="tab-link_label" title="Lowest Rated">Lowest Rated</span>
               </a>
 
             </li>
-            <li className="dropdown_item" role="presentation">
 
-
-              <a className="tab-link js-dropdown-link tab-link--dropdown js-tab-link--dropdown"
-                 data-review-feed-label="Elites" data-sort="elites"
-                 href="https://www.yelp.com/biz/chef-cho-fremont?sort_by=elites_desc&amp;start=0">
-                <span className="tab-link_label" title="Elites">Elites</span>
-              </a>
-
-            </li>
           </ul>
         </div>
       </div>
@@ -110,10 +91,9 @@ export class ReviewsHeaderRightSortView extends Component {
   renderSortButton() {
     /* DropDown prefix is so IMPORTANT */
     return (
-      <a onClick={this.onSortPress.bind(this)}
-         id="review-header-sort-button" className="dropdown_toggle-action">
+      <a onClick={this.onSortPress.bind(this)} id="review-header-sort-button" className="dropdown_toggle-action">
         <span className="dropdown_toggle-text js-dropdown-toggle-text">
-          {"Yelp Sort"}
+          {"Normal Sort"}
         </span>
         <span
           id="icon_14X14"

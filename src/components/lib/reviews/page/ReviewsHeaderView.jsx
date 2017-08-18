@@ -24,7 +24,29 @@ class ReviewsHeaderView extends Component {
 
   }
 
+  renderContent() {
+    const forUserProfile = this.props.forUserProfile || REVIEW_LIST_TYPE_NORMAL;
+
+    switch (forUserProfile) {
+      case REVIEW_LIST_TYPE_NORMAL:
+        return (
+          <div className="arrange arrange--middle u-space-b1">
+
+            <Telescope.components.ReviewsHeaderSearchBar/>
+            <Telescope.components.ReviewsHeaderRightSortView/>
+
+          </div>
+        )
+      case REVIEW_LIST_TYPE_USER_PROFILE_ABOUT:
+        return (
+          <Telescope.components.ReviewsHeaderRightSortView/>
+        )
+    }
+
+  }
+
   render() {
+
     return (
       <div className="feed_header">
         <div className="section-header section-header--no-spacing">
@@ -34,13 +56,7 @@ class ReviewsHeaderView extends Component {
           <div className="feed_filters">
 
             <div className="section-header_block u-space-0">
-
-              <div className="arrange arrange--middle u-space-b1">
-
-                <Telescope.components.ReviewsHeaderSearchBar/>
-                <Telescope.components.ReviewsHeaderRightSortView/>
-
-              </div>
+              {this.renderContent()}
             </div>
 
           </div>

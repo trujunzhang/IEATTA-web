@@ -16,7 +16,7 @@ class UserProfileLeftPanel extends Component {
           <div className="titled-nav js-titled-nav">
 
             <input id="titled-nav-909e7717-8ad1-4e9c-ac9c-011d99aeb9f2" className="titled-nav-dropdown_handler"
-                   type="checkbox" role="presentation"/>
+                   type="checkbox"/>
 
             <div className="titled-nav-dropdown hidden-non-responsive-block responsive-hidden-large">
               <label className="titled-nav-dropdown_trigger">
