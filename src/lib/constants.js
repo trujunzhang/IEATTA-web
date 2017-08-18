@@ -1,6 +1,11 @@
 import keyMirror from 'key-mirror'
 
 export default keyMirror({
+  // Review List Type
+  REVIEW_LIST_TYPE_NORMAL: null,
+  REVIEW_LIST_TYPE_USER_PROFILE_ABOUT: null,
+  REVIEW_LIST_TYPE_USER_PROFILE_REVIEWS: null,
+
   // LOGGED user menus
   LOGGED_USER_MENU_ABOUT: null,
   LOGGED_USER_EDIT_FORM: null,
