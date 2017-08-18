@@ -14,7 +14,13 @@ const store = createStore(window.__INITIAL_STATE__)
 const history = syncHistoryWithStore(browserHistory, store)
 
 history.listen((location) => {
-  window.scrollTo(0, 0)
+
+  const query = location.query;
+  if (!!query.sort_by) {
+  } else {
+    window.scrollTo(0, 0)
+  }
+
 
   // debugger
   // analyticsService.track(location.pathname)
