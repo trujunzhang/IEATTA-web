@@ -69,8 +69,7 @@ class UserProfileSingleHeader extends Component {
 
           <li>
 
-            <a className="arrange arrange--middle add-friend"
-               rel="">
+            <a className="arrange arrange--middle add-friend">
               <div className="action-link_icon arrange_unit">
             <span
               id="icon_18X18"
@@ -97,9 +96,7 @@ class UserProfileSingleHeader extends Component {
           <li>
 
 
-            <a className="arrange arrange--middle send-compliment"
-               href="/thanx?previous_url=/user_details?userid=JffflxAtMCm_GQf5OrImig&amp;user_id=JffflxAtMCm_GQf5OrImig"
-               rel="">
+            <a className="arrange arrange--middle send-compliment">
               <div className="action-link_icon arrange_unit">
             <span
               id="icon_18X18"
@@ -120,9 +117,7 @@ class UserProfileSingleHeader extends Component {
           <li>
 
 
-            <a className="arrange arrange--middle send-pm"
-               href="/mail?action_send_form=1&amp;dst=JffflxAtMCm_GQf5OrImig&amp;return_url=/user_details?userid=JffflxAtMCm_GQf5OrImig"
-               rel="Sahithi P.">
+            <a className="arrange arrange--middle send-pm">
               <div className="action-link_icon arrange_unit">
             <span
               id="icon_18X18"
