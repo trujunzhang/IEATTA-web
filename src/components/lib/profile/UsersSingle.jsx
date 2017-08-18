@@ -44,7 +44,7 @@ class UsersSingle extends Component {
     this.setState({
       pageForm: getPageFormTypeForUserProfile(nextProps),
       userProfile: getModelByObjectId(nextProps, this.state.uid, this.state.userProfile),
-      userStatistic: getModelByObjectId(nextProps, this.state.uid, this.state.userStatistic),
+      userStatistic: getModelByObjectId(nextProps, this.state.uid, this.state.userStatistic, 'statistic'),
     })
 
     const newUid = getUserQueryId(nextProps);
@@ -70,7 +70,11 @@ class UsersSingle extends Component {
     if (!!userProfile) {
       switch (pageForm) {
         case LOGGED_USER_MENU_ABOUT:
-          return (<Telescope.components.IEAUserProfileAboutLayout{...this.state} {...this.props}/>)
+          if (!!this.state.userStatistic) {
+            debugger
+            return (<Telescope.components.IEAUserProfileAboutLayout{...this.state} {...this.props}/>)
+          }
+          break;
         case LOGGED_USER_EDIT_FORM:
           return (<Telescope.components.IEAEditUserLayout {...this.state} {...this.props}/>)
       }

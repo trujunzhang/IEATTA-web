@@ -50,9 +50,11 @@ export function byListId(listContainerTasks: Any, listId, lastTask: Any) {
   return lastTask;
 }
 
-export function getModelByObjectId(nextProps: Any, forObjectId: string, lastModel: Any) {
+export function getModelByObjectId(nextProps: Any, forObjectId: string, lastModel: Any, payLoadKey = "currentModel") {
   const {detailedModelsOverlay} = nextProps;
-  const payLoad = detailedModelsOverlay["currentModel"];
+  const payLoad = detailedModelsOverlay[payLoadKey];
+
+  debugger
 
   if (!!payLoad) {
     const {objectId, model} = payLoad;

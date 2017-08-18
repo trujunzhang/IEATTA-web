@@ -62,8 +62,8 @@ function callCloudStatisticMethod(type: string, methodName: string, params: stri
 
   return (dispatch) => {
     return Parse.Cloud.run(methodName, params, {
-      success: (object) => {
-        const payload = {objectId, object}
+      success: (model) => {
+        const payload = {objectId, model}
         dispatch({type, payload})
       },
       error: (error) => {
