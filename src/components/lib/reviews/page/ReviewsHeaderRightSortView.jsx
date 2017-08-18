@@ -19,7 +19,6 @@ export class ReviewsHeaderRightSortView extends Component {
     }
   }
 
-
   renderDropList() {
     const {isOpening} = this.state;
     const dropMenuClass =
@@ -112,11 +111,10 @@ export class ReviewsHeaderRightSortView extends Component {
     /* DropDown prefix is so IMPORTANT */
     return (
       <a onClick={this.onSortPress.bind(this)}
-         id="review-header-sort-button"
-         className="dropdown_toggle-action"
-         data-dropdown-prefix="Sort by ">
-        <span className="dropdown_toggle-text js-dropdown-toggle-text"
-              data-dropdown-initial-text="Yelp Sort">Yelp Sort</span>
+         id="review-header-sort-button" className="dropdown_toggle-action">
+        <span className="dropdown_toggle-text js-dropdown-toggle-text">
+          {"Yelp Sort"}
+        </span>
         <span
           id="icon_14X14"
           className="icon icon--14-triangle-down icon--size-14 icon--currentColor u-triangle-direction-down dropdown_arrow">
