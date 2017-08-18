@@ -155,7 +155,6 @@ class UserProfileAboutRightPanel extends Component {
 
   render() {
     const {currentUser} = this.props;
-
     return (
       <div className="user-details-overview_sidebar">
 
@@ -165,47 +164,14 @@ class UserProfileAboutRightPanel extends Component {
         {this.renderReviewRating()}
 
         {this.renderUserState()}
+
         <div className="ysection">
           <ul className="ylist">
             <li>
-              <h4>Location</h4>
-              <p>Dublin, CA</p>
+              <h4>Account Since</h4>
+              <p>{Users.getCreatedAtFormat(currentUser)}</p>
             </li>
 
-            <li>
-              <h4>Yelping Since</h4>
-              <p>December 2009</p>
-            </li>
-
-            <li>
-              <h4>Things I Love</h4>
-              <p>cooking, yoga, dancing like nobody's watching, science/medicine, smoothie bowls, blueberries,
-                mushrooms, game meat, real estate, bbq/smoking, hiking, opera, ballet, traveling, singing in the car,
-                singing in the shower, feeding people, farmer's markets, juicing, reading, exploring new cuisines,
-                gardening, white nectarines, noodles, blankets, scarves, compressed air, brussels sprouts, nerdy
-                conversations.</p>
-            </li>
-
-            <li>
-              <h4>Find Me In</h4>
-              <p>a sweater... year round.</p>
-            </li>
-            <li>
-              <h4>My Hometown</h4>
-              <p>dublin. california, not ireland.</p>
-            </li>
-            <li>
-              <h4>My Favorite Movie</h4>
-              <p>the gladiator</p>
-            </li>
-            <li>
-              <h4>Don’t Tell Anyone Else But...</h4>
-              <p>i'm deathly afraid of spiders and scary movies.</p>
-            </li>
-            <li>
-              <h4>Current Crush</h4>
-              <p>smoothie bowls and plant based proteins.</p>
-            </li>
           </ul>
 
         </div>

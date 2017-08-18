@@ -4,70 +4,14 @@ import React from 'react'
 const _ = require('underscore')
 const md5 = require('blueimp-md5')
 
-const Users = {}
+import moment from 'moment'
 
-/**
- * @summary Check if a user is an admin
- * @param {Object|string} user - The user or their userId
- */
-Users.isAdmin = function (user) {
-  try {
-    return !!user && !!user.isAdmin
-  } catch (e) {
-    return false // user not logged in
+const Users = {
+  config: {
+    // February 2014
+    dateFormat: 'MMM YYYY'
   }
 }
-
-Users.isAdminById = Users.isAdmin
-
-Users.getMenuType = function (location, userSidebarMenu) {
-  let type = userSidebarMenu[0].type
-  userSidebarMenu.forEach(function (menu) {
-    if (location.pathname === menu.link.pathname) {
-      type = menu.type
-    }
-  })
-
-  return type
-}
-
-Users.userSidebarMenu = function (user) {
-  const upvotedPosts = user.upvotedPosts || [],
-    downvotedPosts = user.downvotedPosts || [],
-    folders = user.folders || [],
-    upvotedPostsCount = upvotedPosts.length,
-    downvotedPostsCount = downvotedPosts.length,
-    postCount = user.postCount || 0,
-    foldersCount = folders.length
-
-  return [
-    {
-      type: 'upvotes',
-      title: 'Upvotes',
-      value: upvotedPostsCount,
-      link: Users.getLinkObject('profile', user)
-    },
-    {
-      type: 'downvotes',
-      title: 'Downvotes',
-      value: downvotedPostsCount,
-      link: Users.getLinkObject('downvotes', user)
-    },
-    {
-      type: 'submittedPosts',
-      title: 'Curated',
-      value: postCount,
-      link: Users.getLinkObject('submittedPosts', user)
-    },
-    {
-      type: 'collections',
-      title: 'Collections',
-      value: foldersCount,
-      link: Users.getLinkObject('collections', user)
-    }
-  ]
-}
-
 
 Users.isLoggedUser = function (userProfile, currentUser) {
   if (!!currentUser && !!userProfile && userProfile.id === currentUser.id) {
@@ -77,41 +21,6 @@ Users.isLoggedUser = function (userProfile, currentUser) {
   return false;
 };
 
-Users.getLinkObject = function (type, user = null, folder = null) {
-  const userLink = !!user ? `/users/${user.id}/${user.slug}` : null
-  switch (type) {
-    case 'homepage':
-      return {pathname: '/'}
-    case 'editing':
-      return {pathname: '/users/my/edit'}
-    case 'profile':
-      return {pathname: userLink}
-    case 'downvotes':
-      return {pathname: `${userLink}/downvotes`}
-    case 'submittedPosts':
-      return {pathname: `${userLink}/posts`}
-    case 'collections':
-      return {pathname: `${userLink}/collections`}
-    case 'folderItem':
-      return {pathname: `${userLink}/collections/${folder._id}/${folder.name}`}
-  }
-}
-
-Users.checkIsHomepage = function (location) {
-  if (location.pathname === '/') {
-    if (Object.keys(location.query).length === 0) {
-      return true
-    }
-    if (Object.keys(location.query).length === 1 && !!location.query.admin) {
-      return true
-    }
-    if (Object.keys(location.query).length === 1 && !!location.query.orderby) {
-      return true
-    }
-  }
-  return false
-}
-
 /**
  * @summary Get a user's email hash
  * @param {Object} user
@@ -120,85 +29,8 @@ Users.getEmailHash = function (user) {
   return md5(user.email)
 }
 
-/**
- * @summary Check if a user has upvoted a document
- * @param {Object} user
- * @param {Object} document
- */
-Users.hasUpvoted = function (user, document) {
-  if (document.id === 'ELxe8ZjTWL') {
-    // debugger
-  }
-  return user && _.include(document.upvoters, user.id)
-}
-
-/**
- * @summary Check if a user has downvoted a document
- * @param {Object} user
- * @param {Object} document
- */
-Users.hasDownvoted = function (user, document) {
-  if (document.id === 'ELxe8ZjTWL') {
-    // debugger
-  }
-  return user && _.include(document.downvoters, user.id)
-}
-
-Users.renderWithSideBar = function (children) {
-  return (
-    <div className="constraintWidth_ZyYbM container_3aBgK">
-      <div className="content_1jnXo">
-        {children}
-        <Telescope.components.AppSideBar/>
-      </div>
-    </div>
-  )
-}
-
 Users.isMobileDevice = function () {
   return false
-}
-
-Users.getCollectionsPopover = function (left, top, popWidth, popHeight, offX, defaultClassName = 'v-bottom-left') {
-  if (Users.isMobileDevice()) {
-    return {
-      style: {
-        top: (popHeight === -1) ? top : (((window.innerHeight - popHeight) / 2) + window.pageYOffset),
-        left: ((window.innerWidth - popWidth ) / 2 + offX)
-      },
-      className: 'popover v-center-center'
-    }
-  }
-
-  return {style: {top: top, left: left + offX}, className: `popover ${defaultClassName}`}
-}
-
-Users.getPopoverMenuArray = function (user, isMobileDevice) {
-  const menuArrays = []
-  if (!!isMobileDevice) {
-    menuArrays.push([
-      {type: 'acticle', link: {pathname: '/', query: {action: 'new'}}, title: 'Submit an article'},
-      {type: 'separator'}
-    ])
-  }
-  menuArrays.push([
-    {type: 'profile', link: Users.getLinkObject('profile', user), title: 'MY PROFILE'},
-    {type: 'collections', link: Users.getLinkObject('collections', user), title: 'MY COLLECTIONS'},
-    {type: 'separator'}
-  ])
-  menuArrays.push([
-    {type: 'settings', link: Users.getLinkObject('editing'), title: 'SETTINGS'},
-    {type: Users.isAdmin(user) ? 'management' : '', link: {pathname: '/management'}, title: 'MANAGEMENT'},
-    {type: 'separator'}
-  ])
-  menuArrays.push([
-    {type: 'logout', title: 'LOGOUT'}
-  ])
-  return _.flatten(menuArrays)
-}
-
-Users.checkArticleInFolder = function (postId, folder) {
-  return folder.posts.indexOf(postId) !== -1
 }
 
 {/*<Avatar googleId="118096717852922241760" size="100" round="true" />*/
@@ -320,6 +152,10 @@ Users.getBio = function (user) {
   } else {
     return ''
   }
+}
+
+Users.getCreatedAtFormat = function (user) {
+  return moment(user.createdAt).format(Users.config.dateFormat)
 }
 
 export default Users
