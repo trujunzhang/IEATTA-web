@@ -132,6 +132,7 @@ export default keyMirror({
   // Detailed Page(Posts,Events)
   OVERLAY_LOADED_MODEL_PAGE: null,
   OVERLAY_LOADED_MODEL_RESET: null,
+  STATISTIC_CLOUD_MODEL: null,
 
   SET_PLATFORM: null,
   SET_VERSION: null,

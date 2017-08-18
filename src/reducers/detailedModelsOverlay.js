@@ -32,17 +32,26 @@ import type {Action} from '../actions/types'
 const {
   OVERLAY_LOADED_MODEL_PAGE,
   OVERLAY_LOADED_MODEL_RESET,
-  UPDATE_MODEL_REQUEST
+  UPDATE_MODEL_REQUEST,
+  STATISTIC_CLOUD_MODEL
 } = require('../lib/constants').default
 
 const initialState = {
   currentModel: null,
+  statistic: null,
 }
 
 function detailedModelsOverlay(state: State = initialState, action: Action): State {
   if (action.type === OVERLAY_LOADED_MODEL_PAGE) {
     const nextState = Object.assign({}, state, {
       currentModel: action.payload
+    })
+    return nextState
+  }
+
+  if (action.type === STATISTIC_CLOUD_MODEL) {
+    const nextState = Object.assign({}, state, {
+      statistic: action.payload
     })
     return nextState
   }

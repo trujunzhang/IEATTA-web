@@ -46,6 +46,7 @@ const {
   DASHBOARD_LOADED_PAGINATION,
   OVERLAY_LOADED_MODEL_PAGE,
   OVERLAY_LOADED_MODEL_RESET,
+  STATISTIC_CLOUD_MODEL,
   USERPROFILE_LOADED,
   PARSE_USERS,
   PARSE_TOPICS,
@@ -57,9 +58,28 @@ const {
 } = require('../lib/constants').default
 
 
+function callCloudStatisticMethod(type: string, methodName: string, params: string): ThunkAction {
+
+  return (dispatch) => {
+    debugger
+
+    return Parse.Cloud.run('statisticUserState', params, {
+      success: (object) => {
+        debugger
+
+        const payload = {objectId, object}
+        dispatch({type, payload})
+      },
+      error: (error) => {
+        debugger
+      }
+    })
+
+  }
+
+}
+
 function loadParseObject(type: string, query: Parse.Query, objectId: string, parseFun: Any): ThunkAction {
-
-
   return (dispatch) => {
     return query.get(objectId, {
       success: (object) => {
@@ -77,6 +97,10 @@ function loadParseObject(type: string, query: Parse.Query, objectId: string, par
 }
 
 export default {
+  loadStatisticCloudPage: (userId: string): ThunkAction => {
+    return loadParseObject(STATISTIC_CLOUD_MODEL, 'statisticUserState', {userId: userId})
+  },
+
   loadUserProfilePage: (objectId: string): ThunkAction => {
     return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_USERS, ['photos']), objectId, fromParseUser)
   },
