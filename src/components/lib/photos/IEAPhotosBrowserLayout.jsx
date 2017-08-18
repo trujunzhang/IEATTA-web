@@ -4,6 +4,7 @@ import Posts from '../../../lib/posts'
 import Users from '../../../lib/users'
 
 class IEAPhotosBrowserLayout extends Component {
+
   renderFooter() {
     return (
       <div className="media-landing_footer">

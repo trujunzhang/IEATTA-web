@@ -101,7 +101,6 @@ class F8PhotosTitleHeader extends Component {
 
   render() {
     const {photoType, forObject} = this.props;
-
     return (
       <div className="js-media-landing_header media-landing_header">
         <h1 className="js-media-landing_header_title">
