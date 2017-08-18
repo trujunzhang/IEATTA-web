@@ -1,4 +1,11 @@
+import {withRouter} from 'react-router'
+import {Link} from 'react-router'
+
+this.props.location.pathname
 
 const {
 
 } = require('../../../lib/constants').default
+
+
+<Link to="/somewhere" query={Object.assign({}, this.props.location.query, newStuff)}/>

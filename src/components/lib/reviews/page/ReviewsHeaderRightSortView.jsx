@@ -4,6 +4,7 @@ import Reviews from '../../../../lib/reviews'
 
 import onClickOutside from 'react-onclickoutside'
 
+import {Link} from 'react-router'
 import {withRouter} from 'react-router'
 
 const {
@@ -30,6 +31,10 @@ export class ReviewsHeaderRightSortView extends Component {
 
   }
 
+  onSortMenuPress() {
+
+  }
+
   renderDropList() {
     const {isOpening, currentDropDownMenus, selectedDropDownMenuIndex} = this.state;
     const dropMenuClass = "dropdown_menu js-dropdown-menu " + (isOpening ? "is-visible" : "");
@@ -44,10 +49,12 @@ export class ReviewsHeaderRightSortView extends Component {
                 ((selectedDropDownMenuIndex === index) ? " is-selected" : '');
               return (
                 <li key={index} className="dropdown_item">
-                  <a className={menuClass} id="review-sort-menu-item">
+                  <Link className={menuClass}
+                        to={location => ({...location, query: {a: 'djzhang'}})}
+                        query={{'a': "djzhang"}}
+                        id="review-sort-menu-item">
                     <span className="tab-link_label" title={menu.title}>{menu.title}</span>
-                  </a>
-
+                  </Link>
                 </li>
               )
             })}
