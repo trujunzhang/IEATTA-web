@@ -25,6 +25,7 @@ export default class ReviewsParameters {
       const sortTag = Reviews.getSortTag(terms.sort_by)
       switch (sortTag) {
         case REVIEW_SORT_NORMAL:
+          // Here, sorted by default.
           break;
         case REVIEW_SORT_NEWEST:
           this.query.descending("updatedAt")
