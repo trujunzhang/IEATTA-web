@@ -106,6 +106,7 @@ class UserProfileAboutRightPanel extends Component {
   }
 
   renderUserState() {
+
     const userState = {
       'Events': 232,
       'Recipes': 244,
