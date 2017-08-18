@@ -27,15 +27,19 @@ class ReviewsList extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    const lastSort = this.state.terms.sort_by || '';
     const terms = generateTermsForReviewsList(nextProps)
-    // const query = terms.
+    const newSort = terms.sort_by || '';
 
-    debugger
 
     this.setState({
       terms: terms,
       listTask: byListId(nextProps.listContainerTasks, this.state.terms, this.state.listTask)
     })
+
+    if (lastSort !== newSort) {
+      this.loadMore()
+    }
   }
 
   componentDidMount() {
