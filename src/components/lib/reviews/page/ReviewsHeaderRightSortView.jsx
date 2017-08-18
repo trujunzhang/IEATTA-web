@@ -31,9 +31,6 @@ export class ReviewsHeaderRightSortView extends Component {
 
   }
 
-  onSortMenuPress() {
-
-  }
 
   renderDropList() {
     const {isOpening, currentDropDownMenus, selectedDropDownMenuIndex} = this.state;
@@ -47,11 +44,12 @@ export class ReviewsHeaderRightSortView extends Component {
             {currentDropDownMenus.map((menu, index) => {
               const menuClass = "tab-link js-dropdown-link tab-link--dropdown js-tab-link--dropdown" +
                 ((selectedDropDownMenuIndex === index) ? " is-selected" : '');
+
               return (
                 <li key={index} className="dropdown_item">
                   <Link className={menuClass}
-                        to={location => ({...location, query: {a: 'djzhang'}})}
-                        query={{'a': "djzhang"}}
+                        to={location => ({...location, query: Object.assign(location.query, {sort_by: menu.query})})}
+                        onClick={this.handleClickOutside.bind(this)}
                         id="review-sort-menu-item">
                     <span className="tab-link_label" title={menu.title}>{menu.title}</span>
                   </Link>
