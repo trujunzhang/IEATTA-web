@@ -61,9 +61,7 @@ const {
 function callCloudStatisticMethod(type: string, methodName: string, params: string): ThunkAction {
 
   return (dispatch) => {
-    debugger
-
-    return Parse.Cloud.run('statisticUserState', params, {
+    return Parse.Cloud.run(methodName, params, {
       success: (object) => {
         debugger
 
@@ -98,7 +96,7 @@ function loadParseObject(type: string, query: Parse.Query, objectId: string, par
 
 export default {
   loadStatisticCloudPage: (userId: string): ThunkAction => {
-    return loadParseObject(STATISTIC_CLOUD_MODEL, 'statisticUserState', {userId: userId})
+    return callCloudStatisticMethod(STATISTIC_CLOUD_MODEL, 'statisticUserState', {userId: userId})
   },
 
   loadUserProfilePage: (objectId: string): ThunkAction => {

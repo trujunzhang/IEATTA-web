@@ -6,7 +6,10 @@ import {Link} from 'react-router'
 
 import {withRouter} from 'react-router'
 
-const {loadUserProfilePage} = require('../../../actions').default
+const {
+  loadUserProfilePage,
+  loadStatisticCloudPage
+} = require('../../../actions').default
 
 const {
   getPageFormTypeForUserProfile,
@@ -48,12 +51,14 @@ class UsersSingle extends Component {
         uid: newUid,
       })
       this.props.dispatch(loadUserProfilePage(newUid))
+      this.props.dispatch(loadStatisticCloudPage(newUid))
     }
   }
 
   componentDidMount() {
     if (!!this.state.uid) {
       this.props.dispatch(loadUserProfilePage(this.state.uid))
+      this.props.dispatch(loadStatisticCloudPage(this.state.uid))
     }
   }
 
