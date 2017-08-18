@@ -146,9 +146,13 @@ Reviews.getCurrentSortArray = function (reviewListType) {
 }
 
 Reviews.getCurrentSelectedDropMenuIndex = function (dropMenus, props) {
-  const sort = props.location.query || '';
+  const sort = props.location.query.sort_by || '';
+  const tags = Reviews.SORT_TAGS;
   if (sort !== '') {
-    // debugger
+    const index = Object.values(tags).indexOf(sort)
+    if (index !== -1) {
+      return index;
+    }
   }
 
   return 0;

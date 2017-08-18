@@ -52,7 +52,8 @@ export class ReviewsHeaderRightSortView extends Component {
 
                           this.props.router.push({
                             pathname: this.props.location.pathname,
-                            query: Object.assign(this.props.location.query, {sort_by: Reviews.config.SORT_TAGS[menu.queryTag]})
+                            query: Object.assign(this.props.location.query,
+                              {sort_by: Reviews.SORT_TAGS[menu.queryTag]})
                           })
 
                           this.setState({
