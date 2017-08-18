@@ -34,6 +34,7 @@ class UsersSingle extends Component {
       uid: getUserQueryId(props),
       // Detailed object
       userProfile: null,
+      userStatistic: null,
       // Common
       pageForm: getPageFormTypeForUserProfile(props),
     }
@@ -43,6 +44,7 @@ class UsersSingle extends Component {
     this.setState({
       pageForm: getPageFormTypeForUserProfile(nextProps),
       userProfile: getModelByObjectId(nextProps, this.state.uid, this.state.userProfile),
+      userStatistic: getModelByObjectId(nextProps, this.state.uid, this.state.userStatistic),
     })
 
     const newUid = getUserQueryId(nextProps);
