@@ -54,7 +54,6 @@ export function getModelByObjectId(nextProps: Any, forObjectId: string, lastMode
   const {detailedModelsOverlay} = nextProps;
   const payLoad = detailedModelsOverlay[payLoadKey];
 
-  debugger
 
   if (!!payLoad) {
     const {objectId, model} = payLoad;
