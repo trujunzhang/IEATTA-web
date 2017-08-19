@@ -21,11 +21,13 @@
  *
  * @flow
  */
+
 'use strict'
 
 const _ = require('underscore')
 
 import Records from '../../lib/records'
+import Users from "../../lib/users";
 
 const {
   PAGE_MAIN_FORM,
@@ -149,13 +151,12 @@ export function checkLoginFormPage(props) {
 
 export function getPageFormTypeForUserProfile(props) {
   const pathname = props.location.pathname;
-  const query = props.location.query;
 
-  if (pathname.indexOf('profile') !== -1) {
-    return LOGGED_USER_EDIT_FORM;
-  }
+  const formType = _.find(Object.keys(Users.profileLeftMenus), function (type) {
+    return pathname.indexOf(Users.profileLeftMenus[type].path) !== -1;
+  })
 
-  return LOGGED_USER_MENU_ABOUT;
+  return formType;
 }
 
 export function getUserQueryId(props) {

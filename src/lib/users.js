@@ -25,6 +25,10 @@ const Users = {
     orderedDataFormat: 'DD, MMMM, YYYY'
   },
   profileLeftMenus: {
+    LOGGED_USER_EDIT_FORM: {
+      tag: 'edit',
+      path: 'profile'
+    },
     LOGGED_USER_MENU_ABOUT: {
       tag: 'profile',
       title: "Profile Overview",
