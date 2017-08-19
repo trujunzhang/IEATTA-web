@@ -1,6 +1,5 @@
 import Telescope from '../../index'
 import React, {Component} from 'react'
-import Posts from '../../../../lib/posts'
 import Users from '../../../../lib/users'
 
 import MarkerClusterGroup from '../../../vendor/react-leaflet-markercluster/react-leaflet-markercluster'

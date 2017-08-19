@@ -55,7 +55,7 @@ class IEAUserProfileAboutLayout extends Component {
   renderContent() {
     return (
       <div className="clearfix layout-block layout-n user-details_container">
-        <Telescope.components.UserProfileLeftPanel {...this.props} />
+        <Telescope.components.UserProfileLeftMenusPanel {...this.props} />
 
         {this.renderRightPanel()}
 

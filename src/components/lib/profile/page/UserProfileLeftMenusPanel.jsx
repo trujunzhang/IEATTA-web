@@ -1,11 +1,15 @@
 import Telescope from '../../../lib'
 import React, {Component} from 'react'
-import Posts from '../../../../lib/posts'
 import Users from '../../../../lib/users'
 import Events from '../../../../lib/events'
 
-class UserProfileLeftPanel extends Component {
 
+const {
+  isNewModelPage
+} = require('../../../filter/filterRoutes')
+
+
+class UserProfileLeftMenusPanel extends Component {
 
   render() {
 
@@ -108,4 +112,4 @@ class UserProfileLeftPanel extends Component {
   }
 }
 
-export default UserProfileLeftPanel;
+export default UserProfileLeftMenusPanel;
