@@ -41,7 +41,7 @@ class UserProfileLeftMenusPanel extends Component {
                 <ul className="titled-nav_items">
                   {userProfileMenus.map((type, index) => {
                     const row = Users.profileLeftMenus[type];
-                    const isActive = index === 0;
+                    const isActive = Users.isLeftMenuActive(row, this.props);
                     const rowClass = "titled-nav_link" + (isActive ? " is-active" : "")
                     return (
                       <li key={index} className="titled-nav_item">
