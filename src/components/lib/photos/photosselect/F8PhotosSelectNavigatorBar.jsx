@@ -10,9 +10,7 @@ class F8PhotosSelectNavigatorBar extends Component {
     const totalPhotosLength = photos.length;
     const havePreIcon = (selectPhotoIndex > 0)
 
-    const preClass = 'media-nav_link media-nav_link--prev js-media-nav_link--prev ' + (
-      havePreIcon ? "" : " is-disabled"
-    )
+    const preClass = 'media-nav_link media-nav_link--prev js-media-nav_link--prev ' + (havePreIcon ? "" : " is-disabled")
 
     const linkProps = (havePreIcon) ? {onClick: this.props.onPreIconClick} : {};
 
@@ -40,9 +38,7 @@ class F8PhotosSelectNavigatorBar extends Component {
 
     const haveNextIcon = (selectPhotoIndex < photos.length - 1)
 
-    const nextClass = 'media-nav_link media-nav_link--next js-media-nav_link--next ' + (
-      haveNextIcon ? "" : " is-disabled"
-    )
+    const nextClass = 'media-nav_link media-nav_link--next js-media-nav_link--next ' + (haveNextIcon ? "" : " is-disabled")
 
     const linkProps = (haveNextIcon) ? {onClick: this.props.onNextIconClick} : {};
 
