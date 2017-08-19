@@ -7,8 +7,7 @@ import {Link} from 'react-router'
 class RestaurantsSingleHeaderTopLeftPanel extends Component {
 
   render() {
-    const {restaurant} = this.props;
-    const rate = 1;
+    const {reviewStatistic} = this.props;
 
     return (
       <div className="biz-page-header-left claim-status">
@@ -19,14 +18,14 @@ class RestaurantsSingleHeaderTopLeftPanel extends Component {
           <div className="rating-info clearfix">
             <div className="biz-rating biz-rating-very-large clearfix">
               <Telescope.components.F8StarIcon
-                rate={0}
+                rate={reviewStatistic.reviewRating}
                 iconExtension="rating-very-large"
                 iconType="large"
                 iconWidth="84"
                 iconHeight="303"
               />
               <span className="review-count rating-qualifier">
-                {`${rate} reviews`}
+                {`${reviewStatistic.total} reviews`}
               </span>
 
             </div>

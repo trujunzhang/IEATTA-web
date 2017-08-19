@@ -5,7 +5,8 @@ import {withRouter} from 'react-router'
 
 const {
   loadRestaurantPage,
-  loadPhotosBrowser
+  loadPhotosBrowser,
+  loadStatisticCloudPage
 } = require('../../../actions').default
 
 const {
@@ -17,6 +18,7 @@ const {
   PAGE_NEW_FORM,
   PAGE_OVERLAY_SELECTED_PHOTO_FORM,
   PAGE_SINGLE_SELECTED_PHOTO_FORM,
+  STATISTIC_FOR_REVIEWS,
 } = require('../../../lib/constants').default
 
 
@@ -45,6 +47,7 @@ class DetailedRestaurant extends Component {
       // Detailed object
       restaurant: null,
       forObject: null,
+      reviewStatistic: null,
       // photos
       photosTerms: photosTerms,
       photosListTask: getDefaultListTask(photosTerms),
@@ -64,6 +67,7 @@ class DetailedRestaurant extends Component {
       // Detailed object
       restaurant: getModelByObjectId(nextProps, this.state.rid, this.state.restaurant),
       forObject: getModelByObjectId(nextProps, this.state.rid, this.state.forObject),
+      reviewStatistic: getModelByObjectId(nextProps, this.state.rid, this.state.reviewStatistic, 'statistic'),
       // photos
       pageForm: getPageFormType('restaurant', nextProps, this.state.pageForm),
       photosListTask: photosListTask,
@@ -74,13 +78,15 @@ class DetailedRestaurant extends Component {
   componentDidMount() {
     this.props.dispatch(loadRestaurantPage(this.state.rid))
     this.props.dispatch(loadPhotosBrowser(this.state.photosTerms))
-
+    this.props.dispatch(loadStatisticCloudPage(STATISTIC_FOR_REVIEWS, {
+      reviewType: 'restaurant',
+      forObjectId: this.state.rid,
+    }, this.state.rid))
   }
 
   render() {
-    const {photosListTask, restaurant, pageForm} = this.state;
-
-    if (!!restaurant && !!photosListTask.ready) {
+    const {photosListTask, restaurant, pageForm, reviewStatistic} = this.state;
+    if (!!restaurant && !!photosListTask.ready && !!reviewStatistic) {
       switch (pageForm) {
         case PAGE_SINGLE_SELECTED_PHOTO_FORM:
           return (<Telescope.components.IEAPhotosSingleLayout {...this.state}/>)
