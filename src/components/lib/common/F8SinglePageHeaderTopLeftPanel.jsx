@@ -7,7 +7,7 @@ import {Link} from 'react-router'
 class F8SinglePageHeaderTopLeftPanel extends Component {
 
   render() {
-    const {reviewStatistic, photoType} = this.props;
+    const {reviewStatistic} = this.props;
 
     return (
       <div className="biz-page-header-left claim-status">

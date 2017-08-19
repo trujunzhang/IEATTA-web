@@ -12,10 +12,10 @@ import {Link} from 'react-router'
 class F8SinglePageHeaderButtonsSection extends Component {
 
   renderWriteAReview() {
-    const {photoType, forObject} = this.props;
+    const {modelType, forObject} = this.props;
 
     return (
-      <Link className="ybtn ybtn--primary war-button" to={getNewReviewLink(photoType, forObject)}>
+      <Link className="ybtn ybtn--primary war-button" to={getNewReviewLink(modelType, forObject)}>
             <span id="icon_24X24"
                   className="icon icon--24-star icon--size-24 icon--currentColor u-space-r-half icon--fallback-inverted">
               <svg className="icon_svg">

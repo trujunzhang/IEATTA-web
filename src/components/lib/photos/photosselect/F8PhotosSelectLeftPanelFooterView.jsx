@@ -7,13 +7,10 @@ import {Link} from 'react-router'
 class F8PhotosSelectLeftPanelFooterView extends Component {
 
   renderLeft() {
-    const {photoType, forObject} = this.props;
+    const {modelType, forObject} = this.props;
     return (
       <li>
-        <Link
-          className="media-nav_link--browse-all"
-          to={getPhotosBrowserLink(photoType, forObject)}>
-
+        <Link className="media-nav_link--browse-all" to={getPhotosBrowserLink(modelType, forObject)}>
             <span
               id="icon_18X18"
               className="icon icon--18-grid icon--size-18 icon--inverse icon--fallback-inverted u-space-r-half">
@@ -30,7 +27,7 @@ class F8PhotosSelectLeftPanelFooterView extends Component {
   }
 
   renderMiddle() {
-    const {photosListTask, photoType, selectPhotoIndex, forObject} = this.props;
+    const {photosListTask, selectPhotoIndex} = this.props;
     const photos = photosListTask.results;
 
     return (
@@ -49,8 +46,6 @@ class F8PhotosSelectLeftPanelFooterView extends Component {
   }
 
   render() {
-    const {photoType, forObject} = this.props;
-
     return (
       <div className="media-footer photo-box-overlay">
         <ul className="media-footer_inner">
@@ -62,24 +57,21 @@ class F8PhotosSelectLeftPanelFooterView extends Component {
             <ul className="media-actions">
 
               <li>
-                <a className="photo-box_action-link send-to-friend"
-                   data-pop-uri="/send_to_friend/biz_photo/fNoqHpp82jyhATSelcwgGA" href="javascript:;">
+                <a className="photo-box_action-link send-to-friend">
                     <span
                       id="icon_18X18"
                       className="icon icon--18-share icon--size-18 icon--currentColor u-space-r1">
-    <svg className="icon_svg">
-
-    <path
-      d="M17.714 6.43L13 10.356v-3.03c-1 0-5.097 1.47-6.286 3.62.274-3.08 4.286-5.5 6.286-5.5V2.5l4.714 3.93zM3 4v10h11v-2.5l1-1V15H2V3h8.5l-1 1H3z"/>
-    </svg>
-</span>Share
+              <svg className="icon_svg">
+                  <path
+                    d="M17.714 6.43L13 10.356v-3.03c-1 0-5.097 1.47-6.286 3.62.274-3.08 4.286-5.5 6.286-5.5V2.5l4.714 3.93zM3 4v10h11v-2.5l1-1V15H2V3h8.5l-1 1H3z"/>
+                </svg>
+             </span>
+                  {"Share"}
                 </a>
               </li>
 
               <li>
-                <a className="photo-box_action-link send-compliment js-analytics-click"
-                   data-analytics-label="compliment-send"
-                   href="/thanx?complimentable_id=fNoqHpp82jyhATSelcwgGA&amp;complimentable_type=BIZ_PHOTO&amp;page_origin=biz_photos_new_flow&amp;previous_url=%2Fbiz_photos%2Froma-antica-san-francisco-3%3Fselect%3DfNoqHpp82jyhATSelcwgGA&amp;type=photos&amp;user_id=WALNtcSZlONK4Yj-o3pzKA">
+                <a className="photo-box_action-link send-compliment js-analytics-click">
                     <span
                       id="icon_18X18"
                       className="icon icon--18-compliment icon--size-18 icon--currentColor u-space-r1">
@@ -92,9 +84,7 @@ class F8PhotosSelectLeftPanelFooterView extends Component {
               </li>
 
               <li>
-                <a className="photo-box_action-link js-flag-button test-flag-action-link show-tooltip"
-                   data-pop-uri="/flag_content?flag_id=fNoqHpp82jyhATSelcwgGA&amp;flag_type=business_photo&amp;previous_url=%2Fbiz_photos%2Froma-antica-san-francisco-3%3Fselect%3DfNoqHpp82jyhATSelcwgGA"
-                   href="/flag_content?flag_id=fNoqHpp82jyhATSelcwgGA&amp;flag_type=business_photo&amp;previous_url=%2Fbiz_photos%2Froma-antica-san-francisco-3%3Fselect%3DfNoqHpp82jyhATSelcwgGA">
+                <a className="photo-box_action-link js-flag-button test-flag-action-link show-tooltip">
         <span
           id="icon_18X18"
           className="icon icon--18-flag icon--size-18 icon--inverse icon--fallback-inverted">

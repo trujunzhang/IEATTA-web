@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 class F8PhotosSelectNavigatorBar extends Component {
 
   renderPreIcon() {
-    const {photosListTask, photoType, selectPhotoIndex, forObject} = this.props;
+    const {photosListTask, selectPhotoIndex} = this.props;
     const photos = photosListTask.results;
 
     const totalPhotosLength = photos.length;
