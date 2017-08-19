@@ -33,10 +33,10 @@ class UserProfileSingleHeader extends Component {
 
           {orderedUserStateRows.map((row, index) => {
             return (
-              <li className="review-count">
-            <span id="icon_fill_24X24" className="icon icon--24-review icon--size-24">
-                 <svg className="icon_svg"><path d={row.svg}/></svg>
-              </span>
+              <li key={index} className="review-count">
+                <span id="icon_fill_24X24" className="icon icon--24-review icon--size-24">
+                   <svg className="icon_svg"><path d={row.svg}/></svg>
+                </span>
                 <strong className="margin-left-4 margin-right-6">{row.value}</strong>
                 {row.tag}
               </li>
