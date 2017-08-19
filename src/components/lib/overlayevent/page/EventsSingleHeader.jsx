@@ -10,7 +10,7 @@ class EventsSingleHeader extends Component {
 
 
   rendRatingRow() {
-    const {event, reviewStatistic} = this.props;
+    const {reviewStatistic} = this.props;
     return (
       <div className="biz-rating biz-rating-medium clearfix">
         <Telescope.components.F8StarIcon
@@ -18,14 +18,12 @@ class EventsSingleHeader extends Component {
           iconExtension="rating"
           iconType="small"
           iconWidth="84"
-          iconHeight="303"
-        />
+          iconHeight="303"/>
         <span className="review-count rating-qualifier">
                 {`${reviewStatistic.total} reviews`}
                 </span>
 
       </div>
-
     )
   }
 
@@ -41,37 +39,47 @@ class EventsSingleHeader extends Component {
     )
   }
 
-  render() {
-    const {event} = this.props;
+  renderTopSection() {
+    const {forObject} = this.props;
+    return (
+      <div className="event-details_header ysection">
+        {this.renderTopTitle()}
 
+        {this.rendRatingRow()}
+
+        <Telescope.components.F8SinglePageHeaderButtonsSection
+          {...this.props}
+          showEdit={true}
+          editLink={getEditEventLink(forObject, forObject.restaurant)}
+        />
+      </div>
+    )
+  }
+
+
+  renderSubHeader() {
+    return (
+      <div
+        className="clearfix layout-block layout-a event-details_cards-container top-shelf_overlap column--responsive">
+
+        <div className="column column-alpha column--responsive">
+          <Telescope.components.EventsSingleHeaderLeftPanel {...this.props}/>
+        </div>
+
+        <div className="column column-beta column--responsive">
+          <Telescope.components.EventsSingleHeaderRightMap {...this.props}/>
+        </div>
+
+      </div>
+
+    )
+  }
+
+  render() {
     return (
       <div className="content-container">
-
-        <div className="event-details_header ysection">
-          {this.renderTopTitle()}
-
-          {this.rendRatingRow()}
-
-          <Telescope.components.F8SinglePageHeaderButtonsSection
-            {...this.props}
-            showEdit={true}
-            editLink={getEditEventLink(event, event.restaurant)}
-          />
-        </div>
-
-        <div
-          className="clearfix layout-block layout-a event-details_cards-container top-shelf_overlap column--responsive">
-
-          <div className="column column-alpha column--responsive">
-            <Telescope.components.EventsSingleHeaderLeftPanel {...this.props}/>
-          </div>
-
-          <div className="column column-beta column--responsive">
-            <Telescope.components.EventsSingleHeaderRightMap {...this.props}/>
-          </div>
-
-        </div>
-
+        {this.renderTopSection()}
+        {this.renderSubHeader()}
       </div>
     )
 
