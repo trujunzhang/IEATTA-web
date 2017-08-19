@@ -6,17 +6,6 @@ import Users from '../../../../lib/users'
 
 class OrderedRecipesSingleHeader extends Component {
 
-  renderTopSection() {
-    return (
-      <div className="biz-page-header clearfix">
-        <Telescope.components.RecipesSingleHeaderTopLeftPanel  {...this.props}/>
-
-        <Telescope.components.F8SinglePageHeaderButtonsSection {...this.props}/>
-      </div>
-
-    )
-  }
-
   renderSubHeader() {
     return (
       <div className="biz-page-subheader">
