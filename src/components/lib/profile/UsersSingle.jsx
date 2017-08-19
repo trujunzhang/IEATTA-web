@@ -74,6 +74,9 @@ class UsersSingle extends Component {
     if (!!userProfile) {
       switch (pageForm) {
         case LOGGED_USER_MENU_ABOUT:
+        case LOGGED_USER_MENU_REVIEWS:
+        case LOGGED_USER_MENU_BROWSER_PHOTOS:
+        case LOGGED_USER_MENU_EVENTS:
           if (!!this.state.userStatistic) {
             return (<Telescope.components.IEAUserProfileAboutLayout{...this.state} {...this.props}/>)
           }
