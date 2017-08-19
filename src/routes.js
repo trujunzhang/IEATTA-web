@@ -134,6 +134,18 @@ const createRoutes = (store) => {
       path: 'user_details/(:uid)/(:uslug)',
       component: Telescope.components.UsersSingle
     },
+    {
+      path: 'user_details_reviews_self/(:uid)/(:uslug)',
+      component: Telescope.components.UsersSingle
+    },
+    {
+      path: 'user_local_photos/(:uid)/(:uslug)',
+      component: Telescope.components.UsersSingle
+    },
+    {
+      path: 'user_details_events/(:uid)/(:uslug)',
+      component: Telescope.components.UsersSingle
+    },
   ];
 
   const userEditRoutes = [
