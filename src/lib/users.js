@@ -78,7 +78,7 @@ Users.getOrderedUserFormat = function (peopleInEvent) {
 
 Users.isLeftMenuActive = function (row, props) {
   const pathname = props.location.pathname;
-  return (pathname.indexOf(row.path) !== -1);
+  return (`${pathname}/`.indexOf(`${row.path}/`) !== -1);
 }
 
 export default Users
