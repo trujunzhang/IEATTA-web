@@ -8,8 +8,6 @@ const {
   PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY,
   PAGE_PHOTOS_BROWSER_FORM,
   PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY,
-  LOGGED_USER_MENU_ABOUT,
-  LOGGED_USER_EDIT_FORM,
   PARSE_RESTAURANTS,
   PARSE_USERS,
   PARSE_RECORDS,
@@ -17,7 +15,14 @@ const {
   PARSE_RECIPES,
   PARSE_PHOTOS,
   PARSE_REVIEWS,
-  PARSE_PEOPLE_IN_EVENT
+  PARSE_PEOPLE_IN_EVENT,
+  // 1.1 LOGGED user left menus.
+  LOGGED_USER_MENU_ABOUT,
+  LOGGED_USER_MENU_REVIEWS,
+  LOGGED_USER_MENU_BROWSER_PHOTOS,
+  LOGGED_USER_MENU_EVENTS,
+  // 1.2 Edit User.
+  LOGGED_USER_EDIT_FORM,
 } = require('../lib/constants').default
 
 export function showDetailedPagePath(router, post) {
@@ -123,10 +128,14 @@ export function getPhotoSelectBackLink(pageForm, photoType, forObject) {
 
 }
 
-export function getLoggedUserMenuLink(currentUser, menuType) {
+export function getLoggedUserMenuLink(userProfile, menuType, row) {
+
   switch (menuType) {
     case  LOGGED_USER_MENU_ABOUT:
-      return `/user_details/${currentUser.id}/${slugify(currentUser.username)}`
+    case LOGGED_USER_MENU_REVIEWS:
+    case LOGGED_USER_MENU_BROWSER_PHOTOS:
+    case LOGGED_USER_MENU_EVENTS:
+      return `/${row.path}/${userProfile.id}/${slugify(userProfile.username)}`
     case LOGGED_USER_EDIT_FORM:
       return '/profile'
   }

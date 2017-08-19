@@ -7,6 +7,7 @@ import {Link} from 'react-router'
 import {getLoggedUserMenuLink} from '../../../../lib/link'
 
 const {
+  // 1.1 LOGGED user left menus.
   LOGGED_USER_MENU_ABOUT,
   LOGGED_USER_MENU_REVIEWS,
   LOGGED_USER_MENU_BROWSER_PHOTOS,
@@ -45,7 +46,7 @@ class UserProfileLeftMenusPanel extends Component {
                     return (
                       <li key={index} className="titled-nav_item">
                         <Link className={rowClass}
-                              to={getLoggedUserMenuLink(this.props.userProfile, type)}>
+                              to={getLoggedUserMenuLink(this.props.userProfile, type, row)}>
                           <div className="titled-nav_link-content arrange arrange--middle arrange--6">
 
                             <div className="arrange_unit">
