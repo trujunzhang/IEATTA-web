@@ -1,6 +1,5 @@
 import Telescope from '../index'
 import React, {Component} from 'react'
-import Posts from '../../../lib/posts'
 import Users from '../../../lib/users'
 import {Link} from 'react-router'
 
@@ -16,11 +15,15 @@ const {
   getUserQueryId,
 } = require('../../filter/filterRoutes')
 
-
 const {
-  LOGGED_USER_MENU_ABOUT,
-  LOGGED_USER_EDIT_FORM,
   STATISTIC_FOR_USER_STATE,
+  // 1.1 LOGGED user left menus.
+  LOGGED_USER_MENU_ABOUT,
+  LOGGED_USER_MENU_REVIEWS,
+  LOGGED_USER_MENU_BROWSER_PHOTOS,
+  LOGGED_USER_MENU_EVENTS,
+  // 1.2 Edit User.
+  LOGGED_USER_EDIT_FORM,
 } = require('../../../lib/constants').default
 
 
