@@ -7,12 +7,12 @@ import {Link} from 'react-router'
 class F8PhotosCollectionView extends Component {
 
   renderRow(photo) {
-    const {forObject, photoType} = this.props;
+    const {forObject, modelType} = this.props;
 
     return (
       <li data-photo-id="x57_yoZarQuIn9y1r2jsQw">
         <div className="photo-box photo-box--interactive">
-          <Link to={getPhotosBrowserSelectionLink(photo, photoType, forObject)}>
+          <Link to={getPhotosBrowserSelectionLink(photo, modelType, forObject)}>
             <img
               alt="Photo of Roma Antica - San Francisco, CA, United States. outdoor tater seating, combo rearrangeable table"
               width="226"

@@ -8,13 +8,13 @@ import {geDetailedModelLink} from '../../../../lib/link'
 class F8PhotosTitleHeader extends Component {
 
   renderObjectAvator() {
-    const {photoType, forObject} = this.props;
+    const {modelType, forObject} = this.props;
 
     return (
       <div className="media-avatar">
         <div className="photo-box pb-30s">
 
-          <Link className="js-analytics-click" to={geDetailedModelLink(photoType, forObject)}>
+          <Link className="js-analytics-click" to={geDetailedModelLink(modelType, forObject)}>
             <img alt={forObject.displayName}
                  className="photo-box-img"
                  width="30"
@@ -28,13 +28,13 @@ class F8PhotosTitleHeader extends Component {
   }
 
   renderObjectStory() {
-    const {photoType, forObject, reviewStatistic} = this.props;
+    const {modelType, forObject, reviewStatistic} = this.props;
 
     return (
       <div className="media-story">
         <div className="media-title clearfix">
 
-          <Link className="biz-name js-analytics-click" to={geDetailedModelLink(photoType, forObject)}>
+          <Link className="biz-name js-analytics-click" to={geDetailedModelLink(modelType, forObject)}>
             <span>{forObject.displayName}</span>
           </Link>
 
@@ -63,8 +63,6 @@ class F8PhotosTitleHeader extends Component {
   }
 
   renderBottom() {
-    const {photoType, forObject} = this.props;
-
     return (
       <div className="section-header media-header--tabbed">
 
@@ -86,7 +84,8 @@ class F8PhotosTitleHeader extends Component {
     <path
       d="M19 20H5a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3h2.184A2.99 2.99 0 0 1 10 4h4a2.99 2.99 0 0 1 2.816 2H19a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3zM12.005 8.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9zM13 14v1a1 1 0 0 1-2 0v-1h-1a1 1 0 0 1 0-2h1v-1a1 1 0 0 1 2 0v1h1a1 1 0 0 1 0 2h-1z"/>
     </svg>
-    </span>Add photos
+    </span>
+              {"Add photos"}
             </a>
 
           </div>
@@ -104,7 +103,7 @@ class F8PhotosTitleHeader extends Component {
 
 
   render() {
-    const {photoType, forObject} = this.props;
+    const {forObject} = this.props;
     return (
       <div className="js-media-landing_header media-landing_header">
         <h1 className="js-media-landing_header_title">
