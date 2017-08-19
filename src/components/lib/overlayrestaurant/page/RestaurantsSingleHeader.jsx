@@ -16,7 +16,6 @@ class RestaurantsSingleHeader extends Component {
           <Telescope.components.F8SinglePageHeaderButtonsSection {...this.props}/>
         </div>
       </div>
-
     )
   }
 
