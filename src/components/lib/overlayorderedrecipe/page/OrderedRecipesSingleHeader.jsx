@@ -107,7 +107,7 @@ class OrderedRecipesSingleHeader extends Component {
         <div className="biz-page-header clearfix">
           <Telescope.components.RecipesSingleHeaderTopLeftPanel  {...this.props}/>
 
-          <Telescope.components.F8PageHeaderButtonsSection {...this.props}/>
+          <Telescope.components.F8SinglePageHeaderButtonsSection {...this.props}/>
         </div>
 
         <div className="biz-page-subheader">

@@ -9,7 +9,7 @@ import {
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
 import {Link} from 'react-router'
 
-class F8PageHeaderButtonsSection extends Component {
+class F8SinglePageHeaderButtonsSection extends Component {
 
   renderWriteAReview() {
     const {photoType, forObject} = this.props;
@@ -101,4 +101,4 @@ class F8PageHeaderButtonsSection extends Component {
 
 }
 
-export default F8PageHeaderButtonsSection;
+export default F8SinglePageHeaderButtonsSection;

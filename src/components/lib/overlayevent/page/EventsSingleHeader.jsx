@@ -52,7 +52,7 @@ class EventsSingleHeader extends Component {
 
           {this.rendRatingRow()}
 
-          <Telescope.components.F8PageHeaderButtonsSection
+          <Telescope.components.F8SinglePageHeaderButtonsSection
             {...this.props}
             showEdit={true}
             editLink={getEditEventLink(event, event.restaurant)}

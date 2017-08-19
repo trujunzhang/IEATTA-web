@@ -20,7 +20,8 @@ Telescope.registerComponent('F8CalenderView',                   require('./commo
 Telescope.registerComponent('F8AppAlertSection',                require('./common/F8AppAlertSection.jsx').default)
 Telescope.registerComponent('F8PlaceHolderImage',               require('./common/F8PlaceHolderImage.jsx').default)
 Telescope.registerComponent('F8SectionHeaderTitle',             require('./common/F8SectionHeaderTitle.jsx').default)
-Telescope.registerComponent('F8PageHeaderButtonsSection',       require('./common/F8PageHeaderButtonsSection.jsx').default)
+Telescope.registerComponent('F8SinglePageHeaderTopLeftPanel',   require('./common/F8SinglePageHeaderTopLeftPanel.jsx').default)
+Telescope.registerComponent('F8SinglePageHeaderButtonsSection', require('./common/F8SinglePageHeaderButtonsSection.jsx').default)
 Telescope.registerComponent('Error404',                         require('./common/Error404.jsx').default)
 
 // header(app)
@@ -70,7 +71,6 @@ Telescope.registerComponent('EditRestaurantForm',                     require('.
 Telescope.registerComponent('EventsItem',                             require('./overlayrestaurant/page/EventsItem.jsx').default)
 Telescope.registerComponent('EventsList',                             require('./overlayrestaurant/page/EventsList.jsx').default)
 Telescope.registerComponent('RestaurantsSingleHeader',                require('./overlayrestaurant/page/RestaurantsSingleHeader.jsx').default)
-Telescope.registerComponent('RestaurantsSingleHeaderTopLeftPanel',    require('./overlayrestaurant/page/RestaurantsSingleHeaderTopLeftPanel.jsx').default)
 
 
 // overlayEvent

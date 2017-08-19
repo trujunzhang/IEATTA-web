@@ -13,10 +13,10 @@ class RestaurantsSingleHeader extends Component {
       <div className="content-container">
         <div className="biz-page-header clearfix">
 
-          <Telescope.components.RestaurantsSingleHeaderTopLeftPanel  {...this.props}/>
+          <Telescope.components.F8SinglePageHeaderTopLeftPanel  {...this.props}/>
 
           <div className="biz-page-header-right u-relative">
-            <Telescope.components.F8PageHeaderButtonsSection {...this.props}/>
+            <Telescope.components.F8SinglePageHeaderButtonsSection {...this.props}/>
           </div>
         </div>
 
