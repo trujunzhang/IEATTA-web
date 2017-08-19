@@ -32,7 +32,7 @@ class OrderedRecipesSingleHeader extends Component {
   render() {
     return (
       <div className="content-container">
-        {this.renderTopSection()}
+        <Telescope.components.F8SinglePageTopHeader  {...this.props}/>
         {this.renderSubHeader()}
       </div>
     )

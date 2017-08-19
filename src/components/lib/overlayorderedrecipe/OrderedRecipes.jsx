@@ -5,7 +5,8 @@ import {withRouter} from 'react-router'
 
 const {
   loadOrderedRecipePage,
-  loadPhotosBrowser
+  loadPhotosBrowser,
+  loadStatisticCloudPage
 } = require('../../../actions').default
 
 const {
@@ -17,6 +18,7 @@ const {
   PAGE_NEW_FORM,
   PAGE_OVERLAY_SELECTED_PHOTO_FORM,
   PAGE_SINGLE_SELECTED_PHOTO_FORM,
+  STATISTIC_FOR_REVIEWS,
 } = require('../../../lib/constants').default
 
 const {
@@ -43,6 +45,7 @@ class OrderedRecipes extends Component {
       // Detailed object
       recipe: null,
       forObject: null,
+      reviewStatistic: null,
       // photos
       photosTerms: photosTerms,
       photosListTask: getDefaultListTask(photosTerms),
@@ -56,12 +59,15 @@ class OrderedRecipes extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+
+    const oldOID = this.state.oid;
     const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms.listId, this.state.photosListTask);
 
     this.setState({
       // Detailed object
-      recipe: getModelByObjectId(nextProps, this.state.oid, this.state.recipe),
-      forObject: getModelByObjectId(nextProps, this.state.oid, this.state.forObject),
+      recipe: getModelByObjectId(nextProps, oldOID, this.state.recipe),
+      forObject: getModelByObjectId(nextProps, oldOID, this.state.forObject),
+      reviewStatistic: getModelByObjectId(nextProps, oldOID, this.state.reviewStatistic, 'statistic'),
       // photos
       pageForm: getPageFormType('recipe', nextProps, this.state.pageForm),
       photosListTask: photosListTask,
@@ -69,7 +75,7 @@ class OrderedRecipes extends Component {
     })
 
     const currentOID = nextProps.params.oid;
-    if (currentOID !== this.state.oid) {
+    if (currentOID !== oldOID) {
       const photosTerms = generatePhotoTerm('recipe', currentOID)
 
       this.setState({
@@ -84,21 +90,30 @@ class OrderedRecipes extends Component {
         selectPhotoIndex: -1,
       })
 
-      nextProps.dispatch(loadOrderedRecipePage(currentOID))
+      this.props.dispatch(loadOrderedRecipePage(currentOID))
       this.props.dispatch(loadPhotosBrowser(photosTerms))
+      this.props.dispatch(loadStatisticCloudPage(STATISTIC_FOR_REVIEWS, {
+        reviewType: this.state.modelType,
+        forObjectId: currentOID,
+      }, currentOID))
     }
 
   }
 
   componentDidMount() {
-    this.props.dispatch(loadOrderedRecipePage(this.state.oid))
+    const oldOID = this.state.oid;
+    this.props.dispatch(loadOrderedRecipePage(oldOID))
     this.props.dispatch(loadPhotosBrowser(this.state.photosTerms))
+    this.props.dispatch(loadStatisticCloudPage(STATISTIC_FOR_REVIEWS, {
+      reviewType: this.state.modelType,
+      forObjectId: oldOID,
+    }, oldOID))
   }
 
   render() {
-    const {photosListTask, recipe, pageForm} = this.state;
+    const {photosListTask, recipe, pageForm, reviewStatistic} = this.state;
 
-    if (!!recipe && !!photosListTask.ready) {
+    if (!!recipe && !!photosListTask.ready && !!reviewStatistic) {
       switch (pageForm) {
         case PAGE_SINGLE_SELECTED_PHOTO_FORM:
           return (<Telescope.components.IEAPhotosSingleLayout {...this.state}/>)
@@ -131,11 +146,7 @@ class OrderedRecipes extends Component {
       }
     }
 
-    return (
-      <div className="placeholder_1WOC3">
-        <div className="loader_54XfI animationRotate loader_OEQVm"/>
-      </div>
-    )
+    return (<Telescope.components.F8LoadingView loadingClass="placeholder_1WOC3"/>)
   }
 
   onPreIconClick() {
