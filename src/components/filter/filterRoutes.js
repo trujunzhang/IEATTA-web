@@ -25,7 +25,7 @@
 
 const _ = require('underscore')
 
-import {SubDomainPhotos} from '../../actions/types'
+import Records from '../../lib/records'
 
 const {
   PAGE_MAIN_FORM,
@@ -56,7 +56,7 @@ export function checkNewModel(props: Object) {
 }
 
 export function checkPhotosBrowser(pageType: string, props: Object) {
-  const subDomain = SubDomainPhotos[pageType];
+  const subDomain = Records.SubDomainPhotos[pageType];
   return props.location.pathname.indexOf(subDomain + '/') !== -1;
 }
 

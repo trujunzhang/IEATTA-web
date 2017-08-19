@@ -15,6 +15,12 @@ const {
 
 const Records = {}
 
+
+Records.SubDomainPhotos = {
+  'restaurant': 'biz_photos',
+  'recipe': 'recipe_photos',
+}
+
 Records.realmObjects = {
   'record': {objectSchemaName: PARSE_RECORDS},
   'restaurant': {objectSchemaName: PARSE_RESTAURANTS},

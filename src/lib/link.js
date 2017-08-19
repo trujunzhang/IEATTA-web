@@ -3,9 +3,6 @@ const Records = require('./records').default
 const _ = require('underscore')
 const slugify = require('slugify')
 
-import {SubDomainPhotos} from '../actions/types'
-
-
 const {
   PAGE_MAIN_FORM,
   PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY,
@@ -99,11 +96,11 @@ export function getNewReviewLink(reviewType, forObject) {
  * @returns {string}
  */
 export function getPhotosBrowserSelectionLink(photo, photoType, forObject) {
-  return `/${SubDomainPhotos[photoType]}/${forObject.id}/${slugify(forObject.displayName)}?select=${photo.id}`
+  return `/${Records.SubDomainPhotos[photoType]}/${forObject.id}/${slugify(forObject.displayName)}?select=${photo.id}`
 }
 
 export function getPhotosBrowserLink(photoType, forObject) {
-  return `/${SubDomainPhotos[photoType]}/${forObject.id}/${slugify(forObject.displayName)}`
+  return `/${Records.SubDomainPhotos[photoType]}/${forObject.id}/${slugify(forObject.displayName)}`
 }
 
 export function geDetailedModelLink(modelType, forObject) {
