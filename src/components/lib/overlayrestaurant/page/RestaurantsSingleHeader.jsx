@@ -6,15 +6,6 @@ import Users from '../../../../lib/users'
 
 class RestaurantsSingleHeader extends Component {
 
-  renderBizPageHeaderRight() {
-    return (
-      <div className="biz-page-header-right u-relative">
-
-        <Telescope.components.F8PageHeaderButtonsSection {...this.props}/>
-
-      </div>
-    )
-  }
 
   render() {
     const {restaurant} = this.props;
@@ -24,7 +15,9 @@ class RestaurantsSingleHeader extends Component {
 
           <Telescope.components.RestaurantsSingleHeaderTopLeftPanel  {...this.props}/>
 
-          {this.renderBizPageHeaderRight()}
+          <div className="biz-page-header-right u-relative">
+            <Telescope.components.F8PageHeaderButtonsSection {...this.props}/>
+          </div>
         </div>
 
         <div className="biz-page-subheader">

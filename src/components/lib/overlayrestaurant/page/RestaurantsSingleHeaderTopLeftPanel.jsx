@@ -22,8 +22,7 @@ class RestaurantsSingleHeaderTopLeftPanel extends Component {
                 iconExtension="rating-very-large"
                 iconType="large"
                 iconWidth="84"
-                iconHeight="303"
-              />
+                iconHeight="303"/>
               <span className="review-count rating-qualifier">
                 {`${reviewStatistic.total} reviews`}
               </span>
