@@ -58,6 +58,11 @@ export function getEditEventLink(event) {
   return `/edit/event/${event.id}/${slugify(event.displayName)}`
 }
 
+export function getEditLinkByModelType(modelType, forObject) {
+  switch (modelType) {
+  }
+}
+
 export function getEditRecipeLink(recipe) {
   return `/edit/recipe/${recipe.id}/${slugify(recipe.displayName)}`
 }

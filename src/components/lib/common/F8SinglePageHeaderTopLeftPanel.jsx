@@ -77,7 +77,7 @@ class F8SinglePageHeaderTopLeftPanel extends Component {
   }
 
   renderEditButton() {
-    const {forObject} = this.props;
+    const {forObject, modelType} = this.props;
 
     return (
       <Link to={getEditRestaurantLink(forObject)}
@@ -91,7 +91,10 @@ class F8SinglePageHeaderTopLeftPanel extends Component {
               </span>
         Edit
         <span className="tooltip-wrapper">
-                <span className="tooltip">Edit restaurant</span>
+                <span className="tooltip">
+                  Edit restaurant
+                  {Edit `${modelType}`}
+                </span>
               </span>
       </Link>
 

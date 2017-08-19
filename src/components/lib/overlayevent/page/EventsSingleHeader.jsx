@@ -8,55 +8,6 @@ import {getEditEventLink} from '../../../../lib/link'
 
 class EventsSingleHeader extends Component {
 
-
-  rendRatingRow() {
-    const {reviewStatistic} = this.props;
-    return (
-      <div className="biz-rating biz-rating-medium clearfix">
-        <Telescope.components.F8StarIcon
-          rate={reviewStatistic.reviewRating}
-          iconExtension="rating"
-          iconType="small"
-          iconWidth="84"
-          iconHeight="303"/>
-        <span className="review-count rating-qualifier">
-                {`${reviewStatistic.total} reviews`}
-                </span>
-
-      </div>
-    )
-  }
-
-  renderTopTitle() {
-    const {event} = this.props;
-
-    return (
-      <div className="arrange arrange--12">
-        <div className="arrange_unit arrange_unit--fill">
-          <h1>{event.displayName}</h1>
-        </div>
-      </div>
-    )
-  }
-
-  renderTopSection() {
-    const {forObject} = this.props;
-    return (
-      <div className="event-details_header ysection">
-        {this.renderTopTitle()}
-
-        {this.rendRatingRow()}
-
-        <Telescope.components.F8SinglePageHeaderButtonsSection
-          {...this.props}
-          showEdit={true}
-          editLink={getEditEventLink(forObject, forObject.restaurant)}
-        />
-      </div>
-    )
-  }
-
-
   renderSubHeader() {
     return (
       <div
@@ -78,7 +29,7 @@ class EventsSingleHeader extends Component {
   render() {
     return (
       <div className="content-container">
-        {this.renderTopSection()}
+        <Telescope.components.F8SinglePageTopHeader  {...this.props}/>
         {this.renderSubHeader()}
       </div>
     )
