@@ -6,11 +6,25 @@ const md5 = require('blueimp-md5')
 
 import moment from 'moment'
 
+const {
+  REVIEW_LIST_TYPE_NORMAL,
+  REVIEW_LIST_TYPE_USER_PROFILE_ABOUT,
+  REVIEW_LIST_TYPE_USER_PROFILE_REVIEWS,
+  LOGGED_USER_MENU_ABOUT,
+  LOGGED_USER_MENU_REVIEWS,
+  LOGGED_USER_MENU_BROWSER_PHOTOS,
+  LOGGED_USER_MENU_EVENTS,
+} = require('./constants').default
+
+
 const Users = {
   config: {
     // February 2014
     dateFormat: 'MMMM YYYY',
     orderedDataFormat: 'DD, MMMM, YYYY'
+  },
+  profileLeftMenus: {
+
   }
 }
 

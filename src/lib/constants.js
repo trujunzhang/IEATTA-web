@@ -17,8 +17,14 @@ export default keyMirror({
   REVIEW_LIST_TYPE_USER_PROFILE_ABOUT: null,
   REVIEW_LIST_TYPE_USER_PROFILE_REVIEWS: null,
 
-  // LOGGED user menus
+  // UserSingle Form Type
+  // 1.1 LOGGED user left menus.
   LOGGED_USER_MENU_ABOUT: null,
+  LOGGED_USER_MENU_REVIEWS: null,
+  LOGGED_USER_MENU_BROWSER_PHOTOS: null,
+  LOGGED_USER_MENU_EVENTS: null,
+
+  // 1.2 Edit User.
   LOGGED_USER_EDIT_FORM: null,
 
   // App alert
