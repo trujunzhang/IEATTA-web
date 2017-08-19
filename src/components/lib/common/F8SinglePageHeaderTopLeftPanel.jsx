@@ -7,7 +7,7 @@ import {Link} from 'react-router'
 class F8SinglePageHeaderTopLeftPanel extends Component {
 
   render() {
-    const {reviewStatistic} = this.props;
+    const {reviewStatistic, photoType} = this.props;
 
     return (
       <div className="biz-page-header-left claim-status">
@@ -77,10 +77,10 @@ class F8SinglePageHeaderTopLeftPanel extends Component {
   }
 
   renderEditButton() {
-    const {restaurant} = this.props;
+    const {forObject} = this.props;
 
     return (
-      <Link to={getEditRestaurantLink(restaurant)}
+      <Link to={getEditRestaurantLink(forObject)}
             className="edit-category chiclet-link chiclet-link--with-text show-tooltip">
         <span id="icon_14X14"
               className="icon icon--14-pencil icon--size-14 icon--currentColor">

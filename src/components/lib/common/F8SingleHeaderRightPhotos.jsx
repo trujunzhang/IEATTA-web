@@ -8,8 +8,9 @@ import {Link} from 'react-router'
 class F8SingleHeaderRightPhotos extends Component {
 
   renderSeeAll() {
-    const {photos, photoType} = this.props;
-    const photoLength = photos.length;
+    const {photosListTask} = this.props;
+    const photos = photosListTask.results;
+
     return (
 
       <div className="js-photo photo photo-3 photo-grid">
@@ -51,13 +52,14 @@ class F8SingleHeaderRightPhotos extends Component {
   }
 
   renderSeeAllButton() {
-    const {photos, photoType, forObject} = this.props;
+    const {modelType, forObject, photosListTask} = this.props;
+    const photos = photosListTask.results;
     const photoLength = photos.length;
 
     return (
       <Link
         className="see-more show-all-overlay"
-        to={getPhotosBrowserLink(photoType, forObject)}>
+        to={getPhotosBrowserLink(modelType, forObject)}>
                     <span id="icon_24X24"
                           style={{display: 'block'}}
                           className="icon icon--24-grid icon--size-24 icon--inverse icon--fallback-inverted show-all-overlay_icon">
@@ -72,19 +74,20 @@ class F8SingleHeaderRightPhotos extends Component {
   }
 
   renderFirstThumbnail() {
-    const {photos, photoType, forObject} = this.props;
+    const {modelType, forObject, photosListTask} = this.props;
+    const photos = photosListTask.results;
     const firstPhoto = photos[0];
 
     return (
       <div className="js-photo photo photo-1">
         <div className="showcase-photo-box">
-          <Link to={getPhotosBrowserSelectionLink(firstPhoto, photoType, forObject)}>
+          <Link to={getPhotosBrowserSelectionLink(firstPhoto, modelType, forObject)}>
             <img
               alt="Photo of My Two Cents - Los Angeles, CA, United States. Chic, upscale - modern contemporary vibe. This &quot;ain't yo Mama's&quot; soul food kitchen.  This is 2017's take on Mississippi!"
               className="photo-box-img"
               width="250"
               height="250"
-              src={Photos.getPhotoThumbnailByPosition(this.props.photos, 0)}/>
+              src={Photos.getPhotoThumbnailByPosition(photos, 0)}/>
           </Link>
 
         </div>
@@ -130,19 +133,20 @@ class F8SingleHeaderRightPhotos extends Component {
   }
 
   renderSecondThumbnail() {
-    const {photos, photoType, forObject} = this.props;
+    const {modelType, forObject, photosListTask} = this.props;
+    const photos = photosListTask.results;
     const secondPhoto = photos[1];
     return (
       <div className="js-photo photo photo-2">
         <div className="showcase-photo-box">
 
-          <Link to={getPhotosBrowserSelectionLink(secondPhoto, photoType, forObject)}>
+          <Link to={getPhotosBrowserSelectionLink(secondPhoto, modelType, forObject)}>
             <img
               alt="Photo of My Two Cents - Los Angeles, CA, United States. BBQ fried chicken with fries and sweet potato crumble"
               className="photo-box-img"
               width="250"
               height="250"
-              src={Photos.getPhotoThumbnailByPosition(this.props.photos, 1)}/>
+              src={Photos.getPhotoThumbnailByPosition(photos, 1)}/>
           </Link>
 
         </div>
@@ -188,7 +192,8 @@ class F8SingleHeaderRightPhotos extends Component {
 
 
   render() {
-    const {photos, photoType} = this.props;
+    const {modelType, forObject, photosListTask} = this.props;
+    const photos = photosListTask.results;
     const photoLength = photos.length;
     return (
       <div className="showcase-container">

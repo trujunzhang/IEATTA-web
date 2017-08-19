@@ -10,10 +10,10 @@ import {getPhotoSelectBackLink} from '../../../lib/link'
 class IEAPhotosSelectionLayout extends Component {
 
   renderCloseButton() {
-    const {photoType, forObject, pageForm} = this.props;
+    const {modelType, forObject, pageForm} = this.props;
 
     return (
-      <Link className="lightbox-close" to={getPhotoSelectBackLink(pageForm, photoType, forObject)}>
+      <Link className="lightbox-close" to={getPhotoSelectBackLink(pageForm, modelType, forObject)}>
         {'Close'}
         <span className="icon icon--24-close icon--size-24 icon--currentColor u-space-l-half"
               id="icon_24X24">

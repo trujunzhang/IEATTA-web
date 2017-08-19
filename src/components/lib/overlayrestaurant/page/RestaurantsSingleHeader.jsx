@@ -8,7 +8,7 @@ class RestaurantsSingleHeader extends Component {
 
 
   render() {
-    const {restaurant} = this.props;
+    const {forObject} = this.props;
     return (
       <div className="content-container">
         <div className="biz-page-header clearfix">
@@ -29,9 +29,7 @@ class RestaurantsSingleHeader extends Component {
 
 
           {/*Right Panel*/}
-          <Telescope.components.F8SingleHeaderRightPhotos photos={this.props.photosListTask.results}
-                                                          photoType="restaurant"
-                                                          forObject={restaurant}/>
+          <Telescope.components.F8SingleHeaderRightPhotos  {...this.props}/>
         </div>
       </div>
     )

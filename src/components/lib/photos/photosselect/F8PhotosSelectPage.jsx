@@ -10,8 +10,8 @@ import {getPhotoSelectBackLink} from '../../../../lib/link'
 class F8PhotosSelectPage extends Component {
 
   handleClickOutside(e) {
-    const {photoType, forObject, pageForm} = this.props;
-    const lastUrl = getPhotoSelectBackLink(pageForm, photoType, forObject);
+    const {modelType, forObject, pageForm} = this.props;
+    const lastUrl = getPhotoSelectBackLink(pageForm, modelType, forObject);
     this.props.router.push({pathname: lastUrl})
   }
 

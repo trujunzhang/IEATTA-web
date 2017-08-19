@@ -6,7 +6,7 @@ import {geDetailedModelLink} from '../../../../lib/link'
 
 class F8PhotosSingleTop extends Component {
   render() {
-    const {photosListTask, photoType, forObject} = this.props;
+    const {photosListTask, modelType, forObject} = this.props;
     const photos = photosListTask.results;
 
     return (
@@ -16,7 +16,7 @@ class F8PhotosSingleTop extends Component {
             <div className="arrange_unit arrange_unit--fill">
               <ul className="breadcrumbs">
                 <li>
-                  <Link to={geDetailedModelLink(photoType, forObject)}>
+                  <Link to={geDetailedModelLink(modelType, forObject)}>
                     {forObject.displayName}
                   </Link>
                 </li>
