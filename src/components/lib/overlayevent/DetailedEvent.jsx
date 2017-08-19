@@ -4,7 +4,8 @@ import React, {Component} from 'react'
 const {
   loadEventPage,
   loadRestaurantPage,
-  loadPhotosBrowser
+  loadPhotosBrowser,
+  loadStatisticCloudPage
 } = require('../../../actions').default
 
 const {
@@ -16,6 +17,7 @@ const {
   PAGE_NEW_FORM,
   PAGE_OVERLAY_SELECTED_PHOTO_FORM,
   PAGE_SINGLE_SELECTED_PHOTO_FORM,
+  STATISTIC_FOR_REVIEWS,
 } = require('../../../lib/constants').default
 
 const {
@@ -38,6 +40,7 @@ class DetailedEvent extends Component {
       // Detailed object
       event: null,
       forObject: null,
+      reviewStatistic: null,
       // Common
       pageForm: getPageFormType('event', props, null),
       photoType: 'event',
@@ -49,6 +52,7 @@ class DetailedEvent extends Component {
       // Detailed object
       event: getModelByObjectId(nextProps, this.state.eid, this.state.event),
       forObject: getModelByObjectId(nextProps, this.state.eid, this.state.forObject),
+      reviewStatistic: getModelByObjectId(nextProps, this.state.eid, this.state.reviewStatistic, 'statistic'),
       // Common
       pageForm: getPageFormType('event', nextProps, this.state.pageForm),
     })
@@ -56,12 +60,16 @@ class DetailedEvent extends Component {
 
   componentDidMount() {
     this.props.dispatch(loadEventPage(this.state.eid))
+    this.props.dispatch(loadStatisticCloudPage(STATISTIC_FOR_REVIEWS, {
+      reviewType: 'event',
+      forObjectId: this.state.eid,
+    }, this.state.eid))
   }
 
   render() {
-    const {event, pageForm} = this.state;
+    const {event, pageForm, reviewStatistic} = this.state;
 
-    if (!!event) {
+    if (!!event && !!reviewStatistic) {
       switch (pageForm) {
         case PAGE_MAIN_FORM:
           return (<Telescope.components.IEAEventsLayout  {...this.state}/>)
