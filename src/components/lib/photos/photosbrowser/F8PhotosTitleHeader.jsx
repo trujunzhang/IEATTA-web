@@ -28,7 +28,7 @@ class F8PhotosTitleHeader extends Component {
   }
 
   renderObjectStory() {
-    const {photoType, forObject} = this.props;
+    const {photoType, forObject, reviewStatistic} = this.props;
 
     return (
       <div className="media-story">
@@ -42,12 +42,17 @@ class F8PhotosTitleHeader extends Component {
         <div className="biz-passport_rating">
           <div className="biz-rating biz-rating-medium clearfix">
 
-            <Telescope.components.F8StarIcon rate="3" iconType="small" iconExtension="rating"/>
+            <Telescope.components.F8StarIcon
+              rate={reviewStatistic.reviewRating}
+              iconType="small"
+              iconExtension="rating"/>
 
             <span className="review-count rating-qualifier">
-    <span
-    >9</span> reviews
-    </span>
+      <span>
+      {reviewStatistic.total}
+      </span>
+              {" reviews"}
+     </span>
 
           </div>
 
@@ -83,7 +88,6 @@ class F8PhotosTitleHeader extends Component {
     </svg>
     </span>Add photos
             </a>
-
 
           </div>
         </div>
