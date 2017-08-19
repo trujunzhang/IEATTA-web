@@ -43,7 +43,7 @@ class DetailedEvent extends Component {
       reviewStatistic: null,
       // Common
       pageForm: getPageFormType('event', props, null),
-      photoType: 'event',
+      modelType: 'event',
     }
   }
 
@@ -61,7 +61,7 @@ class DetailedEvent extends Component {
   componentDidMount() {
     this.props.dispatch(loadEventPage(this.state.eid))
     this.props.dispatch(loadStatisticCloudPage(STATISTIC_FOR_REVIEWS, {
-      reviewType: 'event',
+      reviewType: this.state.modelType,
       forObjectId: this.state.eid,
     }, this.state.eid))
   }
