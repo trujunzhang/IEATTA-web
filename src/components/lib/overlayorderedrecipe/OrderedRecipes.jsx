@@ -49,7 +49,7 @@ class OrderedRecipes extends Component {
       selectPhotoIndex: -1,
       // Common
       pageForm: getPageFormType('recipe', props, null),
-      photoType: 'recipe',
+      modelType: 'recipe',
       onPreIconClick: this.onPreIconClick.bind(this),
       onNextIconClick: this.onNextIconClick.bind(this)
     }
