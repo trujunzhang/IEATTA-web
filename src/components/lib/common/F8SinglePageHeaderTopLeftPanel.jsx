@@ -103,7 +103,7 @@ class F8SinglePageHeaderTopLeftPanel extends Component {
     return (
       <div className="u-space-t1">
         <h1 className="biz-page-title embossed-text-white shortenough">
-          {this.props.restaurant.displayName}
+          {this.props.forObject.displayName}
         </h1>
         <div className="u-nowrap claim-status_teaser js-claim-status-hover">
         <span
