@@ -8,6 +8,27 @@ import {getEditEventLink} from '../../../../lib/link'
 
 class EventsSingleHeader extends Component {
 
+
+  rendRatingRow() {
+    const {event, reviewStatistic} = this.props;
+    return (
+      <div className="biz-rating biz-rating-medium clearfix">
+        <Telescope.components.F8StarIcon
+          rate={reviewStatistic.reviewRating}
+          iconExtension="rating"
+          iconType="small"
+          iconWidth="84"
+          iconHeight="303"
+        />
+        <span className="review-count rating-qualifier">
+                {`${reviewStatistic.total} reviews`}
+                </span>
+
+      </div>
+
+    )
+  }
+
   renderTopTitle() {
     const {event} = this.props;
 
@@ -17,7 +38,6 @@ class EventsSingleHeader extends Component {
           <h1>{event.displayName}</h1>
         </div>
       </div>
-
     )
   }
 
@@ -29,6 +49,8 @@ class EventsSingleHeader extends Component {
 
         <div className="event-details_header ysection">
           {this.renderTopTitle()}
+
+          {this.rendRatingRow()}
 
           <Telescope.components.F8PageHeaderButtonsSection
             {...this.props}

@@ -33,12 +33,9 @@ class EventsSingleHeaderLeftPanel extends Component {
 
 
   renderLineOne() {
-
-    const {event} = this.props;
+    const {event, reviewStatistic} = this.props;
     const address = event.restaurant.address,
       array = address.split(',');
-    const info = Events.getDateInfo(event);
-    const htmlBody = Events.getWantBody(event);
 
     const addressViews = array.map((item, index) => {
       return (<span key={index}>{item}</span>)
@@ -66,17 +63,8 @@ class EventsSingleHeaderLeftPanel extends Component {
                 <span>{event.restaurant.displayName}</span>
               </Link>
             </div>
-            <div className="biz-rating biz-rating-medium clearfix">
-              <Telescope.components.F8StarIcon
-                rate={3}
-                iconExtension="rating"
-                iconType="small"
-                iconWidth="84"
-                iconHeight="303"
-              />
-              <span className="review-count rating-qualifier">{0 + " reviews"}</span>
 
-            </div>
+            {/*{this.rendRatingRow()}*/}
 
             <div className="restaurant-list-item-address-rows">
               {addressViews}
@@ -95,7 +83,6 @@ class EventsSingleHeaderLeftPanel extends Component {
   renderLineTwo() {
     const {event} = this.props;
     const info = Events.getDateInfo(event);
-    const htmlBody = Events.getWantBody(event);
 
     return (
 
@@ -113,11 +100,11 @@ class EventsSingleHeaderLeftPanel extends Component {
           <div className="media-story">
             <div className="event-details_date">
               <div>
-                <b>From:</b>
+                <b className="margin-right-4">From:</b>
                 {info.startFormat}
               </div>
               <div>
-                <b>To:</b>
+                <b className="margin-right-4">To:</b>
                 {info.endFormat}
               </div>
             </div>
@@ -140,6 +127,8 @@ class EventsSingleHeaderLeftPanel extends Component {
 
             {this.renderLineOne()}
             {this.renderLineTwo()}
+
+            {/*{this.rendRatingRow()}*/}
 
           </ul>
         </div>
@@ -164,6 +153,27 @@ class EventsSingleHeaderLeftPanel extends Component {
 
     )
   }
+
+  rendRatingRow() {
+    const {event, reviewStatistic} = this.props;
+    return (
+      <div className="biz-rating biz-rating-medium clearfix">
+        <Telescope.components.F8StarIcon
+          rate={reviewStatistic.reviewRating}
+          iconExtension="rating"
+          iconType="small"
+          iconWidth="84"
+          iconHeight="303"
+        />
+        <span className="review-count rating-qualifier">
+                {`${reviewStatistic.total} reviews`}
+                </span>
+
+      </div>
+
+    )
+  }
+
 }
 
 export default EventsSingleHeaderLeftPanel;
