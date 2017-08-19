@@ -46,7 +46,7 @@ class UserProfileLeftMenusPanel extends Component {
                     return (
                       <li key={index} className="titled-nav_item">
                         <Link className={rowClass}
-                              to={getLoggedUserMenuLink(this.props.userProfile, type, row)}>
+                              to={getLoggedUserMenuLink(this.props.userProfile, type)}>
                           <div className="titled-nav_link-content arrange arrange--middle arrange--6">
 
                             <div className="arrange_unit">

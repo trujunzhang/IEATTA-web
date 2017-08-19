@@ -1,4 +1,5 @@
-const Records = require('./records').default
+import Users from "./users";
+import Records from './records'
 
 const _ = require('underscore')
 const slugify = require('slugify')
@@ -128,7 +129,8 @@ export function getPhotoSelectBackLink(pageForm, photoType, forObject) {
 
 }
 
-export function getLoggedUserMenuLink(userProfile, menuType, row) {
+export function getLoggedUserMenuLink(userProfile, menuType) {
+  const row = Users.profileLeftMenus[menuType]
 
   switch (menuType) {
     case  LOGGED_USER_MENU_ABOUT:
