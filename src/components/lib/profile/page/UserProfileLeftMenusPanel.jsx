@@ -1,19 +1,17 @@
 import Telescope from '../../../lib'
 import React, {Component} from 'react'
 import Users from '../../../../lib/users'
-import Events from '../../../../lib/events'
 
+import {Link} from 'react-router'
+
+import {getLoggedUserMenuLink} from '../../../../lib/link'
 
 const {
   LOGGED_USER_MENU_ABOUT,
   LOGGED_USER_MENU_REVIEWS,
   LOGGED_USER_MENU_BROWSER_PHOTOS,
   LOGGED_USER_MENU_EVENTS,
-} = require('../../../lib/constants').default
-
-const {
-  isNewModelPage
-} = require('../../../filter/filterRoutes')
+} = require('../../../../lib/constants').default
 
 
 class UserProfileLeftMenusPanel extends Component {
@@ -45,8 +43,9 @@ class UserProfileLeftMenusPanel extends Component {
                     const isActive = index === 0;
                     const rowClass = "titled-nav_link" + (isActive ? " is-active" : "")
                     return (
-                      <li className="titled-nav_item">
-                        <a className={rowClass}>
+                      <li key={index} className="titled-nav_item">
+                        <Link className={rowClass}
+                              to={getLoggedUserMenuLink(this.props.userProfile, type)}>
                           <div className="titled-nav_link-content arrange arrange--middle arrange--6">
 
                             <div className="arrange_unit">
@@ -64,7 +63,7 @@ class UserProfileLeftMenusPanel extends Component {
 
                           </div>
 
-                        </a>
+                        </Link>
 
                       </li>
 
