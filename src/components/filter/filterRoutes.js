@@ -109,11 +109,11 @@ export function getSelectPhoto(props: Any, photosListTask: Any, lastPhotoIndex) 
   return lastPhotoIndex;
 }
 
-export function generatePhotoTerm(photoType, forObjectId) {
+export function generatePhotoTerm(modelType, forObjectId) {
   const photoTerms = {
     listId: 'photos-list-view-for-objectId-' + forObjectId,
     forObjectId: forObjectId,
-    photoType: photoType,
+    photoType: modelType,
     allItems: true
   }
 
