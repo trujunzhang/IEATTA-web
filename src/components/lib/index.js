@@ -20,6 +20,7 @@ Telescope.registerComponent('F8CalenderView',                   require('./commo
 Telescope.registerComponent('F8AppAlertSection',                require('./common/F8AppAlertSection.jsx').default)
 Telescope.registerComponent('F8PlaceHolderImage',               require('./common/F8PlaceHolderImage.jsx').default)
 Telescope.registerComponent('F8SectionHeaderTitle',             require('./common/F8SectionHeaderTitle.jsx').default)
+Telescope.registerComponent('F8SinglePageTopHeader',            require('./common/F8SinglePageTopHeader.jsx').default)
 Telescope.registerComponent('F8SinglePageHeaderTopLeftPanel',   require('./common/F8SinglePageHeaderTopLeftPanel.jsx').default)
 Telescope.registerComponent('F8SinglePageHeaderButtonsSection', require('./common/F8SinglePageHeaderButtonsSection.jsx').default)
 Telescope.registerComponent('Error404',                         require('./common/Error404.jsx').default)
