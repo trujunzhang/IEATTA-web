@@ -1,6 +1,10 @@
 import keyMirror from 'key-mirror'
 
 export default keyMirror({
+  // Statistic
+  STATISTIC_FOR_USER_STATE: null,
+  STATISTIC_FOR_REVIEWS: null,
+
   // Review sort tags
   REVIEW_SORT_NORMAL: null,
   REVIEW_SORT_NEWEST: null,

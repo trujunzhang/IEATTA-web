@@ -55,13 +55,20 @@ const {
   PARSE_EVENTS,
   PARSE_RECIPES,
   PARSE_COMMENTS,
+  // statistic
+  STATISTIC_FOR_USER_STATE,
+  STATISTIC_FOR_REVIEWS,
 } = require('../lib/constants').default
 
+const cloudMethods = {
+  STATISTIC_FOR_USER_STATE: 'statisticUserState',
+  STATISTIC_FOR_REVIEWS: 'statisticReviews'
+}
 
-function callCloudStatisticMethod(type: string, methodName: string, params: string, objectId: string): ThunkAction {
+function callCloudStatisticMethod(type: string, methodType: string, params: string, objectId: string): ThunkAction {
 
   return (dispatch) => {
-    return Parse.Cloud.run(methodName, params, {
+    return Parse.Cloud.run(cloudMethods[methodType], params, {
       success: (model) => {
         const payload = {objectId, model}
         dispatch({type, payload})
@@ -96,11 +103,13 @@ export default {
   /**
    * 'statisticUserState'
    * 'statisticReviews'
+   * @param methodType
    * @param params
+   * @param objectId
    * @returns {ThunkAction}
    */
-  loadStatisticCloudPage: (method: string, params: Any): ThunkAction => {
-    return callCloudStatisticMethod(STATISTIC_CLOUD_MODEL, 'statisticUserState', {userId: userId}, userId)
+  loadStatisticCloudPage: (methodType: string, params: Any, objectId: string): ThunkAction => {
+    return callCloudStatisticMethod(STATISTIC_CLOUD_MODEL, methodType, params, objectId)
   },
 
 

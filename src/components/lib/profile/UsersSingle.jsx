@@ -20,6 +20,7 @@ const {
 const {
   LOGGED_USER_MENU_ABOUT,
   LOGGED_USER_EDIT_FORM,
+  STATISTIC_FOR_USER_STATE,
 } = require('../../../lib/constants').default
 
 
@@ -53,14 +54,14 @@ class UsersSingle extends Component {
         uid: newUid,
       })
       this.props.dispatch(loadUserProfilePage(newUid))
-      this.props.dispatch(loadStatisticCloudPage(newUid))
+      this.props.dispatch(loadStatisticCloudPage(STATISTIC_FOR_USER_STATE, {userId: newUid}, newUid))
     }
   }
 
   componentDidMount() {
     if (!!this.state.uid) {
       this.props.dispatch(loadUserProfilePage(this.state.uid))
-      this.props.dispatch(loadStatisticCloudPage(this.state.uid))
+      this.props.dispatch(loadStatisticCloudPage(STATISTIC_FOR_USER_STATE, {userId: this.state.uid}, this.state.uid))
     }
   }
 
