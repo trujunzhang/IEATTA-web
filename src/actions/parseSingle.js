@@ -93,9 +93,16 @@ function loadParseObject(type: string, query: Parse.Query, objectId: string, par
 }
 
 export default {
-  loadStatisticCloudPage: (userId: string): ThunkAction => {
+  /**
+   * 'statisticUserState'
+   * 'statisticReviews'
+   * @param params
+   * @returns {ThunkAction}
+   */
+  loadStatisticCloudPage: (method: string, params: Any): ThunkAction => {
     return callCloudStatisticMethod(STATISTIC_CLOUD_MODEL, 'statisticUserState', {userId: userId}, userId)
   },
+
 
   loadUserProfilePage: (objectId: string): ThunkAction => {
     return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_USERS, ['photos']), objectId, fromParseUser)

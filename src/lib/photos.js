@@ -1,4 +1,3 @@
-import Telescope from './settings'
 
 const Photos = {}
 

@@ -74,6 +74,7 @@ class DetailedRestaurant extends Component {
   componentDidMount() {
     this.props.dispatch(loadRestaurantPage(this.state.rid))
     this.props.dispatch(loadPhotosBrowser(this.state.photosTerms))
+
   }
 
   render() {
