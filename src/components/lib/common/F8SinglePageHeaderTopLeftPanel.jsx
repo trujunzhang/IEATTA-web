@@ -1,7 +1,12 @@
 import Telescope from '../index'
 import React, {Component} from 'react'
 
-import {getEditRestaurantLink} from '../../../lib/link'
+import Records from '../../../lib/records'
+
+import {
+  getEditRestaurantLink,
+  getEditLinkByModelType
+} from '../../../lib/link'
 import {Link} from 'react-router'
 
 class F8SinglePageHeaderTopLeftPanel extends Component {
@@ -61,13 +66,16 @@ class F8SinglePageHeaderTopLeftPanel extends Component {
   }
 
   renderPriceInfo() {
+    const {modelType, forObject} = this.props;
     return (
       <div className="price-category">
                     <span className="bullet-after">
                       <span className="business-attribute price-range">$$</span>
                     </span>
         <span className="category-str-list">
-                    <a>Restaurant</a>
+                    <a>
+                      {Records.toFirstUpperString(modelType)}
+                    </a>
             </span>
 
         {this.renderEditButton()}
@@ -77,10 +85,10 @@ class F8SinglePageHeaderTopLeftPanel extends Component {
   }
 
   renderEditButton() {
-    const {forObject, modelType} = this.props;
+    const {modelType, forObject} = this.props;
 
     return (
-      <Link to={getEditRestaurantLink(forObject)}
+      <Link to={getEditLinkByModelType(modelType, forObject)}
             className="edit-category chiclet-link chiclet-link--with-text show-tooltip">
         <span id="icon_14X14"
               className="icon icon--14-pencil icon--size-14 icon--currentColor">
@@ -89,11 +97,10 @@ class F8SinglePageHeaderTopLeftPanel extends Component {
                     d="M12.95 3.05c0-.512-.195-1.023-.586-1.414a1.996 1.996 0 0 0-2.83 0L8.122 3.05 2.465 8.707 1.05 12.95l4.243-1.414L10.95 5.88l1.414-1.416c.39-.39.586-.902.586-1.414zm-8.197 7.61l-2.122.71.71-2.123 5.49-5.49 1.415 1.415-5.49 5.49z"/>
                 </svg>
               </span>
-        Edit
+        {"Edit"}
         <span className="tooltip-wrapper">
                 <span className="tooltip">
-                  Edit restaurant
-                  {Edit `${modelType}`}
+                  {`Edit ${modelType}`}
                 </span>
               </span>
       </Link>

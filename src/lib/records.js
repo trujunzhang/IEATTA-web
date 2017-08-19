@@ -1,5 +1,3 @@
-
-
 /**
  * The states were interested in
  */
@@ -37,6 +35,10 @@ Records.realmTypes = {
   PARSE_RECIPES: 'recipe',
   PARSE_PHOTOS: 'photo',
   PARSE_REVIEWS: 'review'
+}
+
+Records.toFirstUpperString = function (name) {
+  return name.charAt(0).toUpperCase() + name.slice(1);
 }
 
 export default Records;

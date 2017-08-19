@@ -1,5 +1,6 @@
-const _ = require('underscore')
+const Records = require('./records').default
 
+const _ = require('underscore')
 const slugify = require('slugify')
 
 import {SubDomainPhotos} from '../actions/types'
@@ -12,8 +13,15 @@ const {
   PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY,
   LOGGED_USER_MENU_ABOUT,
   LOGGED_USER_EDIT_FORM,
+  PARSE_RESTAURANTS,
+  PARSE_USERS,
+  PARSE_RECORDS,
+  PARSE_EVENTS,
+  PARSE_RECIPES,
+  PARSE_PHOTOS,
+  PARSE_REVIEWS,
+  PARSE_PEOPLE_IN_EVENT
 } = require('../lib/constants').default
-
 
 export function showDetailedPagePath(router, post) {
   const {location} = router
@@ -59,7 +67,14 @@ export function getEditEventLink(event) {
 }
 
 export function getEditLinkByModelType(modelType, forObject) {
-  switch (modelType) {
+  const {objectSchemaName} = Records.realmObjects[modelType]
+  switch (objectSchemaName) {
+    case PARSE_RESTAURANTS:
+      return getEditRestaurantLink(forObject)
+    case PARSE_EVENTS:
+      return getEditEventLink(forObject)
+    case PARSE_RECIPES:
+      return getEditRecipeLink(forObject)
   }
 }
 
