@@ -1,4 +1,4 @@
-import Users from "./users";
+import Users from "./users"
 import Records from './records'
 
 const _ = require('underscore')
