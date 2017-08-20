@@ -23,7 +23,7 @@ class F8SingleHeaderRightPhotos extends Component {
       )
     }
 
-    return null;
+    return (<Telescope.components.F8SingleHeaderRightPhotosScrollModel {...this.props} {...this.state}/>)
   }
 }
 

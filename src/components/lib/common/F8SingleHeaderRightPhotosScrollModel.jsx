@@ -9,26 +9,12 @@ class F8SingleHeaderRightPhotosScrollModel extends Component {
 
 
   renderSeeAll() {
-    const {object} = this.state;
-    const {photosWall} = object;
+    const {photoModelObject} = this.props;
 
     return (
       <div className="js-photo photo photo-3 photo-grid">
 
         <div className="showcase-photo-box">
-
-          {object.photosWall.map((item, index) => {
-            return (
-              <Link to={item.url}>
-
-                <img alt="Photo of My Two Cents - Los Angeles, CA, United States. Desserts"
-                     className="photo-box-img"
-                     width="250"
-                     height="250"
-                     src={item.imageUrl}/>
-              </Link>
-            )
-          })}
         </div>
 
         {this.renderSeeAllButton()}
@@ -40,7 +26,7 @@ class F8SingleHeaderRightPhotosScrollModel extends Component {
 
   renderSeeAllButton() {
     const {modelType, forObject} = this.props;
-    const {object} = this.state;
+    const {photoModelObject} = this.props;
 
     return (
       <div className="see-more show-all-overlay">
@@ -53,14 +39,14 @@ class F8SingleHeaderRightPhotosScrollModel extends Component {
                       <path d="M13 21v-8h8v8h-8zm0-18h8v8h-8V3zM3 13h8v8H3v-8zM3 3h8v8H3V3z"/>
                     </svg>
                   </span>
-          {`See all ${object.total}`}
+          {`See all ${photoModelObject.total}`}
         </Link>
       </div>
     )
   }
 
   render() {
-    const {object} = this.state;
+    const {photoModelObject} = this.props;
 
     return (
       <div className="showcase-container">
@@ -71,7 +57,7 @@ class F8SingleHeaderRightPhotosScrollModel extends Component {
 
             <div className="showcase-photos showcase-photos-z-index">
 
-              {object.photos.map((item, index) => {
+              {photoModelObject.photos.map((item, index) => {
                 return this.renderPhotoItem(item, index + 1)
               })}
               {this.renderSeeAll()}
