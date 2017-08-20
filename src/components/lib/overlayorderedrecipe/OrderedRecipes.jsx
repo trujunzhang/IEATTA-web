@@ -43,7 +43,6 @@ class OrderedRecipes extends Component {
       oid: props.params.oid,
       oslug: props.params.oslug,
       // Detailed object
-      recipe: null,
       forObject: null,
       reviewStatistic: null,
       // photos
@@ -65,7 +64,6 @@ class OrderedRecipes extends Component {
 
     this.setState({
       // Detailed object
-      recipe: getModelByObjectId(nextProps, oldOID, this.state.recipe),
       forObject: getModelByObjectId(nextProps, oldOID, this.state.forObject),
       reviewStatistic: getModelByObjectId(nextProps, oldOID, this.state.reviewStatistic, 'statistic'),
       // photos
@@ -82,7 +80,6 @@ class OrderedRecipes extends Component {
         oid: nextProps.params.oid,
         oslug: nextProps.params.oslug,
         // Detailed object
-        recipe: null,
         forObject: null,
         // photos
         photosTerms: photosTerms,
@@ -111,9 +108,9 @@ class OrderedRecipes extends Component {
   }
 
   render() {
-    const {photosListTask, recipe, pageForm, reviewStatistic} = this.state;
+    const {photosListTask, forObject, pageForm, reviewStatistic} = this.state;
 
-    if (!!recipe && !!photosListTask.ready && !!reviewStatistic) {
+    if (!!forObject && !!photosListTask.ready && !!reviewStatistic) {
       switch (pageForm) {
         case PAGE_SINGLE_SELECTED_PHOTO_FORM:
           return (<Telescope.components.IEAPhotosSingleLayout {...this.state}/>)

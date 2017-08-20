@@ -6,15 +6,15 @@ import Users from '../../../../lib/users'
 class OrderedRecipesDetail extends Component {
 
   renderLeftPanel() {
-    const {recipe} = this.props;
-    const reviewTitle = recipe.displayName;
+    const {forObject} = this.props;
+    const reviewTitle = forObject.displayName;
 
     return (
       <div className="column column-alpha column--responsive">
 
         <Telescope.components.ReviewsList
-          key={recipe.id}
-          forObject={this.props.recipe}
+          key={forObject.id}
+          forObject={forObject}
           reviewType="recipe"
           reviewTitle={reviewTitle}/>
 
@@ -24,18 +24,23 @@ class OrderedRecipesDetail extends Component {
 
 
   renderRightPanel() {
-    const {recipe} = this.props;
+    const {forObject} = this.props;
 
     return (
       <div className="column column-beta column--responsive official-events">
         <div className="ylist ylist-bordered" id="ordered-user-on-recipe-panel">
           <Telescope.components.F8SectionHeaderTitle title={"Ordered User"}/>
-          <Telescope.components.F8UserAvatorSection key={recipe.id} user={this.props.recipe.user} sectionClass=""/>
+          <Telescope.components.F8UserAvatorSection key={forObject.id}
+                                                    user={forObject.user}
+                                                    sectionClass=""/>
         </div>
 
         <div className="ylist ylist-bordered">
           <Telescope.components.F8SectionHeaderTitle title={"Related Recipes"}/>
-          <Telescope.components.RecipesList key={recipe.id} orderedUser={recipe.user} showTitle={false}/>
+          <Telescope.components.RecipesList
+            key={forObject.id}
+            orderedUser={forObject.user}
+            showTitle={false}/>
         </div>
       </div>
     )

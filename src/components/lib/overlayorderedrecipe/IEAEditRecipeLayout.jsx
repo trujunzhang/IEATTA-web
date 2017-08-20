@@ -45,8 +45,8 @@ class IEAEditRecipeLayout extends Component {
     }
 
     props.actions.toggleEditModelType(MENU_ITEM_ADD_OR_EDIT_RESTAURANT);
-    props.actions.onEditModelFormFieldChange('displayName', props.recipe.displayName || '', true)
-    props.actions.onEditModelFormFieldChange('price', props.recipe.price || 0, true)
+    props.actions.onEditModelFormFieldChange('displayName', props.forObject.displayName || '', true)
+    props.actions.onEditModelFormFieldChange('price', props.forObject.price || 0, true)
   }
 
   /**
@@ -91,9 +91,9 @@ class IEAEditRecipeLayout extends Component {
 
 
   async onButtonPress() {
-    const {dispatch, recipe} = this.props;
+    const {dispatch, forObject} = this.props;
 
-    const objectId = recipe.id;
+    const objectId = forObject.id;
     const displayName = this.props.editModel.form.fields.displayName;
     const price = this.props.editModel.form.fields.price;
 
