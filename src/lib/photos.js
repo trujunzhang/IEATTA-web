@@ -89,10 +89,14 @@ Photos.generateHeaderRightPhotoObject = function (props) {
       ]
     }
   } else {
+    const _photos = photos.map((item, index) => {
+      return Photos.getPhotoItemInfo(photos, modelType, forObject, index);
+    })
+
     return {
       singleModel: true,
       total: photoLength,
-      photos: {}
+      photos: _photos
     }
   }
 }
@@ -113,6 +117,28 @@ Photos.generateSelectedPhotoInfo = function (props) {
   return {
     ...Photos.getPhotoInfoAboutUser(photos, selectPhotoIndex),
     createdAtFormat: moment(current.createdAt).format(Photos.config.selectedPhotoCreatedAtFormat)
+  }
+}
+
+Photos.generateScrollPhotoIndex = function (props, action, last = {}) {
+  const currentIndex = (last.currentIndex || 0) + action;
+
+  const {photoModelObject} = props;
+  const {total} = photoModelObject;
+
+  const showPhotosIndex = [];
+
+  for (var i = 0; i < 3; i++) {
+    if (currentIndex + i < total) {
+      showPhotosIndex.push(currentIndex + i);
+    }
+  }
+
+  return {
+    haveLeftIcon: currentIndex > 1,
+    haveRightIcon: currentIndex + showPhotosIndex.length < total - 1,
+    currentIndex: currentIndex,
+    showPhotosIndex: showPhotosIndex
   }
 }
 

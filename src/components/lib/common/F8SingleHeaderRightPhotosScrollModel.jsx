@@ -11,8 +11,11 @@ class F8SingleHeaderRightPhotosScrollModel extends Component {
   constructor(props) {
     super(props)
 
+
+    const _array = Photos.generateScrollPhotoIndex(props, 0);
+
     this.state = {
-      currentSelected: [0, 1, 2]
+      currentScrollModelObject: _array
     }
   }
 
@@ -55,8 +58,8 @@ class F8SingleHeaderRightPhotosScrollModel extends Component {
   }
 
   render() {
-    const {photoModelObject} = this.props;
-    const {currentSelected} = this.state;
+    const {currentScrollModelObject} = this.state;
+    debugger
 
     return (
       <div className="showcase-container">
@@ -67,8 +70,8 @@ class F8SingleHeaderRightPhotosScrollModel extends Component {
 
             <div className="showcase-photos showcase-photos-z-index">
 
-              {currentSelected.map((item, index) => {
-                return (<div></div>)
+              {currentScrollModelObject.showPhotosIndex.map((item, index) => {
+                return (<Telescope.components.F8SingleHeaderRightPhotoItem item={item} index={index}/>)
               })}
               {this.renderSeeAll()}
 
