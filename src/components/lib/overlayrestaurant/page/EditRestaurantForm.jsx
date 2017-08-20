@@ -1,6 +1,4 @@
-import Telescope from '../../../lib'
 import React, {Component} from 'react'
-
 
 // import t from '../../../vendor/tcomb-form'
 import t from 'tcomb-form';

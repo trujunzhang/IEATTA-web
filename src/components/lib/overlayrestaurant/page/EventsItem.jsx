@@ -26,7 +26,6 @@ class EventsItem extends Component {
     )
   }
 
-
   renderStory() {
     const {event} = this.props;
     const info = Events.getDateInfo(event);
