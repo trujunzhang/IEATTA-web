@@ -107,7 +107,7 @@ Photos.generateHeaderRightPhotoObject = function (props) {
  * @returns {{createdAtFormat: string}}
  */
 Photos.generateSelectedPhotoInfo = function (props) {
-  const {modelType, forObject, photosListTask, selectPhotoIndex} = props;
+  const {photosListTask, selectPhotoIndex} = props;
   const photos = photosListTask.results;
   const current = photos[selectPhotoIndex];
   return {

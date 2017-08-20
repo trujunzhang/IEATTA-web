@@ -18,33 +18,6 @@ class IEAPhotosSingleLayout extends Component {
     })
   }
 
-
-  renderContent() {
-    const {selectPhotoIndex} = this.props;
-
-    if (selectPhotoIndex !== -1) {
-      return (
-        <div
-          className="media-details_container media-details_container--fixed-height media-details_container--with-sidebar">
-
-          <div className="media-container js-media-container">
-
-            <div className="media-details-grid">
-
-              <Telescope.components.F8PhotosSelectLeftPanel {...this.props} {...this.state}/>
-              <Telescope.components.F8PhotosSelectRightPanel {...this.props} {...this.state}/>
-
-            </div>
-          </div>
-
-          <Telescope.components.F8PhotosSelectNavigatorBar {...this.props}/>
-        </div>
-      )
-    }
-
-    return null;
-  }
-
   render() {
     return (
       <div className="main-content-wrap main-content-wrap--full">

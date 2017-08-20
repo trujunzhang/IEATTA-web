@@ -16,7 +16,6 @@ class IEAPhotosSelectionLayout extends Component {
     }
   }
 
-
   componentWillReceiveProps(nextProps) {
     this.setState({
       selectedPhotoInfo: Photos.generateSelectedPhotoInfo(nextProps)
