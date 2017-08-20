@@ -131,7 +131,7 @@ Photos.generateScrollPhotoIndex = function (props, action, last = {}) {
   }
 
   return {
-    haveLeftIcon: currentIndex > 1,
+    haveLeftIcon: currentIndex > 0,
     haveRightIcon: currentIndex + showPhotosIndex.length < total - 1,
     currentIndex: currentIndex,
     showPhotosIndex: showPhotosIndex

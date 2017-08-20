@@ -30,10 +30,10 @@ class F8SingleHeaderRightPhotosScrollModel extends Component {
         <span
           id="icon_18X18"
           className="icon icon--18-grid icon--size-18 u-space-r-half">
-    <svg className="icon_svg">
-    <path d="M10 15v-5h5v5h-5zm0-12h5v5h-5V3zm-7 7h5v5H3v-5zm0-7h5v5H3V3z"/>
-    </svg>
-</span>
+         <svg className="icon_svg">
+              <path d="M10 15v-5h5v5h-5zm0-12h5v5h-5V3zm-7 7h5v5H3v-5zm0-7h5v5H3V3z"/>
+        </svg>
+        </span>
           {`See all ${photoModelObject.total}`}
         </Link>
 
@@ -81,6 +81,7 @@ class F8SingleHeaderRightPhotosScrollModel extends Component {
 
               {currentScrollModelObject.showPhotosIndex.map((position, index) => {
                 const item = photoModelObject.photos[position];
+                debugger
                 return (<Telescope.components.F8SingleHeaderRightPhotoItem item={item} index={index}/>)
               })}
 
@@ -99,9 +100,7 @@ class F8SingleHeaderRightPhotosScrollModel extends Component {
 
   onPreIconClick() {
     const _array = Photos.generateScrollPhotoIndex(this.props, -1);
-    this.state = {
-      currentScrollModelObject: _array
-    }
+    this.setState({currentScrollModelObject: _array})
   }
 
   renderLeftIcon() {
@@ -127,9 +126,7 @@ class F8SingleHeaderRightPhotosScrollModel extends Component {
 
   onNextIconClick() {
     const _array = Photos.generateScrollPhotoIndex(this.props, 1);
-    this.state = {
-      currentScrollModelObject: _array
-    }
+    this.setState({currentScrollModelObject: _array})
   }
 
   renderRightIcon() {
