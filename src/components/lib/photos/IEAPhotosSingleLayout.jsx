@@ -12,6 +12,12 @@ class IEAPhotosSingleLayout extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      selectedPhotoInfo: Photos.generateSelectedPhotoInfo(nextProps)
+    })
+  }
+
 
   renderContent() {
     const {selectPhotoIndex} = this.props;
