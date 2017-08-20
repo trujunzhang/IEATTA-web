@@ -10,7 +10,7 @@ import {
 const Photos = {
   config: {
     // July 29, 2017
-    selectedPhotoCreatedAtFormat: 'MMMM dd, YYYY'
+    selectedPhotoCreatedAtFormat: 'MMMM DD, YYYY'
   }
 }
 
@@ -113,7 +113,7 @@ Photos.generateSelectedPhotoInfo = function (props) {
   const photos = photosListTask.results;
   const current = photos[selectPhotoIndex];
 
-  // const createdAtFormatxxx = moment(current.createdAt).format(Photos.config.selectedPhotoCreatedAtFormat);
+  // const createdAtFormatxxx = moment(current.createdAt).format('MMMM DD, YYYY');
   // debugger
 
   return {
