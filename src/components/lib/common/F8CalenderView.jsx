@@ -36,7 +36,7 @@ class F8CalenderView extends Component {
 
     const field = props.field;
     const value = {};
-    value[field] = props.event[field] || new Date()
+    value[field] = props.forObject[field] || new Date()
 
     this.state = {field, value}
 

@@ -75,7 +75,7 @@ Photos.generateHeaderRightPhotoObject = function (props) {
   const photos = photosListTask.results;
   const photoLength = photos.length;
 
-  if (photoLength >= 6 && false) {
+  if (photoLength >= 6) {
     return {
       singleModel: false,
       total: photoLength,
