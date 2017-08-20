@@ -11,11 +11,8 @@ class F8SingleHeaderRightPhotosScrollModel extends Component {
   constructor(props) {
     super(props)
 
-
-    const _array = Photos.generateScrollPhotoIndex(props, 0);
-
     this.state = {
-      currentScrollModelObject: _array
+      currentScrollModelObject: Photos.generateScrollPhotoIndex(props, 0)
     }
   }
 
@@ -81,7 +78,6 @@ class F8SingleHeaderRightPhotosScrollModel extends Component {
 
               {currentScrollModelObject.showPhotosIndex.map((position, index) => {
                 const item = photoModelObject.photos[position];
-                debugger
                 return (<Telescope.components.F8SingleHeaderRightPhotoItem item={item} index={index}/>)
               })}
 
@@ -99,7 +95,7 @@ class F8SingleHeaderRightPhotosScrollModel extends Component {
   }
 
   onPreIconClick() {
-    const _array = Photos.generateScrollPhotoIndex(this.props, -1);
+    const _array = Photos.generateScrollPhotoIndex(this.props, -1, this.state.currentScrollModelObject);
     this.setState({currentScrollModelObject: _array})
   }
 
@@ -125,7 +121,7 @@ class F8SingleHeaderRightPhotosScrollModel extends Component {
   }
 
   onNextIconClick() {
-    const _array = Photos.generateScrollPhotoIndex(this.props, 1);
+    const _array = Photos.generateScrollPhotoIndex(this.props, 1, this.state.currentScrollModelObject);
     this.setState({currentScrollModelObject: _array})
   }
 
