@@ -107,7 +107,7 @@ function getRecipesParameters(terms) {
 
 function getPhotosParameters(terms) {
   return new Parameters.Photos(getQueryByType(PARSE_PHOTOS,
-    ['restaurant', 'recipe', 'user']
+    ['restaurant', 'recipe', 'user', 'user.photos']
   ))
     .addParameters(terms)
     .end()
