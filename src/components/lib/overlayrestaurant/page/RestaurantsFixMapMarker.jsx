@@ -74,6 +74,8 @@ class RestaurantsFixMapMarker extends Component {
           {this.renderCloseIcon()}
           {this.renderTitle()}
 
+          {this.renderContent()}
+
           {this.renderFooter()}
         </div>
       </div>
