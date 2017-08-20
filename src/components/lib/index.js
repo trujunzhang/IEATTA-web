@@ -159,7 +159,6 @@ Telescope.registerComponent('F8PhotosSelectPage',                       require(
 Telescope.registerComponent('F8PhotosSelectLeftPanel',                    require('./photos/photosselect/F8PhotosSelectLeftPanel.jsx').default)
 Telescope.registerComponent('F8PhotosSelectLeftPanelFooterView',          require('./photos/photosselect/F8PhotosSelectLeftPanelFooterView.jsx').default)
 Telescope.registerComponent('F8PhotosSelectRightPanel',                   require('./photos/photosselect/F8PhotosSelectRightPanel.jsx').default)
-Telescope.registerComponent('F8PhotosSelectNavigatorBar',                 require('./photos/photosselect/F8PhotosSelectNavigatorBar.jsx').default)
 Telescope.registerComponent('F8PhotosContentWithNavBar',                  require('./photos/photosselect/F8PhotosContentWithNavBar.jsx').default)
 
 // Photos Single
