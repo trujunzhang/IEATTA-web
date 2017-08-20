@@ -46,10 +46,13 @@ class F8PhotosSelectRightPanel extends Component {
   }
 
   renderPhotoCreatedAt() {
+    const {selectedPhotoInfo} = this.props;
     return (
       <div className="media-info_item media-info_time">
         <div className="selected-photo-details">
-          <span className="selected-photo-upload-date time-stamp">July 29, 2017</span>
+          <span className="selected-photo-upload-date time-stamp">
+            {selectedPhotoInfo.createdAtFormat}
+          </span>
         </div>
       </div>
 

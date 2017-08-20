@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 import {
   getLoggedUserMenuLink,
   getPhotosBrowserLink,
@@ -5,13 +7,12 @@ import {
   geDetailedModelLink
 } from './link'
 
-const Photos = {}
-
-/**
- * @summary Photos config namespace
- * @type {Object}
- */
-Photos.config = {}
+const Photos = {
+  config: {
+    // July 29, 2017
+    selectedPhotoCreatedAtFormat: 'MMMM dd, YYYY'
+  }
+}
 
 Photos.getThumbnailUrl = function (photo) {
   return photo.thumbnail._url;
@@ -102,12 +103,23 @@ Photos.generateHeaderRightPhotoObject = function (props) {
   }
 }
 
+/**
+ * July 29, 2017
+ * @param props
+ * @returns {{createdAtFormat: string}}
+ */
 Photos.generateSelectedPhotoInfo = function (props) {
   const {modelType, forObject, photosListTask, selectPhotoIndex} = props;
   const photos = photosListTask.results;
   const current = photos[selectPhotoIndex];
 
-  return Photos.getPhotoInfoAboutUser(photos, selectPhotoIndex)
+  // const createdAtFormatxxx = moment(current.createdAt).format(Photos.config.selectedPhotoCreatedAtFormat);
+  // debugger
+
+  return {
+    ...Photos.getPhotoInfoAboutUser(photos, selectPhotoIndex),
+    createdAtFormat: moment(current.createdAt).format(Photos.config.selectedPhotoCreatedAtFormat)
+  }
 }
 
 export default Photos
