@@ -46,11 +46,7 @@ class OrderedUsers extends Component {
       return (<Telescope.components.IEAOrderedUsersLayout {...this.state}/>)
     }
 
-    return (
-      <div className="placeholder_1WOC3">
-        <div className="loader_54XfI animationRotate loader_OEQVm"/>
-      </div>
-    )
+    return (<Telescope.components.F8LoadingView loadingClass="placeholder_1WOC3"/>)
   }
 
 }
