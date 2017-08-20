@@ -24,7 +24,7 @@ class OrderedUsersDetail extends Component {
         <div className="bookmarks-map-wrapper js-bookmarks-map-wrapper"
              id="ordered-user-container-right-sider-map">
 
-          <Telescope.components.F8RestaurantMapSection restaurant={this.props.forRestaurant}/>
+          <Telescope.components.F8RestaurantMapSection forObject={this.props.forRestaurant}/>
 
         </div>
       </div>
