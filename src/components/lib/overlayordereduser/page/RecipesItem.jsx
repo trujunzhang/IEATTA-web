@@ -33,50 +33,52 @@ class RecipesItem extends Component {
 
 
   renderStory() {
-    const {recipe} = this.props;
+    const {recipe, restaurant, index} = this.props;
 
     return (
       <div className="media-story">
         <div className="media-title clearfix">
-                                <span className="indexed-biz-name">1.
-
-                                  <Link
-                                    className="biz-name js-analytics-click"
-                                    to={getOrderedRecipeLink(recipe)}>
-
-                                    <span>{recipe.displayName}</span>
-                                  </Link>
-
-                                </span>
-
-
-        </div>
-        <div className="biz-rating biz-rating-large clearfix">
-
-          <Telescope.components.F8StarIcon
-            rate={1}
-            iconType="regular"
-            iconWidth="84"
-            iconHeight="303"
-          />
-
-          <div itemProp="ratingValue" content="4.0">
-              <span className="review-count rating-qualifier">
-            <span itemProp="reviewCount">5</span> reviews</span>
-          </div>
-
+            <span className="indexed-biz-name">
+              {`${index + 1}.`}
+              <Link
+                className="biz-name js-analytics-click"
+                to={getOrderedRecipeLink(recipe)}>
+                    <span>{recipe.displayName}</span>
+              </Link>
+            </span>
         </div>
 
 
         <div className="price-category">
-                    <span className="category-str-list">
-                      {"$. " + recipe.price}
-    </span>
-
+             <span className="category-str-list">
+                   {"$. " + recipe.price}
+             </span>
         </div>
 
 
-        <small className="biz-city">San Francisco, CA</small>
+        <small className="biz-city">
+          {restaurant.address}
+        </small>
+
+      </div>
+
+    )
+  }
+
+  renderRating() {
+    return (
+      <div className="biz-rating biz-rating-large clearfix">
+
+        <Telescope.components.F8StarIcon
+          rate={1}
+          iconType="regular"
+          iconWidth="84"
+          iconHeight="303"/>
+
+        <div itemProp="ratingValue" content="4.0">
+              <span className="review-count rating-qualifier">
+            <span itemProp="reviewCount">5</span> reviews</span>
+        </div>
 
       </div>
 
