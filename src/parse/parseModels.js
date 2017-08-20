@@ -166,6 +166,7 @@ export function fromParsePhoto(map: Object): Photo {
     // Relations
     restaurant: map.get('restaurant') && fromParseRestaurant(map.get('restaurant')),
     event: map.get('event') && fromParseEvent(map.get('event')),
+    recipe: map.get('recipe') && fromParseRecipe(map.get('recipe')),
     user: map.get('user') && fromParseUser(map.get('user'))
   }
   return instance
