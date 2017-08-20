@@ -6,12 +6,8 @@ class F8PhotosSelectNavigatorBar extends Component {
   renderPreIcon() {
     const {photosListTask, selectPhotoIndex} = this.props;
     const photos = photosListTask.results;
-
-    const totalPhotosLength = photos.length;
     const havePreIcon = (selectPhotoIndex > 0)
-
     const preClass = 'media-nav_link media-nav_link--prev js-media-nav_link--prev ' + (havePreIcon ? "" : " is-disabled")
-
     const linkProps = (havePreIcon) ? {onClick: this.props.onPreIconClick} : {};
 
     return (
