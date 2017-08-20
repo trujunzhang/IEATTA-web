@@ -33,6 +33,13 @@ Photos.getPhotoThumbnailByPosition = function (photos, index) {
   return Photos.getThumbnailUrl(firstPhoto)
 }
 
+Photos.getPhotoItem = function (photos, modelType, forObject, index) {
+  return {
+    url: getPhotosBrowserSelectionLink(photos[index], modelType, forObject),
+    imageUrl: Photos.getPhotoThumbnailByPosition(photos, index)
+  }
+}
+
 Photos.generateHeaderRightPhotoObject = function (props) {
   const {modelType, forObject, photosListTask} = props;
   const photos = photosListTask.results;
@@ -44,31 +51,17 @@ Photos.generateHeaderRightPhotoObject = function (props) {
       total: photoLength,
       photos: [
         {
-          url: getPhotosBrowserSelectionLink(photos[0], modelType, forObject),
-          imageUrl: Photos.getPhotoThumbnailByPosition(photos, 0)
+          ...Photos.getPhotoItem(photos, modelType, forObject, 0),
         },
         {
-          url: getPhotosBrowserSelectionLink(photos[1], modelType, forObject),
-          imageUrl: Photos.getPhotoThumbnailByPosition(photos, 1)
+          ...Photos.getPhotoItem(photos, modelType, forObject, 1),
         }
       ],
       photosWall: [
-        {
-          url: getPhotosBrowserSelectionLink(photos[2], modelType, forObject),
-          imageUrl: Photos.getPhotoThumbnailByPosition(photos, 2)
-        },
-        {
-          url: getPhotosBrowserSelectionLink(photos[3], modelType, forObject),
-          imageUrl: Photos.getPhotoThumbnailByPosition(photos, 3)
-        },
-        {
-          url: getPhotosBrowserSelectionLink(photos[4], modelType, forObject),
-          imageUrl: Photos.getPhotoThumbnailByPosition(photos, 4)
-        },
-        {
-          url: getPhotosBrowserSelectionLink(photos[5], modelType, forObject),
-          imageUrl: Photos.getPhotoThumbnailByPosition(photos, 5)
-        }
+        Photos.getPhotoItem(photos, modelType, forObject, 2),
+        Photos.getPhotoItem(photos, modelType, forObject, 3),
+        Photos.getPhotoItem(photos, modelType, forObject, 4),
+        Photos.getPhotoItem(photos, modelType, forObject, 5),
       ]
     }
   } else {
