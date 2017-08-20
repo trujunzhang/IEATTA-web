@@ -26,7 +26,9 @@ class IEAPhotosSingleLayout extends Component {
       return (
         <div
           className="media-details_container media-details_container--fixed-height media-details_container--with-sidebar">
+
           <div className="media-container js-media-container">
+
             <div className="media-details-grid">
 
               <Telescope.components.F8PhotosSelectLeftPanel {...this.props} {...this.state}/>
