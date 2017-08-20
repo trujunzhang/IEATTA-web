@@ -24,7 +24,13 @@ class RestaurantsFixMapMarker extends Component {
 
   renderHint() {
     return (
-      <div></div>
+      <div className="map-popup-info google-map">
+        <p>
+          Drag and drop the map marker to correct the location.
+          <br/>
+          Use the tools in the map to zoom in for a closer look at the map.
+        </p>
+      </div>
     )
   }
 
@@ -46,7 +52,17 @@ class RestaurantsFixMapMarker extends Component {
 
   renderContent() {
     return (
-      <div></div>
+      <div className="ypop-inner clearfix" id="locate-biz-pop-inner">
+        <div className="map-popup-container hidden" style={{"display": "block"}}>
+
+          {this.renderHint()}
+
+          <div className="popup-map">
+
+          </div>
+
+        </div>
+      </div>
     )
   }
 
