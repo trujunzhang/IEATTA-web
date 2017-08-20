@@ -58,7 +58,6 @@ Photos.getPhotoInfoAboutUser = function (photos, index) {
 Photos.getPhotoItemInfo = function (photos, modelType, forObject, index) {
   const photo = photos[index];
   const photoObject = photo[photo.photoType]
-  debugger
   return {
     ...Photos.getPhotoItem(photos, modelType, forObject, index),
     overlay: {
