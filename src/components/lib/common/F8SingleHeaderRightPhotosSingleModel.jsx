@@ -5,16 +5,7 @@ import Photos from '../../../lib/photos'
 import {getPhotosBrowserLink, getPhotosBrowserSelectionLink} from '../../../lib/link'
 import {Link} from 'react-router'
 
-class F8SingleHeaderRightPhotos extends Component {
-
-
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      object: Photos.generateHeaderRightPhotoObject(props)
-    }
-  }
+class F8SingleHeaderRightPhotosSingleModel extends Component {
 
 
   renderSeeAll() {
@@ -69,21 +60,6 @@ class F8SingleHeaderRightPhotos extends Component {
   }
 
   render() {
-    const {object} = this.state;
-    if (!object.singleModel) {
-      return this.renderSingleModel()
-    }
-
-    return null;
-  }
-
-  renderHorizonScrollModel() {
-    return (
-      <div></div>
-    )
-  }
-
-  renderSingleModel() {
     const {object} = this.state;
 
     return (
@@ -174,4 +150,4 @@ class F8SingleHeaderRightPhotos extends Component {
 
 }
 
-export default F8SingleHeaderRightPhotos;
+export default F8SingleHeaderRightPhotosSingleModel;
