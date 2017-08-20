@@ -11,13 +11,13 @@ class F8SingleHeaderRightPhotos extends Component {
     super(props)
 
     this.state = {
-      object: Photos.generateHeaderRightPhotoObject(props)
+      photoModelObject: Photos.generateHeaderRightPhotoObject(props)
     }
   }
 
   render() {
-    const {object} = this.state;
-    if (!object.singleModel) {
+    const {photoModelObject} = this.state;
+    if (!photoModelObject.singleModel) {
       return (
         <Telescope.components.F8SingleHeaderRightPhotosSingleModel {...this.props} {...this.state}/>
       )

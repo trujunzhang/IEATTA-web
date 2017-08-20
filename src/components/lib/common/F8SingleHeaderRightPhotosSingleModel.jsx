@@ -8,15 +8,15 @@ import {Link} from 'react-router'
 class F8SingleHeaderRightPhotosSingleModel extends Component {
 
   renderSeeAll() {
-    const {object} = this.props;
-    const {photosWall} = object;
+    const {photoModelObject} = this.props;
+    const {photosWall} = photoModelObject;
 
     return (
       <div className="js-photo photo photo-3 photo-grid">
 
         <div className="showcase-photo-box">
 
-          {object.photosWall.map((item, index) => {
+          {photoModelObject.photosWall.map((item, index) => {
             return (
               <Link to={item.url}>
 
@@ -38,7 +38,7 @@ class F8SingleHeaderRightPhotosSingleModel extends Component {
   }
 
   renderSeeAllButton() {
-    const {modelType, forObject, object} = this.props;
+    const {modelType, forObject, photoModelObject} = this.props;
 
     return (
       <div className="see-more show-all-overlay">
@@ -51,14 +51,14 @@ class F8SingleHeaderRightPhotosSingleModel extends Component {
                       <path d="M13 21v-8h8v8h-8zm0-18h8v8h-8V3zM3 13h8v8H3v-8zM3 3h8v8H3V3z"/>
                     </svg>
                   </span>
-          {`See all ${object.total}`}
+          {`See all ${photoModelObject.total}`}
         </Link>
       </div>
     )
   }
 
   render() {
-    const {object} = this.props;
+    const {photoModelObject} = this.props;
 
     return (
       <div className="showcase-container">
@@ -69,7 +69,7 @@ class F8SingleHeaderRightPhotosSingleModel extends Component {
 
             <div className="showcase-photos showcase-photos-z-index">
 
-              {object.photos.map((item, index) => {
+              {photoModelObject.photos.map((item, index) => {
                 return this.renderPhotoItem(item, index + 1)
               })}
               {this.renderSeeAll()}
@@ -85,19 +85,20 @@ class F8SingleHeaderRightPhotosSingleModel extends Component {
   }
 
 
-  renderPhotoItem(object, index) {
-    const {overlay} = object;
+  renderPhotoItem(item, index) {
+    const {overlay} = item;
+    // alt="Photo of My Two Cents - Los Angeles, CA, United States. BBQ fried chicken with fries and sweet potato crumble"
     return (
       <div key={index} className={`js-photo photo photo-${index}`}>
         <div className="showcase-photo-box">
 
-          <Link to={object.url}>
+          <Link to={item.url}>
             <img
-              alt="Photo of My Two Cents - Los Angeles, CA, United States. BBQ fried chicken with fries and sweet potato crumble"
+              alt={`Photos of ${overlay.title}`}
               className="photo-box-img"
               width="250"
               height="250"
-              src={object.imageUrl}/>
+              src={item.imageUrl}/>
           </Link>
 
         </div>
@@ -111,8 +112,8 @@ class F8SingleHeaderRightPhotosSingleModel extends Component {
                 <Link
                   to={overlay.user.userProfileUrl}
                   className="js-analytics-click">
-                  <img alt="Joshua H."
-                       className="photo-box-img"
+                  <img className="photo-box-img"
+                       alt={overlay.user.username}
                        width="30"
                        height="30"
                        src={overlay.user.imageUrl}
