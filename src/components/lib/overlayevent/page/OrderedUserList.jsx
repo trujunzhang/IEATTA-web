@@ -56,7 +56,6 @@ class OrderedUserList extends Component {
           <Telescope.components.OrderedUserItem key={peopleInEvent.id} peopleInEvent={peopleInEvent}/>
         )}
       </ul>
-
     )
   }
 
