@@ -13,6 +13,7 @@ class IEAPhotosSingleLayout extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    debugger
     this.setState({
       selectedPhotoInfo: Photos.generateSelectedPhotoInfo(nextProps)
     })
