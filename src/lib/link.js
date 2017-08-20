@@ -129,11 +129,11 @@ export function getPhotoSelectBackLink(pageForm, photoType, forObject) {
 
 }
 
-export function getLoggedUserMenuLink(userProfile, menuType) {
+export function getLoggedUserMenuLink(userProfile, menuType = LOGGED_USER_MENU_ABOUT) {
   const row = Users.profileLeftMenus[menuType]
 
   switch (menuType) {
-    case  LOGGED_USER_MENU_ABOUT:
+    case LOGGED_USER_MENU_ABOUT:
     case LOGGED_USER_MENU_REVIEWS:
     case LOGGED_USER_MENU_BROWSER_PHOTOS:
     case LOGGED_USER_MENU_EVENTS:

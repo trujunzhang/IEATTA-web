@@ -106,6 +106,7 @@ class F8SingleHeaderRightPhotos extends Component {
 
 
   renderPhotoItem(object, index) {
+    const {overlay} = object;
     return (
       <div key={index} className={`js-photo photo photo-${index}`}>
         <div className="showcase-photo-box">
@@ -127,13 +128,16 @@ class F8SingleHeaderRightPhotos extends Component {
             <div className="media-avatar avatar">
               <div className="photo-box pb-30s">
 
-                <a href="/user_details?userid=RiyfftYb6iuh5S1lPrp7sQ" className="js-analytics-click">
-                  <img alt="Joshua H." className="photo-box-img"
+                <Link
+                  to={overlay.user.userProfileUrl}
+                  className="js-analytics-click">
+                  <img alt="Joshua H."
+                       className="photo-box-img"
                        width="30"
                        height="30"
-                       src="https://s3-media4.fl.yelpcdn.com/photo/tUK96wJVCgJWfKa94BXaiQ/30s.jpg"
+                       src={overlay.user.imageUrl}
                   />
-                </a>
+                </Link>
 
               </div>
 
@@ -141,17 +145,17 @@ class F8SingleHeaderRightPhotos extends Component {
             </div>
 
             <div className="media-story">
-              <a className="photo-desc"
-                 href="/biz_photos/my-two-cents-los-angeles-3?select=GW7w6RYB9U1RyNEhCTZjwA">
-                BBQ fried chicken with fries and sweet…
-              </a>
+              <Link className="photo-desc" to={overlay.linkUrl}>
+                {overlay.title}
+              </Link>
               <span className="author">
-                        by
-                        <a className="user-display-name js-analytics-click"
-                           href="/user_details?userid=RiyfftYb6iuh5S1lPrp7sQ"
-                           data-hovercard-id="2-YW12W31RtcIN7IVbhAuA" data-analytics-label="about_me"
-                           id="dropdown_user-name">Joshua H.</a>
-                      </span>
+                {"by"}
+                <Link className="user-display-name js-analytics-click"
+                      to={overlay.user.userProfileUrl}
+                      id="dropdown_user-name">
+                          {overlay.user.username}
+                        </Link>
+                </span>
             </div>
 
           </div>

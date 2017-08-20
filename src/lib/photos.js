@@ -1,4 +1,9 @@
-import {getPhotosBrowserLink, getPhotosBrowserSelectionLink} from './link'
+import {
+  getLoggedUserMenuLink,
+  getPhotosBrowserLink,
+  getPhotosBrowserSelectionLink,
+  geDetailedModelLink
+} from './link'
 
 const Photos = {}
 
@@ -40,6 +45,14 @@ Photos.getPhotoItem = function (photos, modelType, forObject, index) {
   }
 }
 
+Photos.getPhotoInfoAboutUser = function (photos, index) {
+  return {
+    username: photos[index].user.username,
+    imageUrl: Photos.getListThumbnailUrl(photos[index].user),
+    userProfileUrl: getLoggedUserMenuLink([index].user)
+  }
+}
+
 Photos.generateHeaderRightPhotoObject = function (props) {
   const {modelType, forObject, photosListTask} = props;
   const photos = photosListTask.results;
@@ -52,9 +65,24 @@ Photos.generateHeaderRightPhotoObject = function (props) {
       photos: [
         {
           ...Photos.getPhotoItem(photos, modelType, forObject, 0),
+          overlay: {
+            title: photos[0].restaurant.displayName,
+            linkUrl: geDetailedModelLink(modelType, photos[0].restaurant),
+            user: {
+              ...Photos.getPhotoInfoAboutUser(photos, 0)
+            }
+          }
         },
         {
           ...Photos.getPhotoItem(photos, modelType, forObject, 1),
+          overlay: {
+            title: photos[1].restaurant.displayName,
+            linkUrl: geDetailedModelLink(modelType, photos[1].restaurant),
+            user: {
+              ...Photos.getPhotoInfoAboutUser(photos, 1)
+            }
+          }
+
         }
       ],
       photosWall: [
