@@ -66,14 +66,6 @@ class EventsList extends Component {
     }
   }
 
-  renderEmptySection() {
-    return (
-      <div>
-
-      </div>
-    )
-  }
-
   renderTitle() {
     return (
       <div className="arrange">
@@ -95,14 +87,12 @@ class EventsList extends Component {
 
     let hasMore = !ready && totalCount !== results.length;
 
-
     return (
       <div className="ysection events">
 
         {this.renderTitle()}
 
         {this.renderRows()}
-        {this.renderEmptySection()}
 
         <div className="u-space-t2 u-space-b2">
           {/*<a href="/events/sf/browse">View all events in San Francisco</a>*/}
@@ -110,22 +100,6 @@ class EventsList extends Component {
 
       </div>
     )
-  }
-
-  renderContent() {
-    const {listTask} = this.state
-
-    const {
-      results,
-      ready,
-      totalCount,
-      limit,
-      firstPagination,
-    } = listTask
-
-    let hasMore = !ready && totalCount !== results.length;
-
-
   }
 }
 
