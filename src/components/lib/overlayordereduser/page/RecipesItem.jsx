@@ -33,7 +33,7 @@ class RecipesItem extends Component {
 
 
   renderStory() {
-    const {recipe, restaurant, index} = this.props;
+    const {recipe, index} = this.props;
 
     return (
       <div className="media-story">
@@ -57,7 +57,7 @@ class RecipesItem extends Component {
 
 
         <small className="biz-city">
-          {restaurant.address}
+          {recipe.restaurant.address}
         </small>
 
       </div>
