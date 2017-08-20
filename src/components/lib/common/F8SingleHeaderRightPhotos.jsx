@@ -7,7 +7,6 @@ import {Link} from 'react-router'
 
 class F8SingleHeaderRightPhotos extends Component {
 
-
   constructor(props) {
     super(props)
 

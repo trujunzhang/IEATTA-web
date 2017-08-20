@@ -7,9 +7,8 @@ import {Link} from 'react-router'
 
 class F8SingleHeaderRightPhotosSingleModel extends Component {
 
-
   renderSeeAll() {
-    const {object} = this.state;
+    const {object} = this.props;
     const {photosWall} = object;
 
     return (
@@ -39,8 +38,7 @@ class F8SingleHeaderRightPhotosSingleModel extends Component {
   }
 
   renderSeeAllButton() {
-    const {modelType, forObject} = this.props;
-    const {object} = this.state;
+    const {modelType, forObject, object} = this.props;
 
     return (
       <div className="see-more show-all-overlay">
@@ -60,7 +58,7 @@ class F8SingleHeaderRightPhotosSingleModel extends Component {
   }
 
   render() {
-    const {object} = this.state;
+    const {object} = this.props;
 
     return (
       <div className="showcase-container">
