@@ -168,10 +168,21 @@ export function getUserQueryId(props) {
 }
 
 export function generateTermsForReviewsList(props) {
+  const listId = props.forObject.id;
   return {
     ...props,
     ...props.location.query,
-    listId: 'reviews-list-view-for-' + props.forObject.id,
+    listId: 'reviews-list-view-for-' + listId,
     limit: 10
   };
 }
+
+export function generateTermsForEventsList(props) {
+  const listId = props.forObject.id;
+  return {
+    listId: 'event-list-view-for-' + listId,
+    limit: 10,
+    restaurantId: listId
+  };
+}
+
