@@ -41,20 +41,23 @@ Photos.generateHeaderRightPhotoObject = function (props) {
   if (photoLength >= 6) {
     return {
       singleModel: false,
-      first: {
-        url: getPhotosBrowserSelectionLink(photos[0], modelType, forObject),
-        imageUrl: Photos.getPhotoThumbnailByPosition(photos, 0)
-      },
-      second: {
-        url: getPhotosBrowserSelectionLink(photos[1], modelType, forObject),
-        imageUrl: Photos.getPhotoThumbnailByPosition(photos, 1)
-      }
-
+      total: photoLength,
+      photos: [
+        {
+          url: getPhotosBrowserSelectionLink(photos[0], modelType, forObject),
+          imageUrl: Photos.getPhotoThumbnailByPosition(photos, 0)
+        },
+        {
+          url: getPhotosBrowserSelectionLink(photos[1], modelType, forObject),
+          imageUrl: Photos.getPhotoThumbnailByPosition(photos, 1)
+        }
+      ]
     }
   } else {
     return {
       singleModel: true,
-      array: {}
+      total: photoLength,
+      photos: {}
     }
   }
 }
