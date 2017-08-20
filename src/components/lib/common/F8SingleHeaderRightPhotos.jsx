@@ -68,124 +68,6 @@ class F8SingleHeaderRightPhotos extends Component {
     )
   }
 
-  renderFirstThumbnail() {
-    const {modelType, forObject, photosListTask} = this.props;
-    const photos = photosListTask.results;
-    const firstPhoto = photos[0];
-
-    return (
-      <div className="js-photo photo photo-1">
-        <div className="showcase-photo-box">
-          <Link to={getPhotosBrowserSelectionLink(firstPhoto, modelType, forObject)}>
-            <img
-              alt="Photo of My Two Cents - Los Angeles, CA, United States. Chic, upscale - modern contemporary vibe. This &quot;ain't yo Mama's&quot; soul food kitchen.  This is 2017's take on Mississippi!"
-              className="photo-box-img"
-              width="250"
-              height="250"
-              src={Photos.getPhotoThumbnailByPosition(photos, 0)}/>
-          </Link>
-
-        </div>
-
-        <div className="photo-box-overlay js-overlay">
-          <div className="media-block photo-box-overlay_caption">
-            <div className="media-avatar avatar">
-              <div className="photo-box pb-30s" data-hovercard-id="xCvTC67I0MLNbenXw4irmA">
-                <a href="/user_details?userid=63rsfkJ6ptD9jU_Rf96iBg" className="js-analytics-click"
-                   data-analytics-label="user-photo">
-                  <img alt="Kenny G."
-                       className="photo-box-img"
-                       height="30"
-                       src="https://s3-media3.fl.yelpcdn.com/photo/dL-UJUcfUrcnjxDBIk-IoQ/30s.jpg"
-                       width="30"/>
-                </a>
-
-              </div>
-
-
-            </div>
-
-            <div className="media-story">
-              <a className="photo-desc"
-                 href="/biz_photos/my-two-cents-los-angeles-3?select=idHB5V5yEhk5Jmfc8d2luw">
-                Chic, upscale - modern contemporary…
-              </a>
-              <span className="author">
-                        by
-                        <a className="user-display-name js-analytics-click"
-                           href="/user_details?userid=63rsfkJ6ptD9jU_Rf96iBg"
-                           data-hovercard-id="xCvTC67I0MLNbenXw4irmA" data-analytics-label="about_me"
-                           id="dropdown_user-name">Kenny G.</a>
-                      </span>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-
-    )
-  }
-
-  renderSecondThumbnail() {
-    const {modelType, forObject, photosListTask} = this.props;
-    const photos = photosListTask.results;
-    const secondPhoto = photos[1];
-    return (
-      <div className="js-photo photo photo-2">
-        <div className="showcase-photo-box">
-
-          <Link to={getPhotosBrowserSelectionLink(secondPhoto, modelType, forObject)}>
-            <img
-              alt="Photo of My Two Cents - Los Angeles, CA, United States. BBQ fried chicken with fries and sweet potato crumble"
-              className="photo-box-img"
-              width="250"
-              height="250"
-              src={Photos.getPhotoThumbnailByPosition(photos, 1)}/>
-          </Link>
-
-        </div>
-
-
-        <div className="photo-box-overlay js-overlay">
-          <div className="media-block photo-box-overlay_caption">
-            <div className="media-avatar avatar">
-              <div className="photo-box pb-30s" data-hovercard-id="2-YW12W31RtcIN7IVbhAuA">
-                <a href="/user_details?userid=RiyfftYb6iuh5S1lPrp7sQ" className="js-analytics-click"
-                   data-analytics-label="user-photo">
-                  <img alt="Joshua H." className="photo-box-img" height="30"
-                       src="https://s3-media4.fl.yelpcdn.com/photo/tUK96wJVCgJWfKa94BXaiQ/30s.jpg" width="30"/>
-
-                </a>
-
-              </div>
-
-
-            </div>
-
-            <div className="media-story">
-              <a className="photo-desc"
-                 href="/biz_photos/my-two-cents-los-angeles-3?select=GW7w6RYB9U1RyNEhCTZjwA">
-                BBQ fried chicken with fries and sweet…
-              </a>
-              <span className="author">
-                        by
-                        <a className="user-display-name js-analytics-click"
-                           href="/user_details?userid=RiyfftYb6iuh5S1lPrp7sQ"
-                           data-hovercard-id="2-YW12W31RtcIN7IVbhAuA" data-analytics-label="about_me"
-                           id="dropdown_user-name">Joshua H.</a>
-                      </span>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-
-    )
-  }
-
-
   render() {
     const {object} = this.state;
     if (!object.singleModel) {
@@ -243,12 +125,14 @@ class F8SingleHeaderRightPhotos extends Component {
         <div className="photo-box-overlay js-overlay">
           <div className="media-block photo-box-overlay_caption">
             <div className="media-avatar avatar">
-              <div className="photo-box pb-30s" data-hovercard-id="2-YW12W31RtcIN7IVbhAuA">
-                <a href="/user_details?userid=RiyfftYb6iuh5S1lPrp7sQ" className="js-analytics-click"
-                   data-analytics-label="user-photo">
-                  <img alt="Joshua H." className="photo-box-img" height="30"
-                       src="https://s3-media4.fl.yelpcdn.com/photo/tUK96wJVCgJWfKa94BXaiQ/30s.jpg" width="30"/>
+              <div className="photo-box pb-30s">
 
+                <a href="/user_details?userid=RiyfftYb6iuh5S1lPrp7sQ" className="js-analytics-click">
+                  <img alt="Joshua H." className="photo-box-img"
+                       width="30"
+                       height="30"
+                       src="https://s3-media4.fl.yelpcdn.com/photo/tUK96wJVCgJWfKa94BXaiQ/30s.jpg"
+                  />
                 </a>
 
               </div>
