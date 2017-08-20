@@ -1,8 +1,9 @@
 import Telescope from '../../../lib'
 import React, {Component} from 'react'
-import Posts from '../../../../lib/posts'
 import Recipes from '../../../../lib/recipes'
 import Photos from '../../../../lib/photos'
+
+import {FormattedMessage, FormattedRelative} from 'react-intl'
 
 import {Link} from 'react-router'
 import {withRouter} from 'react-router'
@@ -41,7 +42,7 @@ class RecipesItem extends Component {
             <span className="indexed-biz-name">
               {`${index + 1}.`}
               <Link
-                className="biz-name js-analytics-click"
+                className="biz-name js-analytics-click margin-left-4"
                 to={getOrderedRecipeLink(recipe)}>
                     <span>{recipe.displayName}</span>
               </Link>
@@ -59,6 +60,12 @@ class RecipesItem extends Component {
         <small className="biz-city">
           {recipe.restaurant.address}
         </small>
+
+        <div className="tag-18x18_flame-dd5114">
+          <small>
+            <FormattedRelative value={recipe.updatedAt}/>
+          </small>
+        </div>
 
       </div>
 
