@@ -75,6 +75,7 @@ Telescope.registerComponent('EditRestaurantForm',                     require('.
 Telescope.registerComponent('EventsItem',                             require('./overlayrestaurant/page/EventsItem.jsx').default)
 Telescope.registerComponent('EventsList',                             require('./overlayrestaurant/page/EventsList.jsx').default)
 Telescope.registerComponent('RestaurantsSingleHeader',                require('./overlayrestaurant/page/RestaurantsSingleHeader.jsx').default)
+Telescope.registerComponent('RestaurantsFixMapMarker',                require('./overlayrestaurant/page/RestaurantsFixMapMarker.jsx').default)
 
 
 // overlayEvent

@@ -22,7 +22,6 @@ const {
   MODEL_FORM_TYPE_EDIT,
 } = require('../../../lib/constants').default
 
-
 class IEAEditRestaurantLayout extends Component {
 
   constructor(props, context) {
