@@ -47,7 +47,6 @@ Photos.getPhotoItem = function (photos, modelType, forObject, index) {
 
 Photos.getPhotoInfoAboutUser = function (photos, index) {
   const user = photos[index].user;
-  debugger
   return {
     username: user.username,
     imageUrl: Photos.getListThumbnailUrl(user),

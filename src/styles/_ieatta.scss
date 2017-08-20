@@ -326,3 +326,12 @@ ul.star-selector_stars {
   position: relative;
   margin: auto;
 }
+
+#photos-browser {
+  margin: auto;
+  height: 100%;
+
+  a:hover {
+    text-decoration: underline !important;
+  }
+}

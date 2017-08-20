@@ -144,13 +144,13 @@ class F8SingleHeaderRightPhotos extends Component {
 
             </div>
 
-            <div className="media-story">
-              <Link className="photo-desc" to={overlay.linkUrl}>
+            <div className="media-story" id="photos-browser">
+              <Link className="photo-desc margin-right-4" to={overlay.linkUrl}>
                 {overlay.title}
               </Link>
               <span className="author">
                 {"by"}
-                <Link className="user-display-name js-analytics-click"
+                <Link className="user-display-name js-analytics-click margin-left-4"
                       to={overlay.user.userProfileUrl}
                       id="dropdown_user-name">
                           {overlay.user.username}
