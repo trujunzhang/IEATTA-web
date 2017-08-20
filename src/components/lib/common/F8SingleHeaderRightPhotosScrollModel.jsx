@@ -8,6 +8,15 @@ import {Link} from 'react-router'
 class F8SingleHeaderRightPhotosScrollModel extends Component {
 
 
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      currentSelected: [0, 1, 2]
+    }
+  }
+
+
   renderSeeAll() {
     const {photoModelObject} = this.props;
 
@@ -47,6 +56,7 @@ class F8SingleHeaderRightPhotosScrollModel extends Component {
 
   render() {
     const {photoModelObject} = this.props;
+    const {currentSelected} = this.state;
 
     return (
       <div className="showcase-container">
@@ -57,7 +67,7 @@ class F8SingleHeaderRightPhotosScrollModel extends Component {
 
             <div className="showcase-photos showcase-photos-z-index">
 
-              {photoModelObject.photos.map((item, index) => {
+              {currentSelected.map((item, index) => {
                 return (<div></div>)
               })}
               {this.renderSeeAll()}

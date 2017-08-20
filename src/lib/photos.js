@@ -55,6 +55,19 @@ Photos.getPhotoInfoAboutUser = function (photos, index) {
   }
 }
 
+Photos.getPhotoItemInfo = function (photos, modelType, forObject, index) {
+  return {
+    ...Photos.getPhotoItem(photos, modelType, forObject, index),
+    overlay: {
+      title: photos[index].restaurant.displayName,
+      linkUrl: geDetailedModelLink(modelType, photos[index].restaurant),
+      user: {
+        ...Photos.getPhotoInfoAboutUser(photos, index)
+      }
+    }
+  }
+}
+
 Photos.generateHeaderRightPhotoObject = function (props) {
   const {modelType, forObject, photosListTask} = props;
   const photos = photosListTask.results;
@@ -65,27 +78,8 @@ Photos.generateHeaderRightPhotoObject = function (props) {
       singleModel: false,
       total: photoLength,
       photos: [
-        {
-          ...Photos.getPhotoItem(photos, modelType, forObject, 0),
-          overlay: {
-            title: photos[0].restaurant.displayName,
-            linkUrl: geDetailedModelLink(modelType, photos[0].restaurant),
-            user: {
-              ...Photos.getPhotoInfoAboutUser(photos, 0)
-            }
-          }
-        },
-        {
-          ...Photos.getPhotoItem(photos, modelType, forObject, 1),
-          overlay: {
-            title: photos[1].restaurant.displayName,
-            linkUrl: geDetailedModelLink(modelType, photos[1].restaurant),
-            user: {
-              ...Photos.getPhotoInfoAboutUser(photos, 1)
-            }
-          }
-
-        }
+        Photos.getPhotoItemInfo(photos, modelType, forObject, 0),
+        Photos.getPhotoItemInfo(photos, modelType, forObject, 1),
       ],
       photosWall: [
         Photos.getPhotoItem(photos, modelType, forObject, 2),
