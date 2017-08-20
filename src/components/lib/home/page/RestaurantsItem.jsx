@@ -1,6 +1,5 @@
 import Telescope from '../../index'
 import React, {Component} from 'react'
-import Posts from '../../../../lib/posts'
 import Photos from '../../../../lib/photos'
 
 import {getRestaurantLink} from '../../../../lib/link'
@@ -25,16 +24,19 @@ class RestaurantsItem extends Component {
   }
 
   renderLeft() {
-    const {listId, restaurant, index} = this.props;
+    const {restaurant, index} = this.props;
 
     return (
       <div className="main-attributes">
         <div className="media-block media-block--12">
           <div className="media-avatar">
             <div className="photo-box pb-90s">
-              <Link className="js-analytics-click" to={getRestaurantLink(restaurant)}>
+              <Link className="js-analytics-click"
+                    to={getRestaurantLink(restaurant)}>
                 <img alt={restaurant.displayName}
-                     className="photo-box-img" height="90" width="90"
+                     className="photo-box-img"
+                     width="90"
+                     height="90"
                      src={Photos.getListThumbnailUrl(restaurant)}/>
               </Link>
             </div>
@@ -42,13 +44,14 @@ class RestaurantsItem extends Component {
           <div className="media-story">
             <h3 className="search-result-title">
               <span className="indexed-biz-name">{`${index + 1}.`}
-                <Link className="biz-name js-analytics-click" to={getRestaurantLink(restaurant)}>
+                <Link className="biz-name js-analytics-click margin-left-4"
+                      to={getRestaurantLink(restaurant)}>
                   <span>{restaurant.displayName}</span>
                 </Link>
               </span>
             </h3>
 
-            {this.renderReview()}
+            {/*{this.renderReview()}*/}
 
             <div className="price-category">
               <span className="bullet-after">
@@ -85,7 +88,7 @@ class RestaurantsItem extends Component {
   }
 
   renderRight() {
-    const {listId, restaurant, index} = this.props,
+    const {restaurant} = this.props,
       address = restaurant.address,
       array = address.split(',')
 
@@ -109,11 +112,7 @@ class RestaurantsItem extends Component {
 
 
   render() {
-    const {listId, restaurant, index} = this.props
-
-    if (typeof listId === 'undefined') {
-      throw new Error('You need to set a proper List Id before using RestaurantsItem')
-    }
+    const {restaurant} = this.props
 
     return (
       <li
