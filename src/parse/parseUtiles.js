@@ -98,13 +98,17 @@ function getReviewsParameters(terms) {
 }
 
 function getRecipesParameters(terms) {
-  return new Parameters.Recipes(getQueryByType(PARSE_RECIPES, ['restaurant', 'event', 'recipe', 'user', "photos", 'user.photos']))
+  return new Parameters.Recipes(getQueryByType(PARSE_RECIPES,
+    ['restaurant', 'event', 'recipe', 'user', "photos", 'user.photos']
+  ))
     .addParameters(terms)
     .end()
 }
 
 function getPhotosParameters(terms) {
-  return new Parameters.Photos(getQueryByType(PARSE_PHOTOS))
+  return new Parameters.Photos(getQueryByType(PARSE_PHOTOS,
+    ['restaurant', 'recipe', 'user']
+  ))
     .addParameters(terms)
     .end()
 }
