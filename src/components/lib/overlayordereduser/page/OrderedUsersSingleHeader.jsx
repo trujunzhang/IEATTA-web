@@ -35,7 +35,7 @@ class OrderedUsersSingleHeader extends Component {
 
           {orderedUserStateRows.map((row, index) => {
             return (
-              <li className="review-count">
+              <li key={index} className="review-count">
             <span id="icon_fill_24X24" className="icon icon--24-review icon--size-24">
                  <svg className="icon_svg"><path d={row.svg}/></svg>
               </span>
