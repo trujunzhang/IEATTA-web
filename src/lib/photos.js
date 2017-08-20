@@ -1,4 +1,3 @@
-
 const Photos = {}
 
 /**
@@ -14,7 +13,6 @@ Photos.getThumbnailUrl = function (photo) {
 Photos.getOriginalUrl = function (photo) {
   return photo.original._url;
 }
-
 
 Photos.getListThumbnailUrl = function (item) {
   const photos = item.photos || [];

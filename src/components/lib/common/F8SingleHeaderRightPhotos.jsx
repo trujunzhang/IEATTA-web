@@ -195,6 +195,7 @@ class F8SingleHeaderRightPhotos extends Component {
     const {modelType, forObject, photosListTask} = this.props;
     const photos = photosListTask.results;
     const photoLength = photos.length;
+
     return (
       <div className="showcase-container">
 

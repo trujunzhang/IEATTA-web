@@ -119,7 +119,6 @@ function loadRecipesList(listTask: Any, terms: Any): ThunkAction {
 }
 
 function loadPhotosBrowser(terms: Any): ThunkAction {
-  debugger
   return loadListByType(terms, getPhotosParameters(terms), terms, fromParsePhoto)
 }
 

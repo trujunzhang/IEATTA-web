@@ -6,14 +6,14 @@ import Users from '../../../../lib/users'
 class RestaurantsDetail extends Component {
 
   renderLeftPanel() {
-    const {restaurant} = this.props;
-    const reviewTitle = restaurant.displayName;
+    const {forObject} = this.props;
+    const reviewTitle = forObject.displayName;
 
     return (
       <div className="column column-alpha column--responsive">
         <Telescope.components.EventsList {...this.props}/>
 
-        <Telescope.components.ReviewsList forObject={this.props.restaurant}
+        <Telescope.components.ReviewsList forObject={this.props.forObject}
                                           reviewType="restaurant"
                                           reviewTitle={reviewTitle}/>
 
@@ -23,12 +23,12 @@ class RestaurantsDetail extends Component {
 
 
   renderRightPanel() {
-    const {restaurant} = this.props;
+    const {forObject} = this.props;
 
     return (
       <div className="column column-beta column--responsive official-events">
 
-        <Telescope.components.RecipesList forRestaurant={restaurant} showTitle={true}/>
+        <Telescope.components.RecipesList forRestaurant={forObject} showTitle={true}/>
 
       </div>
     )

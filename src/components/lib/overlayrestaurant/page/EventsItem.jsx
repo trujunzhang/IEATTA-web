@@ -1,7 +1,5 @@
-import Telescope from '../../../lib'
 import React, {Component} from 'react'
 import Photos from '../../../../lib/photos'
-import Posts from '../../../../lib/posts'
 import Events from '../../../../lib/events'
 
 import {getEventLink} from '../../../../lib/link'
@@ -12,17 +10,15 @@ import {Link} from 'react-router'
 class EventsItem extends Component {
 
   renderLeft() {
-    const {event} = this.props;
-
     return (
       <div className="media-avatar">
         <div className="photo-box pb-120s">
-          <Link to={getEventLink(event)}>
-            <img alt="Desi Comedy Fest 2017"
+          <Link to={getEventLink(this.props.event)}>
+            <img alt={this.props.event.restaurant.displayName}
                  className="photo-box-img"
                  width="120"
                  height="120"
-                 src={Photos.getListThumbnailUrl(event.restaurant)}/>
+                 src={Photos.getListThumbnailUrl(this.props.event.restaurant)}/>
           </Link>
         </div>
       </div>

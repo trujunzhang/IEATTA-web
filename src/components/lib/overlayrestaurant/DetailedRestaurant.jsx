@@ -45,7 +45,6 @@ class DetailedRestaurant extends Component {
       rid: props.params.rid,
       rslug: props.params.rslug,
       // Detailed object
-      restaurant: null,
       forObject: null,
       reviewStatistic: null,
       // photos
@@ -65,7 +64,6 @@ class DetailedRestaurant extends Component {
 
     this.setState({
       // Detailed object
-      restaurant: getModelByObjectId(nextProps, this.state.rid, this.state.restaurant),
       forObject: getModelByObjectId(nextProps, this.state.rid, this.state.forObject),
       reviewStatistic: getModelByObjectId(nextProps, this.state.rid, this.state.reviewStatistic, 'statistic'),
       // photos
@@ -85,8 +83,8 @@ class DetailedRestaurant extends Component {
   }
 
   render() {
-    const {photosListTask, restaurant, pageForm, reviewStatistic} = this.state;
-    if (!!restaurant && !!photosListTask.ready && !!reviewStatistic) {
+    const {photosListTask, forObject, pageForm, reviewStatistic} = this.state;
+    if (!!forObject && !!photosListTask.ready && !!reviewStatistic) {
       switch (pageForm) {
         case PAGE_SINGLE_SELECTED_PHOTO_FORM:
           return (<Telescope.components.IEAPhotosSingleLayout {...this.state}/>)

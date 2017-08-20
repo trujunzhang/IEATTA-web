@@ -11,9 +11,9 @@ class EventsList extends Component {
     super(props)
 
     const terms = {
-      listId: 'event-list-view-for-' + props.restaurant.id,
+      listId: 'event-list-view-for-' + props.forObject.id,
       limit: 10,
-      restaurantId: props.restaurant.id
+      restaurantId: props.forObject.id
     };
     this.state = {
       terms: terms,

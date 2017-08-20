@@ -34,7 +34,7 @@ class IEAEditRestaurantLayout extends Component {
       }
     }
     props.actions.toggleEditModelType(MENU_ITEM_ADD_OR_EDIT_RESTAURANT);
-    props.actions.onEditModelFormFieldChange('displayName', props.restaurant.displayName || '', true)
+    props.actions.onEditModelFormFieldChange('displayName', props.forObject.displayName || '', true)
   }
 
   /**
@@ -78,15 +78,16 @@ class IEAEditRestaurantLayout extends Component {
 
 
   async onButtonPress() {
-    const {dispatch, restaurant} = this.props;
+    const {dispatch, forObject} = this.props;
 
+    const objectId = forObject.id;
     const displayName = this.props.editModel.form.fields.displayName;
 
     this.props.actions.updateModelRequest();
 
     try {
       await Promise.race([
-        dispatch(updateRestaurant({objectId: restaurant.id, displayName: displayName})),
+        dispatch(updateRestaurant({objectId, displayName})),
         timeout(15000),
       ]);
     } catch (e) {

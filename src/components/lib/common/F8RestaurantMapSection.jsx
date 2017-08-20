@@ -9,14 +9,14 @@ import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
 class F8RestaurantMapSection extends Component {
 
   renderTopMap() {
-    const {restaurant} = this.props;
+    const {forObject} = this.props;
 
-    if (typeof restaurant === 'undefined') {
+    if (typeof forObject === 'undefined') {
       throw new Error('You need to set a proper restaurant!')
     }
 
-    const latitude = restaurant.geoLocation.latitude;
-    const longitude = restaurant.geoLocation.longitude;
+    const latitude = forObject.geoLocation.latitude;
+    const longitude = forObject.geoLocation.longitude;
     const position = [latitude, longitude];
 
     return (
@@ -26,7 +26,7 @@ class F8RestaurantMapSection extends Component {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>
         <Marker position={position}>
           <Popup>
-            <span>{restaurant.displayName}<br/>{restaurant.address}</span>
+            <span>{forObject.displayName}<br/>{forObject.address}</span>
           </Popup>
         </Marker>
       </Map>
@@ -34,10 +34,8 @@ class F8RestaurantMapSection extends Component {
   }
 
   renderRightEditButton() {
-    const {restaurant} = this.props;
-
     return (
-      <Link to={getEditRestaurantLink(restaurant)}
+      <Link to={getEditRestaurantLink(this.props.forObject)}
             className="link-more icon-wrapper mapbox-edit">
             <span id="icon_14X14"
                   className="icon icon--14-pencil icon--size-14 icon--linked u-space-r-half">
@@ -52,8 +50,8 @@ class F8RestaurantMapSection extends Component {
   }
 
   renderBottomText() {
-    const {restaurant, showEditButton} = this.props;
-    const rows = restaurant.address.split(',')
+    const {forObject, showEditButton} = this.props;
+    const rows = forObject.address.split(',')
 
     return (
       <ul>
