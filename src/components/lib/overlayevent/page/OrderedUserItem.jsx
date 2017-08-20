@@ -4,6 +4,7 @@ import Photos from '../../../../lib/photos'
 
 import {Link} from 'react-router'
 
+import {FormattedMessage, FormattedRelative} from 'react-intl'
 import {getOrderedUserLink, getLoggedUserMenuLink} from '../../../../lib/link'
 import {withRouter} from 'react-router'
 
@@ -54,8 +55,22 @@ class OrderedUserItem extends Component {
           </li>
         </ul>
 
-        <ul className="user-passport-stats">
-          <li className="friend-count">
+
+        <div className="tag-18x18_flame-dd5114">
+          <small>
+            <FormattedRelative value={peopleInEvent.updatedAt}/>
+          </small>
+        </div>
+
+        {/*{this.renderRightBottom()}*/}
+      </div>
+    )
+  }
+
+  renderRightBottom() {
+    return (
+      <ul className="user-passport-stats">
+        <li className="friend-count">
           <span id="people_in_event_item_span" className="icon icon--18-friends icon--size-18">
                 <svg className="icon_svg">
                 <g>
@@ -67,21 +82,20 @@ class OrderedUserItem extends Component {
                 </g>
                </svg>
            </span>
-            <b>0</b>
-          </li>
-          <li className="review-count">
+          <b>0</b>
+        </li>
+        <li className="review-count">
                <span id="people_in_event_item_span" className="icon icon--18-review icon--size-18">
                       <svg className="icon_svg">
                            <path
                              d="M13 3H5c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1.505 9.643l-2.526-1.55L6.526 12.7 7 9.934 5 7.977l2.766-.404L8.97 4.7l1.264 2.873L13 7.977l-2 1.957.495 2.71z"/>
                       </svg>
                </span>
-            <b>0</b>
-          </li>
+          <b>0</b>
+        </li>
 
-        </ul>
+      </ul>
 
-      </div>
     )
   }
 
