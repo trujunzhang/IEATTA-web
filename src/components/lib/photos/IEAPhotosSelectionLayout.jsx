@@ -12,9 +12,17 @@ class IEAPhotosSelectionLayout extends Component {
   constructor(props) {
     super(props)
     this.state = this.initialState = {
-      selectedPhotoInfo: Photos.generateSelectedPhotoInfo(this.props)
+      selectedPhotoInfo: Photos.generateSelectedPhotoInfo(props)
     }
   }
+
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      selectedPhotoInfo: Photos.generateSelectedPhotoInfo(nextProps)
+    })
+  }
+
 
   renderCloseButton() {
     const {modelType, forObject, pageForm} = this.props;
@@ -47,10 +55,8 @@ class IEAPhotosSelectionLayout extends Component {
   }
 
   render() {
-    debugger
     return (
-
-      <div id="lightbox" className="lightbox is-enabled lightbox--media-details" data-component-bound="true">
+      <div id="lightbox" className="lightbox is-enabled lightbox--media-details">
         <div id="lightbox-inner" className="lightbox-inner">
           {this.renderCloseButton()}
           {this.renderContent()}
