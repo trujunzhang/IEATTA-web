@@ -198,6 +198,7 @@ class IEAEditRestaurantLayout extends Component {
 
         <div className="body-overlay" style={{"display": "block"}}/>
 
+        <Telescope.components.RestaurantsFixMapMarker {...this.props} />
       </div>
     )
   }
