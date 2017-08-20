@@ -134,7 +134,7 @@ export function fromParseUser(map: Object): User {
     loginType: map.get('loginType'),
     email: map.get('email') || "",
     // Photos
-    photos: (map.get('photos') || []).map(fromParsePhoto),
+    photos: (map.get('photos') || []).map((item) => fromParsePhoto(item, false)),
     // voting
     useful: _.pluck((map.get('useful') || []).map(fromParsePointer), 'id').join(';'),
     funny: _.pluck((map.get('funny') || []).map(fromParsePointer), 'id').join(';'),
@@ -142,14 +142,29 @@ export function fromParseUser(map: Object): User {
   }
 }
 
-export function fromParsePhoto(map: Object): Photo {
-  return {
+export function fromParsePhoto(map: Object, containRelations = true): Photo {
+  const common = {
+    // Basic Fields
     id: map.id,
+    createdAt: map.get('createdAt'),
+    updatedAt: map.get('updatedAt'),
+    // Attributes
     original: map.get('original'),
     thumbnail: map.get('thumbnail'),
     url: map.get('url'),
     photoType: map.get('photoType'),
   };
+
+  if (containRelations) {
+    return {
+      ...common,
+      // Relations
+      restaurant: map.get('restaurant') && fromParseRestaurant(map.get('restaurant')),
+      event: map.get('event') && fromParseEvent(map.get('event')),
+      user: map.get('user') && fromParseUser(map.get('user'))
+    };
+  }
+  return common;
 }
 
 
@@ -163,7 +178,7 @@ export function fromParseRecipe(map: Object): Recipe {
     displayName: map.get('displayName'),
     price: map.get('price'),
     // Pointer
-    photos: (map.get('photos') || []).map(fromParsePhoto),
+    photos: (map.get('photos') || []).map((item) => fromParsePhoto(item, false)),
     // Relations
     restaurant: map.get('restaurant') && fromParseRestaurant(map.get('restaurant')),
     event: map.get('event') && fromParseEvent(map.get('event')),
@@ -209,7 +224,7 @@ export function fromParseRestaurant(map: Object): Restaurant {
     address: map.get('address'),
     geoLocation: map.get('geoLocation'),
     // Photos
-    photos: (map.get('photos') || []).map(fromParsePhoto),
+    photos: (map.get('photos') || []).map((item) => fromParsePhoto(item, false)),
   }
 }
 
