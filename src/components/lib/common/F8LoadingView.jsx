@@ -20,7 +20,11 @@ class F8LoadingView extends Component {
 
     return (
       <div className={loadingClass}>
-        <ReactLoading type={loadingType} color="#444"/>
+        {/*<ReactLoading type={loadingType} color="#444"/>*/}
+        <div className="js-review-examples-throbber"
+             id="ieatta-loading-section">
+          <div className="throbber-container"/>
+        </div>
       </div>
     )
   }
