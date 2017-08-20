@@ -77,6 +77,12 @@ class F8SingleHeaderRightPhotos extends Component {
     return null;
   }
 
+  renderHorizonScrollModel(){
+    return(
+
+    )
+  }
+
   renderSingleModel() {
     const {object} = this.state;
 
