@@ -1,7 +1,7 @@
 import Telescope from '../index'
 import React, {Component} from 'react'
-import Posts from '../../../lib/posts'
 import Users from '../../../lib/users'
+import Photos from '../../../lib/photos'
 
 class IEAPhotosSingleLayout extends Component {
 
@@ -9,6 +9,8 @@ class IEAPhotosSingleLayout extends Component {
     const {selectPhotoIndex} = this.props;
 
     if (selectPhotoIndex !== -1) {
+      const selectedPhotoInfo = Photos.generateSelectedPhotoInfo(this.props);
+      debugger
       return (
         <div
           className="media-details_container media-details_container--fixed-height media-details_container--with-sidebar">

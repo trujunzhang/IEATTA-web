@@ -102,4 +102,12 @@ Photos.generateHeaderRightPhotoObject = function (props) {
   }
 }
 
+Photos.generateSelectedPhotoInfo = function (props) {
+  const {modelType, forObject, photosListTask, selectPhotoIndex} = props;
+  const photos = photosListTask.results;
+  const current = photos[selectPhotoIndex];
+
+  return Photos.getPhotoInfoAboutUser(photos, selectPhotoIndex)
+}
+
 export default Photos
