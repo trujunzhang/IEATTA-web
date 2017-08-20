@@ -11,7 +11,7 @@ class F8LoadingView extends Component {
    * @returns {XML}
    */
   render() {
-    const loadingClass = 'results_37tfm';
+    const loadingClass = this.props.loadingClass || 'results_37tfm';
 
     return (
       <div className={loadingClass}>
