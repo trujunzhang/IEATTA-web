@@ -168,7 +168,6 @@ export function fromParsePhoto(map: Object): Photo {
     event: map.get('event') && fromParseEvent(map.get('event')),
     user: map.get('user') && fromParseUser(map.get('user'))
   }
-  debugger
   return instance
 }
 
