@@ -133,7 +133,7 @@ class IEAEditRestaurantLayout extends Component {
 
   renderRight() {
     return (
-      <div className="map-wrapper pull-right">
+      <div className="map-wrapper pull-right" id="fix-map-marker-section">
         <div className="map-container yelp-map-container">
           <Telescope.components.F8RestaurantMapSection  {...this.props} showEditButton={true} onlyMap={true}/>
         </div>
@@ -144,16 +144,18 @@ class IEAEditRestaurantLayout extends Component {
 
   renderRightBottom() {
     return (
-      <a className="show-locator-popup pull-right">
-                <span
-                  id="icon_18X18"
-                  className="icon icon--18-marker icon--size-18 icon--neutral-gray u-space-r-half">
-    <svg className="icon_svg">
-    <path
-      d="M14 7A5 5 0 0 0 4 7c0 1.97 1.15 3.658 2.806 4.472h-.17L9 16l2.363-4.528h-.17C12.85 10.658 14 8.97 14 7zM9 5a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/>
-    </svg>
-</span>
-        Fix incorrect map marker
+      <a onClick={(e) => {
+        this.setState({showFixMapMarker: true})
+      }}
+         className="show-locator-popup pull-right">
+                <span id="icon_18X18"
+                      className="icon icon--18-marker icon--size-18 icon--neutral-gray u-space-r-half">
+                     <svg className="icon_svg">
+                           <path
+                             d="M14 7A5 5 0 0 0 4 7c0 1.97 1.15 3.658 2.806 4.472h-.17L9 16l2.363-4.528h-.17C12.85 10.658 14 8.97 14 7zM9 5a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/>
+                     </svg>
+                </span>
+        {"Fix incorrect map marker"}
       </a>
     )
   }
@@ -194,8 +196,11 @@ class IEAEditRestaurantLayout extends Component {
             </div>
           </div>
         </div>
+
+        <div className="body-overlay" style={{"display": "block"}}/>
+
       </div>
-    );
+    )
   }
 }
 

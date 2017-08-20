@@ -216,7 +216,13 @@ input.header_content_middle_input {
   }
 }
 
-.biz-page-header-left, .form-footer, .media-nav, .biz-page-actions, .below-the-fold, .main-header_logo {
+.biz-page-header-left,
+.form-footer,
+.media-nav,
+.biz-page-actions,
+.below-the-fold,
+.main-header_logo,
+#fix-map-marker-section {
   a:hover {
     cursor: pointer;
   }
