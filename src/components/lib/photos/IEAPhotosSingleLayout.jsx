@@ -55,7 +55,12 @@ class IEAPhotosSingleLayout extends Component {
 
             <Telescope.components.F8PhotosSingleTop {...this.props}/>
 
-            {this.renderContent()}
+            <Telescope.components.F8PhotosContentWithNavBar
+              {...this.props}
+              {...this.state}
+              contentClass="media-details_container media-details_container--fixed-height media-details_container--with-sidebar"
+            />
+
           </div>
         </div>
       </div>

@@ -17,9 +17,9 @@ class F8PhotosSelectPage extends Component {
 
   render() {
     return (
-      <Telescope.components.F8PhotosSelectLeftPanel
+      <Telescope.components.F8PhotosContentWithNavBar
         {...this.props}
-        constentClass="media-details_container media-details_container--embed media-details_container--with-sidebar"
+        contentClass="media-details_container media-details_container--embed media-details_container--with-sidebar"
       />
     )
   }

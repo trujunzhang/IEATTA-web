@@ -27,7 +27,6 @@ class F8PhotosContentWithNavBar extends Component {
         {/*{03-left-right-navigator.html}*/}
 
       </div>
-
     )
   }
 
