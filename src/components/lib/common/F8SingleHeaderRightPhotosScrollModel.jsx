@@ -21,15 +21,21 @@ class F8SingleHeaderRightPhotosScrollModel extends Component {
 
 
   renderSeeAll() {
+    const {modelType, forObject} = this.props;
     const {photoModelObject} = this.props;
 
     return (
-      <div className="js-photo photo photo-3 photo-grid">
-
-        <div className="showcase-photo-box">
-        </div>
-
-        {this.renderSeeAllButton()}
+      <div className="showcase-footer-links">
+        <Link className="see-more u-pull-right" to={getPhotosBrowserLink(modelType, forObject)}>
+        <span
+          id="icon_18X18"
+          className="icon icon--18-grid icon--size-18 u-space-r-half">
+    <svg className="icon_svg">
+    <path d="M10 15v-5h5v5h-5zm0-12h5v5h-5V3zm-7 7h5v5H3v-5zm0-7h5v5H3V3z"/>
+    </svg>
+</span>
+          {`See all ${photoModelObject.total}`}
+        </Link>
 
       </div>
 
@@ -44,9 +50,10 @@ class F8SingleHeaderRightPhotosScrollModel extends Component {
       <div className="see-more show-all-overlay">
         <Link className="show-all-photos"
               to={getPhotosBrowserLink(modelType, forObject)}>
-                    <span id="icon_24X24"
-                          style={{display: 'block'}}
-                          className="icon icon--24-grid icon--size-24 icon--inverse icon--fallback-inverted show-all-overlay_icon">
+                    <span
+                      id="icon_24X24"
+                      style={{display: 'block'}}
+                      className="icon icon--24-grid icon--size-24 icon--inverse icon--fallback-inverted show-all-overlay_icon">
                     <svg className="icon_svg">
                       <path d="M13 21v-8h8v8h-8zm0-18h8v8h-8V3zM3 13h8v8H3v-8zM3 3h8v8H3V3z"/>
                     </svg>
@@ -64,7 +71,9 @@ class F8SingleHeaderRightPhotosScrollModel extends Component {
     return (
       <div className="showcase-container">
 
-        <div className="showcase-container_inner showcase showcase-3-photo">
+        <div className="showcase-container_inner showcase showcase-4-photo">
+
+          {this.renderSeeAll()}
 
           <div className="lightbox-media-parent">
 
