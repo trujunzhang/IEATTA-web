@@ -10,15 +10,14 @@ class IEAPhotosSingleLayout extends Component {
 
     if (selectPhotoIndex !== -1) {
       const selectedPhotoInfo = Photos.generateSelectedPhotoInfo(this.props);
-      debugger
       return (
         <div
           className="media-details_container media-details_container--fixed-height media-details_container--with-sidebar">
           <div className="media-container js-media-container">
             <div className="media-details-grid">
 
-              <Telescope.components.F8PhotosSelectLeftPanel {...this.props}/>
-              <Telescope.components.F8PhotosSelectRightPanel {...this.props}/>
+              <Telescope.components.F8PhotosSelectLeftPanel {...this.props} selectedPhotoInfo={selectedPhotoInfo}/>
+              <Telescope.components.F8PhotosSelectRightPanel {...this.props} selectedPhotoInfo={selectedPhotoInfo}/>
 
             </div>
           </div>

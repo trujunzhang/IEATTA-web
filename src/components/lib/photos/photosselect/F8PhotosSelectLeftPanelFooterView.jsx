@@ -46,6 +46,7 @@ class F8PhotosSelectLeftPanelFooterView extends Component {
   }
 
   render() {
+    const {selectedPhotoInfo} = this.props;
     return (
       <div className="media-footer photo-box-overlay">
         <ul className="media-footer_inner">

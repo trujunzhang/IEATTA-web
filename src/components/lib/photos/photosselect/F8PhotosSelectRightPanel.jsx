@@ -1,24 +1,17 @@
 import Telescope from '../../index'
 import React, {Component} from 'react';
 
+import {Link} from 'react-router'
+
 class F8PhotosSelectRightPanel extends Component {
   render() {
-    const {selectPhotoIndex} = this.props;
-   debugger
     return (
 
       <div className="media-details-grid_side media-details-grid_side--with-local-ads">
         <div className="media-details-grid_side-inner">
           <div className="media-info">
-            <div className="media-info_item media-info_user">
-              <div className="photo-user-passport">
 
-                {this.renderTopUserInfo()}
-
-              </div>
-
-            </div>
-
+            {this.renderTopUserInfo()}
 
             <div className="media-info_container">
               {this.renderPhotoCreatedAt()}
@@ -103,41 +96,44 @@ class F8PhotosSelectRightPanel extends Component {
   }
 
   renderTopUserInfo() {
+    const {selectedPhotoInfo} = this.props;
     return (
-      <div className="ypassport ypassport-slim media-block">
 
-        <div className="media-avatar">
+      <div className="media-info_item media-info_user">
+        <div className="photo-user-passport">
+          <div className="ypassport ypassport-slim media-block">
 
-          <div className="photo-box pb-30s">
-            <a href="/user_details?userid=WALNtcSZlONK4Yj-o3pzKA"
-               className="js-analytics-click">
-              <img alt="Dan B." className="photo-box-img"
-                   width="30"
-                   height="30"
-                   src="https://s3-media2.fl.yelpcdn.com/photo/AQbgX0Y9bLUs_sLGqWT-QA/30s.jpg"
-              />
+            <div className="media-avatar">
 
-            </a>
+              <div className="photo-box pb-30s">
+                <Link to={selectedPhotoInfo.userProfileUrl}
+                      className="js-analytics-click">
+                  <img alt={selectedPhotoInfo.username}
+                       className="photo-box-img"
+                       width="30"
+                       height="30"
+                       src={selectedPhotoInfo.imageUrl}/>
+                </Link>
+
+              </div>
+            </div>
+
+            <div className="media-story">
+              <ul className="user-passport-info">
+                <li className="user-name">
+                  <Link className="user-display-name js-analytics-click"
+                        to={selectedPhotoInfo.userProfileUrl}
+                        id="dropdown_user-name">
+                    {selectedPhotoInfo.username}
+                  </Link>
+                </li>
+              </ul>
+
+              {this.renderUserButton()}
+            </div>
 
           </div>
-
-
         </div>
-
-        <div className="media-story">
-          <ul className="user-passport-info">
-            <li className="user-name">
-              <a className="user-display-name js-analytics-click"
-                 href="/user_details?userid=WALNtcSZlONK4Yj-o3pzKA"
-                 id="dropdown_user-name">
-                Dan B.
-              </a>
-            </li>
-          </ul>
-
-          {this.renderUserButton()}
-        </div>
-
       </div>
 
     )
