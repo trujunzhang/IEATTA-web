@@ -134,7 +134,7 @@ export function fromParseUser(map: Object): User {
     loginType: map.get('loginType'),
     email: map.get('email') || "",
     // Photos
-    photos: (map.get('photos') || []).map((item) => fromParsePhoto(item, false)),
+    photos: (map.get('photos') || []).map(fromParsePhotoNormal),
     // voting
     useful: _.pluck((map.get('useful') || []).map(fromParsePointer), 'id').join(';'),
     funny: _.pluck((map.get('funny') || []).map(fromParsePointer), 'id').join(';'),
@@ -142,8 +142,8 @@ export function fromParseUser(map: Object): User {
   }
 }
 
-export function fromParsePhoto(map: Object, containRelations = true): Photo {
-  const common = {
+function parsePhotoNormal(map: Object): Object {
+  return {
     // Basic Fields
     id: map.id,
     createdAt: map.get('createdAt'),
@@ -154,17 +154,22 @@ export function fromParsePhoto(map: Object, containRelations = true): Photo {
     url: map.get('url'),
     photoType: map.get('photoType'),
   };
+}
 
-  if (containRelations) {
-    return {
-      ...common,
-      // Relations
-      restaurant: map.get('restaurant') && fromParseRestaurant(map.get('restaurant')),
-      event: map.get('event') && fromParseEvent(map.get('event')),
-      user: map.get('user') && fromParseUser(map.get('user'))
-    };
+function fromParsePhotoNormal(map: Object): Photo {
+  return parsePhotoNormal(map)
+}
+
+export function fromParsePhoto(map: Object): Photo {
+  const instance = {
+    ...parsePhotoNormal(map),
+    // Relations
+    restaurant: map.get('restaurant') && fromParseRestaurant(map.get('restaurant')),
+    event: map.get('event') && fromParseEvent(map.get('event')),
+    user: map.get('user') && fromParseUser(map.get('user'))
   }
-  return common;
+  debugger
+  return instance
 }
 
 
@@ -178,20 +183,12 @@ export function fromParseRecipe(map: Object): Recipe {
     displayName: map.get('displayName'),
     price: map.get('price'),
     // Pointer
-    photos: (map.get('photos') || []).map((item) => fromParsePhoto(item, false)),
+    photos: (map.get('photos') || []).map(fromParsePhotoNormal),
     // Relations
     restaurant: map.get('restaurant') && fromParseRestaurant(map.get('restaurant')),
     event: map.get('event') && fromParseEvent(map.get('event')),
     user: map.get('user') && fromParseUser(map.get('user'))
   }
-}
-
-
-export function fromParseCloudinary(map: Object): Cloudinary {
-  return {
-    name: map['name'],
-    url: map['url']
-  };
 }
 
 
@@ -224,7 +221,7 @@ export function fromParseRestaurant(map: Object): Restaurant {
     address: map.get('address'),
     geoLocation: map.get('geoLocation'),
     // Photos
-    photos: (map.get('photos') || []).map((item) => fromParsePhoto(item, false)),
+    photos: (map.get('photos') || []).map(fromParsePhotoNormal),
   }
 }
 
