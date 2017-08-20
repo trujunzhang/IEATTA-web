@@ -9,8 +9,8 @@ import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
 class EventsSingleHeaderRightMap extends Component {
 
   render() {
-    const {event} = this.props;
-    const {restaurant} = event;
+    const {forObject} = this.props;
+    const {restaurant} = forObject;
     const latitude = restaurant.geoLocation.latitude;
     const longitude = restaurant.geoLocation.longitude;
     const position = [latitude, longitude];

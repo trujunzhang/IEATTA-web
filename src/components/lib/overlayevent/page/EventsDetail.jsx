@@ -7,8 +7,8 @@ import Events from '../../../../lib/events'
 class EventsDetail extends Component {
 
   renderLeftTopSection() {
-    const {event} = this.props;
-    const htmlBody = Events.getWantBody(event);
+    const {forObject} = this.props;
+    const htmlBody = Events.getWantBody(forObject);
 
     return (
       <div className="ysection" id="event-want-panel">
@@ -19,14 +19,14 @@ class EventsDetail extends Component {
   }
 
   renderLeftPanel() {
-    const {event} = this.props;
-    const reviewTitle = event.displayName;
+    const {forObject} = this.props;
+    const reviewTitle = forObject.displayName;
 
     return (
       <div className="column column-alpha column--responsive">
         {this.renderLeftTopSection()}
 
-        <Telescope.components.ReviewsList forObject={this.props.event}
+        <Telescope.components.ReviewsList forObject={this.props.forObject}
                                           reviewType="event"
                                           reviewTitle={reviewTitle}/>
       </div>
@@ -42,13 +42,13 @@ class EventsDetail extends Component {
   }
 
   renderRightPanel() {
-    const {event} = this.props;
+    const {forObject} = this.props;
 
     return (
       <div className="column column-beta column--responsive">
         {this.renderRightTopUsersSection()}
 
-        <Telescope.components.RecipesList forRestaurant={event.restaurant} forEvent={event} showTitle={true}/>
+        <Telescope.components.RecipesList forRestaurant={forObject.restaurant} forEvent={forObject} showTitle={true}/>
 
       </div>
     )

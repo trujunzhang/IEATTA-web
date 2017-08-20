@@ -15,16 +15,14 @@ import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
 class EventsSingleHeaderLeftPanel extends Component {
 
   renderLeft() {
-    const {event} = this.props;
     return (
       <div className="event-details_photo">
-
         <div
           className="photo-slideshow photo-slideshow--full-width js-photo-slideshow-event-details lightbox-media-parent">
           <img
             width={300}
             height={300}
-            src={Photos.getListThumbnailUrl(event.restaurant)}/>
+            src={Photos.getListThumbnailUrl(this.props.forObject.restaurant)}/>
         </div>
 
       </div>
@@ -33,8 +31,9 @@ class EventsSingleHeaderLeftPanel extends Component {
 
 
   renderLineOne() {
-    const {event, reviewStatistic} = this.props;
-    const address = event.restaurant.address,
+    const {forObject, reviewStatistic} = this.props;
+    const {restaurant} = forObject;
+    const address = restaurant.address,
       array = address.split(',');
 
     const addressViews = array.map((item, index) => {
@@ -43,7 +42,6 @@ class EventsSingleHeaderLeftPanel extends Component {
 
     return (
       <li>
-
         <div className="media-block">
 
           <div className="media-avatar">
@@ -59,8 +57,8 @@ class EventsSingleHeaderLeftPanel extends Component {
           <div className="media-story">
             <div className="media-title">
 
-              <Link className="biz-name js-analytics-click" to={getRestaurantLink(event.restaurant)}>
-                <span>{event.restaurant.displayName}</span>
+              <Link className="biz-name js-analytics-click" to={getRestaurantLink(restaurant)}>
+                <span>{restaurant.displayName}</span>
               </Link>
             </div>
 
@@ -81,11 +79,10 @@ class EventsSingleHeaderLeftPanel extends Component {
   }
 
   renderLineTwo() {
-    const {event} = this.props;
-    const info = Events.getDateInfo(event);
+    const {forObject} = this.props;
+    const info = Events.getDateInfo(forObject);
 
     return (
-
       <li>
 
         <div className="media-block">
@@ -155,7 +152,7 @@ class EventsSingleHeaderLeftPanel extends Component {
   }
 
   rendRatingRow() {
-    const {event, reviewStatistic} = this.props;
+    const {reviewStatistic} = this.props;
     return (
       <div className="biz-rating biz-rating-medium clearfix">
         <Telescope.components.F8StarIcon

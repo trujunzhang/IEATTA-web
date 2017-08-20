@@ -186,3 +186,12 @@ export function generateTermsForEventsList(props) {
   };
 }
 
+export function generateTermsForOrderedUsersList(props) {
+  const listId = props.forObject.id;
+  return {
+    listId: 'ordered-users-list-view-for-' + listId,
+    limit: 10,
+    eventId: listId,
+    restaurantId: props.forObject.restaurant.id
+  };
+}

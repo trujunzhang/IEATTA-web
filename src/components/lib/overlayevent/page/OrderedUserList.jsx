@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 
 const {loadPeopleInEventList} = require('../../../../actions').default
 
+const {generateTermsForOrderedUsersList} = require('../../../filter/filterRoutes')
 const {byListId, getDefaultListTask} = require('../../../filter/filterPosts')
 
 class OrderedUserList extends Component {
@@ -10,12 +11,7 @@ class OrderedUserList extends Component {
   constructor(props) {
     super(props)
 
-    const terms = {
-      listId: 'ordered-users-list-view-for-' + props.event.id,
-      limit: 10,
-      eventId: props.event.id,
-      restaurantId: props.event.restaurant.id
-    };
+    const terms = generateTermsForOrderedUsersList(props)
     this.state = {
       terms: terms,
       listTask: getDefaultListTask(terms),

@@ -36,8 +36,8 @@ class IEAEditEventLayout extends Component {
     }
 
     props.actions.toggleEditModelType(MENU_ITEM_ADD_OR_EDIT_RESTAURANT);
-    props.actions.onEditModelFormFieldChange('displayName', props.event.displayName || '', true)
-    props.actions.onEditModelFormFieldChange('eventWhat', props.event.want || '', true)
+    props.actions.onEditModelFormFieldChange('displayName', props.forobject.displayName || '', true)
+    props.actions.onEditModelFormFieldChange('eventWhat', props.forObject.want || '', true)
   }
 
   /**
@@ -86,9 +86,9 @@ class IEAEditEventLayout extends Component {
 
 
   async onButtonPress() {
-    const {dispatch, event} = this.props;
+    const {dispatch, forObject} = this.props;
 
-    const objectId = event.id;
+    const objectId = forObject.id;
     const displayName = this.props.editModel.form.fields.displayName;
     const eventWhat = this.props.editModel.form.fields.eventWhat;
     const eventStart = this.props.editModel.form.fields.start;
