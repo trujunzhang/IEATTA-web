@@ -1,3 +1,5 @@
+import {getPhotosBrowserLink, getPhotosBrowserSelectionLink} from './link'
+
 const Photos = {}
 
 /**
@@ -31,5 +33,30 @@ Photos.getPhotoThumbnailByPosition = function (photos, index) {
   return Photos.getThumbnailUrl(firstPhoto)
 }
 
+Photos.generateHeaderRightPhotoObject = function (props) {
+  const {modelType, forObject, photosListTask} = props;
+  const photos = photosListTask.results;
+  const photoLength = photos.length;
+
+  if (photoLength >= 6) {
+    return {
+      singleModel: false,
+      first: {
+        url: getPhotosBrowserSelectionLink(photos[0], modelType, forObject),
+        imageUrl: Photos.getPhotoThumbnailByPosition(photos, 0)
+      },
+      second: {
+        url: getPhotosBrowserSelectionLink(photos[1], modelType, forObject),
+        imageUrl: Photos.getPhotoThumbnailByPosition(photos, 1)
+      }
+
+    }
+  } else {
+    return {
+      singleModel: true,
+      array: {}
+    }
+  }
+}
 
 export default Photos

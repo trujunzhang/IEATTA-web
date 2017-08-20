@@ -12,7 +12,6 @@ class F8SingleHeaderRightPhotos extends Component {
     const photos = photosListTask.results;
 
     return (
-
       <div className="js-photo photo photo-3 photo-grid">
 
         <div className="showcase-photo-box">
@@ -196,6 +195,11 @@ class F8SingleHeaderRightPhotos extends Component {
     const photos = photosListTask.results;
     const photoLength = photos.length;
 
+    const object = Photos.generateHeaderRightPhotoObject(this.props);
+    if (!object.singleModel) {
+      return this.renderSingleModel(object)
+    }
+
     return (
       <div className="showcase-container">
 
@@ -216,6 +220,87 @@ class F8SingleHeaderRightPhotos extends Component {
         </div>
 
       </div>
+    )
+
+  }
+
+  renderSingleModel(object) {
+    return (
+      <div className="showcase-container">
+
+        <div className="showcase-container_inner showcase showcase-3-photo">
+
+          <div className="lightbox-media-parent">
+
+            <div className="showcase-photos showcase-photos-z-index">
+
+              {this.renderPhotoItem(object.first, 1)}
+              {this.renderPhotoItem(object.second, 2)}
+              {this.renderSeeAll()}
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    )
+
+  }
+
+
+  renderPhotoItem(object, index) {
+    return (
+      <div className={`js-photo photo photo-${index}`}>
+        <div className="showcase-photo-box">
+
+          <Link to={object.url}>
+            <img
+              alt="Photo of My Two Cents - Los Angeles, CA, United States. BBQ fried chicken with fries and sweet potato crumble"
+              className="photo-box-img"
+              width="250"
+              height="250"
+              src={object.imageUrl}/>
+          </Link>
+
+        </div>
+
+
+        <div className="photo-box-overlay js-overlay">
+          <div className="media-block photo-box-overlay_caption">
+            <div className="media-avatar avatar">
+              <div className="photo-box pb-30s" data-hovercard-id="2-YW12W31RtcIN7IVbhAuA">
+                <a href="/user_details?userid=RiyfftYb6iuh5S1lPrp7sQ" className="js-analytics-click"
+                   data-analytics-label="user-photo">
+                  <img alt="Joshua H." className="photo-box-img" height="30"
+                       src="https://s3-media4.fl.yelpcdn.com/photo/tUK96wJVCgJWfKa94BXaiQ/30s.jpg" width="30"/>
+
+                </a>
+
+              </div>
+
+
+            </div>
+
+            <div className="media-story">
+              <a className="photo-desc"
+                 href="/biz_photos/my-two-cents-los-angeles-3?select=GW7w6RYB9U1RyNEhCTZjwA">
+                BBQ fried chicken with fries and sweet…
+              </a>
+              <span className="author">
+                        by
+                        <a className="user-display-name js-analytics-click"
+                           href="/user_details?userid=RiyfftYb6iuh5S1lPrp7sQ"
+                           data-hovercard-id="2-YW12W31RtcIN7IVbhAuA" data-analytics-label="about_me"
+                           id="dropdown_user-name">Joshua H.</a>
+                      </span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
     )
   }
 

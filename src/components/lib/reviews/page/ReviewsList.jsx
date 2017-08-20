@@ -38,7 +38,7 @@ class ReviewsList extends Component {
     })
 
     const newSort = newTerms.sort_by || '';
-    // Different sort parameter here.
+    // Because different sort parameter changed here.
     // So need to reset all query parameters container 'pageIndex'.
     if (lastSort !== newSort) {
       const resetListTask = getDefaultListTask(newTerms);
