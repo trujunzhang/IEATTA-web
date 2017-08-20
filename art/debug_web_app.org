@@ -1,5 +1,7 @@
 * url
 
+** Photos Effect
+  $ https://www.yelp.com/biz/galeto-brazilian-steakhouse-oakland-3
 
 ** Event details
   $ https://www.yelp.com/events/pleasanton-alameda-county-fair-6
