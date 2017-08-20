@@ -1,7 +1,7 @@
 import Telescope from '../index'
 import React, {Component} from 'react'
-import Posts from '../../../lib/posts'
 import Users from '../../../lib/users'
+import Photos from '../../../lib/photos'
 
 import {Link} from 'react-router'
 
@@ -9,9 +9,15 @@ import {getPhotoSelectBackLink} from '../../../lib/link'
 
 class IEAPhotosSelectionLayout extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state = this.initialState = {
+      selectedPhotoInfo: Photos.generateSelectedPhotoInfo(this.props)
+    }
+  }
+
   renderCloseButton() {
     const {modelType, forObject, pageForm} = this.props;
-
     return (
       <Link className="lightbox-close" to={getPhotoSelectBackLink(pageForm, modelType, forObject)}>
         {'Close'}
@@ -32,7 +38,7 @@ class IEAPhotosSelectionLayout extends Component {
       <div className="media-lightbox">
         <div className="media-details js-media-details js-media-details-template">
 
-          <Telescope.components.F8PhotosSelectPage {...this.props}/>
+          <Telescope.components.F8PhotosSelectPage {...this.props} {...this.state}/>
 
         </div>
       </div>
@@ -41,6 +47,7 @@ class IEAPhotosSelectionLayout extends Component {
   }
 
   render() {
+    debugger
     return (
 
       <div id="lightbox" className="lightbox is-enabled lightbox--media-details" data-component-bound="true">
