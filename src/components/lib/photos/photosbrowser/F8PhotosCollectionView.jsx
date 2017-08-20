@@ -8,7 +8,6 @@ class F8PhotosCollectionView extends Component {
 
   renderRow(photo) {
     const {forObject, modelType} = this.props;
-debugger
     return (
       <li data-photo-id="x57_yoZarQuIn9y1r2jsQw">
         <div className="photo-box photo-box--interactive">

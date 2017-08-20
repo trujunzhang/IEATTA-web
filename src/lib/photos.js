@@ -51,6 +51,24 @@ Photos.generateHeaderRightPhotoObject = function (props) {
           url: getPhotosBrowserSelectionLink(photos[1], modelType, forObject),
           imageUrl: Photos.getPhotoThumbnailByPosition(photos, 1)
         }
+      ],
+      photosWall: [
+        {
+          url: getPhotosBrowserSelectionLink(photos[2], modelType, forObject),
+          imageUrl: Photos.getPhotoThumbnailByPosition(photos, 2)
+        },
+        {
+          url: getPhotosBrowserSelectionLink(photos[3], modelType, forObject),
+          imageUrl: Photos.getPhotoThumbnailByPosition(photos, 3)
+        },
+        {
+          url: getPhotosBrowserSelectionLink(photos[4], modelType, forObject),
+          imageUrl: Photos.getPhotoThumbnailByPosition(photos, 4)
+        },
+        {
+          url: getPhotosBrowserSelectionLink(photos[5], modelType, forObject),
+          imageUrl: Photos.getPhotoThumbnailByPosition(photos, 5)
+        }
       ]
     }
   } else {

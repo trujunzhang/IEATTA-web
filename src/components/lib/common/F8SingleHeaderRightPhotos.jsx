@@ -18,39 +18,26 @@ class F8SingleHeaderRightPhotos extends Component {
 
 
   renderSeeAll() {
-    const {photosListTask} = this.props;
-    const photos = photosListTask.results;
+    const {object} = this.state;
+    const {photosWall} = object;
 
     return (
       <div className="js-photo photo photo-3 photo-grid">
 
         <div className="showcase-photo-box">
-          <a href="/biz_photos/my-two-cents-los-angeles-3?select=NWViHwgCl5AydMuovXBzJA">
 
-            <img alt="Photo of My Two Cents - Los Angeles, CA, United States. Desserts"
-                 className="photo-box-img" height="250"
-                 src="https://s3-media2.fl.yelpcdn.com/bphoto/NWViHwgCl5AydMuovXBzJA/ls.jpg" width="250"/>
-          </a>
+          {object.photosWall.map((item, index) => {
+            return (
+              <Link to={item.url}>
 
-          <a href="/biz_photos/my-two-cents-los-angeles-3?select=jJImRSGh-hJYgh6eLSVsLQ">
-            <img alt="Photo of My Two Cents - Los Angeles, CA, United States. Restaurant"
-                 className="photo-box-img" height="180"
-                 src="https://s3-media2.fl.yelpcdn.com/bphoto/jJImRSGh-hJYgh6eLSVsLQ/180s.jpg" width="180"/>
-          </a>
-
-          <a href="/biz_photos/my-two-cents-los-angeles-3?select=WOxuQ-_w8VbKYEL3xodgmQ">
-
-            <img alt="Photo of My Two Cents - Los Angeles, CA, United States" className="photo-box-img"
-                 height="180" src="https://s3-media4.fl.yelpcdn.com/bphoto/WOxuQ-_w8VbKYEL3xodgmQ/180s.jpg"
-                 width="180"/>
-          </a>
-
-          <a href="/biz_photos/my-two-cents-los-angeles-3?select=emzHlCruWgErM3anYMd1pQ">
-            <img alt="Photo of My Two Cents - Los Angeles, CA, United States. Grilled BBQ Chicken"
-                 className="photo-box-img" height="180"
-                 src="https://s3-media3.fl.yelpcdn.com/bphoto/emzHlCruWgErM3anYMd1pQ/180s.jpg" width="180"/>
-          </a>
-
+                <img alt="Photo of My Two Cents - Los Angeles, CA, United States. Desserts"
+                     className="photo-box-img"
+                     width="250"
+                     height="250"
+                     src={item.imageUrl}/>
+              </Link>
+            )
+          })}
         </div>
 
         {this.renderSeeAllButton()}
@@ -61,14 +48,13 @@ class F8SingleHeaderRightPhotos extends Component {
   }
 
   renderSeeAllButton() {
-    const {modelType, forObject, photosListTask} = this.props;
-    const photos = photosListTask.results;
-    const photoLength = photos.length;
+    const {modelType, forObject} = this.props;
+    const {object} = this.state;
 
     return (
-      <Link
-        className="see-more show-all-overlay"
-        to={getPhotosBrowserLink(modelType, forObject)}>
+      <div className="see-more show-all-overlay">
+        <Link className="show-all-photos"
+              to={getPhotosBrowserLink(modelType, forObject)}>
                     <span id="icon_24X24"
                           style={{display: 'block'}}
                           className="icon icon--24-grid icon--size-24 icon--inverse icon--fallback-inverted show-all-overlay_icon">
@@ -76,9 +62,9 @@ class F8SingleHeaderRightPhotos extends Component {
                       <path d="M13 21v-8h8v8h-8zm0-18h8v8h-8V3zM3 13h8v8H3v-8zM3 3h8v8H3V3z"/>
                     </svg>
                   </span>
-        {"See all " + photoLength}
-      </Link>
-
+          {`See all ${object.total}`}
+        </Link>
+      </div>
     )
   }
 
