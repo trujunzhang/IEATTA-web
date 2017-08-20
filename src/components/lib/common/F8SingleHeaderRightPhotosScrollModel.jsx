@@ -58,7 +58,7 @@ class F8SingleHeaderRightPhotosScrollModel extends Component {
             <div className="showcase-photos showcase-photos-z-index">
 
               {photoModelObject.photos.map((item, index) => {
-                return this.renderPhotoItem(item, index + 1)
+                return (<div></div>)
               })}
               {this.renderSeeAll()}
 
@@ -70,68 +70,6 @@ class F8SingleHeaderRightPhotosScrollModel extends Component {
       </div>
     )
 
-  }
-
-
-  renderPhotoItem(object, index) {
-    const {overlay} = object;
-    return (
-      <div key={index} className={`js-photo photo photo-${index}`}>
-        <div className="showcase-photo-box">
-
-          <Link to={object.url}>
-            <img
-              alt="Photo of My Two Cents - Los Angeles, CA, United States. BBQ fried chicken with fries and sweet potato crumble"
-              className="photo-box-img"
-              width="250"
-              height="250"
-              src={object.imageUrl}/>
-          </Link>
-
-        </div>
-
-
-        <div className="photo-box-overlay js-overlay">
-          <div className="media-block photo-box-overlay_caption">
-            <div className="media-avatar avatar">
-              <div className="photo-box pb-30s">
-
-                <Link
-                  to={overlay.user.userProfileUrl}
-                  className="js-analytics-click">
-                  <img alt="Joshua H."
-                       className="photo-box-img"
-                       width="30"
-                       height="30"
-                       src={overlay.user.imageUrl}
-                  />
-                </Link>
-
-              </div>
-
-
-            </div>
-
-            <div className="media-story" id="photos-browser">
-              <Link className="photo-desc margin-right-4" to={overlay.linkUrl}>
-                {overlay.title}
-              </Link>
-              <span className="author">
-                {"by"}
-                <Link className="user-display-name js-analytics-click margin-left-4"
-                      to={overlay.user.userProfileUrl}
-                      id="dropdown_user-name">
-                          {overlay.user.username}
-                        </Link>
-                </span>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-
-    )
   }
 
 }
