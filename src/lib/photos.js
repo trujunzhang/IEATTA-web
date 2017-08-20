@@ -73,7 +73,7 @@ Photos.generateHeaderRightPhotoObject = function (props) {
   const photos = photosListTask.results;
   const photoLength = photos.length;
 
-  if (photoLength >= 6) {
+  if (photoLength >= 6 && false) {
     return {
       singleModel: false,
       total: photoLength,
@@ -110,10 +110,6 @@ Photos.generateSelectedPhotoInfo = function (props) {
   const {modelType, forObject, photosListTask, selectPhotoIndex} = props;
   const photos = photosListTask.results;
   const current = photos[selectPhotoIndex];
-
-  // const createdAtFormatxxx = moment(current.createdAt).format('MMMM DD, YYYY');
-  // debugger
-
   return {
     ...Photos.getPhotoInfoAboutUser(photos, selectPhotoIndex),
     createdAtFormat: moment(current.createdAt).format(Photos.config.selectedPhotoCreatedAtFormat)
