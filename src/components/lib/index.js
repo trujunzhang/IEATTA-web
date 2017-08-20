@@ -13,6 +13,7 @@ Telescope.registerComponent('AppFooter',                              require('.
 Telescope.registerComponent('F8StarIcon',                             require('./common/F8StarIcon.jsx').default)
 Telescope.registerComponent('F8SingleHeaderRightPhotos',              require('./common/F8SingleHeaderRightPhotos.jsx').default)
 Telescope.registerComponent('F8SingleHeaderRightPhotosSingleModel',   require('./common/F8SingleHeaderRightPhotosSingleModel.jsx').default)
+Telescope.registerComponent('F8SingleHeaderRightPhotosScrollModel',   require('./common/F8SingleHeaderRightPhotosScrollModel.jsx').default)
 Telescope.registerComponent('F8RestaurantMapSection',                 require('./common/F8RestaurantMapSection.jsx').default)
 Telescope.registerComponent('F8UserAvatorSection',                    require('./common/F8UserAvatorSection.jsx').default)
 Telescope.registerComponent('F8LoadingView',                          require('./common/F8LoadingView.jsx').default)
