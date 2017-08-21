@@ -1,6 +1,5 @@
 import Telescope from '../../../lib'
 import React, {Component} from 'react'
-import Posts from '../../../../lib/posts'
 import Users from '../../../../lib/users'
 
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
@@ -140,7 +139,7 @@ class RestaurantsFixMapMarker extends Component {
 
   render() {
     return (
-      <div className="ypop" id="locate-biz-pop">
+      <div className="ypop" id="locate-biz-pop" style={{"position": 'relative', "top": "-400px"}}>
         <div className="ypop-content clearfix" id="locate-biz-pop-content">
 
           {this.renderCloseIcon()}

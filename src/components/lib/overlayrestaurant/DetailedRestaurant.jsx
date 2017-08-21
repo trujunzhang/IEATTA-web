@@ -144,9 +144,9 @@ class DetailedRestaurant extends Component {
 
 }
 
-const {connect} = require('react-redux')
+import {connect} from 'react-redux'
 
-function select(store) {
+function select(store, ownProps) {
   return {
     detailedModelsOverlay: store.detailedModelsOverlay,
     listContainerTasks: store.listContainerTasks
