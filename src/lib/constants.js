@@ -1,9 +1,10 @@
 import keyMirror from 'key-mirror'
 
 export default keyMirror({
-  // Statistic
-  STATISTIC_FOR_USER_STATE: null,
-  STATISTIC_FOR_REVIEWS: null,
+  // invoke parse cloud.
+  CLOUD_STATISTIC_FOR_USER_STATE: null,
+  CLOUD_STATISTIC_FOR_REVIEWS: null,
+  CLOUD_RESTAURANT_ADDRESS: null,
 
   // Review sort tags
   REVIEW_SORT_NORMAL: null,

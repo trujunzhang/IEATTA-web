@@ -16,7 +16,7 @@ const {
 } = require('../../filter/filterRoutes')
 
 const {
-  STATISTIC_FOR_USER_STATE,
+  CLOUD_STATISTIC_FOR_USER_STATE,
   // 1.1 LOGGED user left menus.
   LOGGED_USER_MENU_ABOUT,
   LOGGED_USER_MENU_REVIEWS,
@@ -57,14 +57,14 @@ class UsersSingle extends Component {
         uid: newUid,
       })
       this.props.dispatch(loadUserProfilePage(newUid))
-      this.props.dispatch(loadStatisticCloudPage(STATISTIC_FOR_USER_STATE, {userId: newUid}, newUid))
+      this.props.dispatch(loadStatisticCloudPage(CLOUD_STATISTIC_FOR_USER_STATE, {userId: newUid}, newUid))
     }
   }
 
   componentDidMount() {
     if (!!this.state.uid) {
       this.props.dispatch(loadUserProfilePage(this.state.uid))
-      this.props.dispatch(loadStatisticCloudPage(STATISTIC_FOR_USER_STATE, {userId: this.state.uid}, this.state.uid))
+      this.props.dispatch(loadStatisticCloudPage(CLOUD_STATISTIC_FOR_USER_STATE, {userId: this.state.uid}, this.state.uid))
     }
   }
 

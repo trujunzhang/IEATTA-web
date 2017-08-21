@@ -18,7 +18,7 @@ const {
   PAGE_NEW_FORM,
   PAGE_OVERLAY_SELECTED_PHOTO_FORM,
   PAGE_SINGLE_SELECTED_PHOTO_FORM,
-  STATISTIC_FOR_REVIEWS,
+  CLOUD_STATISTIC_FOR_REVIEWS,
 } = require('../../../lib/constants').default
 
 const {
@@ -89,7 +89,7 @@ class OrderedRecipes extends Component {
 
       this.props.dispatch(loadOrderedRecipePage(currentOID))
       this.props.dispatch(loadPhotosBrowser(photosTerms))
-      this.props.dispatch(loadStatisticCloudPage(STATISTIC_FOR_REVIEWS, {
+      this.props.dispatch(loadStatisticCloudPage(CLOUD_STATISTIC_FOR_REVIEWS, {
         reviewType: this.state.modelType,
         forObjectId: currentOID,
       }, currentOID))
@@ -101,7 +101,7 @@ class OrderedRecipes extends Component {
     const oldOID = this.state.oid;
     this.props.dispatch(loadOrderedRecipePage(oldOID))
     this.props.dispatch(loadPhotosBrowser(this.state.photosTerms))
-    this.props.dispatch(loadStatisticCloudPage(STATISTIC_FOR_REVIEWS, {
+    this.props.dispatch(loadStatisticCloudPage(CLOUD_STATISTIC_FOR_REVIEWS, {
       reviewType: this.state.modelType,
       forObjectId: oldOID,
     }, oldOID))

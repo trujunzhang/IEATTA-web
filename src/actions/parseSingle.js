@@ -56,13 +56,14 @@ const {
   PARSE_RECIPES,
   PARSE_COMMENTS,
   // statistic
-  STATISTIC_FOR_USER_STATE,
-  STATISTIC_FOR_REVIEWS,
+  CLOUD_STATISTIC_FOR_USER_STATE,
+  CLOUD_STATISTIC_FOR_REVIEWS,
 } = require('../lib/constants').default
 
 const cloudMethods = {
-  STATISTIC_FOR_USER_STATE: 'statisticUserState',
-  STATISTIC_FOR_REVIEWS: 'statisticReviews'
+  CLOUD_STATISTIC_FOR_USER_STATE: 'statisticUserState',
+  CLOUD_STATISTIC_FOR_REVIEWS: 'statisticReviews',
+  CLOUD_RESTAURANT_ADDRESS: 'getAddressFromLocation'
 }
 
 function callCloudStatisticMethod(type: string, methodType: string, params: string, objectId: string): ThunkAction {

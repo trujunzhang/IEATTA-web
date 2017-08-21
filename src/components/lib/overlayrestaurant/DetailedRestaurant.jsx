@@ -18,7 +18,7 @@ const {
   PAGE_NEW_FORM,
   PAGE_OVERLAY_SELECTED_PHOTO_FORM,
   PAGE_SINGLE_SELECTED_PHOTO_FORM,
-  STATISTIC_FOR_REVIEWS,
+  CLOUD_STATISTIC_FOR_REVIEWS,
 } = require('../../../lib/constants').default
 
 
@@ -76,7 +76,7 @@ class DetailedRestaurant extends Component {
   componentDidMount() {
     this.props.dispatch(loadRestaurantPage(this.state.rid))
     this.props.dispatch(loadPhotosBrowser(this.state.photosTerms))
-    this.props.dispatch(loadStatisticCloudPage(STATISTIC_FOR_REVIEWS, {
+    this.props.dispatch(loadStatisticCloudPage(CLOUD_STATISTIC_FOR_REVIEWS, {
       reviewType: this.state.modelType,
       forObjectId: this.state.rid,
     }, this.state.rid))
