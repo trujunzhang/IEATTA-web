@@ -5,6 +5,20 @@ import Users from '../../../../lib/users'
 
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
 
+class ExtendedMarker extends Marker {
+  componentWillReceiveProps(nextProps) {
+    this.leafletElement.openPopup();
+  }
+
+  componentDidMount() {
+    // Call the Marker class componentDidMount (to make sure everything behaves as normal)
+    super.componentDidMount();
+
+    // Access the marker element and open the popup.
+    this.leafletElement.openPopup();
+  }
+}
+
 class RestaurantsFixMapMarker extends Component {
 
 
@@ -25,6 +39,8 @@ class RestaurantsFixMapMarker extends Component {
     const target = e.target;
     const location = target.getLatLng()
     this.setState({position: location})
+
+    const elm = this.refs.fixedMapMaker;
   }
 
   renderCloseIcon() {
@@ -75,6 +91,7 @@ class RestaurantsFixMapMarker extends Component {
   renderTopMap() {
     const {forObject} = this.props;
     const {position} = this.state;
+
     return (
       <Map
         ref='fixedMap'
@@ -82,14 +99,15 @@ class RestaurantsFixMapMarker extends Component {
         <TileLayer
           url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>
-        <Marker
+        <ExtendedMarker
+          ref='fixedMapMaker'
           draggable={true}
           onMoveend={this.fixedMapDragend.bind(this)}
           position={position}>
           <Popup>
             <span>{forObject.displayName}<br/>{forObject.address}</span>
           </Popup>
-        </Marker>
+        </ExtendedMarker>
       </Map>
     )
   }
