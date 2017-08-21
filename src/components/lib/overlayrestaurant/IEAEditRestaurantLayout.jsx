@@ -28,7 +28,7 @@ class IEAEditRestaurantLayout extends Component {
     super(props)
 
     this.state = {
-      showFixMapMarker: false,
+      showFixMapMarker: true,
       value: {
         displayName: props.editModel.form.fields.displayName,
       }
@@ -183,25 +183,31 @@ class IEAEditRestaurantLayout extends Component {
 
   render() {
     return (
-      <div className="main-content-wrap main-content-wrap--full">
+      <div>
+        <div className="main-content-wrap main-content-wrap--full">
 
-        <div id="super-container" className="content-container">
+          <div id="super-container" className="content-container">
 
-          <div className="container">
-            <div className="clearfix layout-block layout-full" id="update-biz-details">
+            <div className="container">
+              <div className="clearfix layout-block layout-full" id="update-biz-details">
 
-              <div className="column column-alpha ">
+                <div className="column column-alpha ">
 
-                <h2>Update Business Details</h2>
+                  <h2>Update Business Details</h2>
 
-                {this.renderContent()}
+                  {this.renderContent()}
 
+                </div>
               </div>
             </div>
           </div>
+
         </div>
 
-        {/*<div className="body-overlay" style={{"display": "block"}}/>*/}
+        {
+          this.state.showFixMapMarker &&
+          <div className="body-overlay" style={{"display": "block"}}/>
+        }
         {
           this.state.showFixMapMarker &&
           <Telescope.components.RestaurantsFixMapMarker
