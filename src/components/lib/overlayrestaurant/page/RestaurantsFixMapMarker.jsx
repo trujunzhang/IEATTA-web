@@ -6,6 +6,12 @@ const {
 } = require('../../../../actions').default
 
 const {
+  getModelByObjectId,
+  getDefaultListTask,
+  byListId
+} = require('../../../filter/filterPosts')
+
+const {
   CLOUD_RESTAURANT_ADDRESS,
   RESTAURANT_CLOUD_ADDRESS_MODEL
 } = require('../../../../lib/constants').default
@@ -37,9 +43,20 @@ class RestaurantsFixMapMarker extends Component {
     const position = [latitude, longitude];
 
     this.state = this.initialState = {
-      position: position
+      googleAddressReverse: null,
+      position: position,
+
     }
   }
+
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      // Detailed object
+      googleAddressReverse: getModelByObjectId(nextProps, nextProps.forObject.id, this.state.googleAddressReverse, 'googleAddressReverse'),
+    })
+  }
+
 
   fixedMapDragend(e) {
     const target = e.target;
