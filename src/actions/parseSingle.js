@@ -68,11 +68,9 @@ const cloudMethods = {
 
 function callCloudStatisticMethod(type: string, methodType: string, params: string, objectId: string): ThunkAction {
   const methodName = cloudMethods[methodType];
-  debugger
   return (dispatch) => {
     return Parse.Cloud.run(methodName, params, {
       success: (model) => {
-        debugger
         const payload = {objectId, model}
         dispatch({type, payload})
       },

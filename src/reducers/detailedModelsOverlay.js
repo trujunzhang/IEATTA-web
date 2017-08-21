@@ -59,7 +59,6 @@ function detailedModelsOverlay(state: State = initialState, action: Action): Sta
 
 
   if (action.type === RESTAURANT_CLOUD_ADDRESS_MODEL) {
-    debugger
     const nextState = Object.assign({}, state, {
       googleAddressReverse: action.payload
     })
