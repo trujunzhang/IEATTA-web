@@ -11,12 +11,20 @@ class RestaurantsFixMapMarker extends Component {
   constructor(props) {
     super(props);
 
-    this.state = this.initialState = {};
+    const {forObject} = props,
+      {geoLocation} = forObject,
+      {latitude, longitude} = geoLocation;
+    const position = [latitude, longitude];
+
+    this.state = this.initialState = {
+      position: position
+    };
   }
 
   fixedMapDragend(e) {
     const target = e.target;
     const location = target.getLatLng()
+    this.setState({position: location})
   }
 
   renderCloseIcon() {
@@ -55,27 +63,18 @@ class RestaurantsFixMapMarker extends Component {
         <div className="ypop-buttons">
           <button type="submit" value="submit" className="ybtn ybtn-primary ybtn-small">
             <span>
-            Save Changes
+              {"Save Changes"}
           </span>
           </button>
           <a href="#">Cancel</a></div>
       </div>
-
     )
   }
 
 
   renderTopMap() {
     const {forObject} = this.props;
-
-    if (typeof forObject === 'undefined') {
-      throw new Error('You need to set a proper restaurant!')
-    }
-
-    const latitude = forObject.geoLocation.latitude;
-    const longitude = forObject.geoLocation.longitude;
-    const position = [latitude, longitude];
-
+    const {position} = this.state;
     return (
       <Map
         ref='fixedMap'
