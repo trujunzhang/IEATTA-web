@@ -6,6 +6,9 @@ export default keyMirror({
   CLOUD_STATISTIC_FOR_REVIEWS: null,
   CLOUD_RESTAURANT_ADDRESS: null,
 
+  // Google Address
+  RESTAURANT_CLOUD_ADDRESS_MODEL: null,
+
   // Review sort tags
   REVIEW_SORT_NORMAL: null,
   REVIEW_SORT_NEWEST: null,

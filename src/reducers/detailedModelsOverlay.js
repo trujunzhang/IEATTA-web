@@ -33,7 +33,8 @@ const {
   OVERLAY_LOADED_MODEL_PAGE,
   OVERLAY_LOADED_MODEL_RESET,
   UPDATE_MODEL_REQUEST,
-  STATISTIC_CLOUD_MODEL
+  STATISTIC_CLOUD_MODEL,
+  RESTAURANT_CLOUD_ADDRESS_MODEL,
 } = require('../lib/constants').default
 
 const initialState = {
@@ -52,6 +53,14 @@ function detailedModelsOverlay(state: State = initialState, action: Action): Sta
   if (action.type === STATISTIC_CLOUD_MODEL) {
     const nextState = Object.assign({}, state, {
       statistic: action.payload
+    })
+    return nextState
+  }
+
+
+  if (action.type === RESTAURANT_CLOUD_ADDRESS_MODEL) {
+    const nextState = Object.assign({}, state, {
+      googleAddressReverse: action.payload
     })
     return nextState
   }

@@ -107,10 +107,11 @@ export default {
    * @param methodType
    * @param params
    * @param objectId
+   * @param type
    * @returns {ThunkAction}
    */
-  invokeParseCloudMethod: (methodType: string, params: Any, objectId: string): ThunkAction => {
-    return callCloudStatisticMethod(STATISTIC_CLOUD_MODEL, methodType, params, objectId)
+  invokeParseCloudMethod: (methodType: string, params: Any, objectId: string, type: string = STATISTIC_CLOUD_MODEL): ThunkAction => {
+    return callCloudStatisticMethod(type, methodType, params, objectId)
   },
 
   loadUserProfilePage: (objectId: string): ThunkAction => {

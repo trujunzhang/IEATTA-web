@@ -6,7 +6,8 @@ const {
 } = require('../../../../actions').default
 
 const {
-  CLOUD_RESTAURANT_ADDRESS
+  CLOUD_RESTAURANT_ADDRESS,
+  RESTAURANT_CLOUD_ADDRESS_MODEL
 } = require('../../../../lib/constants').default
 
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
@@ -27,7 +28,6 @@ class ExtendedMarker extends Marker {
 
 class RestaurantsFixMapMarker extends Component {
 
-
   constructor(props) {
     super(props);
 
@@ -38,7 +38,7 @@ class RestaurantsFixMapMarker extends Component {
 
     this.state = this.initialState = {
       position: position
-    };
+    }
   }
 
   fixedMapDragend(e) {
@@ -47,9 +47,11 @@ class RestaurantsFixMapMarker extends Component {
     this.setState({position: location})
 
     this.props.dispatch(invokeParseCloudMethod(CLOUD_RESTAURANT_ADDRESS, {
-      lat: location.latitude,
-      lng: location.longitude
-    }, this.props.forObject.id))
+        lat: location.latitude,
+        lng: location.longitude
+      }, this.props.forObject.id),
+      RESTAURANT_CLOUD_ADDRESS_MODEL
+    )
   }
 
   renderCloseIcon() {
