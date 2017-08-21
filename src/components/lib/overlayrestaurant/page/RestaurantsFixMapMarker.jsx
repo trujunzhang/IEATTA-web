@@ -43,14 +43,19 @@ class RestaurantsFixMapMarker extends Component {
 
   fixedMapDragend(e) {
     const target = e.target;
-    const location = target.getLatLng()
-    this.setState({position: location})
+    const location = target.getLatLng();
+    this.setState({position: [location.lat, location.lng]})
 
-    this.props.dispatch(invokeParseCloudMethod(CLOUD_RESTAURANT_ADDRESS, {
-        lat: location.latitude,
-        lng: location.longitude
-      }, this.props.forObject.id),
-      RESTAURANT_CLOUD_ADDRESS_MODEL
+    this.props.dispatch(
+      invokeParseCloudMethod(
+        CLOUD_RESTAURANT_ADDRESS,
+        {
+          lat: location.lat,
+          lng: location.lng
+        },
+        this.props.forObject.id,
+        RESTAURANT_CLOUD_ADDRESS_MODEL
+      )
     )
   }
 
