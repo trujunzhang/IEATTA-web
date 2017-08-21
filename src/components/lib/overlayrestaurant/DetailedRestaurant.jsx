@@ -6,7 +6,7 @@ import {withRouter} from 'react-router'
 const {
   loadRestaurantPage,
   loadPhotosBrowser,
-  loadStatisticCloudPage
+  invokeParseCloudMethod
 } = require('../../../actions').default
 
 const {
@@ -76,7 +76,7 @@ class DetailedRestaurant extends Component {
   componentDidMount() {
     this.props.dispatch(loadRestaurantPage(this.state.rid))
     this.props.dispatch(loadPhotosBrowser(this.state.photosTerms))
-    this.props.dispatch(loadStatisticCloudPage(CLOUD_STATISTIC_FOR_REVIEWS, {
+    this.props.dispatch(invokeParseCloudMethod(CLOUD_STATISTIC_FOR_REVIEWS, {
       reviewType: this.state.modelType,
       forObjectId: this.state.rid,
     }, this.state.rid))

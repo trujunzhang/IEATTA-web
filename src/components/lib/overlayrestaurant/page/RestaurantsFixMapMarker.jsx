@@ -1,6 +1,13 @@
 import Telescope from '../../../lib'
 import React, {Component} from 'react'
-import Users from '../../../../lib/users'
+
+const {
+  invokeParseCloudMethod
+} = require('../../../../actions').default
+
+const {
+  CLOUD_RESTAURANT_ADDRESS
+} = require('../../../../lib/constants').default
 
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
 
@@ -39,6 +46,10 @@ class RestaurantsFixMapMarker extends Component {
     const location = target.getLatLng()
     this.setState({position: location})
 
+    this.props.dispatch(invokeParseCloudMethod(CLOUD_RESTAURANT_ADDRESS, {
+      lat: location.latitude,
+      lng: location.longitude
+    }, this.props.forObject.id))
   }
 
   renderCloseIcon() {

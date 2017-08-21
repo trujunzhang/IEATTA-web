@@ -7,7 +7,7 @@ import {withRouter} from 'react-router'
 
 const {
   loadUserProfilePage,
-  loadStatisticCloudPage
+  invokeParseCloudMethod
 } = require('../../../actions').default
 
 const {
@@ -57,14 +57,14 @@ class UsersSingle extends Component {
         uid: newUid,
       })
       this.props.dispatch(loadUserProfilePage(newUid))
-      this.props.dispatch(loadStatisticCloudPage(CLOUD_STATISTIC_FOR_USER_STATE, {userId: newUid}, newUid))
+      this.props.dispatch(invokeParseCloudMethod(CLOUD_STATISTIC_FOR_USER_STATE, {userId: newUid}, newUid))
     }
   }
 
   componentDidMount() {
     if (!!this.state.uid) {
       this.props.dispatch(loadUserProfilePage(this.state.uid))
-      this.props.dispatch(loadStatisticCloudPage(CLOUD_STATISTIC_FOR_USER_STATE, {userId: this.state.uid}, this.state.uid))
+      this.props.dispatch(invokeParseCloudMethod(CLOUD_STATISTIC_FOR_USER_STATE, {userId: this.state.uid}, this.state.uid))
     }
   }
 

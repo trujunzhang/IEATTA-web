@@ -109,10 +109,9 @@ export default {
    * @param objectId
    * @returns {ThunkAction}
    */
-  loadStatisticCloudPage: (methodType: string, params: Any, objectId: string): ThunkAction => {
+  invokeParseCloudMethod: (methodType: string, params: Any, objectId: string): ThunkAction => {
     return callCloudStatisticMethod(STATISTIC_CLOUD_MODEL, methodType, params, objectId)
   },
-
 
   loadUserProfilePage: (objectId: string): ThunkAction => {
     return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_USERS, ['photos']), objectId, fromParseUser)

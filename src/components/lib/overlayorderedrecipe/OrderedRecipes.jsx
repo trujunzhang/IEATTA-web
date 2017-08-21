@@ -6,7 +6,7 @@ import {withRouter} from 'react-router'
 const {
   loadOrderedRecipePage,
   loadPhotosBrowser,
-  loadStatisticCloudPage
+  invokeParseCloudMethod
 } = require('../../../actions').default
 
 const {
@@ -89,7 +89,7 @@ class OrderedRecipes extends Component {
 
       this.props.dispatch(loadOrderedRecipePage(currentOID))
       this.props.dispatch(loadPhotosBrowser(photosTerms))
-      this.props.dispatch(loadStatisticCloudPage(CLOUD_STATISTIC_FOR_REVIEWS, {
+      this.props.dispatch(invokeParseCloudMethod(CLOUD_STATISTIC_FOR_REVIEWS, {
         reviewType: this.state.modelType,
         forObjectId: currentOID,
       }, currentOID))
@@ -101,7 +101,7 @@ class OrderedRecipes extends Component {
     const oldOID = this.state.oid;
     this.props.dispatch(loadOrderedRecipePage(oldOID))
     this.props.dispatch(loadPhotosBrowser(this.state.photosTerms))
-    this.props.dispatch(loadStatisticCloudPage(CLOUD_STATISTIC_FOR_REVIEWS, {
+    this.props.dispatch(invokeParseCloudMethod(CLOUD_STATISTIC_FOR_REVIEWS, {
       reviewType: this.state.modelType,
       forObjectId: oldOID,
     }, oldOID))

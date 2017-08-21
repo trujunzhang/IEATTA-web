@@ -5,7 +5,7 @@ const {
   loadEventPage,
   loadRestaurantPage,
   loadPhotosBrowser,
-  loadStatisticCloudPage
+  invokeParseCloudMethod
 } = require('../../../actions').default
 
 const {
@@ -58,7 +58,7 @@ class DetailedEvent extends Component {
 
   componentDidMount() {
     this.props.dispatch(loadEventPage(this.state.eid))
-    this.props.dispatch(loadStatisticCloudPage(CLOUD_STATISTIC_FOR_REVIEWS, {
+    this.props.dispatch(invokeParseCloudMethod(CLOUD_STATISTIC_FOR_REVIEWS, {
       reviewType: this.state.modelType,
       forObjectId: this.state.eid,
     }, this.state.eid))
