@@ -137,14 +137,11 @@ class RestaurantsFixMapMarker extends Component {
     const {position} = this.state;
 
     return (
-      <Map
-        ref='fixedMap'
-        center={position} zoom={18} maxZoom={28}>
+      <Map center={position} zoom={18} maxZoom={28}>
         <TileLayer
           url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>
         <ExtendedMarker
-          ref='fixedMapMaker'
           draggable={true}
           onMoveend={this.fixedMapDragend.bind(this)}
           position={position}>
