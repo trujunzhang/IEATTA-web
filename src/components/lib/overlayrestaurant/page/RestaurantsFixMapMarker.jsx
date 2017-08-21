@@ -40,12 +40,15 @@ class RestaurantsFixMapMarker extends Component {
     const location = target.getLatLng()
     this.setState({position: location})
 
-    const elm = this.refs.fixedMapMaker;
   }
 
   renderCloseIcon() {
     return (
-      <a className="offscreen ypop-close-offscreen">Close popup</a>
+      <a
+        onClick={this.props.onCloseFixMapMaker}
+        className="offscreen ypop-close-offscreen">
+        {"Close popup"}
+      </a>
     )
   }
 
@@ -53,7 +56,11 @@ class RestaurantsFixMapMarker extends Component {
   renderTitle() {
     return (
       <div className="ypop-title" id="locate-biz-pop-title">
-        <div className="ypop-close">×</div>
+        <div
+          onClick={this.props.onCloseFixMapMaker}
+          className="ypop-close">
+          {"×"}
+        </div>
         <h2>Move map marker</h2>
       </div>
     )
@@ -82,7 +89,10 @@ class RestaurantsFixMapMarker extends Component {
               {"Save Changes"}
           </span>
           </button>
-          <a href="#">Cancel</a></div>
+          <a onClick={this.props.onCloseFixMapMaker}>
+            {"Cancel"}
+          </a>
+        </div>
       </div>
     )
   }

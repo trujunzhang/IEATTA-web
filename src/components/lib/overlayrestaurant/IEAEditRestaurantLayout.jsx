@@ -67,6 +67,7 @@ class IEAEditRestaurantLayout extends Component {
     )
   }
 
+
   renderLeft() {
     return (
       <Telescope.components.EditRestaurantForm
@@ -141,6 +142,10 @@ class IEAEditRestaurantLayout extends Component {
     )
   }
 
+  onCloseFixMapMaker() {
+    this.setState({showFixMapMarker: false})
+  }
+
   renderRightBottom() {
     return (
       <a onClick={(e) => {
@@ -197,8 +202,12 @@ class IEAEditRestaurantLayout extends Component {
         </div>
 
         {/*<div className="body-overlay" style={{"display": "block"}}/>*/}
-
-        <Telescope.components.RestaurantsFixMapMarker {...this.props} />
+        {
+          this.state.showFixMapMarker &&
+          <Telescope.components.RestaurantsFixMapMarker
+            {...this.props}
+            onCloseFixMapMaker={this.onCloseFixMapMaker.bind(this)}/>
+        }
       </div>
     )
   }
