@@ -62,7 +62,7 @@ const createRoutes = (store) => {
     {
       path: 'edit/biz/(:rid)/(:rslug)',
       component: Telescope.components.DetailedRestaurant,
-      onEnter: requireAuth(store)
+      // onEnter: requireAuth(store)
     },
     {
       path: 'new/biz',

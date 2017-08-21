@@ -3,7 +3,21 @@ import React, {Component} from 'react'
 import Posts from '../../../../lib/posts'
 import Users from '../../../../lib/users'
 
+import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
+
 class RestaurantsFixMapMarker extends Component {
+
+
+  constructor(props) {
+    super(props);
+
+    this.state = this.initialState = {};
+  }
+
+  fixedMapDragend(e) {
+    const target = e.target;
+    const location = target.getLatLng()
+  }
 
   renderCloseIcon() {
     return (
@@ -50,6 +64,37 @@ class RestaurantsFixMapMarker extends Component {
     )
   }
 
+
+  renderTopMap() {
+    const {forObject} = this.props;
+
+    if (typeof forObject === 'undefined') {
+      throw new Error('You need to set a proper restaurant!')
+    }
+
+    const latitude = forObject.geoLocation.latitude;
+    const longitude = forObject.geoLocation.longitude;
+    const position = [latitude, longitude];
+
+    return (
+      <Map
+        ref='fixedMap'
+        center={position} zoom={18} maxZoom={28}>
+        <TileLayer
+          url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>
+        <Marker
+          draggable={true}
+          onMoveend={this.fixedMapDragend.bind(this)}
+          position={position}>
+          <Popup>
+            <span>{forObject.displayName}<br/>{forObject.address}</span>
+          </Popup>
+        </Marker>
+      </Map>
+    )
+  }
+
   renderContent() {
     return (
       <div className="ypop-inner clearfix" id="locate-biz-pop-inner">
@@ -58,7 +103,7 @@ class RestaurantsFixMapMarker extends Component {
           {this.renderHint()}
 
           <div className="popup-map">
-
+            {this.renderTopMap()}
           </div>
 
         </div>
