@@ -21,15 +21,14 @@ class RestaurantsFixMapMarker extends Component {
   constructor(props) {
     super(props);
 
-    const {forObject} = props,
-      {geoLocation} = forObject,
-      {latitude, longitude} = geoLocation;
+    const latitude = props.editModel.form.fields.latitude,
+      longitude = props.editModel.form.fields.longitude;
     const position = [latitude, longitude];
 
     this.state = this.initialState = {
-      popTitle: forObject.displayName,
+      popTitle: props.editModel.form.fields.displayName,
       currentZoom: 18,
-      currentAddress: forObject.address,
+      currentAddress: props.editModel.form.fields.address,
       googleAddressReverse: null,
       position: position,
     }
