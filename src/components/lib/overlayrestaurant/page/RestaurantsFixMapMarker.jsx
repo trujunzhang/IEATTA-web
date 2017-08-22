@@ -52,7 +52,9 @@ class RestaurantsFixMapMarker extends Component {
   componentWillReceiveProps(nextProps) {
     const newAddress = getModelByObjectId(nextProps, nextProps.forObject.id, this.state.googleAddressReverse, 'googleAddressReverse');
 
-    console.log(JSON.stringify(newAddress))
+    nextProps.actions.onRestaurantFormAddressFieldChange(newAddress)
+
+    // console.log(JSON.stringify(newAddress))
 
     this.setState({
       // Detailed object
@@ -148,8 +150,9 @@ class RestaurantsFixMapMarker extends Component {
   }
 
   renderTopMap() {
-    const {forObject} = this.props;
+    const {forObject, editModel} = this.props;
     const {position, currentZoom} = this.state;
+    const popAddress = editModel.form.fields.address;
 
     return (
       <Map center={position}
@@ -164,7 +167,7 @@ class RestaurantsFixMapMarker extends Component {
           onMoveend={this.fixedMapDragend.bind(this)}
           position={position}>
           <Popup>
-            <span>{forObject.displayName}<br/>{forObject.address}</span>
+            <span>{forObject.displayName}<br/>{popAddress}</span>
           </Popup>
         </ExtendedMarker>
       </Map>
