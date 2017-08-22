@@ -56,7 +56,7 @@ class RestaurantsFixMapMarker extends Component {
     if (!!newAddress) {
       nextProps.actions.onRestaurantFormAddressFieldChange(newAddress)
       this.setState({
-        popTitle: 'new Address:',
+        popTitle: 'Changed Address:',
         // Detailed object
         googleAddressReverse: newAddress
       })
@@ -153,7 +153,7 @@ class RestaurantsFixMapMarker extends Component {
 
   renderTopMap() {
     const {forObject, editModel} = this.props;
-    const {position, currentZoom, popupTitle} = this.state;
+    const {position, currentZoom, popTitle} = this.state;
     const popAddress = editModel.form.fields.address;
 
     return (
@@ -169,7 +169,7 @@ class RestaurantsFixMapMarker extends Component {
           onMoveend={this.fixedMapDragend.bind(this)}
           position={position}>
           <Popup>
-            <span>{popupTitle}<br/>{popAddress}</span>
+            <span>{popTitle}<br/>{popAddress}</span>
           </Popup>
         </ExtendedMarker>
       </Map>
