@@ -80,6 +80,8 @@ function editModelReducer(state = initialState, action) {
         .setIn(['form', 'fields', 'country'], restaurant.country)
         .setIn(['form', 'fields', 'postal_code'], restaurant.postal_code)
         .setIn(['form', 'fields', 'administrative_area'], restaurant.administrative_area)
+        .setIn(['form', 'fields', 'latitude'], restaurant.latitude)
+        .setIn(['form', 'fields', 'longitude'], restaurant.longitude)
 
       return next
     }

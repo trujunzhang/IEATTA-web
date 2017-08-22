@@ -111,7 +111,13 @@ class RestaurantsFixMapMarker extends Component {
   }
 
   saveGoogleAddress() {
-    this.props.actions.onRestaurantFormAddressFieldChange(this.state.googleAddressReverse)
+    const newAddress = {
+      ...this.state.googleAddressReverse,
+      latitude: this.state.position[0],
+      longitude: this.state.position[1]
+    }
+    this.props.actions.onRestaurantFormAddressFieldChange(newAddress)
+    this.props.onCloseFixMapMaker()
   }
 
   renderFooter() {
