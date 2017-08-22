@@ -17,6 +17,7 @@
  */
 const {
   ON_EDIT_MODEL_FORM_FIELD_CHANGE,
+  ON_RESTAURANT_MODEL_FORM_ADDRESS_FIELD_CHANGE,
   EDIT_MODEL_TOGGLE_TYPE,
   UPDATE_MODEL_REQUEST,
   UPDATE_MODEL_SUCCESS,
@@ -49,6 +50,16 @@ export function onEditModelFormFieldChange(field, value, ignoreValidation = fals
   }
 }
 
+/**
+ * ## onAuthFormFieldChange
+ * Set the payload so the reducer can work on it
+ */
+export function onRestaurantFormAddressFieldChange(restaurant) {
+  return {
+    type: ON_RESTAURANT_MODEL_FORM_ADDRESS_FIELD_CHANGE,
+    payload: {restaurant}
+  }
+}
 
 /**
  * ## Login actions

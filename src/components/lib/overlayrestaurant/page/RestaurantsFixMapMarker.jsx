@@ -46,13 +46,14 @@ class RestaurantsFixMapMarker extends Component {
       currentZoom: 18,
       googleAddressReverse: null,
       position: position,
-
     }
   }
 
-
   componentWillReceiveProps(nextProps) {
     const newAddress = getModelByObjectId(nextProps, nextProps.forObject.id, this.state.googleAddressReverse, 'googleAddressReverse');
+
+    console.log(JSON.stringify(newAddress))
+
     this.setState({
       // Detailed object
       googleAddressReverse: newAddress
@@ -63,6 +64,11 @@ class RestaurantsFixMapMarker extends Component {
   fixedMapDragend(e) {
     const target = e.target;
     const location = target.getLatLng();
+
+    this._updateGoogleAddress(location)
+  }
+
+  _updateGoogleAddress(location) {
     this.setState({position: [location.lat, location.lng]})
 
     this.props.dispatch(
@@ -137,9 +143,8 @@ class RestaurantsFixMapMarker extends Component {
     this.setState({currentZoom: e.target.getZoom()})
   }
 
-  onMapPress(e){
-   debugger
-   // e.target.
+  onMapPress(e) {
+    this._updateGoogleAddress(e.latlng)
   }
 
   renderTopMap() {

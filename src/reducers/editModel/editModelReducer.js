@@ -20,6 +20,7 @@ const formValidation = require('./editModelFormValidation').default
 const {
   SET_STATE,
   ON_EDIT_MODEL_FORM_FIELD_CHANGE,
+  ON_RESTAURANT_MODEL_FORM_ADDRESS_FIELD_CHANGE,
   EDIT_MODEL_TOGGLE_TYPE,
   MENU_ITEM_ADD_OR_EDIT_RESTAURANT,
   UPDATE_MODEL_REQUEST,
@@ -68,6 +69,14 @@ function editModelReducer(state = initialState, action) {
         fieldValidation(nextState, action)
         , action)
     }
+
+    case  ON_RESTAURANT_MODEL_FORM_ADDRESS_FIELD_CHANGE:
+      const {restaurant} = payload;
+      let next = setIn(['form', 'fields', 'address'], restaurant.address)
+        .setIn(['form', 'fields', 'street_number'], restaurant.street_number)
+        .setIn(['form', 'fields', 'route'], restaurant.route)
+
+      return next
 
     /**
      * ### Hot Loading support
