@@ -129,11 +129,11 @@ class RestaurantsFixMapMarker extends Component {
     return (
       <div className="ypop-footer clearfix" id="locate-biz-pop-footer">
         <div className="ypop-status"></div>
-        <div className="ypop-buttons">
+        <div className="ypop-buttons" id="fix-new-restaurant-address">
           <button type="submit" value="submit" className="ybtn ybtn-primary ybtn-small">
             <span>
               {"Save Changes"}
-          </span>
+            </span>
           </button>
           <a onClick={this.props.onCloseFixMapMaker}>
             {"Cancel"}
