@@ -85,7 +85,7 @@ export type Restaurant = {
   sublocality: string,
   country: string,
   postal_code: string,
-  administrative_area: string
+  administrative_area: string,
   // Photos
   listPhotoId: string;
 };

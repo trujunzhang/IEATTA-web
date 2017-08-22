@@ -35,7 +35,7 @@ class IEAEditRestaurantLayout extends Component {
     }
     props.actions.toggleEditModelType(MENU_ITEM_ADD_OR_EDIT_RESTAURANT);
     props.actions.onEditModelFormFieldChange('displayName', props.forObject.displayName || '', true)
-    props.actions.onRestaurantFormAddressFieldChange(forObject)
+    props.actions.onRestaurantFormAddressFieldChange(props.forObject)
   }
 
   /**

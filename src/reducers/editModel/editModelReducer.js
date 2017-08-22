@@ -70,8 +70,8 @@ function editModelReducer(state = initialState, action) {
         , action)
     }
 
-    case  ON_RESTAURANT_MODEL_FORM_ADDRESS_FIELD_CHANGE:
-      const {restaurant} = payload;
+    case  ON_RESTAURANT_MODEL_FORM_ADDRESS_FIELD_CHANGE: {
+      const {restaurant} = action.payload;
       let next = setIn(['form', 'fields', 'address'], restaurant.address)
         .setIn(['form', 'fields', 'street_number'], restaurant.street_number)
         .setIn(['form', 'fields', 'route'], restaurant.route)
@@ -82,7 +82,7 @@ function editModelReducer(state = initialState, action) {
         .setIn(['form', 'fields', 'administrative_area'], restaurant.administrative_area)
 
       return next
-
+    }
     /**
      * ### Hot Loading support
      *
@@ -90,8 +90,6 @@ function editModelReducer(state = initialState, action) {
      */
     case SET_STATE:
       let form = JSON.parse(action.payload).auth.form
-
-      debugger
 
       let next = state.setIn(['form', 'state'], form.state)
         .setIn(['form', 'disabled'], form.disabled)
