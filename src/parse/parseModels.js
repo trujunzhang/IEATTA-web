@@ -76,8 +76,16 @@ export type Restaurant = {
   updatedAt: Date;
   // Attributes
   displayName: string;
-  address: string;
   geoLocation: Any;
+  // Google Address
+  address: string;
+  street_number: string,
+  route: string,
+  locality: string,
+  sublocality: string,
+  country: string,
+  postal_code: string,
+  administrative_area: string
   // Photos
   listPhotoId: string;
 };
@@ -218,8 +226,16 @@ export function fromParseRestaurant(map: Object): Restaurant {
     updatedAt: map.get('updatedAt'),
     // Attributes
     displayName: map.get('displayName'),
-    address: map.get('address'),
     geoLocation: map.get('geoLocation'),
+    // Google address
+    address: map.get('address'),
+    street_number: map.get('street_number'),
+    route: map.get('route'),
+    locality: map.get('locality'),
+    sublocality: map.get('sublocality'),
+    country: map.get('country'),
+    postal_code: map.get('postal_code'),
+    administrative_area: map.get('administrative_area'),
     // Photos
     photos: (map.get('photos') || []).map(fromParsePhotoNormal),
   }
