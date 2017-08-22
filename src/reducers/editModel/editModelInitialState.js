@@ -45,6 +45,8 @@ const Form = Record({
     reviewBodyHasError: false,
     reviewBodyErrorMsg: '',
     //google address
+    lat: null,
+    lng: null,
     address: "",
     street_number: "",
     route: "",

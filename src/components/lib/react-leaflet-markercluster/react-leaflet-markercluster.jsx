@@ -7,7 +7,7 @@ import 'leaflet.markercluster';
 
 // import './style.scss';
 
-export default class MarkerClusterGroup extends LayerGroup {
+class MarkerClusterGroup extends LayerGroup {
 
   componentWillMount() {
     // Override auto created leafletElement with L.markerClusterGroup element
@@ -169,3 +169,6 @@ MarkerClusterGroup.propTypes = {
 MarkerClusterGroup.defaultProps = {
   wrapperOptions: {}
 };
+
+
+export default MarkerClusterGroup;

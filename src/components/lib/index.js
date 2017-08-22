@@ -165,4 +165,9 @@ Telescope.registerComponent('F8PhotosContentWithNavBar',                  requir
 // Photos Single
 Telescope.registerComponent('F8PhotosSingleTop',                      require('./photos/photossingle/F8PhotosSingleTop.jsx').default)
 
+// leaflet
+Telescope.registerComponent('MarkerClusterGroup',                      require('./react-leaflet-markercluster/react-leaflet-markercluster.jsx').default)
+Telescope.registerComponent('ExtendedMarker',                          require('./react-leaflet-markercluster/ExtendedMarker.jsx').default)
+
+
 export default Telescope

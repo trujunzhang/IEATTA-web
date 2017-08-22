@@ -2,7 +2,6 @@ import Telescope from '../../index'
 import React, {Component} from 'react'
 import Users from '../../../../lib/users'
 
-import MarkerClusterGroup from '../../../vendor/react-leaflet-markercluster/react-leaflet-markercluster'
 
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
 
@@ -41,7 +40,7 @@ class RestaurantsListRightMap extends Component {
 
     const mapProps = (!!defaultMarker ) ? {center: defaultMarker} : {};
     return (
-      <div id="map-container" className="yelp-map-container" >
+      <div id="map-container" className="yelp-map-container">
         <Map
           {...mapProps}
           zoom={18} maxZoom={28}>
@@ -49,7 +48,7 @@ class RestaurantsListRightMap extends Component {
             url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>
 
-          <MarkerClusterGroup
+          <Telescope.components.MarkerClusterGroup
             markers={markers}
             wrapperOptions={{enableDefaultStyle: true}}
           />
@@ -63,7 +62,7 @@ class RestaurantsListRightMap extends Component {
 
     return (
       <div className="map-wrapper">
-        <div className="search-map transform-style-support" >
+        <div className="search-map transform-style-support">
           {this.renderHeader()}
           {this.renderContent()}
         </div>

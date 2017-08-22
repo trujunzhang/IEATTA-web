@@ -7,8 +7,6 @@ const {
 
 const {
   getModelByObjectId,
-  getDefaultListTask,
-  byListId
 } = require('../../../filter/filterPosts')
 
 const {
@@ -17,20 +15,6 @@ const {
 } = require('../../../../lib/constants').default
 
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
-
-class ExtendedMarker extends Marker {
-  componentWillReceiveProps(nextProps) {
-    this.leafletElement.openPopup();
-  }
-
-  componentDidMount() {
-    // Call the Marker class componentDidMount (to make sure everything behaves as normal)
-    super.componentDidMount();
-
-    // Access the marker element and open the popup.
-    this.leafletElement.openPopup();
-  }
-}
 
 class RestaurantsFixMapMarker extends Component {
 
@@ -170,14 +154,14 @@ class RestaurantsFixMapMarker extends Component {
         <TileLayer
           url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>
-        <ExtendedMarker
+        <Telescope.components.ExtendedMarker
           draggable={true}
           onMoveend={this.fixedMapDragend.bind(this)}
           position={position}>
           <Popup>
             <span>{popTitle}<br/>{currentAddress}</span>
           </Popup>
-        </ExtendedMarker>
+        </Telescope.components.ExtendedMarker>
       </Map>
     )
   }
