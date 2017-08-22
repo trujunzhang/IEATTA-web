@@ -222,20 +222,20 @@ export function fromParseRestaurant(map: Object): Restaurant {
   return {
     // Basic Fields
     id: map.id,
-    createdAt: map.get('createdAt'),
-    updatedAt: map.get('updatedAt'),
+    createdAt: map.get('createdAt') || new Date(),
+    updatedAt: map.get('updatedAt') || new Date(),
     // Attributes
-    displayName: map.get('displayName'),
-    geoLocation: map.get('geoLocation'),
+    displayName: map.get('displayName') || '',
+    geoLocation: map.get('geoLocation') || '',
     // Google address
-    address: map.get('address'),
-    street_number: map.get('street_number'),
-    route: map.get('route'),
-    locality: map.get('locality'),
-    sublocality: map.get('sublocality'),
-    country: map.get('country'),
-    postal_code: map.get('postal_code'),
-    administrative_area: map.get('administrative_area'),
+    address: map.get('address') || '',
+    street_number: map.get('street_number') || '',
+    route: map.get('route') || '',
+    locality: map.get('locality') || '',
+    sublocality: map.get('sublocality') || '',
+    country: map.get('country') || '',
+    postal_code: map.get('postal_code') || '',
+    administrative_area: map.get('administrative_area') || '',
     // Photos
     photos: (map.get('photos') || []).map(fromParsePhotoNormal),
   }
