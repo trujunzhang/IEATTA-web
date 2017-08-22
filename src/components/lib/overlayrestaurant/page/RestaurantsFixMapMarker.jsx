@@ -43,6 +43,7 @@ class RestaurantsFixMapMarker extends Component {
     const position = [latitude, longitude];
 
     this.state = this.initialState = {
+      currentZoom: 18,
       googleAddressReverse: null,
       position: position,
 
@@ -52,7 +53,6 @@ class RestaurantsFixMapMarker extends Component {
 
   componentWillReceiveProps(nextProps) {
     const newAddress = getModelByObjectId(nextProps, nextProps.forObject.id, this.state.googleAddressReverse, 'googleAddressReverse');
-    debugger
     this.setState({
       // Detailed object
       googleAddressReverse: newAddress
@@ -133,13 +133,24 @@ class RestaurantsFixMapMarker extends Component {
     )
   }
 
+  onZoomChanged(e) {
+    this.setState({currentZoom: e.target.getZoom()})
+  }
+
+  onMapPress(e){
+   debugger
+   // e.target.
+  }
 
   renderTopMap() {
     const {forObject} = this.props;
-    const {position} = this.state;
+    const {position, currentZoom} = this.state;
 
     return (
-      <Map center={position} zoom={18} maxZoom={28}>
+      <Map center={position}
+           onClick={this.onMapPress.bind(this)}
+           onZoom={this.onZoomChanged.bind(this)}
+           zoom={currentZoom} maxZoom={30}>
         <TileLayer
           url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>
