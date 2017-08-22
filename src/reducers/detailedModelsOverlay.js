@@ -40,6 +40,7 @@ const {
 const initialState = {
   currentModel: null,
   statistic: null,
+  googleAddressReverse: null
 }
 
 function detailedModelsOverlay(state: State = initialState, action: Action): State {
