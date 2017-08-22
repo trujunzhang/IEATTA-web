@@ -66,7 +66,6 @@ class F8SingleHeaderRightPhotoItem extends Component {
         </div>
 
       </div>
-
     )
   }
 

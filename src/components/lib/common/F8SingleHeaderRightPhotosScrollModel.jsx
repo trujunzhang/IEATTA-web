@@ -33,9 +33,7 @@ class F8SingleHeaderRightPhotosScrollModel extends Component {
         </span>
           {`See all ${photoModelObject.total}`}
         </Link>
-
       </div>
-
     )
   }
 
@@ -78,7 +76,7 @@ class F8SingleHeaderRightPhotosScrollModel extends Component {
 
               {currentScrollModelObject.showPhotosIndex.map((position, index) => {
                 const item = photoModelObject.photos[position];
-                return (<Telescope.components.F8SingleHeaderRightPhotoItem item={item} index={index}/>)
+                return (<Telescope.components.F8SingleHeaderRightPhotoItem key={index} item={item} index={index}/>)
               })}
 
             </div>
