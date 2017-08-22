@@ -45,6 +45,7 @@ class RestaurantsFixMapMarker extends Component {
     this.state = this.initialState = {
       popTitle: forObject.displayName,
       currentZoom: 18,
+      currentAddress: forObject.address,
       googleAddressReverse: null,
       position: position,
     }
@@ -54,10 +55,10 @@ class RestaurantsFixMapMarker extends Component {
     const newAddress = getModelByObjectId(nextProps, nextProps.forObject.id, this.state.googleAddressReverse, 'googleAddressReverse');
 
     if (!!newAddress) {
-      nextProps.actions.onRestaurantFormAddressFieldChange(newAddress)
       this.setState({
         popTitle: 'Changed Address:',
         // Detailed object
+        currentAddress: newAddress.address,
         googleAddressReverse: newAddress
       })
 
@@ -125,12 +126,19 @@ class RestaurantsFixMapMarker extends Component {
     )
   }
 
+  saveGoogleAddress() {
+    this.props.actions.onRestaurantFormAddressFieldChange(this.state.googleAddressReverse)
+  }
+
   renderFooter() {
+    const saveEnabled = !!this.state.googleAddressReverse;
     return (
       <div className="ypop-footer clearfix" id="locate-biz-pop-footer">
-        <div className="ypop-status"></div>
         <div className="ypop-buttons" id="fix-new-restaurant-address">
-          <button type="submit" value="submit" className="ybtn ybtn-primary ybtn-small">
+          <button type="submit"
+                  onClick={this.saveGoogleAddress.bind(this)}
+                  disabled={!saveEnabled}
+                  value="submit" className="ybtn ybtn-primary ybtn-small">
             <span>
               {"Save Changes"}
             </span>
@@ -152,9 +160,7 @@ class RestaurantsFixMapMarker extends Component {
   }
 
   renderTopMap() {
-    const {forObject, editModel} = this.props;
-    const {position, currentZoom, popTitle} = this.state;
-    const popAddress = editModel.form.fields.address;
+    const {position, currentZoom, currentAddress, popTitle} = this.state;
 
     return (
       <Map center={position}
@@ -169,7 +175,7 @@ class RestaurantsFixMapMarker extends Component {
           onMoveend={this.fixedMapDragend.bind(this)}
           position={position}>
           <Popup>
-            <span>{popTitle}<br/>{popAddress}</span>
+            <span>{popTitle}<br/>{currentAddress}</span>
           </Popup>
         </ExtendedMarker>
       </Map>
