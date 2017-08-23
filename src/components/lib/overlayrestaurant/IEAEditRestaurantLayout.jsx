@@ -97,11 +97,34 @@ class IEAEditRestaurantLayout extends Component {
     const objectId = forObject.id;
     const displayName = this.props.editModel.form.fields.displayName;
 
+    const latitude = this.props.editModel.form.fields.latitude;
+    const longitude = this.props.editModel.form.fields.longitude;
+    const address = this.props.editModel.form.fields.address;
+    const street_number = this.props.editModel.form.fields.street_number;
+    const route = this.props.editModel.form.fields.route;
+    const locality = this.props.editModel.form.fields.locality;
+    const sublocality = this.props.editModel.form.fields.sublocality;
+    const country = this.props.editModel.form.fields.country;
+    const postal_code = this.props.editModel.form.fields.postal_code;
+    const administrative_area = this.props.editModel.form.fields.administrative_area;
+
     this.props.actions.updateModelRequest();
 
     try {
       await Promise.race([
-        dispatch(updateRestaurant({objectId, displayName})),
+        dispatch(updateRestaurant({
+          objectId, displayName,
+          latitude,
+          longitude,
+          address,
+          street_number,
+          route,
+          locality,
+          sublocality,
+          country,
+          postal_code,
+          administrative_area
+        })),
         timeout(15000),
       ]);
     } catch (e) {
