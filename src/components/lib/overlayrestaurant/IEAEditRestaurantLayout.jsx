@@ -174,7 +174,7 @@ class IEAEditRestaurantLayout extends Component {
         <div className="map-container yelp-map-container">
           <Telescope.components.F8RestaurantMapSection
             mapInfo={this.state.mapInfo}
-            showEditButton={true} onlyMap={true}/>
+          />
         </div>
         {this.renderRightBottom()}
       </div>

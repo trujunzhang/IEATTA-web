@@ -4,14 +4,14 @@ import Restaurants from '../../../../lib/restaurants'
 
 class RestaurantsSingleHeader extends Component {
   renderSubHeader() {
-    const mapInfo = Restaurants.getMapInfo(this.props.forObject, this.props.forObject.geoLocation,true,false);
+    const mapInfo = Restaurants.getMapInfo(this.props.forObject, this.props.forObject.geoLocation, true, false);
 
     return (
       <div className="biz-page-subheader">
 
         {/*Left Panel*/}
         <div className="mapbox-container">
-          <Telescope.components.F8RestaurantMapSection mapInfo={mapInfo} showEditButton={true}/>
+          <Telescope.components.F8RestaurantMapSection mapInfo={mapInfo}/>
         </div>
 
         {/*Right Panel*/}

@@ -92,7 +92,8 @@ class F8RestaurantMapSection extends Component {
   }
 
   render() {
-    const {onlyMap = false} = this.props;
+    const {mapInfo} = this.props,
+      {onlyMap} = mapInfo;
 
     if (onlyMap) {
       return this.renderTopMap()

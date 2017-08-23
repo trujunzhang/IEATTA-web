@@ -1,5 +1,6 @@
 import Telescope from '../../../lib'
 import React, {Component} from 'react'
+import Restaurants from '../../../../lib/restaurants'
 
 class OrderedUsersDetail extends Component {
 
@@ -16,12 +17,16 @@ class OrderedUsersDetail extends Component {
   }
 
   renderRightSidebar() {
+    const mapInfo = Restaurants.getMapInfo(this.props.forRestaurant,
+      this.props.forRestaurant.geoLocation,
+      true, false)
+
     return (
       <div className="user-details-bookmarks_sidebar">
         <div className="bookmarks-map-wrapper js-bookmarks-map-wrapper"
              id="ordered-user-container-right-sider-map">
 
-          <Telescope.components.F8RestaurantMapSection forObject={this.props.forRestaurant}/>
+          <Telescope.components.F8RestaurantMapSection mapInfo={mapInfo}/>
 
         </div>
       </div>
