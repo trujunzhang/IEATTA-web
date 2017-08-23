@@ -2,6 +2,7 @@ import Telescope from './settings'
 import moment from 'moment'
 
 import {getEditRestaurantLink} from './link'
+
 const Restaurants = {}
 
 /**
@@ -156,7 +157,6 @@ Restaurants.generateCommentFacebookShareLink = function (router, comment) {
 }
 
 Restaurants.getMapInfo = function (model, location) {
-  debugger
   return {
     latitude: location.latitude,
     longitude: location.longitude,

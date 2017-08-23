@@ -48,11 +48,12 @@ class IEAEditRestaurantLayout extends Component {
   componentWillReceiveProps(nextProps) {
     const mapInfo = Restaurants.getMapInfo(
       {
-        ...nextProps.editModel.form.fields,
+        address: nextProps.editModel.form.fields.address,
+        displayName: nextProps.editModel.form.fields.displayName,
         id: nextProps.forObject.id
       },
       nextProps.editModel.form.fields);
-    debugger
+
     this.setState({
       mapInfo: mapInfo,
       value: {

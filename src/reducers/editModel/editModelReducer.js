@@ -72,7 +72,7 @@ function editModelReducer(state = initialState, action) {
 
     case  ON_RESTAURANT_MODEL_FORM_ADDRESS_FIELD_CHANGE: {
       const {restaurant} = action.payload;
-      debugger
+
       let next = state.setIn(['form', 'fields', 'address'], restaurant.address)
         .setIn(['form', 'fields', 'street_number'], restaurant.street_number)
         .setIn(['form', 'fields', 'route'], restaurant.route)
