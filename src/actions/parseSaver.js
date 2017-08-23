@@ -25,6 +25,7 @@
 
 'use strict';
 
+const Parse = require('parse')
 
 const _ = require('underscore')
 import type {Action, ThunkAction} from './types'
@@ -74,6 +75,18 @@ const {
 async function _updateRestaurant(model: object): Promise<Array<Action>> {
   const restaurant = await getQueryByType(PARSE_RESTAURANTS).get(model.objectId)
   restaurant.set('displayName', model.displayName)
+
+  const _geoLocation = new Parse.GeoPoint({latitude: model.latitude, longitude: model.longitude})
+
+  restaurant.set('geoLocation', _geoLocation)
+  restaurant.set('address', model.address)
+  restaurant.set('street_number', model.street_number)
+  restaurant.set('route', model.route)
+  restaurant.set('locality', model.locality)
+  restaurant.set('sublocality', model.sublocality)
+  restaurant.set('country', model.country)
+  restaurant.set('postal_code', model.postal_code)
+  restaurant.set('administrative_area', model.administrative_area)
 
   await restaurant.save()
 
