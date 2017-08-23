@@ -25,6 +25,8 @@ class RestaurantsFixMapMarker extends Component {
       longitude = props.editModel.form.fields.longitude;
     const position = [latitude, longitude];
 
+    debugger
+
     this.state = this.initialState = {
       popTitle: props.editModel.form.fields.displayName,
       currentZoom: 18,
@@ -112,9 +114,12 @@ class RestaurantsFixMapMarker extends Component {
   saveGoogleAddress() {
     const newAddress = {
       ...this.state.googleAddressReverse,
-      latitude: this.state.position[0],
-      longitude: this.state.position[1]
+      geoLocation: {
+        latitude: this.state.position[0],
+        longitude: this.state.position[1]
+      }
     }
+    debugger
     this.props.actions.onRestaurantFormAddressFieldChange(newAddress)
     this.props.onCloseFixMapMaker()
   }
