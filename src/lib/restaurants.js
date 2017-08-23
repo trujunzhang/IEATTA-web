@@ -154,4 +154,10 @@ Restaurants.generateCommentFacebookShareLink = function (router, comment) {
   return 'https://www.facebook.com/dialog/share?' + splits.join('&')
 }
 
+Restaurants.getMapInfo=function (model) {
+ return {
+
+ }
+}
+
 export default Restaurants

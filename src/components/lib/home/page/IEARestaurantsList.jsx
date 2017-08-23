@@ -1,6 +1,6 @@
 import Telescope from '../../index'
 import React, {Component} from 'react'
-import Posts from '../../../../lib/restaurants'
+import Restaurants from '../../../../lib/restaurants'
 
 class IEARestaurantsList extends Component {
 
@@ -18,7 +18,7 @@ class IEARestaurantsList extends Component {
 
     let hasMore = !ready && totalCount !== results.length
 
-    const showReady = Posts.showReady(results, hasMore, ready, totalCount, limit, firstPagination)
+    const showReady = Restaurants.showReady(results, hasMore, ready, totalCount, limit, firstPagination)
 
     if (showReady) {
       return (
