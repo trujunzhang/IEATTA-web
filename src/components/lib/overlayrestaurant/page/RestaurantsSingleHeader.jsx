@@ -1,6 +1,5 @@
 import Telescope from '../../../lib'
 import React, {Component} from 'react'
-
 import Restaurants from '../../../../lib/restaurants'
 
 class RestaurantsSingleHeader extends Component {

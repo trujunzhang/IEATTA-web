@@ -13,9 +13,6 @@ class F8RestaurantMapSection extends Component {
     const {latitude, longitude, displayName, address, autoPopup} = mapInfo;
     const position = [latitude, longitude];
 
-    // console.log(JSON.stringify(position))
-    // debugger
-
     return (
       <Map center={position} zoom={18} maxZoom={28}>
         <TileLayer
