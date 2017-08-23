@@ -1,8 +1,5 @@
-import React, {Component} from 'react';
 import Telescope from '../../index'
-
-import Posts from '../../../../lib/posts'
-
+import React, {Component} from 'react';
 import {withRouter} from 'react-router'
 
 export class ReviewsItemButtonsPanel extends Component {

@@ -1,8 +1,5 @@
 import Telescope from '../../../lib'
 import React, {Component} from 'react'
-import Posts from '../../../../lib/posts'
-import Users from '../../../../lib/users'
-import Events from '../../../../lib/events'
 
 class OrderedUsersLeftPanel extends Component {
 

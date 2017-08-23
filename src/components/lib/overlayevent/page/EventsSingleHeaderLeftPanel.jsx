@@ -1,16 +1,12 @@
 import Telescope from '../../../lib'
 import React, {Component} from 'react'
 
-import Users from '../../../../lib/users'
 import Photos from '../../../../lib/photos'
-import Posts from '../../../../lib/posts'
 import Events from '../../../../lib/events'
 
 import {getRestaurantLink} from '../../../../lib/link'
 
 import {Link} from 'react-router'
-
-import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
 
 class EventsSingleHeaderLeftPanel extends Component {
 

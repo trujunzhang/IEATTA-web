@@ -10,13 +10,7 @@ class F8RestaurantMapSection extends Component {
 
   renderTopMap() {
     const {forObject} = this.props;
-
-    if (typeof forObject === 'undefined') {
-      throw new Error('You need to set a proper restaurant!')
-    }
-
-    const latitude = forObject.geoLocation.latitude;
-    const longitude = forObject.geoLocation.longitude;
+    const {latitude, longitude, displayName, address} = restaurant;
     const position = [latitude, longitude];
 
     return (
@@ -26,7 +20,7 @@ class F8RestaurantMapSection extends Component {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>
         <Marker position={position}>
           <Popup>
-            <span>{forObject.displayName}<br/>{forObject.address}</span>
+            <span>{displayName}<br/>{address}</span>
           </Popup>
         </Marker>
       </Map>

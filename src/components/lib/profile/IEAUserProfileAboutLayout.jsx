@@ -1,8 +1,5 @@
 import Telescope from '../index'
 import React, {Component} from 'react'
-import Posts from '../../../lib/posts'
-import Users from '../../../lib/users'
-import {Link} from 'react-router'
 
 import {withRouter} from 'react-router'
 

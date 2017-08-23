@@ -1,10 +1,6 @@
 import Telescope from '../../../lib'
 import React, {Component} from 'react'
 import {FormattedMessage, FormattedRelative} from 'react-intl'
-import Posts from '../../../../lib/posts'
-import Users from '../../../../lib/users'
-
-import {getEditEventLink} from '../../../../lib/link'
 
 class EventsSingleHeader extends Component {
 

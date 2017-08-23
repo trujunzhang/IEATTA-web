@@ -1,7 +1,5 @@
 import Telescope from '../index'
 import React, {Component} from 'react'
-import Posts from '../../../lib/posts'
-import Users from '../../../lib/users'
 
 class IEARestaurantsLayout extends Component {
 

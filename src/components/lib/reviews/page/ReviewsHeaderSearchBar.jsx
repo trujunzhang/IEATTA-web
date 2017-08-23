@@ -1,6 +1,5 @@
-import React, {Component} from 'react';
 import Telescope from '../../index'
-import Posts from '../../../../lib/posts'
+import React, {Component} from 'react';
 
 const {delayEvent} = require('../../../../lib/utils')
 
