@@ -1,5 +1,6 @@
 import Telescope from '../../lib'
 import React, {Component} from 'react'
+import Restaurants from '../../../lib/restaurants'
 
 import {withRouter} from 'react-router'
 
@@ -27,7 +28,9 @@ class IEAEditRestaurantLayout extends Component {
   constructor(props, context) {
     super(props)
 
+    const mapInfo = Restaurants.getMapInfo(this.props.forObject, this.props.forObject.geoLocation);
     this.state = {
+      mapInfo: mapInfo,
       showFixMapMarker: false,
       value: {
         displayName: props.editModel.form.fields.displayName,
@@ -43,7 +46,10 @@ class IEAEditRestaurantLayout extends Component {
    * As the properties are validated they will be set here.
    */
   componentWillReceiveProps(nextProps) {
+    const mapInfo = Restaurants.getMapInfo(nextProps.editModel.form.fields, nextProps.editModel.form.fields);
+    debugger
     this.setState({
+      mapInfo: mapInfo,
       value: {
         displayName: nextProps.editModel.form.fields.displayName,
       }
@@ -136,7 +142,9 @@ class IEAEditRestaurantLayout extends Component {
     return (
       <div className="map-wrapper pull-right" id="fix-map-marker-section">
         <div className="map-container yelp-map-container">
-          <Telescope.components.F8RestaurantMapSection  {...this.props} showEditButton={true} onlyMap={true}/>
+          <Telescope.components.F8RestaurantMapSection
+            mapInfo={this.state.mapInfo}
+            showEditButton={true} onlyMap={true}/>
         </div>
         {this.renderRightBottom()}
       </div>
