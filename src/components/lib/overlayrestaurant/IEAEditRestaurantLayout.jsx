@@ -46,7 +46,12 @@ class IEAEditRestaurantLayout extends Component {
    * As the properties are validated they will be set here.
    */
   componentWillReceiveProps(nextProps) {
-    const mapInfo = Restaurants.getMapInfo(nextProps.editModel.form.fields, nextProps.editModel.form.fields);
+    const mapInfo = Restaurants.getMapInfo(
+      {
+        ...nextProps.editModel.form.fields,
+        id: nextProps.forObject.id
+      },
+      nextProps.editModel.form.fields);
     debugger
     this.setState({
       mapInfo: mapInfo,
