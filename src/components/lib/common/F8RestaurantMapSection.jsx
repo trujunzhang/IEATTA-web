@@ -9,8 +9,8 @@ import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
 class F8RestaurantMapSection extends Component {
 
   renderTopMap() {
-    const {forObject} = this.props;
-    const {latitude, longitude, displayName, address} = restaurant;
+    const {mapInfo} = this.props;
+    const {latitude, longitude, displayName, address} = mapInfo;
     const position = [latitude, longitude];
 
     return (
@@ -29,7 +29,7 @@ class F8RestaurantMapSection extends Component {
 
   renderRightEditButton() {
     return (
-      <Link to={getEditRestaurantLink(this.props.forObject)}
+      <Link to={this.props.mapInfo.editLink}
             className="link-more icon-wrapper mapbox-edit">
             <span id="icon_14X14"
                   className="icon icon--14-pencil icon--size-14 icon--linked u-space-r-half">
@@ -44,8 +44,8 @@ class F8RestaurantMapSection extends Component {
   }
 
   renderBottomText() {
-    const {forObject, showEditButton} = this.props;
-    const rows = forObject.address.split(',')
+    const {mapInfo, showEditButton} = this.props;
+    const rows = mapInfo.address.split(',')
 
     return (
       <ul>
@@ -82,16 +82,12 @@ class F8RestaurantMapSection extends Component {
             </a>
           </div>
         </li>
-
-
       </ul>
     )
   }
 
   render() {
-    const {
-      onlyMap = false
-    } = this.props;
+    const {onlyMap = false} = this.props;
 
     if (onlyMap) {
       return this.renderTopMap()

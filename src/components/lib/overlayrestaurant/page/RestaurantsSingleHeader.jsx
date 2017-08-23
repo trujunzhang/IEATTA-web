@@ -1,14 +1,18 @@
 import Telescope from '../../../lib'
 import React, {Component} from 'react'
 
+import Restaurants from '../../../../lib/restaurants'
+
 class RestaurantsSingleHeader extends Component {
   renderSubHeader() {
+    const mapInfo = Restaurants.getMapInfo(this.props.forObject, this.props.forObject.geoLocation);
+
     return (
       <div className="biz-page-subheader">
 
         {/*Left Panel*/}
         <div className="mapbox-container">
-          <Telescope.components.F8RestaurantMapSection  {...this.props} showEditButton={true}/>
+          <Telescope.components.F8RestaurantMapSection mapInfo={mapInfo} showEditButton={true}/>
         </div>
 
         {/*Right Panel*/}
