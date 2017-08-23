@@ -35,7 +35,8 @@ class RestaurantsFixMapMarker extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const newAddress = getModelByObjectId(nextProps, nextProps.forObject.id, this.state.googleAddressReverse, 'googleAddressReverse');
+    const newAddress = getModelByObjectId(nextProps, nextProps.forObject.id,
+      this.state.googleAddressReverse, 'googleAddressReverse');
 
     if (!!newAddress) {
       this.setState({
