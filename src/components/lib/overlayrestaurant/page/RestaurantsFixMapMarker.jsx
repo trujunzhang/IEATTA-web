@@ -25,8 +25,6 @@ class RestaurantsFixMapMarker extends Component {
       longitude = props.editModel.form.fields.longitude;
     const position = [latitude, longitude];
 
-    debugger
-
     this.state = this.initialState = {
       popTitle: props.editModel.form.fields.displayName,
       currentZoom: 18,
