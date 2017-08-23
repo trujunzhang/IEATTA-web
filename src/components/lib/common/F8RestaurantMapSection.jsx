@@ -18,11 +18,14 @@ class F8RestaurantMapSection extends Component {
         <TileLayer
           url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>
-        <Marker position={position}>
+
+        <Telescope.components.ExtendedMarker
+          position={position}>
           <Popup>
             <span>{displayName}<br/>{address}</span>
           </Popup>
-        </Marker>
+        </Telescope.components.ExtendedMarker>
+
       </Map>
     )
   }
