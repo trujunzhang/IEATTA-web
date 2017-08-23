@@ -119,7 +119,6 @@ class RestaurantsFixMapMarker extends Component {
         longitude: this.state.position[1]
       }
     }
-    debugger
     this.props.actions.onRestaurantFormAddressFieldChange(newAddress)
     this.props.onCloseFixMapMaker()
   }
