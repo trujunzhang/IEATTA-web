@@ -5,7 +5,7 @@ import Restaurants from '../../../../lib/restaurants'
 
 class RestaurantsSingleHeader extends Component {
   renderSubHeader() {
-    const mapInfo = Restaurants.getMapInfo(this.props.forObject, this.props.forObject.geoLocation);
+    const mapInfo = Restaurants.getMapInfo(this.props.forObject, this.props.forObject.geoLocation,true,false);
 
     return (
       <div className="biz-page-subheader">

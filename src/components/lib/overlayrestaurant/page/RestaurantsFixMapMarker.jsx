@@ -163,6 +163,7 @@ class RestaurantsFixMapMarker extends Component {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>
         <Telescope.components.ExtendedMarker
           draggable={true}
+          autoPopup={true}
           onMoveend={this.fixedMapDragend.bind(this)}
           position={position}>
           <Popup>

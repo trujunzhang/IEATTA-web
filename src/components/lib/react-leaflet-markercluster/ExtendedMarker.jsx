@@ -2,7 +2,9 @@ import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
 
 class ExtendedMarker extends Marker {
   componentWillReceiveProps(nextProps) {
-    this.leafletElement.openPopup();
+    if (nextProps.autoPopup) {
+      this.leafletElement.openPopup();
+    }
   }
 
   componentDidMount() {
@@ -10,7 +12,9 @@ class ExtendedMarker extends Marker {
     super.componentDidMount();
 
     // Access the marker element and open the popup.
-    this.leafletElement.openPopup();
+    if (this.props.autoPopup) {
+      this.leafletElement.openPopup();
+    }
   }
 }
 

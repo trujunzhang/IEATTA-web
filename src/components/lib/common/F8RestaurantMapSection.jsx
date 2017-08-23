@@ -10,10 +10,11 @@ class F8RestaurantMapSection extends Component {
 
   renderTopMap() {
     const {mapInfo} = this.props;
-    const {latitude, longitude, displayName, address} = mapInfo;
+    const {latitude, longitude, displayName, address, autoPopup} = mapInfo;
     const position = [latitude, longitude];
 
-    console.log(JSON.stringify(position))
+    // console.log(JSON.stringify(position))
+    // debugger
 
     return (
       <Map center={position} zoom={18} maxZoom={28}>
@@ -22,6 +23,7 @@ class F8RestaurantMapSection extends Component {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>
 
         <Telescope.components.ExtendedMarker
+          autoPopup={autoPopup}
           position={position}>
           <Popup>
             <span>{displayName}<br/>{address}</span>
@@ -49,8 +51,9 @@ class F8RestaurantMapSection extends Component {
   }
 
   renderBottomText() {
-    const {mapInfo, showEditButton} = this.props;
-    const rows = mapInfo.address.split(',')
+    const {mapInfo} = this.props,
+      {address, showEditButton} = mapInfo;
+    const rows = address.split(',')
 
     return (
       <ul>

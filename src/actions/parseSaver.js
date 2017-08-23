@@ -78,7 +78,7 @@ async function _updateRestaurant(model: object): Promise<Array<Action>> {
 
   const _geoLocation = new Parse.GeoPoint({latitude: model.latitude, longitude: model.longitude})
 
-  debugger
+  // debugger
 
   restaurant.set('geoLocation', _geoLocation)
   restaurant.set('address', model.address)
@@ -90,9 +90,9 @@ async function _updateRestaurant(model: object): Promise<Array<Action>> {
   restaurant.set('postal_code', model.postal_code)
   restaurant.set('administrative_area', model.administrative_area)
 
-  // await restaurant.save()
+  await restaurant.save()
 
-  // await updateParseRecorder('restaurant', restaurant)
+  await updateParseRecorder('restaurant', restaurant)
 
   const action = {
     type: UPDATE_MODEL_REQUEST,

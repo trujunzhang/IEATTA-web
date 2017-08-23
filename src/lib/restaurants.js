@@ -156,13 +156,15 @@ Restaurants.generateCommentFacebookShareLink = function (router, comment) {
   return 'https://www.facebook.com/dialog/share?' + splits.join('&')
 }
 
-Restaurants.getMapInfo = function (model, location) {
+Restaurants.getMapInfo = function (model, location, showEditButton, autoPopup) {
   return {
     latitude: location.latitude,
     longitude: location.longitude,
     displayName: model.displayName,
     address: model.address,
-    editLink: getEditRestaurantLink(model)
+    editLink: getEditRestaurantLink(model),
+    showEditButton: showEditButton,
+    autoPopup: autoPopup,
   }
 }
 

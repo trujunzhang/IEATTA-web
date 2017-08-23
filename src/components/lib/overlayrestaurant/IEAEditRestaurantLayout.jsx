@@ -28,7 +28,7 @@ class IEAEditRestaurantLayout extends Component {
   constructor(props, context) {
     super(props)
 
-    const mapInfo = Restaurants.getMapInfo(this.props.forObject, this.props.forObject.geoLocation);
+    const mapInfo = Restaurants.getMapInfo(this.props.forObject, this.props.forObject.geoLocation, false, false);
     this.state = {
       mapInfo: mapInfo,
       showFixMapMarker: false,
@@ -52,7 +52,8 @@ class IEAEditRestaurantLayout extends Component {
         displayName: nextProps.editModel.form.fields.displayName,
         id: nextProps.forObject.id
       },
-      nextProps.editModel.form.fields);
+      nextProps.editModel.form.fields,
+      true, true);
 
     this.setState({
       mapInfo: mapInfo,
