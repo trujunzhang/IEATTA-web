@@ -15,11 +15,14 @@ class F8PhotosTitleHeader extends Component {
         <div className="photo-box pb-30s">
 
           <Link className="js-analytics-click" to={geDetailedModelLink(modelType, forObject)}>
-            <img alt={forObject.displayName}
-                 className="photo-box-img"
-                 width="30"
-                 height="30"
-                 src={Photos.getListThumbnailUrl(forObject)}/>
+            <Telescope.components.F8PlaceHolderImage
+              alt={forObject.displayName}
+              className="photo-box-img"
+              height="30"
+              width="30"
+              placeholderSource={"/default/blank_biz_small.png"}
+              source={Photos.getListThumbnailUrl(forObject)}/>
+
           </Link>
 
         </div>
