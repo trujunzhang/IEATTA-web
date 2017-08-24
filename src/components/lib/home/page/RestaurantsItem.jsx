@@ -31,13 +31,16 @@ class RestaurantsItem extends Component {
         <div className="media-block media-block--12">
           <div className="media-avatar">
             <div className="photo-box pb-90s">
-              <Link className="js-analytics-click"
-                    to={getRestaurantLink(restaurant)}>
-                <img alt={restaurant.displayName}
-                     className="photo-box-img"
-                     width="90"
-                     height="90"
-                     src={Photos.getListThumbnailUrl(restaurant)}/>
+              <Link className="js-analytics-click" to={getRestaurantLink(restaurant)}>
+
+                <Telescope.components.F8PlaceHolderImage
+                  alt={restaurant.displayName}
+                  className="photo-box-img"
+                  height="90"
+                  width="90"
+                  placeholderSource={"/default/user_30_square.png"}
+                  source={Photos.getListThumbnailUrl(restaurant)}/>
+
               </Link>
             </div>
           </div>
