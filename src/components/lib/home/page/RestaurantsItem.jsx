@@ -38,7 +38,7 @@ class RestaurantsItem extends Component {
                   className="photo-box-img"
                   height="90"
                   width="90"
-                  placeholderSource={"/default/user_30_square.png"}
+                  placeholderSource={"/default/blank_biz_small.png"}
                   source={Photos.getListThumbnailUrl(restaurant)}/>
 
               </Link>
@@ -47,9 +47,10 @@ class RestaurantsItem extends Component {
           <div className="media-story">
             <h3 className="search-result-title">
               <span className="indexed-biz-name">{`${index + 1}.`}
-                <Link className="biz-name js-analytics-click margin-left-4"
-                      to={getRestaurantLink(restaurant)}>
+                <Link className="biz-name js-analytics-click margin-left-4" to={getRestaurantLink(restaurant)}>
+
                   <span>{restaurant.displayName}</span>
+
                 </Link>
               </span>
             </h3>
