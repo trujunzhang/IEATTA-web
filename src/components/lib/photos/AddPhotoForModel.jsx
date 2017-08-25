@@ -3,10 +3,11 @@ import React, {Component} from 'react'
 
 import {withRouter} from 'react-router'
 
+
 const {
   loadRestaurantPage,
-  loadPhotosBrowser,
-  invokeParseCloudMethod
+  loadEventPage,
+  loadOrderedRecipePage,
 } = require('../../../actions').default
 
 const {
@@ -77,6 +78,7 @@ class AddPhotoForModel extends Component {
     const {forObject} = this.state;
 
     if (!!forObject) {
+      debugger
       return (<Telescope.components.IEAAddPhotosLayout
         {...this.state}
         dispatch={this.props.dispatch}/>)
