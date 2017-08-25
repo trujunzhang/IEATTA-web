@@ -18,7 +18,11 @@ class IEAAddPhotosLayout extends Component {
 
         <div id="super-container" className="content-container">
 
-          <div className="container media-details js-media-details">
+          <div className="container">
+
+            <Telescope.components.IEAAddPhotosTop
+            {...this.state}
+            dispatch={this.props.dispatch}/>
 
           </div>
         </div>
