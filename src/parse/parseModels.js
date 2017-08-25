@@ -21,7 +21,7 @@ export type User = {
   loginType: string;
   email: string;
   // Photos
-  listPhotoId: string;
+  defaultAvatorUrl: string;
   // voting
   useful: Array;
   funny: Array;
@@ -132,14 +132,13 @@ export function fromParsePointer(map: Object): Pointer {
 }
 
 
-function _get_default_image_photo_id(map) {
+function _get_default_image_photo_url(map) {
   const photos = map.get('photos') || []
 
-  // debugger
   if (photos.length > 0) {
-    return photos[0].id;
+    return photos[0].thumbnail._url;
   }
-  return '';
+  return null;
 }
 
 export function fromParseUser(map: Object): User {
@@ -153,7 +152,7 @@ export function fromParseUser(map: Object): User {
     loginType: map.get('loginType'),
     email: map.get('email') || "",
     // Photos
-    listPhotoId: _get_default_image_photo_id(map),
+    defaultAvatorUrl: _get_default_image_photo_url(map),
     // Photos
     photos: (map.get('photos') || []).map(fromParsePhotoNormal),
     // voting

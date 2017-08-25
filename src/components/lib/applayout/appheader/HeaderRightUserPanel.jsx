@@ -39,13 +39,14 @@ class HeaderRightUserPanel extends Component {
     return (
       <a className={currentClass} id="topbar-account-link" onClick={this.onUserBlockPress.bind(this)}>
                 <span className="user-account_avatar responsive-visible-large-block">
+
                     <Telescope.components.F8PlaceHolderImage
                       alt={currentUser.username}
                       className="photo-box-img"
                       height="90"
                       width="90"
                       placeholderSource={"/default/user_30_square.png"}
-                      source={Photos.getListThumbnailUrl(currentUser)}/>
+                      source={currentUser.defaultAvatorUrl}/>
                 </span>
         <span id="icon_14X14"
               className="icon icon--14-triangle-down icon--size-14 icon--inverse icon--fallback-inverted u-triangle-direction-down user-account_button-arrow responsive-visible-large-inline-block">

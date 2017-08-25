@@ -6,9 +6,11 @@ class F8PlaceHolderImage extends Component {
 
   constructor(...props) {
     super(...props);
+    const {source, placeholderSource} = this.props;
+    let current = source || placeholderSource;
     this.state = {
-      source: this.props.source,
-    };
+      source: current
+    }
   }
 
   onLoad = () => {
