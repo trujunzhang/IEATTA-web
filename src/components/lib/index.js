@@ -150,6 +150,10 @@ Telescope.registerComponent('IEAPhotosSelectionLayout',               require('.
 Telescope.registerComponent('IEAPhotosBrowserLayout',                 require('./photos/IEAPhotosBrowserLayout.jsx').default)
 Telescope.registerComponent('IEAPhotosSingleLayout',                  require('./photos/IEAPhotosSingleLayout.jsx').default)
 
+// Add Photo
+Telescope.registerComponent('AddPhotoForModel',                       require('./photos/AddPhotoForModel.jsx').default)
+
+
 // Photos Browser
 Telescope.registerComponent('F8PhotosCollectionView',                 require('./photos/photosbrowser/F8PhotosCollectionView.jsx').default)
 Telescope.registerComponent('F8PhotosTitleHeader',                    require('./photos/photosbrowser/F8PhotosTitleHeader.jsx').default)

@@ -159,7 +159,7 @@ const createRoutes = (store) => {
   const photosRoutes = [
     {
       path: 'photos/add/(:modelType)/(:forObjectId)',
-      component: Telescope.components.UsersSingle
+      component: Telescope.components.AddPhotoForModel
     },
   ];
 
