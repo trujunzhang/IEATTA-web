@@ -152,6 +152,7 @@ Telescope.registerComponent('IEAPhotosSingleLayout',                  require('.
 
 // Add Photo
 Telescope.registerComponent('AddPhotoForModel',                       require('./photos/AddPhotoForModel.jsx').default)
+Telescope.registerComponent('IEAAddPhotosLayout',                     require('./photos/IEAAddPhotosLayout.jsx').default)
 
 
 // Photos Browser
