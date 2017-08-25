@@ -136,7 +136,9 @@ function _get_default_image_photo_url(map) {
   const photos = map.get('photos') || []
 
   if (photos.length > 0) {
-    return photos[0].thumbnail._url;
+    const firstPhoto = photos[0]
+    const thumbnail = firstPhoto.get('thumbnail');
+    return thumbnail._url
   }
   return null;
 }
