@@ -69,6 +69,11 @@ export function getEditEventLink(event) {
   return `/edit/event/${event.id}/${slugify(event.displayName)}`
 }
 
+export function getAddPhotoLink(modelType, model) {
+  // path: 'photos/add/(:modelType)/(:forObjectId)',
+  return `/photos/add/${modelType}/${model.id}`
+}
+
 export function getEditLinkByModelType(modelType, forObject) {
   const {objectSchemaName} = Records.realmObjects[modelType]
   switch (objectSchemaName) {

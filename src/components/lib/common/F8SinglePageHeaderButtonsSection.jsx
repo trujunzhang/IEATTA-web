@@ -3,7 +3,8 @@ import React, {Component} from 'react'
 import Photos from '../../../lib/photos'
 
 import {
-  getNewReviewLink
+  getNewReviewLink,
+  getAddPhotoLink
 } from '../../../lib/link'
 
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
@@ -45,10 +46,13 @@ class F8SinglePageHeaderButtonsSection extends Component {
   }
 
   render() {
-
     const {
-      showEdit = false
+      showEdit = false,
+      modelType,
+      forObject
     } = this.props;
+
+    debugger
 
     return (
       <div className="biz-page-actions nowrap">
@@ -59,7 +63,8 @@ class F8SinglePageHeaderButtonsSection extends Component {
 
         <span className="ybtn-group clearfix">
 
-            <a className="ybtn ybtn--small add-photo-button">
+            <Link to={getAddPhotoLink(modelType, forObject)}
+                  className="ybtn ybtn--small add-photo-button">
               <span id="icon_18X18"
                     className="icon icon--18-add-photo icon--size-18 icon--currentColor">
                 <svg className="icon_svg">
@@ -67,8 +72,8 @@ class F8SinglePageHeaderButtonsSection extends Component {
                     d="M15 15H3a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2h2a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2zM9 4.75a4.25 4.25 0 1 0 0 8.5 4.25 4.25 0 0 0 0-8.5zM11 10h-1v1a1 1 0 0 1-2 0v-1H7a1 1 0 0 1 0-2h1V7a1 1 0 0 1 2 0v1h1a1 1 0 0 1 0 2z"/>
                 </svg>
               </span>
-              Add Photo
-            </a>
+              {"Add Photo"}
+            </Link>
 
             <a className="ybtn ybtn--small share-icon js-business-send-to-friend">
               <span id="icon_18X18"
