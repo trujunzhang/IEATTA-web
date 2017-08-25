@@ -115,6 +115,9 @@ class HeaderRightUserPopOverlay extends Component {
             <div className="photo-box pb-60s" data-hovercard-id="XA2GwN6Ov4QwEuY2Pzwx4w">
               <Link
                 to={getLoggedUserMenuLink(currentUser)}
+                onClick={(e) => {
+                  this.handleClickOutside(e)
+                }}
                 className="js-analytics-click">
 
                 <Telescope.components.F8PlaceHolderImage
@@ -137,6 +140,9 @@ class HeaderRightUserPopOverlay extends Component {
               <li className="user-name">
                 <Link className="user-display-name js-analytics-click"
                       to={getLoggedUserMenuLink(currentUser)}
+                      onClick={(e) => {
+                        this.handleClickOutside(e)
+                      }}
                       id="dropdown_user-name">
                   {currentUser.username}
                 </Link>
