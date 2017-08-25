@@ -156,6 +156,14 @@ const createRoutes = (store) => {
   ];
 
 
+  const photosRoutes = [
+    {
+      path: 'photos/add/(:modelType)/(:forObjectId)',
+      component: Telescope.components.UsersSingle
+    },
+  ];
+
+
   const playgroundRoutes = [
     {
       // http://localhost:3000/playground
@@ -181,6 +189,7 @@ const createRoutes = (store) => {
         ...orderedUserRoutes,
         ...userProfileRoutes,
         ...userEditRoutes,
+        ...photosRoutes,
         ...playgroundRoutes,
         {
           // http://localhost:3000/user_details?userid=t3cu9DxXtGyaPIWNvPOXxA
