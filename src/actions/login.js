@@ -107,9 +107,11 @@ async function _signUpWithPassword(username: string, email: string, password: st
   // await updateInstallation({user})
   await user.signUp({'loginType': 'email'})
 
+  const current = await getQueryByType(PARSE_USERS, ['photos']).get(user.id)
+
   const action = {
     type: LOGGED_IN,
-    payload: fromParseUser(user)
+    payload: fromParseUser(current)
   }
 
   return Promise.all([

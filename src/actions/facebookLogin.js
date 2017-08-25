@@ -29,6 +29,29 @@
 // ========================
 const Parse = require('parse')
 
+/**
+ * The states were interested in
+ */
+const {
+  LOGGED_IN,
+  LOGGED_OUT,
+  SET_SHARING,
+  // parse models
+  PARSE_RESTAURANTS,
+  PARSE_USERS,
+  PARSE_RECORDS,
+  PARSE_EVENTS,
+  PARSE_RECIPES,
+  PARSE_PHOTOS,
+  PARSE_REVIEWS,
+  PARSE_PEOPLE_IN_EVENTS,
+} = require('../lib/constants').default
+
+const {
+  getUsersParameters,
+  getQueryByType
+} = require('../parse/parseUtiles').default
+
 async function queryFacebookAPI(path, ...args): Promise {
   return new Promise((resolve, reject) => {
     FB.api('/me?fields=id,name,email,permissions', function (response) {
@@ -41,14 +64,6 @@ async function queryFacebookAPI(path, ...args): Promise {
   })
 }
 
-
-/**
- * The states were interested in
- */
-const {
-  LOGGED_IN,
-  LOGGED_OUT,
-} = require('../lib/constants').default
 
 const slugify = require('slugify')
 // const FacebookSDK = require('FacebookSDK')
@@ -81,11 +96,13 @@ async function _logInWithFacebook(source: ? object): Promise<Array<Action>> {
 
   await user.save();
 
+  const current = await getQueryByType(PARSE_USERS, ['photos']).get(user.id)
+
   // await updateInstallation({user})
 
   const action = {
     type: LOGGED_IN,
-    payload: fromParseUser(user)
+    payload: fromParseUser(current)
   }
 
   return Promise.all([
