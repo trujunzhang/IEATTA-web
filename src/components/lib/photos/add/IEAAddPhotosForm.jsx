@@ -20,9 +20,11 @@ class IEAAddPhotosForm extends Component {
           <div className="file-drop_area">
             <div className="file-drop_area-inner">
               <h1>Drag and drop your photos here</h1>
-              <fieldset className="hr-line" aria-hidden="true">
-                <legend align="center">OR</legend>
+
+              <fieldset className="hr-line">
+                <span>OR</span>
               </fieldset>
+
               <div className="file-browser js-file-browser">
                 <input className="file-browser_input hidden" type="file" multiple=""
                        aria-label="Select A File To Upload"/>

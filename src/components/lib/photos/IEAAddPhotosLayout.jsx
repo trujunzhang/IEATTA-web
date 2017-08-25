@@ -24,6 +24,10 @@ class IEAAddPhotosLayout extends Component {
               {...this.props}
               dispatch={this.props.dispatch}/>
 
+            <Telescope.components.IEAAddPhotosForm
+              {...this.props}
+              dispatch={this.props.dispatch}/>
+
           </div>
         </div>
       </div>
