@@ -2,14 +2,14 @@ import Telescope from '../index'
 import React, {Component} from 'react'
 import Photos from '../../../lib/photos'
 
+import {getLoggedUserMenuLink} from '../../../lib/link'
 import {Link} from 'react-router'
 
 class F8UserAvatorSection extends Component {
 
   renderLeftUserAvator() {
     const user = this.props.user || {};
-    const sectionClass = "user-profile_avatar"
-    // const sectionClass = ""
+    const sectionClass = "user-profile_avatar";
 
     return (
       <div className={sectionClass}>
@@ -18,7 +18,7 @@ class F8UserAvatorSection extends Component {
           <div className="photo-slideshow_slide is-active">
             <div>
               <Link
-
+                to={getLoggedUserMenuLink(user)}
                 className="ordered-user-avator">
                 <img alt={user.username || ""}
                      className="photo-box-img"
