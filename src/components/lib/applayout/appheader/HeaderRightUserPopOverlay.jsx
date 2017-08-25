@@ -113,8 +113,9 @@ class HeaderRightUserPopOverlay extends Component {
 
           <div className="media-avatar responsive-photo-box js-analytics-click">
             <div className="photo-box pb-60s" data-hovercard-id="XA2GwN6Ov4QwEuY2Pzwx4w">
-              <a href="/user_details?userid=kIEHaO2vd6Lic4rwkMgH6Q"
-                 className="js-analytics-click">
+              <Link
+                to={getLoggedUserMenuLink(currentUser)}
+                className="js-analytics-click">
 
                 <Telescope.components.F8PlaceHolderImage
                   alt={currentUser.username}
@@ -124,7 +125,7 @@ class HeaderRightUserPopOverlay extends Component {
                   placeholderSource={"/default/user_30_square.png"}
                   source={currentUser.defaultAvatorUrl}/>
 
-              </a>
+              </Link>
 
             </div>
 
@@ -134,11 +135,11 @@ class HeaderRightUserPopOverlay extends Component {
           <div className="media-story">
             <ul className="user-passport-info">
               <li className="user-name">
-                <a className="user-display-name js-analytics-click"
-                   href="/user_details?userid=kIEHaO2vd6Lic4rwkMgH6Q"
-                   id="dropdown_user-name">
+                <Link className="user-display-name js-analytics-click"
+                      to={getLoggedUserMenuLink(currentUser)}
+                      id="dropdown_user-name">
                   {currentUser.username}
-                </a>
+                </Link>
               </li>
               <li className="user-location responsive-hidden-small">
 
