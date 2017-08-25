@@ -7,7 +7,10 @@ import {FormattedMessage, FormattedRelative} from 'react-intl'
 
 import {Link} from 'react-router'
 import {withRouter} from 'react-router'
-import {getOrderedRecipeLink} from '../../../../lib/link'
+import {
+  getOrderedRecipeLink,
+  getLoggedUserMenuLink
+} from '../../../../lib/link'
 
 class RecipesItem extends Component {
 
@@ -49,6 +52,14 @@ class RecipesItem extends Component {
             </span>
         </div>
 
+        <div className="price-category">
+             <span className="category-str-list">
+                   {"by "}
+               <Link to={getLoggedUserMenuLink(recipe.user)}>
+                 {recipe.user.username}
+               </Link>
+             </span>
+        </div>
 
         <div className="price-category">
              <span className="category-str-list">
@@ -57,9 +68,9 @@ class RecipesItem extends Component {
         </div>
 
 
-        <small className="biz-city">
-          {recipe.restaurant.address}
-        </small>
+        {/*<small className="biz-city">*/}
+        {/*{recipe.restaurant.address}*/}
+        {/*</small>*/}
 
         <div className="tag-18x18_flame-dd5114">
           <small>
