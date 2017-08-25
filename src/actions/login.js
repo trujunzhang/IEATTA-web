@@ -36,7 +36,24 @@ const {
   LOGGED_IN,
   LOGGED_OUT,
   SET_SHARING,
+  // parse models
+  PARSE_RESTAURANTS,
+  PARSE_USERS,
+  PARSE_RECORDS,
+  PARSE_EVENTS,
+  PARSE_RECIPES,
+  PARSE_PHOTOS,
+  PARSE_REVIEWS,
+  PARSE_PEOPLE_IN_EVENTS,
+  // statistic
+  CLOUD_STATISTIC_FOR_USER_STATE,
+  CLOUD_STATISTIC_FOR_REVIEWS,
 } = require('../lib/constants').default
+
+const {
+  getUsersParameters,
+  getQueryByType
+} = require('../parse/parseUtiles').default
 
 const slugify = require('slugify')
 const {updateInstallation} = require('./installation')
@@ -53,9 +70,11 @@ async function _logInWithPassword(username: string, password: string): Promise<A
 
   await user.logIn()
 
+  const current = await getQueryByType(PARSE_USERS, ['photos']).get(user.id)
+
   const action = {
     type: LOGGED_IN,
-    payload: fromParseUser(user)
+    payload: fromParseUser(current)
   };
 
   return Promise.all([

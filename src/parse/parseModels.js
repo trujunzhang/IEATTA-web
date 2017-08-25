@@ -131,6 +131,17 @@ export function fromParsePointer(map: Object): Pointer {
   }
 }
 
+
+function _get_default_image_photo_id(map) {
+  const photos = map.get('photos') || []
+
+  // debugger
+  if (photos.length > 0) {
+    return photos[0].id;
+  }
+  return '';
+}
+
 export function fromParseUser(map: Object): User {
   return {
     // Basic Fields
@@ -141,6 +152,8 @@ export function fromParseUser(map: Object): User {
     username: map.get('username'),
     loginType: map.get('loginType'),
     email: map.get('email') || "",
+    // Photos
+    listPhotoId: _get_default_image_photo_id(map),
     // Photos
     photos: (map.get('photos') || []).map(fromParsePhotoNormal),
     // voting
