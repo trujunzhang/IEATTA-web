@@ -1,7 +1,16 @@
 import Telescope from '../../index'
 import React, {Component} from 'react'
 import Photos from '../../../../lib/photos'
+import Users from '../../../../lib/users'
 import Reviews from '../../../../lib/reviews'
+
+import {Link} from 'react-router'
+import {FormattedMessage, FormattedRelative} from 'react-intl'
+
+import {
+  getOrderedRecipeLink,
+  getLoggedUserMenuLink
+} from '../../../../lib/link'
 
 class ReviewsItem extends Component {
 
@@ -17,9 +26,7 @@ class ReviewsItem extends Component {
           <div className="ypassport media-block">
             <div className="media-avatar responsive-photo-box">
               <div className="photo-box pb-60s" data-hovercard-id="YCUg5LPpRgun-AcOFMMS_w">
-                <a
-                  className="js-analytics-click"
-                  data-analytics-label="user-photo">
+                <Link to={getLoggedUserMenuLink(user)} className="js-analytics-click">
                   <Telescope.components.F8PlaceHolderImage
                     alt={user.username}
                     className="photo-box-img"
@@ -28,21 +35,27 @@ class ReviewsItem extends Component {
                     placeholderSource={"/default/user_30_square.png"}
                     source={Photos.getListThumbnailUrl(user)}
                   />
-                </a>
+                </Link>
               </div>
 
             </div>
             <div className="media-story">
               <ul className="user-passport-info">
                 <li className="user-name">
-                  <a className="user-display-name js-analytics-click"
-                     data-hovercard-id="YCUg5LPpRgun-AcOFMMS_w"
-                     data-analytics-label="about_me" id="dropdown_user-name">
+                  <Link className="user-display-name js-analytics-click"
+                        to={getLoggedUserMenuLink(user)}
+                        id="dropdown_user-name">
                     {user.username}
-                  </a>
+                  </Link>
                 </li>
                 <li className="user-location responsive-hidden-small">
-                  <b>Fremont, CA</b>
+
+                  <small>
+
+                    <h6>Account Since</h6>
+                    <p>{Users.getCreatedAtFormat(user)}</p>
+                  </small>
+
                 </li>
               </ul>
 

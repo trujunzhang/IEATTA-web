@@ -7,6 +7,7 @@ import {FormattedMessage, FormattedRelative} from 'react-intl'
 
 import {Link} from 'react-router'
 import {withRouter} from 'react-router'
+
 import {
   getOrderedRecipeLink,
   getLoggedUserMenuLink

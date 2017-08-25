@@ -3,7 +3,6 @@ import React, {Component} from 'react'
 import {Link} from 'react-router'
 
 import {getLoggedUserMenuLink} from '../../../../lib/link'
-import Photos from '../../../../lib/photos'
 import onClickOutside from 'react-onclickoutside'
 import {FormattedMessage, FormattedRelative} from 'react-intl'
 
