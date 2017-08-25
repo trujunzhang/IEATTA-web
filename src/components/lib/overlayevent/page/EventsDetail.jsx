@@ -24,9 +24,11 @@ class EventsDetail extends Component {
       <div className="column column-alpha column--responsive">
         {this.renderLeftTopSection()}
 
-        <Telescope.components.ReviewsList forObject={this.props.forObject}
-                                          reviewType="event"
-                                          reviewTitle={reviewTitle}/>
+        <Telescope.components.ReviewsList
+          key={forObject.id}
+          forObject={this.props.forObject}
+          reviewType="event"
+          reviewTitle={reviewTitle}/>
       </div>
     )
   }

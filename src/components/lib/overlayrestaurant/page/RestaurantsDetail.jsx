@@ -11,9 +11,11 @@ class RestaurantsDetail extends Component {
       <div className="column column-alpha column--responsive">
         <Telescope.components.EventsList {...this.props}/>
 
-        <Telescope.components.ReviewsList forObject={this.props.forObject}
-                                          reviewType="restaurant"
-                                          reviewTitle={reviewTitle}/>
+        <Telescope.components.ReviewsList
+          key={forObject.id}
+          forObject={this.props.forObject}
+          reviewType="restaurant"
+          reviewTitle={reviewTitle}/>
 
       </div>
     )
