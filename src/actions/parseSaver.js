@@ -30,6 +30,7 @@ const Parse = require('parse')
 const _ = require('underscore')
 import type {Action, ThunkAction} from './types'
 import {fromParseRecipe} from "../parse/parseModels";
+import Records from "../lib/records";
 
 
 const {
@@ -41,6 +42,7 @@ const {
   ParseRecipe,
   ParseRecord,
   ParsePhoto,
+  createParseInstance,
   setParseObjectFieldWithoutData
 } = require('../parse/objects').default
 
@@ -60,12 +62,15 @@ const {
  * The states were interested in
  */
 const {
-  PARSE_USERS,
-  PARSE_TOPICS,
+  // parse models
   PARSE_RESTAURANTS,
+  PARSE_USERS,
+  PARSE_RECORDS,
   PARSE_EVENTS,
   PARSE_RECIPES,
-  PARSE_COMMENTS,
+  PARSE_PHOTOS,
+  PARSE_REVIEWS,
+  PARSE_PEOPLE_IN_EVENTS,
   // Rest API
   SAVE_MODEL_REQUEST,
   UPDATE_MODEL_REQUEST,
@@ -183,20 +188,12 @@ function updateRecipe(model: object): ThunkAction {
 
 
 async function _createNewReview(model: object): Promise<Array<Action>> {
-  const review = new ParseReview()
+  const review = createParseInstance(PARSE_REVIEWS)
 
-  // step1: common fields.
-  review.set('rate', model.reviewRating)
-  review.set('body', model.reviewBody)
-  review.set('reviewType', model.reviewType)
+  // step1: generate review.
+  Records.generateNewOnlineParseInstance(review, PARSE_REVIEWS, model)
 
-  // step2: the logged user submitted the review.
-  setParseObjectFieldWithoutData('user', review, model.currentUserId)
-
-  // step3: set the relation by review type.
-  setParseObjectFieldWithoutData(model.reviewType, review, model.forObjectId)
-
-  // step4: save review.
+  // step2: save review.
   await review.save()
 
   // step5: update the recorder

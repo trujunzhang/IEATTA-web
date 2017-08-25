@@ -35,6 +35,20 @@ const ParseRecipe = Parse.Object.extend('Recipe')
 const ParseRecord = Parse.Object.extend('Record')
 const ParsePhoto = Parse.Object.extend('Photo')
 
+/**
+ * The states were interested in
+ */
+const {
+  PARSE_RESTAURANTS,
+  PARSE_USERS,
+  PARSE_RECORDS,
+  PARSE_EVENTS,
+  PARSE_RECIPES,
+  PARSE_PHOTOS,
+  PARSE_REVIEWS,
+  PARSE_PEOPLE_IN_EVENTS,
+} = require('../lib/constants').default
+
 
 createParseInstance = function (objectSchemaName) {
   switch (objectSchemaName) {
@@ -42,6 +56,8 @@ createParseInstance = function (objectSchemaName) {
       return new ParseRestaurant();
     case PARSE_RECORDS:
       return new ParseRecord();
+    case PARSE_REVIEWS:
+      return new ParseReview();
   }
 }
 
