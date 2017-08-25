@@ -18,6 +18,9 @@
   $ https://www.yelp.com/biz_photos/roma-antica-san-francisco-3
 
 
+** Add Photos
+   $ https://www.yelp.com/biz_user_photos/jvYlBwqNkkD32Q-4VPLK9Q/upload
+
 
 * account for IEATTA-Back4app
 
