@@ -17,15 +17,15 @@ class F8UserAvatorSection extends Component {
           className="photo-slideshow photo-slideshow--full-width photo-slideshow--rounded js-photo-slideshow-user-details">
           <div className="photo-slideshow_slide is-active">
             <div>
-              <a
-                href="/user_photos?userid=JffflxAtMCm_GQf5OrImig"
+              <Link
+
                 className="ordered-user-avator">
                 <img alt={user.username || ""}
                      className="photo-box-img"
                      width="250"
                      height="250"
                      src={Photos.getListThumbnailUrl(user)}/>
-              </a>
+              </Link>
 
             </div>
           </div>
