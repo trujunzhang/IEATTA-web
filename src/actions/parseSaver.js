@@ -41,13 +41,13 @@ const {
   ParseRecipe,
   ParseRecord,
   ParsePhoto,
+  setParseObjectFieldWithoutData
 } = require('../parse/objects').default
 
 const {
   getUsersParameters,
   getQueryByType,
   updateParseRecorder,
-  setParseObjectFieldWithoutData
 } = require('../parse/parseUtiles').default
 
 const {

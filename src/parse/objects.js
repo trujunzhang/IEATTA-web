@@ -36,6 +36,39 @@ const ParseRecord = Parse.Object.extend('Record')
 const ParsePhoto = Parse.Object.extend('Photo')
 
 
+createParseInstance = function (objectSchemaName) {
+  switch (objectSchemaName) {
+    case PARSE_RESTAURANTS:
+      return new ParseRestaurant();
+    case PARSE_RECORDS:
+      return new ParseRecord();
+  }
+}
+
+setParseObjectFieldWithoutData = function (parseType, instance, parseInstanceId) {
+  switch (parseType) {
+    case "restaurant":
+      instance.set('restaurant', ParseRestaurant.createWithoutData(parseInstanceId))
+      break;
+    case "event":
+      instance.set('event', ParseEvent.createWithoutData(parseInstanceId))
+      break;
+    case "recipe":
+      instance.set('recipe', ParseRecipe.createWithoutData(parseInstanceId))
+      break;
+    case "user":
+      instance.set('user', ParseUser.createWithoutData(parseInstanceId))
+      break;
+    case "review":
+      instance.set('review', ParseReview.createWithoutData(parseInstanceId))
+      break;
+    default:
+      throw new Error('No matched parseType to create parse without data!')
+      break;
+  }
+}
+
+
 export default {
   ParseRestaurant,
   ParseEvent,
@@ -45,4 +78,5 @@ export default {
   ParseRecipe,
   ParseRecord,
   ParsePhoto,
+  setParseObjectFieldWithoutData,
 }

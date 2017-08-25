@@ -11,6 +11,8 @@ const {
   ParseRecipe,
   ParseRecord,
   ParsePhoto,
+  createParseInstance,
+  setParseObjectFieldWithoutData,
 } = require('./objects').default
 
 /**
@@ -117,36 +119,13 @@ async function updateParseRecorder(recordType, parseInstance) {
   let recorder = await getQueryByType(PARSE_RECORDS).equalTo(recordType, parseInstance).first()
   if (!!recorder) {
   } else {
-    recorder = new ParseRecord()
+    recorder = createParseInstance(PARSE_RECORDS)
 
     recorder.set('recordType', recordType)
     setParseObjectFieldWithoutData(recordType, recorder, parseInstance.id)
   }
 
   await recorder.save()
-}
-
-function setParseObjectFieldWithoutData(parseType, instance, parseInstanceId) {
-  switch (parseType) {
-    case "restaurant":
-      instance.set('restaurant', ParseRestaurant.createWithoutData(parseInstanceId))
-      break;
-    case "event":
-      instance.set('event', ParseEvent.createWithoutData(parseInstanceId))
-      break;
-    case "recipe":
-      instance.set('recipe', ParseRecipe.createWithoutData(parseInstanceId))
-      break;
-    case "user":
-      instance.set('user', ParseUser.createWithoutData(parseInstanceId))
-      break;
-    case "review":
-      instance.set('review', ParseReview.createWithoutData(parseInstanceId))
-      break;
-    default:
-      throw new Error('No matched parseType to create parse without data!')
-      break;
-  }
 }
 
 export default {
@@ -160,5 +139,4 @@ export default {
   getRecipesParameters,
   // Update the model's record after saved it.
   updateParseRecorder,
-  setParseObjectFieldWithoutData,
 }
