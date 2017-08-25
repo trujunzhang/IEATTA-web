@@ -5,6 +5,7 @@ import {Link} from 'react-router'
 import {getLoggedUserMenuLink} from '../../../../lib/link'
 import Photos from '../../../../lib/photos'
 import onClickOutside from 'react-onclickoutside'
+import {FormattedMessage, FormattedRelative} from 'react-intl'
 
 const {
   LOGGED_USER_MENU_ABOUT,
@@ -121,7 +122,7 @@ class HeaderRightUserPopOverlay extends Component {
                   width="60"
                   height="60"
                   placeholderSource={"/default/user_30_square.png"}
-                  source={Photos.getListThumbnailUrl(currentUser)}/>
+                  source={currentUser.defaultAvatorUrl}/>
 
               </a>
 
@@ -140,7 +141,10 @@ class HeaderRightUserPopOverlay extends Component {
                 </a>
               </li>
               <li className="user-location responsive-hidden-small">
-                <b>Manhattan, NY</b>
+
+                <small>
+                  <FormattedRelative value={currentUser.updatedAt}/>
+                </small>
               </li>
             </ul>
 
