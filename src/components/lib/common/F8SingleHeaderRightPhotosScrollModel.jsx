@@ -2,7 +2,10 @@ import Telescope from '../index'
 import React, {Component} from 'react'
 import Photos from '../../../lib/photos'
 
-import {getPhotosBrowserLink, getPhotosBrowserSelectionLink} from '../../../lib/link'
+import {
+  getPhotosBrowserLink,
+  getPhotosBrowserSelectionLink
+} from '../../../lib/link'
 import {Link} from 'react-router'
 
 class F8SingleHeaderRightPhotosScrollModel extends Component {

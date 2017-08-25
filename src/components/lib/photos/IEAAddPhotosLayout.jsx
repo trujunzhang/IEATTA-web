@@ -21,8 +21,8 @@ class IEAAddPhotosLayout extends Component {
           <div className="container">
 
             <Telescope.components.IEAAddPhotosTop
-            {...this.state}
-            dispatch={this.props.dispatch}/>
+              {...this.props}
+              dispatch={this.props.dispatch}/>
 
           </div>
         </div>

@@ -1,6 +1,12 @@
 import Telescope from '../../index'
 import React, {Component} from 'react'
 
+import {Link} from 'react-router'
+import {
+  geDetailedModelLink,
+  getPhotosBrowserLink,
+} from '../../../../lib/link'
+
 class IEAAddPhotosTop extends Component {
 
   constructor(props) {
@@ -13,6 +19,40 @@ class IEAAddPhotosTop extends Component {
   }
 
   render() {
+    const {modelType, forObject} = this.props;
+    switch (modelType) {
+      case "restaurant":
+        return this.renderCommon()
+    }
+
+    return this.renderForUser()
+  }
+
+  renderCommon() {
+    const {modelType, forObject} = this.props;
+    return (
+      <div id="user_biz_photo_intro">
+        <h2>
+
+
+          <Link to={geDetailedModelLink(modelType, forObject)}>
+            {`${forObject.displayName}:`}
+          </Link>
+          {" Add Photos"}
+        </h2>
+
+        <Link to={getPhotosBrowserLink(modelType, forObject)}>
+          {"View all photos"}
+        </Link>
+
+        <br/>
+        <br/>
+      </div>
+
+    )
+  }
+
+  renderForUser() {
     return (
       <div className="section-header media-header">
         <div className="arrange arrange--12 arrange--bottom">
