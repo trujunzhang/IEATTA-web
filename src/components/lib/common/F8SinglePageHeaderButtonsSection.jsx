@@ -7,7 +7,6 @@ import {
   getAddPhotoLink
 } from '../../../lib/link'
 
-import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
 import {Link} from 'react-router'
 
 class F8SinglePageHeaderButtonsSection extends Component {

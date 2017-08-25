@@ -3,7 +3,11 @@ import React, {Component} from 'react';
 import Photos from '../../../../lib/photos'
 
 import {Link} from 'react-router'
-import {geDetailedModelLink} from '../../../../lib/link'
+import {
+  geDetailedModelLink,
+  getAddPhotoLink
+} from '../../../../lib/link'
+
 
 class F8PhotosTitleHeader extends Component {
 
@@ -66,6 +70,7 @@ class F8PhotosTitleHeader extends Component {
   }
 
   renderBottom() {
+    const {modelType, forObject} = this.props;
     return (
       <div className="section-header media-header--tabbed">
 
@@ -79,7 +84,7 @@ class F8PhotosTitleHeader extends Component {
           </div>
           <div className="arrange_unit nowrap media-header_actions">
 
-            <a className="ybtn ybtn--primary u-space-r1" href="/biz_user_photos/B09WOy0W83Od-Xw4xEXxog/upload">
+            <Link to={getAddPhotoLink(modelType, forObject)}>
                <span id="icon_24X24"
                      className="icon icon--24-add-photo icon--size-24 icon--currentColor u-space-r1 icon--fallback-inverted">
                      <svg className="icon_svg">
@@ -88,7 +93,7 @@ class F8PhotosTitleHeader extends Component {
                      </svg>
                </span>
               {"Add photos"}
-            </a>
+            </Link>
 
           </div>
         </div>
