@@ -122,6 +122,7 @@ async function updateParseRecorder(recordType, parseInstance) {
     recorder = createParseInstance(PARSE_RECORDS)
 
     recorder.set('recordType', recordType)
+    recorder.set('recordId', parseInstance.id)
     setParseObjectFieldWithoutData(recordType, recorder, parseInstance.id)
   }
 
