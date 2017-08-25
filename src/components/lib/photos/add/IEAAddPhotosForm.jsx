@@ -13,8 +13,9 @@ class IEAAddPhotosForm extends Component {
   }
 
   render() {
+
     return (
-      <div className="upload upload--photos js-html5-uploader hidden">
+      <div className="upload upload--photos js-html5-uploader hidden" style={{'display':'block'}}>
 
         <div className="file-drop file-drop--big js-file-drop">
           <div className="file-drop_area">
