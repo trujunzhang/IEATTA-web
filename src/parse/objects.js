@@ -94,5 +94,6 @@ export default {
   ParseRecipe,
   ParseRecord,
   ParsePhoto,
+  createParseInstance,
   setParseObjectFieldWithoutData,
 }
