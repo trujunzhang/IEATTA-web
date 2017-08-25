@@ -50,7 +50,7 @@ const {
 } = require('../lib/constants').default
 
 
-createParseInstance = function (objectSchemaName) {
+function createParseInstance(objectSchemaName) {
   switch (objectSchemaName) {
     case PARSE_RESTAURANTS:
       return new ParseRestaurant();
@@ -61,7 +61,7 @@ createParseInstance = function (objectSchemaName) {
   }
 }
 
-setParseObjectFieldWithoutData = function (parseType, instance, parseInstanceId) {
+function setParseObjectFieldWithoutData(parseType, instance, parseInstanceId) {
   switch (parseType) {
     case "restaurant":
       instance.set('restaurant', ParseRestaurant.createWithoutData(parseInstanceId))

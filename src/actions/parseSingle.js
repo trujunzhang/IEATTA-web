@@ -28,8 +28,10 @@ const Parse = require('parse')
 
 import type {ThunkAction} from './types'
 
-const {ParseUser} = require('../parse/objects').default
-const {getUsersParameters, getQueryByType} = require('../parse/parseUtiles').default
+const {
+  getUsersParameters,
+  getQueryByType
+} = require('../parse/parseUtiles').default
 
 const {
   fromParseUser,
