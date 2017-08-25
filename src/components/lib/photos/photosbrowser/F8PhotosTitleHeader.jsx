@@ -84,7 +84,9 @@ class F8PhotosTitleHeader extends Component {
           </div>
           <div className="arrange_unit nowrap media-header_actions">
 
-            <Link to={getAddPhotoLink(modelType, forObject)}>
+            <Link
+              className="ybtn ybtn--primary u-space-r1"
+              to={getAddPhotoLink(modelType, forObject)}>
                <span id="icon_24X24"
                      className="icon icon--24-add-photo icon--size-24 icon--currentColor u-space-r1 icon--fallback-inverted">
                      <svg className="icon_svg">
