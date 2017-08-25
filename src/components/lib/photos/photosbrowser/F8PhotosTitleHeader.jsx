@@ -51,11 +51,11 @@ class F8PhotosTitleHeader extends Component {
               iconExtension="rating"/>
 
             <span className="review-count rating-qualifier">
-      <span>
-      {reviewStatistic.total}
-      </span>
+            <span>
+                 {reviewStatistic.total}
+            </span>
               {" reviews"}
-     </span>
+         </span>
 
           </div>
 
