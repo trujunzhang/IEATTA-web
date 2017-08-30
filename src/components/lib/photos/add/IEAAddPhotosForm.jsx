@@ -15,7 +15,7 @@ class IEAAddPhotosForm extends Component {
   render() {
 
     return (
-      <div className="upload upload--photos js-html5-uploader hidden" style={{'display':'block'}}>
+      <div className="upload upload--photos js-html5-uploader hidden" style={{'display': 'block'}}>
 
         <div className="file-drop file-drop--big js-file-drop">
           <div className="file-drop_area">
@@ -23,7 +23,7 @@ class IEAAddPhotosForm extends Component {
               <h1>Drag and drop your photos here</h1>
 
               <fieldset className="hr-line">
-                <span>OR</span>
+                <legend>OR</legend>
               </fieldset>
 
               <div className="file-browser js-file-browser">

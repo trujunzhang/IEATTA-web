@@ -102,9 +102,9 @@ class RestaurantsItem extends Component {
 
     return (
       <div className="secondary-attributes">
-        <span className="neighborhood-str-list">
-          {restaurant.displayName}
-        </span>
+        {/*<span className="neighborhood-str-list">*/}
+        {/*{restaurant.displayName}*/}
+        {/*</span>*/}
 
         <div className="restaurant-list-item-address-rows">
           {addressViews}
