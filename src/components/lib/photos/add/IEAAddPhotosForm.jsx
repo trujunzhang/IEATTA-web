@@ -34,20 +34,20 @@ class IEAAddPhotosForm extends Component {
   }
 
   async onButtonPress() {
-    const {dispatch, modelType, forObject} = this.props;
+    const {dispatch, currentUser, modelType, forObject} = this.props;
 
-    const objectId = forObject.id;
+    const forObjectId = forObject.id;
     const file = this.state.file;
-    const imagePath = this.state.file.preview;
-
+    const currentUserId = currentUser.id;
 
     this.props.actions.updateModelRequest();
 
     try {
       await Promise.race([
         dispatch(uploadPhoto({
-          objectId,
+          forObjectId,
           modelType,
+          currentUserId,
           file,
         })),
         timeout(15000),
@@ -214,6 +214,7 @@ function mapDispatchToProps(dispatch) {
 
 function select(store, ownProps) {
   return {
+    currentUser: store.user,
     editModel: store.editModel,
     goBack: ownProps.router.goBack
   };

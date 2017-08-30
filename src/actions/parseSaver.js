@@ -226,17 +226,15 @@ async function _uploadPhoto(model: object): Promise<Array<Action>> {
     photo,
     PARSE_PHOTOS,
     Object.assign({}, model, {
-      thumbnail: thumbnailFile
+      thumbnail: thumbnailFile,
     })
   )
 
   // step2: save photo.
   await photo.save()
 
-  debugger
-
   // step5: update the recorder
-  // await updateParseRecorder('photo', photo)
+  await updateParseRecorder('photo', photo)
 
   const action = {
     type: SAVE_MODEL_REQUEST,

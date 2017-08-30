@@ -99,6 +99,12 @@ Records.generateNewOnlineParseInstance = function (onlineParseObject, objectSche
       // step1: common fields.
       onlineParseObject.set('photoType', model.modelType)
       onlineParseObject.set('thumbnail', model.thumbnail)
+
+      // step2: the logged user submitted the review.
+      setParseObjectFieldWithoutData('user', onlineParseObject, model.currentUserId)
+
+      // step3: set the relation by review type.
+      setParseObjectFieldWithoutData(model.modelType, onlineParseObject, model.forObjectId)
       break;
     case PARSE_USERS:
 
