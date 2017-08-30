@@ -63,7 +63,7 @@ class IEAAddPhotosForm extends Component {
                         <span
                           id="icon_24X24"
                           className="icon icon--24-checkmark icon--size-24 icon--inverse icon--fallback-inverted">
-    <svg className="icon_svg">
+                         <svg className="icon_svg">
     <path
       d="M19.698 7.748L9.895 17.994 4.292 12.14a1.07 1.07 0 0 1 0-1.464.96.96 0 0 1 1.4 0l4.203 4.39 8.403-8.782a.96.96 0 0 1 1.4 0c.387.405.387 1.06 0 1.464z"/>
     </svg>
