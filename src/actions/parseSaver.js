@@ -34,14 +34,6 @@ import Records from "../lib/records";
 
 
 const {
-  ParseRestaurant,
-  ParseEvent,
-  ParsePeopleInEvent,
-  ParseUser,
-  ParseReview,
-  ParseRecipe,
-  ParseRecord,
-  ParsePhoto,
   createParseInstance,
   setParseObjectFieldWithoutData
 } = require('../parse/objects').default
@@ -222,16 +214,16 @@ function createNewReview(model: object): ThunkAction {
 
 
 async function _uploadPhoto(model: object): Promise<Array<Action>> {
-  const review = createParseInstance(PARSE_PHOTOS)
+  const photo = createParseInstance(PARSE_PHOTOS)
 
-  // step1: generate review.
-  Records.generateNewOnlineParseInstance(review, PARSE_REVIEWS, model)
+  // step1: generate photo.
+  Records.generateNewOnlineParseInstance(photo, PARSE_PHOTOS, model)
 
-  // step2: save review.
-  await review.save()
+  // step2: save photo.
+  await photo.save()
 
   // step5: update the recorder
-  await updateParseRecorder('review', review)
+  // await updateParseRecorder('photo', photo)
 
   const action = {
     type: SAVE_MODEL_REQUEST,
