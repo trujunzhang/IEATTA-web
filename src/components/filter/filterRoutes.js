@@ -151,9 +151,11 @@ export function checkLoginFormPage(props) {
 
 export function getPageFormTypeForUserProfile(props) {
   const pathname = props.location.pathname;
+    const split = pathname.split('/');
+
 
   const formType = _.find(Object.keys(Users.profileLeftMenus), function (type) {
-    return pathname.indexOf(Users.profileLeftMenus[type].path) !== -1;
+    return split[1] === Users.profileLeftMenus[type].path;
   })
 
   return formType;
