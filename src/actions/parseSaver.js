@@ -115,6 +115,7 @@ function updateRestaurant(model: object): ThunkAction {
 
 async function _updateEvent(model: object): Promise<Array<Action>> {
   const event = await getQueryByType(PARSE_EVENTS).get(model.objectId)
+
   event.set('displayName', model.displayName)
   event.set('want', model.eventWhat)
   event.set('start', model.eventStart)
@@ -214,13 +215,15 @@ function createNewReview(model: object): ThunkAction {
 
 
 async function _uploadPhoto(model: object): Promise<Array<Action>> {
+  debugger
   const photo = createParseInstance(PARSE_PHOTOS)
 
+  // var parseFile = new Parse.File("prof",theimage)
   // step1: generate photo.
   Records.generateNewOnlineParseInstance(photo, PARSE_PHOTOS, model)
 
   // step2: save photo.
-  await photo.save()
+  // await photo.save()
 
   // step5: update the recorder
   // await updateParseRecorder('photo', photo)

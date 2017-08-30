@@ -5,7 +5,7 @@ import Dropzone from 'react-dropzone'
 
 
 const {
-  updateRestaurant,
+  uploadPhoto,
   showAlertMessage,
   timeout
 } = require('../../../../actions').default
@@ -37,23 +37,16 @@ class IEAAddPhotosForm extends Component {
     const {dispatch, modelType, forObject} = this.props;
 
     const objectId = forObject.id;
+    const imagePath = this.state.file.preview;
 
     this.props.actions.updateModelRequest();
 
     try {
       await Promise.race([
-        dispatch(updateRestaurant({
-          objectId, displayName,
-          latitude,
-          longitude,
-          address,
-          street_number,
-          route,
-          locality,
-          sublocality,
-          country,
-          postal_code,
-          administrative_area
+        dispatch(uploadPhoto({
+          objectId,
+          modelType,
+          imagePath
         })),
         timeout(15000),
       ]);
@@ -68,7 +61,6 @@ class IEAAddPhotosForm extends Component {
       }
     } finally {
       this.props.actions.updateModelSuccess();
-      // this._isMounted && this.setState({isLoading: false});
     }
   }
 
@@ -117,9 +109,11 @@ class IEAAddPhotosForm extends Component {
 
           <div className="arrange_unit arrange arrange--middle arrange--18 finish-social-media-container">
             <div className="arrange_unit">
-              <button className="ybtn ybtn-primary finish-upload-btn"
-                      type="submit"
-                      value="submit">
+              <button
+                onClick={this.onButtonPress.bind(this)}
+                className="ybtn ybtn-primary finish-upload-btn"
+                type="submit"
+                value="submit">
                 <span>{"Finish"}</span>
               </button>
             </div>
