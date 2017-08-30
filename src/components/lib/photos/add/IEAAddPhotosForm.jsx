@@ -7,7 +7,8 @@ import Dropzone from 'react-dropzone'
  * States of login display
  */
 const {
-  LOGIN_FORM_TYPE_RESET_PASSWD,
+  UPLOAD_IMAGE_FILE_DROP,
+  UPLOAD_IMAGE_FILE_PREVIEW,
 } = require('../../../../lib/constants').default
 
 class IEAAddPhotosForm extends Component {
@@ -17,7 +18,7 @@ class IEAAddPhotosForm extends Component {
 
     this.state = {
       file: {},
-      // formType:
+      formType: UPLOAD_IMAGE_FILE_DROP
     };
   }
 
@@ -25,31 +26,30 @@ class IEAAddPhotosForm extends Component {
     this.setState({})
   }
 
-  _handleImageChange(e) {
-    e.preventDefault();
-
-    let reader = new FileReader();
-    let file = e.target.files[0];
-
-    reader.onloadend = () => {
-      this.setState({
-        file: file,
-        imagePreviewUrl: reader.result
-      });
-    }
-
-    reader.readAsDataURL(file)
-  }
 
   onDrop(files) {
-    debugger
     this.setState({
-      file: files[0]
+      file: files[0],
+      formType: UPLOAD_IMAGE_FILE_PREVIEW
     });
   }
 
   render() {
+    const {formType} = this.state;
+    switch (formType) {
+      case UPLOAD_IMAGE_FILE_DROP:
+        return this.renderFileDrop()
+      case UPLOAD_IMAGE_FILE_PREVIEW:
+        return this.renderFilePreview()
+    }
+  }
 
+  renderFilePreview() {
+   return(
+
+   )
+  }
+  renderFileDrop() {
     return (
       <div className="upload upload--photos js-html5-uploader hidden" style={{'display': 'block'}}>
 
