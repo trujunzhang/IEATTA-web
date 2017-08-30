@@ -26,6 +26,57 @@ class IEAAddPhotosForm extends Component {
     this.setState({})
   }
 
+  async onButtonPress() {
+    const {dispatch, forObject} = this.props;
+
+    const objectId = forObject.id;
+    const displayName = this.props.editModel.form.fields.displayName;
+
+    const latitude = this.props.editModel.form.fields.latitude;
+    const longitude = this.props.editModel.form.fields.longitude;
+    const address = this.props.editModel.form.fields.address;
+    const street_number = this.props.editModel.form.fields.street_number;
+    const route = this.props.editModel.form.fields.route;
+    const locality = this.props.editModel.form.fields.locality;
+    const sublocality = this.props.editModel.form.fields.sublocality;
+    const country = this.props.editModel.form.fields.country;
+    const postal_code = this.props.editModel.form.fields.postal_code;
+    const administrative_area = this.props.editModel.form.fields.administrative_area;
+
+    this.props.actions.updateModelRequest();
+
+    try {
+      await Promise.race([
+        dispatch(updateRestaurant({
+          objectId, displayName,
+          latitude,
+          longitude,
+          address,
+          street_number,
+          route,
+          locality,
+          sublocality,
+          country,
+          postal_code,
+          administrative_area
+        })),
+        timeout(15000),
+      ]);
+    } catch (e) {
+      this.props.actions.updateModelFailure(e);
+      const message = e.message || e;
+      if (message !== 'Timed out' && message !== 'Canceled by user') {
+        this.props.dispatch(showAlertMessage(message))
+        debugger
+        // alert(message);
+        // console.warn(e);
+      }
+    } finally {
+      this.props.actions.updateModelSuccess();
+      // this._isMounted && this.setState({isLoading: false});
+    }
+  }
+
 
   onDrop(accepted, rejected) {
     if (accepted.length === 1) {

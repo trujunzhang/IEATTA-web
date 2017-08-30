@@ -22,6 +22,7 @@ class IEAAddPhotosTop extends Component {
     const {modelType, forObject} = this.props;
     switch (modelType) {
       case "restaurant":
+      case "recipe":
         return this.renderCommon()
     }
 
@@ -33,8 +34,6 @@ class IEAAddPhotosTop extends Component {
     return (
       <div id="user_biz_photo_intro">
         <h2>
-
-
           <Link to={geDetailedModelLink(modelType, forObject)}>
             {`${forObject.displayName}:`}
           </Link>
@@ -53,6 +52,7 @@ class IEAAddPhotosTop extends Component {
   }
 
   renderForUser() {
+    const {modelType, forObject} = this.props;
     return (
       <div className="section-header media-header">
         <div className="arrange arrange--12 arrange--bottom">
@@ -60,7 +60,8 @@ class IEAAddPhotosTop extends Component {
             <ul className="breadcrumbs">
               <li>
                 <a href="/user_details?userid=kIEHaO2vd6Lic4rwkMgH6Q">
-                  Trujun Z.</a>
+                  {forObject.username}
+                </a>
               </li>
               <li>
                   <span id="icon_24X24"
