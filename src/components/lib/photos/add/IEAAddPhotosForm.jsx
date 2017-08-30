@@ -37,7 +37,9 @@ class IEAAddPhotosForm extends Component {
     const {dispatch, modelType, forObject} = this.props;
 
     const objectId = forObject.id;
+    const file = this.state.file;
     const imagePath = this.state.file.preview;
+
 
     this.props.actions.updateModelRequest();
 
@@ -46,7 +48,7 @@ class IEAAddPhotosForm extends Component {
         dispatch(uploadPhoto({
           objectId,
           modelType,
-          imagePath
+          file,
         })),
         timeout(15000),
       ]);

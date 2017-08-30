@@ -98,6 +98,7 @@ Records.generateNewOnlineParseInstance = function (onlineParseObject, objectSche
     case PARSE_PHOTOS:
       // step1: common fields.
       onlineParseObject.set('photoType', model.modelType)
+      onlineParseObject.set('thumbnail', model.thumbnail)
       break;
     case PARSE_USERS:
 

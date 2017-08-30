@@ -215,25 +215,25 @@ function createNewReview(model: object): ThunkAction {
 
 
 async function _uploadPhoto(model: object): Promise<Array<Action>> {
-  const photo = createParseInstance(PARSE_PHOTOS)
 
-  const thumbnailFile = new Parse.File('thumbnail')
-
-  debugger
-
-  thumbnailFile.set("url", model.imagePath)
-
-  debugger
-
+  const thumbnailFile = new Parse.File(model.file.name, model.file)
   await thumbnailFile.save()
 
-  debugger
+  const photo = createParseInstance(PARSE_PHOTOS)
 
   // step1: generate photo.
-  // Records.generateNewOnlineParseInstance(photo, PARSE_PHOTOS, model)
+  Records.generateNewOnlineParseInstance(
+    photo,
+    PARSE_PHOTOS,
+    Object.assign({}, model, {
+      thumbnail: thumbnailFile
+    })
+  )
 
   // step2: save photo.
-  // await photo.save()
+  await photo.save()
+
+  debugger
 
   // step5: update the recorder
   // await updateParseRecorder('photo', photo)
