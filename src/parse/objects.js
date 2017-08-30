@@ -58,6 +58,8 @@ function createParseInstance(objectSchemaName) {
       return new ParseRecord();
     case PARSE_REVIEWS:
       return new ParseReview();
+    case PARSE_PHOTOS:
+      return new ParsePhoto();
   }
 }
 

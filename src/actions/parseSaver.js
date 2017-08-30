@@ -220,6 +220,41 @@ function createNewReview(model: object): ThunkAction {
   }
 }
 
+
+async function _uploadPhoto(model: object): Promise<Array<Action>> {
+  const review = createParseInstance(PARSE_PHOTOS)
+
+  // step1: generate review.
+  Records.generateNewOnlineParseInstance(review, PARSE_REVIEWS, model)
+
+  // step2: save review.
+  await review.save()
+
+  // step5: update the recorder
+  await updateParseRecorder('review', review)
+
+  const action = {
+    type: SAVE_MODEL_REQUEST,
+  }
+  return Promise.all([
+    Promise.resolve(action)
+  ])
+}
+
+
+function uploadPhoto(model: object): ThunkAction {
+  return (dispatch) => {
+    const action = _uploadPhoto(model)
+    action.then(
+      ([result]) => {
+        dispatch(result)
+      }
+    )
+    return action
+  }
+}
+
+
 export default {
   // Update
   updateRestaurant,
@@ -227,4 +262,6 @@ export default {
   updateRecipe,
   // Create
   createNewReview,
+  // Photos
+  uploadPhoto,
 }

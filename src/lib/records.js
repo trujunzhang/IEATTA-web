@@ -95,6 +95,10 @@ Records.generateNewOnlineParseInstance = function (onlineParseObject, objectSche
       onlineParseObject.set('displayName', model.displayName)
       onlineParseObject.set('price', model.price)
       break;
+    case PARSE_PHOTOS:
+      // step1: common fields.
+      onlineParseObject.set('photoType', model.modelType)
+      break;
     case PARSE_USERS:
 
       break;
