@@ -2,7 +2,6 @@ import Telescope from '../../lib'
 import React, {Component} from 'react'
 import Restaurants from '../../../lib/restaurants'
 
-import {withRouter} from 'react-router'
 
 const {
   updateRestaurant,
@@ -259,6 +258,7 @@ class IEAEditRestaurantLayout extends Component {
 }
 
 
+import {withRouter} from 'react-router'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 

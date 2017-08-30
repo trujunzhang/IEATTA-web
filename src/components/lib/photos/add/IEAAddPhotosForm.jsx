@@ -198,6 +198,7 @@ class IEAAddPhotosForm extends Component {
   }
 }
 
+import {withRouter} from 'react-router'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 
@@ -216,5 +217,5 @@ function select(store, ownProps) {
   };
 }
 
-export default connect(select, mapDispatchToProps)(IEAAddPhotosForm);
+export default withRouter(connect(select, mapDispatchToProps)(IEAAddPhotosForm));
 
