@@ -198,4 +198,23 @@ class IEAAddPhotosForm extends Component {
   }
 }
 
-export default IEAAddPhotosForm;
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
+
+import * as editModelActions from '../../../../reducers/editModel/editModelActions'
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(editModelActions, dispatch)
+  }
+}
+
+function select(store, ownProps) {
+  return {
+    editModel: store.editModel,
+    goBack: ownProps.router.goBack
+  };
+}
+
+export default connect(select, mapDispatchToProps)(IEAAddPhotosForm);
+
