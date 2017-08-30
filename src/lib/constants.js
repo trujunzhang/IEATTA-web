@@ -1,6 +1,10 @@
 import keyMirror from 'key-mirror'
 
 export default keyMirror({
+  // Upload Image
+  UPLOAD_IMAGE_FILE: null,
+  UPLOAD_IMAGE_FILE_PREVIEW: null,
+
   // invoke parse cloud.
   CLOUD_STATISTIC_FOR_USER_STATE: null,
   CLOUD_STATISTIC_FOR_REVIEWS: null,
