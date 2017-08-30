@@ -27,11 +27,13 @@ class IEAAddPhotosForm extends Component {
   }
 
 
-  onDrop(files) {
-    this.setState({
-      file: files[0],
-      formType: UPLOAD_IMAGE_FILE_PREVIEW
-    });
+  onDrop(accepted, rejected) {
+    if (accepted.length === 1) {
+      this.setState({
+        file: accepted[0],
+        formType: UPLOAD_IMAGE_FILE_PREVIEW
+      });
+    }
   }
 
   render() {
@@ -60,8 +62,8 @@ class IEAAddPhotosForm extends Component {
                        </svg>
                 </span>
               <h3 className="alternate inline-block">
-                Perfect!
-                <b>Next, describe your photo below.</b>
+                {"Perfect!"}
+                <b className="margin-left-4">{"Next, describe your photo below."}</b>
               </h3>
             </div>
 
@@ -69,7 +71,10 @@ class IEAAddPhotosForm extends Component {
 
           <div className="arrange_unit arrange arrange--middle arrange--18 finish-social-media-container">
             <div className="arrange_unit">
-              <button className="ybtn ybtn-primary finish-upload-btn" type="submit" value="submit"><span>Finish</span>
+              <button className="ybtn ybtn-primary finish-upload-btn"
+                      type="submit"
+                      value="submit">
+                <span>{"Finish"}</span>
               </button>
             </div>
           </div>
@@ -79,32 +84,30 @@ class IEAAddPhotosForm extends Component {
           <li className="uploaded-photo" data-component-bound="true">
             <div className="photo-caption-box photo-box js-photo-box photo-box--interactive">
               <img className="photo-caption-img js-photo-caption-img photo-box-img"
-                   src="https://s3-media1.fl.yelpcdn.com/bphoto/fC368LORs0YSatjo_10oaQ/o.jpg"/>
-
-              <div className="photo-box_status">
-                    <span className="photo-box_status-icon pull-right photo-error" style="display: none;">
-                        <span id="icon_24X24"
-                              className="icon icon--24-exclamation icon--size-24 icon--inverse icon--fallback-inverted">
-                              <svg className="icon_svg">
-                                   <path
-                                     d="M12 15a2 2 0 0 1-2-2V4a2 2 0 0 1 4 0v9a2 2 0 0 1-2 2zm0 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/>
-                              </svg>
-                         </span>
-                    </span>
-              </div>
+                   src={this.state.file.preview}
+              />
 
               <div className="photo-box_actions photo-box_actions--right">
-                <a className="photo-box_action-link show-tooltip">
-                        <span id="icon_24X24"
-                              className="icon icon--24-trash icon--size-24 icon--inverse icon--fallback-inverted delete-photo">
-                        <svg className="icon_svg">
-                              <path
-                                d="M5 7V5a1 1 0 0 1 1-1h4V3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1h4a1 1 0 0 1 1 1v2H5zm13 12a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V8h12v11zm-8-8H9v8h1v-8zm5 0h-1v8h1v-8z"/>
-                        </svg>
-                        </span>
+                <a
+                  onClick={(e) => {
+                    this.setState({
+                      file: {},
+                      formType: UPLOAD_IMAGE_FILE_DROP
+                    });
+                  }}
+                  className="photo-box_action-link show-tooltip">
+                  <span id="icon_24X24"
+                        className="icon icon--24-trash icon--size-24 icon--inverse icon--fallback-inverted delete-photo">
+                            <svg className="icon_svg">
+                                 <path
+                                   d="M5 7V5a1 1 0 0 1 1-1h4V3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1h4a1 1 0 0 1 1 1v2H5zm13 12a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V8h12v11zm-8-8H9v8h1v-8zm5 0h-1v8h1v-8z"/>
+                            </svg>
+                  </span>
                   <span className="tooltip-wrapper">
-                            <span className="tooltip">Delete</span>
-                        </span>
+                    <span className="tooltip">
+                      {"Delete"}
+                    </span>
+                  </span>
                 </a>
               </div>
 
@@ -124,6 +127,7 @@ class IEAAddPhotosForm extends Component {
 
         <Dropzone
           multiple={false}
+          accept="image/jpeg, image/png"
           className="file-drop file-drop--big js-file-drop"
           onDrop={this.onDrop.bind(this)}>
 
