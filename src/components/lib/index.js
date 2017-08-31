@@ -56,8 +56,11 @@ Telescope.registerComponent('EditReviewTopEvent',                  require('./re
 Telescope.registerComponent('DetailedReview',                          require('./reviews/DetailedReview.jsx').default)
 Telescope.registerComponent('IEAEditReviewLayout',                     require('./reviews/IEAEditReviewLayout.jsx').default)
 
+// reviews list
+Telescope.registerComponent('IEAReviewsListLayout',                          require('./reviews/IEAReviewsListLayout.jsx').default)
+
 // restaurant
-Telescope.registerComponent('IEARestaurantsHome',         require('./home/IEARestaurantsHome.jsx').default)
+
 Telescope.registerComponent('RestaurantsItem',            require('./home/page/RestaurantsItem.jsx').default)
 Telescope.registerComponent('RestaurantsListRightMap',    require('./home/page/RestaurantsListRightMap.jsx').default)
 Telescope.registerComponent('IEARestaurantsList',         require('./home/page/IEARestaurantsList.jsx').default)

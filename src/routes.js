@@ -119,6 +119,10 @@ const createRoutes = (store) => {
       component: Telescope.components.DetailedReview,
       onEnter: requireAuth(store)
     },
+    {
+      path: 'reviews/(:modelType)/(:forObjectId)',
+      component: Telescope.components.IEAReviewsListLayout,
+    },
   ];
 
   const orderedUserRoutes = [
