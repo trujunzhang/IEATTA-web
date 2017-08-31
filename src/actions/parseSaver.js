@@ -256,9 +256,12 @@ function uploadPhoto(model: object): ThunkAction {
 }
 
 async function _uploadLoggedUser(model: object): Promise<Array<Action>> {
+  debugger
 
   // step1: get logged user.
   const current = await getQueryByType(PARSE_USERS).get(model.objectId)
+
+  debugger
 
   current.set('username', model.username)
   current.set('email', model.email)

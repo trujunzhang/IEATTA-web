@@ -91,7 +91,9 @@ class IEAEditUserLayout extends Component {
     const username = this.props.auth.form.fields.username;
     const email = this.props.auth.form.fields.email;
 
-    this.props.actions.updateModelRequest();
+    debugger
+
+    this.props.actions.loginRequest()
 
     try {
       await Promise.race([
@@ -104,11 +106,9 @@ class IEAEditUserLayout extends Component {
       if (message !== 'Timed out' && message !== 'Canceled by user') {
         this.props.dispatch(showAlertMessage(message))
         debugger
-        // alert(message);
-        // console.warn(e);
       }
     } finally {
-      this.props.actions.updateModelSuccess();
+      this.props.actions.loginSuccess()
       // this._isMounted && this.setState({isLoading: false});
     }
   }
@@ -146,7 +146,6 @@ class IEAEditUserLayout extends Component {
         <div id="super-container" className="content-container">
 
           <div className="clearfix layout-block layout-n column--responsive account-settings_container">
-
 
             <div className="column column-beta column--responsive">
               <div className="account-settings_content">
