@@ -17,8 +17,10 @@ class HeaderContentSearchBar extends Component {
   }
 
   componentWillReceiveProps(nextProps, nextContext) {
-    if ((!!nextProps.router.location.query.search)) {
-      this.setState({search: nextProps.router.location.query.search});
+    if ((!!nextProps.location.query.search)) {
+      this.setState({search: nextProps.location.query.search});
+    } else {
+      this.setState({search: ''});
     }
   }
 
@@ -39,7 +41,7 @@ class HeaderContentSearchBar extends Component {
       if (input === "") {
         router.replace({pathname: router.location.pathname})
       } else {
-        router.replace({pathname: router.location.pathname, query: {search: input}})
+        router.replace({pathname: '/', query: {search: input}})
       }
     }, 700)
   }
