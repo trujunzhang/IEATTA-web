@@ -29,9 +29,6 @@ class IEAAddPhotosForm extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({})
-  }
 
   async onButtonPress() {
     const {dispatch, currentUser, modelType, forObject} = this.props;
@@ -41,7 +38,7 @@ class IEAAddPhotosForm extends Component {
     const currentUserId = currentUser.id;
 
     this.props.actions.updateModelRequest();
-
+    let haveError = false;
     try {
       await Promise.race([
         dispatch(uploadPhoto({
@@ -54,6 +51,7 @@ class IEAAddPhotosForm extends Component {
       ]);
     } catch (e) {
       this.props.actions.updateModelFailure(e);
+      haveError = true;
       const message = e.message || e;
       if (message !== 'Timed out' && message !== 'Canceled by user') {
         this.props.dispatch(showAlertMessage(message))
@@ -62,7 +60,13 @@ class IEAAddPhotosForm extends Component {
         // console.warn(e);
       }
     } finally {
-      this.props.actions.updateModelSuccess();
+      if (!haveError) {
+        this.setState({
+          file: {},
+          formType: UPLOAD_IMAGE_FILE_DROP
+        });
+        this.props.actions.updateModelSuccess();
+      }
     }
   }
 
