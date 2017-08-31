@@ -1,15 +1,11 @@
 import Telescope from '../../index'
 import React, {Component} from 'react'
-import {Link} from 'react-router'
 
-import Photos from '../../../../lib/photos'
-import onClickOutside from 'react-onclickoutside'
 
 class HeaderRightUserPanel extends Component {
 
   constructor(props) {
     super(props);
-    // 初始状态
     this.state = {
       isOpen: false
     };
