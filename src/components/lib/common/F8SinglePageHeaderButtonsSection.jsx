@@ -9,6 +9,25 @@ import {
 
 import {Link} from 'react-router'
 
+/**
+ * The states were interested in
+ */
+const {
+  // parse models
+  PARSE_RESTAURANTS,
+  PARSE_USERS,
+  PARSE_RECORDS,
+  PARSE_EVENTS,
+  PARSE_RECIPES,
+  PARSE_PHOTOS,
+  PARSE_REVIEWS,
+  PARSE_PEOPLE_IN_EVENTS,
+  // Rest API
+  SAVE_MODEL_REQUEST,
+  UPDATE_MODEL_REQUEST,
+} = require('../../../lib/constants').default
+
+
 class F8SinglePageHeaderButtonsSection extends Component {
 
   renderWriteAReview() {
@@ -99,6 +118,37 @@ class F8SinglePageHeaderButtonsSection extends Component {
     )
   }
 
+  renderButtons() {
+    const {
+      showEdit = false,
+      modelType,
+      forObject
+    } = this.props;
+
+    switch (modelType) {
+      case PARSE_RESTAURANTS:
+        return (
+          <span className="ybtn-group clearfix">
+            {this.renderButtonForAddPhoto()}
+          </span>
+        );
+      case PARSE_EVENTS:
+        return (
+          <span className="ybtn-group clearfix">
+
+          </span>
+        );
+      case PARSE_RECIPES:
+        return (
+          <span className="ybtn-group clearfix">
+            {this.renderButtonForAddPhoto()}
+          </span>
+        );
+    }
+
+    return null;
+  }
+
   render() {
     const {
       showEdit = false,
@@ -113,15 +163,6 @@ class F8SinglePageHeaderButtonsSection extends Component {
 
         {showEdit ? this.renderEditButton() : null}
 
-        <span className="ybtn-group clearfix">
-
-          {this.renderButtonForAddPhoto()}
-
-          {/*{this.renderButtonForShare()}*/}
-
-          {/*{this.renderButtonForBookmark()}*/}
-
-          </span>
 
       </div>
 
