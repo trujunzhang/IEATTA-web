@@ -1,23 +1,24 @@
 import React, {Component} from 'react'
 import {withRouter} from 'react-router'
 
+
+const {loadRestaurantsList} = require('../../../../actions').default
+const {delayEvent} = require('../../../../lib/utils')
+
 class HeaderContentSearchBar extends Component {
 
   constructor(props) {
     super(props);
 
-    let query = props.router.location.query.query;
-    if (!!props.router.location.query.topicId) {
-      query = "";
-    }
+    let query = props.router.location.query.search;
     this.state = this.initialState = {
       search: query || ''
     }
   }
 
   componentWillReceiveProps(nextProps, nextContext) {
-    if ((!!nextProps.router.location.query.topicId) || (!nextProps.router.location.query.query)) {
-      this.setState({search: ''});
+    if ((!!nextProps.router.location.query.search)) {
+      this.setState({search: nextProps.router.location.query.search});
     }
   }
 
@@ -29,14 +30,14 @@ class HeaderContentSearchBar extends Component {
   }
 
   searchQuery(input) {
-    const router = this.props.router,
+    const {dispatch, router} = this.props,
       query = input === '' ? {} : {query: input};
 
-    const {dispatch} = this.props;
+    const self = this;
 
-    // delayEvent(function () {
-    // dispatch(queryNearRestaurant({search: input}))
-    // }, 700)
+    delayEvent(function () {
+      router.replace({pathname: router.location.pathname, query: {search: input}})
+    }, 700)
   }
 
 
