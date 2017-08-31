@@ -118,9 +118,8 @@ function getPhotosParameters(terms) {
 }
 
 async function updateParseRecorder(objectSchemaName, parseInstance) {
-  const {recordType} = Records.realmTypes [objectSchemaName]
-  debugger
-  let recorder = await getQueryByType(objectSchemaName).equalTo(recordType, parseInstance).first()
+  const recordType = Records.realmTypes[objectSchemaName]
+  let recorder = await getQueryByType(PARSE_RECORDS).equalTo(recordType, parseInstance).first()
   debugger
   if (!!recorder) {
     debugger
