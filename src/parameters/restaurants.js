@@ -7,6 +7,9 @@ export default class RestaurantsParameters {
   }
 
   addParameters(terms: Any) {
+
+   debugger
+
     if (terms.userProfileType) {
       let userId = terms.userId
       if (typeof userId === 'undefined') {
@@ -34,13 +37,6 @@ export default class RestaurantsParameters {
       this.query.lessThan('postedAt', endOfDay.toDate())
     }
 
-    if (terms.domain) {
-      this.query.equalTo('sourceFrom', terms.domain)
-    }
-
-    if (terms.author) {
-      this.query.equalTo('author', terms.author)
-    }
 
     return this
   }

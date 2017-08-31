@@ -32,7 +32,8 @@ class IEARestaurantsHome extends Component {
       terms: terms,
       listTask: getDefaultListTask(terms),
       markers: [],
-      defaultMarker: null
+      defaultMarker: null,
+      currentSearch: null
     }
   }
 
@@ -48,15 +49,17 @@ class IEARestaurantsHome extends Component {
       defaultMarker: defaultMarker
     })
 
-    if ((!!nextProps.router.location.query.search)) {
-      const searchTerms = generateTermsForRestaurantList(props)
+
+    if ((!!nextProps.location.query.search && nextProps.router.location.query.search !== this.state.currentSearch)) {
+      const searchTerms = generateTermsForRestaurantList(nextProps)
       const searchListTask = getDefaultListTask(searchTerms)
 
       this.setState({
         terms: searchTerms,
         listTask: searchListTask,
         markers: [],
-        defaultMarker: null
+        defaultMarker: null,
+        currentSearch: nextProps.location.query.search
       })
 
       this.loadMore(searchListTask, searchTerms)

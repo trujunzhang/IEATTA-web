@@ -199,10 +199,11 @@ export function generateTermsForOrderedUsersList(props) {
 }
 
 export function generateTermsForRestaurantList(props) {
-  const {params, location} = props;
+  const {location} = props;
+  debugger
 
   return {
-    ...params,
+    ...location.query,
     limit: 10,
     listId: 'single-list-view-for-restaurants'
   };
