@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import Photos from '../../../../lib/photos'
 
-import {getLoggedUserMenuLink} from '../../../lib/link'
+import {getLoggedUserMenuLink} from '../../../../lib/link'
 import {Link} from 'react-router'
 
 class EditUserProfilePhoto extends Component {
