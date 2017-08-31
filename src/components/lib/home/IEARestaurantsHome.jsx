@@ -52,7 +52,7 @@ class IEARestaurantsHome extends Component {
 
     const query = nextProps.location.query;
     const {currentSearch} = this.state;
-    if ((!!query.search && query.search !== currentSearch || (!query.search && !currentSearch))) {
+    if ((!!query.search && query.search !== currentSearch || (!query.search && !!currentSearch))) {
       const searchTerms = generateTermsForRestaurantList(nextProps)
       const searchListTask = getDefaultListTask(searchTerms)
 
