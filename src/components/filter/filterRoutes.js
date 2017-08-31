@@ -197,3 +197,13 @@ export function generateTermsForOrderedUsersList(props) {
     restaurantId: props.forObject.restaurant.id
   };
 }
+
+export function generateTermsForRestaurantList(props) {
+  const {params, location} = props;
+
+  return {
+    ...params,
+    limit: 10,
+    listId: 'single-list-view-for-restaurants'
+  };
+}

@@ -3,10 +3,18 @@ import React, {Component} from 'react'
 
 import {withRouter} from 'react-router'
 
-const md5 = require('blueimp-md5')
-
 const {loadRestaurantsList} = require('../../../actions').default
-const {byListId, getDefaultListTask, generateMarkers, getMarker} = require('../../filter/filterPosts')
+const {
+  byListId,
+  getDefaultListTask,
+  generateMarkers,
+  getMarker,
+} = require('../../filter/filterPosts')
+
+const {
+  generateTermsForRestaurantList,
+} = require('../../filter/filterRoutes')
+
 
 /**
  * Make day wise groups on category pages, remove calendar widget from tag and source pages
@@ -18,13 +26,7 @@ class IEARestaurantsHome extends Component {
   constructor(props) {
     super(props)
 
-    const {params, location} = props;
-
-    const terms = {
-      ...params,
-      limit: 10,
-      listId: 'single-list-view-for-restaurants'
-    }
+    const terms = generateTermsForRestaurantList(props)
 
     this.state = {
       terms: terms,
@@ -35,6 +37,9 @@ class IEARestaurantsHome extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    if ((!!nextProps.router.location.query.search)) {
+      debugger
+    }
     const listTask = byListId(nextProps.listContainerTasks, this.state.terms.listId, this.state.listTask);
     const markers = generateMarkers(nextProps.listContainerTasks, this.state.terms.listId);
 
