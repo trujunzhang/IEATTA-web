@@ -9,7 +9,10 @@ export default class RestaurantsParameters {
   addParameters(terms: Any) {
 
     if (terms.search) {
-      this.query.startsWith('displayName', terms.search)
+      this.query.matches('displayName',
+        `.*${terms.search}.*`,
+        'i'
+      )
     }
 
     if (terms.userProfileType) {
