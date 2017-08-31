@@ -73,11 +73,11 @@ class F8SinglePageHeaderTopLeftPanel extends Component {
                     <span className="bullet-after">
                       <span className="business-attribute price-range">$$</span>
                     </span>
-        <span className="category-str-list">
+               <span className="category-str-list">
                     <a>
                       {Records.toFirstUpperString(modelType)}
                     </a>
-            </span>
+               </span>
 
         {this.renderEditButton()}
       </div>
