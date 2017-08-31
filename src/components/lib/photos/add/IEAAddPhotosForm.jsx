@@ -29,7 +29,6 @@ class IEAAddPhotosForm extends Component {
     };
   }
 
-
   async onButtonPress() {
     const {dispatch, currentUser, modelType, forObject} = this.props;
 
@@ -56,8 +55,6 @@ class IEAAddPhotosForm extends Component {
       if (message !== 'Timed out' && message !== 'Canceled by user') {
         this.props.dispatch(showAlertMessage(message))
         debugger
-        // alert(message);
-        // console.warn(e);
       }
     } finally {
       if (!haveError) {
