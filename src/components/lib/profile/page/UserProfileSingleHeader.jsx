@@ -68,20 +68,18 @@ class UserProfileSingleHeader extends Component {
 
             <a className="arrange arrange--middle add-friend">
               <div className="action-link_icon arrange_unit">
-            <span
-              id="icon_18X18"
-              className="icon icon--18-add-friend icon--size-18 icon--currentColor">
-    <svg className="icon_svg">
- <g>
-      <path
-        d="M5.827 9.647l-2.013 4.127c-.448.922-1.18.915-1.628-.007L.173 9.65C-.275 8.73.178 8 1.18 8h3.64c1.002 0 1.455.725 1.007 1.647zM3 7a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/>
-      <path
-        d="M12.827 9.647l-2.013 4.127c-.448.922-1.18.915-1.628-.007L7.173 9.65C6.725 8.73 7.178 8 8.18 8h3.64c1.002 0 1.455.725 1.007 1.647zM10 7a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
-        opacity=".502"/>
-      <path d="M18 14h-2v-2h-2v2h-2v2h2v2h2v-2h2v-2z"/>
-    </g>
-    </svg>
-</span>
+            <span id="icon_18X18" className="icon icon--18-add-friend icon--size-18 icon--currentColor">
+                <svg className="icon_svg">
+                       <g>
+                           <path
+                             d="M5.827 9.647l-2.013 4.127c-.448.922-1.18.915-1.628-.007L.173 9.65C-.275 8.73.178 8 1.18 8h3.64c1.002 0 1.455.725 1.007 1.647zM3 7a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/>
+                           <path
+                             d="M12.827 9.647l-2.013 4.127c-.448.922-1.18.915-1.628-.007L7.173 9.65C6.725 8.73 7.178 8 8.18 8h3.64c1.002 0 1.455.725 1.007 1.647zM10 7a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
+                             opacity=".502"/>
+                           <path d="M18 14h-2v-2h-2v2h-2v2h2v2h2v-2h2v-2z"/>
+                       </g>
+                </svg>
+            </span>
               </div>
               <div className="action-link_label arrange_unit arrange_unit--fill">
                 Add friend
@@ -95,14 +93,12 @@ class UserProfileSingleHeader extends Component {
 
             <a className="arrange arrange--middle send-compliment">
               <div className="action-link_icon arrange_unit">
-            <span
-              id="icon_18X18"
-              className="icon icon--18-compliment icon--size-18 icon--currentColor">
-    <svg className="icon_svg">
-    <path
-      d="M14.5 6.75a5.5 5.5 0 0 0-11 0 5.495 5.495 0 0 0 2.993 4.892L5.5 16.75l3.505-2 3.495 2-.993-5.108A5.495 5.495 0 0 0 14.5 6.75zm-5.5 4c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4z"/>
-    </svg>
-</span>
+            <span id="icon_18X18" className="icon icon--18-compliment icon--size-18 icon--currentColor">
+                 <svg className="icon_svg">
+                     <path
+                       d="M14.5 6.75a5.5 5.5 0 0 0-11 0 5.495 5.495 0 0 0 2.993 4.892L5.5 16.75l3.505-2 3.495 2-.993-5.108A5.495 5.495 0 0 0 14.5 6.75zm-5.5 4c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4z"/>
+                 </svg>
+            </span>
               </div>
               <div className="action-link_label arrange_unit arrange_unit--fill">
                 Compliment
@@ -116,13 +112,11 @@ class UserProfileSingleHeader extends Component {
 
             <a className="arrange arrange--middle send-pm">
               <div className="action-link_icon arrange_unit">
-            <span
-              id="icon_18X18"
-              className="icon icon--18-speech icon--size-18 icon--currentColor">
-    <svg className="icon_svg">
-    <path d="M2 4v6a2 2 0 0 0 2 2h1v3l4-3h5a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/>
-    </svg>
-</span>
+            <span id="icon_18X18" className="icon icon--18-speech icon--size-18 icon--currentColor">
+                  <svg className="icon_svg">
+                       <path d="M2 4v6a2 2 0 0 0 2 2h1v3l4-3h5a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/>
+                  </svg>
+            </span>
               </div>
               <div className="action-link_label arrange_unit arrange_unit--fill">
                 Send message
