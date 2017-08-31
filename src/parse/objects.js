@@ -71,29 +71,32 @@ function appendGeoLocation(onlineParseObject, localRecorder, field = "geoLocatio
 }
 
 function getInstanceWithoutData(objectSchemaName, parseInstanceId) {
+  let relatedObject = null;
   switch (objectSchemaName) {
     case PARSE_RESTAURANTS:
-      ParseRestaurant.createWithoutData(parseInstanceId);
+      relatedObject = ParseRestaurant.createWithoutData(parseInstanceId);
       break;
     case PARSE_EVENTS:
-      ParseEvent.createWithoutData(parseInstanceId);
+      relatedObject = ParseEvent.createWithoutData(parseInstanceId);
       break;
     case PARSE_RECIPES:
-      ParseRecipe.createWithoutData(parseInstanceId);
+      relatedObject = ParseRecipe.createWithoutData(parseInstanceId);
       break;
     case PARSE_USERS:
-      ParseUser.createWithoutData(parseInstanceId);
+      relatedObject = ParseUser.createWithoutData(parseInstanceId);
       break;
     case PARSE_REVIEWS:
-      ParseReview.createWithoutData(parseInstanceId);
+      relatedObject = ParseReview.createWithoutData(parseInstanceId);
       break;
     case PARSE_PHOTOS:
-      ParsePhoto.createWithoutData(parseInstanceId);
+      relatedObject = ParsePhoto.createWithoutData(parseInstanceId);
       break;
     default:
       throw new Error('No matched parseType to create parse without data!')
       break;
   }
+
+  return relatedObject;
 }
 
 

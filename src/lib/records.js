@@ -14,14 +14,6 @@ const {
 
 
 const {
-  ParseRestaurant,
-  ParseEvent,
-  ParsePeopleInEvent,
-  ParseUser,
-  ParseReview,
-  ParseRecipe,
-  ParseRecord,
-  ParsePhoto,
   getInstanceWithoutData,
 } = require('../parse/objects').default
 
@@ -62,7 +54,6 @@ Records.toFirstUpperString = function (name) {
   return name.charAt(0).toUpperCase() + name.slice(1);
 }
 
-
 Records.generateNewOnlineParseInstance = function (onlineParseObject, objectSchemaName, model) {
 
   onlineParseObject.set('flag', '1')
@@ -96,6 +87,7 @@ Records.generateNewOnlineParseInstance = function (onlineParseObject, objectSche
       onlineParseObject.set('price', model.price)
       break;
     case PARSE_PHOTOS:
+      debugger
       // step1: common fields.
       onlineParseObject.set('photoType', model.modelType)
       onlineParseObject.set('thumbnail', model.thumbnail)
@@ -125,10 +117,8 @@ Records.generateNewOnlineParseInstance = function (onlineParseObject, objectSche
 }
 
 Records.setParseObjectFieldWithoutData = function (parseType, instance, parseInstanceId) {
-  debugger
   const {objectSchemaName, realmSchema} = Records.realmObjects[parseType];
   const instanceWithoutData = getInstanceWithoutData(objectSchemaName, parseInstanceId)
-
   instance.set(parseType, instanceWithoutData);
 }
 
