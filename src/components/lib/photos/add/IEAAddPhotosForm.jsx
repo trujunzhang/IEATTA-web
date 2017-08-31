@@ -107,7 +107,7 @@ class IEAAddPhotosForm extends Component {
                 </span>
               <h3 className="alternate inline-block">
                 {"Perfect!"}
-                <b className="margin-left-4">{"Next, describe your photo below."}</b>
+                <b className="margin-left-4">{"Next, submit your photo."}</b>
               </h3>
             </div>
 
