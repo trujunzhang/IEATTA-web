@@ -7,7 +7,7 @@ class OrderedRecipesSingleHeader extends Component {
   renderSubHeader() {
     const mapInfo = Restaurants.getMapInfo(this.props.forObject.restaurant,
       this.props.forObject.restaurant.geoLocation,
-      true, false)
+      false, false)
 
     return (
       <div className="biz-page-subheader">

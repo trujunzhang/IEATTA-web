@@ -70,11 +70,16 @@ class F8RestaurantMapSection extends Component {
               })}
             </strong>
           </div>
-
         </li>
+        {/*{this.renderDirection()}*/}
+      </ul>
+    )
+  }
 
-        <li className="clearfix">
-          <div>
+  renderDirection() {
+    return (
+      <li className="clearfix">
+        <div>
             <span id="icon_18X18"
                   className="icon icon--18-directions icon--size-18">
               <svg className="icon_svg">
@@ -82,12 +87,12 @@ class F8RestaurantMapSection extends Component {
                   d="M16.444 7.556l-5.957-5.958a2.145 2.145 0 0 0-3.034 0L1.598 7.453a2.145 2.145 0 0 0 0 3.034l5.958 5.957a2 2 0 0 0 2.828 0l6.06-6.06a2 2 0 0 0 0-2.828zM9.97 11.47v-2.5h-3v3h-1v-4h4v-2.5l3 3-3 3z"/>
               </svg>
             </span>
-            <a className="biz-directions">
-              Get Directions
-            </a>
-          </div>
-        </li>
-      </ul>
+          <a className="biz-directions">
+            Get Directions
+          </a>
+        </div>
+      </li>
+
     )
   }
 
