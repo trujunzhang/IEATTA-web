@@ -51,8 +51,6 @@ class F8SinglePageHeaderButtonsSection extends Component {
       forObject
     } = this.props;
 
-    debugger
-
     return (
       <div className="biz-page-actions nowrap">
 
