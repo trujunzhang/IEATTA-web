@@ -13,10 +13,12 @@ class Layout extends Component {
   }
 
   render() {
+    const {children} = this.props;
+
     if (checkLoginFormPage(this.props)) {
       return (
         <div id='web-app-panel'>
-          {this.props.children}
+          {children}
           <Telescope.components.AppFooter/>
         </div>
       )
@@ -27,7 +29,7 @@ class Layout extends Component {
           <Telescope.components.HeaderContent/>
         </div>
 
-        {this.props.children}
+        {children}
 
         <Telescope.components.AppFooter/>
       </div>
