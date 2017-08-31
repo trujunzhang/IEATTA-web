@@ -4,11 +4,10 @@ import React, {Component} from 'react'
 import {withRouter} from 'react-router'
 
 const {
-  updateEvent,
+  uploadLoggedUser,
   showAlertMessage,
   timeout
 } = require('../../../actions').default
-
 
 /**
  * The states were interested in
@@ -90,15 +89,13 @@ class IEAEditUserLayout extends Component {
 
     const objectId = userProfile.id;
     const username = this.props.auth.form.fields.username;
-    const eventWhat = this.props.auth.form.fields.eventWhat;
-    const eventStart = this.props.auth.form.fields.start;
-    const eventEnd = this.props.auth.form.fields.end;
+    const email = this.props.auth.form.fields.email;
 
     this.props.actions.updateModelRequest();
 
     try {
       await Promise.race([
-        dispatch(updateEvent({objectId, username, eventWhat, eventStart, eventEnd})),
+        dispatch(uploadLoggedUser({objectId, username, email})),
         timeout(15000),
       ]);
     } catch (e) {
@@ -106,7 +103,7 @@ class IEAEditUserLayout extends Component {
       const message = e.message || e;
       if (message !== 'Timed out' && message !== 'Canceled by user') {
         this.props.dispatch(showAlertMessage(message))
-        // debugger
+        debugger
         // alert(message);
         // console.warn(e);
       }
