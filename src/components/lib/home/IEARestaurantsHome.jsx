@@ -37,10 +37,6 @@ class IEARestaurantsHome extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if ((!!nextProps.router.location.query.search)) {
-      const searchTerms = generateTermsForRestaurantList(props)
-
-    }
     const listTask = byListId(nextProps.listContainerTasks, this.state.terms.listId, this.state.listTask);
     const markers = generateMarkers(nextProps.listContainerTasks, this.state.terms.listId);
 
@@ -51,17 +47,30 @@ class IEARestaurantsHome extends Component {
       markers: markers,
       defaultMarker: defaultMarker
     })
+
+    if ((!!nextProps.router.location.query.search)) {
+      const searchTerms = generateTermsForRestaurantList(props)
+      const searchListTask = getDefaultListTask(searchTerms)
+
+      this.setState({
+        terms: searchTerms,
+        listTask: searchListTask,
+        markers: [],
+        defaultMarker: null
+      })
+
+      this.loadMore(searchListTask, searchTerms)
+    }
+
   }
 
   componentDidMount() {
-    this.loadMore()
+    const {listTask, terms} = this.state;
+    this.loadMore(listTask, terms)
   }
 
-  loadMore() {
-    const nextListTask = this.state.listTask
-    nextListTask['ready'] = false
-    this.setState({listTask: nextListTask})
-    this.props.dispatch(loadRestaurantsList(nextListTask, this.state.terms))
+  loadMore(listTask, terms) {
+    this.props.dispatch(loadRestaurantsList(listTask, terms))
   }
 
   onRestaurantItemHover(restaurant) {
