@@ -225,6 +225,7 @@ async function _uploadPhoto(model: object): Promise<Array<Action>> {
     PARSE_PHOTOS,
     Object.assign({}, model, {
       thumbnail: thumbnailFile,
+      original: thumbnailFile,
     })
   )
 
