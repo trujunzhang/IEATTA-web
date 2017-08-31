@@ -214,9 +214,8 @@ function createNewReview(model: object): ThunkAction {
 
 
 async function _uploadPhoto(model: object): Promise<Array<Action>> {
-  const thumbnailFile = new Parse.File(model.file.name, model.file)
+  const thumbnailFile = new Parse.File('image', model.file)
   await thumbnailFile.save()
-
   const photo = createParseInstance(PARSE_PHOTOS)
 
   // step1: generate photo.
