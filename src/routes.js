@@ -181,7 +181,6 @@ const createRoutes = (store) => {
     {
       path: '/',
       component: Telescope.components.Layout,
-      // indexRoute: {component: Telescope.components.DetailedRestaurant},
       indexRoute: {component: Telescope.components.IEARestaurantsHome},
 
       childRoutes: [
@@ -195,11 +194,6 @@ const createRoutes = (store) => {
         ...userEditRoutes,
         ...photosRoutes,
         ...playgroundRoutes,
-        {
-          // http://localhost:3000/user_details?userid=t3cu9DxXtGyaPIWNvPOXxA
-          path: 'user_details',
-          component: Telescope.components.UsersSingle
-        },
         {
           path: '*',
           component: Telescope.components.Error404
