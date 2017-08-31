@@ -8,7 +8,9 @@ export default class RestaurantsParameters {
 
   addParameters(terms: Any) {
 
-   debugger
+    if (terms.search) {
+      this.query.startsWith('displayName', terms.search)
+    }
 
     if (terms.userProfileType) {
       let userId = terms.userId

@@ -36,7 +36,11 @@ class HeaderContentSearchBar extends Component {
     const self = this;
 
     delayEvent(function () {
-      router.replace({pathname: router.location.pathname, query: {search: input}})
+      if (input === "") {
+        router.replace({pathname: router.location.pathname})
+      } else {
+        router.replace({pathname: router.location.pathname, query: {search: input}})
+      }
     }, 700)
   }
 
