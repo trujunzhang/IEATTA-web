@@ -42,7 +42,6 @@ class UsersSingle extends Component {
       // Common
       pageForm: getPageFormTypeForUserProfile(props),
     }
-      debugger
   }
 
   componentWillReceiveProps(nextProps) {

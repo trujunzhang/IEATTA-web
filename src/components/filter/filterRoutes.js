@@ -200,7 +200,6 @@ export function generateTermsForOrderedUsersList(props) {
 
 export function generateTermsForRestaurantList(props) {
   const {location} = props;
-  debugger
 
   return {
     ...location.query,
