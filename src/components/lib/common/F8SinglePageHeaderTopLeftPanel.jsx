@@ -4,7 +4,6 @@ import React, {Component} from 'react'
 import Records from '../../../lib/records'
 
 import {
-  getEditRestaurantLink,
   getEditLinkByModelType
 } from '../../../lib/link'
 import {Link} from 'react-router'
@@ -55,10 +54,10 @@ class F8SinglePageHeaderTopLeftPanel extends Component {
                 <path d="M9 11V5h2v6H9zM6 3h2v8H6V3zM3 7h2v4H3V7z"/>
               </svg>
             </span>
-          Details
+          {"Details"}
           <span className="tooltip-wrapper">
-                <span className="tooltip">Rating details</span>
-            </span>
+                  <span className="tooltip">{"Review details"}</span>
+          </span>
         </a>
       </div>
 
