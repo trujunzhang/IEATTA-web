@@ -17,8 +17,7 @@ class F8UserAvatorSection extends Component {
           className="photo-slideshow photo-slideshow--full-width photo-slideshow--rounded js-photo-slideshow-user-details">
           <div className="photo-slideshow_slide is-active">
             <div>
-              <Link to={getLoggedUserMenuLink(user)}
-                    className="ordered-user-avator">
+              <Link to={getLoggedUserMenuLink(user)} className="ordered-user-avator">
 
                 <Telescope.components.F8PlaceHolderImage
                   alt={user.username || ""}
