@@ -38,7 +38,8 @@ class IEARestaurantsHome extends Component {
 
   componentWillReceiveProps(nextProps) {
     if ((!!nextProps.router.location.query.search)) {
-      debugger
+      const searchTerms = generateTermsForRestaurantList(props)
+
     }
     const listTask = byListId(nextProps.listContainerTasks, this.state.terms.listId, this.state.listTask);
     const markers = generateMarkers(nextProps.listContainerTasks, this.state.terms.listId);
