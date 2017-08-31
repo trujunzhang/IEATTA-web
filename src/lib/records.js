@@ -125,6 +125,7 @@ Records.generateNewOnlineParseInstance = function (onlineParseObject, objectSche
 }
 
 Records.setParseObjectFieldWithoutData = function (parseType, instance, parseInstanceId) {
+  debugger
   const {objectSchemaName, realmSchema} = Records.realmObjects[parseType];
   const instanceWithoutData = getInstanceWithoutData(objectSchemaName, parseInstanceId)
 

@@ -88,7 +88,7 @@ function getInstanceWithoutData(objectSchemaName, parseInstanceId) {
       ParseReview.createWithoutData(parseInstanceId);
       break;
     case PARSE_PHOTOS:
-      PARSE_PHOTOS.createWithoutData(parseInstanceId);
+      ParsePhoto.createWithoutData(parseInstanceId);
       break;
     default:
       throw new Error('No matched parseType to create parse without data!')
