@@ -25,7 +25,6 @@
 
 const Parse = require('parse')
 
-
 const ParseRestaurant = Parse.Object.extend('Restaurant')
 const ParseEvent = Parse.Object.extend('Event')
 const ParsePeopleInEvent = Parse.Object.extend('PeopleInEvent')
@@ -63,22 +62,33 @@ function createParseInstance(objectSchemaName) {
   }
 }
 
-function setParseObjectFieldWithoutData(parseType, instance, parseInstanceId) {
-  switch (parseType) {
-    case "restaurant":
-      instance.set('restaurant', ParseRestaurant.createWithoutData(parseInstanceId))
+function appendGeoLocation(onlineParseObject, localRecorder, field = "geoLocation") {
+  const _geoLocation = new Parse.GeoPoint({
+    latitude: localRecorder.latitude,
+    longitude: localRecorder.longitude
+  })
+  onlineParseObject.set(field, _geoLocation)
+}
+
+function getInstanceWithoutData(objectSchemaName, parseInstanceId) {
+  switch (objectSchemaName) {
+    case PARSE_RESTAURANTS:
+      ParseRestaurant.createWithoutData(parseInstanceId);
       break;
-    case "event":
-      instance.set('event', ParseEvent.createWithoutData(parseInstanceId))
+    case PARSE_EVENTS:
+      ParseEvent.createWithoutData(parseInstanceId);
       break;
-    case "recipe":
-      instance.set('recipe', ParseRecipe.createWithoutData(parseInstanceId))
+    case PARSE_RECIPES:
+      ParseRecipe.createWithoutData(parseInstanceId);
       break;
-    case "user":
-      instance.set('user', ParseUser.createWithoutData(parseInstanceId))
+    case PARSE_USERS:
+      ParseUser.createWithoutData(parseInstanceId);
       break;
-    case "review":
-      instance.set('review', ParseReview.createWithoutData(parseInstanceId))
+    case PARSE_REVIEWS:
+      ParseReview.createWithoutData(parseInstanceId);
+      break;
+    case PARSE_PHOTOS:
+      PARSE_PHOTOS.createWithoutData(parseInstanceId);
       break;
     default:
       throw new Error('No matched parseType to create parse without data!')
@@ -97,5 +107,6 @@ export default {
   ParseRecord,
   ParsePhoto,
   createParseInstance,
-  setParseObjectFieldWithoutData,
+  getInstanceWithoutData,
+  appendGeoLocation,
 }

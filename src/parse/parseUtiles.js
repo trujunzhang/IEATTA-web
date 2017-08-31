@@ -2,6 +2,8 @@ const Parse = require('parse')
 
 const Parameters = require('../parameters').default
 
+const Records = require('../lib/records').default
+
 const {
   ParseRestaurant,
   ParseEvent,
@@ -12,7 +14,6 @@ const {
   ParseRecord,
   ParsePhoto,
   createParseInstance,
-  setParseObjectFieldWithoutData,
 } = require('./objects').default
 
 /**
@@ -54,6 +55,7 @@ function getQueryByType(type: string, includes: Array = []) {
       query = new Parse.Query(ParseRecord)
       break;
     case PARSE_PHOTOS:
+      debugger
       query = new Parse.Query(ParsePhoto)
       break;
   }
@@ -115,15 +117,20 @@ function getPhotosParameters(terms) {
     .end()
 }
 
-async function updateParseRecorder(recordType, parseInstance) {
-  let recorder = await getQueryByType(PARSE_RECORDS).equalTo(recordType, parseInstance).first()
+async function updateParseRecorder(objectSchemaName, parseInstance) {
+  const {recordType} = Records.realmTypes [objectSchemaName]
+  debugger
+  let recorder = await getQueryByType(objectSchemaName).equalTo(recordType, parseInstance).first()
+  debugger
   if (!!recorder) {
+    debugger
   } else {
+    debugger
     recorder = createParseInstance(PARSE_RECORDS)
 
     recorder.set('recordType', recordType)
     recorder.set('recordId', parseInstance.id)
-    setParseObjectFieldWithoutData(recordType, recorder, parseInstance.id)
+    Records.setParseObjectFieldWithoutData(recordType, recorder, parseInstance.id)
   }
 
   await recorder.save()

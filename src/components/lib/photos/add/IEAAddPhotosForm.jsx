@@ -87,6 +87,9 @@ class IEAAddPhotosForm extends Component {
   }
 
   renderFilePreview() {
+    const {editModel} = this.props;
+    const isDisabled = (!editModel.form.isValid || editModel.form.isFetching);
+
     return (
       <div className="post-upload-container no-js-hidden">
 
@@ -112,6 +115,7 @@ class IEAAddPhotosForm extends Component {
           <div className="arrange_unit arrange arrange--middle arrange--18 finish-social-media-container">
             <div className="arrange_unit">
               <button
+                disabled={isDisabled}
                 onClick={this.onButtonPress.bind(this)}
                 className="ybtn ybtn-primary finish-upload-btn"
                 type="submit"

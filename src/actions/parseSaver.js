@@ -35,7 +35,6 @@ import Records from "../lib/records";
 
 const {
   createParseInstance,
-  setParseObjectFieldWithoutData
 } = require('../parse/objects').default
 
 const {
@@ -89,7 +88,7 @@ async function _updateRestaurant(model: object): Promise<Array<Action>> {
 
   await restaurant.save()
 
-  await updateParseRecorder('restaurant', restaurant)
+  await updateParseRecorder(PARSE_RESTAURANTS, restaurant)
 
   const action = {
     type: UPDATE_MODEL_REQUEST,
@@ -123,7 +122,7 @@ async function _updateEvent(model: object): Promise<Array<Action>> {
 
   await event.save()
 
-  await updateParseRecorder('event', event)
+  await updateParseRecorder(PARSE_EVENTS, event)
 
   const action = {
     type: UPDATE_MODEL_REQUEST,
@@ -156,7 +155,7 @@ async function _updateRecipe(model: object): Promise<Array<Action>> {
 
   await recipe.save()
 
-  await updateParseRecorder('recipe', recipe)
+  await updateParseRecorder(PARSE_RECIPES, recipe)
 
   const action = {
     type: UPDATE_MODEL_REQUEST,
@@ -190,7 +189,7 @@ async function _createNewReview(model: object): Promise<Array<Action>> {
   await review.save()
 
   // step5: update the recorder
-  await updateParseRecorder('review', review)
+  await updateParseRecorder(PARSE_REVIEWS, review)
 
   const action = {
     type: SAVE_MODEL_REQUEST,
@@ -234,7 +233,7 @@ async function _uploadPhoto(model: object): Promise<Array<Action>> {
   await photo.save()
 
   // step5: update the recorder
-  await updateParseRecorder('photo', photo)
+  await updateParseRecorder(PARSE_PHOTOS, photo)
 
   const action = {
     type: SAVE_MODEL_REQUEST,

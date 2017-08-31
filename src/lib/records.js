@@ -22,7 +22,7 @@ const {
   ParseRecipe,
   ParseRecord,
   ParsePhoto,
-  setParseObjectFieldWithoutData,
+  getInstanceWithoutData,
 } = require('../parse/objects').default
 
 const Parse = require('parse')
@@ -101,10 +101,10 @@ Records.generateNewOnlineParseInstance = function (onlineParseObject, objectSche
       onlineParseObject.set('thumbnail', model.thumbnail)
 
       // step2: the logged user submitted the review.
-      setParseObjectFieldWithoutData('user', onlineParseObject, model.currentUserId)
+      Records.setParseObjectFieldWithoutData('user', onlineParseObject, model.currentUserId)
 
       // step3: set the relation by review type.
-      setParseObjectFieldWithoutData(model.modelType, onlineParseObject, model.forObjectId)
+      Records.setParseObjectFieldWithoutData(model.modelType, onlineParseObject, model.forObjectId)
       break;
     case PARSE_USERS:
 
@@ -116,12 +116,19 @@ Records.generateNewOnlineParseInstance = function (onlineParseObject, objectSche
       onlineParseObject.set('reviewType', model.reviewType)
 
       // step2: the logged user submitted the review.
-      setParseObjectFieldWithoutData('user', onlineParseObject, model.currentUserId)
+      Records.setParseObjectFieldWithoutData('user', onlineParseObject, model.currentUserId)
 
       // step3: set the relation by review type.
-      setParseObjectFieldWithoutData(model.reviewType, onlineParseObject, model.forObjectId)
+      Records.setParseObjectFieldWithoutData(model.reviewType, onlineParseObject, model.forObjectId)
       break;
   }
+}
+
+Records.setParseObjectFieldWithoutData = function (parseType, instance, parseInstanceId) {
+  const {objectSchemaName, realmSchema} = Records.realmObjects[parseType];
+  const instanceWithoutData = getInstanceWithoutData(objectSchemaName, parseInstanceId)
+
+  instance.set(parseType, instanceWithoutData);
 }
 
 
