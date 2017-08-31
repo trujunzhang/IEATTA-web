@@ -104,20 +104,15 @@ class ReviewsList extends Component {
 
 
   render() {
-    const {listTask} = this.state
-
-    const {
-      results,
-      ready,
-      totalCount,
-      limit,
-    } = listTask
-
-    let hasMore = !ready && totalCount !== results.length;
+    const {showHeaderTitle} = this.props;
 
     return (
       <div className="feed">
-        <Telescope.components.ReviewsHeaderView  {...this.props}/>
+
+        {
+          showHeaderTitle &&
+          <Telescope.components.ReviewsHeaderView  {...this.props}/>
+        }
 
         <div className="review-list" id="position-relative">
 
@@ -129,6 +124,15 @@ class ReviewsList extends Component {
   }
 
 }
+
+
+ReviewsList.propTypes = {
+  showHeaderTitle: React.PropTypes.bool
+};
+
+ReviewsList.defaultProps = {
+  showHeaderTitle: true
+};
 
 const {connect} = require('react-redux')
 

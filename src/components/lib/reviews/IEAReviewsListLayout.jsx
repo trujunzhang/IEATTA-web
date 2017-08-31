@@ -103,7 +103,8 @@ class IEAReviewsListLayout extends Component {
               key={this.state.forObjectId}
               forObject={this.state.forObject}
               reviewType={this.state.modelType}
-              reviewTitle={"wanghao"}/>
+              showHeaderTitle={false}
+            />
 
 
             {this.renderReviewsListFooter()}
