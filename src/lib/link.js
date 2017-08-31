@@ -69,6 +69,10 @@ export function getEditEventLink(event) {
   return `/edit/event/${event.id}/${slugify(event.displayName)}`
 }
 
+export function getReviewsListLink({modelType, forObject}) {
+  return `/reviews/${modelType}/${forObject.id}`
+}
+
 export function getAddPhotoLink(modelType, model) {
   // path: 'photos/add/(:modelType)/(:forObjectId)',
   return `/photos/add/${modelType}/${model.id}`

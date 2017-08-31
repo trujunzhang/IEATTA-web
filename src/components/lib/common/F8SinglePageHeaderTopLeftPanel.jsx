@@ -4,6 +4,7 @@ import React, {Component} from 'react'
 import Records from '../../../lib/records'
 
 import {
+  getReviewsListLink,
   getEditLinkByModelType
 } from '../../../lib/link'
 import {Link} from 'react-router'
@@ -47,7 +48,8 @@ class F8SinglePageHeaderTopLeftPanel extends Component {
   renderRatingDetails() {
     return (
       <div className="rating-details">
-        <a className="chiclet-link chiclet-link--with-text show-tooltip js-rating-details">
+        <Link to={getReviewsListLink(this.props)}
+              className="chiclet-link chiclet-link--with-text show-tooltip js-rating-details">
             <span id="icon_14X14"
                   className="icon icon--14-histogram icon--size-14 icon--currentColor">
               <svg className="icon_svg">
@@ -58,7 +60,7 @@ class F8SinglePageHeaderTopLeftPanel extends Component {
           <span className="tooltip-wrapper">
                   <span className="tooltip">{"Review details"}</span>
           </span>
-        </a>
+        </Link>
       </div>
 
     )
