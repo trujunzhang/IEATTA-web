@@ -1,7 +1,12 @@
 import Telescope from '../index'
 import React, {Component} from 'react'
-import Users from '../../../lib/users'
 import Photos from '../../../lib/photos'
+
+const {
+  PHOTO_BROWSER_NORMAL_TITLE,
+  PHOTO_BROWSER_LOGGED_USER_TITLE,
+} = require('../../../lib/constants').default
+
 
 class IEAPhotosSingleLayout extends Component {
 
@@ -18,6 +23,14 @@ class IEAPhotosSingleLayout extends Component {
     })
   }
 
+  renderTitle() {
+    if (this.props.photoTitleType === PHOTO_BROWSER_LOGGED_USER_TITLE) {
+      return (<Telescope.components.F8PhotosLoggedUserTitleHeader {...this.props}/>)
+    }
+
+    return (<Telescope.components.F8PhotosSingleTop {...this.props}/>)
+  }
+
   render() {
     return (
 
@@ -27,7 +40,7 @@ class IEAPhotosSingleLayout extends Component {
 
           <div className="container media-details js-media-details">
 
-            <Telescope.components.F8PhotosSingleTop {...this.props}/>
+            {this.renderTitle()}
 
             <Telescope.components.F8PhotosContentWithNavBar
               {...this.props}
@@ -42,5 +55,14 @@ class IEAPhotosSingleLayout extends Component {
     )
   }
 }
+
+IEAPhotosSingleLayout.propTypes = {
+  photoTitleType: React.PropTypes.string
+};
+
+IEAPhotosSingleLayout.defaultProps = {
+  photoTitleType: PHOTO_BROWSER_NORMAL_TITLE
+};
+
 
 export default IEAPhotosSingleLayout;

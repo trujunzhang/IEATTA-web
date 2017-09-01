@@ -47,8 +47,7 @@ class IEAPhotosBrowserLayout extends Component {
   }
 
   renderTitle() {
-    const {photoTitleType} = this.props;
-    if (photoTitleType === PHOTO_BROWSER_LOGGED_USER_TITLE) {
+    if (this.props.photoTitleType === PHOTO_BROWSER_LOGGED_USER_TITLE) {
       return (<Telescope.components.F8PhotosLoggedUserTitleHeader {...this.props}/>)
     }
     return (<Telescope.components.F8PhotosTitleHeader {...this.props}/>)
