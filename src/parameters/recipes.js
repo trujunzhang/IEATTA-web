@@ -1,12 +1,5 @@
-const Parse = require('parse')
-import moment from 'moment'
+import {equalRelationObject} from './parseQuery'
 
-let {ParseRestaurant, ParseEvent, ParseUser} = require('../parse/objects').default
-
-/**
- * The states were interested in
- */
-const {} = require('../lib/constants').default
 
 export default class RecipesParameters {
   constructor(query: Parse.Query) {
@@ -15,17 +8,11 @@ export default class RecipesParameters {
 
   addParameters(terms: Any) {
 
-    if (terms.orderedUserId) {
-      this.query.equalTo('user', ParseUser.createWithoutData(terms.orderedUserId))
-    }
+    equalRelationObject(PARSE_USERS, terms.orderedUserId)
 
-    if (terms.eventId) {
-      this.query.equalTo('event', ParseEvent.createWithoutData(terms.eventId))
-    }
+    equalRelationObject(PARSE_EVENTS, terms.eventId)
 
-    if (terms.restaurantId) {
-      this.query.equalTo('restaurant', ParseRestaurant.createWithoutData(terms.restaurantId))
-    }
+    equalRelationObject(PARSE_RESTAURANTS, terms.restaurantId)
 
     return this
   }

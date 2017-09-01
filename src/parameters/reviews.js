@@ -1,6 +1,16 @@
-const {ParseRestaurant, ParseEvent, ParseRecipe, ParseUser, ParseReview} = require('../parse/objects').default
+const {
+  ParseRestaurant,
+  ParseEvent,
+  ParseRecipe,
+  ParseUser,
+  ParseReview
+} = require('../parse/objects').default
 
 import Reviews from '../lib/reviews'
+
+import {equalRelationObject} from './parseQuery'
+
+import Records from '../lib/records'
 
 /**
  * The states were interested in
@@ -43,25 +53,14 @@ export default class ReviewsParameters {
     }
 
     if (!!terms.reviewListType) {
-      this.query.equalTo('user', ParseUser.createWithoutData(terms.forObject.id))
+      equalRelationObject(PARSE_USERS, terms.forObject.id)
     }
-    if (!!terms.reviewType) {
-      this.query.equalTo('reviewType', terms.reviewType)
-      if (terms.forObject) {
 
-        switch (terms.reviewType) {
-          case 'restaurant':
-            this.query.equalTo('restaurant', ParseRestaurant.createWithoutData(terms.forObject.id))
-            break;
-          case 'event':
-            this.query.equalTo('event', ParseEvent.createWithoutData(terms.forObject.id))
-            break;
-          case 'recipe':
-            this.query.equalTo('recipe', ParseRecipe.createWithoutData(terms.forObject.id))
-            break;
-        }
-
-      }
+    const {reviewType, forObject} = terms;
+    if (!!reviewType) {
+      this.query.equalTo('reviewType', reviewType)
+      const {objectSchemaName} = Records.realmObjects[reviewType]
+      equalRelationObject(objectSchemaName, terms.forObject.id)
     }
 
 

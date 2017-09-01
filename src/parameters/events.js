@@ -1,12 +1,6 @@
-import moment from 'moment'
-
 const {
-  ParseRestaurant,
-  ParseEvent,
-  ParseUser,
   getInstanceWithoutData
 } = require('../parse/objects').default
-
 
 /**
  * The states were interested in
@@ -16,6 +10,8 @@ const {
   PARSE_USERS
 } = require('../lib/constants').default
 
+import {equalRelationObject} from './parseQuery'
+
 export default class EventsParameters {
   constructor(query: Parse.Query) {
     this.query = query
@@ -23,14 +19,9 @@ export default class EventsParameters {
 
   addParameters(terms: Any) {
 
-    if (terms.userId) {
-      const instanceWithoutData = getInstanceWithoutData(PARSE_USERS, terms.userId)
-      this.query.equalTo('user', instanceWithoutData)
-    }
-    if (terms.restaurantId) {
-      const instanceWithoutData = getInstanceWithoutData(PARSE_RESTAURANTS, terms.restaurantId)
-      this.query.equalTo('restaurant', instanceWithoutData)
-    }
+    equalRelationObject(PARSE_USERS, terms.userId)
+
+    equalRelationObject(PARSE_RESTAURANTS, terms.restaurantId)
 
     return this
   }
