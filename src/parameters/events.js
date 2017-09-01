@@ -23,6 +23,7 @@ export default class EventsParameters {
   }
 
   addParameters(terms: Any) {
+
     if (terms.userId) {
       const instanceWithoutData = getInstanceWithoutData(PARSE_USERS, terms.userId)
       this.query.equalTo('user', instanceWithoutData)
