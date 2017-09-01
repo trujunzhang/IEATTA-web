@@ -80,16 +80,17 @@ class UsersSingle extends Component {
 
     if (!!userProfile) {
       switch (pageForm) {
-        case LOGGED_USER_MENU_EVENTS:
-          return (<Telescope.components.IEAUserProfileEventsLayout {...this.state} {...this.props}/>)
-        case LOGGED_USER_MENU_BROWSER_PHOTOS:
-          return (<Telescope.components.IEAUserProfilePhotosLayout {...this.state} {...this.props}/>)
         case LOGGED_USER_MENU_ABOUT:
-        case LOGGED_USER_MENU_REVIEWS:
           if (!!this.state.userStatistic) {
             return (<Telescope.components.IEAUserProfileAboutLayout {...this.state} {...this.props}/>)
           }
           break;
+        case LOGGED_USER_MENU_REVIEWS:
+          return (<Telescope.components.IEAUserProfileReviewsLayout {...this.state} {...this.props}/>)
+        case LOGGED_USER_MENU_BROWSER_PHOTOS:
+          return (<Telescope.components.IEAUserProfilePhotosLayout {...this.state} {...this.props}/>)
+        case LOGGED_USER_MENU_EVENTS:
+          return (<Telescope.components.IEAUserProfileEventsLayout {...this.state} {...this.props}/>)
         case LOGGED_USER_EDIT_FORM:
           return (<Telescope.components.IEAEditUserLayout {...this.state} {...this.props}/>)
       }

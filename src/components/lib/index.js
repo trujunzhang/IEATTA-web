@@ -131,6 +131,7 @@ Telescope.registerComponent('EditUserProfilePhoto',                require('./pr
 // profile(menus)
 Telescope.registerComponent('IEAUserProfilePhotosLayout',           require('./profile/IEAUserProfilePhotosLayout.jsx').default)
 Telescope.registerComponent('IEAUserProfileEventsLayout',           require('./profile/IEAUserProfileEventsLayout.jsx').default)
+Telescope.registerComponent('IEAUserProfileReviewsLayout',          require('./profile/IEAUserProfileReviewsLayout.jsx').default)
 
 // Logged user edit form
 Telescope.registerComponent('IEAEditUserLayout',                  require('./profile/IEAEditUserLayout.jsx').default)
