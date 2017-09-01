@@ -3,28 +3,22 @@ import React, {Component} from 'react'
 
 const {loadRecipesList} = require('../../../../actions').default
 
-const {byListId, getDefaultListTask} = require('../../../filter/filterPosts')
+const {
+  byListId,
+  getDefaultListTask,
+} = require('../../../filter/filterPosts')
+
+const {
+  generateTermsForRecipesList
+} = require('../../../filter/filterRoutes')
 
 class RecipesList extends Component {
 
   constructor(props) {
     super(props)
 
-    const forEvent = props.forEvent || {};
-    const forRestaurant = props.forRestaurant || {};
-    const orderedUser = props.orderedUser || {};
+    const terms = generateTermsForRecipesList(props)
 
-    const orderedUserId = orderedUser.id || '';
-    const eventId = forEvent.id || '';
-    const restaurantId = forRestaurant.id || '';
-
-    const terms = {
-      listId: `ordered-recipes-list-view-for-${orderedUserId}-e-${eventId}-r-${restaurantId}`,
-      limit: 10,
-      orderedUserId: orderedUserId,
-      eventId: eventId,
-      restaurantId: restaurantId
-    };
     this.state = {
       terms: terms,
       listTask: getDefaultListTask(terms),

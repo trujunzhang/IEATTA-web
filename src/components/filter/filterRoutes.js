@@ -181,6 +181,28 @@ export function generateTermsForReviewsList(props) {
   };
 }
 
+export function generateTermsForRecipesList(props) {
+  const forEvent = props.forEvent || {};
+  const forRestaurant = props.forRestaurant || {};
+  const orderedUser = props.orderedUser || {};
+
+  const orderedUserId = orderedUser.id || '';
+  const eventId = forEvent.id || '';
+  const restaurantId = forRestaurant.id || '';
+
+  const listId = `ordered-recipes-list-view-for-${orderedUserId}-e-${eventId}-r-${restaurantId}`;
+
+  const terms = {
+    listId: listId,
+    limit: 10,
+    orderedUserId: orderedUserId,
+    eventId: eventId,
+    restaurantId: restaurantId
+  };
+
+  return terms;
+}
+
 export function generateTermsForEventsList({eventType, forObject}) {
   const listId = forObject.id;
   const extendProps = (eventType === EVENTS_LIST_FOR_RESTAURANT) ? {
