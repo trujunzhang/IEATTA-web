@@ -1,6 +1,5 @@
 import Telescope from '../../index'
 import React, {Component} from 'react';
-import Photos from '../../../../lib/photos'
 
 import {Link} from 'react-router'
 import {
@@ -12,7 +11,8 @@ import {
 class F8PhotosLoggedUserTitleHeader extends Component {
 
   render() {
-    const {forObject, modelType, userProfile} = this.props;
+    const {forObject, modelType, userProfile, photosListTask} = this.props;
+    debugger
     return (
       <div className="js-media-landing_header media-landing_header" data-component-bound="true">
         <div className="section-header media-header">
@@ -38,8 +38,7 @@ class F8PhotosLoggedUserTitleHeader extends Component {
               </ul>
 
               <h1 className="media-header_title h2">
-                {`3 photos by ${forObject.displayName}`}
-
+                {`${photosListTask.totalCount} photos by ${forObject.displayName}`}
               </h1>
             </div>
           </div>
