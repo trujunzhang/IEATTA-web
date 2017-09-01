@@ -98,17 +98,15 @@ class RecipesList extends Component {
 
 
   render() {
-    const {
-      showTitle = false,
-    } = this.props;
+    const {showTitle} = this.props;
 
     return (
       <div className="ysection">
 
-
-        {showTitle ? (
+        {
+          showTitle &&
           <Telescope.components.F8SectionHeaderTitle title={"Recently Ordered Recipes"}/>
-        ) : null}
+        }
 
         {this.renderRows()}
 
@@ -121,6 +119,16 @@ class RecipesList extends Component {
   }
 
 }
+
+
+RecipesList.propTypes = {
+  showTitle: React.PropTypes.bool
+};
+
+RecipesList.defaultProps = {
+  showTitle: false
+};
+
 
 const {connect} = require('react-redux')
 
