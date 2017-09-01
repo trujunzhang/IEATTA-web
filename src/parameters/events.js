@@ -1,13 +1,21 @@
 import moment from 'moment'
 
-const {ParseRestaurant, ParseEvent, ParseUser} = require('../parse/objects').default
+const {
+  ParseRestaurant,
+  ParseEvent,
+  ParseUser,
+  getInstanceWithoutData
+} = require('../parse/objects').default
 
 const Parse = require('parse')
 
 /**
  * The states were interested in
  */
-const {} = require('../lib/constants').default
+const {
+  PARSE_RESTAURANTS,
+  PARSE_USERS
+} = require('../lib/constants').default
 
 export default class EventsParameters {
   constructor(query: Parse.Query) {
@@ -15,11 +23,13 @@ export default class EventsParameters {
   }
 
   addParameters(terms: Any) {
-
-    debugger
-
+    if (terms.userId) {
+      const instanceWithoutData = getInstanceWithoutData(PARSE_USERS, terms.userId)
+      this.query.equalTo('user', instanceWithoutData)
+    }
     if (terms.restaurantId) {
-      this.query.equalTo('restaurant', ParseRestaurant.createWithoutData(terms.restaurantId))
+      const instanceWithoutData = getInstanceWithoutData(PARSE_RESTAURANTS, terms.restaurantId)
+      this.query.equalTo('restaurant', instanceWithoutData)
     }
 
     return this
