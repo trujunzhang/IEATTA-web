@@ -42,17 +42,11 @@ class IEAUserProfilePhotosLayout extends Component {
     super(props)
 
     const photosTerms = generatePhotoTerm(PARSE_USERS, props.userProfile.id)
-    const forObject = {
-      id: this.props.userProfile.id,
-      displayName: this.props.userProfile.username,
-    }
 
     this.state = this.initialState = {
       photosTerms: photosTerms,
       photosListTask: getDefaultListTask(photosTerms),
       selectPhotoIndex: -1,
-      // Detailed object
-      forObject: forObject,
       // Common
       pageForm: getPageFormType(PARSE_USERS, props, null),
       modelType: 'user',
@@ -79,23 +73,21 @@ class IEAUserProfilePhotosLayout extends Component {
 
 
   render() {
-    const {photosListTask, forObject, pageForm} = this.state;
+    const {photosListTask, pageForm} = this.state;
 
     if (!!photosListTask.ready) {
       switch (pageForm) {
         case PAGE_SINGLE_SELECTED_PHOTO_FORM:
-          return (<Telescope.components.IEAPhotosSingleLayout {...this.state} />)
+          return (<Telescope.components.IEAPhotosSingleLayout {...this.state} {...this.props}/>)
         case PAGE_PHOTOS_BROWSER_FORM:
         case PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY:
           return (<div>
             <Telescope.components.IEAPhotosBrowserLayout
               photoTitleType={PHOTO_BROWSER_LOGGED_USER_TITLE}
-              forObject={forObject}
-              {...this.state}
-              {...this.props}/>
+              {...this.state} {...this.props}/>
             {
               (pageForm === PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY) &&
-              <Telescope.components.IEAPhotosSelectionLayout {...this.state}/>
+              <Telescope.components.IEAPhotosSelectionLayout {...this.state} {...this.props}/>
             }
           </div>)
 

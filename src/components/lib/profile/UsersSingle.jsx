@@ -38,6 +38,7 @@ class UsersSingle extends Component {
       uid: getUserQueryId(props),
       // Detailed object
       userProfile: null,
+      forObject: null,
       userStatistic: null,
       // Common
       pageForm: getPageFormTypeForUserProfile(props),
@@ -45,9 +46,15 @@ class UsersSingle extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    const _userProfile = getModelByObjectId(nextProps, this.state.uid, this.state.userProfile);
+    const forObject = {
+      id: _userProfile.id,
+      displayName: _userProfile.username,
+    }
     this.setState({
       pageForm: getPageFormTypeForUserProfile(nextProps),
-      userProfile: getModelByObjectId(nextProps, this.state.uid, this.state.userProfile),
+      userProfile: _userProfile,
+      forObject: forObject,
       userStatistic: getModelByObjectId(nextProps, this.state.uid, this.state.userStatistic, 'statistic'),
     })
 
@@ -73,11 +80,12 @@ class UsersSingle extends Component {
 
     if (!!userProfile) {
       switch (pageForm) {
+        case LOGGED_USER_MENU_EVENTS:
+          return (<Telescope.components.IEAUserProfileEventsLayout {...this.state} {...this.props}/>)
         case LOGGED_USER_MENU_BROWSER_PHOTOS:
           return (<Telescope.components.IEAUserProfilePhotosLayout {...this.state} {...this.props}/>)
         case LOGGED_USER_MENU_ABOUT:
         case LOGGED_USER_MENU_REVIEWS:
-        case LOGGED_USER_MENU_EVENTS:
           if (!!this.state.userStatistic) {
             return (<Telescope.components.IEAUserProfileAboutLayout {...this.state} {...this.props}/>)
           }

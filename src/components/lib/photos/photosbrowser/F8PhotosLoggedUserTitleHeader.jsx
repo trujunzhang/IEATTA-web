@@ -12,7 +12,6 @@ class F8PhotosLoggedUserTitleHeader extends Component {
 
   render() {
     const {forObject, modelType, userProfile, photosListTask} = this.props;
-    debugger
     return (
       <div className="js-media-landing_header media-landing_header">
         <div className="section-header media-header">
