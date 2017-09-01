@@ -47,9 +47,12 @@ class UsersSingle extends Component {
 
   componentWillReceiveProps(nextProps) {
     const _userProfile = getModelByObjectId(nextProps, this.state.uid, this.state.userProfile);
-    const forObject = {
-      id: _userProfile.id,
-      displayName: _userProfile.username,
+    let forObject = null;
+    if (!!_userProfile) {
+      forObject = {
+        id: _userProfile.id,
+        displayName: _userProfile.username,
+      }
     }
     this.setState({
       pageForm: getPageFormTypeForUserProfile(nextProps),
