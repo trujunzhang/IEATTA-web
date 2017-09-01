@@ -107,7 +107,7 @@ class RecipesList extends Component {
 
 
         {showTitle ? (
-          <Telescope.components.F8SectionHeaderTitle title={"Ordered Recipes Recently"}/>
+          <Telescope.components.F8SectionHeaderTitle title={"Recently Ordered Recipes"}/>
         ) : null}
 
         {this.renderRows()}
