@@ -54,8 +54,6 @@ const {
 } = require('../lib/constants').default
 
 async function _loadListByType(listTask: Any, objectsQuery: Parse.Query, terms: Any, parseFun: Any, type: Any): Promise<Array<Action>> {
-  // const xxx = await Parse.Cloud.run('statisticUserState', {userId: 'aGkde8iuL6'});
-
   const {
     pageIndex,
     limit,

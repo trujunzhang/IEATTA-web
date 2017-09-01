@@ -28,8 +28,9 @@ class EventsList extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    const newListTask = byListId(nextProps.listContainerTasks, this.state.terms.listId, this.state.listTask)
     this.setState({
-      listTask: byListId(nextProps.listContainerTasks, this.state.terms.listId, this.state.listTask)
+      listTask: newListTask
     })
   }
 
@@ -48,6 +49,7 @@ class EventsList extends Component {
   }
 
   renderRows() {
+    const {eventType} = this.props;
     const {listTask} = this.state;
 
     const {
@@ -63,9 +65,10 @@ class EventsList extends Component {
     } else if (!!results && results.length) {
       return (
         <ul className="ylist ylist-bordered">
-          {results.map(event =>
-            <Telescope.components.EventsItem key={event.id} event={event}/>
-          )}
+          {results.map(item => {
+            const event = (eventType === EVENTS_LIST_FOR_USER) ? item.event : item;
+            return (<Telescope.components.EventsItem key={event.id} event={event}/>)
+          })}
         </ul>
       )
     } else {
