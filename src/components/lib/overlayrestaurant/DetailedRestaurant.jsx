@@ -19,6 +19,7 @@ const {
   PAGE_OVERLAY_SELECTED_PHOTO_FORM,
   PAGE_SINGLE_SELECTED_PHOTO_FORM,
   CLOUD_STATISTIC_FOR_REVIEWS,
+  PARSE_RESTAURANTS,
 } = require('../../../lib/constants').default
 
 
@@ -39,7 +40,7 @@ class DetailedRestaurant extends Component {
   constructor(props, context) {
     super(props)
 
-    const photosTerms = generatePhotoTerm('restaurant', props.params.rid)
+    const photosTerms = generatePhotoTerm(PARSE_RESTAURANTS, props.params.rid)
 
     this.state = this.initialState = {
       rid: props.params.rid,

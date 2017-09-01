@@ -1,18 +1,20 @@
-const Parse = require('parse')
-import moment from 'moment'
+import Records from '../lib/records'
 
 const {
   ParseRestaurant,
   ParseEvent,
   ParseUser,
   ParsePhoto,
-  ParseRecipe
+  ParseRecipe,
+  getInstanceWithoutData
 } = require('../parse/objects').default
 
 /**
  * The states were interested in
  */
-const {} = require('../lib/constants').default
+const {
+  PARSE_USERS
+} = require('../lib/constants').default
 
 export default class photosParameters {
   constructor(query: Parse.Query) {
@@ -21,18 +23,19 @@ export default class photosParameters {
 
   addParameters(terms: Any) {
 
-    if (!!terms.photoType) {
-      this.query.equalTo('photoType', terms.photoType)
-      if (!!terms.forObjectId) {
-        switch (terms.photoType) {
-          case 'restaurant':
-            this.query.equalTo('restaurant', ParseRestaurant.createWithoutData(terms.forObjectId))
-            break;
-          case 'recipe':
-            this.query.equalTo('recipe', ParseRecipe.createWithoutData(terms.forObjectId))
-            break;
-        }
+    const {objectSchemaName, forObjectId} = terms;
+    if (!!objectSchemaName) {
+      const photoType = Records.realmTypes[objectSchemaName]
+
+      if (objectSchemaName !== PARSE_USERS) {
+        this.query.equalTo('photoType', photoType)
       }
+
+      if (!!forObjectId) {
+        const instanceWithoutData = getInstanceWithoutData(objectSchemaName, forObjectId)
+        this.query.equalTo(photoType, instanceWithoutData)
+      }
+
     }
 
     return this

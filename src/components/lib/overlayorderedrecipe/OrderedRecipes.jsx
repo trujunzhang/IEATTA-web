@@ -19,6 +19,7 @@ const {
   PAGE_OVERLAY_SELECTED_PHOTO_FORM,
   PAGE_SINGLE_SELECTED_PHOTO_FORM,
   CLOUD_STATISTIC_FOR_REVIEWS,
+  PARSE_RECIPES
 } = require('../../../lib/constants').default
 
 const {
@@ -37,7 +38,7 @@ class OrderedRecipes extends Component {
   constructor(props, context) {
     super(props)
 
-    const photosTerms = generatePhotoTerm('recipe', props.params.oid)
+    const photosTerms = generatePhotoTerm(PARSE_RECIPES, props.params.oid)
 
     this.state = this.initialState = {
       oid: props.params.oid,
@@ -74,7 +75,7 @@ class OrderedRecipes extends Component {
 
     const currentOID = nextProps.params.oid;
     if (currentOID !== oldOID) {
-      const photosTerms = generatePhotoTerm('recipe', currentOID)
+      const photosTerms = generatePhotoTerm(PARSE_RECIPES, currentOID)
 
       this.setState({
         oid: nextProps.params.oid,

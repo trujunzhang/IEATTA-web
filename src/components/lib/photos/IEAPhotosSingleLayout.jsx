@@ -20,6 +20,7 @@ class IEAPhotosSingleLayout extends Component {
 
   render() {
     return (
+
       <div className="main-content-wrap main-content-wrap--full">
 
         <div id="super-container" className="content-container">
@@ -37,6 +38,7 @@ class IEAPhotosSingleLayout extends Component {
           </div>
         </div>
       </div>
+
     )
   }
 }
