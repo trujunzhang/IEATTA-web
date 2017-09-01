@@ -111,11 +111,13 @@ export function getNewReviewLink(reviewType, forObject) {
  * @returns {string}
  */
 export function getPhotosBrowserSelectionLink(photo, photoType, forObject) {
-  return `/${Records.SubDomainPhotos[photoType]}/${forObject.id}/${slugify(forObject.displayName)}?select=${photo.id}`
+  const {objectSchemaName} = Records.realmObjects[photoType]
+  return `/${Records.SubDomainPhotos[objectSchemaName]}/${forObject.id}/${slugify(forObject.displayName)}?select=${photo.id}`
 }
 
 export function getPhotosBrowserLink(photoType, forObject) {
-  return `/${Records.SubDomainPhotos[photoType]}/${forObject.id}/${slugify(forObject.displayName)}`
+  const {objectSchemaName} = Records.realmObjects[photoType]
+  return `/${Records.SubDomainPhotos[objectSchemaName]}/${forObject.id}/${slugify(forObject.displayName)}`
 }
 
 export function geDetailedModelLink(modelType, forObject) {

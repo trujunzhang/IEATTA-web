@@ -24,8 +24,8 @@ const Records = {}
 
 
 Records.SubDomainPhotos = {
-  'restaurant': 'biz_photos',
-  'recipe': 'recipe_photos',
+  PARSE_RESTAURANTS: 'biz_photos',
+  PARSE_RECIPES: 'recipe_photos',
 }
 
 Records.realmObjects = {

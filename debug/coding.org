@@ -9,3 +9,6 @@ const {
 
 
 <Link to="/somewhere" query={Object.assign({}, this.props.location.query, newStuff)}/>
+
+
+const {objectSchemaName} = Records.realmObjects[review.reviewType]

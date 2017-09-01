@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Photos from '../../../../lib/photos'
 
-import {getPhotosBrowserLink, getPhotosBrowserSelectionLink} from '../../../../lib/link'
+import {getPhotosBrowserSelectionLink} from '../../../../lib/link'
 import {Link} from 'react-router'
 
 class F8PhotosCollectionView extends Component {

@@ -2,7 +2,6 @@ import moment from 'moment'
 
 import {
   getLoggedUserMenuLink,
-  getPhotosBrowserLink,
   getPhotosBrowserSelectionLink,
   geDetailedModelLink
 } from './link'

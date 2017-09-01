@@ -1,7 +1,7 @@
 import Telescope from '../../index'
 import React, {Component} from 'react';
 
-import {getPhotosBrowserLink, getPhotosBrowserSelectionLink} from '../../../../lib/link'
+import {getPhotosBrowserLink} from '../../../../lib/link'
 import {Link} from 'react-router'
 
 class F8PhotosSelectLeftPanelFooterView extends Component {

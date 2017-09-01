@@ -57,8 +57,8 @@ export function checkNewModel(props: Object) {
   return props.location.pathname.indexOf('new/') !== -1;
 }
 
-export function checkPhotosBrowser(pageType: string, props: Object) {
-  const subDomain = Records.SubDomainPhotos[pageType];
+export function checkPhotosBrowser(objectSchemaName, props: Object) {
+  const subDomain = Records.SubDomainPhotos[objectSchemaName];
   return props.location.pathname.indexOf(subDomain + '/') !== -1;
 }
 

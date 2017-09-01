@@ -4,7 +4,6 @@ import Photos from '../../../lib/photos'
 
 import {
   getPhotosBrowserLink,
-  getPhotosBrowserSelectionLink
 } from '../../../lib/link'
 import {Link} from 'react-router'
 

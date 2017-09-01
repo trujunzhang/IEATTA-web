@@ -51,13 +51,15 @@ class IEAUserProfilePhotosLayout extends Component {
       // Common
       pageForm: getPageFormType('user', props, null),
       modelType: 'user',
-      onPreIconClick: this.onPreIconClick.bind(this),
-      onNextIconClick: this.onNextIconClick.bind(this),
+      // onPreIconClick: this.onPreIconClick.bind(this),
+      // onNextIconClick: this.onNextIconClick.bind(this),
     }
   }
 
   componentWillReceiveProps(nextProps) {
     const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms.listId, this.state.photosListTask);
+
+    debugger
 
     this.setState({
       // photos
