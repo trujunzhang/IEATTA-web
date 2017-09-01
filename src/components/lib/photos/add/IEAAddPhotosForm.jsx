@@ -128,7 +128,7 @@ class IEAAddPhotosForm extends Component {
         </div>
 
         <ul className="uploaded-photos js-uploaded-photos photo-box-grid--inline-block photo-box-grid--wide">
-          <li className="uploaded-photo" data-component-bound="true">
+          <li className="uploaded-photo">
             <div className="photo-caption-box photo-box js-photo-box photo-box--interactive">
               <img className="photo-caption-img js-photo-caption-img photo-box-img"
                    src={this.state.file.preview}

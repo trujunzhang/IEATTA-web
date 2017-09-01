@@ -14,7 +14,7 @@ class F8PhotosLoggedUserTitleHeader extends Component {
     const {forObject, modelType, userProfile, photosListTask} = this.props;
     debugger
     return (
-      <div className="js-media-landing_header media-landing_header" data-component-bound="true">
+      <div className="js-media-landing_header media-landing_header">
         <div className="section-header media-header">
           <div className="arrange arrange--12 arrange--bottom">
             <div className="arrange_unit arrange_unit--fill">
