@@ -4,22 +4,12 @@ import React, {Component} from 'react'
 import {withRouter} from 'react-router'
 
 const {
-  loadRestaurantPage,
   loadPhotosBrowser,
-  invokeParseCloudMethod
 } = require('../../../actions').default
 
 const {
-  PAGE_MAIN_FORM,
-  PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY,
-  PAGE_PHOTOS_BROWSER_FORM,
-  PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY,
-  PAGE_EDIT_FORM,
-  PAGE_NEW_FORM,
-  PAGE_OVERLAY_SELECTED_PHOTO_FORM,
-  PAGE_SINGLE_SELECTED_PHOTO_FORM,
-  CLOUD_STATISTIC_FOR_REVIEWS,
-  PARSE_USERS
+  PARSE_USERS,
+  PHOTO_BROWSER_LOGGED_USER_TITLE
 } = require('../../../lib/constants').default
 
 
@@ -75,6 +65,7 @@ class IEAUserProfilePhotosLayout extends Component {
   render() {
     return (
       <Telescope.components.IEAPhotosBrowserLayout
+        photoTitleType={PHOTO_BROWSER_LOGGED_USER_TITLE}
         forObject={{
           id: this.props.userProfile.id,
           displayName: this.props.userProfile.username,
