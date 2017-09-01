@@ -40,6 +40,7 @@ class OrderedRecipesDetail extends Component {
             orderedUser={forObject.user}
             showTitle={false}/>
         </div>
+
       </div>
     )
   }

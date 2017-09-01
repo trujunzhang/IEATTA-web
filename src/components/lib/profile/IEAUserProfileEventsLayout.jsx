@@ -51,9 +51,59 @@ class IEAUserProfileEventsLayout extends Component {
   }
 
 
+  renderRightPanel() {
+    const {userProfile, forObject} = this.props;
+    return (
+      <div className="column column-beta">
+        <div className="user-details-bookmarks_content js-user-details-bookmarks_content">
+          <Telescope.components.EventsList {...this.props}/>
+        </div>
+
+        <div className="user-details-overview_sidebar">
+          <Telescope.components.F8SectionHeaderTitle title={"Recently Added Recipes"}/>
+          <Telescope.components.RecipesList
+            key={forObject.id}
+            orderedUser={userProfile}
+            showTitle={false}/>
+        </div>
+
+      </div>
+
+    )
+  }
+
+  renderContent() {
+    return (
+      <div className="clearfix layout-block layout-n user-details_container">
+        <Telescope.components.UserProfileLeftMenusPanel {...this.props} />
+
+        {this.renderRightPanel()}
+
+      </div>
+
+    )
+  }
+
+
   render() {
     return (
-      <Telescope.components.EventsList {...this.props}/>
+
+
+      <div className="main-content-wrap main-content-wrap--full">
+
+        <div className="top-shelf top-shelf-grey">
+
+          <Telescope.components.UserProfileSingleHeader {...this.props}/>
+
+        </div>
+
+        <div id="super-container" className="content-container">
+
+          {this.renderContent()}
+
+        </div>
+      </div>
+
     )
   }
 

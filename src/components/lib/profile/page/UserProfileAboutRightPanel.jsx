@@ -79,13 +79,10 @@ class UserProfileAboutRightPanel extends Component {
           {reviewRatingRows.map((row, index) => {
             return (
               <li key={index}>
-                <span
-                  id="icon_18X18"
-                  className={`icon icon--18-${row.tag.toLowerCase()}-outline icon--size-18 u-space-r1`}>
-    <svg className="icon_svg">
-    <path d={row.svg}/>
-    </svg>
-</span>{row.tag}
+                <span id="icon_18X18"
+                      className={`icon icon--18-${row.tag.toLowerCase()}-outline icon--size-18 u-space-r1`}>
+                        <svg className="icon_svg"><path d={row.svg}/></svg>
+                        </span>{row.tag}
                 <strong className="margin-left-6">{reviewRating[row.tag]}</strong>
               </li>
             )
