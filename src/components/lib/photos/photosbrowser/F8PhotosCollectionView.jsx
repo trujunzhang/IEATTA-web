@@ -6,10 +6,10 @@ import {Link} from 'react-router'
 
 class F8PhotosCollectionView extends Component {
 
-  renderRow(photo) {
+  renderRow(photo,index) {
     const {forObject, modelType} = this.props;
     return (
-      <li data-photo-id="x57_yoZarQuIn9y1r2jsQw">
+      <li key={photo.id}>
         <div className="photo-box photo-box--interactive">
           <Link to={getPhotosBrowserSelectionLink(photo, modelType, forObject)}>
             <img
@@ -33,8 +33,8 @@ class F8PhotosCollectionView extends Component {
     return (
       <div className="media-landing_gallery photos">
         <ul className="photo-box-grid photo-box-grid--highlight photo-box-grid--small clearfix lightbox-media-parent">
-          {photos.map((photo, item) => {
-            return this.renderRow(photo)
+          {photos.map((photo, index) => {
+            return this.renderRow(photo,index)
           })}
         </ul>
       </div>
