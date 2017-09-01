@@ -80,15 +80,6 @@ class EventsList extends Component {
   }
 
   render() {
-    const {listTask} = this.state;
-
-    const {
-      results,
-      ready,
-      totalCount,
-    } = listTask
-
-    let hasMore = !ready && totalCount !== results.length;
 
     return (
       <div className="ysection events">
