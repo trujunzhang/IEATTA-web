@@ -48,11 +48,11 @@ class IEAUserProfilePhotosLayout extends Component {
 
   componentWillReceiveProps(nextProps) {
     const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms.listId, this.state.photosListTask);
-
+    const newPageFormType = getPageFormType(PARSE_USERS, nextProps, this.state.pageForm);
 
     this.setState({
       // photos
-      pageForm: getPageFormType(PARSE_USERS, nextProps, this.state.pageForm),
+      pageForm: newPageFormType,
       photosListTask: photosListTask,
       selectPhotoIndex: getSelectPhoto(nextProps, photosListTask, this.state.selectPhotoIndex)
     })

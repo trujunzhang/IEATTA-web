@@ -161,7 +161,8 @@ class OrderedRecipes extends Component {
   onNextIconClick() {
     const {photosListTask, selectPhotoIndex} = this.state;
     const photos = photosListTask.results;
-
+    const totalPhotosLength = photos.length;
+   
     let nextIndex = selectPhotoIndex + 1;
     if (nextIndex >= totalPhotosLength) nextIndex = totalPhotosLength - 1;
     this.setState({selectPhotoIndex: nextIndex})
