@@ -22,6 +22,8 @@ const {
   REVIEW_SORT_OLDEST,
   REVIEW_SORT_HIGHEST,
   REVIEW_SORT_LOWEST,
+  // Parse Model Types
+  PARSE_USERS,
 } = require('../lib/constants').default
 
 export default class ReviewsParameters {
@@ -53,14 +55,14 @@ export default class ReviewsParameters {
     }
 
     if (!!terms.reviewListType) {
-      equalRelationObject(PARSE_USERS, terms.forObject.id)
+      equalRelationObject(this.query, PARSE_USERS, terms.forObject.id)
     }
 
     const {reviewType, forObject} = terms;
     if (!!reviewType) {
       this.query.equalTo('reviewType', reviewType)
       const {objectSchemaName} = Records.realmObjects[reviewType]
-      equalRelationObject(objectSchemaName, terms.forObject.id)
+      equalRelationObject(this.query, objectSchemaName, terms.forObject.id)
     }
 
 

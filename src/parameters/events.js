@@ -19,9 +19,9 @@ export default class EventsParameters {
 
   addParameters(terms: Any) {
 
-    equalRelationObject(PARSE_USERS, terms.userId)
+    equalRelationObject(this.query, PARSE_USERS, terms.userId)
 
-    equalRelationObject(PARSE_RESTAURANTS, terms.restaurantId)
+    equalRelationObject(this.query, PARSE_RESTAURANTS, terms.restaurantId)
 
     return this
   }

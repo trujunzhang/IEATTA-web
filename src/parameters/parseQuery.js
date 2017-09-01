@@ -11,6 +11,7 @@ import Records from '../lib/records'
  * The states were interested in
  */
 const {
+  // Parse Model Types
   PARSE_RESTAURANTS,
   PARSE_USERS,
   PARSE_RECORDS,

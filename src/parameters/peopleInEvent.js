@@ -20,11 +20,11 @@ export default class PeopleInEventParameters {
 
   addParameters(terms: Any) {
 
-    equalRelationObject(PARSE_USERS, terms.userId)
+    equalRelationObject(this.query,PARSE_USERS, terms.userId)
 
-    equalRelationObject(PARSE_EVENTS, terms.eventId)
+    equalRelationObject(this.query,PARSE_EVENTS, terms.eventId)
 
-    equalRelationObject(PARSE_RESTAURANTS, terms.restaurantId)
+    equalRelationObject(this.query,PARSE_RESTAURANTS, terms.restaurantId)
 
     return this
   }
