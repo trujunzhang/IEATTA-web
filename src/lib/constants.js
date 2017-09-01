@@ -1,6 +1,10 @@
 import keyMirror from 'key-mirror'
 
 export default keyMirror({
+  // Photo browser title
+  PHOTO_BROWSER_NORMAL_TITLE: null,
+  PHOTO_BROWSER_LOGGED_USER_TITLE: null,
+
   // Upload Image
   UPLOAD_IMAGE_FILE_DROP: null,
   UPLOAD_IMAGE_FILE_PREVIEW: null,

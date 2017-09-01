@@ -59,7 +59,6 @@ class IEAUserProfilePhotosLayout extends Component {
   componentWillReceiveProps(nextProps) {
     const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms.listId, this.state.photosListTask);
 
-    debugger
 
     this.setState({
       // photos
@@ -74,8 +73,9 @@ class IEAUserProfilePhotosLayout extends Component {
   }
 
   render() {
+    debugger
     return (
-      <Telescope.components.IEAPhotosBrowserLayout {...this.state}/>
+      <Telescope.components.IEAPhotosBrowserLayout {...this.state} {...this.props}/>
     )
   }
 

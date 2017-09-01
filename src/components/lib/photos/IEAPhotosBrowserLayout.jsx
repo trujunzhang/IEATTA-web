@@ -1,6 +1,13 @@
 import Telescope from '../index'
 import React, {Component} from 'react'
 
+
+const {
+  PHOTO_BROWSER_NORMAL_TITLE,
+  PHOTO_BROWSER_LOGGED_USER_TITLE,
+} = require('../../../lib/constants').default
+
+
 class IEAPhotosBrowserLayout extends Component {
 
   renderFooter() {
@@ -39,6 +46,14 @@ class IEAPhotosBrowserLayout extends Component {
     return (<Telescope.components.F8PhotosCollectionView {...this.props}/>)
   }
 
+  renderTitle() {
+    const {photoTitleType} = this.props;
+    if (photoTitleType === PHOTO_BROWSER_LOGGED_USER_TITLE) {
+      return (<Telescope.components.F8PhotosLoggedUserTitleHeader {...this.props}/>)
+    }
+    return (<Telescope.components.F8PhotosTitleHeader {...this.props}/>)
+  }
+
   render() {
     return (
       <div className="main-content-wrap main-content-wrap--full">
@@ -48,7 +63,7 @@ class IEAPhotosBrowserLayout extends Component {
           <div className="container">
             <div className="js-media-landing_container">
 
-              <Telescope.components.F8PhotosTitleHeader {...this.props}/>
+              {this.renderTitle()}
 
               <div className="media-landing js-media-landing">
 
@@ -64,5 +79,15 @@ class IEAPhotosBrowserLayout extends Component {
     )
   }
 }
+
+
+IEAPhotosBrowserLayout.propTypes = {
+  photoTitleType: React.PropTypes.string
+};
+
+IEAPhotosBrowserLayout.defaultProps = {
+  photoTitleType: PHOTO_BROWSER_NORMAL_TITLE
+};
+
 
 export default IEAPhotosBrowserLayout;
