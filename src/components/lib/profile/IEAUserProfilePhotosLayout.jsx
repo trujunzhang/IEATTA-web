@@ -78,7 +78,9 @@ class IEAUserProfilePhotosLayout extends Component {
     if (!!photosListTask.ready) {
       switch (pageForm) {
         case PAGE_SINGLE_SELECTED_PHOTO_FORM:
-          return (<Telescope.components.IEAPhotosSingleLayout {...this.state} {...this.props}/>)
+          return (<Telescope.components.IEAPhotosSingleLayout
+            photoTitleType={PHOTO_BROWSER_LOGGED_USER_TITLE}
+            {...this.state} {...this.props}/>)
         case PAGE_PHOTOS_BROWSER_FORM:
         case PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY:
           return (<div>
