@@ -75,7 +75,10 @@ class IEAUserProfilePhotosLayout extends Component {
   render() {
     return (
       <Telescope.components.IEAPhotosBrowserLayout
-        forObject={this.props.userProfile}
+        forObject={{
+          id: this.props.userProfile.id,
+          displayName: this.props.userProfile.username,
+        }}
         {...this.state}
         {...this.props}/>
     )
