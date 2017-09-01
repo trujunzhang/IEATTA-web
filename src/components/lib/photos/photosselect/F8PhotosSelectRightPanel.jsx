@@ -132,7 +132,7 @@ class F8PhotosSelectRightPanel extends Component {
                 </li>
               </ul>
 
-              {this.renderUserButton()}
+              {/*{this.renderUserButton()}*/}
             </div>
 
           </div>
