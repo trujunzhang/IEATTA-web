@@ -1,6 +1,10 @@
 import keyMirror from 'key-mirror'
 
 export default keyMirror({
+  // Events List type
+  EVENTS_LIST_FOR_RESTAURANT: null,
+  EVENTS_LIST_FOR_USER: null,
+
   // Photo browser title
   PHOTO_BROWSER_NORMAL_TITLE: null,
   PHOTO_BROWSER_LOGGED_USER_TITLE: null,

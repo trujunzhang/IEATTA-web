@@ -15,6 +15,9 @@ export default class EventsParameters {
   }
 
   addParameters(terms: Any) {
+
+    debugger
+
     if (terms.restaurantId) {
       this.query.equalTo('restaurant', ParseRestaurant.createWithoutData(terms.restaurantId))
     }

@@ -46,7 +46,9 @@ const {
   LOGIN_FORM_TYPE_RESET_PASSWD,
   // User Profile
   LOGGED_USER_MENU_ABOUT,
-  LOGGED_USER_EDIT_FORM
+  LOGGED_USER_EDIT_FORM,
+  EVENTS_LIST_FOR_RESTAURANT,
+  EVENTS_LIST_FOR_USER,
 } = require('../../lib/constants').default
 
 export function checkEditModel(props: Object) {
@@ -179,12 +181,17 @@ export function generateTermsForReviewsList(props) {
   };
 }
 
-export function generateTermsForEventsList(props) {
-  const listId = props.forObject.id;
+export function generateTermsForEventsList({eventType, forObject}) {
+  const listId = forObject.id;
+  const extendProps = (eventType === EVENTS_LIST_FOR_RESTAURANT) ? {
+    restaurantId: listId
+  } : {
+    userId: listId
+  }
   return {
     listId: 'event-list-view-for-' + listId,
     limit: 10,
-    restaurantId: listId
+    ...extendProps
   };
 }
 

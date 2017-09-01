@@ -6,6 +6,12 @@ const {loadEventsList} = require('../../../../actions').default
 const {generateTermsForEventsList} = require('../../../filter/filterRoutes')
 const {byListId, getDefaultListTask} = require('../../../filter/filterPosts')
 
+
+const {
+  EVENTS_LIST_FOR_RESTAURANT,
+  EVENTS_LIST_FOR_USER,
+} = require('../../../../lib/constants').default
+
 class EventsList extends Component {
 
   constructor(props) {
@@ -29,9 +35,7 @@ class EventsList extends Component {
   }
 
   loadMore() {
-    const {terms, listTask} = this.state.terms;
-    listTask['ready'] = false
-    this.setState({listTask: listTask})
+    const {terms, listTask} = this.state;
     this.props.dispatch(loadEventsList(listTask, terms))
   }
 
@@ -97,6 +101,16 @@ class EventsList extends Component {
     )
   }
 }
+
+
+EventsList.propTypes = {
+  eventType: React.PropTypes.string
+};
+
+EventsList.defaultProps = {
+  eventType: EVENTS_LIST_FOR_RESTAURANT
+};
+
 
 const {connect} = require('react-redux')
 
