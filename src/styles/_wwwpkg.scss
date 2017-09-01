@@ -4064,6 +4064,9 @@ body.responsive {
 
 .throbber-container {
   //position: absolute;
+  // TODO: DJZHANG(01/09/2017)
+  margin: 12px auto;
+  width: 90px;
   height: 90px;
   min-width: 90px;
   overflow: hidden;

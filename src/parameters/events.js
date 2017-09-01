@@ -7,7 +7,6 @@ const {
   getInstanceWithoutData
 } = require('../parse/objects').default
 
-const Parse = require('parse')
 
 /**
  * The states were interested in

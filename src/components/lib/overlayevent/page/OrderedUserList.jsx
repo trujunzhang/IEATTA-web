@@ -29,11 +29,8 @@ class OrderedUserList extends Component {
   }
 
   loadMore() {
-    const terms = this.state.terms;
-    const nextListTask = this.state.listTask
-    nextListTask['ready'] = false
-    this.setState({listTask: nextListTask})
-    this.props.dispatch(loadPeopleInEventList(nextListTask, terms))
+    const {terms,listTask} = this.state;
+    this.props.dispatch(loadPeopleInEventList(listTask, terms))
   }
 
   renderRows() {

@@ -1,7 +1,10 @@
 import Telescope from '../../../lib'
 import React, {Component} from 'react'
 
-const {loadEventsList} = require('../../../../actions').default
+const {
+  loadEventsList,
+  loadPeopleInEventList,
+} = require('../../../../actions').default
 
 const {generateTermsForEventsList} = require('../../../filter/filterRoutes')
 const {byListId, getDefaultListTask} = require('../../../filter/filterPosts')
@@ -36,7 +39,12 @@ class EventsList extends Component {
 
   loadMore() {
     const {terms, listTask} = this.state;
-    this.props.dispatch(loadEventsList(listTask, terms))
+    const {eventType} = this.props;
+    if (eventType === EVENTS_LIST_FOR_USER) {
+      this.props.dispatch(loadPeopleInEventList(listTask, terms))
+    } else {
+      this.props.dispatch(loadEventsList(listTask, terms))
+    }
   }
 
   renderRows() {
