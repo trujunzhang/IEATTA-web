@@ -79,9 +79,9 @@ class UsersSingle extends Component {
   }
 
   render() {
-    const {userProfile, pageForm} = this.state;
+    const {userProfile, pageForm, userStatistic} = this.state;
 
-    if (!!userProfile) {
+    if (!!userProfile && !!userStatistic) {
       switch (pageForm) {
         case LOGGED_USER_MENU_ABOUT:
           if (!!this.state.userStatistic) {
