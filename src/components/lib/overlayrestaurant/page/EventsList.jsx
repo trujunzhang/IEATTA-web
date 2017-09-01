@@ -29,11 +29,10 @@ class EventsList extends Component {
   }
 
   loadMore() {
-    const terms = this.state.terms;
-    const nextListTask = this.state.listTask
-    nextListTask['ready'] = false
-    this.setState({listTask: nextListTask})
-    this.props.dispatch(loadEventsList(nextListTask, terms))
+    const {terms, listTask} = this.state.terms;
+    listTask['ready'] = false
+    this.setState({listTask: listTask})
+    this.props.dispatch(loadEventsList(listTask, terms))
   }
 
   renderRows() {
@@ -93,10 +92,6 @@ class EventsList extends Component {
         {this.renderTitle()}
 
         {this.renderRows()}
-
-        <div className="u-space-t2 u-space-b2">
-          {/*<a href="/events/sf/browse">View all events in San Francisco</a>*/}
-        </div>
 
       </div>
     )
