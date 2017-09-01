@@ -29,11 +29,6 @@ const {
   byListId
 } = require('../../filter/filterPosts')
 
-const {
-  generatePhotoTerm,
-  getPageFormType,
-  getSelectPhoto,
-} = require('../../filter/filterRoutes')
 
 class AddPhotoForModel extends Component {
 
