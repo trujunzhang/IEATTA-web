@@ -18,7 +18,8 @@ class F8PhotosTitleHeader extends Component {
       <div className="media-avatar">
         <div className="photo-box pb-30s">
 
-          <Link className="js-analytics-click" to={geDetailedModelLink(modelType, forObject)}>
+          <Link className="js-analytics-click"
+                to={geDetailedModelLink(modelType, forObject)}>
             <Telescope.components.F8PlaceHolderImage
               alt={forObject.displayName}
               className="photo-box-img"
@@ -41,7 +42,8 @@ class F8PhotosTitleHeader extends Component {
       <div className="media-story">
         <div className="media-title clearfix">
 
-          <Link className="biz-name js-analytics-click" to={geDetailedModelLink(modelType, forObject)}>
+          <Link className="biz-name js-analytics-click"
+                to={geDetailedModelLink(modelType, forObject)}>
             <span>{forObject.displayName}</span>
           </Link>
 

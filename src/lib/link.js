@@ -121,11 +121,14 @@ export function getPhotosBrowserLink(photoType, forObject) {
 }
 
 export function geDetailedModelLink(modelType, forObject) {
-  switch (modelType) {
-    case 'restaurant':
+  const {objectSchemaName} = Records.realmObjects[modelType]
+  switch (objectSchemaName) {
+    case PARSE_RESTAURANTS:
       return getRestaurantLink(forObject)
-    case 'recipe':
+    case PARSE_RECIPES:
       return getOrderedRecipeLink(forObject)
+    case PARSE_USERS:
+      return getLoggedUserMenuLink(forObject)
   }
   throw new Error('You need to set a proper photo type!')
 }
