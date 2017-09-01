@@ -49,7 +49,7 @@ class IEAUserProfilePhotosLayout extends Component {
       photosListTask: getDefaultListTask(photosTerms),
       selectPhotoIndex: -1,
       // Common
-      pageForm: getPageFormType('user', props, null),
+      pageForm: getPageFormType(PARSE_USERS, props, null),
       modelType: 'user',
       // onPreIconClick: this.onPreIconClick.bind(this),
       // onNextIconClick: this.onNextIconClick.bind(this),
@@ -63,7 +63,7 @@ class IEAUserProfilePhotosLayout extends Component {
 
     this.setState({
       // photos
-      pageForm: getPageFormType('restaurant', nextProps, this.state.pageForm),
+      pageForm: getPageFormType(PARSE_USERS, nextProps, this.state.pageForm),
       photosListTask: photosListTask,
       selectPhotoIndex: getSelectPhoto(nextProps, photosListTask, this.state.selectPhotoIndex)
     })

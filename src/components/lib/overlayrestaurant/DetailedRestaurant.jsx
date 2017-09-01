@@ -53,7 +53,7 @@ class DetailedRestaurant extends Component {
       photosListTask: getDefaultListTask(photosTerms),
       selectPhotoIndex: -1,
       // Common
-      pageForm: getPageFormType('restaurant', props, null),
+      pageForm: getPageFormType(PARSE_RESTAURANTS, props, null),
       modelType: 'restaurant',
       onPreIconClick: this.onPreIconClick.bind(this),
       onNextIconClick: this.onNextIconClick.bind(this),
@@ -68,7 +68,7 @@ class DetailedRestaurant extends Component {
       forObject: getModelByObjectId(nextProps, this.state.rid, this.state.forObject),
       reviewStatistic: getModelByObjectId(nextProps, this.state.rid, this.state.reviewStatistic, 'statistic'),
       // photos
-      pageForm: getPageFormType('restaurant', nextProps, this.state.pageForm),
+      pageForm: getPageFormType(PARSE_RESTAURANTS, nextProps, this.state.pageForm),
       photosListTask: photosListTask,
       selectPhotoIndex: getSelectPhoto(nextProps, photosListTask, this.state.selectPhotoIndex)
     })

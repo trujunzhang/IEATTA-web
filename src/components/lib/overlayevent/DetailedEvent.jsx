@@ -18,6 +18,7 @@ const {
   PAGE_OVERLAY_SELECTED_PHOTO_FORM,
   PAGE_SINGLE_SELECTED_PHOTO_FORM,
   CLOUD_STATISTIC_FOR_REVIEWS,
+  PARSE_EVENTS
 } = require('../../../lib/constants').default
 
 const {
@@ -41,7 +42,7 @@ class DetailedEvent extends Component {
       forObject: null,
       reviewStatistic: null,
       // Common
-      pageForm: getPageFormType('event', props, null),
+      pageForm: getPageFormType(PARSE_EVENTS, props, null),
       modelType: 'event',
     }
   }
@@ -52,7 +53,7 @@ class DetailedEvent extends Component {
       forObject: getModelByObjectId(nextProps, this.state.eid, this.state.forObject),
       reviewStatistic: getModelByObjectId(nextProps, this.state.eid, this.state.reviewStatistic, 'statistic'),
       // Common
-      pageForm: getPageFormType('event', nextProps, this.state.pageForm),
+      pageForm: getPageFormType(PARSE_EVENTS, nextProps, this.state.pageForm),
     })
   }
 

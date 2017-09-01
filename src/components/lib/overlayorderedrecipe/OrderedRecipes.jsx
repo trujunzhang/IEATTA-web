@@ -51,7 +51,7 @@ class OrderedRecipes extends Component {
       photosListTask: getDefaultListTask(photosTerms),
       selectPhotoIndex: -1,
       // Common
-      pageForm: getPageFormType('recipe', props, null),
+      pageForm: getPageFormType(PARSE_RECIPES, props, null),
       modelType: 'recipe',
       onPreIconClick: this.onPreIconClick.bind(this),
       onNextIconClick: this.onNextIconClick.bind(this)
@@ -68,7 +68,7 @@ class OrderedRecipes extends Component {
       forObject: getModelByObjectId(nextProps, oldOID, this.state.forObject),
       reviewStatistic: getModelByObjectId(nextProps, oldOID, this.state.reviewStatistic, 'statistic'),
       // photos
-      pageForm: getPageFormType('recipe', nextProps, this.state.pageForm),
+      pageForm: getPageFormType(PARSE_RECIPES, nextProps, this.state.pageForm),
       photosListTask: photosListTask,
       selectPhotoIndex: getSelectPhoto(nextProps, photosListTask, this.state.selectPhotoIndex)
     })

@@ -1,6 +1,8 @@
 import Telescope from '../../lib'
 import React, {Component} from 'react'
 
+import Records from "../../../lib/records";
+
 const {
   loadRestaurantPage,
   loadEventPage,
@@ -10,6 +12,9 @@ const {
 const {
   PAGE_EDIT_FORM,
   PAGE_NEW_FORM,
+  PARSE_RESTAURANTS,
+  PARSE_EVENTS,
+  PARSE_RECIPES
 } = require('../../../lib/constants').default
 
 const {
@@ -24,14 +29,17 @@ class DetailedReview extends Component {
   constructor(props, context) {
     super(props)
 
+    const {reviewType, forObjectId} = props.params;
+    const {objectSchemaName} = Records.realmObjects[reviewType]
+
     this.state = this.initialState = {
-      reviewType: props.params.reviewType,
-      forObjectId: props.params.forObjectId,
+      reviewType: reviewType,
+      forObjectId: forObjectId,
       // Page models
       forObject: null,
       review: {},
       // Common
-      pageForm: getPageFormType(props.params.reviewType, props, null),
+      pageForm: getPageFormType(objectSchemaName, props, null),
     }
   }
 
@@ -45,15 +53,17 @@ class DetailedReview extends Component {
   }
 
   componentDidMount() {
-    switch (this.state.reviewType) {
-      case 'restaurant':
-        this.props.dispatch(loadRestaurantPage(this.state.forObjectId))
+    const {reviewType, forObjectId} = this.state;
+    const {objectSchemaName} = Records.realmObjects[reviewType]
+    switch (objectSchemaName) {
+      case PARSE_RESTAURANTS:
+        this.props.dispatch(loadRestaurantPage(forObjectId))
         break;
-      case 'event':
-        this.props.dispatch(loadEventPage(this.state.forObjectId))
+      case PARSE_EVENTS:
+        this.props.dispatch(loadEventPage(forObjectId))
         break;
-      case 'recipe':
-        this.props.dispatch(loadOrderedRecipePage(this.state.forObjectId))
+      case PARSE_RECIPES:
+        this.props.dispatch(loadOrderedRecipePage(forObjectId))
         break;
     }
   }

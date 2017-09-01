@@ -62,8 +62,8 @@ export function checkPhotosBrowser(objectSchemaName, props: Object) {
   return props.location.pathname.indexOf(subDomain + '/') !== -1;
 }
 
-export function checkPhotosBrowserSelection(props: Object) {
-  const query = props.location.query;
+export function checkPhotosBrowserSelection({location}) {
+  const {query} = location;
   if (!!query && !!query.select) {
     return query.select;
   }
@@ -127,8 +127,8 @@ export function isNewModelPage(pageForm) {
   return (pageForm === PAGE_NEW_FORM);
 }
 
-export function getLoginFormType(props) {
-  const {pathname} = props.location;
+export function getLoginFormType({location}) {
+  const {pathname} = location;
 
   if (pathname.indexOf('login') !== -1) {
     return LOGIN_FORM_TYPE_LOGIN;
@@ -141,8 +141,8 @@ export function getLoginFormType(props) {
   throw new Error('Can not check the login form page type!')
 }
 
-export function checkLoginFormPage(props) {
-  const {pathname} = props.location;
+export function checkLoginFormPage({location}) {
+  const {pathname} = location;
 
   return (pathname.indexOf('login') !== -1
     || pathname.indexOf('logout') !== -1
@@ -150,10 +150,9 @@ export function checkLoginFormPage(props) {
   )
 }
 
-export function getPageFormTypeForUserProfile(props) {
-  const pathname = props.location.pathname;
+export function getPageFormTypeForUserProfile({location}) {
+  const {pathname} = location;
   const split = pathname.split('/');
-
 
   const formType = _.find(Object.keys(Users.profileLeftMenus), function (type) {
     return split[1] === Users.profileLeftMenus[type].path;
