@@ -91,8 +91,6 @@ class IEAEditUserLayout extends Component {
     const username = this.props.auth.form.fields.username;
     const email = this.props.auth.form.fields.email;
 
-    debugger
-
     this.props.actions.loginRequest()
 
     try {
@@ -101,7 +99,6 @@ class IEAEditUserLayout extends Component {
         timeout(15000),
       ]);
     } catch (e) {
-      this.props.actions.updateModelFailure(e);
       const message = e.message || e;
       if (message !== 'Timed out' && message !== 'Canceled by user') {
         this.props.dispatch(showAlertMessage(message))
