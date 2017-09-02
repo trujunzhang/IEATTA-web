@@ -36,8 +36,8 @@ class RestaurantsItem extends Component {
                 <Telescope.components.F8PlaceHolderImage
                   alt={restaurant.displayName}
                   className="photo-box-img"
-                  height="90"
                   width="90"
+                  height="90"
                   placeholderSource={"/default/blank_biz_small.png"}
                   source={Photos.getListThumbnailUrl(restaurant)}/>
 
