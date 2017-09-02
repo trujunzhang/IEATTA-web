@@ -26,8 +26,8 @@
 
 const _ = require('underscore')
 
-import Records from '../../lib/records'
 import Users from "../../lib/users";
+import AppConstants from '../../lib/appConstants'
 
 const {
   PAGE_MAIN_FORM,
@@ -60,7 +60,7 @@ export function checkNewModel(props: Object) {
 }
 
 export function checkPhotosBrowser(objectSchemaName, props: Object) {
-  const subDomain = Records.SubDomainPhotos[objectSchemaName];
+  const subDomain = AppConstants.SubDomainPhotos[objectSchemaName];
   return props.location.pathname.indexOf(subDomain + '/') !== -1;
 }
 

@@ -37,6 +37,11 @@ AppConstants.realmTypes = {
   PARSE_REVIEWS: 'review'
 }
 
+AppConstants.SubDomainPhotos = {
+  PARSE_RESTAURANTS: 'biz_photos',
+  PARSE_RECIPES: 'recipe_photos',
+  PARSE_USERS: 'user_local_photos',
+}
 
 export default AppConstants;
 

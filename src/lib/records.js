@@ -24,11 +24,6 @@ import AppConstants from './appConstants'
 const UUID = require('../components/vendor/uuid');
 const Records = {}
 
-Records.SubDomainPhotos = {
-  PARSE_RESTAURANTS: 'biz_photos',
-  PARSE_RECIPES: 'recipe_photos',
-  PARSE_USERS: 'user_local_photos',
-}
 
 Records.toFirstUpperString = function (name) {
   return name.charAt(0).toUpperCase() + name.slice(1);
