@@ -1,8 +1,8 @@
 const Parse = require('parse')
 
 const Parameters = require('../parameters').default
-
-const Records = require('../lib/records').default
+import Records from '../lib/records'
+import AppConstants from '../lib/appConstants'
 
 const {
   ParseRestaurant,
@@ -118,7 +118,7 @@ function getPhotosParameters(terms) {
 }
 
 async function updateParseRecorder(objectSchemaName, parseInstance) {
-  const recordType = Records.realmTypes[objectSchemaName]
+  const recordType = AppConstants.realmTypes[objectSchemaName]
   let recorder = await getQueryByType(PARSE_RECORDS).equalTo(recordType, parseInstance).first()
   if (!!recorder) {
   } else {

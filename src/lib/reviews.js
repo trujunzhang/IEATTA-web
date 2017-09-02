@@ -1,8 +1,9 @@
 const _ = require('underscore')
 import moment from 'moment'
 
-const Records = require('./records').default
-const Photos = require('./photos').default
+import Records from './records'
+import Photos from './photos'
+import AppConstants from './appConstants'
 
 import {
   getRestaurantLink,
@@ -64,7 +65,7 @@ Reviews.toDateString = function (date) {
 
 
 Reviews.getReviewObjectByType = function (review) {
-  const {objectSchemaName} = Records.realmObjects[review.reviewType]
+  const {objectSchemaName} = AppConstants.realmObjects[review.reviewType]
 
   switch (objectSchemaName) {
     case PARSE_RESTAURANTS:
@@ -110,7 +111,7 @@ Reviews.getReviewObjectByType = function (review) {
 }
 
 Reviews.getThumbnailUrlByReviewType = function (review) {
-  const {objectSchemaName} = Records.realmObjects[review.reviewType]
+  const {objectSchemaName} = AppConstants.realmObjects[review.reviewType]
 
   switch (objectSchemaName) {
     case PARSE_RESTAURANTS:

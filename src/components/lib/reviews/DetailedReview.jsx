@@ -2,6 +2,7 @@ import Telescope from '../../lib'
 import React, {Component} from 'react'
 
 import Records from "../../../lib/records";
+import AppConstants from "../../../lib/appConstants";
 
 const {
   loadRestaurantPage,
@@ -30,7 +31,7 @@ class DetailedReview extends Component {
     super(props)
 
     const {reviewType, forObjectId} = props.params;
-    const {objectSchemaName} = Records.realmObjects[reviewType]
+    const {objectSchemaName} = AppConstants.realmObjects[reviewType]
 
     this.state = this.initialState = {
       reviewType: reviewType,
@@ -54,7 +55,7 @@ class DetailedReview extends Component {
 
   componentDidMount() {
     const {reviewType, forObjectId} = this.state;
-    const {objectSchemaName} = Records.realmObjects[reviewType]
+    const {objectSchemaName} = AppConstants.realmObjects[reviewType]
     switch (objectSchemaName) {
       case PARSE_RESTAURANTS:
         this.props.dispatch(loadRestaurantPage(forObjectId))

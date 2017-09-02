@@ -1,4 +1,5 @@
 import Records from '../lib/records'
+import AppConstants from '../lib/appConstants'
 
 const {
   ParseRestaurant,
@@ -25,7 +26,7 @@ export default class photosParameters {
 
     const {objectSchemaName, forObjectId} = terms;
     if (!!objectSchemaName) {
-      const photoType = Records.realmTypes[objectSchemaName]
+      const photoType = AppConstants.realmTypes[objectSchemaName]
 
       if (objectSchemaName !== PARSE_USERS) {
         this.query.equalTo('photoType', photoType)

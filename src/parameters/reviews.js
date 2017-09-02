@@ -7,10 +7,11 @@ const {
 } = require('../parse/objects').default
 
 import Reviews from '../lib/reviews'
+import Records from '../lib/records'
+import AppConstants from '../lib/appConstants'
 
 import {equalRelationObject} from './parseQuery'
 
-import Records from '../lib/records'
 
 /**
  * The states were interested in
@@ -61,7 +62,7 @@ export default class ReviewsParameters {
     const {reviewType, forObject} = terms;
     if (!!reviewType) {
       this.query.equalTo('reviewType', reviewType)
-      const {objectSchemaName} = Records.realmObjects[reviewType]
+      const {objectSchemaName} = AppConstants.realmObjects[reviewType]
       equalRelationObject(this.query, objectSchemaName, terms.forObject.id)
     }
 

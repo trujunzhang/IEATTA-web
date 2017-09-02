@@ -6,6 +6,7 @@ const {
 } = require('../parse/objects').default
 
 import Records from '../lib/records'
+import AppConstants from '../lib/appConstants'
 
 /**
  * The states were interested in
@@ -25,8 +26,8 @@ const {
 
 export function equalRelationObject(query, objectSchemaName, objectId, fieldName) {
   if (!!objectId) {
+    const modelType = AppConstants.realmTypes[objectSchemaName]
     const instanceWithoutData = getInstanceWithoutData(objectSchemaName, objectId)
-    const modelType = Records.realmTypes[objectSchemaName]
     query.equalTo(modelType, instanceWithoutData)
   }
 }

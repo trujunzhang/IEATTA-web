@@ -19,36 +19,15 @@ const {
 
 const Parse = require('parse')
 
+import AppConstants from './appConstants'
+
 const UUID = require('../components/vendor/uuid');
 const Records = {}
-
 
 Records.SubDomainPhotos = {
   PARSE_RESTAURANTS: 'biz_photos',
   PARSE_RECIPES: 'recipe_photos',
   PARSE_USERS: 'user_local_photos',
-}
-
-Records.realmObjects = {
-  'record': {objectSchemaName: PARSE_RECORDS},
-  'restaurant': {objectSchemaName: PARSE_RESTAURANTS},
-  'event': {objectSchemaName: PARSE_EVENTS},
-  'peopleInEvent': {objectSchemaName: PARSE_PEOPLE_IN_EVENTS},
-  'user': {objectSchemaName: PARSE_USERS},
-  'recipe': {objectSchemaName: PARSE_RECIPES},
-  'photo': {objectSchemaName: PARSE_PHOTOS},
-  'review': {objectSchemaName: PARSE_REVIEWS},
-}
-
-Records.realmTypes = {
-  PARSE_RECORDS: 'record',
-  PARSE_RESTAURANTS: 'restaurant',
-  PARSE_EVENTS: 'event',
-  PARSE_PEOPLE_IN_EVENTS: 'peopleInEvent',
-  PARSE_USERS: 'user',
-  PARSE_RECIPES: 'recipe',
-  PARSE_PHOTOS: 'photo',
-  PARSE_REVIEWS: 'review'
 }
 
 Records.toFirstUpperString = function (name) {
@@ -119,14 +98,14 @@ Records.generateNewOnlineParseInstance = function (onlineParseObject, objectSche
 }
 
 Records.setParseObjectFieldWithoutData = function (parseType, instance, parseInstanceId) {
-  const {objectSchemaName, realmSchema} = Records.realmObjects[parseType];
+  const {objectSchemaName} = AppConstants.realmObjects[parseType];
   const instanceWithoutData = getInstanceWithoutData(objectSchemaName, parseInstanceId)
   instance.set(parseType, instanceWithoutData);
 }
 
 Records.setParseObjectFieldWithoutDataBySchema = function (objectSchemaName, instance, parseInstanceId) {
   const instanceWithoutData = getInstanceWithoutData(objectSchemaName, parseInstanceId)
-  const parseType = Records.realmTypes[objectSchemaName]
+  const parseType = AppConstants.realmTypes[objectSchemaName]
   instance.set(parseType, instanceWithoutData);
 }
 

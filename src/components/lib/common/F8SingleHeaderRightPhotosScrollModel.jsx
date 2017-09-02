@@ -40,6 +40,10 @@ class F8SingleHeaderRightPhotosScrollModel extends Component {
   renderSeeAllButton() {
     const {modelType, forObject} = this.props;
     const {photoModelObject} = this.props;
+    const photoLength = photoModelObject.total;
+    const buttonTitle = photoLength > 0 ?
+      `See all ${photoLength}` :
+      'No Photos'
 
     return (
       <div className="see-more show-all-overlay">
@@ -50,7 +54,7 @@ class F8SingleHeaderRightPhotosScrollModel extends Component {
                       <path d="M13 21v-8h8v8h-8zm0-18h8v8h-8V3zM3 13h8v8H3v-8zM3 3h8v8H3V3z"/>
                     </svg>
               </span>
-          {`See all ${photoModelObject.total}`}
+          {buttonTitle}
         </Link>
       </div>
     )

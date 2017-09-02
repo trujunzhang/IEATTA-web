@@ -1,5 +1,6 @@
 import Users from "./users"
 import Records from './records'
+import AppConstants from './appConstants'
 
 const _ = require('underscore')
 const slugify = require('slugify')
@@ -79,7 +80,7 @@ export function getAddPhotoLink(modelType, model) {
 }
 
 export function getEditLinkByModelType(modelType, forObject) {
-  const {objectSchemaName} = Records.realmObjects[modelType]
+  const {objectSchemaName} = AppConstants.realmObjects[modelType]
   switch (objectSchemaName) {
     case PARSE_RESTAURANTS:
       return getEditRestaurantLink(forObject)
@@ -111,17 +112,17 @@ export function getNewReviewLink(reviewType, forObject) {
  * @returns {string}
  */
 export function getPhotosBrowserSelectionLink(photo, photoType, forObject) {
-  const {objectSchemaName} = Records.realmObjects[photoType]
+  const {objectSchemaName} = AppConstants.realmObjects[photoType]
   return `/${Records.SubDomainPhotos[objectSchemaName]}/${forObject.id}/${slugify(forObject.displayName)}?select=${photo.id}`
 }
 
 export function getPhotosBrowserLink(photoType, forObject) {
-  const {objectSchemaName} = Records.realmObjects[photoType]
+  const {objectSchemaName} = AppConstants.realmObjects[photoType]
   return `/${Records.SubDomainPhotos[objectSchemaName]}/${forObject.id}/${slugify(forObject.displayName)}`
 }
 
 export function geDetailedModelLink(modelType, forObject) {
-  const {objectSchemaName} = Records.realmObjects[modelType]
+  const {objectSchemaName} = AppConstants.realmObjects[modelType]
   switch (objectSchemaName) {
     case PARSE_RESTAURANTS:
       return getRestaurantLink(forObject)
