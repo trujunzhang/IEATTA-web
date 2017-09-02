@@ -14,11 +14,15 @@ class EventsItem extends Component {
       <div className="media-avatar">
         <div className="photo-box pb-120s">
           <Link to={getEventLink(this.props.event)}>
-            <img alt={this.props.event.restaurant.displayName}
-                 className="photo-box-img"
-                 width="120"
-                 height="120"
-                 src={Photos.getListThumbnailUrl(this.props.event.restaurant)}/>
+
+            <Telescope.components.F8PlaceHolderImage
+              alt={this.props.event.restaurant.displayName}
+              className="photo-box-img"
+              width="120"
+              height="120"
+              placeholderSource={"/default/blank_biz_small.png"}
+              source={Photos.getListThumbnailUrl(this.props.event.restaurant)}/>
+
           </Link>
         </div>
       </div>
