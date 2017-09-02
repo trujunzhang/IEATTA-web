@@ -124,5 +124,11 @@ Records.setParseObjectFieldWithoutData = function (parseType, instance, parseIns
   instance.set(parseType, instanceWithoutData);
 }
 
+Records.setParseObjectFieldWithoutDataBySchema = function (objectSchemaName, instance, parseInstanceId) {
+  const instanceWithoutData = getInstanceWithoutData(objectSchemaName, parseInstanceId)
+  const parseType = Records.realmTypes[objectSchemaName]
+  instance.set(parseType, instanceWithoutData);
+}
+
 
 export default Records;
