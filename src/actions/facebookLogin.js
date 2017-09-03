@@ -46,6 +46,8 @@ const {
   getQueryByType
 } = require('../parse/parseUtiles').default
 
+const UUID = require('../components/vendor/uuid');
+
 async function queryFacebookAPI(path, ...args): Promise {
   return new Promise((resolve, reject) => {
     FB.api('/me?fields=id,name,email,permissions', function (response) {
@@ -83,8 +85,11 @@ async function _logInWithFacebook(source: ? object): Promise<Array<Action>> {
 
   let user = facebookUser
 
+  user.set('facebook_id', profile.id);
   user.set('username', profile.name)
   user.set('email', profile.email)
+  user.set('slug', slugify(profile.name, '_'))
+  user.set('uniqueId', UUID.create().toString())
   user.set('loginType', 'facebook')
 
   await user.save();

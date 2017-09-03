@@ -62,6 +62,7 @@ const {fromParseUser} = require('../parse/parseModels')
 
 import type {Action, ThunkAction} from './types'
 
+const UUID = require('../components/vendor/uuid');
 
 async function _logInWithPassword(username: string, password: string): Promise<Array<Action>> {
   const user = new Parse.User()
@@ -102,6 +103,8 @@ async function _signUpWithPassword(username: string, email: string, password: st
 
   user.set('username', username)
   user.set('password', password)
+  user.set('slug', slugify(profile.name, '_'))
+  user.set('uniqueId', UUID.create().toString())
   user.set('email', email)
 
   // await updateInstallation({user})
