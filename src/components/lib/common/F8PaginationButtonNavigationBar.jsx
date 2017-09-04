@@ -34,13 +34,14 @@ class F8PaginationButtonNavigationBar extends Component {
           totalCount,
     } = listTask;
 
-      debugger
+      const totalPage = totalCount/limit;
+      const currentPage = 1;
 
     return (
       <div className="pagination-block">
         <div className="arrange arrange--stack arrange--baseline arrange--6">
           <div className="page-of-pages arrange_unit arrange_unit--fill">
-            Page 1 of 6
+              {`Page ${currentPage} of ${totalPage}`}
           </div>
 
           <div className="pagination-links arrange_unit">
