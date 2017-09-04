@@ -3,22 +3,65 @@ import React, {Component} from 'react'
 
 import {withRouter} from 'react-router'
 
+import {Link} from 'react-router'
+import {
+  geDetailedModelLink,
+  getAddPhotoLink
+} from '../../../lib/link'
+
+const {loadReviewsList} = require('../../../actions').default
+const {byListId, getDefaultListTask} = require('../../filter/filterPosts')
+const {generateTermsForReviewsList} = require('../../filter/filterRoutes')
+
 class IEAReviewsListLayout extends Component {
 
   constructor(props, context) {
     super(props)
 
+      const {params,location}= props;
+      const {modelType,forObjectId,forObjectDisplayName} = params;
+
+      const forObject = {
+        id: forObjectId,
+        modelType:modelType,
+        displayName:forObjectDisplayName
+      };
+
+    const terms = generateTermsForReviewsList({forObject, location})
+
     this.state = {
-      modelType: props.params.modelType,
-      forObject: {
-        id: props.params.forObjectId,
-      },
-      forObjectId: props.params.forObjectId,
+      // Common
+      terms: terms,
+      listTask: getDefaultListTask(terms),
+      modelType: modelType,
+      // Detailed object
+      forObject: forObject,
+      forObjectId: forObjectId,
     }
   }
 
-  renderReviewListHeader() {
+  componentWillReceiveProps(nextProps) {
 
+    const newTerms = generateTermsForReviewsList(nextProps)
+    const newListTask = byListId(nextProps.listContainerTasks, newTerms.listId, this.state.listTask);
+
+    this.setState({
+      terms: newTerms,
+      listTask: newListTask
+    })
+  }
+
+  componentDidMount() {
+    const {terms, listTask} = this.state;
+    this.loadMore(terms, listTask)
+  }
+
+  loadMore(terms, listTask) {
+    this.props.dispatch(loadReviewsList(listTask, terms))
+  }
+
+
+  renderReviewListHeader() {
     return (
       <h3>
         52 reviews for Mourad Restaurant that are not currently recommended
@@ -92,8 +135,7 @@ class IEAReviewsListLayout extends Component {
   }
 
   render() {
-
-      debugger
+      const {forObject} = this.state;
 
     return (
       <div className="main-content-wrap main-content-wrap--full">
@@ -104,9 +146,10 @@ class IEAReviewsListLayout extends Component {
             <div className="clearfix layout-block layout-full">
               <div className="column column-alpha ">
                 <div className="top-return-links">
-                  <a href="/biz/mourad-restaurant-san-francisco">
-                    {`« Back to ${"Mourad Restaurant"}`}
-                  </a>
+
+                  <Link to={geDetailedModelLink(forObject.modelType, forObject)}>
+                    {`« Back to ${forObject.displayName}`}
+                  </Link>
                 </div>
 
                 {this.renderReviewsList()}
@@ -128,7 +171,8 @@ function select(store, ownProps) {
   return {
     currentUserId: store.user.id,
     editModel: store.editModel,
-    goBack: ownProps.router.goBack
+    goBack: ownProps.router.goBack,
+    listContainerTasks: store.listContainerTasks
   };
 }
 

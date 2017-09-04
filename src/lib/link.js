@@ -71,7 +71,7 @@ export function getEditEventLink(event) {
 }
 
 export function getReviewsListLink({modelType, forObject}) {
-  return `/reviews/${modelType}/${forObject.id}`
+  return `/reviews/${modelType}/${forObject.id}/${forObject.displayName}`
 }
 
 export function getAddPhotoLink(modelType, model) {

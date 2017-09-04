@@ -120,7 +120,7 @@ const createRoutes = (store) => {
       onEnter: requireAuth(store)
     },
     {
-      path: 'reviews/(:modelType)/(:forObjectId)',
+      path: 'reviews/(:modelType)/(:forObjectId)/(:forObjectDisplayName)',
       component: Telescope.components.IEAReviewsListLayout,
     },
   ];
