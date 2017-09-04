@@ -28,7 +28,7 @@ class IEAReviewsListLayout extends Component {
         displayName:forObjectDisplayName
       };
 
-    const terms = generateTermsForReviewsList({reviewType,forObject, location},2)
+    const terms = generateTermsForReviewsList({reviewType,forObject, location}, 'page', 2)
 
     this.state = {
       // Common

@@ -171,13 +171,17 @@ export function getUserQueryId(props) {
   return props.params.uid;
 }
 
-export function generateTermsForReviewsList(props,limit=10) {
-  const listId = props.forObject.id;
+export function generateTermsForReviewsList(props,prefix="list",limit=10) {
+    const {id}= props.forObject;
+
+    const listId = `reviews-${prefix}-view-for-${id}`;
+
   return {
     ...props,
     ...props.location.query,
-    listId: 'reviews-list-view-for-' + listId,
-    limit: limit
+
+      listId: listId,
+      limit: limit
   };
 }
 
