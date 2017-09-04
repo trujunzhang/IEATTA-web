@@ -69,8 +69,8 @@ class F8SingleHeaderRightPhotosScrollModel extends Component {
             </div>
           </div>
 
-          {photoLength > 0 ? this.renderLeftIcon() : null}
-          {photoLength > 0 ? this.renderRightIcon() : null}
+          {photoLength > 3 ? this.renderLeftIcon() : null}
+          {photoLength > 3 ? this.renderRightIcon() : null}
 
         </div>
 
