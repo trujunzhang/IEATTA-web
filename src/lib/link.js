@@ -130,8 +130,10 @@ export function geDetailedModelLink(modelType, forObject) {
       return getOrderedRecipeLink(forObject)
     case PARSE_USERS:
       return getLoggedUserMenuLink(forObject)
+    case PARSE_EVENTS:
+      return getEventLink(forObject)
   }
-  throw new Error('You need to set a proper photo type!')
+  throw new Error('You need to set a proper model type!')
 }
 
 export function getPhotoSelectBackLink(pageForm, photoType, forObject) {
