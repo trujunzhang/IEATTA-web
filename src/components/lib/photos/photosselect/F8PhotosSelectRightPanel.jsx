@@ -100,6 +100,7 @@ class F8PhotosSelectRightPanel extends Component {
 
   renderTopUserInfo() {
     const {selectedPhotoInfo} = this.props;
+
     return (
 
       <div className="media-info_item media-info_user">
@@ -109,13 +110,16 @@ class F8PhotosSelectRightPanel extends Component {
             <div className="media-avatar">
 
               <div className="photo-box pb-30s">
-                <Link to={selectedPhotoInfo.userProfileUrl}
-                      className="js-analytics-click">
-                  <img alt={selectedPhotoInfo.username}
-                       className="photo-box-img"
-                       width="30"
-                       height="30"
-                       src={selectedPhotoInfo.imageUrl}/>
+                <Link to={selectedPhotoInfo.userProfileUrl} className="js-analytics-click">
+
+                  <Telescope.components.F8PlaceHolderImage
+                    alt={selectedPhotoInfo.username}
+                    className="photo-box-img"
+                    width="30"
+                    height="30"
+                    placeholderSource={"/default/user_30_square.png"}
+                    src={selectedPhotoInfo.imageUrl}/>
+
                 </Link>
 
               </div>
