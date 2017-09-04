@@ -40,8 +40,8 @@ class DetailedRestaurant extends Component {
   constructor(props, context) {
     super(props)
 
-      const pageForm = getPageFormType(PARSE_RESTAURANTS, props, null)
-      const photosTerms = generatePhotoTerm(PARSE_RESTAURANTS, props.params.rid,pageForm)
+    const pageForm = getPageFormType(PARSE_RESTAURANTS, props, null)
+    const photosTerms = generatePhotoTerm(PARSE_RESTAURANTS, props.params.rid, pageForm)
 
     this.state = this.initialState = {
       rid: props.params.rid,
@@ -56,18 +56,16 @@ class DetailedRestaurant extends Component {
       // Common
       pageForm: pageForm,
       modelType: 'restaurant',
-        // Events
+      // Events
       onPreIconClick: this.onPreIconClick.bind(this),
       onNextIconClick: this.onNextIconClick.bind(this),
     }
   }
 
   componentWillReceiveProps(nextProps) {
-      const lastPageForm = this.state.pageForm;
-
-      const newPageForm = getPageFormType(PARSE_RESTAURANTS, nextProps, this.state.pageForm)
-      const newPhotosTerms = generatePhotoTerm(PARSE_RESTAURANTS, nextProps.params.rid,newPageForm)
-      const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms.listId, this.state.photosListTask);
+    const newPageForm = getPageFormType(PARSE_RESTAURANTS, nextProps, this.state.pageForm)
+    const newPhotosTerms = generatePhotoTerm(PARSE_RESTAURANTS, nextProps.params.rid, newPageForm)
+    const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms.listId, this.state.photosListTask);
 
     this.setState({
       // Detailed object
@@ -80,10 +78,6 @@ class DetailedRestaurant extends Component {
       // Common
       pageForm: newPageForm,
     })
-
-      if(lastPageForm!== newPageForm){
-debugger
-      }
   }
 
   componentDidMount() {
