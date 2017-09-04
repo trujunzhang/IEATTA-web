@@ -113,9 +113,7 @@ class ReviewsList extends Component {
         }
 
         <div className="review-list" id="position-relative">
-
           {this.renderRows()}
-
         </div>
       </div>
     )

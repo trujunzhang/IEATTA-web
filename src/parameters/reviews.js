@@ -63,7 +63,7 @@ export default class ReviewsParameters {
     if (!!reviewType) {
       this.query.equalTo('reviewType', reviewType)
       const {objectSchemaName} = AppConstants.realmObjects[reviewType]
-      equalRelationObject(this.query, objectSchemaName, terms.forObject.id)
+      equalRelationObject(this.query, objectSchemaName, forObject.id)
     }
 
 

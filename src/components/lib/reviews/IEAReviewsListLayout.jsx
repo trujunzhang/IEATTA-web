@@ -20,6 +20,7 @@ class IEAReviewsListLayout extends Component {
 
       const {params,location}= props;
       const {modelType,forObjectId,forObjectDisplayName} = params;
+      const reviewType = modelType;
 
       const forObject = {
         id: forObjectId,
@@ -27,7 +28,7 @@ class IEAReviewsListLayout extends Component {
         displayName:forObjectDisplayName
       };
 
-    const terms = generateTermsForReviewsList({forObject, location})
+    const terms = generateTermsForReviewsList({reviewType,forObject, location})
 
     this.state = {
       // Common
@@ -41,12 +42,9 @@ class IEAReviewsListLayout extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-
-    const newTerms = generateTermsForReviewsList(nextProps)
-    const newListTask = byListId(nextProps.listContainerTasks, newTerms.listId, this.state.listTask);
+    const newListTask = byListId(nextProps.listContainerTasks, this.state.terms.listId, this.state.listTask);
 
     this.setState({
-      terms: newTerms,
       listTask: newListTask
     })
   }
@@ -110,6 +108,37 @@ class IEAReviewsListLayout extends Component {
     )
   }
 
+
+  renderRows() {
+    const {listTask} = this.state;
+
+    const {
+      results,
+      ready,
+      totalCount,
+    } = listTask;
+
+    if (!ready) {
+      return (<Telescope.components.F8LoadingView/>)
+    } else if (!!results && results.length) {
+      return (
+        <ul className="ylist ylist-bordered reviews">
+          {results.map((review, index) => {
+                return (<Telescope.components.ReviewsItem key={review.id} review={review}/>)
+            }
+          )}
+        </ul>
+      )
+    } else {
+      return (
+        <Telescope.components.F8EmptySection
+          title={`No reviews`}
+          text=""/>
+      )
+    }
+  }
+
+
   renderReviewsList() {
     return (
       <div className="clearfix layout-block layout-full ysection">
@@ -118,13 +147,11 @@ class IEAReviewsListLayout extends Component {
 
             {this.renderReviewListHeader()}
 
-            <Telescope.components.ReviewsList
-              key={this.state.forObjectId}
-              forObject={this.state.forObject}
-              reviewType={this.state.modelType}
-              showHeaderTitle={false}
-            />
 
+
+        <div className="review-list" id="position-relative">
+          {this.renderRows()}
+        </div>
 
             {this.renderReviewsListFooter()}
 
