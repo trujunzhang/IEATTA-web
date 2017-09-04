@@ -81,9 +81,7 @@ class ReviewsList extends Component {
     } = listTask;
 
     if (!ready) {
-      return (
-        <Telescope.components.F8LoadingView/>
-      )
+      return (<Telescope.components.F8LoadingView/>)
     } else if (!!results && results.length) {
       return (
         <ul className="ylist ylist-bordered reviews">

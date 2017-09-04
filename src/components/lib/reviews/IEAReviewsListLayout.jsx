@@ -18,6 +18,7 @@ class IEAReviewsListLayout extends Component {
   }
 
   renderReviewListHeader() {
+
     return (
       <h3>
         52 reviews for Mourad Restaurant that are not currently recommended
