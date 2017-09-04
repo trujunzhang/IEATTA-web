@@ -1,9 +1,41 @@
 import React, { Component } from 'react';
 
+import {withRouter} from 'react-router'
+
 class F8PaginationButtonNavigationBar extends Component {
 
+    onPaginationButtonPress(){
+    const {listTask,forObject} = this.props;
+
+    const {
+        limit,
+        results,
+        ready,
+        totalCount,
+    } = listTask;
+
+
+        const newLocation =
+            {
+                pathname: this.props.location.pathname,
+                query: Object.assign(this.props.location.query,{start: 15})
+            };
+        this.props.router.push(newLocation);
+
+    }
 
   renderReviewsListFooter() {
+    const {listTask,forObject} = this.props;
+
+      const {
+          limit,
+          results,
+          ready,
+          totalCount,
+    } = listTask;
+
+      debugger
+
     return (
       <div className="pagination-block">
         <div className="arrange arrange--stack arrange--baseline arrange--6">
