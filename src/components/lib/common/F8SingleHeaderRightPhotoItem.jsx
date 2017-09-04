@@ -30,15 +30,16 @@ class F8SingleHeaderRightPhotoItem extends Component {
             <div className="media-avatar avatar">
               <div className="photo-box pb-30s">
 
-                <Link
-                  to={overlay.user.userProfileUrl}
-                  className="js-analytics-click">
-                  <img className="photo-box-img"
-                       alt={overlay.user.username}
-                       width="30"
-                       height="30"
-                       src={overlay.user.imageUrl}
+                <Link to={overlay.user.userProfileUrl} className="js-analytics-click">
+
+                  <Telescope.components.F8PlaceHolderImage
+                    alt={overlay.user.username}
+                    width="30"
+                    height="30"
+                    placeholderSource={"/default/user_30_square.png"}
+                    src={overlay.user.imageUrl}
                   />
+
                 </Link>
 
               </div>
