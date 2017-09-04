@@ -11,6 +11,7 @@ Telescope.registerComponent('UsersBlurryImageAvatar',           require('./exten
 Telescope.registerComponent('Layout',                                 require('./applayout/Layout.jsx').default)
 Telescope.registerComponent('AppFooter',                              require('./applayout/AppFooter.jsx').default)
 Telescope.registerComponent('F8StarIcon',                             require('./common/F8StarIcon.jsx').default)
+Telescope.registerComponent('F8PaginationButtonNavigationBar',        require('./common/F8PaginationButtonNavigationBar.jsx').default)
 Telescope.registerComponent('F8SingleHeaderRightPhotos',              require('./common/F8SingleHeaderRightPhotos.jsx').default)
 Telescope.registerComponent('F8SingleHeaderRightPhotosSingleModel',   require('./common/F8SingleHeaderRightPhotosSingleModel.jsx').default)
 Telescope.registerComponent('F8SingleHeaderRightPhotosScrollModel',   require('./common/F8SingleHeaderRightPhotosScrollModel.jsx').default)
