@@ -34,8 +34,13 @@ class F8SingleHeaderRightPhotoItem extends Component {
   renderOverLay() {
     const {item, index} = this.props;
     const {overlay} = item;
-    const userLink = overlay.user.userProfileUrl;
+      const {user} = overlay;
+      const userName = user.username;
+      const userImageUrl = user.imageUrl;
+    const userLink = user.userProfileUrl;
     const linkProperty = !!userLink ? {to: userLink} : {};
+
+      debugger
 
     return (
       <div className="photo-box-overlay js-overlay">
@@ -46,11 +51,11 @@ class F8SingleHeaderRightPhotoItem extends Component {
               <Link {...linkProperty} className="js-analytics-click">
 
                 <Telescope.components.F8PlaceHolderImage
-                  alt={overlay.user.username}
+                  alt={userName}
                   width="30"
                   height="30"
                   placeholderSource={"/default/user_30_square.png"}
-                  src={overlay.user.imageUrl}
+                  source={userImageUrl}
                 />
 
               </Link>
@@ -69,7 +74,7 @@ class F8SingleHeaderRightPhotoItem extends Component {
               <Link className="user-display-name js-analytics-click margin-left-4"
                     {...linkProperty}
                     id="dropdown_user-name">
-                    {overlay.user.username}
+                    {userName}
               </Link>
                 </span>
           </div>
