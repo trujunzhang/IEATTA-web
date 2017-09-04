@@ -113,18 +113,18 @@ export function getSelectPhoto(props: Any, photosListTask: Any, lastPhotoIndex) 
   return lastPhotoIndex;
 }
 
-export function generatePhotoTerm(objectSchemaName, forObjectId,pageForm= PAGE_MAIN_FORM) {
-    const isPhotosBrwoserPag = pageForm === PAGE_PHOTOS_BROWSER_FORM;
-    const termType= isPhotosBrwoserPag?'page':'list';
-    const limit = isPhotosBrwoserPag?1:-1;
-    const listId = `photos-${termType}-view-for-objectId-${forObjectId}`
+export function generatePhotoTerm(objectSchemaName, forObjectId, pageForm = PAGE_MAIN_FORM) {
+  const isPhotosBrwoserPag = pageForm === PAGE_PHOTOS_BROWSER_FORM;
+  const termType = isPhotosBrwoserPag ? 'page' : 'list';
+  const limit = isPhotosBrwoserPag ? 1 : -1;
+  const listId = `photos-${termType}-view-for-objectId-${forObjectId}`
 
   const photoTerms = {
     listId: listId,
     forObjectId: forObjectId,
     objectSchemaName: objectSchemaName,
-      allItems: (limit === -1),
-      limit:limit,
+    allItems: (limit === -1),
+    limit: limit,
   }
 
   return photoTerms;
@@ -176,17 +176,17 @@ export function getUserQueryId(props) {
   return props.params.uid;
 }
 
-export function generateTermsForReviewsList(props,prefix="list",limit=10) {
-    const {id}= props.forObject;
+export function generateTermsForReviewsList(props, prefix = "list", limit = 10) {
+  const {id} = props.forObject;
 
-    const listId = `reviews-${prefix}-view-for-${id}`;
+  const listId = `reviews-${prefix}-view-for-${id}`;
 
   return {
     ...props,
     ...props.location.query,
 
-      listId: listId,
-      limit: limit
+    listId: listId,
+    limit: limit
   };
 }
 
@@ -244,4 +244,14 @@ export function generateTermsForRestaurantList(props) {
     limit: 10,
     listId: 'single-list-view-for-restaurants'
   };
+}
+
+export function checkNeedUpdatePhotosTask(lastPageForm, newPageForm) {
+  return (
+    lastPageForm !== PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY
+    && lastPageForm !== PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY
+    && newPageForm !== PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY
+    && newPageForm !== PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY
+    && lastPageForm !== newPageForm
+  )
 }
