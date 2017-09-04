@@ -65,6 +65,7 @@ Records.generateNewOnlineParseInstance = function (onlineParseObject, objectSche
       debugger
       // step1: common fields.
       onlineParseObject.set('photoType', model.modelType)
+      // Photo images.
       onlineParseObject.set('thumbnail', model.thumbnail)
       onlineParseObject.set('original', model.thumbnail)
 
