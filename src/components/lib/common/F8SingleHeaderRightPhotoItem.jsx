@@ -32,15 +32,13 @@ class F8SingleHeaderRightPhotoItem extends Component {
   }
 
   renderOverLay() {
-    const {item, index} = this.props;
-    const {overlay} = item;
+      const {item, index} = this.props;
+      const {overlay} = item;
       const {user} = overlay;
       const userName = user.username;
       const userImageUrl = user.imageUrl;
-    const userLink = user.userProfileUrl;
-    const linkProperty = !!userLink ? {to: userLink} : {};
-
-      debugger
+      const userLink = user.userProfileUrl;
+      const linkProperty = !!userLink ? {to: userLink} : {};
 
     return (
       <div className="photo-box-overlay js-overlay">

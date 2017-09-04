@@ -40,7 +40,8 @@ class DetailedRestaurant extends Component {
   constructor(props, context) {
     super(props)
 
-    const photosTerms = generatePhotoTerm(PARSE_RESTAURANTS, props.params.rid)
+      const pageForm = getPageFormType(PARSE_RESTAURANTS, props, null)
+      const photosTerms = generatePhotoTerm(PARSE_RESTAURANTS, props.params.rid,pageForm)
 
     this.state = this.initialState = {
       rid: props.params.rid,
@@ -53,25 +54,36 @@ class DetailedRestaurant extends Component {
       photosListTask: getDefaultListTask(photosTerms),
       selectPhotoIndex: -1,
       // Common
-      pageForm: getPageFormType(PARSE_RESTAURANTS, props, null),
+      pageForm: pageForm,
       modelType: 'restaurant',
+        // Events
       onPreIconClick: this.onPreIconClick.bind(this),
       onNextIconClick: this.onNextIconClick.bind(this),
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms.listId, this.state.photosListTask);
+      const lastPageForm = this.state.pageForm;
+
+      const newPageForm = getPageFormType(PARSE_RESTAURANTS, nextProps, this.state.pageForm)
+      const newPhotosTerms = generatePhotoTerm(PARSE_RESTAURANTS, nextProps.params.rid,newPageForm)
+      const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms.listId, this.state.photosListTask);
 
     this.setState({
       // Detailed object
       forObject: getModelByObjectId(nextProps, this.state.rid, this.state.forObject),
       reviewStatistic: getModelByObjectId(nextProps, this.state.rid, this.state.reviewStatistic, 'statistic'),
       // photos
-      pageForm: getPageFormType(PARSE_RESTAURANTS, nextProps, this.state.pageForm),
+      photosTerms: newPhotosTerms,
       photosListTask: photosListTask,
-      selectPhotoIndex: getSelectPhoto(nextProps, photosListTask, this.state.selectPhotoIndex)
+      selectPhotoIndex: getSelectPhoto(nextProps, photosListTask, this.state.selectPhotoIndex),
+      // Common
+      pageForm: newPageForm,
     })
+
+      if(lastPageForm!== newPageForm){
+debugger
+      }
   }
 
   componentDidMount() {

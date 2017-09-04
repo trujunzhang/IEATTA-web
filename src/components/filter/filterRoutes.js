@@ -113,13 +113,18 @@ export function getSelectPhoto(props: Any, photosListTask: Any, lastPhotoIndex) 
   return lastPhotoIndex;
 }
 
-export function generatePhotoTerm(objectSchemaName, forObjectId) {
-  const listId = 'photos-list-view-for-objectId-' + forObjectId;
+export function generatePhotoTerm(objectSchemaName, forObjectId,pageForm= PAGE_MAIN_FORM) {
+    const isPhotosBrwoserPag = pageForm === PAGE_PHOTOS_BROWSER_FORM;
+    const termType= isPhotosBrwoserPag?'page':'list';
+    const limit = isPhotosBrwoserPag?1:-1;
+    const listId = `photos-${termType}-view-for-objectId-${forObjectId}`
+
   const photoTerms = {
     listId: listId,
     forObjectId: forObjectId,
     objectSchemaName: objectSchemaName,
-    allItems: true
+      allItems: (limit === -1),
+      limit:limit,
   }
 
   return photoTerms;
