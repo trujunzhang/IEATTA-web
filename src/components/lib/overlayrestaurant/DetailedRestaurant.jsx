@@ -80,6 +80,23 @@ class DetailedRestaurant extends Component {
       // Common
       pageForm: newPageForm,
     })
+
+    if (
+      lastPageForm !== PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY
+      && lastPageForm !== PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY
+      && newPageForm !== PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY
+      && newPageForm !== PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY
+    ) {
+      if (lastPageForm !== newPageForm) {
+        this.setState({
+          // photos
+          photosTerms: newPhotosTerms,
+          photosListTask: getDefaultListTask(newPhotosTerms),
+          selectPhotoIndex: -1,
+        })
+        this.props.dispatch(loadPhotosBrowser(newPhotosTerms))
+      }
+    }
   }
 
   componentDidMount() {
