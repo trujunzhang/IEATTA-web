@@ -142,6 +142,7 @@ export function getPhotoSelectBackLink(pageForm, photoType, forObject) {
       return getPhotosBrowserLink(photoType, forObject)
   }
 
+  throw new Error('You need to set a page Form to get PhotoSelectBackLink!')
 }
 
 export function getLoggedUserMenuLink(userProfile, menuType = LOGGED_USER_MENU_ABOUT) {

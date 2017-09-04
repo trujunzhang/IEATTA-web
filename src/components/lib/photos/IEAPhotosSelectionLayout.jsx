@@ -22,7 +22,6 @@ class IEAPhotosSelectionLayout extends Component {
     })
   }
 
-
   renderCloseButton() {
     const {modelType, forObject, pageForm} = this.props;
     return (
