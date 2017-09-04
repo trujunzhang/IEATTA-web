@@ -60,9 +60,19 @@ class IEAReviewsListLayout extends Component {
 
 
   renderReviewListHeader() {
+  const {listTask,forObject} = this.state;
+
+    const {
+      results,
+      ready,
+      totalCount,
+    } = listTask;
+
     return (
       <h3>
-        52 reviews for Mourad Restaurant that are not currently recommended
+
+  {`${totalCount} reviews for ${forObject.displayName}`}
+
       </h3>
     )
   }
@@ -146,7 +156,6 @@ class IEAReviewsListLayout extends Component {
           <div className="ysection not-recommended-reviews review-list-wide">
 
             {this.renderReviewListHeader()}
-
 
 
         <div className="review-list" id="position-relative">
