@@ -15,6 +15,22 @@ const {
 } = require('./constants').default
 
 const Users = {
+
+  /**
+   * Sometimes, If the users run the 'IEATTA' app, but network is unavailability.
+   * So give the users the 'anonymous' user firstly to let them can use the app.
+   *
+   * The uniqueId and the password is the same as '12345654321'.
+   *
+   * @type {{id: null, name: string, slug: string, email: string, loginType: string, uniqueId: string}}
+   */
+  anonymousUser: {
+    id: null,
+    username: 'anonymous',
+    email: '',
+    loginType: 'email',
+    listPhotoId: ''
+  },
   config: {
     // February 2014
     dateFormat: 'MMMM YYYY',

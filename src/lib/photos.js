@@ -1,5 +1,7 @@
 import moment from 'moment'
 
+import Users from './users'
+
 import {
   getLoggedUserMenuLink,
   getPhotosBrowserSelectionLink,
@@ -46,7 +48,7 @@ Photos.getPhotoItem = function (photos, modelType, forObject, index) {
 }
 
 Photos.getPhotoInfoAboutUser = function (photos, index) {
-  const user = photos[index].user;
+  const user = photos[index].user || Users.anonymousUser;
   return {
     username: user.username,
     imageUrl: Photos.getListThumbnailUrl(user),
