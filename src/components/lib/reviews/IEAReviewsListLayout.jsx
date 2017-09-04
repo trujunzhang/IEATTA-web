@@ -40,34 +40,11 @@ class IEAReviewsListLayout extends Component {
               <div className="arrange_unit page-option current">
                 <span className="pagination-links_anchor">1</span>
               </div>
+
               <div className="arrange_unit page-option">
                 <a className="available-number pagination-links_anchor"
                    href="/not_recommended_reviews/mourad-restaurant-san-francisco?not_recommended_start=10">
                   2
-                </a>
-              </div>
-              <div className="arrange_unit page-option">
-                <a className="available-number pagination-links_anchor"
-                   href="/not_recommended_reviews/mourad-restaurant-san-francisco?not_recommended_start=20">
-                  3
-                </a>
-              </div>
-              <div className="arrange_unit page-option">
-                <a className="available-number pagination-links_anchor"
-                   href="/not_recommended_reviews/mourad-restaurant-san-francisco?not_recommended_start=30">
-                  4
-                </a>
-              </div>
-              <div className="arrange_unit page-option">
-                <a className="available-number pagination-links_anchor"
-                   href="/not_recommended_reviews/mourad-restaurant-san-francisco?not_recommended_start=40">
-                  5
-                </a>
-              </div>
-              <div className="arrange_unit page-option">
-                <a className="available-number pagination-links_anchor"
-                   href="/not_recommended_reviews/mourad-restaurant-san-francisco?not_recommended_start=50">
-                  6
                 </a>
               </div>
 
@@ -117,6 +94,8 @@ class IEAReviewsListLayout extends Component {
   }
 
   render() {
+
+      debugger
 
     return (
       <div className="main-content-wrap main-content-wrap--full">
