@@ -145,6 +145,9 @@ export function getPhotoSelectBackLink(pageForm, photoType, forObject) {
 }
 
 export function getLoggedUserMenuLink(userProfile, menuType = LOGGED_USER_MENU_ABOUT) {
+  if (!userProfile.id) {
+    return null;
+  }
   const row = Users.profileLeftMenus[menuType]
 
   switch (menuType) {
