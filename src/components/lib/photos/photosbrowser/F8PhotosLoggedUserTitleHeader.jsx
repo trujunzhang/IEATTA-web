@@ -3,7 +3,8 @@ import React, {Component} from 'react';
 import {Link} from 'react-router'
 import {
   geDetailedModelLink,
-  getAddPhotoLink
+  getAddPhotoLink,
+  calculateTotalCount
 } from '../../../../lib/link'
 
 
@@ -36,7 +37,7 @@ class F8PhotosLoggedUserTitleHeader extends Component {
               </ul>
 
               <h1 className="media-header_title h2">
-                {`${photosListTask.totalCount} photos by ${forObject.displayName}`}
+                {`${calculateTotalCount(this.props)} photos by ${forObject.displayName}`}
               </h1>
             </div>
           </div>
