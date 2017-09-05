@@ -110,20 +110,22 @@ export function getNewReviewLink(reviewType, forObject) {
  * Contains photo browser page's pageIndex:
  * http://localhost:3000/biz_photos/OnNGSfwoou/Forno%20Vecchio?select=Px63VDvuud && page = 1
  *
- * @param location
  * @param photo
  * @param photoType
  * @param forObject
+ * @param location
  * @returns {string}
  */
-export function getPhotosBrowserSelectionLink(location, photo, photoType, forObject) {
+export function getPhotosBrowserSelectionLink(photo, photoType, forObject, location = {query: {}}) {
   const {objectSchemaName} = AppConstants.realmObjects[photoType]
   const pathname = `/${AppConstants.SubDomainPhotos[objectSchemaName]}/${forObject.id}/${slugify(forObject.displayName)}`
+
+  let selectionLink = `${pathname}?select=${photo.id}`;
   const page = location.query.page;
   if (!!page) {
-    return `${pathname}?select=${photo.id}&page=${page}`
+    selectionLink = `${selectionLink}&page=${parseInt(page)}`
   }
-  return `${pathname}?select=${photo.id}`
+  return selectionLink
 }
 
 export function getPhotosBrowserLink(photoType, forObject) {
@@ -146,7 +148,7 @@ export function geDetailedModelLink(modelType, forObject) {
   throw new Error('You need to set a proper model type!')
 }
 
-export function getPhotoSelectBackLink(location, pageForm, photoType, forObject) {
+export function getPhotoSelectBackLink(pageForm, photoType, forObject, location = {query: {}}) {
   let backLink = null;
   switch (pageForm) {
     case PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY:
@@ -164,9 +166,10 @@ export function getPhotoSelectBackLink(location, pageForm, photoType, forObject)
     default:
       throw new Error('You need to set a page Form to get PhotoSelectBackLink!')
   }
+
   const page = location.query.page;
   if (!!page) {
-    backLink = `${backLink}?page=${page}`
+    backLink = `${backLink}?page=${parseInt(page)}`
   }
   return backLink;
 }
