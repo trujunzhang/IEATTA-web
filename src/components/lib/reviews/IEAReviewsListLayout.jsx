@@ -6,7 +6,8 @@ import {withRouter} from 'react-router'
 import {Link} from 'react-router'
 import {
   geDetailedModelLink,
-  getAddPhotoLink
+  getAddPhotoLink,
+  calculateTotalCount
 } from '../../../lib/link'
 
 const {loadReviewsList} = require('../../../actions').default
@@ -92,16 +93,12 @@ class IEAReviewsListLayout extends Component {
     const {listTask, forObject} = this.state;
 
     const {
-      results,
-      ready,
       totalCount,
     } = listTask;
 
     return (
       <h3>
-
-        {`${totalCount} reviews for ${forObject.displayName}`}
-
+        {`${calculateTotalCount(listTask)} reviews for ${forObject.displayName}`}
       </h3>
     )
   }

@@ -37,7 +37,7 @@ class F8PhotosLoggedUserTitleHeader extends Component {
               </ul>
 
               <h1 className="media-header_title h2">
-                {`${calculateTotalCount(this.props)} photos by ${forObject.displayName}`}
+                {`${calculateTotalCount(this.photosListTask)} photos by ${forObject.displayName}`}
               </h1>
             </div>
           </div>

@@ -219,9 +219,9 @@ export function getTotalPageForPagination({listTask}, totalCount) {
   return totalPage;
 }
 
-export function calculateTotalCount({photosListTask}) {
-  const count = photosListTask.totalCount;
-  return (count < 0) ? 0 : count;
+export function calculateTotalCount(listTask) {
+  const count = listTask.totalCount;
+  return (count < 0) ? "" : count;
 }
 
 
