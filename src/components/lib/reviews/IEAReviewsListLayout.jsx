@@ -6,7 +6,6 @@ import {withRouter} from 'react-router'
 import {Link} from 'react-router'
 import {
   geDetailedModelLink,
-  getAddPhotoLink,
   calculateTotalCount
 } from '../../../lib/link'
 
@@ -100,8 +99,7 @@ class IEAReviewsListLayout extends Component {
 
     const {
       results,
-      ready,
-      totalCount,
+      ready
     } = listTask;
 
     if (!ready) {
@@ -135,7 +133,9 @@ class IEAReviewsListLayout extends Component {
             </div>
 
 
-            <Telescope.components.F8PaginationButtonNavigationBar {...this.props} {...this.state}/>
+            <Telescope.components.F8PaginationButtonNavigationBar
+              {...this.props}
+              {...this.state}/>
 
           </div>
         </div>
