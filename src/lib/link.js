@@ -119,13 +119,20 @@ export function getNewReviewLink(reviewType, forObject) {
 export function getPhotosBrowserSelectionLink(photo, photoType, forObject, location = {query: {}}) {
   const {objectSchemaName} = AppConstants.realmObjects[photoType]
   const pathname = `/${AppConstants.SubDomainPhotos[objectSchemaName]}/${forObject.id}/${slugify(forObject.displayName)}`
+  const select = photo.id;
+  let query = {select}
 
-  let selectionLink = `${pathname}?select=${photo.id}`;
   const page = location.query.page;
   if (!!page) {
-    selectionLink = `${selectionLink}&page=${parseInt(page)}`
+    query = {select, page}
   }
-  return selectionLink
+
+  const sort_by = location.query.sort_by;
+  if (!!sort_by) {
+    query = {select, sort_by}
+  }
+
+  return {pathname, query}
 }
 
 export function getPhotosBrowserLink(photoType, forObject) {
@@ -149,16 +156,16 @@ export function geDetailedModelLink(modelType, forObject) {
 }
 
 export function getPhotoSelectBackLink(pageForm, photoType, forObject, location = {query: {}}) {
-  let backLink = null;
+  let pathname = null;
   switch (pageForm) {
     case PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY:
-      backLink = geDetailedModelLink(photoType, forObject)
+      pathname = geDetailedModelLink(photoType, forObject)
       break;
     case PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY:
-      backLink = getPhotosBrowserLink(photoType, forObject)
+      pathname = getPhotosBrowserLink(photoType, forObject)
       break;
     case LOGGED_USER_MENU_BROWSER_PHOTOS:
-      backLink = getLoggedUserMenuLink({
+      pathname = getLoggedUserMenuLink({
         id: forObject.id,
         username: forObject.displayName
       }, pageForm)
@@ -166,12 +173,22 @@ export function getPhotoSelectBackLink(pageForm, photoType, forObject, location 
     default:
       throw new Error('You need to set a page Form to get PhotoSelectBackLink!')
   }
+  let query = {}
 
   const page = location.query.page;
   if (!!page) {
-    backLink = `${backLink}?page=${parseInt(page)}`
+    query = {select, page}
   }
-  return backLink;
+
+  const sort_by = location.query.sort_by;
+  if (!!sort_by) {
+    query = {select, sort_by}
+  }
+
+  return {
+    pathname,
+    query
+  };
 }
 
 export function getLoggedUserMenuLink(userProfile, menuType = LOGGED_USER_MENU_ABOUT) {
@@ -192,7 +209,6 @@ export function getLoggedUserMenuLink(userProfile, menuType = LOGGED_USER_MENU_A
 }
 
 export function getCurrentPageIndex(props) {
-  debugger
   if (props.location.query.page) {
     return props.location.query.page;
   }

@@ -55,7 +55,9 @@ class App extends React.Component {
       <Provider store={this.props.store}>
         <IntlProvider locale='en' messages={Telescope.strings.en}>
           <div style={{height: '100%'}}>
-            <Router history={this.props.history} children={this.props.routes} onUpdate={this.props.onUpdate}/>
+            <Router history={this.props.history}
+                    children={this.props.routes}
+                    onUpdate={this.props.onUpdate}/>
           </div>
         </IntlProvider>
       </Provider>

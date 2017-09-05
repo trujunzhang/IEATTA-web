@@ -153,7 +153,6 @@ export default keyMirror({
   LIST_VIEW_LOADED_ORDERED_USERS: null,
   LIST_VIEW_LOADED_RECIPES: null,
   LIST_VIEW_LOADED_USERS: null,
-  LIST_VIEW_RESET_ALL_POSTS: null,
   LOADED_PHOTOS_BROWSER: null,
 
   // Detailed Page(Posts,Events)

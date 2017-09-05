@@ -30,7 +30,6 @@ import type {Action, ThunkAction} from './types'
  * The states were interested in
  */
 const {
-  LIST_VIEW_RESET_ALL_POSTS,
   SHOW_ALERT_MESSAGE,
   DISMISS_ALERT_MESSAGE,
 } = require('../lib/constants').default
@@ -41,13 +40,6 @@ function showAlertMessage(message: string): Action {
 
 function dismissAlertMessage(): Action {
   return {type: DISMISS_ALERT_MESSAGE}
-}
-
-// ================================
-// For PostsDaily and IEARestaurantsList
-// ================================
-function resetPostsDaily(): Action {
-  return {type: LIST_VIEW_RESET_ALL_POSTS}
 }
 
 

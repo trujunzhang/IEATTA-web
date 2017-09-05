@@ -21,7 +21,6 @@ const initialState = {}
  */
 const {
   LIST_VIEW_LOADED_BY_TYPE,
-  LIST_VIEW_RESET_ALL_POSTS,
   LOADED_PHOTOS_BROWSER,
 } = require('../lib/constants').default
 
@@ -65,12 +64,8 @@ function listContainerReducer(state: State = initialState, action): State {
       return nextState
     }
 
-
-    case LIST_VIEW_RESET_ALL_POSTS: {
-      return {};
-    }
-
   }
+
   /**
    * ## Default
    */

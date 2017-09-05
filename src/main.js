@@ -33,9 +33,6 @@ const {resetPostsDaily} = require('./actions').default
  */
 function onUpdate() {
   // debugger
-  if (!!store.getState().detailedModelsOverlay.currentModel) {
-    store.dispatch(resetPostsDaily())
-  }
 }
 
 // Render Setup
