@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import {withRouter} from 'react-router'
+import {getCurrentPageIndex} from '../../../lib/link'
 
 class F8PaginationButtonNavigationBar extends Component {
 
@@ -7,13 +9,13 @@ class F8PaginationButtonNavigationBar extends Component {
     super(props)
 
     this.state = {
-      currentPageIndex: props.location.query.page || '1'
+      currentPageIndex: getCurrentPageIndex(props)
     }
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      currentPageIndex: nextProps.location.query.page || '1'
+      currentPageIndex: getCurrentPageIndex(nextProps)
     })
   }
 
@@ -156,4 +158,4 @@ class F8PaginationButtonNavigationBar extends Component {
 }
 
 
-export default F8PaginationButtonNavigationBar;
+export default withRouter(F8PaginationButtonNavigationBar);
