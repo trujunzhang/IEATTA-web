@@ -1,7 +1,5 @@
 'use strict'
 
-import {adjustRouterQuery} from '../lib/link'
-
 export default class PhotoBrowser {
   onPreIconClick() {
     const {selectPhotoIndex} = this.state;
