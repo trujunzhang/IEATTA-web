@@ -52,6 +52,5 @@ async function timeout(ms: number): Promise {
 export default {
   showAlertMessage,
   dismissAlertMessage,
-  resetPostsDaily,
   timeout
 }
