@@ -65,8 +65,13 @@ class OrderedRecipes extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    const lastPageForm = this.state.pageForm;
+    const lastPhotosTerms = this.state.photosTerms;
 
     const oldOID = this.state.oid;
+
+    const newPageForm = getPageFormType(PARSE_RECIPES, nextProps, this.state.pageForm)
+    const newPhotosTerms = generatePhotoTerm(PARSE_RECIPES, nextProps.params.oid, newPageForm, nextProps)
     const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms, this.state.photosListTask);
 
     this.setState({
@@ -79,29 +84,31 @@ class OrderedRecipes extends Component {
       selectPhotoIndex: getSelectPhoto(nextProps, photosListTask, this.state.selectPhotoIndex)
     })
 
+    this.checkReceiveNextRecipe(nextProps, oldOID, newPhotosTerms)
+
+  }
+
+  checkReceiveNextRecipe(nextProps, oldOID, newPhotosTerms) {
     const currentOID = nextProps.params.oid;
     if (currentOID !== oldOID) {
-      const photosTerms = generatePhotoTerm(PARSE_RECIPES, currentOID)
-
       this.setState({
         oid: nextProps.params.oid,
         oslug: nextProps.params.oslug,
         // Detailed object
         forObject: null,
         // photos
-        photosTerms: photosTerms,
-        photosListTask: getDefaultListTask(photosTerms),
+        photosTerms: newPhotosTerms,
+        photosListTask: getDefaultListTask(newPhotosTerms),
         selectPhotoIndex: -1,
       })
 
       this.props.dispatch(loadOrderedRecipePage(currentOID))
-      this.props.dispatch(loadPhotosBrowser(photosTerms))
+      this.props.dispatch(loadPhotosBrowser(newPhotosTerms))
       this.props.dispatch(invokeParseCloudMethod(CLOUD_STATISTIC_FOR_REVIEWS, {
         reviewType: this.state.modelType,
         forObjectId: currentOID,
       }, currentOID))
     }
-
   }
 
   componentDidMount() {
