@@ -8,13 +8,21 @@ class F8PaginationButtonNavigationBar extends Component {
   constructor(props, context) {
     super(props)
 
+    const {listTask} = props;
+    const {totalCount,} = listTask;
+
     this.state = {
+      totalCount: totalCount,
       currentPageIndex: getCurrentPageIndex(props)
     }
   }
 
   componentWillReceiveProps(nextProps) {
+    const {listTask} = nextProps;
+    const {totalCount} = listTask;
+
     this.setState({
+      totalCount: totalCount,
       currentPageIndex: getCurrentPageIndex(nextProps)
     })
   }
@@ -30,15 +38,19 @@ class F8PaginationButtonNavigationBar extends Component {
   }
 
   render() {
-    const {currentPageIndex} = this.state;
-    const {listTask, forObject} = this.props;
+    const {totalCount} = this.state;
+    if (totalCount !== -1) {
+      return this.renderContent()
+    }
 
-    const {
-      limit,
-      results,
-      ready,
-      totalCount,
-    } = listTask;
+    return null;
+  }
+
+  renderContent() {
+    const {currentPageIndex, totalCount} = this.state;
+    const {listTask} = this.props;
+
+    const {limit} = listTask;
 
     const totalPage = totalCount / limit;
 
@@ -100,18 +112,12 @@ class F8PaginationButtonNavigationBar extends Component {
   }
 
   onNextIconPress() {
-    const {listTask, forObject} = this.props;
-
-    const {
-      limit,
-      results,
-      ready,
-      totalCount,
-    } = listTask;
+    const {currentPageIndex, totalCount} = this.state;
+    const {listTask} = this.props;
+    const {limit} = listTask;
 
     const totalPage = totalCount / limit;
 
-    const {currentPageIndex} = this.state;
     const currentIndex = parseInt(currentPageIndex)
     if (currentIndex < totalPage) {
       this.onPaginationButtonPress(currentIndex + 1)

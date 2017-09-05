@@ -86,7 +86,6 @@ class DetailedRestaurant extends Component {
     if (checkNeedUpdatePhotosTask(lastPageForm, newPageForm) ||
       lastPhotosTerms.pageIndex !== newPhotosTerms.pageIndex  // Change page index.
     ) {
-      debugger
       this.setState({
         // photos
         photosTerms: newPhotosTerms,
@@ -132,20 +131,20 @@ class DetailedRestaurant extends Component {
             )
         }
       }
+      switch (pageForm) {
+        case PAGE_PHOTOS_BROWSER_FORM:
+        case PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY:
+          return (<div>
+              <Telescope.components.IEAPhotosBrowserLayout {...this.state}/>
+              {
+                (pageForm === PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY) &&
+                <Telescope.components.IEAPhotosSelectionLayout {...this.state}/>
+              }
+            </div>
+          )
+      }
     }
 
-    switch (pageForm) {
-      case PAGE_PHOTOS_BROWSER_FORM:
-      case PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY:
-        return (<div>
-            <Telescope.components.IEAPhotosBrowserLayout {...this.state}/>
-            {
-              (pageForm === PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY) &&
-              <Telescope.components.IEAPhotosSelectionLayout {...this.state}/>
-            }
-          </div>
-        )
-    }
 
     return (<Telescope.components.F8LoadingView loadingClass="placeholder_1WOC3"/>)
   }

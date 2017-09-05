@@ -32,7 +32,7 @@ export function getDefaultListTask(terms: Any) {
   return {
     id: listId,
     ready: false,
-    totalCount: 0,
+    totalCount: -1,
     limit: limit,
     firstPagination: true,
     pageIndex: pageIndex || 1,
