@@ -25,7 +25,7 @@ class IEAPhotosSelectionLayout extends Component {
   renderCloseButton() {
     const {modelType, forObject, pageForm} = this.props;
     return (
-      <Link className="lightbox-close" to={getPhotoSelectBackLink(pageForm, modelType, forObject)}>
+      <Link className="lightbox-close" to={getPhotoSelectBackLink(this.props.location, pageForm, modelType, forObject)}>
         {'Close'}
         <span className="icon icon--24-close icon--size-24 icon--currentColor u-space-l-half"
               id="icon_24X24">
@@ -65,4 +65,4 @@ class IEAPhotosSelectionLayout extends Component {
 }
 
 
-export default IEAPhotosSelectionLayout;
+export default withRouter(IEAPhotosSelectionLayout);

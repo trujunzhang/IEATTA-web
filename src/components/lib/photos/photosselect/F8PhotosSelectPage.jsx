@@ -1,6 +1,5 @@
 import Telescope from '../../index'
 import React, {Component} from 'react';
-import Photos from '../../../../lib/photos'
 
 import {withRouter} from 'react-router'
 import onClickOutside from 'react-onclickoutside'
@@ -10,8 +9,8 @@ import {getPhotoSelectBackLink} from '../../../../lib/link'
 class F8PhotosSelectPage extends Component {
 
   handleClickOutside(e) {
-    const {modelType, forObject, pageForm} = this.props;
-    const lastUrl = getPhotoSelectBackLink(pageForm, modelType, forObject);
+    const {modelType, forObject, pageForm, location} = this.props;
+    const lastUrl = getPhotoSelectBackLink(location, pageForm, modelType, forObject);
     this.props.router.push({pathname: lastUrl})
   }
 

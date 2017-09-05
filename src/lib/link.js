@@ -104,16 +104,27 @@ export function getNewReviewLink(reviewType, forObject) {
 }
 
 /**
+ * No photo browser page's pageIndex:
  * http://localhost:3000/biz_photos/OnNGSfwoou/Forno%20Vecchio?select=Px63VDvuud
  *
+ * Contains photo browser page's pageIndex:
+ * http://localhost:3000/biz_photos/OnNGSfwoou/Forno%20Vecchio?select=Px63VDvuud && page = 1
+ *
+ * @param location
  * @param photo
  * @param photoType
  * @param forObject
  * @returns {string}
  */
-export function getPhotosBrowserSelectionLink(photo, photoType, forObject) {
+export function getPhotosBrowserSelectionLink(location, photo, photoType, forObject) {
   const {objectSchemaName} = AppConstants.realmObjects[photoType]
-  return `/${AppConstants.SubDomainPhotos[objectSchemaName]}/${forObject.id}/${slugify(forObject.displayName)}?select=${photo.id}`
+  const pathname = `/${AppConstants.SubDomainPhotos[objectSchemaName]}/${forObject.id}/${slugify(forObject.displayName)}`
+  const query = location.query;
+  const page = query.page;
+  if (!!page) {
+    return `${pathname}?select=${photo.id}& page=${page}`
+  }
+  return `${pathname}?select=${photo.id}`
 }
 
 export function getPhotosBrowserLink(photoType, forObject) {
@@ -136,20 +147,31 @@ export function geDetailedModelLink(modelType, forObject) {
   throw new Error('You need to set a proper model type!')
 }
 
-export function getPhotoSelectBackLink(pageForm, photoType, forObject) {
+export function getPhotoSelectBackLink(location, pageForm, photoType, forObject) {
+  let backLink = null;
   switch (pageForm) {
     case PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY:
-      return geDetailedModelLink(photoType, forObject)
+      backLink = geDetailedModelLink(photoType, forObject)
+      break;
     case PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY:
-      return getPhotosBrowserLink(photoType, forObject)
-  case LOGGED_USER_MENU_BROWSER_PHOTOS:
-      return  getLoggedUserMenuLink({
-          id:forObject.id,
-          username:forObject.displayName
-      },pageForm)
+      backLink = getPhotosBrowserLink(photoType, forObject)
+      break;
+    case LOGGED_USER_MENU_BROWSER_PHOTOS:
+      backLink = getLoggedUserMenuLink({
+        id: forObject.id,
+        username: forObject.displayName
+      }, pageForm)
+      break;
+    default:
+      throw new Error('You need to set a page Form to get PhotoSelectBackLink!')
   }
 
-  throw new Error('You need to set a page Form to get PhotoSelectBackLink!')
+  const query = location.query;
+  const page = query.page;
+  if (!!page) {
+    backLink = `${backLink}?page=${page}`
+  }
+  return backLink;
 }
 
 export function getLoggedUserMenuLink(userProfile, menuType = LOGGED_USER_MENU_ABOUT) {

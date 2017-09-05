@@ -19,10 +19,10 @@ class IEAPhotosBrowserLayout extends Component {
 
         <div className="media-pager">
 
-            <Telescope.components.F8PaginationButtonNavigationBar
-                 listTask={photosListTask}
-                 {...this.props}
-                 {...this.state}/>
+          <Telescope.components.F8PaginationButtonNavigationBar
+            listTask={photosListTask}
+            {...this.props}
+            {...this.state}/>
 
         </div>
       </div>
