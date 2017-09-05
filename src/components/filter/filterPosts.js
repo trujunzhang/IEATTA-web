@@ -38,6 +38,8 @@ const _ = require('underscore')
 export function getDefaultListTask(terms: Any, lastTask = {}) {
   const {listId, limit, pageIndex} = terms;
 
+  debugger
+
   return {
     id: listId,
     ready: false,

@@ -12,7 +12,7 @@ class F8PaginationButtonNavigationBar extends Component {
     super(props)
 
     const {listTask} = props;
-    const {totalCount,} = listTask;
+    const {totalCount} = listTask;
 
     this.state = {
       totalCount: totalCount,
