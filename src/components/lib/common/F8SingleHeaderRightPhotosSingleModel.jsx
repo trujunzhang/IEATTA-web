@@ -17,7 +17,7 @@ class F8SingleHeaderRightPhotosSingleModel extends Component {
 
           {photoModelObject.photosWall.map((item, index) => {
             return (
-              <Link to={item.url}>
+              <Link to={item.linkObject}>
 
                 <img alt="Photo of My Two Cents - Los Angeles, CA, United States. Desserts"
                      className="photo-box-img"

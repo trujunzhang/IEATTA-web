@@ -1,19 +1,32 @@
 import Telescope from '../index'
 import React, {Component} from 'react'
 
+import {withRouter} from 'react-router'
 import {Link} from 'react-router'
+
+import {adjustRouterQuery} from '../../../lib/link'
 
 class F8SingleHeaderRightPhotoItem extends Component {
 
+  onImageLinkPress() {
+    const {linkObject} = this.props.item;
+
+    this.props.router.push(adjustRouterQuery(linkObject, this.props))
+  }
+
+  /**
+   * alt="Photo of My Two Cents - Los Angeles, CA, United States. BBQ fried chicken with fries and sweet potato crumble"
+   * @returns {XML}
+   */
   render() {
     const {item, index} = this.props;
     const {overlay} = item;
-    // alt="Photo of My Two Cents - Los Angeles, CA, United States. BBQ fried chicken with fries and sweet potato crumble"
+
     return (
       <div key={index} className={`js-photo photo photo-${index + 1}`}>
         <div className="showcase-photo-box">
 
-          <Link to={item.url}>
+          <a onClick={this.onImageLinkPress.bind(this)}>
 
             <img
               alt={`Photos of ${overlay.title}`}
@@ -21,7 +34,8 @@ class F8SingleHeaderRightPhotoItem extends Component {
               width="250"
               height="250"
               src={item.imageUrl}/>
-          </Link>
+
+          </a>
 
         </div>
 
@@ -32,13 +46,13 @@ class F8SingleHeaderRightPhotoItem extends Component {
   }
 
   renderOverLay() {
-      const {item, index} = this.props;
-      const {overlay} = item;
-      const {user} = overlay;
-      const userName = user.username;
-      const userImageUrl = user.imageUrl;
-      const userLink = user.userProfileUrl;
-      const linkProperty = !!userLink ? {to: userLink} : {};
+    const {item, index} = this.props;
+    const {overlay} = item;
+    const {user} = overlay;
+    const userName = user.username;
+    const userImageUrl = user.imageUrl;
+    const userLink = user.userProfileUrl;
+    const linkProperty = !!userLink ? {to: userLink} : {};
 
     return (
       <div className="photo-box-overlay js-overlay">
@@ -85,4 +99,4 @@ class F8SingleHeaderRightPhotoItem extends Component {
 
 }
 
-export default F8SingleHeaderRightPhotoItem;
+export default withRouter(F8SingleHeaderRightPhotoItem);

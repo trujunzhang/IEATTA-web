@@ -42,7 +42,7 @@ Photos.getPhotoThumbnailByPosition = function (photos, index) {
 
 Photos.getPhotoItem = function (photos, modelType, forObject, index) {
   return {
-    url: getPhotosBrowserSelectionLink(photos[index], modelType, forObject),
+    linkObject: getPhotosBrowserSelectionLink(photos[index], modelType, forObject),
     imageUrl: Photos.getPhotoThumbnailByPosition(photos, index)
   }
 }

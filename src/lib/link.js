@@ -216,6 +216,22 @@ export function getCurrentPageIndex(props) {
   return "1";
 }
 
+export function adjustRouterQuery(old, {location}) {
+  let oldQuery = old.query;
+
+  const page = location.query.page;
+  if (!!page) {
+    oldQuery = Object.assign({}, oldQuery, {page})
+  }
+
+  const sort_by = location.query.sort_by;
+  if (!!sort_by) {
+    oldQuery = Object.assign({}, oldQuery, {sort_by})
+  }
+
+  return {pathname: old.pathname, query: oldQuery}
+}
+
 
 
 
