@@ -118,7 +118,7 @@ export function getSelectPhoto(props: Any, photosListTask: Any, lastPhotoIndex) 
   return lastPhotoIndex;
 }
 
-export function generatePhotoTerm(objectSchemaName, forObjectId, pageForm = PAGE_MAIN_FORM, {location}) {
+export function generatePhotoTerm(objectSchemaName, forObjectId, pageForm = PAGE_MAIN_FORM, props) {
   const isPhotosBrowserPage = (pageForm === PAGE_PHOTOS_BROWSER_FORM);
 
   const termType = isPhotosBrowserPage ? 'page' : 'list';
