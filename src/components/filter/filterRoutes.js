@@ -22,6 +22,7 @@
  * @flow
  */
 
+
 'use strict'
 
 const _ = require('underscore')
@@ -55,6 +56,7 @@ const {
 import {
   getCurrentPageIndex,
 } from '../../lib/link'
+import Reviews from "../../lib/reviews";
 
 export function checkEditModel(props: Object) {
   return props.location.pathname.indexOf('edit/') !== -1;
@@ -185,8 +187,9 @@ export function getUserQueryId(props) {
   return props.params.uid;
 }
 
-export function generateTermsForReviewsList(props, prefix = "list", limit = 10) {
+export function generateTermsForReviewsList(props, prefix = "list") {
   const {id} = props.forObject;
+  const limit = prefix === "page" ? Reviews.config.paginationCountPerPage : 10;
 
   const listId = `reviews-${prefix}-view-for-${id}`;
 

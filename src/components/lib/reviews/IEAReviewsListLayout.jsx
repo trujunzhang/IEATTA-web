@@ -28,7 +28,7 @@ class IEAReviewsListLayout extends Component {
       displayName: forObjectDisplayName
     };
 
-    const terms = generateTermsForReviewsList({reviewType, forObject, location}, 'page', 2)
+    const terms = generateTermsForReviewsList({reviewType, forObject, location}, 'page')
 
     this.state = {
       // Common
@@ -42,6 +42,17 @@ class IEAReviewsListLayout extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    const {params, location} = nextProps;
+    const {modelType, forObjectId, forObjectDisplayName} = params;
+    const reviewType = modelType;
+
+    const forObject = {
+      id: forObjectId,
+      modelType: modelType,
+      displayName: forObjectDisplayName
+    };
+
+    const newReviewsTerms = generateTermsForReviewsList({reviewType, forObject, location}, 'page')
     const newListTask = byListId(nextProps.listContainerTasks, this.state.terms, this.state.listTask);
 
     this.setState({

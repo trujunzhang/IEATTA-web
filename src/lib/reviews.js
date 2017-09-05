@@ -37,6 +37,7 @@ const {
 
 const Reviews = {
   config: {
+    paginationCountPerPage: 2,
     // 6/11/2017
     dateFormat: 'DD/MM/YYYY'
   },
