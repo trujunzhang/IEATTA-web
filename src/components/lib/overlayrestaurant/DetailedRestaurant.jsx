@@ -65,6 +65,7 @@ class DetailedRestaurant extends Component {
 
   componentWillReceiveProps(nextProps) {
     const lastPageForm = this.state.pageForm;
+    const lastPhotosTerms = this.state.photosTerms;
 
     const newPageForm = getPageFormType(PARSE_RESTAURANTS, nextProps, this.state.pageForm)
     const newPhotosTerms = generatePhotoTerm(PARSE_RESTAURANTS, nextProps.params.rid, newPageForm, nextProps)
@@ -82,7 +83,9 @@ class DetailedRestaurant extends Component {
       pageForm: newPageForm,
     })
 
-    if (checkNeedUpdatePhotosTask(lastPageForm, newPageForm)) {
+    if (checkNeedUpdatePhotosTask(lastPageForm, newPageForm) ||
+      lastPhotosTerms.pageIndex !== newPhotosTerms.pageIndex  // Change page index.
+    ) {
       debugger
       this.setState({
         // photos
