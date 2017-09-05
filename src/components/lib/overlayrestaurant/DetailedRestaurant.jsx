@@ -3,6 +3,8 @@ import React, {Component} from 'react'
 
 import {withRouter} from 'react-router'
 
+import PhotoBrowser from '../../../lib/photobrowser'
+
 const {
   loadRestaurantPage,
   loadPhotosBrowser,
@@ -41,6 +43,8 @@ class DetailedRestaurant extends Component {
   constructor(props, context) {
     super(props)
 
+    const photoBrowserInstance = new PhotoBrowser()
+
     const pageForm = getPageFormType(PARSE_RESTAURANTS, props, null)
     const photosTerms = generatePhotoTerm(PARSE_RESTAURANTS, props.params.rid, pageForm, props)
 
@@ -58,8 +62,8 @@ class DetailedRestaurant extends Component {
       pageForm: pageForm,
       modelType: 'restaurant',
       // Events
-      onPreIconClick: this.onPreIconClick.bind(this),
-      onNextIconClick: this.onNextIconClick.bind(this),
+      onPreIconClick: photoBrowserInstance.onPreIconClick.bind(this),
+      onNextIconClick: photoBrowserInstance.onNextIconClick.bind(this),
     }
   }
 
@@ -83,10 +87,10 @@ class DetailedRestaurant extends Component {
       pageForm: newPageForm,
     })
 
-    this.checkNeedUpdate(lastPageForm, lastPhotosTerms, newPhotosTerms, photosListTask)
+    this.checkNeedUpdate(lastPageForm, lastPhotosTerms, newPageForm, newPhotosTerms, photosListTask)
   }
 
-  checkNeedUpdate(lastPageForm, lastPhotosTerms, newPhotosTerms, photosListTask) {
+  checkNeedUpdate(lastPageForm, lastPhotosTerms, newPageForm, newPhotosTerms, photosListTask) {
     if (checkNeedUpdatePhotosTask(lastPageForm, newPageForm) ||
       lastPhotosTerms.pageIndex !== newPhotosTerms.pageIndex  // Change page index.
     ) {
@@ -151,29 +155,6 @@ class DetailedRestaurant extends Component {
 
 
     return (<Telescope.components.F8LoadingView loadingClass="placeholder_1WOC3"/>)
-  }
-
-  onPreIconClick() {
-    const {photosListTask, selectPhotoIndex} = this.state;
-    const photos = photosListTask.results;
-
-    let preIndex = selectPhotoIndex - 1;
-    if (preIndex < 0) preIndex = 0;
-    this.setState({selectPhotoIndex: preIndex})
-
-    this.props.router.push({pathname: this.props.location.pathname, query: {select: photos[preIndex].id}})
-  }
-
-  onNextIconClick() {
-    const {photosListTask, selectPhotoIndex} = this.state;
-    const photos = photosListTask.results;
-    const totalPhotosLength = photos.length;
-
-    let nextIndex = selectPhotoIndex + 1;
-    if (nextIndex >= totalPhotosLength) nextIndex = totalPhotosLength - 1;
-    this.setState({selectPhotoIndex: nextIndex})
-
-    this.props.router.push({pathname: this.props.location.pathname, query: {select: photos[nextIndex].id}})
   }
 
 }

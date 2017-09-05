@@ -3,6 +3,8 @@ import React, {Component} from 'react'
 
 import {withRouter} from 'react-router'
 
+import PhotoBrowser from '../../../lib/photobrowser'
+
 const {
   loadOrderedRecipePage,
   loadPhotosBrowser,
@@ -38,6 +40,7 @@ class OrderedRecipes extends Component {
   constructor(props, context) {
     super(props)
 
+    const photoBrowserInstance = new PhotoBrowser()
     const photosTerms = generatePhotoTerm(PARSE_RECIPES, props.params.oid)
 
     this.state = this.initialState = {
@@ -53,8 +56,9 @@ class OrderedRecipes extends Component {
       // Common
       pageForm: getPageFormType(PARSE_RECIPES, props, null),
       modelType: 'recipe',
-      onPreIconClick: this.onPreIconClick.bind(this),
-      onNextIconClick: this.onNextIconClick.bind(this)
+      // Events
+      onPreIconClick: photoBrowserInstance.onPreIconClick.bind(this),
+      onNextIconClick: photoBrowserInstance.onNextIconClick.bind(this),
     }
   }
 
@@ -146,30 +150,6 @@ class OrderedRecipes extends Component {
 
     return (<Telescope.components.F8LoadingView loadingClass="placeholder_1WOC3"/>)
   }
-
-  onPreIconClick() {
-    const {photosListTask, selectPhotoIndex} = this.state;
-    const photos = photosListTask.results;
-
-    let preIndex = selectPhotoIndex - 1;
-    if (preIndex < 0) preIndex = 0;
-    this.setState({selectPhotoIndex: preIndex})
-
-    this.props.router.push({pathname: this.props.location.pathname, query: {select: photos[preIndex].id}})
-  }
-
-  onNextIconClick() {
-    const {photosListTask, selectPhotoIndex} = this.state;
-    const photos = photosListTask.results;
-    const totalPhotosLength = photos.length;
-
-    let nextIndex = selectPhotoIndex + 1;
-    if (nextIndex >= totalPhotosLength) nextIndex = totalPhotosLength - 1;
-    this.setState({selectPhotoIndex: nextIndex})
-
-    this.props.router.push({pathname: this.props.location.pathname, query: {select: photos[nextIndex].id}})
-  }
-
 }
 
 const {connect} = require('react-redux')

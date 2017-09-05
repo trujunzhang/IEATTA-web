@@ -3,6 +3,8 @@ import React, {Component} from 'react'
 
 import {withRouter} from 'react-router'
 
+import PhotoBrowser from '../../../lib/photobrowser'
+
 const {
   loadPhotosBrowser,
 } = require('../../../actions').default
@@ -41,9 +43,10 @@ class IEAUserProfilePhotosLayout extends Component {
   constructor(props, context) {
     super(props)
 
+    const photoBrowserInstance = new PhotoBrowser()
     const pageForm = getPageFormType(PARSE_USERS, props, null)
 
-    const photosTerms = generatePhotoTerm(PARSE_USERS, props.userProfile.id,pageForm)
+    const photosTerms = generatePhotoTerm(PARSE_USERS, props.userProfile.id, pageForm)
 
     this.state = this.initialState = {
       photosTerms: photosTerms,
@@ -52,8 +55,9 @@ class IEAUserProfilePhotosLayout extends Component {
       // Common
       pageForm: getPageFormType(PARSE_USERS, props, null),
       modelType: 'user',
-      onPreIconClick: this.onPreIconClick.bind(this),
-      onNextIconClick: this.onNextIconClick.bind(this),
+      // Events
+      onPreIconClick: photoBrowserInstance.onPreIconClick.bind(this),
+      onNextIconClick: photoBrowserInstance.onNextIconClick.bind(this),
     }
   }
 
