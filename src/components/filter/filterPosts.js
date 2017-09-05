@@ -28,14 +28,14 @@ const {convertToObject} = require('../../lib/utils')
 const _ = require('underscore')
 
 export function getDefaultListTask(terms: Any) {
-  const {listId, limit} = terms;
+  const {listId, limit, pageIndex} = terms;
   return {
     id: listId,
     ready: false,
     totalCount: 0,
     limit: limit,
     firstPagination: true,
-    pageIndex: 1,
+    pageIndex: pageIndex || 1,
     results: []
   }
 }

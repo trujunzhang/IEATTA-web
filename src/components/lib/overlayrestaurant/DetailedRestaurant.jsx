@@ -42,7 +42,7 @@ class DetailedRestaurant extends Component {
     super(props)
 
     const pageForm = getPageFormType(PARSE_RESTAURANTS, props, null)
-    const photosTerms = generatePhotoTerm(PARSE_RESTAURANTS, props.params.rid, pageForm)
+    const photosTerms = generatePhotoTerm(PARSE_RESTAURANTS, props.params.rid, pageForm, props)
 
     this.state = this.initialState = {
       rid: props.params.rid,
@@ -67,7 +67,7 @@ class DetailedRestaurant extends Component {
     const lastPageForm = this.state.pageForm;
 
     const newPageForm = getPageFormType(PARSE_RESTAURANTS, nextProps, this.state.pageForm)
-    const newPhotosTerms = generatePhotoTerm(PARSE_RESTAURANTS, nextProps.params.rid, newPageForm)
+    const newPhotosTerms = generatePhotoTerm(PARSE_RESTAURANTS, nextProps.params.rid, newPageForm, nextProps)
     const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms.listId, this.state.photosListTask);
 
     this.setState({
@@ -83,6 +83,7 @@ class DetailedRestaurant extends Component {
     })
 
     if (checkNeedUpdatePhotosTask(lastPageForm, newPageForm)) {
+      debugger
       this.setState({
         // photos
         photosTerms: newPhotosTerms,

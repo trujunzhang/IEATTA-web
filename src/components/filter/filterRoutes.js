@@ -113,10 +113,10 @@ export function getSelectPhoto(props: Any, photosListTask: Any, lastPhotoIndex) 
   return lastPhotoIndex;
 }
 
-export function generatePhotoTerm(objectSchemaName, forObjectId, pageForm = PAGE_MAIN_FORM) {
-  const isPhotosBrwoserPag = pageForm === PAGE_PHOTOS_BROWSER_FORM;
-  const termType = isPhotosBrwoserPag ? 'page' : 'list';
-  const limit = isPhotosBrwoserPag ? 1 : -1;
+export function generatePhotoTerm(objectSchemaName, forObjectId, pageForm = PAGE_MAIN_FORM, {location}) {
+  const isPhotosBrowserPage = (pageForm === PAGE_PHOTOS_BROWSER_FORM);
+  const termType = isPhotosBrowserPage ? 'page' : 'list';
+  const limit = isPhotosBrowserPage ? 1 : -1;
   const listId = `photos-${termType}-view-for-objectId-${forObjectId}`
 
   const photoTerms = {
@@ -125,6 +125,7 @@ export function generatePhotoTerm(objectSchemaName, forObjectId, pageForm = PAGE
     objectSchemaName: objectSchemaName,
     allItems: (limit === -1),
     limit: limit,
+    pageIndex: location.query.page || 1
   }
 
   return photoTerms;
