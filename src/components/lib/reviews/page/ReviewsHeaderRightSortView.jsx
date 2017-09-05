@@ -19,8 +19,7 @@ export class ReviewsHeaderRightSortView extends Component {
   constructor(props) {
     super(props)
 
-    const {params, location} = props;
-    const reviewListType = this.props.reviewListType || REVIEW_LIST_TYPE_NORMAL;
+    const {reviewListType} = props;
     const currentDropDownMenus = Reviews.getCurrentSortArray(reviewListType);
 
     this.state = {
@@ -28,7 +27,13 @@ export class ReviewsHeaderRightSortView extends Component {
       currentDropDownMenus: currentDropDownMenus,
       selectedDropDownMenuIndex: Reviews.getCurrentSelectedDropMenuIndex(currentDropDownMenus, props)
     }
+  }
 
+  componentWillReceiveProps(nextProps) {
+    const {currentDropDownMenus} = this.state;
+    this.setState({
+      selectedDropDownMenuIndex: Reviews.getCurrentSelectedDropMenuIndex(currentDropDownMenus, nextProps)
+    })
   }
 
 
@@ -134,8 +139,18 @@ export class ReviewsHeaderRightSortView extends Component {
         </div>
       </div>
 
-    );
+    )
   }
 }
+
+
+ReviewsHeaderRightSortView.propTypes = {
+  reviewListType: React.PropTypes.string
+};
+
+ReviewsHeaderRightSortView.defaultProps = {
+  reviewListType: REVIEW_LIST_TYPE_NORMAL
+};
+
 
 export default withRouter(onClickOutside(ReviewsHeaderRightSortView));
