@@ -24,17 +24,15 @@ class F8PaginationButtonNavigationBar extends Component {
 
     }
 
-  renderReviewsListFooter() {
+  render() {
     const {listTask,forObject} = this.props;
-
-      debugger
 
       const {
           limit,
           results,
           ready,
           totalCount,
-    } = listTask;
+      } = listTask;
 
       const totalPage = totalCount/limit;
       const currentPage = 1;
@@ -116,9 +114,6 @@ class F8PaginationButtonNavigationBar extends Component {
         )
     }
 
-	render() {
-      return this.renderReviewsListFooter();
-	}
 }
 
 
