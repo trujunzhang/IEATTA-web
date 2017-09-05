@@ -155,7 +155,7 @@ export function geDetailedModelLink(modelType, forObject) {
   throw new Error('You need to set a proper model type!')
 }
 
-export function getPhotoSelectBackLink(pageForm, photoType, forObject, location = {query: {}}) {
+export function getPhotoSelectBackLink(pageForm, photoType, forObject, props) {
   let pathname = null;
   switch (pageForm) {
     case PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY:
@@ -173,22 +173,8 @@ export function getPhotoSelectBackLink(pageForm, photoType, forObject, location 
     default:
       throw new Error('You need to set a page Form to get PhotoSelectBackLink!')
   }
-  let query = {}
 
-  const page = location.query.page;
-  if (!!page) {
-    query = {page}
-  }
-
-  const sort_by = location.query.sort_by;
-  if (!!sort_by) {
-    query = {sort_by}
-  }
-
-  return {
-    pathname,
-    query
-  };
+  return adjustRouterQuery({pathname}, props)
 }
 
 export function getLoggedUserMenuLink(userProfile, menuType = LOGGED_USER_MENU_ABOUT) {
