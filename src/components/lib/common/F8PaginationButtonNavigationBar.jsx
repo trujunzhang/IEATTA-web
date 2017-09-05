@@ -4,7 +4,21 @@ import {withRouter} from 'react-router'
 
 class F8PaginationButtonNavigationBar extends Component {
 
-    onPaginationButtonPress(){
+  constructor(props, context) {
+    super(props)
+
+    this.state = {
+      currentPageIndex: props.location.query.page||'1'
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      currentPageIndex: nextProps.location.query.page||'1'
+    })
+  }
+
+    onPaginationButtonPress(page){
     const {listTask,forObject} = this.props;
 
     const {
@@ -15,16 +29,18 @@ class F8PaginationButtonNavigationBar extends Component {
     } = listTask;
 
 
+        const pageQuery = {page}
         const newLocation =
             {
                 pathname: this.props.location.pathname,
-                query: Object.assign(this.props.location.query,{start: 15})
+                query: Object.assign(this.props.location.query,pageQuery)
             };
         this.props.router.push(newLocation);
 
     }
 
   render() {
+      const {currentPageIndex} = this.state;
     const {listTask,forObject} = this.props;
 
       const {
@@ -35,18 +51,17 @@ class F8PaginationButtonNavigationBar extends Component {
       } = listTask;
 
       const totalPage = totalCount/limit;
-      const currentPage = 1;
 
       const arrangeUnits=[];
 
       for(let x = 0; x< totalPage; x++){
           let row = (
               <div className="arrange_unit page-option">
-                  <a key={x} className="available-number pagination-links_anchor" onClick={(e)=>this.onPaginationButtonPress(x)}>{x+1}</a>
+                  <a key={x} className="available-number pagination-links_anchor" onClick={(e)=>this.onPaginationButtonPress(x+1)}>{x+1}</a>
               </div>
           )
 
-          if(x === currentPage){
+          if( `${x+1}` === currentPageIndex){
               row = (
               <div className="arrange_unit page-option current">
                   <span key={x} className="pagination-links_anchor">{x+1}</span>
@@ -60,17 +75,21 @@ class F8PaginationButtonNavigationBar extends Component {
         <div className="pagination-block">
             <div className="arrange arrange--stack arrange--baseline arrange--6">
                 <div className="page-of-pages arrange_unit arrange_unit--fill">
-                    {`Page ${currentPage+1} of ${totalPage}`}
+                    {`Page ${currentPageIndex} of ${totalPage}`}
                 </div>
 
                 <div className="pagination-links arrange_unit">
                     <div className="arrange arrange--baseline">
 
-                        {this.renderPreviousIcon()}
+                        {
+currentPageIndex !== "1"&&
+                            this.renderPreviousIcon()}
 
                         {arrangeUnits}
 
-                        {this.renderNextIcon()}
+                        {
+currentPageIndex !== `${totalPage}`&&
+                            this.renderNextIcon()}
 
                     </div>
 
@@ -81,11 +100,40 @@ class F8PaginationButtonNavigationBar extends Component {
     )
   }
 
+    onPreviousIconPress(){
+        const {currentPageIndex} = this.state;
+        const currentIndex = parseInt(currentPageIndex)
+        if(currentIndex>1){
+            this.onPaginationButtonPress(currentIndex-1)
+        }
+    }
+
+    onNextIconPress(){
+    const {listTask,forObject} = this.props;
+
+    const {
+        limit,
+        results,
+        ready,
+        totalCount,
+    } = listTask;
+
+      const totalPage = totalCount/limit;
+
+        const {currentPageIndex} = this.state;
+        const currentIndex = parseInt(currentPageIndex)
+        if(currentIndex< totalPage){
+            this.onPaginationButtonPress(currentIndex+1)
+        }
+
+    }
 
     renderPreviousIcon(){
         return(
             <div className="arrange_unit">
-                <a className="u-decoration-none block prev pagination-links_anchor" >
+                <a
+                    onClick={this.onPreviousIconPress.bind(this)}
+                    className="u-decoration-none block prev pagination-links_anchor" >
                     <span id="icon_24X24" className="icon icon--24-chevron-left icon--size-24 icon--currentColor">
                         <svg className="icon_svg">
                             <path d="M14.475 18.364l1.414-1.414L10.94 12l4.95-4.95-1.415-1.414L8.11 12l6.365 6.364z"/>
@@ -100,7 +148,9 @@ class F8PaginationButtonNavigationBar extends Component {
     renderNextIcon(){
         return(
               <div className="arrange_unit">
-                <a className="u-decoration-none next pagination-links_anchor">
+                  <a
+                    onClick={this.onNextIconPress.bind(this)}
+                      className="u-decoration-none next pagination-links_anchor">
                     <span className="pagination-label responsive-hidden-small pagination-links_anchor">
                         {"Next"}
                     </span>
