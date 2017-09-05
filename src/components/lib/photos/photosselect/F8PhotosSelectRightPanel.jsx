@@ -118,7 +118,7 @@ class F8PhotosSelectRightPanel extends Component {
                     width="30"
                     height="30"
                     placeholderSource={"/default/user_30_square.png"}
-                    src={selectedPhotoInfo.imageUrl}/>
+                    source={selectedPhotoInfo.imageUrl}/>
 
                 </Link>
 
