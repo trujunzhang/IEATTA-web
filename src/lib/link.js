@@ -209,6 +209,16 @@ export function adjustRouterQuery(old, {location}) {
   return {pathname: old.pathname, query: oldQuery}
 }
 
+export function getTotalPageForPagination({listTask}, totalCount) {
+  const {limit} = listTask;
+
+  let totalPage = totalCount / limit;
+  if (totalPage < 1) {
+    totalPage = 1;
+  }
+  return totalPage;
+}
+
 
 
 

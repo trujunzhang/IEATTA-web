@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 
 import {withRouter} from 'react-router'
-import {getCurrentPageIndex} from '../../../lib/link'
+import {
+  getCurrentPageIndex,
+  getTotalPageForPagination
+} from '../../../lib/link'
 
 class F8PaginationButtonNavigationBar extends Component {
 
@@ -48,11 +51,7 @@ class F8PaginationButtonNavigationBar extends Component {
 
   renderContent() {
     const {currentPageIndex, totalCount} = this.state;
-    const {listTask} = this.props;
-
-    const {limit} = listTask;
-
-    const totalPage = totalCount / limit;
+    const totalPage = getTotalPageForPagination(this.props, totalCount)
 
     const arrangeUnits = [];
 
@@ -85,13 +84,14 @@ class F8PaginationButtonNavigationBar extends Component {
             <div className="arrange arrange--baseline">
 
               {
-                currentPageIndex !== "1" &&
+                (currentPageIndex !== "1" && totalCount > 0) &&
+
                 this.renderPreviousIcon()}
 
               {arrangeUnits}
 
               {
-                currentPageIndex !== `${totalPage}` &&
+                (currentPageIndex !== `${totalPage}` && totalCount > 0) &&
                 this.renderNextIcon()}
 
             </div>
@@ -113,10 +113,7 @@ class F8PaginationButtonNavigationBar extends Component {
 
   onNextIconPress() {
     const {currentPageIndex, totalCount} = this.state;
-    const {listTask} = this.props;
-    const {limit} = listTask;
-
-    const totalPage = totalCount / limit;
+    const totalPage = getTotalPageForPagination(this.props, totalCount)
 
     const currentIndex = parseInt(currentPageIndex)
     if (currentIndex < totalPage) {
