@@ -27,12 +27,20 @@ const {convertToObject} = require('../../lib/utils')
 
 const _ = require('underscore')
 
-export function getDefaultListTask(terms: Any) {
+/**
+ * 1. Special Task for Photos List.
+ *    when the last task already fetched the total photos count.
+ *    So this time need to keep the 'total' field value.
+ * @param terms
+ * @param lastTask
+ * @returns {{id: Any.listId, ready: boolean, totalCount: number, limit: Any.limit, firstPagination: boolean, pageIndex: (Any.pageIndex|number), results: Array}}
+ */
+export function getDefaultListTask(terms: Any, lastTask = {}) {
   const {listId, limit, pageIndex} = terms;
   return {
     id: listId,
     ready: false,
-    totalCount: -1,
+    totalCount: lastTask.totalCount || -1,
     limit: limit,
     firstPagination: true,
     pageIndex: pageIndex || 1,

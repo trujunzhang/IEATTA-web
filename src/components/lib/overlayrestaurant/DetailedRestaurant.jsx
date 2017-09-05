@@ -89,7 +89,7 @@ class DetailedRestaurant extends Component {
       this.setState({
         // photos
         photosTerms: newPhotosTerms,
-        photosListTask: getDefaultListTask(newPhotosTerms),
+        photosListTask: getDefaultListTask(newPhotosTerms, photosListTask),
         selectPhotoIndex: -1,
       })
       this.props.dispatch(loadPhotosBrowser(newPhotosTerms))
