@@ -53,6 +53,24 @@ class F8PaginationButtonNavigationBar extends Component {
     const {currentPageIndex, totalCount} = this.state;
     const totalPage = getTotalPageForPagination(this.props, totalCount)
 
+    return (
+      <div className="pagination-block">
+        <div className="arrange arrange--stack arrange--baseline arrange--6">
+          <div className="page-of-pages arrange_unit arrange_unit--fill">
+            {`Page ${currentPageIndex} of ${totalPage}`}
+          </div>
+
+          {totalPage > 1 ? this.renderRightPanel() : null}
+
+        </div>
+      </div>
+    )
+  }
+
+  renderRightPanel() {
+    const {currentPageIndex, totalCount} = this.state;
+    const totalPage = getTotalPageForPagination(this.props, totalCount)
+
     const arrangeUnits = [];
 
     for (let x = 0; x < totalPage; x++) {
@@ -74,29 +92,16 @@ class F8PaginationButtonNavigationBar extends Component {
     }
 
     return (
-      <div className="pagination-block">
-        <div className="arrange arrange--stack arrange--baseline arrange--6">
-          <div className="page-of-pages arrange_unit arrange_unit--fill">
-            {`Page ${currentPageIndex} of ${totalPage}`}
-          </div>
+      <div className="pagination-links arrange_unit">
+        <div className="arrange arrange--baseline">
 
-          <div className="pagination-links arrange_unit">
-            <div className="arrange arrange--baseline">
+          {(currentPageIndex !== "1" && totalCount > 0) &&
+          this.renderPreviousIcon()}
 
-              {
-                (currentPageIndex !== "1" && totalCount > 0) &&
+          {arrangeUnits}
 
-                this.renderPreviousIcon()}
-
-              {arrangeUnits}
-
-              {
-                (currentPageIndex !== `${totalPage}` && totalCount > 0) &&
-                this.renderNextIcon()}
-
-            </div>
-
-          </div>
+          {(currentPageIndex !== `${totalPage}` && totalCount > 0) &&
+          this.renderNextIcon()}
 
         </div>
       </div>
