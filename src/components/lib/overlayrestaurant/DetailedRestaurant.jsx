@@ -83,6 +83,10 @@ class DetailedRestaurant extends Component {
       pageForm: newPageForm,
     })
 
+    this.checkNeedUpdate(lastPageForm, lastPhotosTerms, newPhotosTerms, photosListTask)
+  }
+
+  checkNeedUpdate(lastPageForm, lastPhotosTerms, newPhotosTerms, photosListTask) {
     if (checkNeedUpdatePhotosTask(lastPageForm, newPageForm) ||
       lastPhotosTerms.pageIndex !== newPhotosTerms.pageIndex  // Change page index.
     ) {
