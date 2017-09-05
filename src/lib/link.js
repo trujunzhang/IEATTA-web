@@ -127,8 +127,6 @@ export function getPhotosBrowserSelectionLink(photo, photoType, forObject, locat
     query = {select, page}
   }
 
-  debugger
-
   const sort_by = location.query.sort_by;
   if (!!sort_by) {
     query = {select, sort_by}
@@ -179,12 +177,12 @@ export function getPhotoSelectBackLink(pageForm, photoType, forObject, location 
 
   const page = location.query.page;
   if (!!page) {
-    query = {select, page}
+    query = {page}
   }
 
   const sort_by = location.query.sort_by;
   if (!!sort_by) {
-    query = {select, sort_by}
+    query = {sort_by}
   }
 
   return {
