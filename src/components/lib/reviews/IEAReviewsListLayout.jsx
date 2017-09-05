@@ -28,12 +28,12 @@ class IEAReviewsListLayout extends Component {
       displayName: forObjectDisplayName
     };
 
-    const terms = generateTermsForReviewsList({reviewType, forObject, location}, 'page')
+    const reviewTerms = generateTermsForReviewsList({reviewType, forObject, location}, 'page')
 
     this.state = {
       // Common
-      terms: terms,
-      listTask: getDefaultListTask(terms),
+      reviewTerms: reviewTerms,
+      listTask: getDefaultListTask(reviewTerms),
       modelType: modelType,
       // Detailed object
       forObject: forObject,
@@ -42,6 +42,8 @@ class IEAReviewsListLayout extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    const lastReviewTerms = this.state.reviewTerms;
+
     const {params, location} = nextProps;
     const {modelType, forObjectId, forObjectDisplayName} = params;
     const reviewType = modelType;
@@ -53,20 +55,35 @@ class IEAReviewsListLayout extends Component {
     };
 
     const newReviewsTerms = generateTermsForReviewsList({reviewType, forObject, location}, 'page')
-    const newListTask = byListId(nextProps.listContainerTasks, this.state.terms, this.state.listTask);
+    const newListTask = byListId(nextProps.listContainerTasks, this.state.reviewTerms, this.state.listTask);
 
     this.setState({
       listTask: newListTask
     })
+
+    this.checkNeedUpdate(lastReviewTerms, newReviewsTerms, newListTask)
   }
+
+  checkNeedUpdate(lastReviewTerms, newReviewsTerms, newListTask) {
+    if (lastReviewTerms.pageIndex !== newReviewsTerms.pageIndex  // Change page index.
+    ) {
+      this.setState({
+        // Reviews
+        reviewTerms: newReviewsTerms,
+        listTask: getDefaultListTask(newReviewsTerms, newListTask),
+      })
+      this.props.dispatch(loadReviewsList(newListTask, newReviewsTerms))
+    }
+  }
+
 
   componentDidMount() {
-    const {terms, listTask} = this.state;
-    this.loadMore(terms, listTask)
+    const {reviewTerms, listTask} = this.state;
+    this.loadMore(reviewTerms, listTask)
   }
 
-  loadMore(terms, listTask) {
-    this.props.dispatch(loadReviewsList(listTask, terms))
+  loadMore(reviewTerms, listTask) {
+    this.props.dispatch(loadReviewsList(listTask, reviewTerms))
   }
 
 

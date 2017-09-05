@@ -193,12 +193,15 @@ export function generateTermsForReviewsList(props, prefix = "list") {
 
   const listId = `reviews-${prefix}-view-for-${id}`;
 
+  const currentPageIndex = getCurrentPageIndex(props)
+
   return {
     ...props,
     ...props.location.query,
 
     listId: listId,
-    limit: limit
+    limit: limit,
+    pageIndex: parseInt(currentPageIndex)
   };
 }
 
