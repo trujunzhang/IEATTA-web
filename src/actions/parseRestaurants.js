@@ -61,6 +61,8 @@ async function _loadListByType(listTask: Any, objectsQuery: Parse.Query, terms: 
   } = listTask
   const skipCount = (pageIndex - 1) * limit
 
+  console.log("current:", pageIndex)
+
   const totalCount = await objectsQuery.count()
   let results = [];
   if (allItems) {

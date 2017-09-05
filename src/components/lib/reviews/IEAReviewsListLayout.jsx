@@ -76,16 +76,14 @@ class IEAReviewsListLayout extends Component {
     }
   }
 
-
   componentDidMount() {
-    const {reviewTerms, listTask} = this.state;
-    this.loadMore(reviewTerms, listTask)
+    const {listTask, reviewTerms} = this.state;
+    this.loadMore(listTask, reviewTerms)
   }
 
-  loadMore(reviewTerms, listTask) {
+  loadMore(listTask, reviewTerms) {
     this.props.dispatch(loadReviewsList(listTask, reviewTerms))
   }
-
 
   renderReviewListHeader() {
     const {listTask, forObject} = this.state;
