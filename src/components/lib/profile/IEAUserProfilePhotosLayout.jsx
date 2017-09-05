@@ -2,7 +2,6 @@ import Telescope from '../index'
 import React, {Component} from 'react'
 
 import {withRouter} from 'react-router'
-
 import PhotoBrowser from '../../../lib/photobrowser'
 
 const {
@@ -74,25 +73,23 @@ class IEAUserProfilePhotosLayout extends Component {
   render() {
     const {photosListTask, pageForm} = this.state;
 
-    if (!!photosListTask.ready) {
-      switch (pageForm) {
-        case PAGE_SINGLE_SELECTED_PHOTO_FORM:
-          return (<Telescope.components.IEAPhotosSingleLayout
+    switch (pageForm) {
+      case PAGE_SINGLE_SELECTED_PHOTO_FORM:
+        return (<Telescope.components.IEAPhotosSingleLayout
+          photoTitleType={PHOTO_BROWSER_LOGGED_USER_TITLE}
+          {...this.state} {...this.props}/>)
+      case PAGE_PHOTOS_BROWSER_FORM:
+      case PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY:
+        return (<div>
+          <Telescope.components.IEAPhotosBrowserLayout
             photoTitleType={PHOTO_BROWSER_LOGGED_USER_TITLE}
-            {...this.state} {...this.props}/>)
-        case PAGE_PHOTOS_BROWSER_FORM:
-        case PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY:
-          return (<div>
-            <Telescope.components.IEAPhotosBrowserLayout
-              photoTitleType={PHOTO_BROWSER_LOGGED_USER_TITLE}
-              {...this.state} {...this.props}/>
-            {
-              (pageForm === PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY) &&
-              <Telescope.components.IEAPhotosSelectionLayout {...this.state} {...this.props}/>
-            }
-          </div>)
+            {...this.state} {...this.props}/>
+          {
+            (pageForm === PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY) &&
+            <Telescope.components.IEAPhotosSelectionLayout {...this.state} {...this.props}/>
+          }
+        </div>)
 
-      }
     }
 
     return (<Telescope.components.F8LoadingView loadingClass="placeholder_1WOC3"/>)
