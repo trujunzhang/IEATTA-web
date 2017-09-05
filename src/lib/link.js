@@ -192,6 +192,7 @@ export function getLoggedUserMenuLink(userProfile, menuType = LOGGED_USER_MENU_A
 }
 
 export function getCurrentPageIndex(props) {
+  debugger
   if (props.location.query.page) {
     return props.location.query.page;
   }
