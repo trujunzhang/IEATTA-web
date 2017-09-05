@@ -119,8 +119,7 @@ export function getNewReviewLink(reviewType, forObject) {
 export function getPhotosBrowserSelectionLink(location, photo, photoType, forObject) {
   const {objectSchemaName} = AppConstants.realmObjects[photoType]
   const pathname = `/${AppConstants.SubDomainPhotos[objectSchemaName]}/${forObject.id}/${slugify(forObject.displayName)}`
-  const query = location.query;
-  const page = query.page;
+  const page = location.query.page;
   if (!!page) {
     return `${pathname}?select=${photo.id}& page=${page}`
   }
@@ -166,8 +165,7 @@ export function getPhotoSelectBackLink(location, pageForm, photoType, forObject)
       throw new Error('You need to set a page Form to get PhotoSelectBackLink!')
   }
 
-  const query = location.query;
-  const page = query.page;
+  const page = location.query.page;
   if (!!page) {
     backLink = `${backLink}?page=${page}`
   }
