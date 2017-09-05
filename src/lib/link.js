@@ -113,26 +113,17 @@ export function getNewReviewLink(reviewType, forObject) {
  * @param photo
  * @param photoType
  * @param forObject
- * @param location
+ * @param props
  * @returns {string}
  */
-export function getPhotosBrowserSelectionLink(photo, photoType, forObject, location = {query: {}}) {
+export function getPhotosBrowserSelectionLink(photo, photoType, forObject, props) {
   const {objectSchemaName} = AppConstants.realmObjects[photoType]
   const pathname = `/${AppConstants.SubDomainPhotos[objectSchemaName]}/${forObject.id}/${slugify(forObject.displayName)}`
+
   const select = photo.id;
   let query = {select}
 
-  const page = location.query.page;
-  if (!!page) {
-    query = {select, page}
-  }
-
-  const sort_by = location.query.sort_by;
-  if (!!sort_by) {
-    query = {select, sort_by}
-  }
-
-  return {pathname, query}
+  return adjustRouterQuery({pathname, query}, props)
 }
 
 export function getPhotosBrowserLink(photoType, forObject) {

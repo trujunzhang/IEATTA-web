@@ -12,7 +12,7 @@ class F8PhotosCollectionView extends Component {
     return (
       <li key={photo.id}>
         <div className="photo-box photo-box--interactive">
-          <Link to={getPhotosBrowserSelectionLink(photo, modelType, forObject, this.props.location)}>
+          <Link to={getPhotosBrowserSelectionLink(photo, modelType, forObject, this.props)}>
             <img
               alt="Photo of Roma Antica - San Francisco, CA, United States. outdoor tater seating, combo rearrangeable table"
               width="226"
