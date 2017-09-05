@@ -121,7 +121,7 @@ export function getPhotosBrowserSelectionLink(location, photo, photoType, forObj
   const pathname = `/${AppConstants.SubDomainPhotos[objectSchemaName]}/${forObject.id}/${slugify(forObject.displayName)}`
   const page = location.query.page;
   if (!!page) {
-    return `${pathname}?select=${photo.id}& page=${page}`
+    return `${pathname}?select=${photo.id}&page=${page}`
   }
   return `${pathname}?select=${photo.id}`
 }
@@ -164,7 +164,6 @@ export function getPhotoSelectBackLink(location, pageForm, photoType, forObject)
     default:
       throw new Error('You need to set a page Form to get PhotoSelectBackLink!')
   }
-
   const page = location.query.page;
   if (!!page) {
     backLink = `${backLink}?page=${page}`
