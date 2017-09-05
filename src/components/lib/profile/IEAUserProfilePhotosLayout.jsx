@@ -54,21 +54,28 @@ class IEAUserProfilePhotosLayout extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    const lastPageForm = this.state.pageForm;
+    const lastPhotosTerms = this.state.photosTerms;
+
+    const newPageForm = getPageFormType(PARSE_USERS, nextProps, this.state.pageForm)
+    const newPhotosTerms = generatePhotoTerm(PARSE_USERS, nextProps.userProfile.id, newPageForm, nextProps)
     const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms, this.state.photosListTask);
+
     const newPageFormType = getPageFormType(PARSE_USERS, nextProps, this.state.pageForm);
 
     this.setState({
       // photos
-      pageForm: newPageFormType,
+      photosTerms: newPhotosTerms,
       photosListTask: photosListTask,
-      selectPhotoIndex: getSelectPhoto(nextProps, photosListTask, this.state.selectPhotoIndex)
+      selectPhotoIndex: getSelectPhoto(nextProps, photosListTask, this.state.selectPhotoIndex),
+      // Common
+      pageForm: newPageForm,
     })
   }
 
   componentDidMount() {
     this.props.dispatch(loadPhotosBrowser(this.state.photosTerms))
   }
-
 
   render() {
     const {photosListTask, pageForm} = this.state;
