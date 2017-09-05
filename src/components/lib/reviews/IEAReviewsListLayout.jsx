@@ -92,15 +92,7 @@ class IEAReviewsListLayout extends Component {
   renderReviewListHeader() {
     const {listTask, forObject} = this.state;
 
-    const {
-      totalCount,
-    } = listTask;
-
-    return (
-      <h3>
-        {`${calculateTotalCount(listTask)} reviews for ${forObject.displayName}`}
-      </h3>
-    )
+    return (<h3>{`${calculateTotalCount(listTask)} reviews for ${forObject.displayName}`}</h3>)
   }
 
   renderRows() {
