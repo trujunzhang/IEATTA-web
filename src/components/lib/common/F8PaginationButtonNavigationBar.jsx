@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 
-import {withRouter} from 'react-router'
 
 class F8PaginationButtonNavigationBar extends Component {
 
@@ -45,16 +44,16 @@ class F8PaginationButtonNavigationBar extends Component {
 
     for (let x = 0; x < totalPage; x++) {
       let row = (
-        <div className="arrange_unit page-option">
-          <a key={x} className="available-number pagination-links_anchor"
+        <div key={x} className="arrange_unit page-option">
+          <a className="available-number pagination-links_anchor"
              onClick={(e) => this.onPaginationButtonPress(x + 1)}>{x + 1}</a>
         </div>
       )
 
       if (`${x + 1}` === currentPageIndex) {
         row = (
-          <div className="arrange_unit page-option current">
-            <span key={x} className="pagination-links_anchor">{x + 1}</span>
+          <div key={x} className="arrange_unit page-option current">
+            <span className="pagination-links_anchor">{x + 1}</span>
           </div>
         )
       }

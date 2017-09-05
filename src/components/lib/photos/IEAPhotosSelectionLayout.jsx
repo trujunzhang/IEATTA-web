@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 import Users from '../../../lib/users'
 import Photos from '../../../lib/photos'
 
+import {withRouter} from 'react-router'
 import {Link} from 'react-router'
 
 import {getPhotoSelectBackLink} from '../../../lib/link'
@@ -22,10 +23,15 @@ class IEAPhotosSelectionLayout extends Component {
     })
   }
 
+  onCloseIconPress() {
+    this.props.router.goBack();
+  }
+
   renderCloseButton() {
     const {modelType, forObject, pageForm} = this.props;
     return (
-      <Link className="lightbox-close" to={getPhotoSelectBackLink(pageForm, modelType, forObject)}>
+      <a className="lightbox-close"
+         onClick={this.onCloseIconPress.bind(this)}>
         {'Close'}
         <span className="icon icon--24-close icon--size-24 icon--currentColor u-space-l-half"
               id="icon_24X24">
@@ -35,7 +41,7 @@ class IEAPhotosSelectionLayout extends Component {
         </svg>
       </span>
 
-      </Link>
+      </a>
     )
   }
 
@@ -65,4 +71,4 @@ class IEAPhotosSelectionLayout extends Component {
 }
 
 
-export default IEAPhotosSelectionLayout;
+export default withRouter(IEAPhotosSelectionLayout);
