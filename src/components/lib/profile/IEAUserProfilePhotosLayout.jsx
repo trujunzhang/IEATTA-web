@@ -62,8 +62,6 @@ class IEAUserProfilePhotosLayout extends Component {
     const newPhotosTerms = generatePhotoTerm(PARSE_USERS, nextProps.userProfile.id, newPageForm, nextProps)
     const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms, this.state.photosListTask);
 
-    const newPageFormType = getPageFormType(PARSE_USERS, nextProps, this.state.pageForm);
-
     this.setState({
       // photos
       photosTerms: newPhotosTerms,
