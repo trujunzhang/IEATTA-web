@@ -49,7 +49,10 @@ Photos.getPhotoItem = function (photos, modelType, forObject, index) {
 }
 
 Photos.getPhotoInfoAboutUser = function (photos, index) {
-  const user = photos[index].user || Users.anonymousUser;
+  let user = Users.anonymousUser;
+  if (!!photos[index].user) {
+    user = photos[index].user;
+  }
   return {
     username: user.username,
     imageUrl: Photos.getListThumbnailUrl(user),
