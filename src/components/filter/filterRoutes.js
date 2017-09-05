@@ -27,6 +27,7 @@
 const _ = require('underscore')
 
 import Users from "../../lib/users";
+import Photos from "../../lib/photos";
 import AppConstants from '../../lib/appConstants'
 
 const {
@@ -116,7 +117,7 @@ export function getSelectPhoto(props: Any, photosListTask: Any, lastPhotoIndex) 
 export function generatePhotoTerm(objectSchemaName, forObjectId, pageForm = PAGE_MAIN_FORM, {location}) {
   const isPhotosBrowserPage = (pageForm === PAGE_PHOTOS_BROWSER_FORM);
   const termType = isPhotosBrowserPage ? 'page' : 'list';
-  const limit = isPhotosBrowserPage ? 1 : -1;
+  const limit = isPhotosBrowserPage ? Photos.config.paginationCountPerPage : -1;
   const listId = `photos-${termType}-view-for-objectId-${forObjectId}`
 
   const photoTerms = {
