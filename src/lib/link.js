@@ -142,6 +142,11 @@ export function getPhotoSelectBackLink(pageForm, photoType, forObject) {
       return geDetailedModelLink(photoType, forObject)
     case PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY:
       return getPhotosBrowserLink(photoType, forObject)
+  case LOGGED_USER_MENU_BROWSER_PHOTOS:
+      return  getLoggedUserMenuLink({
+          id:forObject.id,
+          username:forObject.displayName
+      },pageForm)
   }
 
   throw new Error('You need to set a page Form to get PhotoSelectBackLink!')
