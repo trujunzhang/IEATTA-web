@@ -41,7 +41,9 @@ class IEAUserProfilePhotosLayout extends Component {
   constructor(props, context) {
     super(props)
 
-    const photosTerms = generatePhotoTerm(PARSE_USERS, props.userProfile.id)
+    const pageForm = getPageFormType(PARSE_USERS, props, null)
+
+    const photosTerms = generatePhotoTerm(PARSE_USERS, props.userProfile.id,pageForm)
 
     this.state = this.initialState = {
       photosTerms: photosTerms,
