@@ -27,13 +27,14 @@ const {
 const {
   getModelByObjectId,
   getDefaultListTask,
-  byListId
+  byListId,
 } = require('../../filter/filterPosts')
 
 const {
   generatePhotoTerm,
   getPageFormType,
   getSelectPhoto,
+  checkNeedUpdatePhotosTask
 } = require('../../filter/filterRoutes')
 
 class OrderedRecipes extends Component {
@@ -84,9 +85,27 @@ class OrderedRecipes extends Component {
       selectPhotoIndex: getSelectPhoto(nextProps, photosListTask, this.state.selectPhotoIndex)
     })
 
-    this.checkReceiveNextRecipe(nextProps, oldOID, newPhotosTerms)
+    const haveReceiveNextRecipe = this.checkReceiveNextRecipe(nextProps, oldOID, newPhotosTerms)
 
+    if (!haveReceiveNextRecipe) {
+      this.checkNeedUpdate(lastPageForm, lastPhotosTerms, newPageForm, newPhotosTerms, photosListTask)
+    }
   }
+
+  checkNeedUpdate(lastPageForm, lastPhotosTerms, newPageForm, newPhotosTerms, photosListTask) {
+    if (checkNeedUpdatePhotosTask(lastPageForm, newPageForm) ||
+      lastPhotosTerms.pageIndex !== newPhotosTerms.pageIndex  // Change page index.
+    ) {
+      this.setState({
+        // photos
+        photosTerms: newPhotosTerms,
+        photosListTask: getDefaultListTask(newPhotosTerms, photosListTask),
+        selectPhotoIndex: -1,
+      })
+      this.props.dispatch(loadPhotosBrowser(newPhotosTerms))
+    }
+  }
+
 
   checkReceiveNextRecipe(nextProps, oldOID, newPhotosTerms) {
     const currentOID = nextProps.params.oid;
@@ -108,7 +127,10 @@ class OrderedRecipes extends Component {
         reviewType: this.state.modelType,
         forObjectId: currentOID,
       }, currentOID))
+
+      return true;
     }
+    return false;
   }
 
   componentDidMount() {
