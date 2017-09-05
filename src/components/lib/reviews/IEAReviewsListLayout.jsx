@@ -18,17 +18,17 @@ class IEAReviewsListLayout extends Component {
   constructor(props, context) {
     super(props)
 
-      const {params,location}= props;
-      const {modelType,forObjectId,forObjectDisplayName} = params;
-      const reviewType = modelType;
+    const {params, location} = props;
+    const {modelType, forObjectId, forObjectDisplayName} = params;
+    const reviewType = modelType;
 
-      const forObject = {
-        id: forObjectId,
-        modelType:modelType,
-        displayName:forObjectDisplayName
-      };
+    const forObject = {
+      id: forObjectId,
+      modelType: modelType,
+      displayName: forObjectDisplayName
+    };
 
-    const terms = generateTermsForReviewsList({reviewType,forObject, location}, 'page', 2)
+    const terms = generateTermsForReviewsList({reviewType, forObject, location}, 'page', 2)
 
     this.state = {
       // Common
@@ -42,7 +42,7 @@ class IEAReviewsListLayout extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const newListTask = byListId(nextProps.listContainerTasks, this.state.terms.listId, this.state.listTask);
+    const newListTask = byListId(nextProps.listContainerTasks, this.state.terms, this.state.listTask);
 
     this.setState({
       listTask: newListTask
@@ -60,7 +60,7 @@ class IEAReviewsListLayout extends Component {
 
 
   renderReviewListHeader() {
-  const {listTask,forObject} = this.state;
+    const {listTask, forObject} = this.state;
 
     const {
       results,
@@ -71,7 +71,7 @@ class IEAReviewsListLayout extends Component {
     return (
       <h3>
 
-  {`${totalCount} reviews for ${forObject.displayName}`}
+        {`${totalCount} reviews for ${forObject.displayName}`}
 
       </h3>
     )
@@ -92,7 +92,7 @@ class IEAReviewsListLayout extends Component {
       return (
         <ul className="ylist ylist-bordered reviews">
           {results.map((review, index) => {
-                return (<Telescope.components.ReviewsItem key={review.id} review={review}/>)
+              return (<Telescope.components.ReviewsItem key={review.id} review={review}/>)
             }
           )}
         </ul>
@@ -112,12 +112,12 @@ class IEAReviewsListLayout extends Component {
             {this.renderReviewListHeader()}
 
 
-        <div className="review-list" id="position-relative">
-          {this.renderRows()}
-        </div>
+            <div className="review-list" id="position-relative">
+              {this.renderRows()}
+            </div>
 
 
-        <Telescope.components.F8PaginationButtonNavigationBar {...this.props} {...this.state}/>
+            <Telescope.components.F8PaginationButtonNavigationBar {...this.props} {...this.state}/>
 
           </div>
         </div>
@@ -126,7 +126,7 @@ class IEAReviewsListLayout extends Component {
   }
 
   render() {
-      const {forObject} = this.state;
+    const {forObject} = this.state;
 
     return (
       <div className="main-content-wrap main-content-wrap--full">

@@ -30,7 +30,7 @@ class ReviewsList extends Component {
     const lastSort = this.state.terms.sort_by || '';
 
     const newTerms = generateTermsForReviewsList(nextProps)
-    const newListTask = byListId(nextProps.listContainerTasks, newTerms.listId, this.state.listTask);
+    const newListTask = byListId(nextProps.listContainerTasks, newTerms, this.state.listTask);
 
     this.setState({
       terms: newTerms,

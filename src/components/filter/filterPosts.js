@@ -48,7 +48,15 @@ export function getDefaultListTask(terms: Any, lastTask = {}) {
   }
 }
 
-export function byListId(listContainerTasks: Any, listId, lastTask: Any) {
+/**
+ * Filter the taskList.
+ *
+ * @param listContainerTasks
+ * @param listId
+ * @param lastTask
+ * @returns {Any}
+ */
+export function byListId(listContainerTasks: Any, {listId}, lastTask: Any) {
   const taskObject = convertToObject(listContainerTasks)
   let task = taskObject[listId]
   if (!!task) {

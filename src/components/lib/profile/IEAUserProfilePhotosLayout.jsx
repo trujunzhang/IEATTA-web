@@ -46,14 +46,15 @@ class IEAUserProfilePhotosLayout extends Component {
     const photoBrowserInstance = new PhotoBrowser()
     const pageForm = getPageFormType(PARSE_USERS, props, null)
 
-    const photosTerms = generatePhotoTerm(PARSE_USERS, props.userProfile.id, pageForm)
+    const photosTerms = generatePhotoTerm(PARSE_USERS, props.userProfile.id, pageForm, props)
 
     this.state = this.initialState = {
+      // photos
       photosTerms: photosTerms,
       photosListTask: getDefaultListTask(photosTerms),
       selectPhotoIndex: -1,
       // Common
-      pageForm: getPageFormType(PARSE_USERS, props, null),
+      pageForm: pageForm,
       modelType: 'user',
       // Events
       onPreIconClick: photoBrowserInstance.onPreIconClick.bind(this),
@@ -62,7 +63,7 @@ class IEAUserProfilePhotosLayout extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms.listId, this.state.photosListTask);
+    const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms, this.state.photosListTask);
     const newPageFormType = getPageFormType(PARSE_USERS, nextProps, this.state.pageForm);
 
     this.setState({

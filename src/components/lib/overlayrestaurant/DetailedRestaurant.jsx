@@ -73,7 +73,7 @@ class DetailedRestaurant extends Component {
 
     const newPageForm = getPageFormType(PARSE_RESTAURANTS, nextProps, this.state.pageForm)
     const newPhotosTerms = generatePhotoTerm(PARSE_RESTAURANTS, nextProps.params.rid, newPageForm, nextProps)
-    const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms.listId, this.state.photosListTask);
+    const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms, this.state.photosListTask);
 
     this.setState({
       // Detailed object

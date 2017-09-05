@@ -27,7 +27,7 @@ class RecipesList extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      listTask: byListId(nextProps.listContainerTasks, this.state.terms.listId, this.state.listTask)
+      listTask: byListId(nextProps.listContainerTasks, this.state.terms, this.state.listTask)
     })
   }
 

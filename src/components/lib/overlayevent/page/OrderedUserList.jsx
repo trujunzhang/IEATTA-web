@@ -20,7 +20,7 @@ class OrderedUserList extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      listTask: byListId(nextProps.listContainerTasks, this.state.terms.listId, this.state.listTask)
+      listTask: byListId(nextProps.listContainerTasks, this.state.terms, this.state.listTask)
     })
   }
 
@@ -29,7 +29,7 @@ class OrderedUserList extends Component {
   }
 
   loadMore() {
-    const {terms,listTask} = this.state;
+    const {terms, listTask} = this.state;
     this.props.dispatch(loadPeopleInEventList(listTask, terms))
   }
 

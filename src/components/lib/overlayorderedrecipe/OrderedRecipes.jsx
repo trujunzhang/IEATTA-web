@@ -41,7 +41,9 @@ class OrderedRecipes extends Component {
     super(props)
 
     const photoBrowserInstance = new PhotoBrowser()
-    const photosTerms = generatePhotoTerm(PARSE_RECIPES, props.params.oid)
+
+    const pageForm = getPageFormType(PARSE_RECIPES, props, null)
+    const photosTerms = generatePhotoTerm(PARSE_RECIPES, props.params.oid, pageForm, props)
 
     this.state = this.initialState = {
       oid: props.params.oid,
@@ -54,7 +56,7 @@ class OrderedRecipes extends Component {
       photosListTask: getDefaultListTask(photosTerms),
       selectPhotoIndex: -1,
       // Common
-      pageForm: getPageFormType(PARSE_RECIPES, props, null),
+      pageForm: pageForm,
       modelType: 'recipe',
       // Events
       onPreIconClick: photoBrowserInstance.onPreIconClick.bind(this),
@@ -65,7 +67,7 @@ class OrderedRecipes extends Component {
   componentWillReceiveProps(nextProps) {
 
     const oldOID = this.state.oid;
-    const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms.listId, this.state.photosListTask);
+    const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms, this.state.photosListTask);
 
     this.setState({
       // Detailed object
