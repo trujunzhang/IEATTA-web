@@ -146,20 +146,32 @@ class OrderedRecipes extends Component {
   render() {
     const {photosListTask, forObject, pageForm, reviewStatistic} = this.state;
 
-    if (!!forObject && !!photosListTask.ready && !!reviewStatistic) {
+    if (!!forObject && !!reviewStatistic) {
+      if (!!photosListTask.ready) {
+        switch (pageForm) {
+          case PAGE_SINGLE_SELECTED_PHOTO_FORM:
+            return (<Telescope.components.IEAPhotosSingleLayout {...this.state}/>)
+          case PAGE_MAIN_FORM:
+          case PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY:
+            return (<div>
+                <Telescope.components.IEAOrderedRecipesLayout {...this.state}/>
+                {
+                  (pageForm === PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY) &&
+                  <Telescope.components.IEAPhotosSelectionLayout {...this.state}/>
+                }
+              </div>
+            )
+          case PAGE_EDIT_FORM:
+          case PAGE_NEW_FORM:
+            return (<Telescope.components.IEAEditRecipeLayout
+                {...this.state}
+                dispatch={this.props.dispatch}/>
+            )
+        }
+      }
+
       switch (pageForm) {
         case PAGE_SINGLE_SELECTED_PHOTO_FORM:
-          return (<Telescope.components.IEAPhotosSingleLayout {...this.state}/>)
-        case PAGE_MAIN_FORM:
-        case PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY:
-          return (<div>
-              <Telescope.components.IEAOrderedRecipesLayout {...this.state}/>
-              {
-                (pageForm === PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY) &&
-                <Telescope.components.IEAPhotosSelectionLayout {...this.state}/>
-              }
-            </div>
-          )
         case PAGE_PHOTOS_BROWSER_FORM:
         case PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY:
           return (<div>
@@ -170,13 +182,8 @@ class OrderedRecipes extends Component {
               }
             </div>
           )
-        case PAGE_EDIT_FORM:
-        case PAGE_NEW_FORM:
-          return (<Telescope.components.IEAEditRecipeLayout
-              {...this.state}
-              dispatch={this.props.dispatch}/>
-          )
       }
+
     }
 
     return (<Telescope.components.F8LoadingView loadingClass="placeholder_1WOC3"/>)
