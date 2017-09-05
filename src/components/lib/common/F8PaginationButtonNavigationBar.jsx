@@ -27,6 +27,8 @@ class F8PaginationButtonNavigationBar extends Component {
   renderReviewsListFooter() {
     const {listTask,forObject} = this.props;
 
+      debugger
+
       const {
           limit,
           results,

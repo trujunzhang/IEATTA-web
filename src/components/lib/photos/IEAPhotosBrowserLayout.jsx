@@ -11,20 +11,18 @@ const {
 class IEAPhotosBrowserLayout extends Component {
 
   renderFooter() {
+
+    const {photosListTask} = this.props;
+
     return (
       <div className="media-landing_footer">
 
         <div className="media-pager">
 
-          <div className="pagination-block">
-            <div className="arrange arrange--stack arrange--baseline arrange--6">
-              <div className="page-of-pages arrange_unit arrange_unit--fill">
-                Page 1 of 1
-              </div>
-
-            </div>
-          </div>
-
+            <Telescope.components.F8PaginationButtonNavigationBar
+                 listTask={photosListTask}
+                 {...this.props}
+                 {...this.state}/>
 
         </div>
       </div>
