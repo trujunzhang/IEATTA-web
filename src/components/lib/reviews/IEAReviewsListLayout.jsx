@@ -61,12 +61,12 @@ class IEAReviewsListLayout extends Component {
       listTask: newListTask
     })
 
-    this.checkNeedUpdate(lastReviewTerms, newReviewsTerms)
+    this.checkNeedUpdate(lastReviewTerms, newReviewsTerms, newListTask)
   }
 
-  checkNeedUpdate(lastReviewTerms, newReviewsTerms) {
+  checkNeedUpdate(lastReviewTerms, newReviewsTerms, newListTask) {
 
-    const newReviewTask = getDefaultListTask(newReviewsTerms, lastReviewTerms);
+    const newReviewTask = getDefaultListTask(newReviewsTerms, newListTask);
 
     if (lastReviewTerms.pageIndex !== newReviewsTerms.pageIndex  // Change page index.
     ) {

@@ -94,7 +94,6 @@ class DetailedRestaurant extends Component {
     if (checkNeedUpdatePhotosTask(lastPageForm, newPageForm) ||
       lastPhotosTerms.pageIndex !== newPhotosTerms.pageIndex  // Change page index.
     ) {
-      debugger
       this.setState({
         // photos
         photosTerms: newPhotosTerms,
