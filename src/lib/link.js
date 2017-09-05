@@ -116,7 +116,7 @@ export function getNewReviewLink(reviewType, forObject) {
  * @param props
  * @returns {string}
  */
-export function getPhotosBrowserSelectionLink(photo, photoType, forObject, props) {
+export function getPhotosBrowserSelectionLink(photo, photoType, forObject, props = {location: {query: {}}}) {
   const {objectSchemaName} = AppConstants.realmObjects[photoType]
   const pathname = `/${AppConstants.SubDomainPhotos[objectSchemaName]}/${forObject.id}/${slugify(forObject.displayName)}`
 
