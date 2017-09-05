@@ -26,6 +26,7 @@ const {
   generatePhotoTerm,
   getPageFormType,
   getSelectPhoto,
+  checkNeedUpdatePhotosTask
 } = require('../../filter/filterRoutes')
 
 
@@ -71,6 +72,22 @@ class IEAUserProfilePhotosLayout extends Component {
       // Common
       pageForm: newPageForm,
     })
+
+    this.checkNeedUpdate(lastPageForm, lastPhotosTerms, newPageForm, newPhotosTerms, photosListTask)
+  }
+
+  checkNeedUpdate(lastPageForm, lastPhotosTerms, newPageForm, newPhotosTerms, photosListTask) {
+    if (checkNeedUpdatePhotosTask(lastPageForm, newPageForm) ||
+      lastPhotosTerms.pageIndex !== newPhotosTerms.pageIndex  // Change page index.
+    ) {
+      this.setState({
+        // photos
+        photosTerms: newPhotosTerms,
+        photosListTask: getDefaultListTask(newPhotosTerms, photosListTask),
+        selectPhotoIndex: -1,
+      })
+      this.props.dispatch(loadPhotosBrowser(newPhotosTerms))
+    }
   }
 
   componentDidMount() {
