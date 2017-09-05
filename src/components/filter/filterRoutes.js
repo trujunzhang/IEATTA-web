@@ -52,6 +52,10 @@ const {
   EVENTS_LIST_FOR_USER,
 } = require('../../lib/constants').default
 
+import {
+  getCurrentPageIndex,
+} from '../../lib/link'
+
 export function checkEditModel(props: Object) {
   return props.location.pathname.indexOf('edit/') !== -1;
 }
@@ -116,9 +120,12 @@ export function getSelectPhoto(props: Any, photosListTask: Any, lastPhotoIndex) 
 
 export function generatePhotoTerm(objectSchemaName, forObjectId, pageForm = PAGE_MAIN_FORM, {location}) {
   const isPhotosBrowserPage = (pageForm === PAGE_PHOTOS_BROWSER_FORM);
+
   const termType = isPhotosBrowserPage ? 'page' : 'list';
   const limit = isPhotosBrowserPage ? Photos.config.paginationCountPerPage : -1;
   const listId = `photos-${termType}-view-for-objectId-${forObjectId}`
+
+  const currentPageIndex = getCurrentPageIndex(props)
 
   const photoTerms = {
     listId: listId,
@@ -126,7 +133,7 @@ export function generatePhotoTerm(objectSchemaName, forObjectId, pageForm = PAGE
     objectSchemaName: objectSchemaName,
     allItems: (limit === -1),
     limit: limit,
-    pageIndex: location.query.page || 1
+    pageIndex: parseInt(currentPageIndex)
   }
 
   return photoTerms;

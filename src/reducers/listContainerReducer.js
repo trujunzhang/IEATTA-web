@@ -57,7 +57,7 @@ function listContainerReducer(state: State = initialState, action): State {
         results: list
       };
 
-      // debugger
+      debugger
 
       const nextState = nextTask;
 
