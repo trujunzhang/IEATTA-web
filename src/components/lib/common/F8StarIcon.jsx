@@ -31,6 +31,8 @@ class F8StarIcon extends Component {
              height="303"
              src="/images/stars/stars.png"
              alt={rateTitle}/>
+
+
       </div>
     )
   }
