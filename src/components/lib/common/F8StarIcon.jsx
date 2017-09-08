@@ -1,6 +1,8 @@
 import Telescope from '../index'
 import React, {Component} from 'react'
 
+import {Link} from 'react-router'
+
 class F8StarIcon extends Component {
 
   constructor(props, context) {
@@ -36,6 +38,7 @@ class F8StarIcon extends Component {
       </div>
     )
   }
+
 }
 
 export default F8StarIcon;
