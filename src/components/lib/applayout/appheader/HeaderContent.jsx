@@ -67,11 +67,6 @@ class HeaderContent extends Component {
 
 }
 
-/**
- * ## Imports
- *
- * Redux
- */
 const {connect} = require('react-redux')
 
 function select(store) {

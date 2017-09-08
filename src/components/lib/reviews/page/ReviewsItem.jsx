@@ -75,6 +75,8 @@ class ReviewsItem extends Component {
       {rate} = review;
 
     const htmlBody = Reviews.getHtmlBody(review);
+    debugger
+    // const canEditReview = Reviews.checkCanEditReview(review)
 
     return (
       <div className="review-wrapper">
