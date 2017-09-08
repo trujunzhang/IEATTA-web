@@ -14,7 +14,7 @@ export class ReviewsItemButtonsPanel extends Component {
 
             <li className="vote-item inline-block">
 
-              <a className="ybtn ybtn--small useful js-analytics-click" data-analytics-label="ufc" href="javascript:;"
+              <a className="ybtn ybtn--small useful js-analytics-click"
                  rel="useful">
             <span
               id="review_item_footer_buttons_panel_span"
@@ -32,7 +32,7 @@ export class ReviewsItemButtonsPanel extends Component {
 
             <li className="vote-item inline-block">
 
-              <a className="ybtn ybtn--small funny js-analytics-click" data-analytics-label="ufc" href="javascript:;"
+              <a className="ybtn ybtn--small funny js-analytics-click"
                  rel="funny">
             <span
               id="review_item_footer_buttons_panel_span"
@@ -50,7 +50,7 @@ export class ReviewsItemButtonsPanel extends Component {
 
             <li className="vote-item inline-block">
 
-              <a className="ybtn ybtn--small cool js-analytics-click" data-analytics-label="ufc" href="javascript:;"
+              <a className="ybtn ybtn--small cool js-analytics-click"
                  rel="cool">
             <span
               id="review_item_footer_buttons_panel_span"
