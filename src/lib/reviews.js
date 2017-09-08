@@ -164,4 +164,14 @@ Reviews.getSortTag = function (sort) {
   return _.invert(Reviews.SORT_TAGS)[sort];
 }
 
+Reviews.checkCanEditReview = function ({review, currentUser}) {
+  const {user} = review;
+  debugger
+  if (user.uniqueId === currentUser.uniqueId) {
+    return true;
+  }
+
+  return false;
+}
+
 export default Reviews;

@@ -132,6 +132,17 @@ export function fromParsePointer(map: Object): Pointer {
 }
 
 
+function fromParseCommon(map: Object) {
+  return {
+    id: map.id,
+    uniqueId: map.get('uniqueId') || '',
+    createdAt: map.get('createdAt'),
+    updatedAt: map.get('updatedAt'),
+    flag: map.get('flag') || '1',
+  }
+}
+
+
 function _get_default_image_photo_url(map) {
   const photos = map.get('photos') || []
 
@@ -146,9 +157,7 @@ function _get_default_image_photo_url(map) {
 export function fromParseUser(map: Object): User {
   return {
     // Basic Fields
-    id: map.id,
-    createdAt: map.get('createdAt'),
-    updatedAt: map.get('updatedAt'),
+    ...fromParseCommon(map),
     // Attributes
     username: map.get('username'),
     loginType: map.get('loginType'),
@@ -167,9 +176,7 @@ export function fromParseUser(map: Object): User {
 function parsePhotoNormal(map: Object): Object {
   return {
     // Basic Fields
-    id: map.id,
-    createdAt: map.get('createdAt'),
-    updatedAt: map.get('updatedAt'),
+    ...fromParseCommon(map),
     // Attributes
     original: map.get('original'),
     thumbnail: map.get('thumbnail'),
@@ -198,9 +205,7 @@ export function fromParsePhoto(map: Object): Photo {
 export function fromParseRecipe(map: Object): Recipe {
   return {
     // Basic Fields
-    id: map.id,
-    createdAt: map.get('createdAt'),
-    updatedAt: map.get('updatedAt'),
+    ...fromParseCommon(map),
     // Attributes
     displayName: map.get('displayName'),
     price: map.get('price'),
@@ -217,9 +222,7 @@ export function fromParseRecipe(map: Object): Recipe {
 export function fromParseEvent(map: Object): Event {
   return {
     // Basic Fields
-    id: map.id,
-    createdAt: map.get('createdAt'),
-    updatedAt: map.get('updatedAt'),
+    ...fromParseCommon(map),
     // Attributes
     displayName: map.get('displayName'),
     slug: map.get('slug'),
@@ -235,9 +238,7 @@ export function fromParseEvent(map: Object): Event {
 export function fromParseRestaurant(map: Object): Restaurant {
   return {
     // Basic Fields
-    id: map.id,
-    createdAt: map.get('createdAt') || new Date(),
-    updatedAt: map.get('updatedAt') || new Date(),
+    ...fromParseCommon(map),
     // Attributes
     displayName: map.get('displayName') || '',
     geoLocation: map.get('geoLocation') || '',
@@ -257,12 +258,9 @@ export function fromParseRestaurant(map: Object): Restaurant {
 
 
 export function fromParsePeopleInEvent(map: Object): PeopleInEvent {
-  // debugger
   return {
     // Basic Fields
-    id: map.id,
-    createdAt: map.get('createdAt') || new Date(),
-    updatedAt: map.get('updatedAt') || new Date(),
+    ...fromParseCommon(map),
     // Attributes
     // ...
     // Pointer
@@ -276,9 +274,7 @@ export function fromParsePeopleInEvent(map: Object): PeopleInEvent {
 export function fromParseReview(map: Object): Review {
   return {
     // Basic Fields
-    id: map.id,
-    createdAt: map.get('createdAt'),
-    updatedAt: map.get('updatedAt'),
+    ...fromParseCommon(map),
     // Attributes
     rate: map.get('rate'),
     body: map.get('body'),

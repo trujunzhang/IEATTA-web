@@ -75,8 +75,7 @@ class ReviewsItem extends Component {
       {rate} = review;
 
     const htmlBody = Reviews.getHtmlBody(review);
-    debugger
-    // const canEditReview = Reviews.checkCanEditReview(review)
+    const canEditReview = Reviews.checkCanEditReview(this.props)
 
     return (
       <div className="review-wrapper">
@@ -90,9 +89,12 @@ class ReviewsItem extends Component {
                 iconWidth="84"
                 iconHeight="303"/>
 
-              <div className="review_edit_button">
-                {this.renderRightEditButton()}
-              </div>
+              {
+                canEditReview &&
+                <div className="review_edit_button">
+                  {this.renderRightEditButton()}
+                </div>
+              }
 
             </div>
             <span className="rating-qualifier">
@@ -141,4 +143,14 @@ class ReviewsItem extends Component {
   }
 }
 
-export default ReviewsItem;
+const {connect} = require('react-redux')
+
+function select(store) {
+  return {
+    currentUser: store.user
+  }
+}
+
+export default connect(select)(ReviewsItem)
+
+

@@ -46,7 +46,9 @@ export type State = {
   email: ? string,
   defaultAvatorUrl: ? string,
   updatedAt: ? Date,
+  uniqueId: ?string;
 }
+
 
 const initialState = {
   isLoggedIn: false,
@@ -58,21 +60,17 @@ const initialState = {
   email: null,
   defaultAvatorUrl: null,
   updatedAt: null,
+  uniqueId: null,
 }
 
 function user(state: State = initialState, action: Action): State {
   switch (action.type) {
     case LOGGED_IN: {
-      let {id, username, loginType, email, defaultAvatorUrl, updatedAt} = action.payload
+      let {id, username, loginType, email, defaultAvatorUrl, updatedAt, uniqueId} = action.payload
       return {
         isLoggedIn: true,
         hasSkippedLogin: false,
-        id,
-        username,
-        loginType,
-        email,
-        defaultAvatorUrl,
-        updatedAt
+        id, username, loginType, email, defaultAvatorUrl, updatedAt, uniqueId
       }
     }
     case LOGGED_OUT: {
