@@ -166,8 +166,7 @@ Reviews.getSortTag = function (sort) {
 
 Reviews.checkCanEditReview = function ({review, currentUser}) {
   const {user} = review;
-  debugger
-  if (user.uniqueId === currentUser.uniqueId) {
+  if (!!currentUser.uniqueId && !!user.uniqueId && user.uniqueId === currentUser.uniqueId) {
     return true;
   }
 
