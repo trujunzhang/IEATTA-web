@@ -4,7 +4,7 @@ import Restaurants from '../../../lib/restaurants'
 
 
 const {
-  updateRestaurant,
+  writeOnlineParseObject,
   showAlertMessage,
   timeout
 } = require('../../../actions').default
@@ -14,6 +14,7 @@ const {
  * The states were interested in
  */
 const {
+  PARSE_RESTAURANTS,
   MENU_ITEM_ADD_OR_EDIT_RESTAURANT,
   // Sections
   SECTION_PHOTOS_BROWSER_FOR_RESTAURANT,
@@ -90,7 +91,7 @@ class IEAEditRestaurantLayout extends Component {
 
 
   async onButtonPress() {
-    const {dispatch, forObject} = this.props;
+    const {dispatch, forObject, pageForm} = this.props;
 
     const objectId = forObject.id;
     const displayName = this.props.editModel.form.fields.displayName;
@@ -110,19 +111,22 @@ class IEAEditRestaurantLayout extends Component {
 
     try {
       await Promise.race([
-        dispatch(updateRestaurant({
-          objectId, displayName,
-          latitude,
-          longitude,
-          address,
-          street_number,
-          route,
-          locality,
-          sublocality,
-          country,
-          postal_code,
-          administrative_area
-        })),
+        dispatch(writeOnlineParseObject(
+          pageForm,
+          PARSE_RESTAURANTS,
+          {
+            objectId, displayName,
+            latitude,
+            longitude,
+            address,
+            street_number,
+            route,
+            locality,
+            sublocality,
+            country,
+            postal_code,
+            administrative_area
+          })),
         timeout(15000),
       ]);
     } catch (e) {
