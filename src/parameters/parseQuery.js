@@ -5,7 +5,6 @@ const {
   getInstanceWithoutData
 } = require('../parse/objects').default
 
-import Records from '../lib/records'
 import AppConstants from '../lib/appConstants'
 
 /**
