@@ -30,7 +30,8 @@ import type {ThunkAction} from './types'
 
 const {
   getUsersParameters,
-  getQueryByType
+  getQueryByType,
+  getReviewsParameters
 } = require('../parse/parseUtiles').default
 
 const {
@@ -87,6 +88,22 @@ function callCloudStatisticMethod(type: string, methodType: string, params: stri
 
 }
 
+function findParseObject(type: string, query: Parse.Query, objectId: string, parseFun: Any): ThunkAction {
+  return (dispatch) => {
+    return query.first({
+      success: (object) => {
+        debugger
+        const model = parseFun(object);
+        const payload = {objectId, model}
+        dispatch({type, payload})
+      },
+      error: (error) => {
+        debugger
+      }
+    })
+  }
+}
+
 function loadParseObject(type: string, query: Parse.Query, objectId: string, parseFun: Any): ThunkAction {
   return (dispatch) => {
     return query.get(objectId, {
@@ -99,9 +116,7 @@ function loadParseObject(type: string, query: Parse.Query, objectId: string, par
         debugger
       }
     })
-
   }
-
 }
 
 export default {
@@ -141,8 +156,11 @@ export default {
     return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_RECIPES, ['restaurant', 'event', 'user', 'photos']), objectId, fromParseRecipe)
   },
 
-  loadReviewPage: (objectId: string): ThunkAction => {
-    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_REVIEWS, ['restaurant', 'event', 'user']), objectId, fromParseReview)
+  loadReviewPage: (terms: Any, objectId: string): ThunkAction => {
+    return findParseObject(OVERLAY_LOADED_MODEL_PAGE,
+      getReviewsParameters(terms),
+      objectId,
+      fromParseReview)
   },
 
   resetLoadPage: Action => {

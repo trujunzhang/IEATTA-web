@@ -42,7 +42,7 @@ class DetailedReview extends Component {
       forObjectId: forObjectId,
       // Page models
       forObject: null,
-      review: {},
+      review: null,
       // Common
       pageForm: getPageFormType(objectSchemaName, props, null),
     }
@@ -59,9 +59,15 @@ class DetailedReview extends Component {
   }
 
   componentDidMount() {
-    const {reviewType, forObjectId, pageForm} = this.state;
+    const {reviewType, reviewId, forObjectId, pageForm} = this.state;
     if (pageForm === PAGE_EDIT_FORM) {
-      this.props.dispatch(loadReviewPage(forObjectId))
+      this.props.dispatch(loadReviewPage({
+        reviewType: reviewType,
+        forObject: {
+          id: forObjectId
+        },
+        reviewId
+      }))
     }
     const {objectSchemaName} = AppConstants.realmObjects[reviewType]
     switch (objectSchemaName) {

@@ -178,6 +178,7 @@ Reviews.canShowPage = function ({forObject, pageForm, review}) {
   switch (pageForm) {
     case PAGE_EDIT_FORM:
       if (!!forObject && !!review) {
+        debugger
         return true;
       }
       break;

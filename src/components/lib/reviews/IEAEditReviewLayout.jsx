@@ -35,6 +35,8 @@ class IEAEditReviewLayout extends Component {
       }
     }
 
+    debugger
+
     props.actions.toggleEditModelType(MENU_ITEM_ADD_OR_EDIT_REVIEW);
     props.actions.onEditModelFormFieldChange('reviewRating', props.review.rate || 0, true)
     props.actions.onEditModelFormFieldChange('reviewBody', props.review.body || '')
@@ -215,7 +217,7 @@ class IEAEditReviewLayout extends Component {
   }
 
   renderTopSection() {
-    const {forObject, reviewType} = this.props;
+    const {reviewType} = this.props;
 
     switch (reviewType) {
       case "restaurant":
