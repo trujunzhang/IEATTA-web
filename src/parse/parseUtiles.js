@@ -1,7 +1,6 @@
 const Parse = require('parse')
 
 const Parameters = require('../parameters').default
-import Records from '../lib/records'
 import AppConstants from '../lib/appConstants'
 
 const {
