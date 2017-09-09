@@ -15,8 +15,8 @@ class EditReviewForm extends Component {
     debugger
 
     this.state = {
-      rateStarHoverIndex: 0,
-      rateStarSelectIndex: props.review.rate || 0,
+      rateStarHoverIndex: props.reviewRating,
+      rateStarSelectIndex: props.reviewRating,
       hasFormFocus: false
     }
   }
