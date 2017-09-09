@@ -130,6 +130,9 @@ async function updateParseRecorder(objectSchemaName, parseInstance) {
     Records.setParseObjectFieldWithoutData(recordType, recorder, parseInstance.id)
   }
 
+  // ==Important==
+  // After saved recorder, the 'updatedAt' column will be updated automatically.
+  // So that new 'updatedAt' will notify the mobile app to update their local database.
   await recorder.save()
 }
 
