@@ -101,10 +101,10 @@ Records.createOnlineParseInstance = async function (onlineParseObject, objectSch
       onlineParseObject.set('thumbnail', localRecorder.thumbnail)
       onlineParseObject.set('original', localRecorder.thumbnail)
 
-      // step2: the logged user submitted the photo.
+      // step2: the logged user submitted the photo (for web).
       Records.setParseObjectFieldWithoutData('user', onlineParseObject, localRecorder.currentUserId)
 
-      // step3: set the relation by photo type.
+      // step3: set the relation by photo type(for web).
       Records.setParseObjectFieldWithoutData(localRecorder.modelType, onlineParseObject, localRecorder.forObjectId)
       break;
     case PARSE_REVIEWS:

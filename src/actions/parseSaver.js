@@ -37,6 +37,7 @@ const {
   createParseInstance,
 } = require('../parse/objects').default
 
+
 const {
   getUsersParameters,
   getQueryByType,
@@ -111,11 +112,15 @@ async function _writeOnlineParseObject(editModelType,
   switch (editModelType) {
     case MODEL_FORM_TYPE_NEW:
 
-      onlineParseObject = await getQueryByType(objectSchemaName).get(model.objectId)
-      debugger
-      // _lastRealmInstance = newLocalRealmObject(objectSchemaName, model, lastPosition)
-      // RecorderService.writeRecorder(_lastRealmInstance, objectSchemaName)
+      onlineParseObject = createParseInstance(objectSchemaName)
 
+      await  Records.createOnlineParseInstance(onlineParseObject, objectSchemaName, model)
+
+      // step1: save the online object.
+      await onlineParseObject.save()
+
+      // step2: save it's recorder.
+      await updateParseRecorder(objectSchemaName, onlineParseObject)
       break;
     case MODEL_FORM_TYPE_EDIT:
 
