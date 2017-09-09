@@ -159,6 +159,7 @@ class IEAEditReviewLayout extends Component {
 
             <Telescope.components.EditReviewForm
               form={this.props.editModel.form}
+              review={this.props.review}
               value={this.state.value}
               actions={this.props.actions}
             />
