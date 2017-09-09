@@ -92,7 +92,6 @@ function findParseObject(type: string, query: Parse.Query, objectId: string, par
   return (dispatch) => {
     return query.first({
       success: (object) => {
-        debugger
         const model = parseFun(object);
         const payload = {objectId, model}
         dispatch({type, payload})
