@@ -58,7 +58,6 @@ class IEAAddPhotosForm extends Component {
       if (message !== 'Timed out' && message !== 'Canceled by user') {
         errorMessage = message;
         this.props.dispatch(showAlertMessage({type: ALERT_TYPE_ERROR, text: errorMessage}))
-        debugger
       }
     } finally {
       if (!haveError) {

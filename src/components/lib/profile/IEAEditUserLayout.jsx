@@ -108,7 +108,6 @@ class IEAEditUserLayout extends Component {
       }
     } finally {
       this.props.actions.loginSuccess()
-      // this._isMounted && this.setState({isLoading: false});
     }
   }
 

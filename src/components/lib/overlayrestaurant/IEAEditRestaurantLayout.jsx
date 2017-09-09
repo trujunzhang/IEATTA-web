@@ -143,7 +143,6 @@ class IEAEditRestaurantLayout extends Component {
       }
     } finally {
       this.props.actions.updateModelSuccess();
-      // this._isMounted && this.setState({isLoading: false});
     }
   }
 
