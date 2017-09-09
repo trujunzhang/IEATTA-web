@@ -16,7 +16,7 @@ const {
 const {
   MODEL_FORM_TYPE_NEW,
   PARSE_EVENTS,
-  MENU_ITEM_ADD_OR_EDIT_RESTAURANT,
+  MENU_ITEM_ADD_OR_EDIT_EVENT,
   ALERT_TYPE_ERROR,
   ALERT_TYPE_SUCCESS,
 } = require('../../../lib/constants').default
@@ -39,7 +39,7 @@ class IEAEditEventLayout extends Component {
       }
     }
 
-    props.actions.toggleEditModelType(MENU_ITEM_ADD_OR_EDIT_RESTAURANT);
+    props.actions.toggleEditModelType(MENU_ITEM_ADD_OR_EDIT_EVENT, props.forObject, props.pageForm);
     props.actions.onEditModelFormFieldChange('displayName', props.forObject.displayName || '', true)
     props.actions.onEditModelFormFieldChange('eventWhat', props.forObject.want || '', true)
   }
@@ -94,8 +94,6 @@ class IEAEditEventLayout extends Component {
 
     const {id, uniqueId, restaurant} = forObject;
     const objectId = id;
-
-    // debugger
 
     const displayName = this.props.editModel.form.fields.displayName;
     const want = this.props.editModel.form.fields.eventWhat;

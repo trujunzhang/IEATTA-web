@@ -15,7 +15,7 @@ const numberMask = createNumberMask({
 })
 
 const {
-  updateRecipe,
+  writeOnlineParseObject,
   showAlertMessage,
   timeout
 } = require('../../../actions').default
@@ -28,7 +28,9 @@ const {
  * The states were interested in
  */
 const {
-  MENU_ITEM_ADD_OR_EDIT_RESTAURANT,
+  MODEL_FORM_TYPE_NEW,
+  PARSE_RECIPES,
+  MENU_ITEM_ADD_OR_EDIT_RECIPE,
   ALERT_TYPE_ERROR,
 } = require('../../../lib/constants').default
 
@@ -45,9 +47,10 @@ class IEAEditRecipeLayout extends Component {
       }
     }
 
-    props.actions.toggleEditModelType(MENU_ITEM_ADD_OR_EDIT_RESTAURANT);
-    props.actions.onEditModelFormFieldChange('displayName', props.forObject.displayName || '', true)
-    props.actions.onEditModelFormFieldChange('price', props.forObject.price || 0, true)
+    const recipe = props.forObject || {displayName: '', price: 0};
+    props.actions.toggleEditModelType(MENU_ITEM_ADD_OR_EDIT_RECIPE, props.forObject, props.pageForm);
+    props.actions.onEditModelFormFieldChange('displayName', recipe.displayName, true)
+    props.actions.onEditModelFormFieldChange('price', recipe.price, true)
   }
 
   /**
@@ -92,9 +95,11 @@ class IEAEditRecipeLayout extends Component {
 
 
   async onButtonPress() {
-    const {dispatch, forObject} = this.props;
+    const {dispatch, forObject, pageForm} = this.props;
 
-    const objectId = forObject.id;
+    const {id, uniqueId} = forObject;
+    const objectId = id;
+
     const displayName = this.props.editModel.form.fields.displayName;
     const price = this.props.editModel.form.fields.price;
 
@@ -103,7 +108,14 @@ class IEAEditRecipeLayout extends Component {
     let errorMessage = null
     try {
       await Promise.race([
-        dispatch(updateRecipe({objectId, displayName, price})),
+        dispatch(writeOnlineParseObject(
+          pageForm,
+          PARSE_RECIPES,
+          {
+            objectId,
+            uniqueId,
+            displayName, price
+          })),
         timeout(15000),
       ]);
     } catch (e) {
