@@ -17,10 +17,6 @@ const {
   ALERT_TYPE_ERROR,
 } = require('../../../lib/constants').default
 
-const {
-  isNewModelPage
-} = require('../../filter/filterRoutes')
-
 
 class IEAEditUserLayout extends Component {
 

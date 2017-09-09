@@ -63,9 +63,7 @@ class RecipesItem extends Component {
         </div>
 
         <div className="price-category">
-             <span className="category-str-list">
-                   {"$. " + recipe.price}
-             </span>
+             <span className="category-str-list">{`$. ${recipe.price}`}</span>
         </div>
 
 

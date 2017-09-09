@@ -9,6 +9,20 @@ import {
 } from '../../../lib/link'
 import {Link} from 'react-router'
 
+import AppConstants from "../../../lib/appConstants";
+
+/**
+ * The states were interested in
+ */
+const {
+  MODEL_FORM_TYPE_NEW,
+  MENU_ITEM_ADD_OR_EDIT_RECIPE,
+  ALERT_TYPE_ERROR,
+  ALERT_TYPE_SUCCESS,
+  PARSE_RESTAURANTS,
+  PARSE_RECIPES,
+} = require('../../../lib/constants').default
+
 class F8SinglePageHeaderTopLeftPanel extends Component {
 
   render() {
@@ -73,7 +87,7 @@ class F8SinglePageHeaderTopLeftPanel extends Component {
                     <span className="bullet-after">
                       <span className="business-attribute price-range">$$</span>
                     </span>
-               <span className="category-str-list">
+        <span className="category-str-list">
                     <a>
                       {Records.toFirstUpperString(modelType)}
                     </a>
@@ -111,20 +125,18 @@ class F8SinglePageHeaderTopLeftPanel extends Component {
 
 
   renderRestaurantTitle() {
+    const {forObject, modelType} = this.props;
+
     return (
       <div className="u-space-t1">
         <h1 className="biz-page-title embossed-text-white shortenough">
-          {this.props.forObject.displayName}
+          {forObject.displayName}
         </h1>
-        <div className="u-nowrap claim-status_teaser js-claim-status-hover">
-        <span
-          id="icon_18X18"
-          className="icon icon--18-checkmark-badged icon--size-18 icon--blue-dark claim-status_icon u-space-r1 claim-status_icon--claimed">
-          <svg className="icon_svg">
-            <path
-              d="M9 1a8 8 0 1 0 0 16A8 8 0 0 0 9 1zm3.96 6.28l-4.808 4.807-3.112-3.11a.8.8 0 1 1 1.13-1.132l1.982 1.98 3.677-3.677a.8.8 0 1 1 1.13 1.13z"/>
-          </svg>
-        </span>
+        <div className="u-nowrap claim-status_teaser js-claim-status-hover margin-left-6">
+          {
+            PARSE_RECIPES === AppConstants.realmObjects[modelType].objectSchemaName &&
+            <span className="category-str-list">{`$. ${forObject.price}`}</span>
+          }
         </div>
 
       </div>

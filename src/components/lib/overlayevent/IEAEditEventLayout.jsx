@@ -21,9 +21,6 @@ const {
   ALERT_TYPE_SUCCESS,
 } = require('../../../lib/constants').default
 
-const {
-  isNewModelPage
-} = require('../../filter/filterRoutes')
 
 
 class IEAEditEventLayout extends Component {

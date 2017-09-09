@@ -20,9 +20,6 @@ const {
   timeout
 } = require('../../../actions').default
 
-const {
-  isNewModelPage
-} = require('../../filter/filterRoutes')
 
 /**
  * The states were interested in

@@ -21,10 +21,6 @@ const {
   ALERT_TYPE_ERROR,
 } = require('../../../lib/constants').default
 
-const {
-  isNewModelPage
-} = require('../../filter/filterRoutes')
-
 
 class IEAEditReviewLayout extends Component {
 
@@ -81,6 +77,7 @@ class IEAEditReviewLayout extends Component {
     const {dispatch, forObject} = this.props;
 
     const forObjectId = forObject.id;
+
     const currentUserId = this.props.currentUserId;
     const reviewType = this.props.reviewType;
     const reviewRating = this.props.editModel.form.fields.reviewRating;
@@ -91,7 +88,13 @@ class IEAEditReviewLayout extends Component {
     let errorMessage = null
     try {
       await Promise.race([
-        dispatch(createNewReview({forObjectId, reviewType, reviewRating, reviewBody, currentUserId})),
+        dispatch(createNewReview(
+          {
+            forObjectId,
+
+            reviewType, reviewRating, reviewBody, currentUserId
+          })
+        ),
         timeout(15000),
       ]);
     } catch (e) {
@@ -212,6 +215,8 @@ class IEAEditReviewLayout extends Component {
       <div className="main-content-wrap main-content-wrap--full">
 
         <div id="super-container" className="content-container">
+
+          <Telescope.components.F8AppAlertSection/>
 
           {this.renderLeftPanel()}
 
