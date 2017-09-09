@@ -23,6 +23,9 @@ class UserEmailSignUp extends Component {
   constructor(props) {
     super(props)
     this.state = this.initialState = {}
+
+
+    props.dispatch(dismissAlertMessage())
   }
 
   componentWillReceiveProps(nextProps, nextContext) {

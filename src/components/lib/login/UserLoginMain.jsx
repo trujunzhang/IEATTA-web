@@ -48,6 +48,7 @@ class UserLoginMain extends Component {
 
   switchFormState(e, state) {
     e.preventDefault()
+
     this.toggleFormState(state);
     this.setState({formType: state})
   }

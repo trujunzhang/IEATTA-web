@@ -35,7 +35,7 @@ const {
  */
 function onUpdate() {
   // debugger
-  store.dispatch(dismissAlertMessage())
+  // store.dispatch(dismissAlertMessage())
 }
 
 // Render Setup

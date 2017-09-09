@@ -24,6 +24,8 @@ class UserEmailSignIn extends Component {
   constructor(props) {
     super(props)
     this.state = this.initialState = {}
+
+    props.dispatch(dismissAlertMessage())
   }
 
   async onButtonPress() {
