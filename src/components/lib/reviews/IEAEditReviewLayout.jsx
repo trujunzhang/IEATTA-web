@@ -4,7 +4,7 @@ import React, {Component} from 'react'
 import {withRouter} from 'react-router'
 
 const {
-  createNewReview,
+  writeOnlineParseObject,
   showAlertMessage,
   timeout
 } = require('../../../actions').default
@@ -90,7 +90,9 @@ class IEAEditReviewLayout extends Component {
     let errorMessage = null
     try {
       await Promise.race([
-        dispatch(createNewReview(
+        dispatch(writeOnlineParseObject(
+          pageForm,
+          PARSE_REVIEWS,
           {
             objectId,
             // uniqueId,
