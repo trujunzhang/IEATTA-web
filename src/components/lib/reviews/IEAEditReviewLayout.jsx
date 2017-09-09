@@ -232,11 +232,11 @@ class IEAEditReviewLayout extends Component {
 
 IEAEditReviewLayout.propTypes = {
   review: React.PropTypes.object
-};
+}
 
 IEAEditReviewLayout.defaultProps = {
-  review: {}
-};
+  review: {rate: 0, body: ''}
+}
 
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
