@@ -27,6 +27,7 @@ const {
   UPDATE_MODEL_SUCCESS,
   UPDATE_MODEL_FAILURE,
   WRITE_MODEL_DONE,
+  MODEL_FORM_TYPE_EDIT
 } = require('../../lib/constants').default
 
 const initialState = new InitialState()
