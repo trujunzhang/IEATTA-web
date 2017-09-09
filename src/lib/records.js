@@ -87,7 +87,6 @@ Records.createOnlineParseInstance = async function (onlineParseObject, objectSch
       // relation
       _online_restaurant_instance = await getFirstOnlineParseInstance(PARSE_RESTAURANTS, localRecorder.restaurant)
       onlineParseObject.set('restaurant', _online_restaurant_instance)
-      debugger
       break;
     case PARSE_RECIPES:
       // Basic Fields
