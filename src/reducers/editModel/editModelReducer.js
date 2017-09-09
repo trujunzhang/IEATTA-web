@@ -76,16 +76,16 @@ function editModelReducer(state = initialState, action) {
     case  ON_RESTAURANT_MODEL_FORM_ADDRESS_FIELD_CHANGE: {
       const {restaurant} = action.payload;
 
-      let next = state.setIn(['form', 'fields', 'address'], restaurant.address)
-        .setIn(['form', 'fields', 'street_number'], restaurant.street_number)
-        .setIn(['form', 'fields', 'route'], restaurant.route)
-        .setIn(['form', 'fields', 'locality'], restaurant.locality)
-        .setIn(['form', 'fields', 'sublocality'], restaurant.sublocality)
-        .setIn(['form', 'fields', 'country'], restaurant.country)
-        .setIn(['form', 'fields', 'postal_code'], restaurant.postal_code)
-        .setIn(['form', 'fields', 'administrative_area'], restaurant.administrative_area)
-        .setIn(['form', 'fields', 'latitude'], restaurant.geoLocation.latitude)
-        .setIn(['form', 'fields', 'longitude'], restaurant.geoLocation.longitude)
+      let next = state.setIn(['form', 'fields', 'address'], restaurant.address || '')
+        .setIn(['form', 'fields', 'street_number'], restaurant.street_number || '')
+        .setIn(['form', 'fields', 'route'], restaurant.route || '')
+        .setIn(['form', 'fields', 'locality'], restaurant.locality || '')
+        .setIn(['form', 'fields', 'sublocality'], restaurant.sublocality || '')
+        .setIn(['form', 'fields', 'country'], restaurant.country || '')
+        .setIn(['form', 'fields', 'postal_code'], restaurant.postal_code || '')
+        .setIn(['form', 'fields', 'administrative_area'], restaurant.administrative_area || '')
+        .setIn(['form', 'fields', 'latitude'], restaurant.geoLocation.latitude || '')
+        .setIn(['form', 'fields', 'longitude'], restaurant.geoLocation.longitude || '')
 
       return next
     }
