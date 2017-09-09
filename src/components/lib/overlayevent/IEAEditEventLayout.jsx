@@ -91,8 +91,10 @@ class IEAEditEventLayout extends Component {
   async onButtonPress() {
     const {dispatch, forObject, pageForm} = this.props;
 
-    const objectId = forObject.id;
-    const uniqueId = forObject.uniqueId;
+    const {id, uniqueId, restaurant} = forObject;
+    const objectId = id;
+
+    debugger
 
     const displayName = this.props.editModel.form.fields.displayName;
     const want = this.props.editModel.form.fields.eventWhat;
@@ -103,17 +105,17 @@ class IEAEditEventLayout extends Component {
 
     let errorMessage = null
     try {
-      await Promise.race([
-        dispatch(writeOnlineParseObject(
-          pageForm,
-          PARSE_EVENTS,
-          {
-            objectId,
-            uniqueId,
-            displayName, want, start, end
-          })),
-        timeout(15000),
-      ]);
+      // await Promise.race([
+      //   dispatch(writeOnlineParseObject(
+      //     pageForm,
+      //     PARSE_EVENTS,
+      //     {
+      //       objectId,
+      //       uniqueId,
+      //       displayName, want, start, end
+      //     })),
+      //   timeout(15000),
+      // ]);
     } catch (e) {
       this.props.actions.updateModelFailure(e);
       const message = e.message || e;
@@ -122,7 +124,7 @@ class IEAEditEventLayout extends Component {
         this.props.dispatch(showAlertMessage({type: ALERT_TYPE_ERROR, text: errorMessage}))
       }
     } finally {
-       if (!!errorMessage) {
+      if (!!errorMessage) {
       } else {
         this.props.actions.updateModelSuccess();
         this.props.dispatch(showAlertMessage({type: ALERT_TYPE_SUCCESS, text: 'Saved the event successfully!'}))
