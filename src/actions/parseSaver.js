@@ -73,21 +73,8 @@ const {
 
 async function _updateRestaurant(model: object): Promise<Array<Action>> {
   const restaurant = await getQueryByType(PARSE_RESTAURANTS).get(model.objectId)
-  restaurant.set('displayName', model.displayName)
 
-  const _geoLocation = new Parse.GeoPoint({latitude: model.latitude, longitude: model.longitude})
-
-  // debugger
-
-  restaurant.set('geoLocation', _geoLocation)
-  restaurant.set('address', model.address)
-  restaurant.set('street_number', model.street_number)
-  restaurant.set('route', model.route)
-  restaurant.set('locality', model.locality)
-  restaurant.set('sublocality', model.sublocality)
-  restaurant.set('country', model.country)
-  restaurant.set('postal_code', model.postal_code)
-  restaurant.set('administrative_area', model.administrative_area)
+  await  Records.createOnlineParseInstance(restaurant, PARSE_RESTAURANTS, model)
 
   await restaurant.save()
 
@@ -182,8 +169,8 @@ function updateRecipe(model: object): ThunkAction {
 }
 
 
-async function _writeReview(editModelType,
-                            model: object): Promise<Array<Action>> {
+async function _writeOnlineParseObject(editModelType,
+                                       model: object): Promise<Array<Action>> {
 
 
   let _lastRealmInstance = null;
@@ -204,7 +191,7 @@ async function _writeReview(editModelType,
   const review = createParseInstance(PARSE_REVIEWS)
 
   // step1: generate review.
-  Records.generateNewOnlineParseInstance(review, PARSE_REVIEWS, model)
+  await  Records.createOnlineParseInstance(review, PARSE_REVIEWS, model)
 
   // step2: save review.
   await review.save()
@@ -221,10 +208,10 @@ async function _writeReview(editModelType,
 }
 
 
-function writeReview(editModelType,
-                     model: object): ThunkAction {
+function writeOnlineParseObject(editModelType,
+                                model: object): ThunkAction {
   return (dispatch) => {
-    const action = _writeReview(editModelType, model)
+    const action = _writeOnlineParseObject(editModelType, model)
     action.then(
       ([result]) => {
         dispatch(result)
@@ -237,12 +224,11 @@ function writeReview(editModelType,
 
 async function _uploadPhoto(model: object): Promise<Array<Action>> {
   const thumbnailFile = new Parse.File('image', model.file)
-  debugger
   await thumbnailFile.save()
   const photo = createParseInstance(PARSE_PHOTOS)
 
   // step1: generate photo.
-  Records.generateNewOnlineParseInstance(
+  await  Records.createOnlineParseInstance(
     photo,
     PARSE_PHOTOS,
     Object.assign({}, model, {
@@ -279,12 +265,8 @@ function uploadPhoto(model: object): ThunkAction {
 }
 
 async function _uploadLoggedUser(model: object): Promise<Array<Action>> {
-  debugger
-
   // step1: get logged user.
   const current = await getQueryByType(PARSE_USERS).get(model.objectId)
-
-  debugger
 
   current.set('username', model.username)
   current.set('email', model.email)
@@ -315,12 +297,12 @@ function uploadLoggedUser(model: object): ThunkAction {
 
 
 export default {
+  // write Online parse Objects.
+  writeOnlineParseObject,
   // Update
   updateRestaurant,
   updateEvent,
   updateRecipe,
-  // Create
-  writeReview,
   // Photos
   uploadPhoto,
   uploadLoggedUser,
