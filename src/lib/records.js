@@ -45,8 +45,14 @@ Records.setParseObjectFieldWithoutDataBySchema = function (objectSchemaName, ins
 
 Records.createOnlineParseInstance = async function (onlineParseObject, objectSchemaName, localRecorder) {
 
+  if (!localRecorder.uniqueId) {
+    throw new Error('You need to set a model uniqueId!')
+  }
+
   onlineParseObject.set('flag', '1')
-  onlineParseObject.set('uniqueId', localRecorder.uniqueId || UUID.create().toString())
+  onlineParseObject.set('uniqueId', localRecorder.uniqueId)
+
+  debugger
 
   let _online_user_Instance = null;
   let _online_restaurant_instance = null;

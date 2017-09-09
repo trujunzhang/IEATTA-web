@@ -94,6 +94,8 @@ class IEAEditRestaurantLayout extends Component {
     const {dispatch, forObject, pageForm} = this.props;
 
     const objectId = forObject.id;
+    const uniqueId = forObject.uniqueId;
+
     const displayName = this.props.editModel.form.fields.displayName;
 
     const latitude = this.props.editModel.form.fields.latitude;
@@ -115,7 +117,9 @@ class IEAEditRestaurantLayout extends Component {
           pageForm,
           PARSE_RESTAURANTS,
           {
-            objectId, displayName,
+            objectId,
+            // uniqueId,
+            displayName,
             latitude,
             longitude,
             address,
