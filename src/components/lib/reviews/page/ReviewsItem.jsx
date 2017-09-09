@@ -114,7 +114,6 @@ class ReviewsItem extends Component {
 
   renderRightEditButton() {
     const {review} = this.props;
-    debugger
     return (
       <Link to={getEditReviewLink(review)}
             className="link-more icon-wrapper mapbox-edit">
