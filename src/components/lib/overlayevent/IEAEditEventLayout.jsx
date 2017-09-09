@@ -4,7 +4,7 @@ import React, {Component} from 'react'
 import {withRouter} from 'react-router'
 
 const {
-  updateEvent,
+  writeOnlineParseObject,
   showAlertMessage,
   timeout
 } = require('../../../actions').default
@@ -14,6 +14,7 @@ const {
  * The states were interested in
  */
 const {
+  PARSE_EVENTS,
   MENU_ITEM_ADD_OR_EDIT_RESTAURANT,
 } = require('../../../lib/constants').default
 
@@ -86,19 +87,24 @@ class IEAEditEventLayout extends Component {
 
 
   async onButtonPress() {
-    const {dispatch, forObject} = this.props;
+    const {dispatch, forObject, pageForm} = this.props;
 
     const objectId = forObject.id;
     const displayName = this.props.editModel.form.fields.displayName;
-    const eventWhat = this.props.editModel.form.fields.eventWhat;
-    const eventStart = this.props.editModel.form.fields.start;
-    const eventEnd = this.props.editModel.form.fields.end;
+    const want = this.props.editModel.form.fields.eventWhat;
+    const start = this.props.editModel.form.fields.start;
+    const end = this.props.editModel.form.fields.end;
 
     this.props.actions.updateModelRequest();
 
     try {
       await Promise.race([
-        dispatch(updateEvent({objectId, displayName, eventWhat, eventStart, eventEnd})),
+        dispatch(writeOnlineParseObject(
+          pageForm,
+          PARSE_EVENTS,
+          {
+            objectId, displayName, want, start, end
+          })),
         timeout(15000),
       ]);
     } catch (e) {

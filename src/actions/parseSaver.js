@@ -76,11 +76,6 @@ const {
 async function _updateEvent(model: object): Promise<Array<Action>> {
   const event = await getQueryByType(PARSE_EVENTS).get(model.objectId)
 
-  event.set('displayName', model.displayName)
-  event.set('want', model.eventWhat)
-  event.set('start', model.eventStart)
-  event.set('end', model.eventEnd)
-
   await event.save()
 
   await updateParseRecorder(PARSE_EVENTS, event)
