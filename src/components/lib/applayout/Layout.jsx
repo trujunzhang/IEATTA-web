@@ -29,6 +29,9 @@ class Layout extends Component {
           <Telescope.components.HeaderContent/>
         </div>
 
+
+        <Telescope.components.F8AppAlertSection/>
+
         {children}
 
         <Telescope.components.AppFooter/>

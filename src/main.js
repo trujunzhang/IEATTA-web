@@ -25,12 +25,17 @@ history.listen((location) => {
   // analyticsService.track(location.pathname)
 })
 
+const {
+  dismissAlertMessage
+} = require('./actions').default
+
 /**
  * Callback function handling frontend route changes.
  * https://github.com/reactGo/reactGo/blob/master/app/client.jsx
  */
 function onUpdate() {
   // debugger
+  store.dispatch(dismissAlertMessage())
 }
 
 // Render Setup
