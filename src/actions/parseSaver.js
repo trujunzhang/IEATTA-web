@@ -110,6 +110,8 @@ async function _writeOnlineParseObject(editModelType,
   let onlineParseObject = null;
   switch (editModelType) {
     case MODEL_FORM_TYPE_NEW:
+
+      onlineParseObject = await getQueryByType(objectSchemaName).get(model.objectId)
       debugger
       // _lastRealmInstance = newLocalRealmObject(objectSchemaName, model, lastPosition)
       // RecorderService.writeRecorder(_lastRealmInstance, objectSchemaName)
