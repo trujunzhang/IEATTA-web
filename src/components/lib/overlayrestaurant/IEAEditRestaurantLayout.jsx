@@ -19,6 +19,7 @@ const {
   // Sections
   SECTION_PHOTOS_BROWSER_FOR_RESTAURANT,
   ALERT_TYPE_ERROR,
+  ALERT_TYPE_SUCCESS,
 } = require('../../../lib/constants').default
 
 class IEAEditRestaurantLayout extends Component {
@@ -142,7 +143,11 @@ class IEAEditRestaurantLayout extends Component {
         this.props.dispatch(showAlertMessage({type: ALERT_TYPE_ERROR, text: errorMessage}))
       }
     } finally {
-      this.props.actions.updateModelSuccess();
+      if (!!errorMessage) {
+      } else {
+        this.props.actions.updateModelSuccess();
+        this.props.dispatch(showAlertMessage({type: ALERT_TYPE_SUCCESS, text: 'Saved the restaurant successfully!'}))
+      }
     }
   }
 
