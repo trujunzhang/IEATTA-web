@@ -72,37 +72,6 @@ const {
   WRITE_MODEL_DONE,
 } = require('../lib/constants').default
 
-
-async function _updateEvent(model: object): Promise<Array<Action>> {
-  const event = await getQueryByType(PARSE_EVENTS).get(model.objectId)
-
-  await event.save()
-
-  await updateParseRecorder(PARSE_EVENTS, event)
-
-  const action = {
-    type: UPDATE_MODEL_REQUEST,
-    payload: {objectId: model.objectId, model: fromParseEvent(event)}
-  }
-  return Promise.all([
-    Promise.resolve(action)
-  ])
-}
-
-
-function updateEvent(model: object): ThunkAction {
-  return (dispatch) => {
-    const action = _updateEvent(model)
-    action.then(
-      ([result]) => {
-        dispatch(result)
-      }
-    )
-    return action
-  }
-}
-
-
 async function _updateRecipe(model: object): Promise<Array<Action>> {
   const recipe = await getQueryByType(PARSE_RECIPES).get(model.objectId)
 
