@@ -35,8 +35,6 @@ class IEAEditReviewLayout extends Component {
       }
     }
 
-    debugger
-
     props.actions.toggleEditModelType(MENU_ITEM_ADD_OR_EDIT_REVIEW);
     props.actions.onEditModelFormFieldChange('reviewRating', props.review.rate || 0, true)
     props.actions.onEditModelFormFieldChange('reviewBody', props.review.body || '')
@@ -108,7 +106,6 @@ class IEAEditReviewLayout extends Component {
         this.props.actions.updateModelSuccess();
         this.props.router.goBack();
       }
-      // this._isMounted && this.setState({isLoading: false});
     }
   }
 
