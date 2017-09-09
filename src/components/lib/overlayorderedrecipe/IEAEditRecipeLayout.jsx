@@ -114,7 +114,7 @@ class IEAEditRecipeLayout extends Component {
           PARSE_RECIPES,
           {
             objectId,
-            // uniqueId,
+            uniqueId,
             displayName, price
           })),
         timeout(15000),
