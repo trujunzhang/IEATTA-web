@@ -114,31 +114,31 @@ async function _writeOnlineParseObject(editModelType,
 
       onlineParseObject = createParseInstance(objectSchemaName)
 
-      await  Records.createOnlineParseInstance(onlineParseObject, objectSchemaName, model)
 
-      // step1: save the online object.
-      await onlineParseObject.save()
+      debugger
 
-      // step2: save it's recorder.
-      await updateParseRecorder(objectSchemaName, onlineParseObject)
       break;
     case MODEL_FORM_TYPE_EDIT:
 
       debugger
 
       onlineParseObject = await getQueryByType(objectSchemaName).get(model.objectId)
-      await  Records.createOnlineParseInstance(onlineParseObject, objectSchemaName, model)
 
       debugger
 
-      // step1: save the online object.
-      await onlineParseObject.save()
-
-      // step2: save it's recorder.
-      await updateParseRecorder(objectSchemaName, onlineParseObject)
-
       break;
   }
+
+  // First of all, set fields.
+  await  Records.createOnlineParseInstance(onlineParseObject, objectSchemaName, model)
+
+  debugger
+
+  // step1: save the online object.
+  // await onlineParseObject.save()
+
+  // step2: save it's recorder.
+  // await updateParseRecorder(objectSchemaName, onlineParseObject)
 
   debugger
 

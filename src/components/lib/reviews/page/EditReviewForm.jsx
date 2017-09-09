@@ -4,6 +4,7 @@ import React, {Component} from 'react'
 const I18n = require('react-redux-i18n').I18n;
 
 import onClickOutside from 'react-onclickoutside'
+import Reviews from "../../../../lib/reviews";
 
 const reviewBodyPlaceHolder = I18n.t('editReview.reviewBodyPlaceHolder');
 
@@ -11,8 +12,6 @@ class EditReviewForm extends Component {
 
   constructor(props, context) {
     super(props)
-
-    debugger
 
     this.state = {
       rateStarHoverIndex: props.reviewRating,
@@ -49,14 +48,7 @@ class EditReviewForm extends Component {
   }
 
   renderRating() {
-    const rateStarLabels = [
-      'Select your rating.',
-      "Eek! Methinks not.",
-      "Meh. I've experienced better.",
-      "A-OK.",
-      "Yay! I'm a fan.",
-      "Woohoo! As good as it gets!"
-    ]
+
     const {rateStarHoverIndex, rateStarSelectIndex} = this.state;
     let currentRateIndex = rateStarSelectIndex;
     if (rateStarHoverIndex !== -1) {
@@ -83,7 +75,7 @@ class EditReviewForm extends Component {
                 })}
               </ul>
               <p className="star-selector_description js-star-selector_description">
-                {rateStarLabels[currentRateIndex]}
+                {Reviews.RATE_STAR_LABELS[currentRateIndex]}
               </p>
             </fieldset>
 

@@ -47,7 +47,15 @@ const Reviews = {
     REVIEW_SORT_OLDEST: 'oldest',
     REVIEW_SORT_HIGHEST: 'highest',
     REVIEW_SORT_LOWEST: 'lowest',
-  }
+  },
+  RATE_STAR_LABELS: [
+    'Select your rating.',
+    "Eek! Methinks not.",
+    "Meh. I've experienced better.",
+    "A-OK.",
+    "Yay! I'm a fan.",
+    "Woohoo! As good as it gets!"
+  ]
 }
 
 Reviews.getHtmlBody = function (review) {
