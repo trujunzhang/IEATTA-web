@@ -7,7 +7,6 @@ const {
 } = require('../parse/objects').default
 
 import Reviews from '../lib/reviews'
-import Records from '../lib/records'
 import AppConstants from '../lib/appConstants'
 
 import {equalRelationObject} from './parseQuery'

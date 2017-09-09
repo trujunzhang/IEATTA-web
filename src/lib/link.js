@@ -1,5 +1,4 @@
 import Users from "./users"
-import Records from './records'
 import AppConstants from './appConstants'
 
 const _ = require('underscore')

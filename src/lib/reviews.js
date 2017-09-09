@@ -1,7 +1,6 @@
 const _ = require('underscore')
 import moment from 'moment'
 
-import Records from './records'
 import Photos from './photos'
 import AppConstants from './appConstants'
 

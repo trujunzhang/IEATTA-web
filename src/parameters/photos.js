@@ -1,4 +1,3 @@
-import Records from '../lib/records'
 import AppConstants from '../lib/appConstants'
 
 const {
