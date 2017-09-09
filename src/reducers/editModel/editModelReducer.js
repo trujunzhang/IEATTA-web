@@ -26,6 +26,7 @@ const {
   UPDATE_MODEL_REQUEST,
   UPDATE_MODEL_SUCCESS,
   UPDATE_MODEL_FAILURE,
+  WRITE_MODEL_DONE,
 } = require('../../lib/constants').default
 
 const initialState = new InitialState()
@@ -137,6 +138,13 @@ function editModelReducer(state = initialState, action) {
       return state.setIn(['form', 'isFetching'], false)
         .setIn(['form', 'error'], action.payload)
 
+
+    case WRITE_MODEL_DONE:
+      return state
+        .setIn(['form', 'originModel'], action.payload.originModel)
+        .setIn(['form', 'editModelType'], MODEL_FORM_TYPE_EDIT)
+        .setIn(['form', 'isValid'], false)
+        .setIn(['form', 'isFetching'], false)
 
   }
   /**

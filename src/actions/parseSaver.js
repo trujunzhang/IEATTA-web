@@ -35,6 +35,7 @@ import Records from "../lib/records";
 
 const {
   createParseInstance,
+  parseOnlineParseObject,
 } = require('../parse/objects').default
 
 const {
@@ -68,35 +69,8 @@ const {
   // Edit form
   MODEL_FORM_TYPE_NEW,
   MODEL_FORM_TYPE_EDIT,
+  WRITE_MODEL_DONE,
 } = require('../lib/constants').default
-
-
-async function _updateRestaurant(model: object): Promise<Array<Action>> {
-  const onlineParseObject = await getQueryByType(PARSE_RESTAURANTS).get(model.objectId)
-  await  Records.createOnlineParseInstance(onlineParseObject, PARSE_RESTAURANTS, model)
-  await onlineParseObject.save()
-  await updateParseRecorder(PARSE_RESTAURANTS, onlineParseObject)
-
-  const action = {
-    type: UPDATE_MODEL_REQUEST,
-    payload: {objectId: model.objectId, model: fromParseRestaurant(onlineParseObject)}
-  }
-  return Promise.all([
-    Promise.resolve(action)
-  ])
-}
-
-function updateRestaurant(model: object): ThunkAction {
-  return (dispatch) => {
-    const action = _updateRestaurant(model)
-    action.then(
-      ([result]) => {
-        dispatch(result)
-      }
-    )
-    return action
-  }
-}
 
 
 async function _updateEvent(model: object): Promise<Array<Action>> {
@@ -169,7 +143,7 @@ function updateRecipe(model: object): ThunkAction {
 async function _writeOnlineParseObject(editModelType,
                                        objectSchemaName,
                                        model: object): Promise<Array<Action>> {
-  let _lastRealmInstance = null;
+  let onlineParseObject = null;
   switch (editModelType) {
     case MODEL_FORM_TYPE_NEW:
       debugger
@@ -178,7 +152,7 @@ async function _writeOnlineParseObject(editModelType,
       break;
     case MODEL_FORM_TYPE_EDIT:
 
-      const onlineParseObject = await getQueryByType(objectSchemaName).get(model.objectId)
+      onlineParseObject = await getQueryByType(objectSchemaName).get(model.objectId)
       await  Records.createOnlineParseInstance(onlineParseObject, objectSchemaName, model)
       await onlineParseObject.save()
       await updateParseRecorder(objectSchemaName, onlineParseObject)
@@ -187,7 +161,8 @@ async function _writeOnlineParseObject(editModelType,
   }
 
   const action = {
-    type: SAVE_MODEL_REQUEST,
+    type: WRITE_MODEL_DONE,
+    payload: {objectId: model.objectId, originModel: parseOnlineParseObject(onlineParseObject)}
   }
   return Promise.all([
     Promise.resolve(action)
@@ -288,7 +263,6 @@ export default {
   // write Online parse Objects.
   writeOnlineParseObject,
   // Update
-  updateRestaurant,
   updateEvent,
   updateRecipe,
   // Photos

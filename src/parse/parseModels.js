@@ -291,3 +291,24 @@ export function fromParseReview(map: Object): Review {
     cool: map.get('cool')
   }
 }
+
+
+export function parseOnlineParseObject(objectSchemaName, map) {
+  switch (objectSchemaName) {
+    case PARSE_RESTAURANTS:
+      return fromParseRestaurant(map);
+    case PARSE_EVENTS:
+      return fromParseEvent(map);
+      break;
+    case PARSE_RECIPES:
+      return fromParseRecipe(map);
+      break;
+    case PARSE_PHOTOS:
+      return fromParsePhoto(map);
+      break;
+    case PARSE_REVIEWS:
+      return fromParseReview(map);
+      break;
+  }
+
+}

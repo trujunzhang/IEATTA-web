@@ -78,6 +78,8 @@ export default keyMirror({
   UPDATE_MODEL_SUCCESS: null,
   UPDATE_MODEL_FAILURE: null,
 
+  WRITE_MODEL_DONE: null,
+
   // Parse Object
   PARSE_CONFIGURE: null,
   PARSE_RECORDS: null,
