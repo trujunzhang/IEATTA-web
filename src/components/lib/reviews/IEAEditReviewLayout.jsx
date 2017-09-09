@@ -149,7 +149,7 @@ class IEAEditReviewLayout extends Component {
   }
 
   renderForm() {
-    const review = props.review || {rate: 0, body: ''};
+    const review = this.props.review || {rate: 0, body: ''};
     return (
       <div className="yform" id="review_rate_form" name="review_rate_form">
 
