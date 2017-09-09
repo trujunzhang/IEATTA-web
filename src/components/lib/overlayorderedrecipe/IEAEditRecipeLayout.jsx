@@ -32,6 +32,7 @@ const {
   PARSE_RECIPES,
   MENU_ITEM_ADD_OR_EDIT_RECIPE,
   ALERT_TYPE_ERROR,
+  ALERT_TYPE_SUCCESS,
 } = require('../../../lib/constants').default
 
 
@@ -127,6 +128,7 @@ class IEAEditRecipeLayout extends Component {
       }
     } finally {
       this.props.actions.updateModelSuccess();
+      this.props.dispatch(showAlertMessage({type: ALERT_TYPE_SUCCESS, text: 'Saved the recipe successfully!'}))
     }
   }
 
