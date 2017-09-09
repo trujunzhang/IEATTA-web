@@ -12,13 +12,10 @@ const {
   PARSE_PEOPLE_IN_EVENTS
 } = require('./constants').default
 
-
 const {
   getInstanceWithoutData,
   appendGeoLocation
 } = require('../parse/objects').default
-
-const Parse = require('parse')
 
 import AppConstants from './appConstants'
 
