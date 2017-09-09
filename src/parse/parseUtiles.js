@@ -1,9 +1,6 @@
 const Parse = require('parse')
 
 const Parameters = require('../parameters').default
-import AppConstants from '../lib/appConstants'
-
-import Records from "../lib/records";
 
 const {
   ParseRestaurant,
@@ -118,28 +115,6 @@ function getPhotosParameters(terms) {
     .end()
 }
 
-async function updateParseRecorder(objectSchemaName, parseInstance) {
-  const recordType = AppConstants.realmTypes[objectSchemaName]
-  let recorder = await getQueryByType(PARSE_RECORDS).equalTo(recordType, parseInstance).first()
-  if (!!recorder) {
-    debugger
-  } else {
-    debugger
-    recorder = createParseInstance(PARSE_RECORDS)
-
-    recorder.set('recordType', recordType)
-    recorder.set('recordUniqueId', parseInstance.uniqueId)
-
-    Records.setParseObjectFieldWithoutData(recordType, recorder, parseInstance.objectId)
-  }
-
-  // ==Important(web)==
-  // After saved recorder, the 'updatedAt' column will be updated automatically.
-  // So that new 'updatedAt' will notify the mobile app to update their local database.
-  await recorder.save()
-
-}
-
 async function checkExistOnlineParseInstance(objectSchemaName, realmInstance) {
   return await getQueryByType(objectSchemaName).equalTo('uniqueId', realmInstance.uniqueId).count() > 0
 }
@@ -165,7 +140,6 @@ export default {
   getPeopleInEventParameters,
   getRecipesParameters,
   // Update the model's record after saved it.
-  updateParseRecorder,
   checkExistOnlineParseInstance,
   getFirstOnlineParseInstance,
   getFirstOnlineRecorderInstance

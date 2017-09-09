@@ -40,13 +40,13 @@ const {
 const {
   getUsersParameters,
   getQueryByType,
-  updateParseRecorder,
 } = require('../parse/parseUtiles').default
 
 const {
-  fromParseUser,
-  fromParseRestaurant,
-  fromParseEvent,
+  updateParseRecorder,
+} = require('../parse/recorderUtiles').default
+
+const {
   parseOnlineParseObject,
 } = require('../parse/parseModels')
 
