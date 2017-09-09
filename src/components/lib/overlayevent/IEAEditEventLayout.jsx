@@ -17,6 +17,7 @@ const {
   PARSE_EVENTS,
   MENU_ITEM_ADD_OR_EDIT_RESTAURANT,
   ALERT_TYPE_ERROR,
+  ALERT_TYPE_SUCCESS,
 } = require('../../../lib/constants').default
 
 const {
@@ -91,6 +92,8 @@ class IEAEditEventLayout extends Component {
     const {dispatch, forObject, pageForm} = this.props;
 
     const objectId = forObject.id;
+    const uniqueId = forObject.uniqueId;
+
     const displayName = this.props.editModel.form.fields.displayName;
     const want = this.props.editModel.form.fields.eventWhat;
     const start = this.props.editModel.form.fields.start;
@@ -105,7 +108,9 @@ class IEAEditEventLayout extends Component {
           pageForm,
           PARSE_EVENTS,
           {
-            objectId, displayName, want, start, end
+            objectId,
+            uniqueId,
+            displayName, want, start, end
           })),
         timeout(15000),
       ]);
@@ -117,7 +122,11 @@ class IEAEditEventLayout extends Component {
         this.props.dispatch(showAlertMessage({type: ALERT_TYPE_ERROR, text: errorMessage}))
       }
     } finally {
-      this.props.actions.updateModelSuccess();
+       if (!!errorMessage) {
+      } else {
+        this.props.actions.updateModelSuccess();
+        this.props.dispatch(showAlertMessage({type: ALERT_TYPE_SUCCESS, text: 'Saved the event successfully!'}))
+      }
     }
   }
 
@@ -188,6 +197,8 @@ class IEAEditEventLayout extends Component {
       <div className="main-content-wrap main-content-wrap--full">
 
         <div id="super-container" className="content-container">
+
+          <Telescope.components.F8AppAlertSection/>
 
           <div className="container create-event-page">
 

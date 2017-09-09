@@ -30,8 +30,6 @@ class Layout extends Component {
         </div>
 
 
-        <Telescope.components.F8AppAlertSection/>
-
         {children}
 
         <Telescope.components.AppFooter/>

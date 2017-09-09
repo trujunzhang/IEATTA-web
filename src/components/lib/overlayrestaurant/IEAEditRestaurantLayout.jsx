@@ -236,6 +236,8 @@ class IEAEditRestaurantLayout extends Component {
 
           <div id="super-container" className="content-container">
 
+            <Telescope.components.F8AppAlertSection/>
+
             <div className="container">
               <div className="clearfix layout-block layout-full" id="update-biz-details">
 
