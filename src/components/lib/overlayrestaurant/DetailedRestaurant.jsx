@@ -16,8 +16,9 @@ const {
   PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY,
   PAGE_PHOTOS_BROWSER_FORM,
   PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY,
-  PAGE_EDIT_FORM,
-  PAGE_NEW_FORM,
+  // Edit form
+  MODEL_FORM_TYPE_NEW,
+  MODEL_FORM_TYPE_EDIT,
   PAGE_OVERLAY_SELECTED_PHOTO_FORM,
   PAGE_SINGLE_SELECTED_PHOTO_FORM,
   CLOUD_STATISTIC_FOR_REVIEWS,
@@ -130,8 +131,8 @@ class DetailedRestaurant extends Component {
                   <Telescope.components.IEAPhotosSelectionLayout {...this.state}/>}
               </div>
             )
-          case PAGE_EDIT_FORM:
-          case PAGE_NEW_FORM:
+          case MODEL_FORM_TYPE_EDIT:
+          case MODEL_FORM_TYPE_NEW:
             return (<Telescope.components.IEAEditRestaurantLayout
                 {...this.props}
                 {...this.state}

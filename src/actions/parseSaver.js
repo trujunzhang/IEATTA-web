@@ -65,6 +65,9 @@ const {
   // Rest API
   SAVE_MODEL_REQUEST,
   UPDATE_MODEL_REQUEST,
+  // Edit form
+  MODEL_FORM_TYPE_NEW,
+  MODEL_FORM_TYPE_EDIT,
 } = require('../lib/constants').default
 
 
@@ -179,7 +182,25 @@ function updateRecipe(model: object): ThunkAction {
 }
 
 
-async function _createNewReview(model: object): Promise<Array<Action>> {
+async function _writeReview(editModelType,
+                            model: object): Promise<Array<Action>> {
+
+
+  let _lastRealmInstance = null;
+  switch (editModelType) {
+    case MODEL_FORM_TYPE_NEW:
+      debugger
+      _lastRealmInstance = newLocalRealmObject(objectSchemaName, model, lastPosition)
+      RecorderService.writeRecorder(_lastRealmInstance, objectSchemaName)
+      break;
+    case MODEL_FORM_TYPE_EDIT:
+      debugger
+      _lastRealmInstance = updateLocalRealmObject(objectSchemaName, model)
+      RecorderService.writeRecorder(_lastRealmInstance, objectSchemaName)
+      break;
+  }
+
+
   const review = createParseInstance(PARSE_REVIEWS)
 
   // step1: generate review.
@@ -200,9 +221,10 @@ async function _createNewReview(model: object): Promise<Array<Action>> {
 }
 
 
-function createNewReview(model: object): ThunkAction {
+function writeReview(editModelType,
+                     model: object): ThunkAction {
   return (dispatch) => {
-    const action = _createNewReview(model)
+    const action = _writeReview(editModelType, model)
     action.then(
       ([result]) => {
         dispatch(result)
@@ -298,7 +320,7 @@ export default {
   updateEvent,
   updateRecipe,
   // Create
-  createNewReview,
+  writeReview,
   // Photos
   uploadPhoto,
   uploadLoggedUser,

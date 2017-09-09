@@ -14,7 +14,10 @@ const {
  * The states were interested in
  */
 const {
-  MENU_ITEM_ADD_OR_EDIT_REVIEW
+  MENU_ITEM_ADD_OR_EDIT_REVIEW,
+  // Edit form
+  MODEL_FORM_TYPE_NEW,
+  MODEL_FORM_TYPE_EDIT,
 } = require('../../../lib/constants').default
 
 const {
@@ -28,7 +31,6 @@ class IEAEditReviewLayout extends Component {
     super(props)
 
     this.state = {
-      pageForm: props.pageForm,
       value: {
         reviewRating: props.editModel.form.fields.reviewRating,
         reviewBody: props.editModel.form.fields.reviewBody,
@@ -115,6 +117,9 @@ class IEAEditReviewLayout extends Component {
     const {editModel} = this.props;
     const buttonDisabled = (!editModel.form.isValid || editModel.form.isFetching);
 
+    const {pageForm} = this.props,
+      formTitle = (pageForm === MODEL_FORM_TYPE_NEW) ? "Post Review" : "Update the Review";
+
     return (
       <div className="ysection">
         <div className="arrange arrange--middle arrange--30">
@@ -126,7 +131,7 @@ class IEAEditReviewLayout extends Component {
                 value="submit"
                 disabled={buttonDisabled}
                 className="ybtn ybtn--primary ybtn--small ybtn-full-responsive-small">
-                <span>{`${isNewModelPage(this.state.pageForm) ? 'Post' : 'Update'} Review`}</span>
+                <span>{formTitle}</span>
               </button>
               <a onClick={this.props.goBack}>
                 {'Cancel'}
@@ -179,10 +184,12 @@ class IEAEditReviewLayout extends Component {
 
 
   renderTitle() {
+    const {pageForm} = this.props,
+      formTitle = (pageForm === MODEL_FORM_TYPE_NEW) ? "Write a Review" : "Update the Review";
     return (
       <div className="section-header">
         <h3
-          className="js-war_main-header">{`${isNewModelPage(this.state.pageForm) ? 'Write' : 'Update'} an Review`}</h3>
+          className="js-war_main-header">{formTitle}</h3>
       </div>
     )
   }

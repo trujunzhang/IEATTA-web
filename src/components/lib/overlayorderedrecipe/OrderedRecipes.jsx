@@ -16,8 +16,8 @@ const {
   PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY,
   PAGE_PHOTOS_BROWSER_FORM,
   PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY,
-  PAGE_EDIT_FORM,
-  PAGE_NEW_FORM,
+  MODEL_FORM_TYPE_EDIT,
+  MODEL_FORM_TYPE_NEW,
   PAGE_OVERLAY_SELECTED_PHOTO_FORM,
   PAGE_SINGLE_SELECTED_PHOTO_FORM,
   CLOUD_STATISTIC_FOR_REVIEWS,
@@ -161,8 +161,8 @@ class OrderedRecipes extends Component {
                 }
               </div>
             )
-          case PAGE_EDIT_FORM:
-          case PAGE_NEW_FORM:
+          case MODEL_FORM_TYPE_EDIT:
+          case MODEL_FORM_TYPE_NEW:
             return (<Telescope.components.IEAEditRecipeLayout
                 {...this.state}
                 dispatch={this.props.dispatch}/>

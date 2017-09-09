@@ -12,8 +12,8 @@ const {
 } = require('../../../actions').default
 
 const {
-  PAGE_EDIT_FORM,
-  PAGE_NEW_FORM,
+  MODEL_FORM_TYPE_EDIT,
+  MODEL_FORM_TYPE_NEW,
   PARSE_RESTAURANTS,
   PARSE_EVENTS,
   PARSE_RECIPES
@@ -60,7 +60,7 @@ class DetailedReview extends Component {
 
   componentDidMount() {
     const {reviewType, reviewId, forObjectId, pageForm} = this.state;
-    if (pageForm === PAGE_EDIT_FORM) {
+    if (pageForm === MODEL_FORM_TYPE_EDIT) {
       this.props.dispatch(loadReviewPage({
           reviewType: reviewType,
           forObject: {id: forObjectId}
@@ -87,8 +87,8 @@ class DetailedReview extends Component {
 
     if (Reviews.canShowPage(this.state)) {
       switch (pageForm) {
-        case PAGE_EDIT_FORM:
-        case PAGE_NEW_FORM:
+        case MODEL_FORM_TYPE_EDIT:
+        case MODEL_FORM_TYPE_NEW:
           return (<Telescope.components.IEAEditReviewLayout
               {...this.state}
               dispatch={this.props.dispatch}/>

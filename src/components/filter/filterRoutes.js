@@ -36,8 +36,8 @@ const {
   PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY,
   PAGE_PHOTOS_BROWSER_FORM,
   PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY,
-  PAGE_EDIT_FORM,
-  PAGE_NEW_FORM,
+  MODEL_FORM_TYPE_EDIT,
+  MODEL_FORM_TYPE_NEW,
   PAGE_OVERLAY_SELECTED_PHOTO_FORM,
   PAGE_SINGLE_SELECTED_PHOTO_FORM,
   // Login Page
@@ -80,8 +80,8 @@ export function checkPhotosBrowserSelection({location}) {
 }
 
 export function getPageFormType(pageType, props: Object, lastFormType: Any) {
-  if (checkEditModel(props)) return PAGE_EDIT_FORM;
-  if (checkNewModel(props)) return PAGE_NEW_FORM;
+  if (checkEditModel(props)) return MODEL_FORM_TYPE_EDIT;
+  if (checkNewModel(props)) return MODEL_FORM_TYPE_NEW;
 
   const isPhotoBrowserSelectionId = checkPhotosBrowserSelection(props);
   if (!!isPhotoBrowserSelectionId) {
@@ -142,7 +142,7 @@ export function generatePhotoTerm(objectSchemaName, forObjectId, pageForm = PAGE
 }
 
 export function isNewModelPage(pageForm) {
-  return (pageForm === PAGE_NEW_FORM);
+  return (pageForm === MODEL_FORM_TYPE_NEW);
 }
 
 export function getLoginFormType({location}) {

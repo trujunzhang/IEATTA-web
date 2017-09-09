@@ -32,8 +32,8 @@ const {
   REVIEW_SORT_OLDEST,
   REVIEW_SORT_HIGHEST,
   REVIEW_SORT_LOWEST,
-  PAGE_EDIT_FORM,
-  PAGE_NEW_FORM,
+  MODEL_FORM_TYPE_EDIT,
+  MODEL_FORM_TYPE_NEW,
 } = require('./constants').default
 
 const Reviews = {
@@ -176,12 +176,12 @@ Reviews.checkCanEditReview = function ({review, currentUser}) {
 
 Reviews.canShowPage = function ({forObject, pageForm, review}) {
   switch (pageForm) {
-    case PAGE_EDIT_FORM:
+    case MODEL_FORM_TYPE_EDIT:
       if (!!forObject && !!review) {
         return true;
       }
       break;
-    case PAGE_NEW_FORM:
+    case MODEL_FORM_TYPE_NEW:
       if (!!forObject) {
         return true;
       }

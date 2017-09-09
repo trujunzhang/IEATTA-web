@@ -17,9 +17,6 @@ const {
   MENU_ITEM_ADD_OR_EDIT_RESTAURANT,
   // Sections
   SECTION_PHOTOS_BROWSER_FOR_RESTAURANT,
-  // Model Form Type
-  MODEL_FORM_TYPE_NEW,
-  MODEL_FORM_TYPE_EDIT,
 } = require('../../../lib/constants').default
 
 class IEAEditRestaurantLayout extends Component {
@@ -35,6 +32,7 @@ class IEAEditRestaurantLayout extends Component {
         displayName: props.editModel.form.fields.displayName,
       }
     }
+
     props.actions.toggleEditModelType(MENU_ITEM_ADD_OR_EDIT_RESTAURANT);
     props.actions.onEditModelFormFieldChange('displayName', props.forObject.displayName || '', true)
     props.actions.onRestaurantFormAddressFieldChange(props.forObject)
