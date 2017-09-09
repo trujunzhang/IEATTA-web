@@ -121,6 +121,7 @@ async function updateParseRecorder(objectSchemaName, parseInstance) {
   const recordType = AppConstants.realmTypes[objectSchemaName]
   let recorder = await getQueryByType(PARSE_RECORDS).equalTo(recordType, parseInstance).first()
   if (!!recorder) {
+    debugger
   } else {
     debugger
     recorder = createParseInstance(PARSE_RECORDS)
@@ -133,7 +134,8 @@ async function updateParseRecorder(objectSchemaName, parseInstance) {
   // ==Important==
   // After saved recorder, the 'updatedAt' column will be updated automatically.
   // So that new 'updatedAt' will notify the mobile app to update their local database.
-  await recorder.save()
+  // await recorder.save()
+
 }
 
 export default {

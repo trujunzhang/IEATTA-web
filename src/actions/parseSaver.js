@@ -35,7 +35,6 @@ import Records from "../lib/records";
 
 const {
   createParseInstance,
-  parseOnlineParseObject,
 } = require('../parse/objects').default
 
 const {
@@ -47,7 +46,8 @@ const {
 const {
   fromParseUser,
   fromParseRestaurant,
-  fromParseEvent
+  fromParseEvent,
+  parseOnlineParseObject,
 } = require('../parse/parseModels')
 
 /**
@@ -149,16 +149,27 @@ async function _writeOnlineParseObject(editModelType,
       debugger
       // _lastRealmInstance = newLocalRealmObject(objectSchemaName, model, lastPosition)
       // RecorderService.writeRecorder(_lastRealmInstance, objectSchemaName)
+
       break;
     case MODEL_FORM_TYPE_EDIT:
 
+      debugger
+
       onlineParseObject = await getQueryByType(objectSchemaName).get(model.objectId)
       await  Records.createOnlineParseInstance(onlineParseObject, objectSchemaName, model)
+
+      debugger
+
+      // step1: save the online object.
       await onlineParseObject.save()
+
+      // step2: save it's recorder.
       await updateParseRecorder(objectSchemaName, onlineParseObject)
 
       break;
   }
+
+  debugger
 
   const action = {
     type: WRITE_MODEL_DONE,
