@@ -1,10 +1,11 @@
 import Telescope from '../../lib'
 import React, {Component} from 'react'
 
-import Records from "../../../lib/records";
+import Reviews from "../../../lib/reviews";
 import AppConstants from "../../../lib/appConstants";
 
 const {
+  loadReviewPage,
   loadRestaurantPage,
   loadEventPage,
   loadOrderedRecipePage,
@@ -30,10 +31,13 @@ class DetailedReview extends Component {
   constructor(props, context) {
     super(props)
 
-    const {reviewType, forObjectId} = props.params;
+    const {params, location} = props;
+    const {reviewType, forObjectId} = params;
+
     const {objectSchemaName} = AppConstants.realmObjects[reviewType]
 
     this.state = this.initialState = {
+      reviewId: location.query.reviewId,
       reviewType: reviewType,
       forObjectId: forObjectId,
       // Page models
@@ -48,13 +52,17 @@ class DetailedReview extends Component {
     this.setState({
       // Page models
       forObject: getModelByObjectId(nextProps, this.state.forObjectId, this.state.forObject),
+      review: getModelByObjectId(nextProps, this.state.reviewId, this.state.review),
       // Common
       pageForm: getPageFormType(this.state.reviewType, nextProps, this.state.pageForm),
     })
   }
 
   componentDidMount() {
-    const {reviewType, forObjectId} = this.state;
+    const {reviewType, forObjectId, pageForm} = this.state;
+    if (pageForm === PAGE_EDIT_FORM) {
+      this.props.dispatch(loadReviewPage(forObjectId))
+    }
     const {objectSchemaName} = AppConstants.realmObjects[reviewType]
     switch (objectSchemaName) {
       case PARSE_RESTAURANTS:
@@ -70,9 +78,9 @@ class DetailedReview extends Component {
   }
 
   render() {
-    const {forObject, pageForm} = this.state;
+    const {pageForm} = this.state;
 
-    if (!!forObject) {
+    if (Reviews.canShowPage(this.state)) {
       switch (pageForm) {
         case PAGE_EDIT_FORM:
         case PAGE_NEW_FORM:

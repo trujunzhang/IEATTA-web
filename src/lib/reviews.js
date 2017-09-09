@@ -32,8 +32,9 @@ const {
   REVIEW_SORT_OLDEST,
   REVIEW_SORT_HIGHEST,
   REVIEW_SORT_LOWEST,
+  PAGE_EDIT_FORM,
+  PAGE_NEW_FORM,
 } = require('./constants').default
-
 
 const Reviews = {
   config: {
@@ -168,6 +169,22 @@ Reviews.checkCanEditReview = function ({review, currentUser}) {
   const {user} = review;
   if (!!currentUser.uniqueId && !!user.uniqueId && user.uniqueId === currentUser.uniqueId) {
     return true;
+  }
+
+  return false;
+}
+
+Reviews.canShowPage = function ({forObject, pageForm, review}) {
+  switch (pageForm) {
+    case PAGE_EDIT_FORM:
+      if (!!forObject && !!review) {
+        return true;
+      }
+      break;
+    case PAGE_NEW_FORM:
+      if (!!forObject) {
+        return true;
+      }
   }
 
   return false;

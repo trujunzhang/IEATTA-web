@@ -21,7 +21,7 @@
  *
  * @flow
  */
-import {fromParseRecipe} from "../parse/parseModels";
+import {fromParseRecipe, fromParseReview} from "../parse/parseModels";
 
 
 const Parse = require('parse')
@@ -139,6 +139,10 @@ export default {
 
   loadOrderedRecipePage: (objectId: string): ThunkAction => {
     return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_RECIPES, ['restaurant', 'event', 'user', 'photos']), objectId, fromParseRecipe)
+  },
+
+  loadReviewPage: (objectId: string): ThunkAction => {
+    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_REVIEWS, ['restaurant', 'event', 'user']), objectId, fromParseReview)
   },
 
   resetLoadPage: Action => {

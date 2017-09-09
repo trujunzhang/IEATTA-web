@@ -230,11 +230,14 @@ class IEAEditReviewLayout extends Component {
 }
 
 
-/**
- * ## Imports
- *
- * Redux
- */
+IEAEditReviewLayout.propTypes = {
+  review: React.PropTypes.object
+};
+
+IEAEditReviewLayout.defaultProps = {
+  review: {}
+};
+
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 
