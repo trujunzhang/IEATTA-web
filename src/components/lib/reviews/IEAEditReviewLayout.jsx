@@ -149,6 +149,7 @@ class IEAEditReviewLayout extends Component {
   }
 
   renderForm() {
+    const review = props.review || {rate: 0, body: ''};
     return (
       <div className="yform" id="review_rate_form" name="review_rate_form">
 
@@ -160,10 +161,9 @@ class IEAEditReviewLayout extends Component {
 
             <Telescope.components.EditReviewForm
               form={this.props.editModel.form}
-              reviewRating={this.props.review.rate}
+              reviewRating={review.rate}
               value={this.state.value}
-              actions={this.props.actions}
-            />
+              actions={this.props.actions}/>
 
           </div>
         </div>
