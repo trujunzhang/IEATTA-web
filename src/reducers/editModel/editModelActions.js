@@ -31,13 +31,13 @@ const _ = require('underscore')
  * ## State actions
  * controls which form is displayed to the user
  */
-
-export function toggleEditModelType(tag) {
+export function toggleEditModelType(tag, model, editModelType) {
   return {
     type: EDIT_MODEL_TOGGLE_TYPE,
-    payload: tag
+    payload: {tag, model, editModelType}
   }
 }
+
 
 /**
  * ## onAuthFormFieldChange

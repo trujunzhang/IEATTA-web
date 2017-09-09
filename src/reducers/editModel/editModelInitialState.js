@@ -15,6 +15,9 @@
 const {Record} = require('immutable')
 const {
   MENU_ITEM_ADD_OR_EDIT_RESTAURANT,
+  // Model Form Type
+  MODEL_FORM_TYPE_NEW,
+  MODEL_FORM_TYPE_EDIT,
 } = require('../../lib/constants').default
 
 /**
@@ -24,6 +27,8 @@ const {
  */
 const Form = Record({
   state: MENU_ITEM_ADD_OR_EDIT_RESTAURANT,
+  editModelType: MODEL_FORM_TYPE_NEW,
+  originModel: {},
   disabled: false,
   error: null,
   isValid: true,

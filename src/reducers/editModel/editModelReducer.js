@@ -48,7 +48,10 @@ function editModelReducer(state = initialState, action) {
      */
     case EDIT_MODEL_TOGGLE_TYPE:
       return new InitialState()
-        .setIn(['form', 'state'], action.payload)
+        .setIn(['form', 'state'], action.payload.tag)
+        .setIn(['form', 'originModel'], action.payload.model)
+        .setIn(['form', 'editModelType'], action.payload.editModelType)
+        .setIn(['form', 'error'], null)
 
     /**
      * ### Auth form field change
