@@ -238,7 +238,6 @@ export default {
   // write Online parse Objects.
   writeOnlineParseObject,
   // Update
-  updateEvent,
   updateRecipe,
   // Photos
   uploadPhoto,
