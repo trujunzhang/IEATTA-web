@@ -10,7 +10,7 @@ import {
 
 const Photos = {
   config: {
-    paginationCountPerPage: 6*5,
+    paginationCountPerPage: 6 * 5,
     // July 29, 2017
     selectedPhotoCreatedAtFormat: 'MMMM DD, YYYY'
   }
@@ -24,7 +24,7 @@ Photos.getOriginalUrl = function (photo) {
   return photo.original._url;
 }
 
-Photos.getListThumbnailUrl = function (item) {
+Photos.getListThumbnailUrl = function (item = {}) {
   const photos = item.photos || [];
 
   if (photos.length > 0) {
