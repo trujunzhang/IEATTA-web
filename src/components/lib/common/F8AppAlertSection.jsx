@@ -6,20 +6,20 @@ class F8AppAlertSection extends React.Component {
 
   render() {
     if (!!this.props.appAlert.message) {
+      const {type, text} = this.props.appAlert.message;
 
       return (
         <div id="alert-container">
 
           <div className="alert alert-error">
-            <a
-              onClick={() => {
-                this.props.dispatch(dismissAlertMessage())
-              }}
-              className="js-alert-dismiss dismiss-link">×</a>
-            <p className="alert-message">
+            <a onClick={() => {
+              this.props.dispatch(dismissAlertMessage())
+            }}
+               className="js-alert-dismiss dismiss-link">×</a>
+            <p className={`alert-${type}`}>
               <ul>
                 <li>
-                  {this.props.appAlert.message}
+                  {text}
                 </li>
               </ul>
             </p>
