@@ -120,7 +120,8 @@ class IEAEditRestaurantLayout extends Component {
           pageForm,
           PARSE_RESTAURANTS,
           {
-            objectId, uniqueId,
+            objectId,
+            // uniqueId,
             displayName,
             latitude,
             longitude,
