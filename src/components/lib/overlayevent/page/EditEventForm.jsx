@@ -1,8 +1,6 @@
 import Telescope from '../../../lib'
 import React, {Component} from 'react'
 
-
-// import t from '../../../vendor/tcomb-form/main'
 import t from 'tcomb-form';
 
 const Form = t.form.Form;
@@ -19,8 +17,9 @@ const myDescriptionTemplate = t.form.Form.templates.textbox.clone({
         className="review-textarea expanded placeholder"
         placeholder={eventWantPlaceHolder}
         id="description"
-        defaultValue={locals.value}
-        // onChange={locals.onChange}
+        onChange={(e) => {
+          locals.onChange(e.target.value)
+        }}
         value={locals.value}
         name="description"/>
     )

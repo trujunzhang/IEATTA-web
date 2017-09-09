@@ -23,8 +23,12 @@ const Parse = require('parse')
 import AppConstants from './appConstants'
 
 const UUID = require('../components/vendor/uuid');
-const Records = {}
 
+const {
+  getFirstOnlineParseInstance
+} = require('../parse/parseUtiles').default
+
+const Records = {}
 
 Records.toFirstUpperString = function (name) {
   return name.charAt(0).toUpperCase() + name.slice(1);
@@ -84,8 +88,8 @@ Records.createOnlineParseInstance = async function (onlineParseObject, objectSch
       onlineParseObject.set('end', new Date(localRecorder.end))
       onlineParseObject.set('want', localRecorder.want)
       // relation
-      // _online_restaurant_instance = await getFirstOnlineParseInstance(PARSE_RESTAURANTS, localRecorder.restaurant)
-      // onlineParseObject.set('restaurant', _online_restaurant_instance)
+      _online_restaurant_instance = await getFirstOnlineParseInstance(PARSE_RESTAURANTS, localRecorder.restaurant)
+      onlineParseObject.set('restaurant', _online_restaurant_instance)
       debugger
       break;
     case PARSE_RECIPES:

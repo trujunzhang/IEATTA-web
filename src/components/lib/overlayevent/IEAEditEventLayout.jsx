@@ -14,6 +14,7 @@ const {
  * The states were interested in
  */
 const {
+  MODEL_FORM_TYPE_NEW,
   PARSE_EVENTS,
   MENU_ITEM_ADD_OR_EDIT_RESTAURANT,
   ALERT_TYPE_ERROR,
@@ -94,7 +95,7 @@ class IEAEditEventLayout extends Component {
     const {id, uniqueId, restaurant} = forObject;
     const objectId = id;
 
-    debugger
+    // debugger
 
     const displayName = this.props.editModel.form.fields.displayName;
     const want = this.props.editModel.form.fields.eventWhat;
@@ -105,17 +106,18 @@ class IEAEditEventLayout extends Component {
 
     let errorMessage = null
     try {
-      // await Promise.race([
-      //   dispatch(writeOnlineParseObject(
-      //     pageForm,
-      //     PARSE_EVENTS,
-      //     {
-      //       objectId,
-      //       uniqueId,
-      //       displayName, want, start, end
-      //     })),
-      //   timeout(15000),
-      // ]);
+      await Promise.race([
+        dispatch(writeOnlineParseObject(
+          pageForm,
+          PARSE_EVENTS,
+          {
+            objectId,
+            uniqueId,
+            displayName, want, start, end,
+            restaurant
+          })),
+        timeout(15000),
+      ]);
     } catch (e) {
       this.props.actions.updateModelFailure(e);
       const message = e.message || e;
@@ -137,6 +139,9 @@ class IEAEditEventLayout extends Component {
     const {editModel} = this.props;
     const isDisabled = (!editModel.form.isValid || editModel.form.isFetching);
 
+    const {pageForm} = this.props,
+      formTitle = (pageForm === MODEL_FORM_TYPE_NEW) ? "Create an Event" : "Update the Event";
+
     return (
       <div className="form-footer">
         <button
@@ -147,7 +152,7 @@ class IEAEditEventLayout extends Component {
           type="submit"
           value="Submit Changes"
           className="ybtn ybtn--primary">
-          <span>{`${isNewModelPage(this.state.pageForm) ? 'Create' : 'Update'} Event`}</span>
+          <span>{formTitle}</span>
         </button>
         <a onClick={this.props.goBack}>
           {'Cancel'}
@@ -186,9 +191,11 @@ class IEAEditEventLayout extends Component {
 
 
   renderTitle() {
+    const {pageForm} = this.props,
+      formTitle = (pageForm === MODEL_FORM_TYPE_NEW) ? "Submit an Event" : "Update the Event";
     return (
       <div className="section-header">
-        <h2>{`${isNewModelPage(this.state.pageForm) ? 'Submit' : 'Update'} an Event`}</h2>
+        <h2>{formTitle}</h2>
       </div>
     )
   }

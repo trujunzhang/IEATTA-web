@@ -138,6 +138,21 @@ async function updateParseRecorder(objectSchemaName, parseInstance) {
 
 }
 
+async function checkExistOnlineParseInstance(objectSchemaName, realmInstance) {
+  return await getQueryByType(objectSchemaName).equalTo('uniqueId', realmInstance.uniqueId).count() > 0
+}
+
+async function getFirstOnlineParseInstance(objectSchemaName, realmInstance) {
+  if (!realmInstance || !realmInstance.uniqueId || realmInstance.uniqueId === "") {
+    return null;
+  }
+  return await getQueryByType(objectSchemaName).equalTo('uniqueId', realmInstance.uniqueId).first()
+}
+
+async function getFirstOnlineRecorderInstance(localRecorderUniqueId) {
+  return await getQueryByType(PARSE_RECORDS).equalTo('recordUniqueId', localRecorderUniqueId).first()
+}
+
 export default {
   getQueryByType,
   getRestaurantParameters,
@@ -149,4 +164,7 @@ export default {
   getRecipesParameters,
   // Update the model's record after saved it.
   updateParseRecorder,
+  checkExistOnlineParseInstance,
+  getFirstOnlineParseInstance,
+  getFirstOnlineRecorderInstance
 }

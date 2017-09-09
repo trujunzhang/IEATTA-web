@@ -83,12 +83,12 @@ const createRoutes = (store) => {
     {
       path: 'edit/event/(:eid)/(:eslug)',
       component: Telescope.components.DetailedEvent,
-      onEnter: requireAuth(store)
+      // onEnter: requireAuth(store)
     },
     {
       path: 'new/event/(:rid)/(:rslug)',
       component: Telescope.components.DetailedEvent,
-      onEnter: requireAuth(store)
+      // onEnter: requireAuth(store)
     }
   ];
 
