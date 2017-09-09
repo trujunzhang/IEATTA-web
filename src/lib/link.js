@@ -103,6 +103,12 @@ export function getNewReviewLink(reviewType, forObject) {
   return `/new/review/${reviewType}/${forObject.id}`
 }
 
+export function getEditReviewLink(review) {
+  const reviewType = review.reviewType;
+  const forObject = review[reviewType];
+  return `/edit/review/${reviewType}/${forObject.id}`
+}
+
 /**
  * No photo browser page's pageIndex:
  * http://localhost:3000/biz_photos/OnNGSfwoou/Forno%20Vecchio?select=Px63VDvuud

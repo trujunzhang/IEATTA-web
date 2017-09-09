@@ -8,6 +8,8 @@ import {Link} from 'react-router'
 import {FormattedMessage, FormattedRelative} from 'react-intl'
 
 import {
+  getEditReviewLink,
+  getAddPhotoLink,
   getOrderedRecipeLink,
   getLoggedUserMenuLink
 } from '../../../../lib/link'
@@ -111,9 +113,11 @@ class ReviewsItem extends Component {
 
 
   renderRightEditButton() {
+    const {review} = this.props;
+    debugger
     return (
-      <Link
-        className="link-more icon-wrapper mapbox-edit">
+      <Link to={getEditReviewLink(review)}
+            className="link-more icon-wrapper mapbox-edit">
             <span id="icon_14X14"
                   className="icon icon--14-pencil icon--size-14 icon--linked u-space-r-half">
               <svg className="icon_svg">

@@ -1,6 +1,5 @@
 import Telescope from '../index'
 import React, {Component} from 'react'
-import Photos from '../../../lib/photos'
 
 import {
   getNewReviewLink,
