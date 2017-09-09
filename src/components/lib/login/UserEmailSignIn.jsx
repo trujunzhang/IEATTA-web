@@ -173,11 +173,6 @@ class UserEmailSignIn extends Component {
 }
 
 
-/**
- * ## Imports
- *
- * Redux
- */
 const {connect} = require('react-redux')
 
 export default connect()(UserEmailSignIn)
