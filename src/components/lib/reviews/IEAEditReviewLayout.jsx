@@ -14,13 +14,13 @@ const {
  * The states were interested in
  */
 const {
+  PARSE_REVIEWS,
   MENU_ITEM_ADD_OR_EDIT_REVIEW,
   // Edit form
   MODEL_FORM_TYPE_NEW,
   MODEL_FORM_TYPE_EDIT,
   ALERT_TYPE_ERROR,
 } = require('../../../lib/constants').default
-
 
 class IEAEditReviewLayout extends Component {
 
@@ -35,7 +35,8 @@ class IEAEditReviewLayout extends Component {
     }
 
     const review = props.review || {rate: 0, body: ''};
-    props.actions.toggleEditModelType(MENU_ITEM_ADD_OR_EDIT_REVIEW);
+
+    props.actions.toggleEditModelType(MENU_ITEM_ADD_OR_EDIT_REVIEW, review, props.pageForm);
     props.actions.onEditModelFormFieldChange('reviewRating', review.rate, true)
     props.actions.onEditModelFormFieldChange('reviewBody', review.body, true)
   }
@@ -74,9 +75,10 @@ class IEAEditReviewLayout extends Component {
 
 
   async onButtonPress() {
-    const {dispatch, forObject} = this.props;
+    const {dispatch, forObject, pageForm} = this.props;
 
-    const forObjectId = forObject.id;
+    const {id, uniqueId} = forObject;
+    const objectId = id;
 
     const currentUserId = this.props.currentUserId;
     const reviewType = this.props.reviewType;
@@ -90,7 +92,8 @@ class IEAEditReviewLayout extends Component {
       await Promise.race([
         dispatch(createNewReview(
           {
-            forObjectId,
+            objectId,
+            // uniqueId,
 
             reviewType, reviewRating, reviewBody, currentUserId
           })
