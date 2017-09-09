@@ -17,7 +17,7 @@ const {
 
 
 const I18n = require('react-redux-i18n').I18n;
-const {logOut, showAlertMessage, dismissAlertMessage, timeout, logInWithPassword} = require('../../../actions').default
+const {logOut, timeout, logInWithPassword} = require('../../../actions').default
 
 class UserLogOut extends Component {
 

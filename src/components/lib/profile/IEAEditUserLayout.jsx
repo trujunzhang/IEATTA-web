@@ -14,6 +14,7 @@ const {
  */
 const {
   MENU_ITEM_ADD_OR_EDIT_USER,
+  ALERT_TYPE_ERROR,
 } = require('../../../lib/constants').default
 
 const {
@@ -93,6 +94,7 @@ class IEAEditUserLayout extends Component {
 
     this.props.actions.loginRequest()
 
+    let errorMessage = null
     try {
       await Promise.race([
         dispatch(uploadLoggedUser({objectId, username, email})),
@@ -101,8 +103,8 @@ class IEAEditUserLayout extends Component {
     } catch (e) {
       const message = e.message || e;
       if (message !== 'Timed out' && message !== 'Canceled by user') {
-        this.props.dispatch(showAlertMessage(message))
-        debugger
+        errorMessage = message;
+        this.props.dispatch(showAlertMessage({type: ALERT_TYPE_ERROR, text: errorMessage}))
       }
     } finally {
       this.props.actions.loginSuccess()

@@ -16,6 +16,7 @@ const {
 const {
   PARSE_EVENTS,
   MENU_ITEM_ADD_OR_EDIT_RESTAURANT,
+  ALERT_TYPE_ERROR,
 } = require('../../../lib/constants').default
 
 const {
@@ -97,6 +98,7 @@ class IEAEditEventLayout extends Component {
 
     this.props.actions.updateModelRequest();
 
+    let errorMessage = null
     try {
       await Promise.race([
         dispatch(writeOnlineParseObject(
@@ -111,10 +113,8 @@ class IEAEditEventLayout extends Component {
       this.props.actions.updateModelFailure(e);
       const message = e.message || e;
       if (message !== 'Timed out' && message !== 'Canceled by user') {
-        this.props.dispatch(showAlertMessage(message))
-        // debugger
-        // alert(message);
-        // console.warn(e);
+        errorMessage = message;
+        this.props.dispatch(showAlertMessage({type: ALERT_TYPE_ERROR, text: errorMessage}))
       }
     } finally {
       this.props.actions.updateModelSuccess();

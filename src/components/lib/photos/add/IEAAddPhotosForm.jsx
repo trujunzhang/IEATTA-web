@@ -16,6 +16,7 @@ const {
 const {
   UPLOAD_IMAGE_FILE_DROP,
   UPLOAD_IMAGE_FILE_PREVIEW,
+  ALERT_TYPE_ERROR,
 } = require('../../../../lib/constants').default
 
 class IEAAddPhotosForm extends Component {
@@ -38,6 +39,8 @@ class IEAAddPhotosForm extends Component {
 
     this.props.actions.updateModelRequest();
     let haveError = false;
+
+    let errorMessage = null
     try {
       await Promise.race([
         dispatch(uploadPhoto({
@@ -53,7 +56,8 @@ class IEAAddPhotosForm extends Component {
       haveError = true;
       const message = e.message || e;
       if (message !== 'Timed out' && message !== 'Canceled by user') {
-        this.props.dispatch(showAlertMessage(message))
+        errorMessage = message;
+        this.props.dispatch(showAlertMessage({type: ALERT_TYPE_ERROR, text: errorMessage}))
         debugger
       }
     } finally {

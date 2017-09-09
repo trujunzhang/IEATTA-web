@@ -18,6 +18,7 @@ const {
   // Edit form
   MODEL_FORM_TYPE_NEW,
   MODEL_FORM_TYPE_EDIT,
+  ALERT_TYPE_ERROR,
 } = require('../../../lib/constants').default
 
 const {
@@ -98,10 +99,7 @@ class IEAEditReviewLayout extends Component {
       const message = e.message || e;
       if (message !== 'Timed out' && message !== 'Canceled by user') {
         errorMessage = message;
-        this.props.dispatch(showAlertMessage(errorMessage))
-        // debugger
-        alert(message);
-        // console.warn(e);
+        this.props.dispatch(showAlertMessage({type: ALERT_TYPE_ERROR, text: errorMessage}))
       }
     } finally {
       if (!!errorMessage) {

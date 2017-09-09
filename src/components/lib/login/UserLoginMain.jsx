@@ -8,6 +8,7 @@ const {showAlertMessage, dismissAlertMessage, timeout, logInWithFacebook} = requ
 
 const {
   getLoginFormType,
+  ALERT_TYPE_ERROR,
 } = require('../../filter/filterRoutes')
 
 /**
@@ -64,13 +65,11 @@ class UserLoginMain extends Component {
     } catch (e) {
       const message = e.message || e
       if (message !== 'Timed out' && message !== 'Canceled by user') {
-        errorMessage = message
-        // alert(message);
-        // console.warn(e);
+        errorMessage = message;
+        this.props.dispatch(showAlertMessage({type: ALERT_TYPE_ERROR, text: errorMessage}))
       }
     } finally {
       if (!!errorMessage) {
-        dispatch(showAlertMessage(errorMessage))
       } else {
         this.props.router.push({pathname: '/'})
       }

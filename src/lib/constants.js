@@ -1,6 +1,11 @@
 import keyMirror from 'key-mirror'
 
 export default keyMirror({
+  //Alert Type
+  ALERT_TYPE_SUCCESS: null,
+  ALERT_TYPE_ERROR: null,
+  ALERT_TYPE_INFO: null,
+
   // Events List type
   EVENTS_LIST_FOR_RESTAURANT: null,
   EVENTS_LIST_FOR_USER: null,

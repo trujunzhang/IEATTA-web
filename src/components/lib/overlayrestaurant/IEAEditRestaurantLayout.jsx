@@ -18,6 +18,7 @@ const {
   MENU_ITEM_ADD_OR_EDIT_RESTAURANT,
   // Sections
   SECTION_PHOTOS_BROWSER_FOR_RESTAURANT,
+  ALERT_TYPE_ERROR,
 } = require('../../../lib/constants').default
 
 class IEAEditRestaurantLayout extends Component {
@@ -111,6 +112,7 @@ class IEAEditRestaurantLayout extends Component {
 
     this.props.actions.updateModelRequest();
 
+    let errorMessage = null
     try {
       await Promise.race([
         dispatch(writeOnlineParseObject(
@@ -136,10 +138,8 @@ class IEAEditRestaurantLayout extends Component {
       this.props.actions.updateModelFailure(e);
       const message = e.message || e;
       if (message !== 'Timed out' && message !== 'Canceled by user') {
-        this.props.dispatch(showAlertMessage(message))
-        debugger
-        // alert(message);
-        // console.warn(e);
+        errorMessage = message;
+        this.props.dispatch(showAlertMessage({type: ALERT_TYPE_ERROR, text: errorMessage}))
       }
     } finally {
       this.props.actions.updateModelSuccess();

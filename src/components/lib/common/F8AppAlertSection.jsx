@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-const {showAlertMessage, dismissAlertMessage} = require('../../../actions').default
+const {dismissAlertMessage} = require('../../../actions').default
 
 class F8AppAlertSection extends React.Component {
 
