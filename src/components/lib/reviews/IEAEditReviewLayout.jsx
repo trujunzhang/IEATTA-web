@@ -35,9 +35,10 @@ class IEAEditReviewLayout extends Component {
       }
     }
 
+    const review = props.review || {rate: 0, body: ''};
     props.actions.toggleEditModelType(MENU_ITEM_ADD_OR_EDIT_REVIEW);
-    props.actions.onEditModelFormFieldChange('reviewRating', props.review.rate || 0, true)
-    props.actions.onEditModelFormFieldChange('reviewBody', props.review.body || '')
+    props.actions.onEditModelFormFieldChange('reviewRating', review.rate, true)
+    props.actions.onEditModelFormFieldChange('reviewBody', review.body, true)
   }
 
   /**
@@ -229,14 +230,6 @@ class IEAEditReviewLayout extends Component {
   }
 }
 
-
-IEAEditReviewLayout.propTypes = {
-  review: React.PropTypes.object
-}
-
-IEAEditReviewLayout.defaultProps = {
-  review: {rate: 0, body: ''}
-}
 
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'

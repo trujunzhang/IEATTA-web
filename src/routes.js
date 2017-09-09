@@ -117,7 +117,7 @@ const createRoutes = (store) => {
     {
       path: 'new/review/(:reviewType)/(:forObjectId)',
       component: Telescope.components.DetailedReview,
-      onEnter: requireAuth(store)
+      // onEnter: requireAuth(store)
     },
     {
       path: 'reviews/(:modelType)/(:forObjectId)/(:forObjectDisplayName)',

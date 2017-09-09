@@ -185,6 +185,7 @@ Reviews.canShowPage = function ({forObject, pageForm, review}) {
       if (!!forObject) {
         return true;
       }
+      break;
   }
 
   return false;
