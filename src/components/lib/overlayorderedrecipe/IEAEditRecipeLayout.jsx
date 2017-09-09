@@ -114,7 +114,7 @@ class IEAEditRecipeLayout extends Component {
           PARSE_RECIPES,
           {
             objectId,
-            uniqueId,
+            // uniqueId,
             displayName, price
           })),
         timeout(15000),
@@ -127,8 +127,11 @@ class IEAEditRecipeLayout extends Component {
         this.props.dispatch(showAlertMessage({type: ALERT_TYPE_ERROR, text: errorMessage}))
       }
     } finally {
-      this.props.actions.updateModelSuccess();
-      this.props.dispatch(showAlertMessage({type: ALERT_TYPE_SUCCESS, text: 'Saved the recipe successfully!'}))
+      if (!!errorMessage) {
+      } else {
+        this.props.actions.updateModelSuccess();
+        this.props.dispatch(showAlertMessage({type: ALERT_TYPE_SUCCESS, text: 'Saved the recipe successfully!'}))
+      }
     }
   }
 
@@ -136,6 +139,9 @@ class IEAEditRecipeLayout extends Component {
   renderLeftButton() {
     const {editModel} = this.props;
     const isDisabled = (!editModel.form.isValid || editModel.form.isFetching);
+
+    const {pageForm} = this.props,
+      formTitle = (pageForm === MODEL_FORM_TYPE_NEW) ? "Create an Recipe" : "Update the Recipe";
 
     return (
       <div className="form-footer">
@@ -147,10 +153,10 @@ class IEAEditRecipeLayout extends Component {
           type="submit"
           value="Submit Changes"
           className="ybtn ybtn--primary">
-          <span>{`${isNewModelPage(this.state.pageForm) ? 'Create Recipe' : 'Submit Changes'}`}</span>
+          <span>{formTitle}</span>
         </button>
         <a onClick={this.props.goBack}>
-          Cancel
+          {'Cancel'}
         </a>
       </div>
     )
@@ -205,9 +211,12 @@ class IEAEditRecipeLayout extends Component {
 
 
   renderTitle() {
+    const {pageForm} = this.props,
+      formTitle = (pageForm === MODEL_FORM_TYPE_NEW) ? "Submit an Recipe" : "Update the Recipe";
+
     return (
       <div className="section-header">
-        <h2>{`${isNewModelPage(this.state.pageForm) ? 'Submit' : 'Update'} a Recipe`}</h2>
+        <h2>{formTitle}</h2>
       </div>
     )
   }
@@ -217,6 +226,8 @@ class IEAEditRecipeLayout extends Component {
       <div className="main-content-wrap main-content-wrap--full">
 
         <div id="super-container" className="content-container">
+
+          <Telescope.components.F8AppAlertSection/>
 
           <div className="container">
             <div className="clearfix layout-block layout-full" id="update-biz-details">
