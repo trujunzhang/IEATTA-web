@@ -73,38 +73,6 @@ const {
   WRITE_MODEL_DONE,
 } = require('../lib/constants').default
 
-async function _updateRecipe(model: object): Promise<Array<Action>> {
-  const recipe = await getQueryByType(PARSE_RECIPES).get(model.objectId)
-
-  recipe.set('displayName', model.displayName)
-  recipe.set('price', model.price)
-
-  await recipe.save()
-
-  await updateParseRecorder(PARSE_RECIPES, recipe)
-
-  const action = {
-    type: UPDATE_MODEL_REQUEST,
-    payload: {objectId: model.objectId, model: fromParseRecipe(recipe)}
-  }
-  return Promise.all([
-    Promise.resolve(action)
-  ])
-}
-
-function updateRecipe(model: object): ThunkAction {
-  return (dispatch) => {
-    const action = _updateRecipe(model)
-    action.then(
-      ([result]) => {
-        dispatch(result)
-      }
-    )
-    return action
-  }
-}
-
-
 async function _writeOnlineParseObject(editModelType,
                                        objectSchemaName,
                                        model: object): Promise<Array<Action>> {
@@ -244,8 +212,6 @@ function uploadLoggedUser(model: object): ThunkAction {
 export default {
   // write Online parse Objects.
   writeOnlineParseObject,
-  // Update
-  updateRecipe,
   // Photos
   uploadPhoto,
   uploadLoggedUser,

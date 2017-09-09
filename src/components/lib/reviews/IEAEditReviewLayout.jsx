@@ -75,10 +75,12 @@ class IEAEditReviewLayout extends Component {
 
 
   async onButtonPress() {
-    const {dispatch, forObject, pageForm} = this.props;
+    const {dispatch, forObject, pageForm, reviewId} = this.props;
 
+
+    const objectId = reviewId;
     const {id, uniqueId} = forObject;
-    const objectId = id;
+    const forObjectId = id;
 
     const currentUserId = this.props.currentUserId;
     const reviewType = this.props.reviewType;
@@ -95,9 +97,10 @@ class IEAEditReviewLayout extends Component {
           PARSE_REVIEWS,
           {
             objectId,
-            // uniqueId,
-
-            reviewType, reviewRating, reviewBody, currentUserId
+            uniqueId,
+            reviewType, forObjectId,
+            reviewRating, reviewBody,
+            currentUserId
           })
         ),
         timeout(15000),
