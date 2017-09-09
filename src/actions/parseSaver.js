@@ -72,17 +72,14 @@ const {
 
 
 async function _updateRestaurant(model: object): Promise<Array<Action>> {
-  const restaurant = await getQueryByType(PARSE_RESTAURANTS).get(model.objectId)
-
-  await  Records.createOnlineParseInstance(restaurant, PARSE_RESTAURANTS, model)
-
-  await restaurant.save()
-
-  await updateParseRecorder(PARSE_RESTAURANTS, restaurant)
+  const onlineParseObject = await getQueryByType(PARSE_RESTAURANTS).get(model.objectId)
+  await  Records.createOnlineParseInstance(onlineParseObject, PARSE_RESTAURANTS, model)
+  await onlineParseObject.save()
+  await updateParseRecorder(PARSE_RESTAURANTS, onlineParseObject)
 
   const action = {
     type: UPDATE_MODEL_REQUEST,
-    payload: {objectId: model.objectId, model: fromParseRestaurant(restaurant)}
+    payload: {objectId: model.objectId, model: fromParseRestaurant(onlineParseObject)}
   }
   return Promise.all([
     Promise.resolve(action)
@@ -170,34 +167,24 @@ function updateRecipe(model: object): ThunkAction {
 
 
 async function _writeOnlineParseObject(editModelType,
+                                       objectSchemaName,
                                        model: object): Promise<Array<Action>> {
-
-
   let _lastRealmInstance = null;
   switch (editModelType) {
     case MODEL_FORM_TYPE_NEW:
       debugger
-      _lastRealmInstance = newLocalRealmObject(objectSchemaName, model, lastPosition)
-      RecorderService.writeRecorder(_lastRealmInstance, objectSchemaName)
+      // _lastRealmInstance = newLocalRealmObject(objectSchemaName, model, lastPosition)
+      // RecorderService.writeRecorder(_lastRealmInstance, objectSchemaName)
       break;
     case MODEL_FORM_TYPE_EDIT:
-      debugger
-      _lastRealmInstance = updateLocalRealmObject(objectSchemaName, model)
-      RecorderService.writeRecorder(_lastRealmInstance, objectSchemaName)
+
+      const onlineParseObject = await getQueryByType(objectSchemaName).get(model.objectId)
+      await  Records.createOnlineParseInstance(onlineParseObject, objectSchemaName, model)
+      await onlineParseObject.save()
+      await updateParseRecorder(objectSchemaName, onlineParseObject)
+
       break;
   }
-
-
-  const review = createParseInstance(PARSE_REVIEWS)
-
-  // step1: generate review.
-  await  Records.createOnlineParseInstance(review, PARSE_REVIEWS, model)
-
-  // step2: save review.
-  await review.save()
-
-  // step5: update the recorder
-  await updateParseRecorder(PARSE_REVIEWS, review)
 
   const action = {
     type: SAVE_MODEL_REQUEST,
@@ -209,9 +196,10 @@ async function _writeOnlineParseObject(editModelType,
 
 
 function writeOnlineParseObject(editModelType,
+                                objectSchemaName,
                                 model: object): ThunkAction {
   return (dispatch) => {
-    const action = _writeOnlineParseObject(editModelType, model)
+    const action = _writeOnlineParseObject(editModelType, objectSchemaName, model)
     action.then(
       ([result]) => {
         dispatch(result)
