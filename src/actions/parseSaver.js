@@ -29,7 +29,6 @@ const Parse = require('parse')
 
 const _ = require('underscore')
 import type {Action, ThunkAction} from './types'
-import {fromParseRecipe} from "../parse/parseModels";
 import Records from "../lib/records";
 
 
@@ -79,21 +78,13 @@ async function _writeOnlineParseObject(editModelType,
   let onlineParseObject = null;
   switch (editModelType) {
     case MODEL_FORM_TYPE_NEW:
-
       onlineParseObject = createParseInstance(objectSchemaName)
-
-
       debugger
-
       break;
     case MODEL_FORM_TYPE_EDIT:
-
       debugger
-
       onlineParseObject = await getQueryByType(objectSchemaName).get(model.objectId)
-
       debugger
-
       break;
   }
 
@@ -103,10 +94,10 @@ async function _writeOnlineParseObject(editModelType,
   debugger
 
   // step1: save the online object.
-  // await onlineParseObject.save()
+  await onlineParseObject.save()
 
   // step2: save it's recorder.
-  // await updateParseRecorder(objectSchemaName, onlineParseObject)
+  await updateParseRecorder(objectSchemaName, onlineParseObject)
 
   debugger
 

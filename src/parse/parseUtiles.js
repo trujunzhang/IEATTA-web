@@ -3,6 +3,8 @@ const Parse = require('parse')
 const Parameters = require('../parameters').default
 import AppConstants from '../lib/appConstants'
 
+import Records from "../lib/records";
+
 const {
   ParseRestaurant,
   ParseEvent,
@@ -127,7 +129,8 @@ async function updateParseRecorder(objectSchemaName, parseInstance) {
 
     recorder.set('recordType', recordType)
     recorder.set('recordUniqueId', parseInstance.uniqueId)
-    Records.setParseObjectFieldWithoutData(recordType, recorder, parseInstance.id)
+
+    Records.setParseObjectFieldWithoutData(recordType, recorder, parseInstance.objectId)
   }
 
   // ==Important(web)==
