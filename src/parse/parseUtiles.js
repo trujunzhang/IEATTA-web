@@ -134,7 +134,7 @@ async function updateParseRecorder(objectSchemaName, parseInstance) {
   // ==Important==
   // After saved recorder, the 'updatedAt' column will be updated automatically.
   // So that new 'updatedAt' will notify the mobile app to update their local database.
-  // await recorder.save()
+  await recorder.save()
 
 }
 
