@@ -49,12 +49,8 @@ class DetailedReview extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    debugger
-
     const _forObject = getModelByObjectId(nextProps, this.state.forObjectId, this.state.forObject);
     const _review = getModelByObjectId(nextProps, this.state.reviewId, this.state.review);
-
-    debugger
 
     this.setState({
       // Page models
@@ -77,17 +73,17 @@ class DetailedReview extends Component {
         break;
     }
 
-    // switch (objectSchemaName) {
-    //   case PARSE_RESTAURANTS:
-    //     this.props.dispatch(loadRestaurantPage(forObjectId))
-    //     break;
-    //   case PARSE_EVENTS:
-    //     this.props.dispatch(loadEventPage(forObjectId))
-    //     break;
-    //   case PARSE_RECIPES:
-    //     this.props.dispatch(loadOrderedRecipePage(forObjectId))
-    //     break;
-    // }
+    switch (objectSchemaName) {
+      case PARSE_RESTAURANTS:
+        this.props.dispatch(loadRestaurantPage(forObjectId))
+        break;
+      case PARSE_EVENTS:
+        this.props.dispatch(loadEventPage(forObjectId))
+        break;
+      case PARSE_RECIPES:
+        this.props.dispatch(loadOrderedRecipePage(forObjectId))
+        break;
+    }
   }
 
   render() {
