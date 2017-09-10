@@ -49,12 +49,17 @@ Records.setParseObjectFieldWithoutDataBySchema = function (objectSchemaName, ins
 
 Records.createOnlineParseInstance = async function (editModelType, onlineParseObject, objectSchemaName, localRecorder) {
 
+  debugger
+
   if (!localRecorder.uniqueId) {
     throw new Error('You need to set a model uniqueId!')
   }
 
   onlineParseObject.set('flag', '1')
-  onlineParseObject.set('uniqueId', localRecorder.uniqueId)
+
+  if (editModelType === MODEL_FORM_TYPE_NEW) {
+    onlineParseObject.set('uniqueId', localRecorder.uniqueId)
+  }
 
   debugger
 
@@ -114,11 +119,19 @@ Records.createOnlineParseInstance = async function (editModelType, onlineParseOb
       Records.setParseObjectFieldWithoutData(localRecorder.modelType, onlineParseObject, localRecorder.forObjectId)
       break;
     case PARSE_REVIEWS:
+      debugger
+
       // step1: common fields.
       onlineParseObject.set('rate', localRecorder.reviewRating)
       onlineParseObject.set('body', localRecorder.reviewBody)
 
+
+      debugger
+
       if (editModelType === MODEL_FORM_TYPE_NEW) {
+
+        debugger
+
         onlineParseObject.set('reviewType', localRecorder.reviewType)
 
         // step2: the logged user submitted the review.

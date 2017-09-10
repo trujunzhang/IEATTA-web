@@ -43,8 +43,6 @@ class IEAEditReviewLayout extends Component {
         break;
     }
 
-    debugger
-
     this.state = {
       editReview: editReview,
       value: {
@@ -92,14 +90,15 @@ class IEAEditReviewLayout extends Component {
 
 
   async onButtonPress() {
+    const {dispatch, pageForm, forObject, currentUser} = this.props;
+
     const {editReview} = this.state;
-    const {dispatch, forObject, pageForm, reviewId} = this.props;
+    const {id, uniqueId, restaurant, event, recipe} = editReview;
 
-    const parseId = reviewId;
-    const {id, uniqueId} = forObject;
-    const forObjectId = id;
+    const parseId = id;
 
-    const currentUserId = this.props.currentUser.id;
+    const forObjectId = forObject.id;
+    const currentUserId = currentUser.id;
 
     const reviewType = this.props.reviewType;
     const reviewRating = this.props.editModel.form.fields.reviewRating;
@@ -118,9 +117,9 @@ class IEAEditReviewLayout extends Component {
           {
             parseId,
             uniqueId,
-            forObjectId,
+
             reviewRating, reviewBody, reviewType,
-            currentUserId
+            forObjectId, currentUserId,
           })
         ),
         timeout(15000),
