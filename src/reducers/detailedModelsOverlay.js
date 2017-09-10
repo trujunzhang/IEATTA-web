@@ -32,9 +32,11 @@ import type {Action} from '../actions/types'
 const {
   OVERLAY_LOADED_MODEL_PAGE,
   OVERLAY_LOADED_MODEL_RESET,
-  UPDATE_MODEL_REQUEST,
   STATISTIC_CLOUD_MODEL,
   RESTAURANT_CLOUD_ADDRESS_MODEL,
+  // Edit Model.
+  UPDATE_MODEL_REQUEST,
+  WRITE_MODEL_DONE,
 } = require('../lib/constants').default
 
 const initialState = {
@@ -44,43 +46,48 @@ const initialState = {
 }
 
 function detailedModelsOverlay(state: State = initialState, action: Action): State {
-  if (action.type === OVERLAY_LOADED_MODEL_PAGE) {
-    const nextState = Object.assign({}, state, {
-      currentModel: action.payload
-    })
-    return nextState
-  }
 
-  if (action.type === STATISTIC_CLOUD_MODEL) {
-    const nextState = Object.assign({}, state, {
-      statistic: action.payload
-    })
-    return nextState
-  }
+  switch (action.type) {
+    case OVERLAY_LOADED_MODEL_PAGE:
+      const nextState = Object.assign({}, state, {
+        currentModel: action.payload
+      })
+      return nextState
+    case STATISTIC_CLOUD_MODEL:
+      const nextState = Object.assign({}, state, {
+        statistic: action.payload
+      })
+      return nextState
+    case RESTAURANT_CLOUD_ADDRESS_MODEL:
+      const nextState = Object.assign({}, state, {
+        googleAddressReverse: action.payload
+      })
+      return nextState
+    /**
+     * Update the current model after saved the model.
+     */
+    case UPDATE_MODEL_REQUEST:
+      const nextState = Object.assign({}, state, {
+        currentModel: action.payload
+      })
+      return nextState
+    /**
+     * After saved the parse objects.
+     * If go back to the previous detailed page.
+     *
+     * The detailed page can use 'currentModel' to refresh the page.
+     */
+    case WRITE_MODEL_DONE:
+      const nextState = Object.assign({}, state, {
+        currentModel: action.payload
+      })
+      return nextState
 
-
-  if (action.type === RESTAURANT_CLOUD_ADDRESS_MODEL) {
-    const nextState = Object.assign({}, state, {
-      googleAddressReverse: action.payload
-    })
-    return nextState
-  }
-
-  /**
-   * Update the current model after saved the model.
-   */
-  if (action.type === UPDATE_MODEL_REQUEST) {
-    const nextState = Object.assign({}, state, {
-      currentModel: action.payload
-    })
-    return nextState
-  }
-
-  if (action.type === OVERLAY_LOADED_MODEL_RESET) {
-    const nextState = Object.assign({}, state, {
-      currentModel: null
-    })
-    return nextState
+    case OVERLAY_LOADED_MODEL_RESET:
+      const nextState = Object.assign({}, state, {
+        currentModel: null
+      })
+      return nextState
   }
 
   return state

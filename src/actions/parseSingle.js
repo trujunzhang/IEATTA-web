@@ -23,7 +23,6 @@
  */
 import {fromParseRecipe, fromParseReview} from "../parse/parseModels";
 
-
 const Parse = require('parse')
 
 import type {ThunkAction} from './types'
