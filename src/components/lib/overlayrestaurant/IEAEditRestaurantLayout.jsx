@@ -97,8 +97,9 @@ class IEAEditRestaurantLayout extends Component {
 
     const editModelType = this.props.editModel.form.editModelType;
 
-    const parseId = forObject.id;
-    const uniqueId = forObject.uniqueId;
+    const originalModel = this.props.editModel.form.originModel;
+    const {id, uniqueId} = originalModel;
+    const parseId = id;
 
     const displayName = this.props.editModel.form.fields.displayName;
 

@@ -90,7 +90,10 @@ class IEAEditEventLayout extends Component {
 
     const editModelType = this.props.editModel.form.editModelType;
 
-    const {id, uniqueId, restaurant} = forObject;
+    const {restaurant} = forObject;
+
+    const originalModel = this.props.editModel.form.originModel;
+    const {id, uniqueId} = originalModel;
     const parseId = id;
 
     const displayName = this.props.editModel.form.fields.displayName;
