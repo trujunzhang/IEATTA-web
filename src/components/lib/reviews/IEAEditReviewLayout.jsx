@@ -3,6 +3,8 @@ import React, {Component} from 'react'
 
 import {withRouter} from 'react-router'
 
+import AppConstants from "../../../lib/appConstants";
+
 const {
   writeOnlineParseObject,
   showAlertMessage,
@@ -27,14 +29,25 @@ class IEAEditReviewLayout extends Component {
   constructor(props, context) {
     super(props)
 
+
+    let review = props.review;
+
+    const {objectSchemaName} = AppConstants.realmObjects[props.reviewType]
+    switch (props.pageForm) {
+      case  MODEL_FORM_TYPE_EDIT:
+        break;
+      case  MODEL_FORM_TYPE_NEW:
+        review = AppConstants.generateNewReviewObject(props.currentUser, props.forObject, objectSchemaName, 3);
+        debugger
+        break;
+    }
+
     this.state = {
       value: {
         reviewRating: props.editModel.form.fields.reviewRating,
         reviewBody: props.editModel.form.fields.reviewBody,
       }
     }
-
-    const review = props.review || {rate: 0, body: ''};
 
     props.actions.toggleEditModelType(MENU_ITEM_ADD_OR_EDIT_REVIEW, review, props.pageForm);
     props.actions.onEditModelFormFieldChange('reviewRating', review.rate, true)
@@ -81,7 +94,7 @@ class IEAEditReviewLayout extends Component {
     const {id, uniqueId} = forObject;
     const forObjectId = id;
 
-    const currentUserId = this.props.currentUserId;
+    const currentUserId = this.props.currentUser.id;
     const reviewType = this.props.reviewType;
     const reviewRating = this.props.editModel.form.fields.reviewRating;
     const reviewBody = this.props.editModel.form.fields.reviewBody;
@@ -264,7 +277,7 @@ function mapDispatchToProps(dispatch) {
 
 function select(store, ownProps) {
   return {
-    currentUserId: store.user.id,
+    currentUser: store.user,
     editModel: store.editModel,
     goBack: ownProps.router.goBack
   };

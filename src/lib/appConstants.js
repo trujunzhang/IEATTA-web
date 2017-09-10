@@ -97,7 +97,7 @@ AppConstants.generateNewRealmPhotoObject = function ({modelType, model}) {
   }
 }
 
-AppConstants.generateRelativeObjects = function (forItem, reviewType) {
+AppConstants.generateRelativeObjects = function (forParseInstance, reviewType) {
   const defaultRelativeObject =
     {
       restaurant: {id: '', uniqueId: ''},
@@ -106,13 +106,13 @@ AppConstants.generateRelativeObjects = function (forItem, reviewType) {
     };
   defaultRelativeObject[reviewType] =
     {
-      id: forItem.objectId,
-      uniqueId: forItem.uniqueId
+      id: forParseInstance.id,
+      uniqueId: forParseInstance.uniqueId
     }
   return defaultRelativeObject;
 }
 
-AppConstants.generateEditReviewObject = function ({user, forItem, objectSchemaName}, reviewRating = 0, lastModel = {}) {
+AppConstants.generateNewReviewObject = function (user, forItem, objectSchemaName, reviewRating = 0, lastModel = {}) {
   const reviewType = AppConstants.realmTypes[objectSchemaName]
   const relativeObject = AppConstants.generateRelativeObjects(forItem, reviewType);
   debugger
@@ -120,7 +120,7 @@ AppConstants.generateEditReviewObject = function ({user, forItem, objectSchemaNa
     objectId: lastModel.objectId || UUID.create().toString(),
     uniqueId: lastModel.uniqueId || UUID.create().toString(),
     // Attributes
-    rating: reviewRating,
+    rate: reviewRating,
     body: lastModel.body || '',
     reviewType: reviewType,
     // Pointer
