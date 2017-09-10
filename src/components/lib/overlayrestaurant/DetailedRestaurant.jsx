@@ -69,6 +69,8 @@ class DetailedRestaurant extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+
+    debugger
     const lastPageForm = this.state.pageForm;
     const lastPhotosTerms = this.state.photosTerms;
 
