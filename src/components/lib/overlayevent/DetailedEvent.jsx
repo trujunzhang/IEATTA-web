@@ -48,9 +48,10 @@ class DetailedEvent extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    const newEvent = getModelByObjectId(nextProps, this.state.eid, this.state.forObject)
     this.setState({
       // Detailed object
-      forObject: getModelByObjectId(nextProps, this.state.eid, this.state.forObject),
+      forObject: newEvent,
       reviewStatistic: getModelByObjectId(nextProps, this.state.eid, this.state.reviewStatistic, 'statistic'),
       // Common
       pageForm: getPageFormType(PARSE_EVENTS, nextProps, this.state.pageForm),
@@ -58,11 +59,12 @@ class DetailedEvent extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(loadEventPage(this.state.eid))
+    const objectId = this.state.eid;
+    this.props.dispatch(loadEventPage(objectId))
     this.props.dispatch(invokeParseCloudMethod(CLOUD_STATISTIC_FOR_REVIEWS, {
       reviewType: this.state.modelType,
-      forObjectId: this.state.eid,
-    }, this.state.eid))
+      forObjectId: objectId,
+    }, objectId))
   }
 
   render() {
