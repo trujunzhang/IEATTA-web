@@ -9,8 +9,6 @@ class F8PhotosSelectLeftPanel extends Component {
     const photos = photosListTask.results;
 
     const currentPhoto = photos[selectPhotoIndex];
-
-    // alt="Photo of Roma Antica - San Francisco, CA, United States"
     const alt = `Photo of ${forObject.displayName}`;
 
     const haveNextIcon = (selectPhotoIndex < photos.length - 1)
