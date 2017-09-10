@@ -157,7 +157,6 @@ class DetailedRestaurant extends Component {
       }
     }
 
-
     return (<Telescope.components.F8LoadingView loadingClass="placeholder_1WOC3"/>)
   }
 
