@@ -120,7 +120,7 @@ AppConstants.generateNewReviewObject = function (user, forItem, objectSchemaName
     id: lastModel.id || UUID.create().toString(),
     uniqueId: lastModel.uniqueId || UUID.create().toString(),
     // Attributes
-    rate: reviewRating,
+    rate: lastModel.rate || 3,
     body: lastModel.body || '',
     reviewType: reviewType,
     // Pointer

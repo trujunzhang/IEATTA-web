@@ -50,9 +50,6 @@ function detailedModelsOverlay(state: State = initialState, action: Action): Sta
 
   switch (action.type) {
     case OVERLAY_LOADED_MODEL_PAGE:
-
-      debugger
-
       /**
        * The following is the payload's format:
        *    1. const payload = {parseId, model}
