@@ -1,3 +1,4 @@
+import Telescope from '../../index'
 import React, {Component} from 'react';
 
 import {getEventLink} from '../../../../lib/link'
@@ -16,11 +17,15 @@ class EditReviewTopEvent extends Component {
             <div className="photo-box pb-60s">
 
               <a className="js-analytics-click">
-                <img alt={forObject.restaurant.displayName}
-                     className="photo-box-img"
-                     width="60"
-                     height="60"
-                     src={Photos.getListThumbnailUrl(forObject.restaurant)}/>
+
+                <Telescope.components.F8PlaceHolderImage
+                  alt={forObject.restaurant.displayName}
+                  className="photo-box-img"
+                  width="60"
+                  height="60"
+                  placeholderSource={"/default/blank_biz_small.png"}
+                  source={Photos.getListThumbnailUrl(forObject.restaurant)}/>
+
               </a>
 
             </div>

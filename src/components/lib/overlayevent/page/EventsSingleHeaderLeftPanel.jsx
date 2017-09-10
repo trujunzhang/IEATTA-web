@@ -11,14 +11,22 @@ import {Link} from 'react-router'
 class EventsSingleHeaderLeftPanel extends Component {
 
   renderLeft() {
+    const {forObject} = this.props;
+
     return (
       <div className="event-details_photo">
         <div
           className="photo-slideshow photo-slideshow--full-width js-photo-slideshow-event-details lightbox-media-parent">
-          <img
+
+
+          <Telescope.components.F8PlaceHolderImage
+            alt={forObject.restaurant.displayName}
+            className="photo-box-img"
             width={300}
             height={300}
-            src={Photos.getListThumbnailUrl(this.props.forObject.restaurant)}/>
+            placeholderSource={"/default/blank_biz_small.png"}
+            source={Photos.getListThumbnailUrl(forObject.restaurant)}/>
+
         </div>
 
       </div>

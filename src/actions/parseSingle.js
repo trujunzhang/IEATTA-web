@@ -158,7 +158,10 @@ export default {
 
   loadReviewPage: (parseId: string): ThunkAction => {
     return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_REVIEWS
-        ['restaurant', 'event', 'recipe', 'user']),
+        ['restaurant',
+        'event',
+        // 'event.restaurant',
+        'recipe', 'user']),
       parseId, fromParseReview)
   },
 

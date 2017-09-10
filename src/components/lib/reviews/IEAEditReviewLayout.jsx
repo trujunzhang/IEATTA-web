@@ -92,7 +92,7 @@ class IEAEditReviewLayout extends Component {
     const {editReview} = this.state;
     const {dispatch, forObject, pageForm, reviewId} = this.props;
 
-    const parsetId = reviewId;
+    const parseId = reviewId;
     const {id, uniqueId} = forObject;
     const forObjectId = id;
 
