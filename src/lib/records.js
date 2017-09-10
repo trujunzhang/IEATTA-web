@@ -9,7 +9,10 @@ const {
   PARSE_RECIPES,
   PARSE_PHOTOS,
   PARSE_REVIEWS,
-  PARSE_PEOPLE_IN_EVENTS
+  PARSE_PEOPLE_IN_EVENTS,
+  // Edit form
+  MODEL_FORM_TYPE_NEW,
+  MODEL_FORM_TYPE_EDIT,
 } = require('./constants').default
 
 const {
@@ -44,7 +47,7 @@ Records.setParseObjectFieldWithoutDataBySchema = function (objectSchemaName, ins
 }
 
 
-Records.createOnlineParseInstance = async function (onlineParseObject, objectSchemaName, localRecorder) {
+Records.createOnlineParseInstance = async function (editModelType, onlineParseObject, objectSchemaName, localRecorder) {
 
   if (!localRecorder.uniqueId) {
     throw new Error('You need to set a model uniqueId!')
@@ -84,9 +87,12 @@ Records.createOnlineParseInstance = async function (onlineParseObject, objectSch
       onlineParseObject.set('start', localRecorder.start)
       onlineParseObject.set('end', localRecorder.end)
       onlineParseObject.set('want', localRecorder.want)
-      // relation
-      _online_restaurant_instance = await getFirstOnlineParseInstance(PARSE_RESTAURANTS, localRecorder.restaurant)
-      onlineParseObject.set('restaurant', _online_restaurant_instance)
+
+      if (editModelType === MODEL_FORM_TYPE_NEW) {
+        // relation
+        _online_restaurant_instance = await getFirstOnlineParseInstance(PARSE_RESTAURANTS, localRecorder.restaurant)
+        onlineParseObject.set('restaurant', _online_restaurant_instance)
+      }
       break;
     case PARSE_RECIPES:
       // Basic Fields
@@ -113,11 +119,13 @@ Records.createOnlineParseInstance = async function (onlineParseObject, objectSch
       onlineParseObject.set('body', localRecorder.reviewBody)
       onlineParseObject.set('reviewType', localRecorder.reviewType)
 
-      // step2: the logged user submitted the review.
-      Records.setParseObjectFieldWithoutData('user', onlineParseObject, localRecorder.currentUserId)
+      if (editModelType === MODEL_FORM_TYPE_NEW) {
+        // step2: the logged user submitted the review.
+        Records.setParseObjectFieldWithoutData('user', onlineParseObject, localRecorder.currentUserId)
 
-      // step3: set the relation by review type.
-      Records.setParseObjectFieldWithoutData(localRecorder.reviewType, onlineParseObject, localRecorder.forObjectId)
+        // step3: set the relation by review type.
+        Records.setParseObjectFieldWithoutData(localRecorder.reviewType, onlineParseObject, localRecorder.forObjectId)
+      }
       break;
   }
 
