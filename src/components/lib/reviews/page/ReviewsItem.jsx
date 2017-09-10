@@ -5,7 +5,6 @@ import Users from '../../../../lib/users'
 import Reviews from '../../../../lib/reviews'
 
 import {Link} from 'react-router'
-import {FormattedMessage, FormattedRelative} from 'react-intl'
 
 import {
   getEditReviewLink,
@@ -106,7 +105,7 @@ class ReviewsItem extends Component {
 
           <div className="post_page_body" dangerouslySetInnerHTML={htmlBody}/>
         </div>
-        <Telescope.components.ReviewsItemButtonsPanel/>
+        {/*<Telescope.components.ReviewsItemButtonsPanel/>*/}
       </div>
     )
   }
