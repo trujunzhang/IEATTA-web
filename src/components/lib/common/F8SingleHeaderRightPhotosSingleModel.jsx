@@ -19,11 +19,12 @@ class F8SingleHeaderRightPhotosSingleModel extends Component {
             return (
               <Link to={item.linkObject}>
 
-                <img alt="Photo of My Two Cents - Los Angeles, CA, United States. Desserts"
-                     className="photo-box-img"
-                     width="250"
-                     height="250"
-                     src={item.imageUrl}/>
+                <img
+                  alt="Photo of My Two Cents - Los Angeles, CA, United States. Desserts"
+                  className="photo-box-img"
+                  width="250"
+                  height="250"
+                  src={item.imageUrl}/>
               </Link>
             )
           })}
