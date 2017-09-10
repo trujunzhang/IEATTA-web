@@ -77,7 +77,6 @@ class IEAEditReviewLayout extends Component {
   async onButtonPress() {
     const {dispatch, forObject, pageForm, reviewId} = this.props;
 
-
     const objectId = reviewId;
     const {id, uniqueId} = forObject;
     const forObjectId = id;
@@ -89,6 +88,8 @@ class IEAEditReviewLayout extends Component {
 
     this.props.actions.updateModelRequest();
 
+    debugger
+
     let errorMessage = null
     try {
       await Promise.race([
@@ -98,8 +99,8 @@ class IEAEditReviewLayout extends Component {
           {
             objectId,
             uniqueId,
-            reviewType, forObjectId,
-            reviewRating, reviewBody,
+            forObjectId,
+            reviewRating, reviewBody, reviewType,
             currentUserId
           })
         ),
@@ -116,7 +117,8 @@ class IEAEditReviewLayout extends Component {
       if (!!errorMessage) {
       } else {
         this.props.actions.updateModelSuccess();
-        this.props.router.goBack();
+        this.props.dispatch(showAlertMessage({type: ALERT_TYPE_SUCCESS, text: 'Saved the review successfully!'}))
+        // this.props.router.goBack();
       }
     }
   }
