@@ -125,9 +125,9 @@ async function getFirstOnlineParseInstance(objectSchemaName, realmInstance) {
   return await getQueryByType(objectSchemaName).equalTo('uniqueId', realmInstance.uniqueId).first()
 }
 
-async function getFirstOnlineRecorderInstance(localRecorderUniqueId) {
-  return await getQueryByType(PARSE_RECORDS).equalTo('recordUniqueId', localRecorderUniqueId).first()
-}
+// async function getFirstOnlineRecorderInstance(localRecorderUniqueId) {
+//   return await getQueryByType(PARSE_RECORDS).equalTo('recordUniqueId', localRecorderUniqueId).first()
+// }
 
 export default {
   getQueryByType,
@@ -141,5 +141,5 @@ export default {
   // Update the model's record after saved it.
   checkExistOnlineParseInstance,
   getFirstOnlineParseInstance,
-  getFirstOnlineRecorderInstance
+  // getFirstOnlineRecorderInstance
 }
