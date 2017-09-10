@@ -77,26 +77,23 @@ class DetailedReview extends Component {
         break;
     }
 
-    switch (objectSchemaName) {
-      case PARSE_RESTAURANTS:
-        this.props.dispatch(loadRestaurantPage(forObjectId))
-        break;
-      case PARSE_EVENTS:
-        this.props.dispatch(loadEventPage(forObjectId))
-        break;
-      case PARSE_RECIPES:
-        this.props.dispatch(loadOrderedRecipePage(forObjectId))
-        break;
-    }
+    // switch (objectSchemaName) {
+    //   case PARSE_RESTAURANTS:
+    //     this.props.dispatch(loadRestaurantPage(forObjectId))
+    //     break;
+    //   case PARSE_EVENTS:
+    //     this.props.dispatch(loadEventPage(forObjectId))
+    //     break;
+    //   case PARSE_RECIPES:
+    //     this.props.dispatch(loadOrderedRecipePage(forObjectId))
+    //     break;
+    // }
   }
 
   render() {
     const {pageForm} = this.state;
 
     if (Reviews.canShowPage(this.state)) {
-
-      debugger
-
       switch (pageForm) {
         case MODEL_FORM_TYPE_EDIT:
         case MODEL_FORM_TYPE_NEW:

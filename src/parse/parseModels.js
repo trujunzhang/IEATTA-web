@@ -36,7 +36,7 @@ export type User = {
   loginType: string;
   email: string;
   // Photos
-  defaultAvatorUrl: string;
+  defaultAvatarUrl: string;
   // voting
   useful: Array;
   funny: Array;
@@ -163,14 +163,14 @@ function _get_default_image_photo_url(map) {
 
   if (photos.length > 0) {
     const firstPhoto = photos[0]
-    const thumbnail = firstPhoto.get('thumbnail');
+    const thumbnail = firstPhoto.get('thumbnail') || {};
     return thumbnail._url
   }
   return null;
 }
 
 export function fromParseUser(map: Object): User {
-  return {
+  const model = {
     // Basic Fields
     ...fromParseCommon(map),
     // Attributes
@@ -178,14 +178,11 @@ export function fromParseUser(map: Object): User {
     loginType: map.get('loginType'),
     email: map.get('email') || "",
     // Photos
-    defaultAvatorUrl: _get_default_image_photo_url(map),
+    defaultAvatarUrl: _get_default_image_photo_url(map),
     // Photos
     photos: (map.get('photos') || []).map(fromParsePhotoNormal),
-    // voting
-    useful: _.pluck((map.get('useful') || []).map(fromParsePointer), 'id').join(';'),
-    funny: _.pluck((map.get('funny') || []).map(fromParsePointer), 'id').join(';'),
-    cool: _.pluck((map.get('cool') || []).map(fromParsePointer), 'id').join(';')
   }
+  return model;
 }
 
 function parsePhotoNormal(map: Object): Object {
@@ -287,7 +284,7 @@ export function fromParsePeopleInEvent(map: Object): PeopleInEvent {
 
 
 export function fromParseReview(map: Object): Review {
-  return {
+  const model = {
     // Basic Fields
     ...fromParseCommon(map),
     // Attributes
@@ -300,11 +297,8 @@ export function fromParseReview(map: Object): Review {
     recipe: map.get('recipe') && fromParseRecipe(map.get('recipe')),
     // Relation
     user: map.get('user') && fromParseUser(map.get('user')),
-    // voting
-    useful: map.get('useful'),
-    funny: map.get('funny'),
-    cool: map.get('cool')
   }
+  return model;
 }
 
 
@@ -322,6 +316,7 @@ export function parseOnlineParseObject(objectSchemaName, map) {
       return fromParsePhoto(map);
       break;
     case PARSE_REVIEWS:
+      debugger
       return fromParseReview(map);
       break;
   }

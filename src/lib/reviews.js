@@ -184,7 +184,7 @@ Reviews.checkCanEditReview = function ({review, currentUser}) {
 Reviews.canShowPage = function ({forObject, pageForm, review}) {
   switch (pageForm) {
     case MODEL_FORM_TYPE_EDIT:
-      debugger
+      // debugger
       if (!!forObject && !!review) {
         return true;
       }

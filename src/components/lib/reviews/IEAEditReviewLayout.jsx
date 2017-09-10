@@ -43,6 +43,8 @@ class IEAEditReviewLayout extends Component {
         break;
     }
 
+    // editReview = AppConstants.generateNewReviewObject(props.currentUser, props.forObject, objectSchemaName, 3);
+
     this.state = {
       editReview: editReview,
       value: {

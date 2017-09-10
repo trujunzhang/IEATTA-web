@@ -42,7 +42,7 @@ class HeaderRightUserPanel extends Component {
                       height="90"
                       width="90"
                       placeholderSource={"/default/user_30_square.png"}
-                      source={currentUser.defaultAvatorUrl}/>
+                      source={currentUser.defaultAvatarUrl}/>
                 </span>
         <span id="icon_14X14"
               className="icon icon--14-triangle-down icon--size-14 icon--inverse icon--fallback-inverted u-triangle-direction-down user-account_button-arrow responsive-visible-large-inline-block">

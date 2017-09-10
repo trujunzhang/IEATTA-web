@@ -125,7 +125,7 @@ class HeaderRightUserPopOverlay extends Component {
                   width="60"
                   height="60"
                   placeholderSource={"/default/user_30_square.png"}
-                  source={currentUser.defaultAvatorUrl}/>
+                  source={currentUser.defaultAvatarUrl}/>
 
               </Link>
 
