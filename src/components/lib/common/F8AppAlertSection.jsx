@@ -32,9 +32,7 @@ class F8AppAlertSection extends React.Component {
             }}
                className="js-alert-dismiss dismiss-link">{"×"}</a>
             <p className={`alert-${currentType}`}>
-              <ul>
-                <li>{text}</li>
-              </ul>
+              {text}
             </p>
           </div>
         </div>

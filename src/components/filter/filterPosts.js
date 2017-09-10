@@ -71,7 +71,6 @@ export function getModelByObjectId(nextProps: Any, forParseId: string, lastModel
   const {detailedModelsOverlay} = nextProps;
   const payLoad = detailedModelsOverlay[payLoadKey];
 
-
   if (!!payLoad) {
     const {parseId, model} = payLoad;
     if (!!parseId && parseId === forParseId) {

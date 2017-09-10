@@ -84,11 +84,11 @@ class EventsSingleHeaderLeftPanel extends Component {
         <div className="media-block">
           <div className="media-avatar">
             <span id="icon_24X24" className="icon icon--24-reservation icon--size-24">
-    <svg className="icon_svg">
-    <path
-      d="M18 21H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3 1 1 0 0 1 2 0h8a1 1 0 0 1 2 0 3 3 0 0 1 3 3v12a3 3 0 0 1-3 3zm1-13H5v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V8zm-6 5h4v4h-4v-4z"/>
-    </svg>
-</span>
+              <svg className="icon_svg">
+                  <path
+                    d="M18 21H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3 1 1 0 0 1 2 0h8a1 1 0 0 1 2 0 3 3 0 0 1 3 3v12a3 3 0 0 1-3 3zm1-13H5v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V8zm-6 5h4v4h-4v-4z"/>
+              </svg>
+           </span>
           </div>
           <div className="media-story">
             <div className="event-details_date">
@@ -131,8 +131,7 @@ class EventsSingleHeaderLeftPanel extends Component {
 
   render() {
     return (
-
-      <div className="event-details_info-card card card--horizontal" style={{width: '640', height: '300'}}>
+      <div className="event-details_info-card card card--horizontal" id="event-single-header-left-panel-wh">
         <div className="card_photo responsive-hidden-small">
 
           {this.renderLeft()}
