@@ -24,7 +24,7 @@ class EventsSingleHeaderLeftPanel extends Component {
             className="photo-box-img"
             width={300}
             height={300}
-            placeholderSource={"/default/blank_biz_small.png"}
+            placeholderSource={"/default/blank_biz_large.png"}
             source={Photos.getListThumbnailUrl(forObject.restaurant)}/>
 
         </div>
