@@ -76,9 +76,11 @@ class DetailedRestaurant extends Component {
     const newPhotosTerms = generatePhotoTerm(PARSE_RESTAURANTS, nextProps.params.rid, newPageForm, nextProps)
     const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms, this.state.photosListTask);
 
+    const newRestaurant = getModelByObjectId(nextProps, this.state.rid, this.state.forObject);
+
     this.setState({
       // Detailed object
-      forObject: getModelByObjectId(nextProps, this.state.rid, this.state.forObject),
+      forObject: newRestaurant,
       reviewStatistic: getModelByObjectId(nextProps, this.state.rid, this.state.reviewStatistic, 'statistic'),
       // photos
       photosTerms: newPhotosTerms,
@@ -106,12 +108,13 @@ class DetailedRestaurant extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(loadRestaurantPage(this.state.rid))
+    const objectId = this.state.rid;
+    this.props.dispatch(loadRestaurantPage(objectId))
     this.props.dispatch(loadPhotosBrowser(this.state.photosTerms))
     this.props.dispatch(invokeParseCloudMethod(CLOUD_STATISTIC_FOR_REVIEWS, {
       reviewType: this.state.modelType,
-      forObjectId: this.state.rid,
-    }, this.state.rid))
+      forObjectId: objectId,
+    }, objectId))
   }
 
   render() {
