@@ -49,10 +49,17 @@ class DetailedReview extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    debugger
+
+    const _forObject = getModelByObjectId(nextProps, this.state.forObjectId, this.state.forObject);
+    const _review = getModelByObjectId(nextProps, this.state.reviewId, this.state.review);
+
+    debugger
+
     this.setState({
       // Page models
-      forObject: getModelByObjectId(nextProps, this.state.forObjectId, this.state.forObject),
-      review: getModelByObjectId(nextProps, this.state.reviewId, this.state.review),
+      forObject: _forObject,
+      review: _review,
       // Common
       pageForm: getPageFormType(this.state.reviewType, nextProps, this.state.pageForm),
     })
@@ -87,6 +94,9 @@ class DetailedReview extends Component {
     const {pageForm} = this.state;
 
     if (Reviews.canShowPage(this.state)) {
+
+      debugger
+
       switch (pageForm) {
         case MODEL_FORM_TYPE_EDIT:
         case MODEL_FORM_TYPE_NEW:

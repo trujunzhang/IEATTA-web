@@ -98,6 +98,7 @@ class IEAEditReviewLayout extends Component {
     const forObjectId = id;
 
     const currentUserId = this.props.currentUser.id;
+
     const reviewType = this.props.reviewType;
     const reviewRating = this.props.editModel.form.fields.reviewRating;
     const reviewBody = this.props.editModel.form.fields.reviewBody;
