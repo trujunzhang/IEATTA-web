@@ -43,6 +43,7 @@ async function updateParseRecorder(objectSchemaName, parseInstance) {
     recorder = createParseInstance(PARSE_RECORDS)
 
     recorder.set('recordType', recordType)
+    recorder.set('flag', 1)
     recorder.set('recordUniqueId', parseInstance.uniqueId)
 
     debugger
