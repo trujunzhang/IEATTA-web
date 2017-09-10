@@ -32,7 +32,12 @@ const {
   getQueryByType
 } = require('./parseUtiles').default
 
-
+/**
+ *
+ * @param objectSchemaName
+ * @param parseInstance: It is a parse object instance.
+ * @returns {Promise.<void>}
+ */
 async function updateParseRecorder(objectSchemaName, parseInstance) {
   const recordType = AppConstants.realmTypes[objectSchemaName]
   let recorder = await getQueryByType(PARSE_RECORDS).equalTo(recordType, parseInstance).first()
@@ -48,7 +53,7 @@ async function updateParseRecorder(objectSchemaName, parseInstance) {
 
     debugger
 
-    Records.setParseObjectFieldWithoutData(recordType, recorder, parseInstance.parseId)
+    recorder.set(recordType, parseInstance);// For (web app)
   }
 
   // ==Important(web)==
