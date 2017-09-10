@@ -67,6 +67,7 @@ function detailedModelsOverlay(state: State = initialState, action: Action): Sta
     case WRITE_MODEL_DONE:
       const objectId = payload.objectId;
       const model = payload.originModel
+      debugger
       const currentModel = {objectId, model}
       return Object.assign({}, state, {
         currentModel

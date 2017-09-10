@@ -77,10 +77,13 @@ class DetailedRestaurant extends Component {
     const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms, this.state.photosListTask);
 
     const newRestaurant = getModelByObjectId(nextProps, this.state.rid, this.state.forObject);
+    const objectProps = {forObject: newRestaurant}
+
+    debugger
 
     this.setState({
       // Detailed object
-      forObject: newRestaurant,
+      ...objectProps,
       reviewStatistic: getModelByObjectId(nextProps, this.state.rid, this.state.reviewStatistic, 'statistic'),
       // photos
       photosTerms: newPhotosTerms,
