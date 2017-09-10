@@ -31,13 +31,13 @@ class DetailedReview extends Component {
   constructor(props, context) {
     super(props)
 
-    const {params, location} = props;
-    const {reviewType, forObjectId} = params;
+    const {params} = props;
+    const {reviewType, forObjectId, reviewId} = params;
 
     const {objectSchemaName} = AppConstants.realmObjects[reviewType]
 
     this.state = this.initialState = {
-      reviewId: location.query.reviewId,
+      reviewId: reviewId,
       reviewType: reviewType,
       forObjectId: forObjectId,
       // Page models

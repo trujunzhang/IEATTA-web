@@ -105,7 +105,7 @@ export function getNewReviewLink(reviewType, forObject) {
 export function getEditReviewLink(review) {
   const reviewType = review.reviewType;
   const forObject = review[reviewType];
-  return `/edit/review/${reviewType}/${forObject.id}?reviewId=${review.id}`
+  return `/edit/review/${reviewType}/${forObject.id}/${review.id}`
 }
 
 /**
