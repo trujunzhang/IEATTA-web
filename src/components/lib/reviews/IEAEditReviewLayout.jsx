@@ -30,28 +30,29 @@ class IEAEditReviewLayout extends Component {
     super(props)
 
 
-    let review = props.review;
+    let editReview = props.review;
 
     const {objectSchemaName} = AppConstants.realmObjects[props.reviewType]
     switch (props.pageForm) {
       case  MODEL_FORM_TYPE_EDIT:
         break;
       case  MODEL_FORM_TYPE_NEW:
-        review = AppConstants.generateNewReviewObject(props.currentUser, props.forObject, objectSchemaName, 3);
+        editReview = AppConstants.generateNewReviewObject(props.currentUser, props.forObject, objectSchemaName, 3);
         debugger
         break;
     }
 
     this.state = {
+      editReview: editReview,
       value: {
         reviewRating: props.editModel.form.fields.reviewRating,
         reviewBody: props.editModel.form.fields.reviewBody,
       }
     }
 
-    props.actions.toggleEditModelType(MENU_ITEM_ADD_OR_EDIT_REVIEW, review, props.pageForm);
-    props.actions.onEditModelFormFieldChange('reviewRating', review.rate, true)
-    props.actions.onEditModelFormFieldChange('reviewBody', review.body, true)
+    props.actions.toggleEditModelType(MENU_ITEM_ADD_OR_EDIT_REVIEW, editReview, props.pageForm);
+    props.actions.onEditModelFormFieldChange('reviewRating', editReview.rate, true)
+    props.actions.onEditModelFormFieldChange('reviewBody', editReview.body, true)
   }
 
   /**
@@ -178,7 +179,7 @@ class IEAEditReviewLayout extends Component {
   }
 
   renderForm() {
-    const review = this.props.review || {rate: 0, body: ''};
+    const {editReview} = this.state;
     return (
       <div className="yform" id="review_rate_form" name="review_rate_form">
 
@@ -190,7 +191,7 @@ class IEAEditReviewLayout extends Component {
 
             <Telescope.components.EditReviewForm
               form={this.props.editModel.form}
-              reviewRating={review.rate}
+              reviewRating={editReview.rate}
               value={this.state.value}
               actions={this.props.actions}/>
 
