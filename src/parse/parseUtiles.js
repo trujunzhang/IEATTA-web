@@ -53,7 +53,6 @@ function getQueryByType(type: string, includes: Array = []) {
       query = new Parse.Query(ParseRecord)
       break;
     case PARSE_PHOTOS:
-      // debugger
       query = new Parse.Query(ParsePhoto)
       break;
   }
