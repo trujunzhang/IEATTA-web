@@ -22,7 +22,6 @@ const {
 } = require('../../../lib/constants').default
 
 
-
 class IEAEditEventLayout extends Component {
 
   constructor(props, context) {
@@ -90,7 +89,7 @@ class IEAEditEventLayout extends Component {
     const {dispatch, forObject, pageForm} = this.props;
 
     const {id, uniqueId, restaurant} = forObject;
-    const objectId = id;
+    const parseId = id;
 
     const displayName = this.props.editModel.form.fields.displayName;
     const want = this.props.editModel.form.fields.eventWhat;
@@ -106,7 +105,7 @@ class IEAEditEventLayout extends Component {
           pageForm,
           PARSE_EVENTS,
           {
-            objectId,
+            parseId,
             uniqueId,
             displayName, want, start, end,
             restaurant

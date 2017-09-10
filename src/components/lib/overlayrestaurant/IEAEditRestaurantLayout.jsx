@@ -95,7 +95,7 @@ class IEAEditRestaurantLayout extends Component {
   async onButtonPress() {
     const {dispatch, forObject, pageForm} = this.props;
 
-    const objectId = forObject.id;
+    const parseId = forObject.id;
     const uniqueId = forObject.uniqueId;
 
     const displayName = this.props.editModel.form.fields.displayName;
@@ -120,7 +120,7 @@ class IEAEditRestaurantLayout extends Component {
           pageForm,
           PARSE_RESTAURANTS,
           {
-            objectId,
+            parseId,
             uniqueId,
             displayName,
             latitude,

@@ -52,7 +52,7 @@ function detailedModelsOverlay(state: State = initialState, action: Action): Sta
     case OVERLAY_LOADED_MODEL_PAGE:
       /**
        * The following is the payload's format:
-       *    1. const payload = {objectId, model}
+       *    1. const payload = {parseId, model}
        */
       return Object.assign({}, state, {
         currentModel: payload
@@ -65,10 +65,10 @@ function detailedModelsOverlay(state: State = initialState, action: Action): Sta
      * The detailed page can use 'currentModel' to refresh the page.
      */
     case WRITE_MODEL_DONE:
-      const objectId = payload.objectId;
+      const parseId = payload.parseId;
       const model = payload.originModel
       debugger
-      const currentModel = {objectId, model}
+      const currentModel = {parseId, model}
       return Object.assign({}, state, {
         currentModel
       })

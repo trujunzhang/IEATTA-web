@@ -23,10 +23,10 @@ const {
 } = require('../lib/constants').default
 
 
-export function equalRelationObject(query, objectSchemaName, objectId, fieldName) {
-  if (!!objectId) {
+export function equalRelationObject(query, objectSchemaName, parseId, fieldName) {
+  if (!!parseId) {
     const modelType = AppConstants.realmTypes[objectSchemaName]
-    const instanceWithoutData = getInstanceWithoutData(objectSchemaName, objectId)
+    const instanceWithoutData = getInstanceWithoutData(objectSchemaName, parseId)
     query.equalTo(modelType, instanceWithoutData)
   }
 }

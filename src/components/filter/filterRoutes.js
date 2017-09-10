@@ -125,7 +125,7 @@ export function generatePhotoTerm(objectSchemaName, forObjectId, pageForm = PAGE
 
   const termType = isPhotosBrowserPage ? 'page' : 'list';
   const limit = isPhotosBrowserPage ? Photos.config.paginationCountPerPage : -1;
-  const listId = `photos-${termType}-view-for-objectId-${forObjectId}`
+  const listId = `photos-${termType}-view-for-parseId-${forObjectId}`
 
   const currentPageIndex = getCurrentPageIndex(props)
 

@@ -160,7 +160,7 @@ export default keyMirror({
   LIST_VIEW_LOADED_USERS: null,
   LOADED_PHOTOS_BROWSER: null,
 
-  // Detailed Page(Posts,Events)
+  // Detailed Page(Restaurants,Events)
   OVERLAY_LOADED_MODEL_PAGE: null,
   OVERLAY_LOADED_MODEL_RESET: null,
   STATISTIC_CLOUD_MODEL: null,

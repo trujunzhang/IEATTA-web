@@ -35,6 +35,7 @@ const {
 const {User, fromParseUser} = require('../parse/parseModels')
 
 import type {Action} from '../actions/types'
+
 const slugify = require('slugify')
 
 export type State = {
@@ -50,7 +51,7 @@ const initialState = {
 function userProfileTask(state: State = initialState, action: Action): State {
   switch (action.type) {
     case USERPROFILE_LOADED: {
-      let {objectId, object} = action.payload
+      let {parseId, object} = action.payload
       return {
         ready: true,
         userProfile: fromParseUser(object)

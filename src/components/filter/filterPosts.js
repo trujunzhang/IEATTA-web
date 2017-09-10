@@ -67,14 +67,14 @@ export function byListId(listContainerTasks: Any, {listId}, lastTask: Any) {
   return lastTask;
 }
 
-export function getModelByObjectId(nextProps: Any, forObjectId: string, lastModel: Any, payLoadKey = "currentModel") {
+export function getModelByObjectId(nextProps: Any, forParseId: string, lastModel: Any, payLoadKey = "currentModel") {
   const {detailedModelsOverlay} = nextProps;
   const payLoad = detailedModelsOverlay[payLoadKey];
 
 
   if (!!payLoad) {
-    const {objectId, model} = payLoad;
-    if (!!objectId && objectId === forObjectId) {
+    const {parseId, model} = payLoad;
+    if (!!parseId && parseId === forParseId) {
       return model;
     }
   }

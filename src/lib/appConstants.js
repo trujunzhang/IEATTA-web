@@ -47,7 +47,7 @@ AppConstants.SubDomainPhotos = {
 
 AppConstants.generateNewRestaurantRealmObject = function () {
   return {
-    objectId: UUID.create().toString(),
+    parseId: UUID.create().toString(),
     uniqueId: UUID.create().toString(),
     listPhotoId: ''
   }
@@ -55,12 +55,12 @@ AppConstants.generateNewRestaurantRealmObject = function () {
 
 AppConstants.generateNewEventRealmObject = function (restaurant) {
   return {
-    objectId: UUID.create().toString(),
+    parseId: UUID.create().toString(),
     uniqueId: UUID.create().toString(),
     start: new Date(),
     end: new Date(),
     restaurant: {
-      id: restaurant.objectId,
+      id: restaurant.parseId,
       uniqueId: restaurant.uniqueId
     },
     // For test
@@ -74,7 +74,7 @@ AppConstants.getRelativeModel = function (modelType, objectSchemaName, modelSche
 
   return (currentPhotoType === modelType) ?
     {
-      id: modelSchema.objectId,
+      id: modelSchema.parseId,
       uniqueId: modelSchema.uniqueId
     } :
     {
@@ -86,7 +86,7 @@ AppConstants.getRelativeModel = function (modelType, objectSchemaName, modelSche
 
 AppConstants.generateNewRealmPhotoObject = function ({modelType, model}) {
   return {
-    objectId: UUID.create().toString(),
+    parseId: UUID.create().toString(),
     uniqueId: UUID.create().toString(),
     photoType: modelType,
     // Pointer

@@ -45,7 +45,9 @@ async function updateParseRecorder(objectSchemaName, parseInstance) {
     recorder.set('recordType', recordType)
     recorder.set('recordUniqueId', parseInstance.uniqueId)
 
-    Records.setParseObjectFieldWithoutData(recordType, recorder, parseInstance.objectId)
+    debugger
+
+    Records.setParseObjectFieldWithoutData(recordType, recorder, parseInstance.parseId)
   }
 
   // ==Important(web)==
