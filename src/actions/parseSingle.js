@@ -70,12 +70,12 @@ const cloudMethods = {
   CLOUD_RESTAURANT_ADDRESS: 'getAddressFromLocation'
 }
 
-function callCloudStatisticMethod(type: string, methodType: string, params: string, objectId: string): ThunkAction {
+function callCloudStatisticMethod(type: string, methodType: string, params: string, parseId: string): ThunkAction {
   const methodName = cloudMethods[methodType];
   return (dispatch) => {
     return Parse.Cloud.run(methodName, params, {
       success: (model) => {
-        const payload = {objectId, model}
+        const payload = {parseId, model}
         dispatch({type, payload})
       },
       error: (error) => {
@@ -87,12 +87,12 @@ function callCloudStatisticMethod(type: string, methodType: string, params: stri
 
 }
 
-function findParseObject(type: string, query: Parse.Query, objectId: string, parseFun: Any): ThunkAction {
+function findParseObject(type: string, query: Parse.Query, parseId: string, parseFun: Any): ThunkAction {
   return (dispatch) => {
     return query.first({
       success: (object) => {
         const model = parseFun(object);
-        const payload = {objectId, model}
+        const payload = {parseId, model}
         dispatch({type, payload})
       },
       error: (error) => {
@@ -102,12 +102,12 @@ function findParseObject(type: string, query: Parse.Query, objectId: string, par
   }
 }
 
-function loadParseObject(type: string, query: Parse.Query, objectId: string, parseFun: Any): ThunkAction {
+function loadParseObject(type: string, query: Parse.Query, parseId: string, parseFun: Any): ThunkAction {
   return (dispatch) => {
-    return query.get(objectId, {
+    return query.get(parseId, {
       success: (object) => {
         const model = parseFun(object);
-        const payload = {objectId, model}
+        const payload = {parseId, model}
         dispatch({type, payload})
       },
       error: (error) => {
@@ -123,41 +123,43 @@ export default {
    * 'statisticReviews'
    * @param methodType
    * @param params
-   * @param objectId
+   * @param parseId
    * @param type
    * @returns {ThunkAction}
    */
-  invokeParseCloudMethod: (methodType: string, params: Any, objectId: string, type: string = STATISTIC_CLOUD_MODEL): ThunkAction => {
-    return callCloudStatisticMethod(type, methodType, params, objectId)
+  invokeParseCloudMethod: (methodType: string, params: Any, parseId: string, type: string = STATISTIC_CLOUD_MODEL): ThunkAction => {
+    return callCloudStatisticMethod(type, methodType, params, parseId)
   },
 
-  loadUserProfilePage: (objectId: string): ThunkAction => {
-    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_USERS, ['photos']), objectId, fromParseUser)
+  loadUserProfilePage: (parseId: string): ThunkAction => {
+    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_USERS, ['photos']), parseId, fromParseUser)
   },
 
-  loadRestaurantPage: (objectId: string): ThunkAction => {
-    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_RESTAURANTS, ['photos']), objectId, fromParseRestaurant)
+  loadRestaurantPage: (parseId: string): ThunkAction => {
+    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_RESTAURANTS, ['photos']), parseId, fromParseRestaurant)
   },
 
-  loadEventPage: (objectId: string): ThunkAction => {
-    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_EVENTS, ['restaurant', 'restaurant.photos']), objectId, fromParseEvent)
+  loadEventPage: (parseId: string): ThunkAction => {
+    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_EVENTS, ['restaurant', 'restaurant.photos']), parseId, fromParseEvent)
   },
 
-  loadPeopleInEventPage: (objectId: string): ThunkAction => {
+  loadPeopleInEventPage: (parseId: string): ThunkAction => {
     return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_PEOPLE_IN_EVENTS,
       ['user', 'user.photos', 'event', 'restaurant']),
-      objectId,
+      parseId,
       fromParsePeopleInEvent)
   },
 
-  loadOrderedRecipePage: (objectId: string): ThunkAction => {
+  loadOrderedRecipePage: (parseId: string): ThunkAction => {
     return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_RECIPES,
       ['restaurant', 'event', 'user', 'photos']),
-      objectId, fromParseRecipe)
+      parseId, fromParseRecipe)
   },
 
-  loadReviewPage: (objectId: string): ThunkAction => {
-    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_REVIEWS), objectId, fromParseReview)
+  loadReviewPage: (parseId: string): ThunkAction => {
+    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_REVIEWS
+        ['restaurant', 'event', 'recipe', 'user']),
+      parseId, fromParseReview)
   },
 
   resetLoadPage: Action => {

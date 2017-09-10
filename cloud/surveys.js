@@ -94,7 +94,6 @@ Parse.Cloud.define('submit_survey', function (request, response) {
 
   new Parse.Query(SurveyResult)
     .equalTo('user', user)
-    .equalTo('objectId', params.id)
     .find()
     .then(function (results) {
       if (results.length === 0) {

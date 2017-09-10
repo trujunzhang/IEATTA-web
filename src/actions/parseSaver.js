@@ -101,7 +101,7 @@ async function _writeOnlineParseObject(editModelType,
 
   debugger
 
-  const _originalModel = parseOnlineParseObject(objectSchemaName,onlineParseObject);
+  const _originalModel = parseOnlineParseObject(objectSchemaName, onlineParseObject);
   const action = {
     type: WRITE_MODEL_DONE,
     payload: {objectId: model.objectId, originModel: _originalModel}

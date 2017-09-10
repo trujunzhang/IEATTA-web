@@ -89,6 +89,7 @@ class IEAEditReviewLayout extends Component {
 
 
   async onButtonPress() {
+    const {editReview} = this.state;
     const {dispatch, forObject, pageForm, reviewId} = this.props;
 
     const objectId = reviewId;

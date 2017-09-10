@@ -117,7 +117,7 @@ AppConstants.generateNewReviewObject = function (user, forItem, objectSchemaName
   const relativeObject = AppConstants.generateRelativeObjects(forItem, reviewType);
   debugger
   return {
-    objectId: lastModel.objectId || UUID.create().toString(),
+    id: lastModel.id || UUID.create().toString(),
     uniqueId: lastModel.uniqueId || UUID.create().toString(),
     // Attributes
     rate: reviewRating,
