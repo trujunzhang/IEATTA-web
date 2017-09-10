@@ -151,19 +151,13 @@ export default {
   },
 
   loadOrderedRecipePage: (objectId: string): ThunkAction => {
-    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_RECIPES, ['restaurant', 'event', 'user', 'photos']), objectId, fromParseRecipe)
+    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_RECIPES,
+      ['restaurant', 'event', 'user', 'photos']),
+      objectId, fromParseRecipe)
   },
 
-
-  loadReviewPage: (terms: Any, objectId: string): ThunkAction => {
-    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_REVIEWS, ['restaurant', 'event', 'user', 'photos']), objectId, fromParseReview)
-  },
-
-  loadReviewPagexxx: (terms: Any, objectId: string): ThunkAction => {
-    return findParseObject(OVERLAY_LOADED_MODEL_PAGE,
-      getReviewsParameters(terms),
-      objectId,
-      fromParseReview)
+  loadReviewPage: (objectId: string): ThunkAction => {
+    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_REVIEWS), objectId, fromParseReview)
   },
 
   resetLoadPage: Action => {

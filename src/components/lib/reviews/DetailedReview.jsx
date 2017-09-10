@@ -61,12 +61,7 @@ class DetailedReview extends Component {
   componentDidMount() {
     const {reviewType, reviewId, forObjectId, pageForm} = this.state;
     if (pageForm === MODEL_FORM_TYPE_EDIT) {
-      this.props.dispatch(loadReviewPage({
-          reviewType: reviewType,
-          forObject: {id: forObjectId}
-        },
-        reviewId
-      ))
+      this.props.dispatch(loadReviewPage(reviewId,))
     }
     const {objectSchemaName} = AppConstants.realmObjects[reviewType]
     switch (objectSchemaName) {
