@@ -117,9 +117,11 @@ Records.createOnlineParseInstance = async function (editModelType, onlineParseOb
       // step1: common fields.
       onlineParseObject.set('rate', localRecorder.reviewRating)
       onlineParseObject.set('body', localRecorder.reviewBody)
-      onlineParseObject.set('reviewType', localRecorder.reviewType)
 
       if (editModelType === MODEL_FORM_TYPE_NEW) {
+
+        onlineParseObject.set('reviewType', localRecorder.reviewType)
+
         // step2: the logged user submitted the review.
         Records.setParseObjectFieldWithoutData('user', onlineParseObject, localRecorder.currentUserId)
 
