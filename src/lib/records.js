@@ -119,7 +119,6 @@ Records.createOnlineParseInstance = async function (editModelType, onlineParseOb
       onlineParseObject.set('body', localRecorder.reviewBody)
 
       if (editModelType === MODEL_FORM_TYPE_NEW) {
-
         onlineParseObject.set('reviewType', localRecorder.reviewType)
 
         // step2: the logged user submitted the review.
