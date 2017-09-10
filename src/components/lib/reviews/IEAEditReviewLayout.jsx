@@ -22,6 +22,7 @@ const {
   MODEL_FORM_TYPE_NEW,
   MODEL_FORM_TYPE_EDIT,
   ALERT_TYPE_ERROR,
+  ALERT_TYPE_SUCCESS,
 } = require('../../../lib/constants').default
 
 class IEAEditReviewLayout extends Component {
