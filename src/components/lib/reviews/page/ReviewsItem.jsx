@@ -8,8 +8,6 @@ import {Link} from 'react-router'
 
 import {
   getEditReviewLink,
-  getAddPhotoLink,
-  getOrderedRecipeLink,
   getLoggedUserMenuLink
 } from '../../../../lib/link'
 
