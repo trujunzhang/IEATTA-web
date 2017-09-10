@@ -96,7 +96,7 @@ class IEAEditRecipeLayout extends Component {
     const {dispatch, forObject, pageForm} = this.props;
 
     const {id, uniqueId} = forObject;
-    const objectId = id;
+    const parseId = id;
 
     const displayName = this.props.editModel.form.fields.displayName;
     const price = this.props.editModel.form.fields.price;
@@ -110,7 +110,7 @@ class IEAEditRecipeLayout extends Component {
           pageForm,
           PARSE_RECIPES,
           {
-            objectId,
+            parseId,
             uniqueId,
             displayName, price
           })),

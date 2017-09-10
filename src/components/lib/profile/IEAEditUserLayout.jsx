@@ -84,7 +84,7 @@ class IEAEditUserLayout extends Component {
   async onButtonPress() {
     const {dispatch, userProfile} = this.props;
 
-    const objectId = userProfile.id;
+    const parseId = userProfile.id;
     const username = this.props.auth.form.fields.username;
     const email = this.props.auth.form.fields.email;
 
@@ -93,7 +93,10 @@ class IEAEditUserLayout extends Component {
     let errorMessage = null
     try {
       await Promise.race([
-        dispatch(uploadLoggedUser({objectId, username, email})),
+        dispatch(uploadLoggedUser({
+          parseId,
+          username, email
+        })),
         timeout(15000),
       ]);
     } catch (e) {

@@ -92,7 +92,7 @@ class IEAEditReviewLayout extends Component {
     const {editReview} = this.state;
     const {dispatch, forObject, pageForm, reviewId} = this.props;
 
-    const objectId = reviewId;
+    const parsetId = reviewId;
     const {id, uniqueId} = forObject;
     const forObjectId = id;
 
@@ -112,7 +112,7 @@ class IEAEditReviewLayout extends Component {
           pageForm,
           PARSE_REVIEWS,
           {
-            objectId,
+            parseId,
             uniqueId,
             forObjectId,
             reviewRating, reviewBody, reviewType,

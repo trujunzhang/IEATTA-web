@@ -108,13 +108,13 @@ class DetailedRestaurant extends Component {
   }
 
   componentDidMount() {
-    const objectId = this.state.rid;
-    this.props.dispatch(loadRestaurantPage(objectId))
+    const parseId = this.state.rid;
+    this.props.dispatch(loadRestaurantPage(parseId))
     this.props.dispatch(loadPhotosBrowser(this.state.photosTerms))
     this.props.dispatch(invokeParseCloudMethod(CLOUD_STATISTIC_FOR_REVIEWS, {
       reviewType: this.state.modelType,
-      forObjectId: objectId,
-    }, objectId))
+      forObjectId: parseId,
+    }, parseId))
   }
 
   render() {

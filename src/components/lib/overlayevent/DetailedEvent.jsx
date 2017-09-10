@@ -59,12 +59,12 @@ class DetailedEvent extends Component {
   }
 
   componentDidMount() {
-    const objectId = this.state.eid;
-    this.props.dispatch(loadEventPage(objectId))
+    const parseId = this.state.eid;
+    this.props.dispatch(loadEventPage(parseId))
     this.props.dispatch(invokeParseCloudMethod(CLOUD_STATISTIC_FOR_REVIEWS, {
       reviewType: this.state.modelType,
-      forObjectId: objectId,
-    }, objectId))
+      forObjectId: parseId,
+    }, parseId))
   }
 
   render() {
