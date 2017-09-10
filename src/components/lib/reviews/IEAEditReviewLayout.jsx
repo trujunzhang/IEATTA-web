@@ -94,8 +94,8 @@ class IEAEditReviewLayout extends Component {
 
     const editModelType = this.props.editModel.form.editModelType;
 
-    const {editReview} = this.state;
-    const {id, uniqueId, restaurant, event, recipe} = editReview;
+    const originalModel = this.props.editModel.form.originModel;
+    const {id, uniqueId} = originalModel;
 
     const parseId = id;
 
