@@ -30,12 +30,6 @@ const {
   byListId
 } = require('../../filter/filterPosts')
 
-const {
-  generatePhotoTerm,
-  getPageFormType,
-  getSelectPhoto,
-} = require('../../filter/filterRoutes')
-
 
 class IEAUserProfileReviewsLayout extends Component {
 
@@ -49,11 +43,11 @@ class IEAUserProfileReviewsLayout extends Component {
     return (
       <div className="column column-beta">
 
-          <Telescope.components.ReviewsList
-            key={userProfile.id}
-            forObject={this.props.userProfile}
-            reviewListType={REVIEW_LIST_TYPE_USER_PROFILE_ABOUT}
-            reviewTitle={userProfile.username}/>
+        <Telescope.components.ReviewsList
+          key={userProfile.id}
+          forObject={this.props.userProfile}
+          reviewListType={REVIEW_LIST_TYPE_USER_PROFILE_ABOUT}
+          reviewTitle={userProfile.username}/>
 
       </div>
     )
@@ -74,7 +68,6 @@ class IEAUserProfileReviewsLayout extends Component {
 
   render() {
     return (
-
 
       <div className="main-content-wrap main-content-wrap--full">
 
