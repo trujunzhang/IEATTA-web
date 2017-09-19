@@ -27,6 +27,7 @@
 
 const _ = require('underscore')
 
+import Reviews from "../../lib/reviews";
 import Users from "../../lib/users";
 import Photos from "../../lib/photos";
 import AppConstants from '../../lib/appConstants'
@@ -53,10 +54,7 @@ const {
   EVENTS_LIST_FOR_USER,
 } = require('../../lib/constants').default
 
-import {
-  getCurrentPageIndex,
-} from '../../lib/link'
-import Reviews from "../../lib/reviews";
+import {getCurrentPageIndex} from '../../lib/link'
 
 export function checkEditModel(props: Object) {
   return props.location.pathname.indexOf('edit/') !== -1;
@@ -187,23 +185,6 @@ export function getUserQueryId(props) {
   return props.params.uid;
 }
 
-export function generateTermsForReviewsList(props, prefix = "list") {
-  const {id} = props.forObject;
-  const limit = prefix === "page" ? Reviews.config.paginationCountPerPage : 10;
-
-  const listId = `reviews-${prefix}-view-for-${id}`;
-
-  const currentPageIndex = getCurrentPageIndex(props)
-
-  return {
-    ...props,
-    ...props.location.query,
-
-    listId: listId,
-    limit: limit,
-    pageIndex: parseInt(currentPageIndex)
-  };
-}
 
 export function generateTermsForRecipesList(props) {
   const forEvent = props.forEvent || {};

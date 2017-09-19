@@ -11,7 +11,8 @@ import {
 
 const {loadReviewsList} = require('../../../actions').default
 const {byListId, getDefaultListTask} = require('../../filter/filterPosts')
-const {generateTermsForReviewsList} = require('../../filter/filterRoutes')
+
+import PaginationTerms from "../../../lib/paginationTerms";
 
 class IEAReviewsListLayout extends Component {
 
@@ -28,7 +29,7 @@ class IEAReviewsListLayout extends Component {
       displayName: forObjectDisplayName
     };
 
-    const reviewTerms = generateTermsForReviewsList({reviewType, forObject, location}, 'page')
+    const reviewTerms = PaginationTerms.generateTermsForReviewsList({reviewType, forObject, location}, 'page')
 
     this.state = {
       // Common
@@ -54,7 +55,7 @@ class IEAReviewsListLayout extends Component {
       displayName: forObjectDisplayName
     };
 
-    const newReviewsTerms = generateTermsForReviewsList({reviewType, forObject, location}, 'page')
+    const newReviewsTerms = PaginationTerms.generateTermsForReviewsList({reviewType, forObject, location}, 'page')
     const newListTask = byListId(nextProps.listContainerTasks, this.state.reviewTerms, this.state.listTask);
 
     this.setState({

@@ -6,7 +6,8 @@ import {withRouter} from 'react-router'
 const {loadReviewsList} = require('../../../../actions').default
 
 const {byListId, getDefaultListTask} = require('../../../filter/filterPosts')
-const {generateTermsForReviewsList} = require('../../../filter/filterRoutes')
+
+import PaginationTerms from "../../../../lib/paginationTerms";
 
 const {
   REVIEW_LIST_TYPE_NORMAL,
@@ -19,7 +20,7 @@ class ReviewsList extends Component {
   constructor(props) {
     super(props)
 
-    const terms = generateTermsForReviewsList(props)
+    const terms = PaginationTerms.generateTermsForReviewsList(props)
     this.state = {
       terms: terms,
       listTask: getDefaultListTask(terms),
@@ -29,7 +30,7 @@ class ReviewsList extends Component {
   componentWillReceiveProps(nextProps) {
     const lastSort = this.state.terms.sort_by || '';
 
-    const newTerms = generateTermsForReviewsList(nextProps)
+    const newTerms = PaginationTerms.generateTermsForReviewsList(nextProps)
     const newListTask = byListId(nextProps.listContainerTasks, newTerms, this.state.listTask);
 
     this.setState({
