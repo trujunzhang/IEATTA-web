@@ -8,16 +8,14 @@ const {
   getDefaultListTask,
 } = require('../../../filter/filterPosts')
 
-const {
-  generateTermsForRecipesList
-} = require('../../../filter/filterRoutes')
+import PaginationTerms from "../../../../lib/paginationTerms";
 
 class RecipesList extends Component {
 
   constructor(props) {
     super(props)
 
-    const terms = generateTermsForRecipesList(props)
+    const terms = PaginationTerms.generateTermsForRecipesList(props)
 
     this.state = {
       terms: terms,
