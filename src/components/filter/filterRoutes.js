@@ -114,30 +114,9 @@ export function getSelectPhoto(props: Any, photosListTask: Any, lastPhotoIndex) 
     }
   }
 
-
   return lastPhotoIndex;
 }
 
-export function generatePhotoTerm(objectSchemaName, forObjectId, pageForm = PAGE_MAIN_FORM, props) {
-  const isPhotosBrowserPage = (pageForm === PAGE_PHOTOS_BROWSER_FORM);
-
-  const termType = isPhotosBrowserPage ? 'page' : 'list';
-  const limit = isPhotosBrowserPage ? Photos.config.paginationCountPerPage : -1;
-  const listId = `photos-${termType}-view-for-parseId-${forObjectId}`
-
-  const currentPageIndex = getCurrentPageIndex(props)
-
-  const photoTerms = {
-    listId: listId,
-    forObjectId: forObjectId,
-    objectSchemaName: objectSchemaName,
-    allItems: (limit === -1),
-    limit: limit,
-    pageIndex: parseInt(currentPageIndex)
-  }
-
-  return photoTerms;
-}
 
 export function isNewModelPage(pageForm) {
   return (pageForm === MODEL_FORM_TYPE_NEW);

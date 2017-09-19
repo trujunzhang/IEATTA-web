@@ -11,9 +11,11 @@ const {
   PARSE_REVIEWS,
   PARSE_PEOPLE_IN_EVENTS,
   // List Type.
-  EVENTS_LIST_FOR_RESTAURANT
+  EVENTS_LIST_FOR_RESTAURANT,
+  PAGE_PHOTOS_BROWSER_FORM,
 } = require('./constants').default
 
+import Photos from "./photos";
 import Reviews from "./reviews";
 import {getCurrentPageIndex} from './link'
 
@@ -99,6 +101,27 @@ PaginationTerms.generateTermsForRestaurantList = function (props) {
   };
 }
 
+
+PaginationTerms.generatePhotoTerm = function (objectSchemaName, forObjectId, pageForm = PAGE_MAIN_FORM, props) {
+  const isPhotosBrowserPage = (pageForm === PAGE_PHOTOS_BROWSER_FORM);
+
+  const termType = isPhotosBrowserPage ? 'page' : 'list';
+  const limit = isPhotosBrowserPage ? Photos.config.paginationCountPerPage : -1;
+  const listId = `photos-${termType}-view-for-parseId-${forObjectId}`
+
+  const currentPageIndex = getCurrentPageIndex(props)
+
+  const photoTerms = {
+    listId: listId,
+    forObjectId: forObjectId,
+    objectSchemaName: objectSchemaName,
+    allItems: (limit === -1),
+    limit: limit,
+    pageIndex: parseInt(currentPageIndex)
+  }
+
+  return photoTerms;
+}
 
 export default PaginationTerms;
 

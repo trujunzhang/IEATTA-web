@@ -32,12 +32,9 @@ const {
   byListId
 } = require('../../filter/filterPosts')
 
-const {
-  generatePhotoTerm,
-  getPageFormType,
-  getSelectPhoto,
-  checkNeedUpdatePhotosTask
-} = require('../../filter/filterRoutes')
+const {getPageFormType, getSelectPhoto, checkNeedUpdatePhotosTask} = require('../../filter/filterRoutes')
+
+import PaginationTerms from "../../../lib/paginationTerms";
 
 class DetailedRestaurant extends Component {
 
@@ -47,7 +44,7 @@ class DetailedRestaurant extends Component {
     const photoBrowserInstance = new PhotoBrowser()
 
     const pageForm = getPageFormType(PARSE_RESTAURANTS, props, null)
-    const photosTerms = generatePhotoTerm(PARSE_RESTAURANTS, props.params.rid, pageForm, props)
+    const photosTerms = PaginationTerms.generatePhotoTerm(PARSE_RESTAURANTS, props.params.rid, pageForm, props)
 
     this.state = this.initialState = {
       rid: props.params.rid,
@@ -73,7 +70,7 @@ class DetailedRestaurant extends Component {
     const lastPhotosTerms = this.state.photosTerms;
 
     const newPageForm = getPageFormType(PARSE_RESTAURANTS, nextProps, this.state.pageForm)
-    const newPhotosTerms = generatePhotoTerm(PARSE_RESTAURANTS, nextProps.params.rid, newPageForm, nextProps)
+    const newPhotosTerms = PaginationTerms.generatePhotoTerm(PARSE_RESTAURANTS, nextProps.params.rid, newPageForm, nextProps)
     const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms, this.state.photosListTask);
 
     const newRestaurant = getModelByObjectId(nextProps, this.state.rid, this.state.forObject);

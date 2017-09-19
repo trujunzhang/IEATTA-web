@@ -22,13 +22,9 @@ const {
   byListId
 } = require('../../filter/filterPosts')
 
-const {
-  generatePhotoTerm,
-  getPageFormType,
-  getSelectPhoto,
-  checkNeedUpdatePhotosTask
-} = require('../../filter/filterRoutes')
+const {getPageFormType, getSelectPhoto, checkNeedUpdatePhotosTask} = require('../../filter/filterRoutes')
 
+import PaginationTerms from "../../../lib/paginationTerms";
 
 class IEAUserProfilePhotosLayout extends Component {
 
@@ -38,7 +34,7 @@ class IEAUserProfilePhotosLayout extends Component {
     const photoBrowserInstance = new PhotoBrowser()
     const pageForm = getPageFormType(PARSE_USERS, props, null)
 
-    const photosTerms = generatePhotoTerm(PARSE_USERS, props.userProfile.id, pageForm, props)
+    const photosTerms = PaginationTerms.generatePhotoTerm(PARSE_USERS, props.userProfile.id, pageForm, props)
 
     this.state = this.initialState = {
       // photos
@@ -59,7 +55,7 @@ class IEAUserProfilePhotosLayout extends Component {
     const lastPhotosTerms = this.state.photosTerms;
 
     const newPageForm = getPageFormType(PARSE_USERS, nextProps, this.state.pageForm)
-    const newPhotosTerms = generatePhotoTerm(PARSE_USERS, nextProps.userProfile.id, newPageForm, nextProps)
+    const newPhotosTerms = PaginationTerms.generatePhotoTerm(PARSE_USERS, nextProps.userProfile.id, newPageForm, nextProps)
     const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms, this.state.photosListTask);
 
     this.setState({

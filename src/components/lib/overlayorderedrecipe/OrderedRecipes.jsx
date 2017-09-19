@@ -30,12 +30,8 @@ const {
   byListId,
 } = require('../../filter/filterPosts')
 
-const {
-  generatePhotoTerm,
-  getPageFormType,
-  getSelectPhoto,
-  checkNeedUpdatePhotosTask
-} = require('../../filter/filterRoutes')
+const {getPageFormType, getSelectPhoto, checkNeedUpdatePhotosTask} = require('../../filter/filterRoutes')
+import PaginationTerms from "../../../lib/paginationTerms";
 
 class OrderedRecipes extends Component {
   constructor(props, context) {
@@ -44,7 +40,7 @@ class OrderedRecipes extends Component {
     const photoBrowserInstance = new PhotoBrowser()
 
     const pageForm = getPageFormType(PARSE_RECIPES, props, null)
-    const photosTerms = generatePhotoTerm(PARSE_RECIPES, props.params.oid, pageForm, props)
+    const photosTerms = PaginationTerms.generatePhotoTerm(PARSE_RECIPES, props.params.oid, pageForm, props)
 
     this.state = this.initialState = {
       oid: props.params.oid,
@@ -72,7 +68,7 @@ class OrderedRecipes extends Component {
     const oldOID = this.state.oid;
 
     const newPageForm = getPageFormType(PARSE_RECIPES, nextProps, this.state.pageForm)
-    const newPhotosTerms = generatePhotoTerm(PARSE_RECIPES, nextProps.params.oid, newPageForm, nextProps)
+    const newPhotosTerms = PaginationTerms.generatePhotoTerm(PARSE_RECIPES, nextProps.params.oid, newPageForm, nextProps)
     const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms, this.state.photosListTask);
 
     this.setState({
