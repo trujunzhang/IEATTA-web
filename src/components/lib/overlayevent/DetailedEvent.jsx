@@ -21,15 +21,8 @@ const {
   PARSE_EVENTS
 } = require('../../../lib/constants').default
 
-const {
-  getModelByObjectId,
-} = require('../../filter/filterPosts')
-
-const {
-  generatePhotoTerm,
-  getPageFormType,
-  getSelectPhoto,
-} = require('../../filter/filterRoutes')
+const {getModelByObjectId} = require('../../filter/filterPosts')
+const {getPageFormType} = require('../../filter/filterRoutes')
 
 class DetailedEvent extends Component {
   constructor(props, context) {

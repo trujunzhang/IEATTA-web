@@ -6,9 +6,9 @@ const {
   loadPeopleInEventList,
 } = require('../../../../actions').default
 
-const {generateTermsForEventsList} = require('../../../filter/filterRoutes')
 const {byListId, getDefaultListTask} = require('../../../filter/filterPosts')
 
+import PaginationTerms from "../../../../lib/paginationTerms";
 
 const {
   EVENTS_LIST_FOR_RESTAURANT,
@@ -20,7 +20,7 @@ class EventsList extends Component {
   constructor(props) {
     super(props)
 
-    const terms = generateTermsForEventsList(props)
+    const terms = PaginationTerms.generateTermsForEventsList(props)
     this.state = {
       terms: terms,
       listTask: getDefaultListTask(terms),

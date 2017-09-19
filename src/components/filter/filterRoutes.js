@@ -186,40 +186,6 @@ export function getUserQueryId(props) {
 }
 
 
-export function generateTermsForEventsList({eventType, forObject}) {
-  const listId = forObject.id;
-  const extendProps = (eventType === EVENTS_LIST_FOR_RESTAURANT) ? {
-    restaurantId: listId
-  } : {
-    userId: listId
-  }
-  return {
-    listId: 'event-list-view-for-' + listId,
-    limit: 10,
-    ...extendProps
-  };
-}
-
-export function generateTermsForOrderedUsersList(props) {
-  const listId = props.forObject.id;
-  return {
-    listId: 'ordered-users-list-view-for-' + listId,
-    limit: 10,
-    eventId: listId,
-    restaurantId: props.forObject.restaurant.id
-  };
-}
-
-export function generateTermsForRestaurantList(props) {
-  const {location} = props;
-
-  return {
-    ...location.query,
-    limit: 10,
-    listId: 'single-list-view-for-restaurants'
-  };
-}
-
 export function checkNeedUpdatePhotosTask(lastPageForm, newPageForm) {
   return (
     lastPageForm !== PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY

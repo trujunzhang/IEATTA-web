@@ -9,7 +9,9 @@ const {
   PARSE_RECIPES,
   PARSE_PHOTOS,
   PARSE_REVIEWS,
-  PARSE_PEOPLE_IN_EVENTS
+  PARSE_PEOPLE_IN_EVENTS,
+  // List Type.
+  EVENTS_LIST_FOR_RESTAURANT
 } = require('./constants').default
 
 import Reviews from "./reviews";
@@ -58,6 +60,43 @@ PaginationTerms.generateTermsForRecipesList = function (props) {
   };
 
   return terms;
+}
+
+
+PaginationTerms.generateTermsForEventsList = function ({eventType, forObject}) {
+  const listId = forObject.id;
+  const extendProps = (eventType === EVENTS_LIST_FOR_RESTAURANT) ? {
+    restaurantId: listId
+  } : {
+    userId: listId
+  }
+
+  return {
+    listId: 'event-list-view-for-' + listId,
+    limit: 10,
+    ...extendProps
+  };
+}
+
+PaginationTerms.generateTermsForOrderedUsersList = function (props) {
+  const listId = props.forObject.id;
+  return {
+    listId: 'ordered-users-list-view-for-' + listId,
+    limit: 10,
+    eventId: listId,
+    restaurantId: props.forObject.restaurant.id
+  };
+}
+
+
+PaginationTerms.generateTermsForRestaurantList = function (props) {
+  const {location} = props;
+
+  return {
+    ...location.query,
+    limit: 10,
+    listId: 'single-list-view-for-restaurants'
+  };
 }
 
 

@@ -3,7 +3,8 @@ import React, {Component} from 'react'
 
 const {loadPeopleInEventList} = require('../../../../actions').default
 
-const {generateTermsForOrderedUsersList} = require('../../../filter/filterRoutes')
+import PaginationTerms from "../../../../lib/paginationTerms";
+
 const {byListId, getDefaultListTask} = require('../../../filter/filterPosts')
 
 class OrderedUserList extends Component {
@@ -11,7 +12,7 @@ class OrderedUserList extends Component {
   constructor(props) {
     super(props)
 
-    const terms = generateTermsForOrderedUsersList(props)
+    const terms = PaginationTerms.generateTermsForOrderedUsersList(props)
     this.state = {
       terms: terms,
       listTask: getDefaultListTask(terms),

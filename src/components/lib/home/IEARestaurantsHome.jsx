@@ -11,9 +11,7 @@ const {
   getMarker,
 } = require('../../filter/filterPosts')
 
-const {
-  generateTermsForRestaurantList,
-} = require('../../filter/filterRoutes')
+import PaginationTerms from "../../../lib/paginationTerms";
 
 
 /**
@@ -26,7 +24,7 @@ class IEARestaurantsHome extends Component {
   constructor(props) {
     super(props)
 
-    const terms = generateTermsForRestaurantList(props)
+    const terms = PaginationTerms.generateTermsForRestaurantList(props)
 
     this.state = {
       terms: terms,
@@ -53,7 +51,7 @@ class IEARestaurantsHome extends Component {
     const query = nextProps.location.query;
     const {currentSearch} = this.state;
     if ((!!query.search && query.search !== currentSearch || (!query.search && !!currentSearch))) {
-      const searchTerms = generateTermsForRestaurantList(nextProps)
+      const searchTerms = PaginationTerms.generateTermsForRestaurantList(nextProps)
       const searchListTask = getDefaultListTask(searchTerms)
 
       this.setState({
