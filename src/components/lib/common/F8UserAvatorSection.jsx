@@ -20,7 +20,8 @@ class F8UserAvatorSection extends Component {
               <Link to={getLoggedUserMenuLink(user)} className="ordered-user-avator">
 
                 <Telescope.components.F8PlaceHolderImage
-                  alt={user.username || ""}
+                  key={user.username}
+                  alt={user.username}
                   className="photo-box-img"
                   width="250"
                   height="250"
