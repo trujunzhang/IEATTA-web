@@ -218,6 +218,7 @@ class F8PhotosSelectRightPanel extends Component {
   onOwnSelectedUserPress = () => {
     const {selectedUserId} = this.state;
     const {selectedPhotoInfo} = this.props;
+    const {photoId} = selectedPhotoInfo;
 
     debugger
   }
