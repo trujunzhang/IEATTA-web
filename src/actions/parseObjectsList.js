@@ -34,7 +34,6 @@ const {
   getEventParameters,
   getPeopleInEventParameters,
   getUsersParameters,
-  getQueryByType
 } = require('../parse/parseUtiles').default
 
 const {
@@ -122,6 +121,10 @@ function loadPhotosBrowser(terms: Any): ThunkAction {
   return loadListByType(terms, getPhotosParameters(terms), terms, fromParsePhoto)
 }
 
+function loadUsersWithoutAnonymousList(listTask: Any, terms: Any): ThunkAction {
+  return loadListByType(listTask, getUsersParameters(terms), terms, fromParseUser)
+}
+
 export default {
   loadRestaurantsList,
   loadEventsList,
@@ -129,4 +132,5 @@ export default {
   loadReviewsList,
   loadRecipesList,
   loadPhotosBrowser,
+  loadUsersWithoutAnonymousList,
 }

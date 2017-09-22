@@ -2,16 +2,18 @@ import Telescope from '../../index'
 import React, {Component} from 'react';
 
 import {Link} from 'react-router'
+import PaginationTerms from "../../../../lib/paginationTerms";
 
 class F8PhotosSelectRightPanel extends Component {
 
   constructor(props) {
     super(props)
 
+    const terms = PaginationTerms.generateTermsForEventsList(props)
     this.state = {
-      isShowSelectList: false
+      terms: terms,
+      listTask: getDefaultListTask(terms),
     }
-
   }
 
   render() {

@@ -51,7 +51,6 @@ const {
 } = require('../lib/constants').default
 
 const {
-  getUsersParameters,
   getQueryByType
 } = require('../parse/parseUtiles').default
 

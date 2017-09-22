@@ -15,6 +15,7 @@ export default class UsersParameters {
 
   addParameters(terms: Any) {
 
+    this.query.notContainedIn('username', ['anonymous'])
 
     return this
   }

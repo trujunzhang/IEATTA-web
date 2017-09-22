@@ -28,7 +28,6 @@ const Parse = require('parse')
 import type {ThunkAction} from './types'
 
 const {
-  getUsersParameters,
   getQueryByType,
   getReviewsParameters
 } = require('../parse/parseUtiles').default
