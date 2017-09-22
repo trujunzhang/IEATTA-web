@@ -173,13 +173,14 @@ async function _ownAnotherPhotoUser(photoId: string, selectedUserId: string): Pr
   // step1: get online photo instance.
   const onlinePhoto = await getQueryByType(PARSE_PHOTOS).get(photoId)
 
-  debugger
-
   const ownerUser = getInstanceWithoutData(PARSE_USERS, selectedUserId)
   onlinePhoto.set('owner', ownerUser);
 
   // step2: update user.
   await onlinePhoto.save()
+
+  // step3: save it's recorder.
+  await updateParseRecorder(PARSE_PHOTOS, onlinePhoto)
 
   const action = {
     type: SAVE_MODEL_REQUEST,
