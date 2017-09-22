@@ -18,7 +18,6 @@ const {
 class UserProfileLeftMenusPanel extends Component {
 
   render() {
-
     const userProfileMenus = [
       LOGGED_USER_MENU_ABOUT,
       LOGGED_USER_MENU_REVIEWS,

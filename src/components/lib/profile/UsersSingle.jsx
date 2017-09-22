@@ -61,6 +61,10 @@ class UsersSingle extends Component {
       userStatistic: getModelByObjectId(nextProps, this.state.uid, this.state.userStatistic, 'statistic'),
     })
 
+    this.updateNewUserProfile(nextProps)
+  }
+
+  updateNewUserProfile(nextProps) {
     const newUid = getUserQueryId(nextProps);
     if (this.state.uid !== newUid) {
       this.setState({

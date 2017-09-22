@@ -63,9 +63,7 @@ class UserProfileSingleHeader extends Component {
     return (
       <div className="user-profile_actions arrange_unit">
         <ul className="action-link-list">
-
           <li>
-
             <a className="arrange arrange--middle add-friend">
               <div className="action-link_icon arrange_unit">
             <span id="icon_18X18" className="icon icon--18-add-friend icon--size-18 icon--currentColor">
@@ -133,6 +131,8 @@ class UserProfileSingleHeader extends Component {
   }
 
   render() {
+    const {uid, userProfile} = this.props;
+
     return (
       <div className="content-container" style={{height: '184px'}}>
 
@@ -142,7 +142,7 @@ class UserProfileSingleHeader extends Component {
           {this.renderColumnTwo()}
         </div>
 
-        <Telescope.components.F8UserAvatorSection user={this.props.userProfile}/>
+        <Telescope.components.F8UserAvatorSection key={uid} user={userProfile}/>
 
       </div>
     )
