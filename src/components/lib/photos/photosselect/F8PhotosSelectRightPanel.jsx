@@ -4,6 +4,11 @@ import React, {Component} from 'react';
 import {Link} from 'react-router'
 import PaginationTerms from "../../../../lib/paginationTerms";
 
+const {
+  byListId,
+  getDefaultListTask,
+} = require('../../../filter/filterPosts')
+
 const {loadUsersWithoutAnonymousList} = require('../../../../actions').default
 
 class F8PhotosSelectRightPanel extends Component {
@@ -11,11 +16,22 @@ class F8PhotosSelectRightPanel extends Component {
   constructor(props) {
     super(props)
 
-    const terms = PaginationTerms.generateTermsForEventsList(props)
+    const terms = PaginationTerms.generateTermsForUsersWithoutAnonymousList(props)
+    const usersListTask = getDefaultListTask(terms);
     this.state = {
       terms: terms,
-      listTask: getDefaultListTask(terms),
+      listTask: usersListTask
     }
+
+    props.dispatch(loadUsersWithoutAnonymousList(usersListTask, terms))
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const newListTask = byListId(nextProps.listContainerTasks, this.state.terms, this.state.listTask);
+    debugger
+    this.setState({
+      listTask: newListTask
+    })
   }
 
   render() {
