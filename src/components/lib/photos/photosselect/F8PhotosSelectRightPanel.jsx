@@ -1,6 +1,8 @@
 import Telescope from '../../index'
 import React, {Component} from 'react';
 
+const _ = require('underscore')
+
 import {Link} from 'react-router'
 import PaginationTerms from "../../../../lib/paginationTerms";
 
@@ -164,6 +166,9 @@ class F8PhotosSelectRightPanel extends Component {
     const {userId} = selectedPhotoInfo;
     const {listTask} = this.state;
     const {results} = listTask;
+    const selectedIndex = _.findIndex(results, function (item) {
+      return item.id === userId;
+    });
     return (
       <div className='yform'>
         <div className="u-inline-block u-align-bottom">
@@ -176,11 +181,7 @@ class F8PhotosSelectRightPanel extends Component {
                     name="starts_time"
                     id="starts_time">
               {results.map((item, index) => {
-                let isSelected = false;
-                if (item.id === userId) {
-                  isSelected = true;
-                }
-
+                const isSelected = selectedIndex === -1 ? (index === 0) : (selectedIndex === index);
                 return (
                   <option selected={isSelected} value={item.id}>{item.username}</option>
                 )
