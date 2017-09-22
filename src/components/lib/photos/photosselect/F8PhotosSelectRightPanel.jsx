@@ -29,6 +29,7 @@ class F8PhotosSelectRightPanel extends Component {
       //
       // isShowReselectUser: false,
       isShowReselectUser: true,
+      isButtonSaving: false,
       //
       selectedUserId: null,
       terms: terms,
@@ -210,7 +211,7 @@ class F8PhotosSelectRightPanel extends Component {
           </div>
 
           <button id="create-event" name="action_submit" value="Submit"
-                  disabled={!this.state.selectedUserId}
+                  disabled={!this.state.selectedUserId || this.state.isButtonSaving}
                   onClick={this.onOwnSelectedUserPress.bind(this)}
                   className="ybtn ybtn--primary disable-on-submit js-submit-event">
             <span>Own Selected User</span>
@@ -227,6 +228,7 @@ class F8PhotosSelectRightPanel extends Component {
 
     const {dispatch} = this.props;
 
+    this.setState({isButtonSaving: true})
     let errorMessage = null
     try {
       await Promise.race([
@@ -240,9 +242,9 @@ class F8PhotosSelectRightPanel extends Component {
         this.props.dispatch(showAlertMessage({type: ALERT_TYPE_ERROR, text: errorMessage}))
       }
     } finally {
+      this.setState({isButtonSaving: false})
       if (!!errorMessage) {
       } else {
-
       }
     }
   }
