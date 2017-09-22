@@ -14,7 +14,6 @@ class F8PhotosSelectRightPanel extends Component {
             {this.renderTopUserInfo()}
 
             <div className="media-info_container">
-              {this.renderPhotoCreatedAt()}
 
               <div className="media-info_item voting-feedback clearfix">
                 <div className="media-info_vote">
@@ -126,7 +125,13 @@ class F8PhotosSelectRightPanel extends Component {
                     {selectedPhotoInfo.username}
                   </Link>
                 </li>
+                <li>
+                  <span className="selected-photo-upload-date time-stamp">
+                     {selectedPhotoInfo.createdAtFormat}
+                  </span>
+                </li>
               </ul>
+
 
             </div>
 
