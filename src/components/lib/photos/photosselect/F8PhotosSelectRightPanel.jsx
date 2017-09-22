@@ -29,8 +29,7 @@ class F8PhotosSelectRightPanel extends Component {
     const usersListTask = getDefaultListTask(terms);
     this.state = {
       //
-      // isShowReselectUser: false,
-      isShowReselectUser: true,
+      isShowReselectUser: false,
       isButtonSaving: false,
       //
       selectedUserId: null,
@@ -43,15 +42,8 @@ class F8PhotosSelectRightPanel extends Component {
 
   componentWillReceiveProps(nextProps) {
     const newListTask = byListId(nextProps.listContainerTasks, this.state.terms, this.state.listTask);
-    const {results} = newListTask;
 
-    const {userId} = nextProps.selectedPhotoInfo;
-    let selectedUserIndex = _.findIndex(results, function (item) {
-      return item.id === userId;
-    });
-    if (selectedUserIndex === -1) {
-      selectedUserIndex = 0;
-    }
+    const selectedUserIndex = Users.getSelectedUserIndex(newListTask, nextProps);
     const selectedUserId = results.length > 0 ? results[selectedUserIndex].id : null;
 
     this.setState({
@@ -255,6 +247,7 @@ class F8PhotosSelectRightPanel extends Component {
 
 
 import {connect} from 'react-redux'
+import Users from "../../../../lib/users";
 
 function select(store) {
   return {

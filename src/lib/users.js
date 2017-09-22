@@ -97,4 +97,18 @@ Users.isLeftMenuActive = function (row, props) {
   return (`${pathname}/`.indexOf(`${row.path}/`) !== -1);
 }
 
+Users.getSelectedUserIndex = function (newListTask, {selectedPhotoInfo}) {
+  const {results} = newListTask;
+  const {userId} = selectedPhotoInfo;
+
+  let selectedUserIndex = _.findIndex(results, function (item) {
+    return item.id === userId;
+  })
+
+  if (selectedUserIndex === -1) {
+    selectedUserIndex = 0;
+  }
+  return selectedUserIndex;
+}
+
 export default Users
