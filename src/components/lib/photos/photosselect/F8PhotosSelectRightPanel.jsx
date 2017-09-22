@@ -214,11 +214,11 @@ class F8PhotosSelectRightPanel extends Component {
   }
 
   async onOwnSelectedUserPress() {
+    const {dispatch} = this.props;
+
     const {selectedUserId} = this.state;
     const {selectedPhotoInfo, photosTerms} = this.props;
     const {photoId} = selectedPhotoInfo;
-
-    const {dispatch} = this.props;
 
     this.setState({isButtonSaving: true})
     let errorMessage = null

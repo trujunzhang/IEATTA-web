@@ -102,13 +102,12 @@ export function getPageFormType(pageType, props: Object, lastFormType: Any) {
   return PAGE_MAIN_FORM;
 }
 
-export function getSelectPhoto(props: Any, photosListTask: Any, lastPhotoIndex) {
-  const {results} = photosListTask;
+export function getSelectPhoto(props: Any, {results}: Any, lastPhotoIndex) {
   if (results && results.length > 0) {
-    const isPhotoBrowserSelectionId = checkPhotosBrowserSelection(props);
-    if (!!isPhotoBrowserSelectionId && isPhotoBrowserSelectionId !== '') {
+    const currentSelectedPhotoId = checkPhotosBrowserSelection(props);
+    if (!!currentSelectedPhotoId && currentSelectedPhotoId !== '') {
       const selectedIndex = _.findLastIndex(results, {
-        id: isPhotoBrowserSelectionId
+        id: currentSelectedPhotoId
       });
       return selectedIndex;
     }
