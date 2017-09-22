@@ -48,9 +48,6 @@ Records.setParseObjectFieldWithoutDataBySchema = function (objectSchemaName, ins
 
 
 Records.createOnlineParseInstance = async function (editModelType, onlineParseObject, objectSchemaName, localRecorder) {
-
-  debugger
-
   if (!localRecorder.uniqueId) {
     throw new Error('You need to set a model uniqueId!')
   }
@@ -111,6 +108,9 @@ Records.createOnlineParseInstance = async function (editModelType, onlineParseOb
       // Photo images.
       onlineParseObject.set('thumbnail', localRecorder.thumbnail)
       onlineParseObject.set('original', localRecorder.thumbnail)
+
+      // Pointer
+      onlineParseObject.set('forObjectUniqueId', AppConstants.getUniqueIdByType(localRecorder, localRecorder.modelType))
 
       // step2: the logged user submitted the photo (for web).
       Records.setParseObjectFieldWithoutData('user', onlineParseObject, localRecorder.currentUserId)

@@ -134,6 +134,19 @@ AppConstants.generateNewReviewObject = function (user, forItem, objectSchemaName
   }
 }
 
+AppConstants.getUniqueIdByType = function (instance, modelType) {
+  const {objectSchemaName} = AppConstants.realmObjects[modelType]
+
+  switch (objectSchemaName) {
+    case PARSE_RESTAURANTS:
+      return instance.restaurant.uniqueId;
+    case PARSE_RECIPES:
+      return instance.recipe.uniqueId;
+    case PARSE_USERS:
+      return instance.user.uniqueId;
+  }
+}
+
 
 export default AppConstants;
 
