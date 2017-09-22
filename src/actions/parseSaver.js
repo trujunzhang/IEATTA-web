@@ -33,6 +33,7 @@ import Records from "../lib/records";
 
 
 const {
+  getInstanceWithoutData,
   createParseInstance,
 } = require('../parse/objects').default
 
@@ -168,15 +169,17 @@ function invokeEventFromAction(action: Promise<Array<Action>>): ThunkAction {
 }
 
 
-async function _ownAnotherPhotoUser(model: object): Promise<Array<Action>> {
-  // step1: get logged user.
-  const current = await getQueryByType(PARSE_USERS).get(model.parseId)
+async function _ownAnotherPhotoUser(photoId: string, selectedUserId: string): Promise<Array<Action>> {
+  // step1: get online photo instance.
+  const onlinePhoto = await getQueryByType(PARSE_PHOTOS).get(photoId)
 
-  current.set('username', model.username)
-  current.set('email', model.email)
+  debugger
+
+  const ownerUser = getInstanceWithoutData(PARSE_USERS, selectedUserId)
+  onlinePhoto.set('owner', ownerUser);
 
   // step2: update user.
-  await current.save()
+  await onlinePhoto.save()
 
   const action = {
     type: SAVE_MODEL_REQUEST,
@@ -206,8 +209,8 @@ export default {
   },
 
   // Photos owner
-  ownAnotherPhotoUser(model: object): ThunkAction {
-    return invokeEventFromAction(_ownAnotherPhotoUser(model))
+  ownAnotherPhotoUser(photoId: string, selectedUserId: string): ThunkAction {
+    return invokeEventFromAction(_ownAnotherPhotoUser(photoId, selectedUserId))
   },
 
 }

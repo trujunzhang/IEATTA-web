@@ -12,7 +12,11 @@ const {
 } = require('../../../filter/filterPosts')
 
 
-const {loadUsersWithoutAnonymousList, writeOnlineParseObject} = require('../../../../actions').default
+const {
+  loadUsersWithoutAnonymousList,
+  ownAnotherPhotoUser,
+  timeout,
+} = require('../../../../actions').default
 
 class F8PhotosSelectRightPanel extends Component {
 
@@ -195,7 +199,7 @@ class F8PhotosSelectRightPanel extends Component {
               {results.map((item, index) => {
                 const isSelected = (selectedUserIndex === index);
                 return (
-                  <option selected={isSelected} value={item.id}>{item.username}</option>
+                  <option key={item.id} selected={isSelected} value={item.id}>{item.username}</option>
                 )
               })}
             </select>
@@ -206,7 +210,8 @@ class F8PhotosSelectRightPanel extends Component {
           </div>
 
           <button id="create-event" name="action_submit" value="Submit"
-                  onClick={this.onOwnSelectedUserPress}
+                  disabled={!this.state.selectedUserId}
+                  onClick={this.onOwnSelectedUserPress.bind(this)}
                   className="ybtn ybtn--primary disable-on-submit js-submit-event">
             <span>Own Selected User</span>
           </button>
@@ -215,12 +220,31 @@ class F8PhotosSelectRightPanel extends Component {
     )
   }
 
-  onOwnSelectedUserPress = () => {
+  async onOwnSelectedUserPress() {
     const {selectedUserId} = this.state;
     const {selectedPhotoInfo} = this.props;
     const {photoId} = selectedPhotoInfo;
 
-    debugger
+    const {dispatch} = this.props;
+
+    let errorMessage = null
+    try {
+      await Promise.race([
+        dispatch(ownAnotherPhotoUser(photoId, selectedUserId)),
+        timeout(15000),
+      ]);
+    } catch (e) {
+      const message = e.message || e;
+      if (message !== 'Timed out' && message !== 'Canceled by user') {
+        errorMessage = message;
+        this.props.dispatch(showAlertMessage({type: ALERT_TYPE_ERROR, text: errorMessage}))
+      }
+    } finally {
+      if (!!errorMessage) {
+      } else {
+
+      }
+    }
   }
 }
 
