@@ -115,9 +115,7 @@ Photos.generateHeaderRightPhotoObject = function (props) {
  * @param props
  * @returns {{createdAtFormat: string}}
  */
-Photos.generateSelectedPhotoInfo = function (props) {
-  debugger
-  const {photosListTask, selectPhotoIndex} = props;
+Photos.generateSelectedPhotoInfo = function ({photosListTask, selectPhotoIndex}) {
   const photos = photosListTask.results;
   const current = photos[selectPhotoIndex];
   return {
@@ -135,7 +133,7 @@ Photos.generateScrollPhotoIndex = function (props, action, last = {}) {
 
   const showPhotosIndex = [];
 
-  for (var i = 0; i < 3; i++) {
+  for (let i = 0; i < 3; i++) {
     if (currentIndex + i < total) {
       showPhotosIndex.push(currentIndex + i);
     }
