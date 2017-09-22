@@ -4,6 +4,8 @@ import React, {Component} from 'react';
 import {Link} from 'react-router'
 import PaginationTerms from "../../../../lib/paginationTerms";
 
+const {loadUsersWithoutAnonymousList} = require('../../../../actions').default
+
 class F8PhotosSelectRightPanel extends Component {
 
   constructor(props) {
