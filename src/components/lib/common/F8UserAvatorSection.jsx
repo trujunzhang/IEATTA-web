@@ -37,9 +37,7 @@ class F8UserAvatorSection extends Component {
   }
 
   render() {
-    const {
-      sectionClass = "ordered-user-profile"
-    } = this.props;
+    const {sectionClass} = this.props;
 
     return (
       <div className={sectionClass}>
@@ -51,5 +49,15 @@ class F8UserAvatorSection extends Component {
   }
 
 }
+
+
+F8UserAvatorSection.propTypes = {
+  sectionClass: React.PropTypes.string
+};
+
+F8UserAvatorSection.defaultProps = {
+  sectionClass: "ordered-user-profile"
+};
+
 
 export default F8UserAvatorSection;
