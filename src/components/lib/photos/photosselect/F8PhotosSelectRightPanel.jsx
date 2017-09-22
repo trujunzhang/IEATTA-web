@@ -19,6 +19,7 @@ class F8PhotosSelectRightPanel extends Component {
     const terms = PaginationTerms.generateTermsForUsersWithoutAnonymousList(props)
     const usersListTask = getDefaultListTask(terms);
     this.state = {
+      isShowReselectUser: false,
       terms: terms,
       listTask: usersListTask
     }
@@ -35,7 +36,6 @@ class F8PhotosSelectRightPanel extends Component {
 
   render() {
     return (
-
       <div className="media-details-grid_side media-details-grid_side--with-local-ads">
         <div className="media-details-grid_side-inner">
           <div className="media-info">
@@ -73,7 +73,7 @@ class F8PhotosSelectRightPanel extends Component {
               {this.renderReselect()}
             </ul>
 
-            {this.renderUsersList()}
+            {this.state.isShowReselectUser && this.renderUsersList()}
 
           </div>
 
@@ -86,7 +86,11 @@ class F8PhotosSelectRightPanel extends Component {
   renderReselect() {
     return (
       <li className="voting-stat inline-block">
-        <a className="ybtn ybtn--small helpful">
+        <a
+          onClick={() => {
+            this.setState({isShowReselectUser: true})
+          }}
+          className="ybtn ybtn--small helpful">
             <span id="icon_18X18" className="icon icon--18-arrow-up icon--size-18 icon--currentColor button-content">
                 <svg className="icon_svg">
                     <path
@@ -153,15 +157,18 @@ class F8PhotosSelectRightPanel extends Component {
   }
 
   renderUsersList() {
+    const {listTask} = this.state;
+    const {results} = listTask;
     return (
       <div className='yform'>
         <div className="u-inline-block u-align-bottom">
           <div className="yselect">
             <select className="event-start-time-picker u-inline-block" name="starts_time" id="starts_time">
-              <option value="12:00 am">12:00 am</option>
-              <option value="12:30 am">12:30 am</option>
-              <option value="11:00 pm">11:00 pm</option>
-              <option value="11:30 pm">11:30 pm</option>
+              {results.map((item) => {
+                return (
+                  <option value={item.id}>{item.username}</option>
+                )
+              })}
             </select>
             <span id='icon_14X14'
                   className="icon icon--14-triangle-down icon--size-14 icon--currentColor u-triangle-direction-down yselect_arrow">
