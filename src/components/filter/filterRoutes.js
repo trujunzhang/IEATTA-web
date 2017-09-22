@@ -109,6 +109,9 @@ export function getSelectPhoto(props: Any, {results}: Any, lastPhotoIndex) {
       const selectedIndex = _.findLastIndex(results, {
         id: currentSelectedPhotoId
       });
+      if (selectedIndex === -1) {
+        throw new Error('No matched selected photoId!')
+      }
       return selectedIndex;
     }
   }
