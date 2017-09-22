@@ -1,5 +1,19 @@
 'use strict'
 
+
+function _pushNewRouter(index, {location, router}, {photosListTask}) {
+  const photos = photosListTask.results;
+
+  const {pathname} = location;
+  const lastQuery = location.query;
+  const newQuery = {select: photos[index].id};
+
+  router.push({
+    pathname,
+    query: Object.assign({}, lastQuery, newQuery)
+  })
+}
+
 export default class PhotoBrowser {
   onPreIconClick() {
     const {selectPhotoIndex} = this.state;
@@ -9,23 +23,9 @@ export default class PhotoBrowser {
 
     this.setState({selectPhotoIndex: preIndex})
 
-    this._pushNewRouter(preIndex)
+    _pushNewRouter(preIndex, this.props, this.state)
   }
 
-  _pushNewRouter(index) {
-    const {location, router} = this.props;
-    const {photosListTask} = this.state;
-    const photos = photosListTask.results;
-
-    const {pathname} = location;
-    const lastQuery = location.query;
-    const newQuery = {select: photos[index].id};
-
-    router.push({
-      pathname,
-      query: Object.assign({}, lastQuery, newQuery)
-    })
-  }
 
   onNextIconClick() {
     const {photosListTask, selectPhotoIndex} = this.state;
@@ -36,7 +36,7 @@ export default class PhotoBrowser {
     if (nextIndex >= totalPhotosLength) nextIndex = totalPhotosLength - 1;
     this.setState({selectPhotoIndex: nextIndex})
 
-    this._pushNewRouter(nextIndex)
+    _pushNewRouter(nextIndex, this.props, this.state)
   }
 
 
