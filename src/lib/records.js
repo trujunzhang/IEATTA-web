@@ -109,9 +109,6 @@ Records.createOnlineParseInstance = async function (editModelType, onlineParseOb
       onlineParseObject.set('thumbnail', localRecorder.thumbnail)
       onlineParseObject.set('original', localRecorder.thumbnail)
 
-      // Pointer
-      onlineParseObject.set('forObjectUniqueId', AppConstants.getUniqueIdByType(localRecorder, localRecorder.modelType))
-
       // step2: the logged user submitted the photo (for web).
       Records.setParseObjectFieldWithoutData('user', onlineParseObject, localRecorder.currentUserId)
 
