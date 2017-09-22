@@ -11,7 +11,8 @@ const {
   getDefaultListTask,
 } = require('../../../filter/filterPosts')
 
-const {loadUsersWithoutAnonymousList} = require('../../../../actions').default
+
+const {loadUsersWithoutAnonymousList, writeOnlineParseObject} = require('../../../../actions').default
 
 class F8PhotosSelectRightPanel extends Component {
 
@@ -21,8 +22,11 @@ class F8PhotosSelectRightPanel extends Component {
     const terms = PaginationTerms.generateTermsForUsersWithoutAnonymousList(props)
     const usersListTask = getDefaultListTask(terms);
     this.state = {
+      //
+      // isShowReselectUser: false,
+      isShowReselectUser: true,
+      //
       selectedUserId: null,
-      isShowReselectUser: false,
       terms: terms,
       listTask: usersListTask
     }
@@ -52,12 +56,11 @@ class F8PhotosSelectRightPanel extends Component {
 
   render() {
     return (
-      <div className="media-details-grid_side media-details-grid_side--with-local-ads">
+      <div className="media-details-grid_side">
         <div className="media-details-grid_side-inner">
           <div className="media-info">
 
             {this.renderTopUserInfo()}
-
             {this.renderModifyPhotoOwner()}
           </div>
 
@@ -216,13 +219,14 @@ class F8PhotosSelectRightPanel extends Component {
     const {selectedUserId} = this.state;
     const {selectedPhotoInfo} = this.props;
 
+    debugger
   }
 }
 
 
 import {connect} from 'react-redux'
 
-function select(store, ownProps) {
+function select(store) {
   return {
     listContainerTasks: store.listContainerTasks
   }

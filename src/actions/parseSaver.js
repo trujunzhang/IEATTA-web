@@ -90,15 +90,11 @@ async function _writeOnlineParseObject(editModelType,
   // First of all, set fields.
   await  Records.createOnlineParseInstance(editModelType, onlineParseObject, objectSchemaName, model)
 
-  debugger
-
   // step1: save the online object.
   await onlineParseObject.save()
 
   // step2: save it's recorder.
   await updateParseRecorder(objectSchemaName, onlineParseObject)
-
-  debugger
 
   const _originalModel = parseOnlineParseObject(objectSchemaName, onlineParseObject);
   const action = {
@@ -108,21 +104,6 @@ async function _writeOnlineParseObject(editModelType,
   return Promise.all([
     Promise.resolve(action)
   ])
-}
-
-
-function writeOnlineParseObject(editModelType,
-                                objectSchemaName,
-                                model: object): ThunkAction {
-  return (dispatch) => {
-    const action = _writeOnlineParseObject(editModelType, objectSchemaName, model)
-    action.then(
-      ([result]) => {
-        dispatch(result)
-      }
-    )
-    return action
-  }
 }
 
 
@@ -156,18 +137,6 @@ async function _uploadPhoto(model: object): Promise<Array<Action>> {
 }
 
 
-function uploadPhoto(model: object): ThunkAction {
-  return (dispatch) => {
-    const action = _uploadPhoto(model)
-    action.then(
-      ([result]) => {
-        dispatch(result)
-      }
-    )
-    return action
-  }
-}
-
 async function _uploadLoggedUser(model: object): Promise<Array<Action>> {
   // step1: get logged user.
   const current = await getQueryByType(PARSE_USERS).get(model.parseId)
@@ -187,9 +156,8 @@ async function _uploadLoggedUser(model: object): Promise<Array<Action>> {
 }
 
 
-function uploadLoggedUser(model: object): ThunkAction {
+function invokeEventFromAction(action: Promise<Array<Action>>): ThunkAction {
   return (dispatch) => {
-    const action = _uploadLoggedUser(model)
     action.then(
       ([result]) => {
         dispatch(result)
@@ -200,10 +168,46 @@ function uploadLoggedUser(model: object): ThunkAction {
 }
 
 
+async function _ownAnotherPhotoUser(model: object): Promise<Array<Action>> {
+  // step1: get logged user.
+  const current = await getQueryByType(PARSE_USERS).get(model.parseId)
+
+  current.set('username', model.username)
+  current.set('email', model.email)
+
+  // step2: update user.
+  await current.save()
+
+  const action = {
+    type: SAVE_MODEL_REQUEST,
+  }
+  return Promise.all([
+    Promise.resolve(action)
+  ])
+}
+
+
 export default {
+  writeOnlineParseObject(editModelType,
+                         objectSchemaName,
+                         model: object): ThunkAction {
+    return invokeEventFromAction(_writeOnlineParseObject(editModelType, objectSchemaName, model))
+  },
+
   // write Online parse Objects.
-  writeOnlineParseObject,
   // Photos
-  uploadPhoto,
-  uploadLoggedUser,
+
+  uploadPhoto(model: object): ThunkAction {
+    return invokeEventFromAction(_uploadPhoto(model))
+  },
+
+  uploadLoggedUser(model: object): ThunkAction {
+    return invokeEventFromAction(_uploadLoggedUser(model))
+  },
+
+  // Photos owner
+  ownAnotherPhotoUser(model: object): ThunkAction {
+    return invokeEventFromAction(_ownAnotherPhotoUser(model))
+  },
+
 }
