@@ -13,14 +13,15 @@ export default class PhotoBrowser {
   }
 
   _pushNewRouter(index) {
+    const {location, router} = this.props;
     const {photosListTask} = this.state;
     const photos = photosListTask.results;
 
-    const pathname = this.props.location.pathname;
-    const lastQuery = this.props.location.query;
+    const {pathname} = location;
+    const lastQuery = location.query;
     const newQuery = {select: photos[index].id};
 
-    this.props.router.push({
+    router.push({
       pathname,
       query: Object.assign({}, lastQuery, newQuery)
     })
