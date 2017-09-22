@@ -130,7 +130,9 @@ PaginationTerms.generatePhotoTerm = function (objectSchemaName, forObjectId, pag
 PaginationTerms.generateTermsForUsersWithoutAnonymousList = function (props) {
   return {
     listId: 'current-users-list-without-anonymous',
-  };
+    allItems: true,
+    limit: -1
+  }
 }
 
 
