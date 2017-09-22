@@ -72,6 +72,10 @@ class F8PhotosSelectRightPanel extends Component {
               {this.renderReselect()}
             </ul>
 
+            <p className="voting-intro voting-prompt">
+              {"selected User Id: " + this.state.selectedUserId}
+            </p>
+
             {this.state.isShowReselectUser && this.renderUsersList()}
 
           </div>
@@ -87,7 +91,7 @@ class F8PhotosSelectRightPanel extends Component {
       <li className="voting-stat inline-block">
         <a
           onClick={() => {
-            this.setState({isShowReselectUser: true})
+            this.setState({isShowReselectUser: !this.state.isShowReselectUser})
           }}
           className="ybtn ybtn--small helpful">
             <span id="icon_18X18" className="icon icon--18-arrow-up icon--size-18 icon--currentColor button-content">
@@ -156,6 +160,8 @@ class F8PhotosSelectRightPanel extends Component {
   }
 
   renderUsersList() {
+    const {selectedPhotoInfo} = this.props;
+    const {userId} = selectedPhotoInfo;
     const {listTask} = this.state;
     const {results} = listTask;
     return (
@@ -169,9 +175,14 @@ class F8PhotosSelectRightPanel extends Component {
                     }}
                     name="starts_time"
                     id="starts_time">
-              {results.map((item) => {
+              {results.map((item, index) => {
+                let isSelected = false;
+                if (item.id === userId) {
+                  isSelected = true;
+                }
+
                 return (
-                  <option value={item.id}>{item.username}</option>
+                  <option selected={isSelected} value={item.id}>{item.username}</option>
                 )
               })}
             </select>

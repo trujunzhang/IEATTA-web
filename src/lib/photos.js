@@ -55,6 +55,7 @@ Photos.getPhotoInfoAboutUser = function (photos, index) {
     user = _photo.owner;
   }
   return {
+    userId: user.id,
     username: user.username,
     imageUrl: Photos.getListThumbnailUrl(user),
     userProfileUrl: getLoggedUserMenuLink(user)
