@@ -19,6 +19,7 @@ class F8PhotosSelectRightPanel extends Component {
     const terms = PaginationTerms.generateTermsForUsersWithoutAnonymousList(props)
     const usersListTask = getDefaultListTask(terms);
     this.state = {
+      selectedUserId: null,
       isShowReselectUser: false,
       terms: terms,
       listTask: usersListTask
@@ -54,8 +55,6 @@ class F8PhotosSelectRightPanel extends Component {
         </div>
 
       </div>
-
-
     )
   }
 
@@ -163,7 +162,13 @@ class F8PhotosSelectRightPanel extends Component {
       <div className='yform'>
         <div className="u-inline-block u-align-bottom">
           <div className="yselect">
-            <select className="event-start-time-picker u-inline-block" name="starts_time" id="starts_time">
+            <select className="event-start-time-picker u-inline-block"
+                    onChange={(object) => {
+                      const selectId = object.target.value;
+                      this.setState({selectedUserId: selectId})
+                    }}
+                    name="starts_time"
+                    id="starts_time">
               {results.map((item) => {
                 return (
                   <option value={item.id}>{item.username}</option>
@@ -176,13 +181,20 @@ class F8PhotosSelectRightPanel extends Component {
           </span>
           </div>
 
-          <button id="create-event" name="action_submit" type="submit" value="Submit"
+          <button id="create-event" name="action_submit" value="Submit"
+                  onClick={this.onOwnSelectedUserPress}
                   className="ybtn ybtn--primary disable-on-submit js-submit-event">
             <span>Own Selected User</span>
           </button>
         </div>
       </div>
     )
+  }
+
+  onOwnSelectedUserPress = () => {
+    const {selectedUserId} = this.state;
+    const {selectedPhotoInfo} = this.props;
+
   }
 }
 
