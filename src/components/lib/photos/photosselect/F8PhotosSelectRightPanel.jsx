@@ -104,6 +104,7 @@ class F8PhotosSelectRightPanel extends Component {
                 <Link to={selectedPhotoInfo.userProfileUrl} className="js-analytics-click">
 
                   <Telescope.components.F8PlaceHolderImage
+                    key={selectedPhotoInfo.username}
                     alt={selectedPhotoInfo.username}
                     className="photo-box-img"
                     width="30"
