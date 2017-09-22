@@ -63,7 +63,6 @@ class F8PhotosSelectRightPanel extends Component {
             {this.renderModifyPhotoOwner()}
           </div>
 
-
           <div className="media-info_footer">
             <div className="js-media_ad-container media_ad-container yloca--small">
             </div>
