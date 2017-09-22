@@ -116,6 +116,7 @@ Photos.generateHeaderRightPhotoObject = function (props) {
  * @returns {{createdAtFormat: string}}
  */
 Photos.generateSelectedPhotoInfo = function (props) {
+  debugger
   const {photosListTask, selectPhotoIndex} = props;
   const photos = photosListTask.results;
   const current = photos[selectPhotoIndex];

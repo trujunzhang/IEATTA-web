@@ -11,6 +11,7 @@ class IEAPhotosSelectionLayout extends Component {
 
   constructor(props) {
     super(props)
+
     this.state = this.initialState = {
       selectedPhotoInfo: Photos.generateSelectedPhotoInfo(props)
     }
