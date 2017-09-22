@@ -19,6 +19,7 @@ class F8PhotosSelectLeftPanel extends Component {
         <div className="media js-media-photo">
           <a {...linkProps}>
             <img
+              key={alt}
               alt={alt}
               className="photo-box-img"
               src={Photos.getOriginalUrl(currentPhoto)}/>

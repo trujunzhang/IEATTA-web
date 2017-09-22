@@ -44,20 +44,6 @@ class F8PhotosSelectRightPanel extends Component {
     );
   }
 
-  renderPhotoCreatedAt() {
-    const {selectedPhotoInfo} = this.props;
-    return (
-      <div className="media-info_item media-info_time">
-        <div className="selected-photo-details">
-          <span className="selected-photo-upload-date time-stamp">
-            {selectedPhotoInfo.createdAtFormat}
-          </span>
-        </div>
-      </div>
-
-    )
-  }
-
   renderHelpfulButton() {
     return (
       <li className="voting-stat inline-block">
@@ -128,7 +114,7 @@ class F8PhotosSelectRightPanel extends Component {
                 </li>
                 <li>
                   <span className="selected-photo-upload-date time-stamp">
-                     {selectedPhotoInfo.createdAtFormat}
+                     {selectedPhotoInfo.photoCreatedAtFormat}
                   </span>
                 </li>
               </ul>

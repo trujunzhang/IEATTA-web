@@ -120,7 +120,7 @@ Photos.generateSelectedPhotoInfo = function (props) {
   const current = photos[selectPhotoIndex];
   return {
     ...Photos.getPhotoInfoAboutUser(photos, selectPhotoIndex),
-    createdAtFormat: moment(current.createdAt).format(Photos.config.selectedPhotoCreatedAtFormat)
+    photoCreatedAtFormat: moment(current.createdAt).format(Photos.config.selectedPhotoCreatedAtFormat)
   }
 }
 
