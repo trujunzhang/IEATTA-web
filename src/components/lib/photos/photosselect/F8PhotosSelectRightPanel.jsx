@@ -14,7 +14,9 @@ const {
 
 const {
   loadUsersWithoutAnonymousList,
+  ownAnotherPhotoUser,
   loadPhotosBrowser,
+  showAlertMessage,
   timeout,
 } = require('../../../../actions').default
 
