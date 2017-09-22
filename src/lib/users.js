@@ -108,7 +108,9 @@ Users.getSelectedUserIndex = function (newListTask, {selectedPhotoInfo}) {
   if (selectedUserIndex === -1) {
     selectedUserIndex = 0;
   }
-  return selectedUserIndex;
+
+  const selectedUserId = results.length > 0 ? results[selectedUserIndex].id : null;
+  return {selectedUserIndex, selectedUserId};
 }
 
 export default Users

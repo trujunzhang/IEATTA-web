@@ -43,8 +43,7 @@ class F8PhotosSelectRightPanel extends Component {
   componentWillReceiveProps(nextProps) {
     const newListTask = byListId(nextProps.listContainerTasks, this.state.terms, this.state.listTask);
 
-    const selectedUserIndex = Users.getSelectedUserIndex(newListTask, nextProps);
-    const selectedUserId = results.length > 0 ? results[selectedUserIndex].id : null;
+    const {selectedUserIndex, selectedUserId} = Users.getSelectedUserIndex(newListTask, nextProps);
 
     this.setState({
       listTask: newListTask,
@@ -88,9 +87,9 @@ class F8PhotosSelectRightPanel extends Component {
               {this.renderReselect()}
             </ul>
 
-            <p className="voting-intro voting-prompt">
-              {"selected User Id: " + this.state.selectedUserId}
-            </p>
+            {/*<p className="voting-intro voting-prompt">*/}
+            {/*{"selected User Id: " + this.state.selectedUserId}*/}
+            {/*</p>*/}
 
             {this.state.isShowReselectUser && this.renderUsersList()}
 
