@@ -4,6 +4,16 @@ import React, {Component} from 'react';
 import {Link} from 'react-router'
 
 class F8PhotosSelectRightPanel extends Component {
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      isShowSelectList: false
+    }
+
+  }
+
   render() {
     return (
 
@@ -26,15 +36,15 @@ class F8PhotosSelectRightPanel extends Component {
       </div>
 
 
-    );
+    )
   }
 
   renderModifyPhotoOwner() {
     return (
-      <div className="media-info_container">
+      <div className="media-info_container section-reselect-owner">
 
         <div className="media-info_item voting-feedback clearfix">
-          <div className="media-info_vote">
+          <div className="media-info_vote margin-top-8">
             <p className="voting-intro voting-prompt">
               Reselect this photo's owner?
             </p>
@@ -119,8 +129,15 @@ class F8PhotosSelectRightPanel extends Component {
 
     )
   }
-
 }
 
 
-export default F8PhotosSelectRightPanel;
+import {connect} from 'react-redux'
+
+function select(store, ownProps) {
+  return {
+    listContainerTasks: store.listContainerTasks
+  }
+}
+
+export default connect(select)(F8PhotosSelectRightPanel);
