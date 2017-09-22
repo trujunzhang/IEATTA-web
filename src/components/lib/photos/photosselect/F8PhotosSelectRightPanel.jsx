@@ -14,7 +14,7 @@ const {
 
 const {
   loadUsersWithoutAnonymousList,
-  ownAnotherPhotoUser,
+  loadPhotosBrowser,
   timeout,
 } = require('../../../../actions').default
 
@@ -223,7 +223,7 @@ class F8PhotosSelectRightPanel extends Component {
 
   async onOwnSelectedUserPress() {
     const {selectedUserId} = this.state;
-    const {selectedPhotoInfo} = this.props;
+    const {selectedPhotoInfo, photosTerms} = this.props;
     const {photoId} = selectedPhotoInfo;
 
     const {dispatch} = this.props;
@@ -245,6 +245,7 @@ class F8PhotosSelectRightPanel extends Component {
       this.setState({isButtonSaving: false})
       if (!!errorMessage) {
       } else {
+        dispatch(loadPhotosBrowser(photosTerms))
       }
     }
   }
