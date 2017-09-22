@@ -32,8 +32,21 @@ class F8PhotosSelectRightPanel extends Component {
 
   componentWillReceiveProps(nextProps) {
     const newListTask = byListId(nextProps.listContainerTasks, this.state.terms, this.state.listTask);
+    const {results} = newListTask;
+
+    const {userId} = nextProps.selectedPhotoInfo;
+    let selectedUserIndex = _.findIndex(results, function (item) {
+      return item.id === userId;
+    });
+    if (selectedUserIndex === -1) {
+      selectedUserIndex = 0;
+    }
+    const selectedUserId = results.length > 0 ? results[selectedUserIndex].id : null;
+
     this.setState({
-      listTask: newListTask
+      listTask: newListTask,
+      selectedUserIndex,
+      selectedUserId
     })
   }
 
@@ -162,13 +175,9 @@ class F8PhotosSelectRightPanel extends Component {
   }
 
   renderUsersList() {
-    const {selectedPhotoInfo} = this.props;
-    const {userId} = selectedPhotoInfo;
-    const {listTask} = this.state;
+    const {listTask, selectedUserIndex, selectedUserId} = this.state;
     const {results} = listTask;
-    const selectedIndex = _.findIndex(results, function (item) {
-      return item.id === userId;
-    });
+
     return (
       <div className='yform'>
         <div className="u-inline-block u-align-bottom">
@@ -181,7 +190,7 @@ class F8PhotosSelectRightPanel extends Component {
                     name="starts_time"
                     id="starts_time">
               {results.map((item, index) => {
-                const isSelected = selectedIndex === -1 ? (index === 0) : (selectedIndex === index);
+                const isSelected = (selectedUserIndex === index);
                 return (
                   <option selected={isSelected} value={item.id}>{item.username}</option>
                 )
