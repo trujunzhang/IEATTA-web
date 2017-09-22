@@ -13,22 +13,7 @@ class F8PhotosSelectRightPanel extends Component {
 
             {this.renderTopUserInfo()}
 
-            <div className="media-info_container">
-
-              <div className="media-info_item voting-feedback clearfix">
-                <div className="media-info_vote">
-                  <p className="voting-intro voting-prompt">
-                    Was this photo …?
-                  </p>
-                  <ul className="voting-buttons exclusive u-space-b2">
-                    {this.renderHelpfulButton()}
-                    {this.renderNotHelpfulButton()}
-                  </ul>
-
-                </div>
-
-              </div>
-            </div>
+            {this.renderModifyPhotoOwner()}
           </div>
 
 
@@ -44,31 +29,39 @@ class F8PhotosSelectRightPanel extends Component {
     );
   }
 
-  renderHelpfulButton() {
+  renderModifyPhotoOwner() {
     return (
-      <li className="voting-stat inline-block">
-        <a className="ybtn ybtn--small helpful">
-            <span id="icon_18X18" className="icon icon--18-arrow-up icon--size-18 icon--currentColor button-content">
-                <svg className="icon_svg"><path d="M15 10L9 3l-6 7h4v5h4v-5h4z"/></svg>
-            </span>
-          <span className="vote-type">Helpful</span>
-          <span className="count">1</span>
-        </a>
-      </li>
+      <div className="media-info_container">
+
+        <div className="media-info_item voting-feedback clearfix">
+          <div className="media-info_vote">
+            <p className="voting-intro voting-prompt">
+              Reselect this photo's owner?
+            </p>
+
+            <ul className="voting-buttons exclusive u-space-b2">
+              {this.renderReselect()}
+            </ul>
+
+          </div>
+
+        </div>
+      </div>
 
     )
   }
 
-  renderNotHelpfulButton() {
+  renderReselect() {
     return (
       <li className="voting-stat inline-block">
-
-        <a className="ybtn ybtn--small not_helpful">
-            <span id="icon_18X18" className="icon icon--18-arrow-down icon--size-18 icon--currentColor button-content">
-              <svg className="icon_svg"><path d="M3 8l6 7 6-7h-4V3H7v5H3z"/></svg>
+        <a className="ybtn ybtn--small helpful">
+            <span id="icon_18X18" className="icon icon--18-arrow-up icon--size-18 icon--currentColor button-content">
+                <svg className="icon_svg">
+                    <path
+                      d="M2.002 16h13.996a9.87 9.87 0 0 0-5.66-2.786V12.08c.898-.655 1.733-1.75 1.79-2.46 1.016-.495 1.228-1.723.506-1.994l-.017.024c.326-.458.527-1.04.527-1.706 0-.863-.156-1.66-.79-2.182C11.914 2.72 10.998 2 9.934 2c-.625 0-1.198.25-1.656.664a.955.955 0 0 0-.612-.23c-.4 0-.747.268-.934.662-1.005.37-1.738 1.505-1.738 2.848 0 .615.154 1.186.417 1.66-.78.307-.52 1.477.463 2.015.057.71.89 1.804 1.79 2.46v1.133A9.87 9.87 0 0 0 2.003 16z"/>
+                </svg>
             </span>
-          <span className="vote-type">Not Helpful</span>
-
+          <span className="vote-type">Select</span>
         </a>
       </li>
 
@@ -79,7 +72,6 @@ class F8PhotosSelectRightPanel extends Component {
     const {selectedPhotoInfo} = this.props;
 
     return (
-
       <div className="media-info_item media-info_user">
         <div className="photo-user-passport">
           <div className="ypassport ypassport-slim media-block">
@@ -118,7 +110,6 @@ class F8PhotosSelectRightPanel extends Component {
                   </span>
                 </li>
               </ul>
-
 
             </div>
 

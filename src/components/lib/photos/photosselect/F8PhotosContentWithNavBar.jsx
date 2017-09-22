@@ -48,10 +48,6 @@ class F8PhotosContentWithNavBar extends Component {
 
   render() {
     const {contentClass, location} = this.props;
-    const {query} = location;
-    const selectId = query.select || 'currentImageId';
-
-    debugger
 
     return (
       <div className={contentClass}>
@@ -60,7 +56,7 @@ class F8PhotosContentWithNavBar extends Component {
 
           <div className="media-details-grid">
 
-            <Telescope.components.F8PhotosSelectLeftPanel key={selectId} {...this.props}/>
+            <Telescope.components.F8PhotosSelectLeftPanel  {...this.props}/>
             {/*{01-left-panel.html}*/}
 
             <Telescope.components.F8PhotosSelectRightPanel {...this.props}/>
