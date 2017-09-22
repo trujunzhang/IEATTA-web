@@ -34,7 +34,7 @@ class IEAUserProfilePhotosLayout extends Component {
     const photoBrowserInstance = new PhotoBrowser()
     const pageForm = getPageFormType(PARSE_USERS, props, null)
 
-    const photosTerms = PaginationTerms.generatePhotoTerm(PARSE_USERS, props.userProfile.id, pageForm, props)
+    const photosTerms = PaginationTerms.generatePhotoTerm(PARSE_USERS, props.userProfile.id, pageForm, props, true)
 
     this.state = this.initialState = {
       // photos
@@ -55,7 +55,7 @@ class IEAUserProfilePhotosLayout extends Component {
     const lastPhotosTerms = this.state.photosTerms;
 
     const newPageForm = getPageFormType(PARSE_USERS, nextProps, this.state.pageForm)
-    const newPhotosTerms = PaginationTerms.generatePhotoTerm(PARSE_USERS, nextProps.userProfile.id, newPageForm, nextProps)
+    const newPhotosTerms = PaginationTerms.generatePhotoTerm(PARSE_USERS, nextProps.userProfile.id, newPageForm, nextProps, true)
     const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms, this.state.photosListTask);
 
     this.setState({

@@ -13,6 +13,7 @@ const {
   // List Type.
   EVENTS_LIST_FOR_RESTAURANT,
   PAGE_PHOTOS_BROWSER_FORM,
+  PAGE_MAIN_FORM,
 } = require('./constants').default
 
 import Photos from "./photos";
@@ -102,7 +103,7 @@ PaginationTerms.generateTermsForRestaurantList = function (props) {
 }
 
 
-PaginationTerms.generatePhotoTerm = function (objectSchemaName, forObjectId, pageForm = PAGE_MAIN_FORM, props) {
+PaginationTerms.generatePhotoTerm = function (objectSchemaName, forObjectId, pageForm = PAGE_MAIN_FORM, props, isUserOwnerPhotos = false) {
   const isPhotosBrowserPage = (pageForm === PAGE_PHOTOS_BROWSER_FORM);
 
   const termType = isPhotosBrowserPage ? 'page' : 'list';
@@ -111,7 +112,10 @@ PaginationTerms.generatePhotoTerm = function (objectSchemaName, forObjectId, pag
 
   const currentPageIndex = getCurrentPageIndex(props)
 
+  const extendProps = isUserOwnerPhotos ? {ownerId: forObjectId} : {}
+
   const photoTerms = {
+    ...extendProps,
     listId: listId,
     forObjectId: forObjectId,
     objectSchemaName: objectSchemaName,
