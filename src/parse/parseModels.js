@@ -208,7 +208,9 @@ export function fromParsePhoto(map: Object): Photo {
     restaurant: map.get('restaurant') && fromParseRestaurant(map.get('restaurant')),
     event: map.get('event') && fromParseEvent(map.get('event')),
     recipe: map.get('recipe') && fromParseRecipe(map.get('recipe')),
-    user: map.get('user') && fromParseUser(map.get('user'))
+    user: map.get('user') && fromParseUser(map.get('user')),
+    // Owner
+    owner: map.get('owner') && fromParseUser(map.get('owner'))
   }
   return instance
 }
