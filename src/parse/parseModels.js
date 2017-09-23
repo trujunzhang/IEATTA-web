@@ -175,6 +175,7 @@ export function fromParseUser(map: Object): User {
     ...fromParseCommon(map),
     // Attributes
     username: map.get('username'),
+    displayName: map.get('username'),
     loginType: map.get('loginType'),
     email: map.get('email') || "",
     // Photos
