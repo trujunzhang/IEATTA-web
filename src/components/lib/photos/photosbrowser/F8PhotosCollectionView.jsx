@@ -7,11 +7,15 @@ import {withRouter} from 'react-router'
 import {getPhotosBrowserSelectionLink} from '../../../../lib/link'
 import {Link} from 'react-router'
 
+const {
+  PHOTO_BROWSER_NORMAL_TITLE,
+  PHOTO_BROWSER_LOGGED_USER_TITLE,
+} = require('../../../../lib/constants').default
+
 class F8PhotosCollectionView extends Component {
 
   renderRow(photoInfo, photo, index) {
-    const {forObject, modelType} = this.props;
-    debugger
+    const {forObject, modelType, photoTitleType} = this.props;
 
     return (
       <li key={photo.id}>
@@ -25,7 +29,7 @@ class F8PhotosCollectionView extends Component {
               src={Photos.getThumbnailUrl(photo)}/>
           </Link>
 
-          {this.renderOverLay(photoInfo, photo, index)}
+          {photoTitleType === PHOTO_BROWSER_LOGGED_USER_TITLE && this.renderOverLay(photoInfo, photo, index)}
 
         </div>
 
