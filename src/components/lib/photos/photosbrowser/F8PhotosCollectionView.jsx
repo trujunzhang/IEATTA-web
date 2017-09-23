@@ -14,6 +14,22 @@ const {
 
 class F8PhotosCollectionView extends Component {
 
+  renderLeftTopTrash() {
+    return (
+      <button type="submit" className="chiclet-link u-cursor-pointer show-tooltip js-delete-review-draft"
+              id="photos-browser-cell-item-button-trash">
+                <span id="icon_18X18" className="icon icon--18-trash icon--size-18 icon--currentColor">
+                     <svg className="icon_svg">
+                            <path
+                              d="M3 5V3h4V2h4v1h4v2H3zm11 9c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V6h10v8zM8 8.5a.5.5 0 0 0-.5-.5.5.5 0 0 0-.5.5v5a.5.5 0 0 0 .5.5.5.5 0 0 0 .5-.5v-5zm3 0a.5.5 0 0 0-.5-.5.5.5 0 0 0-.5.5v5a.5.5 0 0 0 .5.5.5.5 0 0 0 .5-.5v-5z"/></svg>
+                </span>
+        <span className="tooltip-wrapper">
+                    <span className="tooltip">Delete draft</span>
+                </span>
+      </button>
+    )
+  }
+
   renderRow(photoInfo, photo, index) {
     const {forObject, modelType, photoTitleType} = this.props;
 
@@ -28,6 +44,8 @@ class F8PhotosCollectionView extends Component {
               className="photo-box-img"
               src={Photos.getThumbnailUrl(photo)}/>
           </Link>
+
+          {this.renderLeftTopTrash()}
 
           {photoTitleType === PHOTO_BROWSER_LOGGED_USER_TITLE && this.renderOverLayForUserProfile(photoInfo, photo, index)}
           {photoTitleType === PHOTO_BROWSER_NORMAL_TITLE && this.renderOverLay(photoInfo)}
