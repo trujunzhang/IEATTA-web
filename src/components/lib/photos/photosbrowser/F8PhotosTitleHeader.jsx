@@ -84,6 +84,7 @@ class F8PhotosTitleHeader extends Component {
             </div>
 
           </div>
+
           <div className="arrange_unit nowrap media-header_actions">
 
             <Link

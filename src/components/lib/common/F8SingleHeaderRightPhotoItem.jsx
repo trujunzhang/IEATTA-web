@@ -24,7 +24,7 @@ class F8SingleHeaderRightPhotoItem extends Component {
 
     return (
       <div key={index} className={`js-photo photo photo-${index + 1}`}>
-        <div className="showcase-photo-box">
+        <div className="showcase-photo-box" id="single-header-right-photo-item">
 
           <a onClick={this.onImageLinkPress.bind(this)}>
 

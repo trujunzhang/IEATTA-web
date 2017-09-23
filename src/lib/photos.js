@@ -49,8 +49,6 @@ Photos.getPhotoItem = function (photos, modelType, forObject, index) {
 }
 
 Photos.getPhotoInfoAboutUser = function (photos, index) {
-  debugger
-
   const _photo = photos[index]
   let user = Users.anonymousUser;
   if (!!_photo.owner) {
