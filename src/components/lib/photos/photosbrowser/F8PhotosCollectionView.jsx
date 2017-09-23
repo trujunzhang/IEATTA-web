@@ -11,7 +11,8 @@ class F8PhotosCollectionView extends Component {
 
   renderRow(photoInfo, photo, index) {
     const {forObject, modelType} = this.props;
-    // alt={`Photos of ${photo.title}`}
+    debugger
+
     return (
       <li key={photo.id}>
         <div className="photo-box photo-box--interactive">
@@ -39,19 +40,16 @@ class F8PhotosCollectionView extends Component {
     const {overlay} = photoInfo;
     const {user} = overlay;
     const userName = user.username;
-    const userImageUrl = user.imageUrl;
-    const userLink = user.userProfileUrl;
-    const linkProperty = !!userLink ? {to: userLink} : {};
+    const linkTitle = overlay.title !== '' ? overlay.title : userName;
 
     return (
       <div className="photo-box-overlay js-overlay">
         <div className="media-block photo-box-overlay_caption">
 
-
           <div className="media-story" id="photos-browser">
 
             <Link className="photo-desc margin-right-4" to={overlay.linkUrl}>
-              {overlay.title}
+              {linkTitle}
             </Link>
 
           </div>

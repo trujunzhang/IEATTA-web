@@ -59,11 +59,12 @@ Photos.getPhotoInfoAboutUser = function (_photo) {
 }
 
 
-Photos.getSinglePhotoItemInfo = function (photo, forObject) {
+Photos.getSinglePhotoItemInfo = function (photo) {
   const _photoType = photo.photoType;
   const photoObject = photo[_photoType]
+
   return {
-    ...Photos.getSinglePhotoItem(photo, _photoType, forObject),
+    ...Photos.getSinglePhotoItem(photo, _photoType, photoObject),
     overlay: {
       title: photoObject.displayName,
       linkUrl: geDetailedModelLink(_photoType, photoObject),
@@ -85,8 +86,8 @@ Photos.generateHeaderRightPhotoObject = function (props) {
       singleModel: false,
       total: photoLength,
       photos: [
-        Photos.getSinglePhotoItemInfo(photos[0], modelType, forObject),
-        Photos.getSinglePhotoItemInfo(photos[1], modelType, forObject),
+        Photos.getSinglePhotoItemInfo(photos[0]),
+        Photos.getSinglePhotoItemInfo(photos[1]),
       ],
       photosWall: [
         Photos.getSinglePhotoItem(photos[2], modelType, forObject),
@@ -97,7 +98,7 @@ Photos.generateHeaderRightPhotoObject = function (props) {
     }
   } else {
     const _photos = photos.map((item, index) => {
-      return Photos.getSinglePhotoItemInfo(photos[index], modelType, forObject);
+      return Photos.getSinglePhotoItemInfo(photos[index]);
     })
 
     return {
