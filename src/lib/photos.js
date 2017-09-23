@@ -36,20 +36,22 @@ Photos.getListThumbnailUrl = function (item = {}) {
   return '';
 }
 
-Photos.getPhotoThumbnailByPosition = function (photos, index) {
-  const firstPhoto = photos[index];
-  return Photos.getThumbnailUrl(firstPhoto)
+
+Photos.getSinglePhotoItem = function (photo, modelType, forObject) {
+  return {
+    linkObject: getPhotosBrowserSelectionLink(photo, modelType, forObject),
+    imageUrl: Photos.getThumbnailUrl(photo)
+  }
 }
 
 Photos.getPhotoItem = function (photos, modelType, forObject, index) {
   return {
     linkObject: getPhotosBrowserSelectionLink(photos[index], modelType, forObject),
-    imageUrl: Photos.getPhotoThumbnailByPosition(photos, index)
+    imageUrl: Photos.getThumbnailUrl(photos[index])
   }
 }
 
-Photos.getPhotoInfoAboutUser = function (photos, index) {
-  const _photo = photos[index]
+Photos.getPhotoInfoAboutUser = function (_photo) {
   let user = Users.anonymousUser;
   if (!!_photo.owner) {
     user = _photo.owner;
@@ -62,20 +64,21 @@ Photos.getPhotoInfoAboutUser = function (photos, index) {
   }
 }
 
-Photos.getPhotoItemInfo = function (photos, modelType, forObject, index) {
-  const photo = photos[index];
+
+Photos.getSinglePhotoItemInfo = function (photo, modelType, forObject) {
   const photoObject = photo[photo.photoType]
   return {
-    ...Photos.getPhotoItem(photos, modelType, forObject, index),
+    ...Photos.getSinglePhotoItem(photo, modelType, forObject),
     overlay: {
       title: photoObject.displayName,
       linkUrl: geDetailedModelLink(modelType, photoObject),
       user: {
-        ...Photos.getPhotoInfoAboutUser(photos, index)
+        ...Photos.getPhotoInfoAboutUser(photo)
       }
     }
   }
 }
+
 
 Photos.generateHeaderRightPhotoObject = function (props) {
   const {modelType, forObject, photosListTask} = props;
@@ -87,8 +90,8 @@ Photos.generateHeaderRightPhotoObject = function (props) {
       singleModel: false,
       total: photoLength,
       photos: [
-        Photos.getPhotoItemInfo(photos, modelType, forObject, 0),
-        Photos.getPhotoItemInfo(photos, modelType, forObject, 1),
+        Photos.getSinglePhotoItemInfo(photos[0], modelType, forObject),
+        Photos.getSinglePhotoItemInfo(photos[1], modelType, forObject),
       ],
       photosWall: [
         Photos.getPhotoItem(photos, modelType, forObject, 2),
@@ -99,7 +102,7 @@ Photos.generateHeaderRightPhotoObject = function (props) {
     }
   } else {
     const _photos = photos.map((item, index) => {
-      return Photos.getPhotoItemInfo(photos, modelType, forObject, index);
+      return Photos.getSinglePhotoItemInfo(photos[index], modelType, forObject);
     })
 
     return {
@@ -119,7 +122,7 @@ Photos.generateSelectedPhotoInfo = function ({photosListTask, selectPhotoIndex})
   const photos = photosListTask.results;
   const current = photos[selectPhotoIndex];
   return {
-    ...Photos.getPhotoInfoAboutUser(photos, selectPhotoIndex),
+    ...Photos.getPhotoInfoAboutUser(photos [selectPhotoIndex]),
     photoId: current.id,
     photoCreatedAtFormat: moment(current.createdAt).format(Photos.config.selectedPhotoCreatedAtFormat)
   }
