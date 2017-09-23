@@ -77,6 +77,7 @@ class F8PhotosTitleHeader extends Component {
       <div className="section-header media-header--tabbed">
 
         <div className="arrange arrange--12 arrange--bottom">
+
           <div className="arrange_unit arrange_unit--fill media-header_biz-listing">
             <div className="media-block media-block biz-passport--slim">
               {this.renderObjectAvator()}
@@ -101,6 +102,7 @@ class F8PhotosTitleHeader extends Component {
             </Link>
 
           </div>
+
         </div>
 
         <div className="section-header_tabs js-section-header_tabs">
