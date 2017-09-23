@@ -46,6 +46,7 @@ class F8PhotosLoggedUserTitleHeader extends Component {
               </h1>
             </div>
 
+
             {/*{this.renderEditButtons()}*/}
 
           </div>
