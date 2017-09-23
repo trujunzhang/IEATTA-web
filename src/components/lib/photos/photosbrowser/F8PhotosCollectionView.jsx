@@ -16,7 +16,7 @@ class F8PhotosCollectionView extends Component {
 
   renderLeftTopTrash() {
     return (
-      <button type="submit" className="chiclet-link u-cursor-pointer show-tooltip js-delete-review-draft"
+      <button className="chiclet-link u-cursor-pointer show-tooltip js-delete-review-draft"
               id="photos-browser-cell-item-button-trash">
                 <span id="icon_18X18" className="icon icon--18-trash icon--size-18 icon--currentColor">
                      <svg className="icon_svg">
@@ -34,7 +34,7 @@ class F8PhotosCollectionView extends Component {
     const {forObject, modelType, photoTitleType} = this.props;
 
     return (
-      <li key={photo.id}>
+      <li className="photos-browser-item" key={photo.id}>
         <div className="photo-box photo-box--interactive">
 
           <Link to={getPhotosBrowserSelectionLink(photo, modelType, forObject, this.props)}>

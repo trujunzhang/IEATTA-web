@@ -378,6 +378,18 @@ ul.star-selector_stars {
 #photos-browser-cell-item-button-trash {
   position: absolute;
   background-color: #fff;
-  left: 20px;
-  top: 100px;
+  left: 10px;
+  top: 10px;
 }
+
+.photos-browser-item {
+  #photos-browser-cell-item-button-trash {
+    display: none;
+  }
+  &:hover {
+    #photos-browser-cell-item-button-trash {
+      display: inline-block;
+    }
+  }
+}
+
