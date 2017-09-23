@@ -15,6 +15,8 @@ const {
   PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY,
   PAGE_OVERLAY_SELECTED_PHOTO_FORM,
   PAGE_SINGLE_SELECTED_PHOTO_FORM,
+  // Photos Browser Type
+  PHOTOS_BROWSER_PAGE_FOR_USER_PROFILE
 } = require('../../../lib/constants').default
 
 const {
@@ -44,6 +46,7 @@ class IEAUserProfilePhotosLayout extends Component {
       // Common
       pageForm: pageForm,
       modelType: 'user',
+      photoBrowserType: PHOTOS_BROWSER_PAGE_FOR_USER_PROFILE,
       // Events
       onPreIconClick: photoBrowserInstance.onPreIconClick.bind(this),
       onNextIconClick: photoBrowserInstance.onNextIconClick.bind(this),

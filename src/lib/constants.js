@@ -1,6 +1,10 @@
 import keyMirror from 'key-mirror'
 
 export default keyMirror({
+  // Photos Browser Type
+  PHOTOS_BROWSER_PAGE_NORMAL: null,
+  PHOTOS_BROWSER_PAGE_FOR_USER_PROFILE: null,
+
   //Alert Type
   ALERT_TYPE_SUCCESS: null,
   ALERT_TYPE_ERROR: null,

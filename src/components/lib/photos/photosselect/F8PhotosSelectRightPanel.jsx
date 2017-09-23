@@ -20,6 +20,12 @@ const {
   timeout,
 } = require('../../../../actions').default
 
+const {
+  PHOTOS_BROWSER_PAGE_NORMAL,
+  PHOTOS_BROWSER_PAGE_FOR_USER_PROFILE,
+} = require('../../../../lib/constants').default
+
+
 class F8PhotosSelectRightPanel extends Component {
 
   constructor(props) {
@@ -28,10 +34,10 @@ class F8PhotosSelectRightPanel extends Component {
     const terms = PaginationTerms.generateTermsForUsersWithoutAnonymousList(props)
     const usersListTask = getDefaultListTask(terms);
     this.state = {
-      //
+      // different photo owner.
       isShowReselectUser: false,
       isButtonSaving: false,
-      //
+      // users tasks.
       selectedUserId: null,
       terms: terms,
       listTask: usersListTask
@@ -42,7 +48,6 @@ class F8PhotosSelectRightPanel extends Component {
 
   componentWillReceiveProps(nextProps) {
     const newListTask = byListId(nextProps.listContainerTasks, this.state.terms, this.state.listTask);
-
     const {selectedUserIndex, selectedUserId} = Users.getSelectedUserIndex(newListTask, nextProps);
 
     this.setState({
@@ -53,13 +58,15 @@ class F8PhotosSelectRightPanel extends Component {
   }
 
   render() {
+    const {photoBrowserType} = this.props;
+
     return (
       <div className="media-details-grid_side">
         <div className="media-details-grid_side-inner">
           <div className="media-info">
 
             {this.renderTopUserInfo()}
-            {this.renderModifyPhotoOwner()}
+            {photoBrowserType === PHOTOS_BROWSER_PAGE_NORMAL && this.renderModifyPhotoOwner()}
           </div>
 
           <div className="media-info_footer">
@@ -243,6 +250,13 @@ class F8PhotosSelectRightPanel extends Component {
   }
 }
 
+F8PhotosSelectRightPanel.propTypes = {
+  photoBrowserType: React.PropTypes.string
+};
+
+F8PhotosSelectRightPanel.defaultProps = {
+  photoBrowserType: PHOTOS_BROWSER_PAGE_NORMAL
+};
 
 import {connect} from 'react-redux'
 import Users from "../../../../lib/users";
