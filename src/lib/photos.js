@@ -59,13 +59,14 @@ Photos.getPhotoInfoAboutUser = function (_photo) {
 }
 
 
-Photos.getSinglePhotoItemInfo = function (photo, modelType, forObject) {
-  const photoObject = photo[photo.photoType]
+Photos.getSinglePhotoItemInfo = function (photo, forObject) {
+  const _photoType = photo.photoType;
+  const photoObject = photo[_photoType]
   return {
-    ...Photos.getSinglePhotoItem(photo, modelType, forObject),
+    ...Photos.getSinglePhotoItem(photo, _photoType, forObject),
     overlay: {
       title: photoObject.displayName,
-      linkUrl: geDetailedModelLink(modelType, photoObject),
+      linkUrl: geDetailedModelLink(_photoType, photoObject),
       user: {
         ...Photos.getPhotoInfoAboutUser(photo)
       }
