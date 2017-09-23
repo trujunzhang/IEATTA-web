@@ -44,12 +44,6 @@ Photos.getSinglePhotoItem = function (photo, modelType, forObject) {
   }
 }
 
-Photos.getPhotoItem = function (photos, modelType, forObject, index) {
-  return {
-    linkObject: getPhotosBrowserSelectionLink(photos[index], modelType, forObject),
-    imageUrl: Photos.getThumbnailUrl(photos[index])
-  }
-}
 
 Photos.getPhotoInfoAboutUser = function (_photo) {
   let user = Users.anonymousUser;
@@ -94,10 +88,10 @@ Photos.generateHeaderRightPhotoObject = function (props) {
         Photos.getSinglePhotoItemInfo(photos[1], modelType, forObject),
       ],
       photosWall: [
-        Photos.getPhotoItem(photos, modelType, forObject, 2),
-        Photos.getPhotoItem(photos, modelType, forObject, 3),
-        Photos.getPhotoItem(photos, modelType, forObject, 4),
-        Photos.getPhotoItem(photos, modelType, forObject, 5),
+        Photos.getSinglePhotoItem(photos[2], modelType, forObject),
+        Photos.getSinglePhotoItem(photos[3], modelType, forObject),
+        Photos.getSinglePhotoItem(photos[4], modelType, forObject),
+        Photos.getSinglePhotoItem(photos[5], modelType, forObject),
       ]
     }
   } else {

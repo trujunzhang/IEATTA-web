@@ -92,7 +92,7 @@ class F8PhotosCollectionView extends Component {
       <div className="media-landing_gallery photos">
         <ul className="photo-box-grid photo-box-grid--highlight photo-box-grid--small clearfix lightbox-media-parent">
           {photos.map((photo, index) => {
-            const xxx = Photos.getPhotoItemInfo(photos)
+            // const xxx = Photos.getPhotoItemInfo(photos)
             return this.renderRow(photo, index)
           })}
         </ul>
