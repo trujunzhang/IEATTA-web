@@ -41,9 +41,6 @@ class F8PhotosCollectionView extends Component {
 
   renderOverLay(photoInfo, photo, index) {
     const {overlay} = photoInfo;
-    const {user} = overlay;
-    const userName = user.username;
-    const linkTitle = overlay.title !== '' ? overlay.title : userName;
 
     return (
       <div className="photo-box-overlay js-overlay">
@@ -52,7 +49,7 @@ class F8PhotosCollectionView extends Component {
           <div className="media-story" id="photos-browser">
 
             <Link className="photo-desc margin-right-4" to={overlay.linkUrl}>
-              {linkTitle}
+              {overlay.title}
             </Link>
 
           </div>
