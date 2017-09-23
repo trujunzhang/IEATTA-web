@@ -123,20 +123,7 @@ export function getEditReviewLink(review) {
  */
 export function getPhotosBrowserSelectionLink(photo, photoType, forObject, props = {location: {query: {}}}) {
   const {objectSchemaName} = AppConstants.realmObjects[photoType]
-
-  const xxx = forObject.displayName;
-  if (!xxx || xxx === '') {
-    debugger
-  }
-
-  try {
-    const yyy = slugify(xxx);
-  } catch (e) {
-    debugger
-  }
-
   const pathname = `/${AppConstants.SubDomainPhotos[objectSchemaName]}/${forObject.id}/${slugify(forObject.displayName)}`
-
 
   const select = photo.id;
   let query = {select}
