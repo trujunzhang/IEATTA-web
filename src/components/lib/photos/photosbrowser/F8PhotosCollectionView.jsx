@@ -33,7 +33,6 @@ class F8PhotosCollectionView extends Component {
 
         </div>
 
-
       </li>
 
     )
