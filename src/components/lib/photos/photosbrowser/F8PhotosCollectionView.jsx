@@ -13,14 +13,16 @@ const {
 } = require('../../../../lib/constants').default
 
 class F8PhotosCollectionView extends Component {
-  onTrashIconPress = () => {
-
+  onTrashIconPress = (photo) => {
+    debugger
   }
 
-  renderLeftTopTrash() {
+  renderLeftTopTrash(photo) {
     return (
       <button className="chiclet-link u-cursor-pointer show-tooltip js-delete-review-draft"
-              onClick={this.onTrashIconPress}
+              onClick={() => {
+                this.onTrashIconPress(photo)
+              }}
               id="photos-browser-cell-item-button-trash">
                 <span id="icon_18X18" className="icon icon--18-trash icon--size-18 icon--currentColor">
                      <svg className="icon_svg">
@@ -49,7 +51,7 @@ class F8PhotosCollectionView extends Component {
               src={Photos.getThumbnailUrl(photo)}/>
           </Link>
 
-          {photoTitleType === PHOTO_BROWSER_LOGGED_USER_TITLE && this.renderLeftTopTrash()}
+          {photoTitleType === PHOTO_BROWSER_LOGGED_USER_TITLE && this.renderLeftTopTrash(photo)}
 
           {photoTitleType === PHOTO_BROWSER_LOGGED_USER_TITLE && this.renderOverLayForUserProfile(photoInfo, photo, index)}
           {photoTitleType === PHOTO_BROWSER_NORMAL_TITLE && this.renderOverLay(photoInfo)}
