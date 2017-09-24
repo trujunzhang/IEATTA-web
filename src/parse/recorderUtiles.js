@@ -50,12 +50,13 @@ async function updateParseRecorder(objectSchemaName, parseInstance) {
   } else {
     recorder = createParseInstance(PARSE_RECORDS)
 
+    // Two fields('recordType' and 'flag').
     recorder.set('recordType', recordType)
+    recorder.set('flag', AppConstants.parseObjectFlags[PARSE_OBJECT_FLAG_NORMAL])
 
     recorder.set(recordType, parseInstance);// For (web app)
   }
 
-  recorder.set('flag', AppConstants.parseObjectFlags[PARSE_OBJECT_FLAG_NORMAL])
 
   // ==Important(web)==
   // After saved recorder, the 'updatedAt' column will be updated automatically.
