@@ -14,6 +14,7 @@ const {
 
 class F8PhotosCollectionView extends Component {
   onTrashIconPress = (photo) => {
+
     debugger
   }
 
