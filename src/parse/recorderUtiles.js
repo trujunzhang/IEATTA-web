@@ -57,7 +57,10 @@ async function updateParseRecorder(objectSchemaName, parseInstance) {
     recorder.set(recordType, parseInstance);// For (web app)
   }
 
+  await _save_recorder(recorder)
+}
 
+async function _save_recorder(recorder) {
   // ==Important(web)==
   // After saved recorder, the 'updatedAt' column will be updated automatically.
   // So that new 'updatedAt' will notify the mobile app to update their local database.
@@ -73,6 +76,8 @@ async function updateParseRecorderFlagStatus(objectSchemaName, parseInstance, ne
   } else {
     throw new Error(`The recorder that recorded the ${objectSchemaName} had been removed!`)
   }
+
+  await _save_recorder(recorder)
 }
 
 export default {
