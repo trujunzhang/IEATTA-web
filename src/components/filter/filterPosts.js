@@ -36,13 +36,14 @@ const _ = require('underscore')
  * @returns {{id: Any.listId, ready: boolean, totalCount: number, limit: Any.limit, firstPagination: boolean, pageIndex: (Any.pageIndex|number), results: Array}}
  */
 export function getDefaultListTask(terms: Any, lastTask = {}) {
-  const {listId, limit, pageIndex} = terms;
+  const {listId, allItems, limit, pageIndex} = terms;
 
   return {
     id: listId,
     ready: false,
     totalCount: lastTask.totalCount || -1,
-    limit: limit,
+    limit,
+    allItems,
     firstPagination: true,
     pageIndex: pageIndex || 1,
     results: []
