@@ -44,6 +44,7 @@ const {
 
 const {
   updateParseRecorder,
+  updateParseRecorderFlagStatus,
 } = require('../parse/recorderUtiles').default
 
 const {
@@ -70,6 +71,9 @@ const {
   MODEL_FORM_TYPE_NEW,
   MODEL_FORM_TYPE_EDIT,
   WRITE_MODEL_DONE,
+  // Parse Object Model Status
+  PARSE_OBJECT_FLAG_NORMAL,
+  PARSE_OBJECT_FLAG_REMOVED,
 } = require('../lib/constants').default
 
 async function _writeOnlineParseObject(editModelType,
@@ -175,13 +179,14 @@ function invokeEventFromAction(action: Promise<Array<Action>>): ThunkAction {
  * @private
  */
 async function _removeSelectedPhoto(photo: object): Promise<Array<Action>> {
-  debugger
 
   // step1: get online photo instance.
   const onlinePhoto = await getQueryByType(PARSE_PHOTOS).get(photo.id)
 
   // myObject.destroy()
   debugger
+
+  await updateParseRecorderFlagStatus(PARSE_PHOTOS, onlinePhoto, PARSE_OBJECT_FLAG_REMOVED)
 
   const action = {
     type: SAVE_MODEL_REQUEST,

@@ -64,7 +64,7 @@ async function updateParseRecorder(objectSchemaName, parseInstance) {
   await recorder.save()
 }
 
-async function updateParseRecorderFlagStatus(objectSchemaName, parseInstance, newFlagType) {
+async function updateParseRecorderFlagStatus(objectSchemaName, parseInstance, newFlagType = PARSE_OBJECT_FLAG_NORMAL) {
   const recordType = AppConstants.realmTypes[objectSchemaName]
   let recorder = await getQueryByType(PARSE_RECORDS).equalTo(recordType, parseInstance).first()
 
