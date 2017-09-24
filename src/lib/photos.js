@@ -17,7 +17,8 @@ const Photos = {
 }
 
 Photos.getThumbnailUrl = function (photo) {
-  return photo.thumbnail._url;
+  const _thumbnail = photo.thumbnail || {};
+  return _thumbnail._url || '';
 }
 
 Photos.getOriginalUrl = function (photo) {
@@ -28,9 +29,7 @@ Photos.getListThumbnailUrl = function (item = {}) {
   const photos = item.photos || [];
 
   if (photos.length > 0) {
-    const firstPhoto = photos[0];
-    const _thumbnail = firstPhoto.thumbnail || {};
-    return _thumbnail._url || '';
+    return Photos.getThumbnailUrl(photos[0]);
   }
 
   return '';
