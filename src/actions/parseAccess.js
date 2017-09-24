@@ -168,6 +168,28 @@ function invokeEventFromAction(action: Promise<Array<Action>>): ThunkAction {
   }
 }
 
+/**
+ * http://docs.parseplatform.org/js/guide/#objects
+ * @param photo
+ * @returns {Promise.<*[]>}
+ * @private
+ */
+async function _removeSelectedPhoto(photo: object): Promise<Array<Action>> {
+  debugger
+
+  // step1: get online photo instance.
+  const onlinePhoto = await getQueryByType(PARSE_PHOTOS).get(photo.id)
+
+  // myObject.destroy()
+  debugger
+
+  const action = {
+    type: SAVE_MODEL_REQUEST,
+  }
+  return Promise.all([
+    Promise.resolve(action)
+  ])
+}
 
 async function _ownAnotherPhotoUser(photoId: string, selectedUserId: string): Promise<Array<Action>> {
   // step1: get online photo instance.
@@ -214,4 +236,8 @@ export default {
     return invokeEventFromAction(_ownAnotherPhotoUser(photoId, selectedUserId))
   },
 
+  // Remove Photos
+  removeSelectedPhoto(photo: object): ThunkAction {
+    return invokeEventFromAction(_removeSelectedPhoto(photo))
+  },
 }

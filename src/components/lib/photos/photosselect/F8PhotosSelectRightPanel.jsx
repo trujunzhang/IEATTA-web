@@ -248,6 +248,7 @@ class F8PhotosSelectRightPanel extends Component {
       }
     }
   }
+
 }
 
 F8PhotosSelectRightPanel.propTypes = {
