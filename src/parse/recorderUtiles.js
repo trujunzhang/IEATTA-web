@@ -26,6 +26,9 @@ const {
   PARSE_RECIPES,
   PARSE_RECORDS,
   PARSE_PHOTOS,
+  // Parse Object Model Status
+  PARSE_OBJECT_FLAG_NORMAL,
+  PARSE_OBJECT_FLAG_REMOVED,
 } = require('../lib/constants').default
 
 const {
@@ -39,6 +42,7 @@ const {
  * @returns {Promise.<void>}
  */
 async function updateParseRecorder(objectSchemaName, parseInstance) {
+
   const recordType = AppConstants.realmTypes[objectSchemaName]
   let recorder = await getQueryByType(PARSE_RECORDS).equalTo(recordType, parseInstance).first()
   if (!!recorder) {
@@ -47,10 +51,11 @@ async function updateParseRecorder(objectSchemaName, parseInstance) {
     recorder = createParseInstance(PARSE_RECORDS)
 
     recorder.set('recordType', recordType)
-    recorder.set('flag', '1')
 
     recorder.set(recordType, parseInstance);// For (web app)
   }
+
+  recorder.set('flag', AppConstants.parseObjectFlags[PARSE_OBJECT_FLAG_NORMAL])
 
   // ==Important(web)==
   // After saved recorder, the 'updatedAt' column will be updated automatically.
@@ -58,12 +63,12 @@ async function updateParseRecorder(objectSchemaName, parseInstance) {
   await recorder.save()
 }
 
-async function updateParseRecorderFlagStatus(objectSchemaName, parseInstance) {
+async function updateParseRecorderFlagStatus(objectSchemaName, parseInstance, newFlagType) {
   const recordType = AppConstants.realmTypes[objectSchemaName]
   let recorder = await getQueryByType(PARSE_RECORDS).equalTo(recordType, parseInstance).first()
 
   if (!!recorder) {// Exist, set 'flag' to new value.
-
+    recorder.set('flag', AppConstants.parseObjectFlags[newFlagType])
   } else {
     throw new Error(`The recorder that recorded the ${objectSchemaName} had been removed!`)
   }

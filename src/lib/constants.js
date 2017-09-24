@@ -1,6 +1,10 @@
 import keyMirror from 'key-mirror'
 
 export default keyMirror({
+  // Parse Object Model Status
+  PARSE_OBJECT_FLAG_NORMAL: null,
+  PARSE_OBJECT_FLAG_REMOVED: null,
+
   // Photos Browser Type
   PHOTOS_BROWSER_PAGE_NORMAL: null,
   PHOTOS_BROWSER_PAGE_FOR_USER_PROFILE: null,

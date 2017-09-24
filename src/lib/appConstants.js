@@ -9,12 +9,20 @@ const {
   PARSE_RECIPES,
   PARSE_PHOTOS,
   PARSE_REVIEWS,
-  PARSE_PEOPLE_IN_EVENTS
+  PARSE_PEOPLE_IN_EVENTS,
+  // Parse Object Model Status
+  PARSE_OBJECT_FLAG_NORMAL,
+  PARSE_OBJECT_FLAG_REMOVED,
 } = require('./constants').default
 
 const UUID = require('../components/vendor/uuid');
 
 const AppConstants = {}
+
+AppConstants.parseObjectFlags = {
+  PARSE_OBJECT_FLAG_NORMAL: '1',
+  PARSE_OBJECT_FLAG_REMOVED: '0',
+}
 
 AppConstants.realmObjects = {
   'record': {objectSchemaName: PARSE_RECORDS},
