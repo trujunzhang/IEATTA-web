@@ -19,6 +19,22 @@ const {
 
 class F8PhotosCollectionView extends Component {
 
+
+  constructor(props) {
+    super(props);
+
+    this.state = this.initialState = {
+      showRemoveConfirmDialog: false
+    }
+  }
+
+
+  onTrashIconPressConfirm(photo) {
+    this.setState({
+      showRemoveConfirmDialog: true
+    })
+  }
+
   async onTrashIconPress(photo) {
     const {dispatch, isLoggedIn} = this.props;
 
@@ -52,7 +68,7 @@ class F8PhotosCollectionView extends Component {
     return (
       <button className="chiclet-link u-cursor-pointer show-tooltip js-delete-review-draft"
               onClick={(e) => {
-                this.onTrashIconPress(photo)
+                this.onTrashIconPressConfirm(photo)
               }}
               id="photos-browser-cell-item-button-trash">
                 <span id="icon_18X18" className="icon icon--18-trash icon--size-18 icon--currentColor">
@@ -76,8 +92,8 @@ class F8PhotosCollectionView extends Component {
 
           <Link to={getPhotosBrowserSelectionLink(photo, modelType, forObject, this.props)}>
             <img
-              width="226"
-              height="226"
+              width="150"
+              height="150"
               className="photo-box-img"
               src={Photos.getThumbnailUrl(photo)}/>
           </Link>
