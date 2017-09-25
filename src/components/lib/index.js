@@ -162,6 +162,7 @@ Telescope.registerComponent('IEAAddPhotosTop',                        require('.
 
 // Photos Browser
 Telescope.registerComponent('F8PhotosCollectionView',                 require('./photos/photosbrowser/F8PhotosCollectionView.jsx').default)
+Telescope.registerComponent('F8PhotosCollectionItemView',             require('./photos/photosbrowser/F8PhotosCollectionItemView.jsx').default)
 Telescope.registerComponent('F8PhotosTitleHeader',                    require('./photos/photosbrowser/F8PhotosTitleHeader.jsx').default)
 Telescope.registerComponent('F8PhotosLoggedUserTitleHeader',          require('./photos/photosbrowser/F8PhotosLoggedUserTitleHeader.jsx').default)
 
