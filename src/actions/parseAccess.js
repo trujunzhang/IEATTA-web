@@ -185,6 +185,7 @@ async function _removeSelectedPhoto(photo: object): Promise<Array<Action>> {
 
   onlinePhoto.destroy()
 
+  // step2: update the recorder
   await updateParseRecorderFlagStatus(PARSE_PHOTOS, onlinePhoto, PARSE_OBJECT_FLAG_REMOVED)
 
   const action = {
