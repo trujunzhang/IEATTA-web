@@ -4,7 +4,7 @@ import getScrollTop from 'dom-helpers/query/scrollTop';
 
 import ownerDocument from './ownerDocument';
 
-function getContainerDimensions(containerNode) {
+export function getContainerDimensions(containerNode) {
   let width, height, scroll;
 
   if (containerNode.tagName === 'BODY') {
@@ -15,11 +15,11 @@ function getContainerDimensions(containerNode) {
       getScrollTop(ownerDocument(containerNode).documentElement) ||
       getScrollTop(containerNode);
   } else {
-    ({ width, height } = getOffset(containerNode));
+    ({width, height} = getOffset(containerNode));
     scroll = getScrollTop(containerNode);
   }
 
-  return { width, height, scroll};
+  return {width, height, scroll};
 }
 
 function getTopDelta(top, overlayHeight, container, padding) {
@@ -55,13 +55,11 @@ function getLeftDelta(left, overlayWidth, container, padding) {
   return 0;
 }
 
-export default function calculatePosition(
-  placement, overlayNode, target, container, padding
-) {
+export function calculatePosition(placement, overlayNode, target, container, padding) {
   const childOffset = container.tagName === 'BODY' ?
     getOffset(target) : getPosition(target, container);
 
-  const { height: overlayHeight, width: overlayWidth } =
+  const {height: overlayHeight, width: overlayWidth} =
     getOffset(overlayNode);
 
   let positionLeft, positionTop, arrowOffsetLeft, arrowOffsetTop;
@@ -106,5 +104,5 @@ export default function calculatePosition(
     );
   }
 
-  return { positionLeft, positionTop, arrowOffsetLeft, arrowOffsetTop };
+  return {positionLeft, positionTop, arrowOffsetLeft, arrowOffsetTop};
 }

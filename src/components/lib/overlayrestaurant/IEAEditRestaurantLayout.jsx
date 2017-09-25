@@ -31,6 +31,7 @@ class IEAEditRestaurantLayout extends Component {
     this.state = {
       mapInfo: mapInfo,
       showFixMapMarker: false,
+      // showFixMapMarker: true,
       value: {
         displayName: props.editModel.form.fields.displayName,
       }

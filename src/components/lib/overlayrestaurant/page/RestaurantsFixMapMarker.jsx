@@ -1,6 +1,8 @@
 import Telescope from '../../../lib'
 import React, {Component} from 'react'
 
+import {getContainerDimensions} from '../../../vendor/react-overlays/utils/calculatePosition'
+
 const {
   invokeParseCloudMethod
 } = require('../../../../actions').default
@@ -192,8 +194,11 @@ class RestaurantsFixMapMarker extends Component {
   }
 
   render() {
+    const width = window.innerWidth;
+    const left = (width - 650) / 2;
+
     return (
-      <div className="ypop" id="locate-biz-pop" style={{"position": 'relative', "top": "-400px"}}>
+      <div className="ypop" id="locate-biz-pop" style={{"position": 'absolute', "top": "50px", "left": left}}>
         <div className="ypop-content clearfix" id="locate-biz-pop-content">
 
           {this.renderCloseIcon()}
