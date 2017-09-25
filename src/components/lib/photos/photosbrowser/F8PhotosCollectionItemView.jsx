@@ -24,6 +24,7 @@ class F8PhotosCollectionItemView extends Component {
     super(props);
 
     this.state = this.initialState = {
+      showButtonHint: false,
       showRemoveConfirmDialog: false
     }
   }
@@ -67,6 +68,12 @@ class F8PhotosCollectionItemView extends Component {
   renderLeftTopTrash(photo) {
     return (
       <button className="chiclet-link u-cursor-pointer show-tooltip js-delete-review-draft"
+              onMouseEnter={(e) => {
+                this.setState({showButtonHint: true})
+              }}
+              onMouseLeave={(e) => {
+                this.setState({showButtonHint: false})
+              }}
               onClick={(e) => {
                 this.onTrashIconPressConfirm(photo)
               }}
@@ -76,9 +83,12 @@ class F8PhotosCollectionItemView extends Component {
                             <path
                               d="M3 5V3h4V2h4v1h4v2H3zm11 9c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V6h10v8zM8 8.5a.5.5 0 0 0-.5-.5.5.5 0 0 0-.5.5v5a.5.5 0 0 0 .5.5.5.5 0 0 0 .5-.5v-5zm3 0a.5.5 0 0 0-.5-.5.5.5 0 0 0-.5.5v5a.5.5 0 0 0 .5.5.5.5 0 0 0 .5-.5v-5z"/></svg>
                 </span>
-        <span className="tooltip-wrapper">
+        {
+          this.state.showButtonHint &&
+          <span className="tooltip-wrapper">
                     <span className="tooltip">Delete photo</span>
                 </span>
+        }
       </button>
     )
   }
