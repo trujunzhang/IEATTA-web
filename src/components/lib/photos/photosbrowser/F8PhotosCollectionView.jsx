@@ -13,6 +13,7 @@ const {
 } = require('../../../../lib/constants').default
 
 const {
+  loadPhotosBrowser,
   removeSelectedPhoto,
   timeout,
 } = require('../../../../actions').default
@@ -42,7 +43,8 @@ class F8PhotosCollectionView extends Component {
   }
 
   onConfirmDeletePhoto = () => {
-
+    debugger
+    this.props.dispatch(loadPhotosBrowser(this.props.photosTerms))
   }
 
   render() {

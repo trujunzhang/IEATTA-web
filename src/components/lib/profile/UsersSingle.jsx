@@ -48,7 +48,7 @@ class UsersSingle extends Component {
   componentWillReceiveProps(nextProps) {
     const _userProfile = getModelByObjectId(nextProps, this.state.uid, this.state.userProfile);
     let forObject = null;
-    if (!!_userProfile) {
+    if (!!_userProfile) { // Already fetch the user's profile.
       forObject = {
         id: _userProfile.id,
         displayName: _userProfile.username,
