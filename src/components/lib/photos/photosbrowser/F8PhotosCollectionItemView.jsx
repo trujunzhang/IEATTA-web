@@ -20,54 +20,12 @@ const {
 class F8PhotosCollectionItemView extends Component {
 
 
-  constructor(props) {
-    super(props);
-
-    this.state = this.initialState = {
-      showRemoveConfirmDialog: false
-    }
-  }
-
-
-  onTrashIconPressConfirm(photo) {
-    this.setState({
-      showRemoveConfirmDialog: true
-    })
-  }
-
-  async onTrashIconPress(photo) {
-    const {dispatch, isLoggedIn} = this.props;
-
-    if (isLoggedIn === false) {
-
-    }
-
-    debugger
-
-    this.setState({isButtonSaving: true})
-    let errorMessage = null
-    try {
-      await Promise.race([dispatch(removeSelectedPhoto(photo)), timeout(15000),]);
-    } catch (e) {
-      const message = e.message || e;
-      if (message !== 'Timed out' && message !== 'Canceled by user') {
-        errorMessage = message;
-        this.props.dispatch(showAlertMessage({type: ALERT_TYPE_ERROR, text: errorMessage}))
-      }
-    } finally {
-      this.setState({isButtonSaving: false})
-      if (!!errorMessage) {
-      } else {
-      }
-    }
-
-    debugger
-  }
-
   renderLeftTopTrash(photo) {
     return (
       <button className="chiclet-link u-cursor-pointer show-tooltip js-delete-review-draft"
-              onClick={this.props.onShowRemoveConfirmDialogPress}
+              onClick={() => {
+                this.props.onShowRemoveConfirmDialogPress(photo)
+              }}
               id="photos-browser-cell-item-button-trash">
                 <span id="icon_18X18" className="icon icon--18-trash icon--size-18 icon--currentColor">
                      <svg className="icon_svg">

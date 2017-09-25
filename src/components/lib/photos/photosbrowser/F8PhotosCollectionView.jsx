@@ -10,11 +10,14 @@ import {Link} from 'react-router'
 const {
   PHOTO_BROWSER_NORMAL_TITLE,
   PHOTO_BROWSER_LOGGED_USER_TITLE,
+  ALERT_TYPE_ERROR,
+  ALERT_TYPE_SUCCESS,
 } = require('../../../../lib/constants').default
 
 const {
   loadPhotosBrowser,
   removeSelectedPhoto,
+  showAlertMessage,
   timeout,
 } = require('../../../../actions').default
 
@@ -24,14 +27,18 @@ class F8PhotosCollectionView extends Component {
     super(props);
 
     this.state = this.initialState = {
+      // Delete Photo.
+      selectedPhoto: null,
       showRemoveConfirmDialog: false,
       // showRemoveConfirmDialog: true,
+      // Delete Dialog Events.
       onShowRemoveConfirmDialogPress: this.onShowRemoveConfirmDialogPress,
     }
   }
 
-  onShowRemoveConfirmDialogPress = () => {
+  onShowRemoveConfirmDialogPress = (photo) => {
     this.setState({
+      selectedPhoto: photo,
       showRemoveConfirmDialog: true
     })
   }
@@ -43,15 +50,45 @@ class F8PhotosCollectionView extends Component {
   }
 
   onConfirmDeletePhoto() {
-
-    // this.props.dispatch(loadPhotosBrowser({...this.props.photosTerms}))
+    const {selectedPhoto} = this.state;
+    this.onTrashIconPress(selectedPhoto)
   }
+
+  async onTrashIconPress(photo) {
+    const {dispatch, isLoggedIn} = this.props;
+
+    if (isLoggedIn === false) {
+
+    }
+
+    let errorMessage = null
+    try {
+      await Promise.race([dispatch(removeSelectedPhoto(photo)), timeout(15000),]);
+    } catch (e) {
+      const message = e.message || e;
+      if (message !== 'Timed out' && message !== 'Canceled by user') {
+        errorMessage = message;
+        this.props.dispatch(showAlertMessage({type: ALERT_TYPE_ERROR, text: errorMessage}))
+      }
+    } finally {
+      this.onCloseRemoveConfirmDialogPress();
+      if (!!errorMessage) {
+      } else {
+        this.props.dispatch(showAlertMessage({type: ALERT_TYPE_SUCCESS, text: 'Remove the photo successfully!'}))
+        this.props.dispatch(loadPhotosBrowser({...this.props.photosTerms}))
+      }
+    }
+  }
+
 
   render() {
     const {photosListTask} = this.props;
     const photos = photosListTask.results;
     return (
       <div className="media-landing_gallery photos">
+
+        <Telescope.components.F8AppAlertSection/>
+
         <ul className="photo-box-grid photo-box-grid--highlight photo-box-grid--small clearfix lightbox-media-parent">
           {photos.map((photo, index) => {
             const photoInfo = Photos.getSinglePhotoItemInfo(photo)
