@@ -71,9 +71,9 @@ async function updateParseRecorderFlagStatus(objectSchemaName, parseInstance, ne
   const recordType = AppConstants.realmTypes[objectSchemaName]
   let recorder = await getQueryByType(PARSE_RECORDS).equalTo(recordType, parseInstance).first()
 
-  if (!!recorder) {// Exist, set 'flag' to new value.
+  if (!!recorder) {// Exist, set 'flag' to new value and add new field called "removedObjectUniqueId".
     recorder.set('flag', AppConstants.parseObjectFlags[newFlagType])
-    recorder.set('removedObjectId', parseInstance.id)
+    recorder.set('removedObjectUniqueId', parseInstance.uniqueId)
   } else {
     throw new Error(`The recorder that recorded the ${objectSchemaName} had been removed!`)
   }
