@@ -55,7 +55,13 @@ class F8PhotosCollectionView extends Component {
           <div className="body-overlay" style={{"display": "block"}}/>
         }
       </div>
-    );
+    )
+  }
+
+  renderRemoveConfirmDialog(){
+    return(
+
+    )
   }
 }
 
