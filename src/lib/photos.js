@@ -10,7 +10,7 @@ import {
 
 const Photos = {
   config: {
-    paginationCountPerPage: 6 * 5,
+    paginationCountPerPage: 6 * 5, //Using it now.
     // July 29, 2017
     selectedPhotoCreatedAtFormat: 'MMMM DD, YYYY'
   }

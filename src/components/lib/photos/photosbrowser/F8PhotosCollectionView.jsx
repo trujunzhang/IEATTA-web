@@ -42,9 +42,9 @@ class F8PhotosCollectionView extends Component {
     })
   }
 
-  onConfirmDeletePhoto = () => {
-    debugger
-    this.props.dispatch(loadPhotosBrowser(this.props.photosTerms))
+  onConfirmDeletePhoto() {
+
+    // this.props.dispatch(loadPhotosBrowser({...this.props.photosTerms}))
   }
 
   render() {
@@ -91,7 +91,7 @@ class F8PhotosCollectionView extends Component {
           <div className="ypop-footer clearfix" id="delete-review-draft-popup-footer">
             <div className="ypop-buttons">
               <button
-                onClick={this.onConfirmDeletePhoto}
+                onClick={this.onConfirmDeletePhoto.bind(this)}
                 type="submit" value="submit" className="ybtn ybtn-primary ybtn-small">
                 <span>Yes</span>
               </button>
