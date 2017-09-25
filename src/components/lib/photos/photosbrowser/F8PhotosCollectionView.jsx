@@ -51,6 +51,7 @@ class F8PhotosCollectionView extends Component {
             const photoInfo = Photos.getSinglePhotoItemInfo(photo)
             return (
               <Telescope.components.F8PhotosCollectionItemView
+                key={photo.id}
                 {...this.state}
                 {...this.props}
                 photoInfo={photoInfo} photo={photo} index={index}/>
@@ -75,11 +76,8 @@ class F8PhotosCollectionView extends Component {
     return (
       <div className="ypop" id="delete-photo-popup" style={{"position": "absolute", "left": left, "top": "50px"}}>
         <div className="ypop-content clearfix" id="delete-review-draft-popup-content">
-          <a className="offscreen ypop-close-offscreen">
-            Close popup
-          </a>
           <div className="ypop-title" id="delete-review-draft-popup-title">
-            <div className="ypop-close">×</div>
+            <div onClick={this.onCloseRemoveConfirmDialogPress} className="ypop-close">×</div>
             <h2>Confirmation</h2></div>
           <div className="ypop-inner clearfix" id="delete-review-draft-popup-inner">
             Are you sure you would like to delete this photo?
@@ -93,11 +91,11 @@ class F8PhotosCollectionView extends Component {
                 type="submit" value="submit" className="ybtn ybtn-primary ybtn-small">
                 <span>Yes</span>
               </button>
-              <a onclick={this.onCloseRemoveConfirmDialogPress}>No</a>
+              <a onClick={this.onCloseRemoveConfirmDialogPress}>No</a>
             </div>
           </div>
-          <a onclick={this.onCloseRemoveConfirmDialogPress}
-             className="offscreen ypop-close-offscreen">Close popup</a></div>
+          <a
+            className="offscreen ypop-close-offscreen">Close popup</a></div>
       </div>
 
     )
