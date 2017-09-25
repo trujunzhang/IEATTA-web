@@ -23,8 +23,8 @@ class F8PhotosCollectionView extends Component {
     super(props);
 
     this.state = this.initialState = {
-      // showRemoveConfirmDialog: false,
-      showRemoveConfirmDialog: true,
+      showRemoveConfirmDialog: false,
+      // showRemoveConfirmDialog: true,
       onShowRemoveConfirmDialogPress: this.onShowRemoveConfirmDialogPress,
     }
   }
@@ -32,6 +32,12 @@ class F8PhotosCollectionView extends Component {
   onShowRemoveConfirmDialogPress = () => {
     this.setState({
       showRemoveConfirmDialog: true
+    })
+  }
+
+  onCloseRemoveConfirmDialogPress = () => {
+    this.setState({
+      showRemoveConfirmDialog: false
     })
   }
 
@@ -63,7 +69,7 @@ class F8PhotosCollectionView extends Component {
   }
 
   renderRemoveConfirmDialog() {
-    const width = window.innerWidth;
+    const width = 960;//window.innerWidth;
     const left = (width - 427) / 2;
 
     return (
@@ -76,17 +82,22 @@ class F8PhotosCollectionView extends Component {
             <div className="ypop-close">×</div>
             <h2>Confirmation</h2></div>
           <div className="ypop-inner clearfix" id="delete-review-draft-popup-inner">
-            Are you sure you would like to delete this unfinished review?
+            Are you sure you would like to delete this photo?
           </div>
           <div className="ypop-footer clearfix" id="delete-review-draft-popup-footer">
             <div className="ypop-buttons">
-              <button type="submit" value="submit" className="ybtn ybtn-primary ybtn-small">
+              <button
+                onClick={() => {
+
+                }}
+                type="submit" value="submit" className="ybtn ybtn-primary ybtn-small">
                 <span>Yes</span>
               </button>
-              <a href="#">No</a>
+              <a onclick={this.onCloseRemoveConfirmDialogPress}>No</a>
             </div>
           </div>
-          <a className="offscreen ypop-close-offscreen">Close popup</a></div>
+          <a onclick={this.onCloseRemoveConfirmDialogPress}
+             className="offscreen ypop-close-offscreen">Close popup</a></div>
       </div>
 
     )
