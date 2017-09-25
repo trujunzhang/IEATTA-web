@@ -19,6 +19,21 @@ const {
 
 class F8PhotosCollectionView extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = this.initialState = {
+      showRemoveConfirmDialog: false,
+      onShowRemoveConfirmDialogPress: this.onShowRemoveConfirmDialogPress,
+    }
+  }
+
+  onShowRemoveConfirmDialogPress = () => {
+    this.setState({
+      showRemoveConfirmDialog: true
+    })
+  }
+
   render() {
     const {photosListTask} = this.props;
     const photos = photosListTask.results;
@@ -29,11 +44,16 @@ class F8PhotosCollectionView extends Component {
             const photoInfo = Photos.getSinglePhotoItemInfo(photo)
             return (
               <Telescope.components.F8PhotosCollectionItemView
+                {...this.state}
                 {...this.props}
                 photoInfo={photoInfo} photo={photo} index={index}/>
             )
           })}
         </ul>
+        {
+          this.state.showRemoveConfirmDialog &&
+          <div className="body-overlay" style={{"display": "block"}}/>
+        }
       </div>
     );
   }
