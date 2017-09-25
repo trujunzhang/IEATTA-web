@@ -1,7 +1,7 @@
 import Telescope from '../../../lib'
 import React, {Component} from 'react'
 
-import {getContainerDimensions} from '../../../vendor/react-overlays/utils/calculatePosition'
+import onClickOutside from 'react-onclickoutside'
 
 const {
   invokeParseCloudMethod
@@ -104,7 +104,7 @@ class RestaurantsFixMapMarker extends Component {
     return (
       <div className="map-popup-info google-map">
         <p>
-          Drag and drop the map marker to correct the location.
+          Click the map, or Drag and drop the map marker to correct the location.
           <br/>
           Use the tools in the map to zoom in for a closer look at the map.
         </p>
@@ -202,15 +202,19 @@ class RestaurantsFixMapMarker extends Component {
         <div className="ypop-content clearfix" id="locate-biz-pop-content">
 
           {this.renderCloseIcon()}
+
           {this.renderTitle()}
-
           {this.renderContent()}
-
           {this.renderFooter()}
+
         </div>
       </div>
     )
   }
+
+  handleClickOutside = evt => {
+    this.props.onCloseFixMapMaker()
+  }
 }
 
-export default RestaurantsFixMapMarker;
+export default onClickOutside(RestaurantsFixMapMarker)
