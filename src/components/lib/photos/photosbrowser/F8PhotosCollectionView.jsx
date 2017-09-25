@@ -23,7 +23,8 @@ class F8PhotosCollectionView extends Component {
     super(props);
 
     this.state = this.initialState = {
-      showRemoveConfirmDialog: false,
+      // showRemoveConfirmDialog: false,
+      showRemoveConfirmDialog: true,
       onShowRemoveConfirmDialogPress: this.onShowRemoveConfirmDialogPress,
     }
   }
@@ -54,12 +55,39 @@ class F8PhotosCollectionView extends Component {
           this.state.showRemoveConfirmDialog &&
           <div className="body-overlay" style={{"display": "block"}}/>
         }
+        {
+          this.state.showRemoveConfirmDialog && this.renderRemoveConfirmDialog()
+        }
       </div>
     )
   }
 
-  renderRemoveConfirmDialog(){
-    return(
+  renderRemoveConfirmDialog() {
+    const width = window.innerWidth;
+    const left = (width - 427) / 2;
+
+    return (
+      <div className="ypop" id="delete-photo-popup" style={{"position": "absolute", "left": left, "top": "50px"}}>
+        <div className="ypop-content clearfix" id="delete-review-draft-popup-content">
+          <a className="offscreen ypop-close-offscreen">
+            Close popup
+          </a>
+          <div className="ypop-title" id="delete-review-draft-popup-title">
+            <div className="ypop-close">×</div>
+            <h2>Confirmation</h2></div>
+          <div className="ypop-inner clearfix" id="delete-review-draft-popup-inner">
+            Are you sure you would like to delete this unfinished review?
+          </div>
+          <div className="ypop-footer clearfix" id="delete-review-draft-popup-footer">
+            <div className="ypop-buttons">
+              <button type="submit" value="submit" className="ybtn ybtn-primary ybtn-small">
+                <span>Yes</span>
+              </button>
+              <a href="#">No</a>
+            </div>
+          </div>
+          <a className="offscreen ypop-close-offscreen">Close popup</a></div>
+      </div>
 
     )
   }
