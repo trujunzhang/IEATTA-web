@@ -183,8 +183,7 @@ async function _removeSelectedPhoto(photo: object): Promise<Array<Action>> {
   // step1: get online photo instance.
   const onlinePhoto = await getQueryByType(PARSE_PHOTOS).get(photo.id)
 
-  // myObject.destroy()
-  debugger
+  onlinePhoto.destroy()
 
   await updateParseRecorderFlagStatus(PARSE_PHOTOS, onlinePhoto, PARSE_OBJECT_FLAG_REMOVED)
 
