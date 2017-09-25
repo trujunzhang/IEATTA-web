@@ -41,6 +41,10 @@ class F8PhotosCollectionView extends Component {
     })
   }
 
+  onConfirmDeletePhoto = () => {
+
+  }
+
   render() {
     const {photosListTask} = this.props;
     const photos = photosListTask.results;
@@ -85,9 +89,7 @@ class F8PhotosCollectionView extends Component {
           <div className="ypop-footer clearfix" id="delete-review-draft-popup-footer">
             <div className="ypop-buttons">
               <button
-                onClick={() => {
-
-                }}
+                onClick={this.onConfirmDeletePhoto}
                 type="submit" value="submit" className="ybtn ybtn-primary ybtn-small">
                 <span>Yes</span>
               </button>
