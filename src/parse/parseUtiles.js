@@ -32,13 +32,13 @@ function getQueryByType(type: string, includes: Array = []) {
   let query = null;
   switch (type) {
     case PARSE_RESTAURANTS:
-      query = new Parse.Query(ParseRestaurant)
+      query = new Parse.Query(ParseRestaurant).include('listPhoto')
       break;
     case PARSE_EVENTS:
       query = new Parse.Query(ParseEvent)
       break;
     case PARSE_USERS:
-      query = new Parse.Query(ParseUser)
+      query = new Parse.Query(ParseUser).include('listPhoto')
       break;
     case PARSE_PEOPLE_IN_EVENTS:
       query = new Parse.Query(ParsePeopleInEvent)
@@ -47,7 +47,7 @@ function getQueryByType(type: string, includes: Array = []) {
       query = new Parse.Query(ParseReview)
       break;
     case PARSE_RECIPES:
-      query = new Parse.Query(ParseRecipe)
+      query = new Parse.Query(ParseRecipe).include('listPhoto')
       break;
     case PARSE_RECORDS:
       query = new Parse.Query(ParseRecord)

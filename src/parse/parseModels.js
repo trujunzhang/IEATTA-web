@@ -181,7 +181,7 @@ export function fromParseUser(map: Object): User {
     // Photos
     defaultAvatarUrl: _get_default_image_photo_url(map),
     // Photos
-    photos: (map.get('photos') || []).map(fromParsePhotoNormal),
+    listPhoto: fromParsePhotoNormal(map.get('listPhoto')),
   }
   return model;
 }
@@ -199,7 +199,10 @@ function parsePhotoNormal(map: Object): Object {
 }
 
 function fromParsePhotoNormal(map: Object): Photo {
-  return parsePhotoNormal(map)
+  if (!!map) {
+    return parsePhotoNormal(map)
+  }
+  return {}
 }
 
 export function fromParsePhoto(map: Object): Photo {
@@ -225,7 +228,7 @@ export function fromParseRecipe(map: Object): Recipe {
     displayName: map.get('displayName'),
     price: map.get('price'),
     // Pointer
-    photos: (map.get('photos') || []).map(fromParsePhotoNormal),
+    listPhoto: fromParsePhotoNormal(map.get('listPhoto')),
     // Relations
     restaurant: map.get('restaurant') && fromParseRestaurant(map.get('restaurant')),
     event: map.get('event') && fromParseEvent(map.get('event')),
@@ -267,7 +270,7 @@ export function fromParseRestaurant(map: Object): Restaurant {
     postal_code: map.get('postal_code') || '',
     administrative_area: map.get('administrative_area') || '',
     // Photos
-    photos: (map.get('photos') || []).map(fromParsePhotoNormal),
+    listPhoto: fromParsePhotoNormal(map.get('listPhoto')),
   }
 }
 

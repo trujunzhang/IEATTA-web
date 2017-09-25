@@ -26,15 +26,9 @@ Photos.getOriginalUrl = function (photo) {
 }
 
 Photos.getListThumbnailUrl = function (item = {}) {
-  const photos = item.photos || [];
-
-  if (photos.length > 0) {
-    return Photos.getThumbnailUrl(photos[0]);
-  }
-
-  return '';
+  const _photo = item.listPhoto || {};
+  return Photos.getThumbnailUrl(_photo);
 }
-
 
 Photos.getSinglePhotoItem = function (photo, modelType, forObject) {
   return {
