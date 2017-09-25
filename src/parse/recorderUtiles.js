@@ -73,6 +73,7 @@ async function updateParseRecorderFlagStatus(objectSchemaName, parseInstance, ne
 
   if (!!recorder) {// Exist, set 'flag' to new value.
     recorder.set('flag', AppConstants.parseObjectFlags[newFlagType])
+    recorder.set('removedObjectId', parseInstance.id)
   } else {
     throw new Error(`The recorder that recorded the ${objectSchemaName} had been removed!`)
   }
