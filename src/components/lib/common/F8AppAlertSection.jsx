@@ -24,7 +24,7 @@ class F8AppAlertSection extends React.Component {
       const {type, text} = this.props.appAlert.message;
       const currentType = ALERTCLASS[type];
       return (
-        <div id="alert-container">
+        <div id="alert-container" className="layout-block">
 
           <div className={`alert alert-${currentType}`}>
             <a onClick={() => {
