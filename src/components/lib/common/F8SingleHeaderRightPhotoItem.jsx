@@ -63,6 +63,7 @@ class F8SingleHeaderRightPhotoItem extends Component {
               <Link {...linkProperty} className="js-analytics-click">
 
                 <Telescope.components.F8PlaceHolderImage
+                  key={index}
                   alt={userName}
                   width="30"
                   height="30"
@@ -78,9 +79,9 @@ class F8SingleHeaderRightPhotoItem extends Component {
           </div>
 
           <div className="media-story" id="photos-browser">
-            <Link className="photo-desc margin-right-4" to={overlay.linkUrl}>
-              {overlay.title}
-            </Link>
+            {/*<Link className="photo-desc margin-right-4" to={overlay.linkUrl}>*/}
+            {/*{overlay.title}*/}
+            {/*</Link>*/}
             <span className="author">
                 {"by"}
               <Link className="user-display-name js-analytics-click margin-left-4"
