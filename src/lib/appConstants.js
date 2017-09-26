@@ -124,10 +124,9 @@ AppConstants.generateRelativeObjects = function (forParseInstance, reviewType) {
   return defaultRelativeObject;
 }
 
-AppConstants.generateNewReviewObject = function (user, forItem, objectSchemaName, lastModel = {rate: 3, body: ''}) {
+AppConstants.generateNewReviewObject = function (user, forItem, objectSchemaName, lastModel = {rate: 0, body: ''}) {
   const reviewType = AppConstants.realmTypes[objectSchemaName]
   const relativeObject = AppConstants.generateRelativeObjects(forItem, reviewType);
-  // debugger
 
   return {
     id: lastModel.id || UUID.create().toString(),
