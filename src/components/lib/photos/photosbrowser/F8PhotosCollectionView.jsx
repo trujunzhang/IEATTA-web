@@ -92,9 +92,10 @@ class F8PhotosCollectionView extends Component {
         <ul className="photo-box-grid photo-box-grid--highlight photo-box-grid--small clearfix lightbox-media-parent">
           {photos.map((photo, index) => {
             const photoInfo = Photos.getSinglePhotoItemInfo(photo)
+            const userId = photoInfo.overlay.user.userId;
             return (
               <Telescope.components.F8PhotosCollectionItemView
-                key={photo.id}
+                key={`${userId}-${index}`}
                 {...this.state}
                 {...this.props}
                 photoInfo={photoInfo} photo={photo} index={index}/>

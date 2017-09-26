@@ -63,8 +63,12 @@ class F8SingleHeaderRightPhotosScrollModel extends Component {
 
               {currentScrollModelObject.showPhotosIndex.map((position, index) => {
                 const item = photoModelObject.photos[position];
+                const userId = item.overlay.user.userId;
                 return (
-                  <Telescope.components.F8SingleHeaderRightPhotoItem key={position} item={item} index={index}/>)
+                  <Telescope.components.F8SingleHeaderRightPhotoItem
+                    key={`${userId}-${position}`}
+                    item={item}
+                    index={index}/>)
               })}
 
             </div>

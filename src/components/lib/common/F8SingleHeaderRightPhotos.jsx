@@ -12,6 +12,12 @@ class F8SingleHeaderRightPhotos extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      photoModelObject: Photos.generateHeaderRightPhotoObject(nextProps)
+    })
+  }
+
   render() {
     const {photoModelObject} = this.state;
     if (!photoModelObject.singleModel) {
