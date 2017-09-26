@@ -58,8 +58,6 @@ Records.createOnlineParseInstance = async function (editModelType, onlineParseOb
     onlineParseObject.set('uniqueId', localRecorder.uniqueId)
   }
 
-  debugger
-
   let _online_user_Instance = null;
   let _online_restaurant_instance = null;
   let _online_event_instance = null;
@@ -81,7 +79,9 @@ Records.createOnlineParseInstance = async function (editModelType, onlineParseOb
       onlineParseObject.set('country', localRecorder.country)
       onlineParseObject.set('postal_code', localRecorder.postal_code)
       onlineParseObject.set('administrative_area', localRecorder.administrative_area)
+
       break;
+
     case PARSE_EVENTS:
       // Basic Fields
       // Attributes
@@ -95,26 +95,47 @@ Records.createOnlineParseInstance = async function (editModelType, onlineParseOb
         _online_restaurant_instance = await getFirstOnlineParseInstance(PARSE_RESTAURANTS, localRecorder.restaurant)
         onlineParseObject.set('restaurant', _online_restaurant_instance)
       }
+
       break;
+
     case PARSE_RECIPES:
       // Basic Fields
       // Attributes
       onlineParseObject.set('displayName', localRecorder.displayName)
       onlineParseObject.set('price', localRecorder.price)
+
       break;
+
     case PARSE_PHOTOS:
+
+      debugger
+
+      if (!!localRecorder.owner) {
+        _online_user_Instance = getInstanceWithoutData(PARSE_USERS, localRecorder.owner.id)
+        onlineParseObject.set('owner', _online_user_Instance)
+      }
+
+      debugger
+
       // step1: common fields.
-      onlineParseObject.set('photoType', localRecorder.modelType)
+      onlineParseObject.set('photoType', localRecorder.photoType)
       // Photo images.
       onlineParseObject.set('thumbnail', localRecorder.thumbnail)
       onlineParseObject.set('original', localRecorder.thumbnail)
 
       // step2: the logged user submitted the photo(for web).
-      Records.setParseObjectFieldWithoutData('owner', onlineParseObject, localRecorder.currentUserId)
+      if (!!localRecorder.owner) {
+        _online_user_Instance = getInstanceWithoutData(PARSE_USERS, localRecorder.owner.id)
+        onlineParseObject.set('owner', _online_user_Instance)
+      }
 
       // step3: set the relation by photo type(for web).
-      Records.setParseObjectFieldWithoutData(localRecorder.modelType, onlineParseObject, localRecorder.forObjectId)
+      Records.setParseObjectFieldWithoutData(localRecorder.photoType, onlineParseObject, localRecorder.forObjectId)
+
+      debugger
+
       break;
+
     case PARSE_REVIEWS:
       debugger
 
@@ -138,6 +159,7 @@ Records.createOnlineParseInstance = async function (editModelType, onlineParseOb
         Records.setParseObjectFieldWithoutData(localRecorder.reviewType, onlineParseObject, localRecorder.forObjectId)
       }
       break;
+
   }
 
 }

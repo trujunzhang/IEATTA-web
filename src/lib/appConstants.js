@@ -77,13 +77,12 @@ AppConstants.generateNewEventRealmObject = function (restaurant) {
   }
 }
 
-AppConstants.getRelativeModel = function (modelType, objectSchemaName, modelSchema) {
+AppConstants.getRelativeModel = function (modelType, objectSchemaName, parseRelationInstance) {// (For Web)
   const currentPhotoType = AppConstants.realmTypes[objectSchemaName]
-
   return (currentPhotoType === modelType) ?
     {
-      id: modelSchema.parseId,
-      uniqueId: modelSchema.uniqueId
+      id: parseRelationInstance.id,
+      uniqueId: parseRelationInstance.uniqueId
     } :
     {
       id: '',
@@ -92,18 +91,23 @@ AppConstants.getRelativeModel = function (modelType, objectSchemaName, modelSche
 
 }
 
-AppConstants.generateNewRealmPhotoObject = function ({modelType, model}) {
+AppConstants.generateNewRealmPhotoObject = function ({modelType, forObject, currentUser}) { // (For Web)
+  let _owner = {id: '', uniqueId: ''}
+  if (currentUser.isLoggedIn) {
+    _owner = {id: currentUser.id, uniqueId: currentUser.uniqueId}
+  }
   return {
-    parseId: UUID.create().toString(),
+    objectId: UUID.create().toString(),
     uniqueId: UUID.create().toString(),
     photoType: modelType,
+    forObjectId: forObject.id,
     // Pointer
-    restaurant: AppConstants.getRelativeModel(modelType, PARSE_RESTAURANTS, model),
-    recipe: AppConstants.getRelativeModel(modelType, PARSE_RECIPES, model),
-    user: AppConstants.getRelativeModel(modelType, PARSE_USERS, model),
-
+    restaurant: AppConstants.getRelativeModel(modelType, PARSE_RESTAURANTS, forObject),
+    recipe: AppConstants.getRelativeModel(modelType, PARSE_RECIPES, forObject),
+    owner: _owner
   }
 }
+
 
 AppConstants.generateRelativeObjects = function (forParseInstance, reviewType) {
   const defaultRelativeObject =

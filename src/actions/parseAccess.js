@@ -112,26 +112,27 @@ async function _writeOnlineParseObject(editModelType,
 }
 
 
-async function _uploadPhoto(model: object): Promise<Array<Action>> {
-  const thumbnailFile = new Parse.File('image', model.file)
-  await thumbnailFile.save()
+async function _uploadPhoto({newPhotoInstance, file}): Promise<Array<Action>> {
+  const thumbnailFile = new Parse.File('image', file)
+  // await thumbnailFile.save()
   const photo = createParseInstance(PARSE_PHOTOS)
 
   // step1: generate photo.
   await  Records.createOnlineParseInstance(
+    MODEL_FORM_TYPE_NEW,
     photo,
     PARSE_PHOTOS,
-    Object.assign({}, model, {
+    Object.assign({}, newPhotoInstance, {
       thumbnail: thumbnailFile,
       original: thumbnailFile,
     })
   )
 
   // step2: save photo.
-  await photo.save()
+  // await photo.save()
 
   // step3: update the recorder
-  await updateParseRecorder(PARSE_PHOTOS, photo)
+  // await updateParseRecorder(PARSE_PHOTOS, photo)
 
   const action = {
     type: SAVE_MODEL_REQUEST,
@@ -183,7 +184,7 @@ async function _removeSelectedPhoto(photo: object): Promise<Array<Action>> {
   // step1: get online photo instance.
   const onlinePhoto = await getQueryByType(PARSE_PHOTOS).get(photo.id)
 
-  // onlinePhoto.destroy()
+  onlinePhoto.destroy()
 
   // step2: update the recorder
   await updateParseRecorderFlagStatus(PARSE_PHOTOS, onlinePhoto, PARSE_OBJECT_FLAG_REMOVED)

@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 
 import Dropzone from 'react-dropzone'
 
+import AppConstants from '../../../../lib/appConstants'
 
 const {
   uploadPhoto,
@@ -31,26 +32,22 @@ class IEAAddPhotosForm extends Component {
   }
 
   async onButtonPress() {
-    const {dispatch, currentUser, modelType, forObject} = this.props;
+    const newPhotoInstance = AppConstants.generateNewRealmPhotoObject(this.props);
 
-    const forObjectId = forObject.id;
+    const {saveUploadPhotoAction} = this.props;
+
     const file = this.state.file;
-    const currentUserId = currentUser.id;
 
     this.props.actions.updateModelRequest();
     let haveError = false;
 
     let errorMessage = null
+    const _object = {
+      newPhotoInstance,
+      file,
+    }
     try {
-      await Promise.race([
-        dispatch(uploadPhoto({
-          forObjectId,
-          modelType,
-          currentUserId,
-          file,
-        })),
-        timeout(15000),
-      ]);
+      await Promise.race([saveUploadPhotoAction(_object), timeout(15000),]);
     } catch (e) {
       this.props.actions.updateModelFailure(e);
       haveError = true;
@@ -216,7 +213,8 @@ import * as editModelActions from '../../../../reducers/editModel/editModelActio
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(editModelActions, dispatch)
+    actions: bindActionCreators(editModelActions, dispatch),
+    saveUploadPhotoAction: (object) => dispatch(uploadPhoto(object)),
   }
 }
 
