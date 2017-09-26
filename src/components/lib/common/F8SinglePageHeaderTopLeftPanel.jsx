@@ -15,6 +15,7 @@ import AppConstants from "../../../lib/appConstants";
  * The states were interested in
  */
 const {
+  // Model Form Mode
   MODEL_FORM_TYPE_NEW,
   MENU_ITEM_ADD_OR_EDIT_RECIPE,
   ALERT_TYPE_ERROR,

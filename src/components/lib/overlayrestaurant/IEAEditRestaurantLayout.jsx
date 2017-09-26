@@ -20,6 +20,9 @@ const {
   SECTION_PHOTOS_BROWSER_FOR_RESTAURANT,
   ALERT_TYPE_ERROR,
   ALERT_TYPE_SUCCESS,
+
+  // Model Form Mode
+  MODEL_FORM_TYPE_NEW,
 } = require('../../../lib/constants').default
 
 class IEAEditRestaurantLayout extends Component {
@@ -157,6 +160,9 @@ class IEAEditRestaurantLayout extends Component {
 
 
   renderLeftButton() {
+    const editModelType = this.props.editModel.form.editModelType;
+    const buttonTitle = (editModelType === MODEL_FORM_TYPE_NEW) ? "Save Restaurant" : "Submit Changes";
+
     const {editModel} = this.props;
     const isDisabled = (!editModel.form.isValid || editModel.form.isFetching);
 
@@ -170,7 +176,7 @@ class IEAEditRestaurantLayout extends Component {
           type="submit"
           value="Submit Changes"
           className="ybtn ybtn--primary">
-          <span>Submit Changes</span>
+          <span>{buttonTitle}</span>
         </button>
         <a onClick={this.props.goBack}>
           Cancel
@@ -233,6 +239,9 @@ class IEAEditRestaurantLayout extends Component {
   }
 
   render() {
+    const editModelType = this.props.editModel.form.editModelType;
+    const formTitle = (editModelType === MODEL_FORM_TYPE_NEW) ? "Add a Restaurant" : "Update Restaurant Details";
+
     return (
       <div>
         <div className="main-content-wrap main-content-wrap--full">
@@ -246,7 +255,7 @@ class IEAEditRestaurantLayout extends Component {
 
                 <div className="column column-alpha ">
 
-                  <h2>Update Business Details</h2>
+                  <h2>{formTitle}</h2>
 
                   {this.renderContent()}
 

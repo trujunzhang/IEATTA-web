@@ -147,8 +147,8 @@ class IEAEditReviewLayout extends Component {
     const {editModel} = this.props;
     const buttonDisabled = (!editModel.form.isValid || editModel.form.isFetching);
 
-    const {pageForm} = this.props,
-      formTitle = (pageForm === MODEL_FORM_TYPE_NEW) ? "Post Review" : "Update the Review";
+    const editModelType = this.props.editModel.form.editModelType;
+    const buttonTitle = (editModelType === MODEL_FORM_TYPE_NEW) ? "Post Review" : "Update the Review";
 
     return (
       <div className="ysection">
@@ -161,7 +161,7 @@ class IEAEditReviewLayout extends Component {
                 value="submit"
                 disabled={buttonDisabled}
                 className="ybtn ybtn--primary ybtn--small ybtn-full-responsive-small">
-                <span>{formTitle}</span>
+                <span>{buttonTitle}</span>
               </button>
               <a onClick={this.props.goBack}>
                 {'Cancel'}
@@ -214,8 +214,8 @@ class IEAEditReviewLayout extends Component {
 
 
   renderTitle() {
-    const {pageForm} = this.props,
-      formTitle = (pageForm === MODEL_FORM_TYPE_NEW) ? "Write a Review" : "Update the Review";
+    const editModelType = this.props.editModel.form.editModelType;
+    const formTitle = (editModelType === MODEL_FORM_TYPE_NEW) ? "Write a Review" : "Update the Review";
     return (
       <div className="section-header">
         <h3

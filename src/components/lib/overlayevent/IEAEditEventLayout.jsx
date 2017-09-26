@@ -14,6 +14,7 @@ const {
  * The states were interested in
  */
 const {
+  // Model Form Mode
   MODEL_FORM_TYPE_NEW,
   PARSE_EVENTS,
   MENU_ITEM_ADD_OR_EDIT_EVENT,
@@ -135,8 +136,8 @@ class IEAEditEventLayout extends Component {
     const {editModel} = this.props;
     const isDisabled = (!editModel.form.isValid || editModel.form.isFetching);
 
-    const {pageForm} = this.props,
-      formTitle = (pageForm === MODEL_FORM_TYPE_NEW) ? "Create an Event" : "Update the Event";
+    const editModelType = this.props.editModel.form.editModelType;
+    const buttonTitle = (editModelType === MODEL_FORM_TYPE_NEW) ? "Create an Event" : "Update the Event";
 
     return (
       <div className="form-footer">
@@ -148,7 +149,7 @@ class IEAEditEventLayout extends Component {
           type="submit"
           value="Submit Changes"
           className="ybtn ybtn--primary">
-          <span>{formTitle}</span>
+          <span>{buttonTitle}</span>
         </button>
         <a onClick={this.props.goBack}>
           {'Cancel'}
@@ -187,8 +188,9 @@ class IEAEditEventLayout extends Component {
 
 
   renderTitle() {
-    const {pageForm} = this.props,
-      formTitle = (pageForm === MODEL_FORM_TYPE_NEW) ? "Submit an Event" : "Update the Event";
+    const editModelType = this.props.editModel.form.editModelType;
+    const formTitle = (editModelType === MODEL_FORM_TYPE_NEW) ? "Submit an Event" : "Update the Event";
+
     return (
       <div className="section-header">
         <h2>{formTitle}</h2>

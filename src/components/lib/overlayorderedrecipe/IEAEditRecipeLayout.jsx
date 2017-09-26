@@ -140,8 +140,8 @@ class IEAEditRecipeLayout extends Component {
     const {editModel} = this.props;
     const isDisabled = (!editModel.form.isValid || editModel.form.isFetching);
 
-    const {pageForm} = this.props,
-      formTitle = (pageForm === MODEL_FORM_TYPE_NEW) ? "Create an Recipe" : "Update the Recipe";
+    const editModelType = this.props.editModel.form.editModelType;
+    const buttonTitle = (editModelType === MODEL_FORM_TYPE_NEW) ? "Create an Recipe" : "Update the Recipe";
 
     return (
       <div className="form-footer">
@@ -153,7 +153,7 @@ class IEAEditRecipeLayout extends Component {
           type="submit"
           value="Submit Changes"
           className="ybtn ybtn--primary">
-          <span>{formTitle}</span>
+          <span>{buttonTitle}</span>
         </button>
         <a onClick={this.props.goBack}>
           {'Cancel'}
@@ -211,8 +211,8 @@ class IEAEditRecipeLayout extends Component {
 
 
   renderTitle() {
-    const {pageForm} = this.props,
-      formTitle = (pageForm === MODEL_FORM_TYPE_NEW) ? "Submit an Recipe" : "Update the Recipe";
+    const editModelType = this.props.editModel.form.editModelType;
+    const formTitle = (editModelType === MODEL_FORM_TYPE_NEW) ? "Submit an Recipe" : "Update the Recipe";
 
     return (
       <div className="section-header">
