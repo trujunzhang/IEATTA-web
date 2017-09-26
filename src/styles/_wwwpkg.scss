@@ -1702,7 +1702,8 @@ input:-moz-placeholder, textarea:-moz-placeholder {
 
 .layout-block {
   *zoom: 1;
-  margin: 0 -15px
+  // TODO: DJZHANG(26/09/2017)(not use now)
+  //margin: 0 -15px
 }
 
 .layout-block:before, .layout-block:after {
