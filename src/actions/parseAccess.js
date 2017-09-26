@@ -114,7 +114,7 @@ async function _writeOnlineParseObject(editModelType,
 
 async function _uploadPhoto({newPhotoInstance, file}): Promise<Array<Action>> {
   const thumbnailFile = new Parse.File('image', file)
-  // await thumbnailFile.save()
+  await thumbnailFile.save()
   const photo = createParseInstance(PARSE_PHOTOS)
 
   // step1: generate photo.
@@ -129,10 +129,10 @@ async function _uploadPhoto({newPhotoInstance, file}): Promise<Array<Action>> {
   )
 
   // step2: save photo.
-  // await photo.save()
+  await photo.save()
 
   // step3: update the recorder
-  // await updateParseRecorder(PARSE_PHOTOS, photo)
+  await updateParseRecorder(PARSE_PHOTOS, photo)
 
   const action = {
     type: SAVE_MODEL_REQUEST,

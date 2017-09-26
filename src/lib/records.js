@@ -108,15 +108,6 @@ Records.createOnlineParseInstance = async function (editModelType, onlineParseOb
 
     case PARSE_PHOTOS:
 
-      debugger
-
-      if (!!localRecorder.owner) {
-        _online_user_Instance = getInstanceWithoutData(PARSE_USERS, localRecorder.owner.id)
-        onlineParseObject.set('owner', _online_user_Instance)
-      }
-
-      debugger
-
       // step1: common fields.
       onlineParseObject.set('photoType', localRecorder.photoType)
       // Photo images.
@@ -131,8 +122,6 @@ Records.createOnlineParseInstance = async function (editModelType, onlineParseOb
 
       // step3: set the relation by photo type(for web).
       Records.setParseObjectFieldWithoutData(localRecorder.photoType, onlineParseObject, localRecorder.forObjectId)
-
-      debugger
 
       break;
 
