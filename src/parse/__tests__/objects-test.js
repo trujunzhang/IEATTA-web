@@ -20,7 +20,6 @@
  */
 const {
   PARSE_PHOTOS,
-  LIST_VIEW_LOADED_RESTAURANTS
 } = require('../../lib/constants').default
 
 const {
@@ -33,18 +32,4 @@ const {
  */
 describe('Object methods', () => {
 
-  /**
-   * ### The use LIST_VIEW_LOADED_RESTAURANTS
-   *
-   */
-  describe('Check relation objects', () => {
-
-    it('Photo have relative objects', () => {
-      const photo = createParseInstance(PARSE_PHOTOS)
-      debugger
-      expect(next.form.state).toBe(LIST_VIEW_LOADED_RESTAURANTS)
-      // expect(next.form.listContainer).toBe({})
-    })
-
-  })
 })

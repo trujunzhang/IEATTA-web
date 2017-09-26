@@ -18,9 +18,7 @@
  * These actions are sufficient to test the reducer as many of the
  * case statements are shared amongst the actions.
  */
-const {
-  LIST_VIEW_LOADED_RESTAURANTS
-} = require('../../lib/constants').default
+const {} = require('../../lib/constants').default
 
 /**
  * ## Class under test
@@ -30,6 +28,7 @@ const {
  * as well
  */
 const paginationReducer = require('../listContainerReducer').default
+
 /**
  * ## Tests
  *
@@ -37,36 +36,4 @@ const paginationReducer = require('../listContainerReducer').default
  */
 describe('paginationReducer', () => {
 
-  /**
-   * ### The use LIST_VIEW_LOADED_RESTAURANTS
-   *
-   */
-  describe('LIST_VIEW_LOADED_RESTAURANTS', () => {
-    let initialState = null
-    /**
-     * #### Get a valid state
-     *
-     */
-    beforeEach(() => {
-      const action = {
-        type: 'dummy'
-      }
-      initialState = paginationReducer(undefined, action)
-    })
-    /**
-     * #### form is not valid with empty fields
-     *
-     * no data, not valid
-     */
-    it('form is not valid with empty fields', () => {
-      const action = {
-        type: LIST_VIEW_LOADED_RESTAURANTS
-      }
-      let next = paginationReducer(initialState, action)
-
-      expect(next.form.state).toBe(LIST_VIEW_LOADED_RESTAURANTS)
-      // expect(next.form.listContainer).toBe({})
-    })
-
-  })// LIST_VIEW_LOADED_RESTAURANTS
 })// paginationReducer

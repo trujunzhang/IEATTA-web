@@ -161,12 +161,6 @@ export default keyMirror({
 
   // PostHome, PostDaily
   LIST_VIEW_LOADED_BY_TYPE: null,
-  LIST_VIEW_LOADED_RESTAURANTS: null,
-  LIST_VIEW_LOADED_EVENTS: null,
-  LIST_VIEW_LOADED_ORDERED_USERS: null,
-  LIST_VIEW_LOADED_RECIPES: null,
-  LIST_VIEW_LOADED_USERS: null,
-  LOADED_PHOTOS_BROWSER: null,
 
   // Detailed Page(Restaurants,Events)
   OVERLAY_LOADED_MODEL_PAGE: null,

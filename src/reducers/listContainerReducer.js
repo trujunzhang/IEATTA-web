@@ -21,7 +21,6 @@ const initialState = {}
  */
 const {
   LIST_VIEW_LOADED_BY_TYPE,
-  LOADED_PHOTOS_BROWSER,
 } = require('../lib/constants').default
 
 /**

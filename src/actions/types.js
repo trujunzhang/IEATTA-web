@@ -30,7 +30,6 @@ export type Action =
   { type: 'LOADED_ABOUT', list: Array<ParseObject> }
   | { type: 'LOADED_CACHES', list: Array<ParseObject> }
   | { type: 'LOADED_HISTORIES', list: Array<ParseObject> }
-  | { type: 'LIST_VIEW_LOADED_RESTAURANTS', list: Array<ParseObject> }
   | { type: 'LOADED_FOLDERS', list: Array<ParseObject> }
   | { type: 'LOADED_COMMENTS', list: Array<ParseObject> }
   | { type: 'LOADED_MESSAGES', list: Array<ParseObject> }

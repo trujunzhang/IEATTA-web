@@ -49,7 +49,6 @@ const {
  */
 const {
   LIST_VIEW_LOADED_BY_TYPE,
-  LOADED_PHOTOS_BROWSER,
 } = require('../lib/constants').default
 
 async function _loadListByType(listTask: Any, objectsQuery: Parse.Query, terms: Any, parseFun: Any, type: Any): Promise<Array<Action>> {
