@@ -94,7 +94,7 @@ class IEAEditRestaurantLayout extends Component {
 
 
   async onButtonPress() {
-    const {dispatch, forObject} = this.props;
+    const {writeOnlineParseObjectAction} = this.props;
 
     const editModelType = this.props.editModel.form.editModelType;
 
@@ -118,28 +118,27 @@ class IEAEditRestaurantLayout extends Component {
     this.props.actions.updateModelRequest();
 
     let errorMessage = null
+    const _object = {
+      editModelType,
+      objectSchemaName: PARSE_RESTAURANTS,
+      model: {
+        parseId,
+        uniqueId,
+        displayName,
+        latitude,
+        longitude,
+        address,
+        street_number,
+        route,
+        locality,
+        sublocality,
+        country,
+        postal_code,
+        administrative_area
+      }
+    }
     try {
-      await Promise.race([
-        dispatch(writeOnlineParseObject(
-          editModelType,
-          PARSE_RESTAURANTS,
-          {
-            parseId,
-            uniqueId,
-            displayName,
-            latitude,
-            longitude,
-            address,
-            street_number,
-            route,
-            locality,
-            sublocality,
-            country,
-            postal_code,
-            administrative_area
-          })),
-        timeout(15000),
-      ]);
+      await Promise.race([writeOnlineParseObjectAction(_object), timeout(15000)]);
     } catch (e) {
       this.props.actions.updateModelFailure(e);
       const message = e.message || e;
@@ -282,7 +281,8 @@ import * as editModelActions from '../../../reducers/editModel/editModelActions'
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(editModelActions, dispatch)
+    actions: bindActionCreators(editModelActions, dispatch),
+    writeOnlineParseObjectAction: (object) => dispatch(writeOnlineParseObject(object)),
   }
 }
 

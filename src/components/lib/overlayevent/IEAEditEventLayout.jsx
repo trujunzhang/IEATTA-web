@@ -86,11 +86,9 @@ class IEAEditEventLayout extends Component {
 
 
   async onButtonPress() {
-    const {dispatch, forObject} = this.props;
+    const {writeOnlineParseObjectAction, forObject} = this.props;
 
     const editModelType = this.props.editModel.form.editModelType;
-
-    const {restaurant} = forObject;
 
     const originalModel = this.props.editModel.form.originModel;
     const {id, uniqueId} = originalModel;
@@ -104,19 +102,18 @@ class IEAEditEventLayout extends Component {
     this.props.actions.updateModelRequest();
 
     let errorMessage = null
+    const _object = {
+      editModelType,
+      objectSchemaName: PARSE_EVENTS,
+      model: {
+        parseId,
+        uniqueId,
+        displayName, want, start, end,
+        restaurant: forObject.restaurant
+      }
+    }
     try {
-      await Promise.race([
-        dispatch(writeOnlineParseObject(
-          editModelType,
-          PARSE_EVENTS,
-          {
-            parseId,
-            uniqueId,
-            displayName, want, start, end,
-            restaurant
-          })),
-        timeout(15000),
-      ]);
+      await Promise.race([writeOnlineParseObjectAction(_object), timeout(15000)]);
     } catch (e) {
       this.props.actions.updateModelFailure(e);
       const message = e.message || e;
@@ -240,7 +237,8 @@ import * as editModelActions from '../../../reducers/editModel/editModelActions'
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(editModelActions, dispatch)
+    actions: bindActionCreators(editModelActions, dispatch),
+    writeOnlineParseObjectAction: (object) => dispatch(writeOnlineParseObject(object)),
   }
 }
 

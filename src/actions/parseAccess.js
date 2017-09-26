@@ -220,9 +220,11 @@ async function _ownAnotherPhotoUser(photoId: string, selectedUserId: string): Pr
 
 
 export default {
-  writeOnlineParseObject(editModelType,
-                         objectSchemaName,
-                         model: object): ThunkAction {
+  writeOnlineParseObject({
+                           editModelType,
+                           objectSchemaName,
+                           model
+                         }): ThunkAction {
     return invokeEventFromAction(_writeOnlineParseObject(editModelType, objectSchemaName, model))
   },
 
