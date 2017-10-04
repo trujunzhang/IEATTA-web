@@ -82,25 +82,26 @@ function getUsersParameters(terms) {
 }
 
 function getPeopleInEventParameters(terms) {
-  return new Parameters.PeopleInEvent(getQueryByType(PARSE_PEOPLE_IN_EVENTS, ['user', 'user.photos', 'event']))
+  return new Parameters.PeopleInEvent(getQueryByType(PARSE_PEOPLE_IN_EVENTS,
+    ['user', 'user.listPhoto', 'event']))
     .addParameters(terms)
     .end()
 }
 
 function getReviewsParameters(terms) {
-  return new Parameters.Reviews(getQueryByType(PARSE_REVIEWS, [
-    'restaurant', 'restaurant.photos',
-    'event', 'event.restaurant',
-    'recipe', 'recipe.photos',
-    'user', 'user.photos'
-  ]))
+  return new Parameters.Reviews(getQueryByType(PARSE_REVIEWS,
+    ['restaurant', 'restaurant.photos',
+      'event', 'event.restaurant',
+      'recipe', 'recipe.photos',
+      'user', 'user.listPhoto'
+    ]))
     .addParameters(terms)
     .end()
 }
 
 function getRecipesParameters(terms) {
   return new Parameters.Recipes(getQueryByType(PARSE_RECIPES,
-    ['restaurant', 'event', 'recipe', 'user', "photos", 'user.photos']
+    ['restaurant', 'event', 'recipe', 'user', "photos", 'user.listPhoto']
   ))
     .addParameters(terms)
     .end()
@@ -108,7 +109,7 @@ function getRecipesParameters(terms) {
 
 function getPhotosParameters(terms) {
   return new Parameters.Photos(getQueryByType(PARSE_PHOTOS,
-    ['restaurant', 'recipe', 'user', 'user.photos', 'owner']
+    ['restaurant', 'recipe', 'user', 'owner', "owner.listPhoto"]
   ))
     .addParameters(terms)
     .end()

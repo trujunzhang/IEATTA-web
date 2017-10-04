@@ -143,7 +143,7 @@ export default {
 
   loadPeopleInEventPage: (parseId: string): ThunkAction => {
     return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_PEOPLE_IN_EVENTS,
-      ['user', 'user.photos', 'event', 'restaurant']),
+      ['user', 'user.listPhoto', 'event', 'restaurant']),
       parseId,
       fromParsePeopleInEvent)
   },
