@@ -170,6 +170,8 @@ function _get_default_image_photo_url(map) {
 }
 
 export function fromParseUser(map: Object): User {
+  const _listPhoto = fromParsePhotoNormal(map.get('listPhoto'));
+
   const model = {
     // Basic Fields
     ...fromParseCommon(map),
@@ -179,9 +181,9 @@ export function fromParseUser(map: Object): User {
     loginType: map.get('loginType'),
     email: map.get('email') || "",
     // Photos
-    defaultAvatarUrl: _get_default_image_photo_url(map),
+    defaultAvatarUrl: _listPhoto.thumbnail._url,
     // Photos
-    listPhoto: fromParsePhotoNormal(map.get('listPhoto')),
+    listPhoto: _listPhoto
   }
   return model;
 }
@@ -193,7 +195,6 @@ function parsePhotoNormal(map: Object): Object {
     // Attributes
     original: map.get('original'),
     thumbnail: map.get('thumbnail'),
-    url: map.get('url'),
     photoType: map.get('photoType'),
   };
 }
@@ -202,7 +203,10 @@ function fromParsePhotoNormal(map: Object): Photo {
   if (!!map) {
     return parsePhotoNormal(map)
   }
-  return {}
+  return {
+    original: {_url: ""},
+    thumbnail: {_url: ""}
+  }
 }
 
 export function fromParsePhoto(map: Object): Photo {
@@ -216,7 +220,6 @@ export function fromParsePhoto(map: Object): Photo {
     // Owner
     owner: map.get('owner') && fromParseUser(map.get('owner'))
   }
-  debugger
   return instance
 }
 
@@ -319,8 +322,9 @@ export function parseOnlineParseObject(objectSchemaName, map) {
       return fromParseRecipe(map);
     case PARSE_PHOTOS:
       return fromParsePhoto(map);
+    case PARSE_USERS:
+      return fromParseUser(map);
     case PARSE_REVIEWS:
-      debugger
       return fromParseReview(map);
   }
 
