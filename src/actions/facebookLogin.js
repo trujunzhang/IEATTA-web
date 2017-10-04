@@ -87,7 +87,6 @@ async function _logInWithFacebook(source: ? object): Promise<Array<Action>> {
   user.set('facebook_id', profile.id);
   user.set('username', profile.name)
   user.set('email', profile.email)
-  user.set('slug', slugify(profile.name, '_'))
   user.set('uniqueId', UUID.create().toString())
   user.set('loginType', 'facebook')
 

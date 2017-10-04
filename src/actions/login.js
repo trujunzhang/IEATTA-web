@@ -102,11 +102,9 @@ async function _signUpWithPassword(username: string, email: string, password: st
 
   user.set('username', username)
   user.set('password', password)
-  user.set('slug', slugify(profile.name, '_'))
   user.set('uniqueId', UUID.create().toString())
   user.set('email', email)
 
-  // await updateInstallation({user})
   await user.signUp({'loginType': 'email'})
 
   const current = await getQueryByType(PARSE_USERS, ['photos']).get(user.id)
