@@ -70,7 +70,7 @@ function getRestaurantParameters(terms) {
 }
 
 function getEventParameters(terms) {
-  return new Parameters.Events(getQueryByType(PARSE_EVENTS))
+  return new Parameters.Events(getQueryByType(PARSE_EVENTS, ['restaurant', 'restaurant.listPhoto']))
     .addParameters(terms)
     .end()
 }
