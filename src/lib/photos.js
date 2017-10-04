@@ -46,7 +46,7 @@ Photos.getPhotoInfoAboutUser = function (_photo) {
   return {
     userId: user.id,
     username: user.username,
-    imageUrl: Photos.getListThumbnailUrl(user),
+    imageUrl: user.defaultAvatarUrl,
     userProfileUrl: getLoggedUserMenuLink(user)
   }
 }
