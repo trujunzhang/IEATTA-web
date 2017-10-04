@@ -216,6 +216,7 @@ export function fromParsePhoto(map: Object): Photo {
     // Owner
     owner: map.get('owner') && fromParseUser(map.get('owner'))
   }
+  debugger
   return instance
 }
 
@@ -314,17 +315,13 @@ export function parseOnlineParseObject(objectSchemaName, map) {
       return fromParseRestaurant(map);
     case PARSE_EVENTS:
       return fromParseEvent(map);
-      break;
     case PARSE_RECIPES:
       return fromParseRecipe(map);
-      break;
     case PARSE_PHOTOS:
       return fromParsePhoto(map);
-      break;
     case PARSE_REVIEWS:
       debugger
       return fromParseReview(map);
-      break;
   }
 
 }
