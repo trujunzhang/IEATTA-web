@@ -16,7 +16,8 @@ const {
   MENU_ITEM_ADD_OR_EDIT_RESTAURANT,
   MENU_ITEM_ADD_OR_EDIT_EVENT,
   MENU_ITEM_ADD_OR_EDIT_REVIEW,
-  MENU_ITEM_ADD_OR_EDIT_USER
+  MENU_ITEM_ADD_OR_EDIT_USER,
+  MENU_ITEM_ADD_OR_EDIT_RECIPE
 } = require('../../lib/constants').default
 
 /**
@@ -24,6 +25,8 @@ const {
  * @param {Object} state - the Redux state object
  */
 export default function formValidation(state) {
+  const originModel = state.form.originModel;
+  let validate = false;
   switch (state.form.state) {
     /**
      * ### Logout has no fields, so always valid
@@ -38,6 +41,16 @@ export default function formValidation(state) {
       break;
     case MENU_ITEM_ADD_OR_EDIT_EVENT:
       if (state.form.fields.displayName !== '' &&
+        !state.form.fields.displayNameHasError) {
+        return state.setIn(['form', 'isValid'], true)
+      } else {
+        return state.setIn(['form', 'isValid'], false)
+      }
+      break;
+
+    case MENU_ITEM_ADD_OR_EDIT_RECIPE:
+      if (state.form.fields.displayName !== '' &&
+        state.form.fields.displayName !== originModel.displayName &&
         !state.form.fields.displayNameHasError) {
         return state.setIn(['form', 'isValid'], true)
       } else {

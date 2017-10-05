@@ -48,6 +48,7 @@ class IEAEditRecipeWithPhotosLayout extends Component {
     }
 
     const recipe = props.forObject || {displayName: '', price: 0};
+
     props.actions.toggleEditModelType(MENU_ITEM_ADD_OR_EDIT_RECIPE, props.forObject, props.pageForm);
     props.actions.onEditModelFormFieldChange('displayName', recipe.displayName, true)
     props.actions.onEditModelFormFieldChange('price', recipe.price, true)
@@ -95,7 +96,7 @@ class IEAEditRecipeWithPhotosLayout extends Component {
 
 
   async onButtonPress() {
-    const {writeOnlineParseObjectAction} = this.props;
+    const {writeOnlineParseObjectAction, forRelationObject} = this.props;
 
     const editModelType = this.props.editModel.form.editModelType;
 
@@ -116,11 +117,18 @@ class IEAEditRecipeWithPhotosLayout extends Component {
       model: {
         parseId,
         uniqueId,
-        displayName, price
+        displayName, price,
+        restaurant: {
+          id: forRelationObject.id,
+          uniqueId: forRelationObject.uniqueId
+        },
       }
     }
+
+    debugger
+
     try {
-      await Promise.race([writeOnlineParseObjectAction(_object), timeout(15000)]);
+      // await Promise.race([writeOnlineParseObjectAction(_object), timeout(15000)]);
     } catch (e) {
       this.props.actions.updateModelFailure(e);
       const message = e.message || e;
