@@ -56,6 +56,7 @@ class OrganizationForRecipe extends Component {
 
     this.state = this.initialState = {
       // Detailed object
+      recipeId,
       forObject,
       forRelationObject: null,
       // photos
