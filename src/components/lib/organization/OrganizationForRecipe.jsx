@@ -8,6 +8,7 @@ import PhotoBrowser from '../../../lib/photobrowser'
 const {
   loadRestaurantPage,
   loadPhotosBrowser,
+  loadOrderedRecipePage,
   invokeParseCloudMethod
 } = require('../../../actions').default
 
@@ -43,14 +44,19 @@ class OrganizationForRecipe extends Component {
   constructor(props, context) {
     super(props)
 
-    const {modelType, forObjectId} = props.params;
+    const {modelType, forObjectId, recipeId} = props.params;
     const {objectSchemaName} = AppConstants.realmObjects[modelType]
     const pageForm = getPageFormType(objectSchemaName, props, null)
     const photosTerms = PaginationTerms.generatePhotoTerm(objectSchemaName, props.params.forObjectId, pageForm, props, false, true)
 
+    let forObject = null;
+    if (pageForm === MODEL_FORM_TYPE_NEW) {
+      forObject = AppConstants.generateNewRecipeParseObject();
+    }
+
     this.state = this.initialState = {
       // Detailed object
-      forObject: AppConstants.generateNewRecipeParseObject(),
+      forObject,
       forRelationObject: null,
       // photos
       photosTerms: photosTerms,
@@ -70,7 +76,7 @@ class OrganizationForRecipe extends Component {
     const lastPageForm = this.state.pageForm;
     const lastPhotosTerms = this.state.photosTerms;
 
-    const {modelType, forObjectId} = nextProps.params;
+    const {modelType, forObjectId, recipeId} = nextProps.params;
 
     const newPageForm = getPageFormType(objectSchemaName, nextProps, this.state.pageForm)
     const newPhotosTerms = PaginationTerms.generatePhotoTerm(objectSchemaName, forObjectId, newPageForm, nextProps, false, true)
@@ -80,6 +86,7 @@ class OrganizationForRecipe extends Component {
 
     this.setState({
       // Detailed object
+      forObject: getModelByObjectId(nextProps, recipeId, this.state.forObject),
       forRelationObject: newRestaurant,
       // photos
       photosTerms: newPhotosTerms,
@@ -107,15 +114,21 @@ class OrganizationForRecipe extends Component {
   }
 
   componentDidMount() {
+    const {pageForm, recipeId} = this.state;
     const parseId = this.state.forObjectId;
+
     this.props.dispatch(loadRestaurantPage(parseId))
     this.props.dispatch(loadPhotosBrowser(this.state.photosTerms))
+
+    if (pageForm === MODEL_FORM_TYPE_EDIT) {
+      this.props.dispatch(loadOrderedRecipePage(recipeId))
+    }
   }
 
   render() {
-    const {photosListTask, forRelationObject, pageForm} = this.state;
+    const {photosListTask, forObject, forRelationObject, pageForm} = this.state;
 
-    if (!!forRelationObject) {
+    if (!!forRelationObject && forObject) {
       switch (pageForm) {
         case MODEL_FORM_TYPE_EDIT:
         case MODEL_FORM_TYPE_NEW:

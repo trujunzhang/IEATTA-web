@@ -86,12 +86,13 @@ export function getEditLinkByModelType(modelType, forObject) {
     case PARSE_EVENTS:
       return getEditEventLink(forObject)
     case PARSE_RECIPES:
-      return getEditRecipeLink(forObject)
+      return getEditRecipeLink(modelType, forObject)
   }
 }
 
-export function getEditRecipeLink(recipe) {
-  return `/edit/recipe/${recipe.id}/${slugify(recipe.displayName)}`
+export function getEditRecipeLink(modelType, recipe) {
+  return `/organization/recipe/edit/restaurant/${recipe.restaurant.id}/${recipe.id}`
+  // return `/edit/recipe/${recipe.id}/${slugify(recipe.displayName)}`
 }
 
 export function getNewEventLink(restaurant) {

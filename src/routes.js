@@ -100,7 +100,7 @@ const createRoutes = (store) => {
     {
       path: 'edit/recipe/(:oid)/(:oslug)',
       component: Telescope.components.OrderedRecipes,
-      onEnter: requireAuth(store)
+      // onEnter: requireAuth(store)
     },
     {
       path: 'recipe_photos/(:oid)/(:oslug)',
@@ -181,6 +181,13 @@ const createRoutes = (store) => {
       path: 'organization/recipe/new/(:modelType)/(:forObjectId)',
       component: Telescope.components.OrganizationForRecipe
     },
+    {
+      path: 'organization/recipe/edit/(:modelType)/(:forObjectId)/(:recipeId)',
+      component: Telescope.components.OrganizationForRecipe
+    },
+
+
+    // return `/organization/recipe/edit/restaurant/${recipe.restaurant.id}/${recipe.id}`
   ];
   const routes = [
     {
