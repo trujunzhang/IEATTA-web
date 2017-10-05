@@ -31,7 +31,7 @@ const Form = Record({
   originModel: {},
   disabled: false,
   error: null,
-  isValid: true,
+  isValid: false,
   isFetching: false,
   fields: new (Record({
     displayName: '',

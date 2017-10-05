@@ -25,7 +25,9 @@ const {
  * The states were interested in
  */
 const {
+  // Edit form
   MODEL_FORM_TYPE_NEW,
+  MODEL_FORM_TYPE_EDIT,
   PARSE_RECIPES,
   MENU_ITEM_ADD_OR_EDIT_RECIPE,
   ALERT_TYPE_ERROR,
@@ -232,6 +234,7 @@ class IEAEditRecipeWithPhotosLayout extends Component {
   }
 
   render() {
+    const editModelType = this.props.editModel.form.editModelType;
 
     return (
       <div className="main-content-wrap main-content-wrap--full">
@@ -251,13 +254,16 @@ class IEAEditRecipeWithPhotosLayout extends Component {
           </div>
 
 
-          <Telescope.components.IEAPhotosBrowserLayout
-            photoTitleType={PHOTO_BROWSER_ORGANIZATION_TITLE}
-            {...this.props}/>
+          {
+            editModelType === MODEL_FORM_TYPE_EDIT &&
+            <Telescope.components.IEAPhotosBrowserLayout
+              photoTitleType={PHOTO_BROWSER_ORGANIZATION_TITLE}
+              {...this.props}/>
+          }
 
         </div>
       </div>
-    );
+    )
   }
 }
 
