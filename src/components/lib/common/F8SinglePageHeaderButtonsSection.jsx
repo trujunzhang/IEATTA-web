@@ -64,7 +64,6 @@ class F8SinglePageHeaderButtonsSection extends Component {
 
   renderButtonForAddPhoto() {
     const {
-      showEdit = false,
       modelType,
       forObject
     } = this.props;
@@ -119,7 +118,6 @@ class F8SinglePageHeaderButtonsSection extends Component {
 
   renderButtons() {
     const {
-      showEdit = false,
       modelType,
       forObject
     } = this.props;
@@ -150,7 +148,7 @@ class F8SinglePageHeaderButtonsSection extends Component {
 
   render() {
     const {
-      showEdit = false,
+      showEdit,
       modelType,
       forObject
     } = this.props;
@@ -167,7 +165,15 @@ class F8SinglePageHeaderButtonsSection extends Component {
 
     )
   }
-
 }
+
+F8SinglePageHeaderButtonsSection.propTypes = {
+  showEdit: React.PropTypes.bool
+};
+
+F8SinglePageHeaderButtonsSection.defaultProps = {
+  showEdit: false
+};
+
 
 export default F8SinglePageHeaderButtonsSection;
