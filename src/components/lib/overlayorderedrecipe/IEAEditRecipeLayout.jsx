@@ -222,6 +222,7 @@ class IEAEditRecipeLayout extends Component {
   }
 
   render() {
+
     return (
       <div className="main-content-wrap main-content-wrap--full">
 
@@ -234,8 +235,7 @@ class IEAEditRecipeLayout extends Component {
 
               <div className="column column-alpha ">
 
-                <h2>Update Business Details</h2>
-
+                {this.renderTitle()}
                 {this.renderContent()}
 
               </div>

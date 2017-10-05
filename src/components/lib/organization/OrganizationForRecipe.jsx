@@ -114,8 +114,6 @@ class OrganizationForRecipe extends Component {
   render() {
     const {photosListTask, forObject, pageForm} = this.state;
 
-    debugger
-
     if (!!forObject) {
       if (!!photosListTask.ready) {
         switch (pageForm) {
