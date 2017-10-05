@@ -176,7 +176,12 @@ const createRoutes = (store) => {
       onEnter: requireAuth(store)
     }
   ];
-
+  const organizationRoutes = [
+    {
+      path: 'organization/recipe/new/(:modelType)/(:forObjectId)',
+      component: Telescope.components.OrganizationForRecipe
+    },
+  ];
   const routes = [
     {
       path: '/',
@@ -193,6 +198,7 @@ const createRoutes = (store) => {
         ...userProfileRoutes,
         ...userEditRoutes,
         ...photosRoutes,
+        ...organizationRoutes,
         ...playgroundRoutes,
         {
           path: '*',

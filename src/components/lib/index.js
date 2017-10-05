@@ -114,6 +114,9 @@ Telescope.registerComponent('OrderedRecipesDetail',                        requi
 Telescope.registerComponent('OrderedRecipesSingleHeader',                  require('./overlayorderedrecipe/page/OrderedRecipesSingleHeader.jsx').default)
 Telescope.registerComponent('EditRecipeForm',                              require('./overlayorderedrecipe/page/EditRecipeForm.jsx').default)
 
+// organization
+Telescope.registerComponent('OrganizationForRecipe',                              require('./organization/OrganizationForRecipe.jsx').default)
+
 // profile
 Telescope.registerComponent('IEAUserProfileAboutLayout',           require('./profile/IEAUserProfileAboutLayout.jsx').default)
 Telescope.registerComponent('UsersSingle',                         require('./profile/UsersSingle.jsx').default)
