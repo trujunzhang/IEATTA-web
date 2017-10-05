@@ -128,19 +128,19 @@ class F8SinglePageHeaderButtonsSection extends Component {
           <span className="ybtn-group clearfix">
             {this.renderButtonForAddPhoto()}
           </span>
-        );
+        )
       case PARSE_EVENTS:
         return (
           <span className="ybtn-group clearfix">
 
           </span>
-        );
+        )
       case PARSE_RECIPES:
         return (
           <span className="ybtn-group clearfix">
             {this.renderButtonForAddPhoto()}
           </span>
-        );
+        )
     }
 
     return null;
