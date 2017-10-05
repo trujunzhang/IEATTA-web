@@ -50,7 +50,8 @@ class OrganizationForRecipe extends Component {
 
     this.state = this.initialState = {
       // Detailed object
-      forObject: null,
+      forObject: AppConstants.generateNewRecipeParseObject(),
+      forRelationObject: null,
       // photos
       photosTerms: photosTerms,
       photosListTask: getDefaultListTask(photosTerms),
@@ -75,11 +76,11 @@ class OrganizationForRecipe extends Component {
     const newPhotosTerms = PaginationTerms.generatePhotoTerm(objectSchemaName, forObjectId, newPageForm, nextProps)
     const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms, this.state.photosListTask);
 
-    const newRestaurant = getModelByObjectId(nextProps, forObjectId, this.state.forObject);
+    const newRestaurant = getModelByObjectId(nextProps, forObjectId, this.state.forRelationObject);
 
     this.setState({
       // Detailed object
-      forObject: newRestaurant,
+      forRelationObject: newRestaurant,
       // photos
       photosTerms: newPhotosTerms,
       photosListTask: photosListTask,
@@ -112,42 +113,19 @@ class OrganizationForRecipe extends Component {
   }
 
   render() {
-    const {photosListTask, forObject, pageForm} = this.state;
+    const {photosListTask, forRelationObject, pageForm} = this.state;
 
-    if (!!forObject) {
+    if (!!forRelationObject) {
       if (!!photosListTask.ready) {
         switch (pageForm) {
-          case PAGE_SINGLE_SELECTED_PHOTO_FORM:
-            return (<Telescope.components.IEAPhotosSingleLayout {...this.state}/>)
-          case PAGE_MAIN_FORM:
-          case PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY:
-            return (<div>
-                <Telescope.components.IEARestaurantsLayout  {...this.state}/>
-                {
-                  (pageForm === PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY) &&
-                  <Telescope.components.IEAPhotosSelectionLayout {...this.state}/>}
-              </div>
-            )
           case MODEL_FORM_TYPE_EDIT:
           case MODEL_FORM_TYPE_NEW:
-            return (<Telescope.components.IEAEditRestaurantLayout
+            return (<Telescope.components.IEAEditRecipeWithPhotosLayout
                 {...this.props}
                 {...this.state}
                 dispatch={this.props.dispatch}/>
             )
         }
-      }
-      switch (pageForm) {
-        case PAGE_PHOTOS_BROWSER_FORM:
-        case PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY:
-          return (<div>
-              <Telescope.components.IEAPhotosBrowserLayout {...this.state}/>
-              {
-                (pageForm === PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY) &&
-                <Telescope.components.IEAPhotosSelectionLayout {...this.state}/>
-              }
-            </div>
-          )
       }
     }
 

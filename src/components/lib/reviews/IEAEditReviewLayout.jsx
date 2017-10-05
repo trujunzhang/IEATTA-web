@@ -36,10 +36,10 @@ class IEAEditReviewLayout extends Component {
     const {objectSchemaName} = AppConstants.realmObjects[props.reviewType]
     switch (props.pageForm) {
       case  MODEL_FORM_TYPE_EDIT:
-        editReview = AppConstants.generateNewReviewObject(props.currentUser, props.forObject, objectSchemaName, editReview);
+        editReview = AppConstants.generateNewReviewParseObject(props.currentUser, props.forObject, objectSchemaName, editReview);
         break;
       case  MODEL_FORM_TYPE_NEW:
-        editReview = AppConstants.generateNewReviewObject(props.currentUser, props.forObject, objectSchemaName);
+        editReview = AppConstants.generateNewReviewParseObject(props.currentUser, props.forObject, objectSchemaName);
         break;
     }
 

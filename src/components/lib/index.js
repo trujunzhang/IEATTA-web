@@ -117,6 +117,9 @@ Telescope.registerComponent('EditRecipeForm',                              requi
 // organization
 Telescope.registerComponent('OrganizationForRecipe',                              require('./organization/OrganizationForRecipe.jsx').default)
 
+// organization(recipe)
+Telescope.registerComponent('IEAEditRecipeWithPhotosLayout',                              require('./organization/recipe/IEAEditRecipeWithPhotosLayout.jsx').default)
+
 // profile
 Telescope.registerComponent('IEAUserProfileAboutLayout',           require('./profile/IEAUserProfileAboutLayout.jsx').default)
 Telescope.registerComponent('UsersSingle',                         require('./profile/UsersSingle.jsx').default)

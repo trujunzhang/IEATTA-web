@@ -61,6 +61,15 @@ AppConstants.generateNewRestaurantRealmObject = function () {
   }
 }
 
+AppConstants.generateNewRecipeParseObject = function () {
+  return {
+    id: UUID.create().toString(),
+    uniqueId: UUID.create().toString(),
+    displayName: '',
+    price: 0
+  }
+}
+
 AppConstants.generateNewEventRealmObject = function (restaurant) {
   return {
     parseId: UUID.create().toString(),
@@ -71,9 +80,8 @@ AppConstants.generateNewEventRealmObject = function (restaurant) {
       id: restaurant.parseId,
       uniqueId: restaurant.uniqueId
     },
-    // For test
-    displayName: 'e001',
-    want: 'first Event'
+    displayName: '',
+    want: ''
   }
 }
 
@@ -124,7 +132,10 @@ AppConstants.generateRelativeObjects = function (forParseInstance, reviewType) {
   return defaultRelativeObject;
 }
 
-AppConstants.generateNewReviewObject = function (user, forItem, objectSchemaName, lastModel = {rate: 0, body: ''}) {
+AppConstants.generateNewReviewParseObject = function (user, forItem, objectSchemaName, lastModel = {
+  rate: 0,
+  body: ''
+}) {
   const reviewType = AppConstants.realmTypes[objectSchemaName]
   const relativeObject = AppConstants.generateRelativeObjects(forItem, reviewType);
 
