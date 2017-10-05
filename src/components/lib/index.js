@@ -171,6 +171,7 @@ Telescope.registerComponent('F8PhotosCollectionView',                 require('.
 Telescope.registerComponent('F8PhotosCollectionItemView',             require('./photos/photosbrowser/F8PhotosCollectionItemView.jsx').default)
 Telescope.registerComponent('F8PhotosTitleHeader',                    require('./photos/photosbrowser/F8PhotosTitleHeader.jsx').default)
 Telescope.registerComponent('F8PhotosLoggedUserTitleHeader',          require('./photos/photosbrowser/F8PhotosLoggedUserTitleHeader.jsx').default)
+Telescope.registerComponent('F8OrganizationTitleHeader',              require('./photos/photosbrowser/F8OrganizationTitleHeader.jsx').default)
 
 // Photos Select
 Telescope.registerComponent('F8PhotosSelectPage',                       require('./photos/photosselect/F8PhotosSelectPage.jsx').default)

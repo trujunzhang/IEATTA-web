@@ -52,6 +52,8 @@ class IEAPhotosBrowserLayout extends Component {
         return (<Telescope.components.F8PhotosLoggedUserTitleHeader {...this.props}/>)
       case  PHOTO_BROWSER_NORMAL_TITLE :
         return (<Telescope.components.F8PhotosTitleHeader {...this.props}/>)
+      case PHOTO_BROWSER_ORGANIZATION_TITLE:
+        return (<Telescope.components.F8OrganizationTitleHeader {...this.props}/>)
     }
 
     return null;

@@ -103,11 +103,21 @@ PaginationTerms.generateTermsForRestaurantList = function (props) {
 }
 
 
-PaginationTerms.generatePhotoTerm = function (objectSchemaName, forObjectId, pageForm = PAGE_MAIN_FORM, props, isUserOwnerPhotos = false) {
-  const isPhotosBrowserPage = (pageForm === PAGE_PHOTOS_BROWSER_FORM);
+PaginationTerms.generatePhotoTerm = function (objectSchemaName,
+                                              forObjectId,
+                                              pageForm = PAGE_MAIN_FORM,
+                                              props,
+                                              isUserOwnerPhotos = false,
+                                              isPhotosBrowserPage = false) {
 
-  const termType = isPhotosBrowserPage ? 'page' : 'list';
-  const limit = isPhotosBrowserPage ? Photos.config.paginationCountPerPage : -1;
+  let _isPhotosBrowserPage = isPhotosBrowserPage;
+
+  if (isPhotosBrowserPage === false) {
+    _isPhotosBrowserPage = (pageForm === PAGE_PHOTOS_BROWSER_FORM);
+  }
+
+  const termType = _isPhotosBrowserPage ? 'page' : 'list';
+  const limit = _isPhotosBrowserPage ? Photos.config.paginationCountPerPage : -1;
   const listId = `photos-${termType}-view-for-parseId-${forObjectId}`
 
   const currentPageIndex = getCurrentPageIndex(props)

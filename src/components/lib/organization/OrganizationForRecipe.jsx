@@ -46,7 +46,7 @@ class OrganizationForRecipe extends Component {
     const {modelType, forObjectId} = props.params;
     const {objectSchemaName} = AppConstants.realmObjects[modelType]
     const pageForm = getPageFormType(objectSchemaName, props, null)
-    const photosTerms = PaginationTerms.generatePhotoTerm(objectSchemaName, props.params.forObjectId, pageForm, props)
+    const photosTerms = PaginationTerms.generatePhotoTerm(objectSchemaName, props.params.forObjectId, pageForm, props, false, true)
 
     this.state = this.initialState = {
       // Detailed object
@@ -73,7 +73,7 @@ class OrganizationForRecipe extends Component {
     const {modelType, forObjectId} = nextProps.params;
 
     const newPageForm = getPageFormType(objectSchemaName, nextProps, this.state.pageForm)
-    const newPhotosTerms = PaginationTerms.generatePhotoTerm(objectSchemaName, forObjectId, newPageForm, nextProps)
+    const newPhotosTerms = PaginationTerms.generatePhotoTerm(objectSchemaName, forObjectId, newPageForm, nextProps, false, true)
     const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms, this.state.photosListTask);
 
     const newRestaurant = getModelByObjectId(nextProps, forObjectId, this.state.forRelationObject);
