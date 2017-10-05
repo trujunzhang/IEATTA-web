@@ -51,17 +51,19 @@ class F8SinglePageHeaderButtonsSection extends Component {
   }
 
   renderButtonByType(buttonType) {
-    const buttonObject = TopRightButtonsGroup.generateButtonSVGView(buttonType)
+    const {
+      modelType,
+      forObject
+    } = this.props;
+    const buttonObject = TopRightButtonsGroup.generateButtonSVGView(buttonType, modelType, forObject)
+
     return (
-      <a className="ybtn ybtn--small">
-              <span id="icon_18X18"
-                    className="icon icon--size-18 icon--currentColor">
-                <svg className="icon_svg">
-                  <path d={buttonObject.svg}/>
-                </svg>
-              </span>
+      <Link to={buttonObject.linkUrl} className="ybtn ybtn--small">
+        <span id="icon_18X18" className="icon icon--size-18 icon--currentColor">
+          <svg className="icon_svg"><path d={buttonObject.svg}/></svg>
+        </span>
         <span className="js-popup-link-text">{buttonObject.title}</span>
-      </a>
+      </Link>
     )
   }
 
@@ -110,9 +112,7 @@ class F8SinglePageHeaderButtonsSection extends Component {
       <div className="biz-page-actions nowrap">
 
         {this.renderWriteAReview()}
-
         {this.renderRightButtonsGroup()}
-
 
       </div>
 
