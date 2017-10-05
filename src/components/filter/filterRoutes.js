@@ -57,12 +57,12 @@ const {
 
 import {getCurrentPageIndex} from '../../lib/link'
 
-export function checkEditModel(props: Object) {
-  return props.location.pathname.indexOf('edit/') !== -1;
+export function checkEditModel({location}) {
+  return location.pathname.indexOf('edit/') !== -1;
 }
 
-export function checkNewModel(props: Object) {
-  return props.location.pathname.indexOf('new/') !== -1;
+export function checkNewModel({location}) {
+  return location.pathname.indexOf('/new/') !== -1;
 }
 
 export function checkPhotosBrowser(objectSchemaName, props: Object) {

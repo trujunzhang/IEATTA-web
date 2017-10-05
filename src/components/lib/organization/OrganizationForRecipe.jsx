@@ -31,6 +31,9 @@ const {
   byListId
 } = require('../../filter/filterPosts')
 
+
+import AppConstants from "../../../lib/appConstants";
+
 const {getPageFormType, getSelectPhoto, checkNeedUpdatePhotosTask} = require('../../filter/filterRoutes')
 
 import PaginationTerms from "../../../lib/paginationTerms";
@@ -40,12 +43,13 @@ class OrganizationForRecipe extends Component {
   constructor(props, context) {
     super(props)
 
-    const pageForm = getPageFormType(PARSE_RESTAURANTS, props, null)
-    const photosTerms = PaginationTerms.generatePhotoTerm(PARSE_RESTAURANTS, props.params.forObjectId, pageForm, props)
+    const {modelType, forObjectId} = props.params;
+    const {objectSchemaName} = AppConstants.realmObjects[modelType]
+    const pageForm = getPageFormType(objectSchemaName, props, null)
+    const photosTerms = PaginationTerms.generatePhotoTerm(objectSchemaName, props.params.forObjectId, pageForm, props)
 
     this.state = this.initialState = {
       // Detailed object
-      forObjectId: props.params.forObjectId,
       forObject: null,
       // photos
       photosTerms: photosTerms,
@@ -53,24 +57,29 @@ class OrganizationForRecipe extends Component {
       selectPhotoIndex: -1,
       // Common
       pageForm: pageForm,
-      modelType: props.params.modelType,
+      forObjectId,
+      modelType,
+      objectSchemaName,
     }
   }
 
   componentWillReceiveProps(nextProps) {
+    const {objectSchemaName} = this.state;
+
     const lastPageForm = this.state.pageForm;
     const lastPhotosTerms = this.state.photosTerms;
 
-    const newPageForm = getPageFormType(PARSE_RESTAURANTS, nextProps, this.state.pageForm)
-    const newPhotosTerms = PaginationTerms.generatePhotoTerm(PARSE_RESTAURANTS, nextProps.params.rid, newPageForm, nextProps)
+    const {modelType, forObjectId} = nextProps.params;
+
+    const newPageForm = getPageFormType(objectSchemaName, nextProps, this.state.pageForm)
+    const newPhotosTerms = PaginationTerms.generatePhotoTerm(objectSchemaName, forObjectId, newPageForm, nextProps)
     const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms, this.state.photosListTask);
 
-    const newRestaurant = getModelByObjectId(nextProps, this.state.rid, this.state.forObject);
+    const newRestaurant = getModelByObjectId(nextProps, forObjectId, this.state.forObject);
 
     this.setState({
       // Detailed object
       forObject: newRestaurant,
-      reviewStatistic: getModelByObjectId(nextProps, this.state.rid, this.state.reviewStatistic, 'statistic'),
       // photos
       photosTerms: newPhotosTerms,
       photosListTask: photosListTask,
@@ -104,6 +113,8 @@ class OrganizationForRecipe extends Component {
 
   render() {
     const {photosListTask, forObject, pageForm} = this.state;
+
+    debugger
 
     if (!!forObject) {
       if (!!photosListTask.ready) {
