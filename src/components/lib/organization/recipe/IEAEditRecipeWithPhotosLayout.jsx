@@ -30,6 +30,8 @@ const {
   MENU_ITEM_ADD_OR_EDIT_RECIPE,
   ALERT_TYPE_ERROR,
   ALERT_TYPE_SUCCESS,
+  // Photo browser title
+  PHOTO_BROWSER_ORGANIZATION_TITLE,
 } = require('../../../../lib/constants').default
 
 
@@ -231,16 +233,20 @@ class IEAEditRecipeWithPhotosLayout extends Component {
           <Telescope.components.F8AppAlertSection/>
 
           <div className="container">
+
             <div className="clearfix layout-block layout-full" id="update-biz-details">
-
               <div className="column column-alpha ">
-
                 {this.renderTitle()}
                 {this.renderContent()}
-
               </div>
             </div>
           </div>
+
+
+          <Telescope.components.IEAPhotosBrowserLayout
+            photoTitleType={PHOTO_BROWSER_ORGANIZATION_TITLE}
+            {...this.props}/>
+
         </div>
       </div>
     );

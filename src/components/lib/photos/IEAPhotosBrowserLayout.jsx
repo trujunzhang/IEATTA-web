@@ -3,8 +3,10 @@ import React, {Component} from 'react'
 
 
 const {
+  // Photo browser title
   PHOTO_BROWSER_NORMAL_TITLE,
   PHOTO_BROWSER_LOGGED_USER_TITLE,
+  PHOTO_BROWSER_ORGANIZATION_TITLE,
 } = require('../../../lib/constants').default
 
 
@@ -45,10 +47,14 @@ class IEAPhotosBrowserLayout extends Component {
   }
 
   renderTitle() {
-    if (this.props.photoTitleType === PHOTO_BROWSER_LOGGED_USER_TITLE) {
-      return (<Telescope.components.F8PhotosLoggedUserTitleHeader {...this.props}/>)
+    switch (this.props.photoTitleType) {
+      case PHOTO_BROWSER_LOGGED_USER_TITLE:
+        return (<Telescope.components.F8PhotosLoggedUserTitleHeader {...this.props}/>)
+      case  PHOTO_BROWSER_NORMAL_TITLE :
+        return (<Telescope.components.F8PhotosTitleHeader {...this.props}/>)
     }
-    return (<Telescope.components.F8PhotosTitleHeader {...this.props}/>)
+
+    return null;
   }
 
   render() {
