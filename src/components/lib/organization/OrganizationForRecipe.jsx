@@ -116,16 +116,14 @@ class OrganizationForRecipe extends Component {
     const {photosListTask, forRelationObject, pageForm} = this.state;
 
     if (!!forRelationObject) {
-      if (!!photosListTask.ready) {
-        switch (pageForm) {
-          case MODEL_FORM_TYPE_EDIT:
-          case MODEL_FORM_TYPE_NEW:
-            return (<Telescope.components.IEAEditRecipeWithPhotosLayout
-                {...this.props}
-                {...this.state}
-                dispatch={this.props.dispatch}/>
-            )
-        }
+      switch (pageForm) {
+        case MODEL_FORM_TYPE_EDIT:
+        case MODEL_FORM_TYPE_NEW:
+          return (<Telescope.components.IEAEditRecipeWithPhotosLayout
+              {...this.props}
+              {...this.state}
+              dispatch={this.props.dispatch}/>
+          )
       }
     }
 

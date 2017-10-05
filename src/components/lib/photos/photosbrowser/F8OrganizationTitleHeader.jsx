@@ -25,7 +25,9 @@ class F8OrganizationTitleHeader extends Component {
             <div className="arrange_unit arrange_unit--fill">
               <ul className="breadcrumbs">
                 <li>
-                  {"Local photos"}
+                  <span>
+                  {"The following photos maybe own the recipe"}
+                  </span>
                 </li>
               </ul>
 
