@@ -1,6 +1,10 @@
 import keyMirror from 'key-mirror'
 
 export default keyMirror({
+  // Right Buttons Group Type
+  RIGHT_BUTTON_GROUP_ADD_EVENT: null,
+  RIGHT_BUTTON_GROUP_ADD_RECIPE: null,
+
   // Parse Object Model Status
   PARSE_OBJECT_FLAG_NORMAL: null,
   PARSE_OBJECT_FLAG_REMOVED: null,
