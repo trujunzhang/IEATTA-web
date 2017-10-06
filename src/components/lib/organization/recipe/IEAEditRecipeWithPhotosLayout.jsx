@@ -127,8 +127,6 @@ class IEAEditRecipeWithPhotosLayout extends Component {
       }
     }
 
-    debugger
-
     try {
       // await Promise.race([writeOnlineParseObjectAction(_object), timeout(15000)]);
     } catch (e) {

@@ -95,11 +95,13 @@ async function _writeOnlineParseObject(editModelType,
   // First of all, set fields.
   await  Records.createOnlineParseInstance(editModelType, onlineParseObject, objectSchemaName, model)
 
+  debugger
+
   // step1: save the online object.
-  await onlineParseObject.save()
+  // await onlineParseObject.save()
 
   // step2: save it's recorder.
-  await updateParseRecorder(objectSchemaName, onlineParseObject)
+  // await updateParseRecorder(objectSchemaName, onlineParseObject)
 
   const _originalModel = parseOnlineParseObject(objectSchemaName, onlineParseObject);
   const action = {

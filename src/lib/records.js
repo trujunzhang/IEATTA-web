@@ -104,6 +104,10 @@ Records.createOnlineParseInstance = async function (editModelType, onlineParseOb
       onlineParseObject.set('displayName', localRecorder.displayName)
       onlineParseObject.set('price', localRecorder.price)
 
+      // relation(user,restaurant,event)
+
+      debugger
+
       break;
 
     case PARSE_PHOTOS:
