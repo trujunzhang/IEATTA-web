@@ -9,7 +9,7 @@ const {
 import Reviews from '../lib/reviews'
 import AppConstants from '../lib/appConstants'
 
-import {equalRelationObject} from './parseQuery'
+import {equalToRelationObject} from './parseQuery'
 
 
 /**
@@ -55,14 +55,14 @@ export default class ReviewsParameters {
     }
 
     if (!!terms.reviewListType) {
-      equalRelationObject(this.query, PARSE_USERS, terms.forObject.id)
+      equalToRelationObject(this.query, PARSE_USERS, terms.forObject.id)
     }
 
     const {reviewType, forObject} = terms;
     if (!!reviewType) {
       this.query.equalTo('reviewType', reviewType)
       const {objectSchemaName} = AppConstants.realmObjects[reviewType]
-      equalRelationObject(this.query, objectSchemaName, forObject.id)
+      equalToRelationObject(this.query, objectSchemaName, forObject.id)
     }
 
 

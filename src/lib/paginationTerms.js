@@ -82,14 +82,33 @@ PaginationTerms.generateTermsForEventsList = function ({eventType, forObject}) {
   };
 }
 
-PaginationTerms.generateTermsForOrderedUsersList = function (props) {
-  const listId = props.forObject.id;
+/**
+ *
+ * @param forObject: is 'Event' model.
+ * @returns {{listId: string, limit: number, eventId, restaurantId: (*|string)}}
+ */
+PaginationTerms.generateTermsForOrderedUsersList = function ({forObject}) {
+  const listId = forObject.id;
   return {
     listId: 'ordered-users-list-view-for-' + listId,
     limit: 10,
     eventId: listId,
-    restaurantId: props.forObject.restaurant.id
-  };
+    restaurantId: forObject.restaurant.id
+  }
+}
+
+/**
+ *
+ * @param forObject: is 'Recipe' model.
+ * @returns {{listId: string, limit: number, recipeId}}
+ */
+PaginationTerms.generateTermsForOrderedRecipeUsersList = function ({forObject}) {
+  const listId = forObject.id;
+  return {
+    listId: 'ordered-users-list-view-for-' + listId,
+    limit: 10,
+    recipeId: listId,
+  }
 }
 
 

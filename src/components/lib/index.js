@@ -112,6 +112,7 @@ Telescope.registerComponent('IEAEditRecipeLayout',                         requi
 
 // overlayOrderedRecipe(page)
 Telescope.registerComponent('OrderedRecipesDetail',                        require('./overlayorderedrecipe/page/OrderedRecipesDetail.jsx').default)
+Telescope.registerComponent('OrderedRecipeUsersList',                      require('./overlayorderedrecipe/page/OrderedRecipeUsersList.jsx').default)
 Telescope.registerComponent('OrderedRecipesSingleHeader',                  require('./overlayorderedrecipe/page/OrderedRecipesSingleHeader.jsx').default)
 Telescope.registerComponent('EditRecipeForm',                              require('./overlayorderedrecipe/page/EditRecipeForm.jsx').default)
 

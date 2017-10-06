@@ -23,10 +23,19 @@ const {
 } = require('../lib/constants').default
 
 
-export function equalRelationObject(query, objectSchemaName, parseId, fieldName) {
+export function equalToRelationObject(query, objectSchemaName, parseId, fieldName) {
   if (!!parseId) {
     const modelType = AppConstants.realmTypes[objectSchemaName]
     const instanceWithoutData = getInstanceWithoutData(objectSchemaName, parseId)
     query.equalTo(modelType, instanceWithoutData)
   }
 }
+
+export function containInRelationObject(query, objectSchemaName, parseId, fieldName) {
+  if (!!parseId) {
+    const modelType = AppConstants.realmTypes[objectSchemaName]
+    const instanceWithoutData = getInstanceWithoutData(objectSchemaName, parseId)
+    query.containedIn(modelType, instanceWithoutData)
+  }
+}
+

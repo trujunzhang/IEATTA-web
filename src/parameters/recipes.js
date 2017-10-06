@@ -1,5 +1,5 @@
 const Parse = require('parse')
-import {equalRelationObject} from './parseQuery'
+import {equalToRelationObject} from './parseQuery'
 
 /**
  * The states were interested in
@@ -23,7 +23,7 @@ export default class RecipesParameters {
 
   addParameters(terms: Any) {
     if (!!terms.restaurantId) {
-      equalRelationObject(this.query, PARSE_RESTAURANTS, terms.restaurantId)
+      equalToRelationObject(this.query, PARSE_RESTAURANTS, terms.restaurantId)
     }
 
     if (!!terms.recipeIds) {
