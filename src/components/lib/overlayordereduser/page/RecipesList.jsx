@@ -38,18 +38,36 @@ class RecipesList extends Component {
     this.props.dispatch(loadRecipesList(listTask, terms))
   }
 
+  renderRecipesList() {
+    const {listTask} = this.state;
+    const {
+      results,
+      ready,
+      totalCount,
+    } = listTask;
+
+    if (ready) {
+      return (
+        <Telescope.components.RecipesListPage
+          recipes={results}
+        />
+      )
+    }
+
+    return (<Telescope.components.F8LoadingView/>)
+  }
+
   render() {
     const {showTitle} = this.props;
 
     return (
       <div className="ysection">
-
         {
           showTitle &&
           <Telescope.components.F8SectionHeaderTitle title={"Recently Ordered Recipes"}/>
         }
 
-        {/*<Telescope.components.RecipesListPage/>*/}
+        {this.renderRecipesList()}
 
       </div>
     )

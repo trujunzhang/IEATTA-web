@@ -44,6 +44,7 @@ PaginationTerms.generateTermsForReviewsList = function (props, prefix = "list") 
 
 
 PaginationTerms.generateTermsForRecipesList = function (props) {
+
   const forEvent = props.forEvent || {};
   const forRestaurant = props.forRestaurant || {};
   const orderedUser = props.orderedUser || {};
