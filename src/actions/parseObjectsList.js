@@ -24,7 +24,7 @@
 import {fromParsePhoto, fromParseRecipe} from "../parse/parseModels";
 
 const Parse = require('parse')
-import type {ThunkAction} from './types'
+import type {ThunkAction, Action} from './types'
 
 const {
   getRestaurantParameters,
@@ -51,7 +51,21 @@ const {
   LIST_VIEW_LOADED_BY_TYPE,
 } = require('../lib/constants').default
 
-async function _loadListByType(listTask: Any, objectsQuery: Parse.Query, terms: Any, parseFun: Any, type: Any): Promise<Array<Action>> {
+async function _loadRecipeListForEvent(listTask,
+                                       objectsQuery,
+                                       terms,
+                                       parseFun,
+                                       type): Promise<Array<Action>> {
+
+  debugger
+
+}
+
+async function _loadListByType(listTask,
+                               objectsQuery,
+                               terms,
+                               parseFun,
+                               type): Promise<Array<Action>> {
   const {
     pageIndex,
     limit,
@@ -84,9 +98,14 @@ async function _loadListByType(listTask: Any, objectsQuery: Parse.Query, terms: 
   ])
 }
 
-function loadListByType(listTask: Any, objectsQuery: Parse.Query, terms: Any, parseFun: Any, type: Any = LIST_VIEW_LOADED_BY_TYPE): ThunkAction {
+function loadListByType(listTask,
+                        objectsQuery,
+                        terms,
+                        parseFun,
+                        invokeListFunc = _loadListByType,
+                        type = LIST_VIEW_LOADED_BY_TYPE): ThunkAction {
   return (dispatch) => {
-    const action = _loadListByType(listTask, objectsQuery, terms, parseFun, type)
+    const action = invokeListFunc(listTask, objectsQuery, terms, parseFun, type)
     action.then(
       ([result]) => {
         dispatch(result)
@@ -112,8 +131,12 @@ function loadReviewsList(listTask: Any, terms: Any): ThunkAction {
   return loadListByType(listTask, getReviewsParameters(terms), terms, fromParseReview)
 }
 
-function loadRecipesList(listTask: Any, terms: Any): ThunkAction {
+function loadRecipesListForRestaurant(listTask: Any, terms: Any): ThunkAction {
   return loadListByType(listTask, getRecipesParameters(terms), terms, fromParseRecipe)
+}
+
+function loadRecipesListForEvent(listTask: Any, terms: Any): ThunkAction {
+  return loadListByType(listTask, getRecipesParameters(terms), terms, fromParseRecipe, _loadRecipeListForEvent)
 }
 
 function loadPhotosBrowser(terms: Any): ThunkAction {

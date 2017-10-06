@@ -1,7 +1,10 @@
 import Telescope from '../../../lib'
 import React, {Component} from 'react'
 
-const {loadRecipesList} = require('../../../../actions').default
+const {
+  loadRecipesListForRestaurant,
+  loadRecipesListForEvent
+} = require('../../../../actions').default
 
 const {
   byListId,
@@ -54,10 +57,10 @@ class RecipesList extends Component {
 
     switch (reviewListType) {
       case REVIEWS_LIST_FOR_RESTAURANT_PAGE:
-        this.props.dispatch(loadRecipesList(listTask, terms))
+        this.props.dispatch(loadRecipesListForRestaurant(listTask, terms))
         break;
       case REVIEWS_LIST_FOR_EVENT_PAGE:
-        this.props.dispatch(loadRecipesList(listTask, terms))
+        this.props.dispatch(loadRecipesListForEvent(listTask, terms))
         break;
     }
   }
