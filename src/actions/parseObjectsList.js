@@ -23,7 +23,7 @@
  */
 import {fromParsePhoto, fromParseRecipe} from "../parse/parseModels";
 
-const Parse = require('parse')
+const _ = require('underscore')
 import type {ThunkAction, Action} from './types'
 
 const {
@@ -44,6 +44,8 @@ const {
   fromParseUser
 } = require('../parse/parseModels')
 
+import PeopleInEvent from '../lib/peopleInEvent'
+
 /**
  * The states were interested in
  */
@@ -56,34 +58,19 @@ async function _loadRecipeListForEvent(listTask,
                                        terms,
                                        parseFun,
                                        type): Promise<Array<Action>> {
-
-  debugger
-
-  const {
-    pageIndex,
-    limit,
-    allItems = false
-  } = listTask
-  const skipCount = (pageIndex - 1) * limit
-
-  console.log("current:", pageIndex)
-
-  debugger
-
-  const totalCount = await objectsQuery.count()
-
-  debugger
-
   const results = await objectsQuery.find()
+  const peopleInEventModels = (results || []).map(fromParsePeopleInEvent);
+  const recipeIds = PeopleInEvent.getRecipeIds(peopleInEventModels)
 
-  debugger
+  const recipesQuery = getRecipesParameters({recipeIds})
+  const recipeResults = await recipesQuery.find()
 
   const payload = {
-    list: (results || []).map(parseFun),
+    list: (recipeResults || []).map(parseFun),
     listTask: listTask,
     listId: terms.listId,
     limit: terms.limit,
-    totalCount: totalCount
+    totalCount: -1
   }
 
   const action = {type, payload}

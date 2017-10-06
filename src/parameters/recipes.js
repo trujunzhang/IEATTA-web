@@ -1,3 +1,4 @@
+const Parse = require('parse')
 import {equalRelationObject} from './parseQuery'
 
 /**
@@ -21,12 +22,13 @@ export default class RecipesParameters {
   }
 
   addParameters(terms: Any) {
+    if (!!terms.restaurantId) {
+      equalRelationObject(this.query, PARSE_RESTAURANTS, terms.restaurantId)
+    }
 
-    equalRelationObject(this.query, PARSE_USERS, terms.orderedUserId)
-
-    equalRelationObject(this.query, PARSE_EVENTS, terms.eventId)
-
-    equalRelationObject(this.query, PARSE_RESTAURANTS, terms.restaurantId)
+    if (!!terms.recipeIds) {
+      this.query.containedIn('objectId', terms.recipeIds)
+    }
 
     return this
   }

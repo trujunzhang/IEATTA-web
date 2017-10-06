@@ -9,12 +9,14 @@ import {
 } from './link'
 
 const Photos = {
+
   config: {
     // paginationCountPerPage: 6 * 5, //Using it now.
     paginationCountPerPage: 6 * 1, //Using it now.
     // July 29, 2017
     selectedPhotoCreatedAtFormat: 'MMMM DD, YYYY'
   }
+
 }
 
 Photos.getThumbnailUrl = function (photo) {
