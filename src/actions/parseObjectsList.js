@@ -56,6 +56,9 @@ async function _loadRecipeListForEvent(listTask,
                                        terms,
                                        parseFun,
                                        type): Promise<Array<Action>> {
+
+  debugger
+
   const {
     pageIndex,
     limit,
@@ -65,13 +68,13 @@ async function _loadRecipeListForEvent(listTask,
 
   console.log("current:", pageIndex)
 
+  debugger
+
   const totalCount = await objectsQuery.count()
-  let results = [];
-  if (allItems) {
-    results = await objectsQuery.find()
-  } else {
-    results = await objectsQuery.skip(skipCount).limit(limit).find()
-  }
+
+  debugger
+
+  const results = await objectsQuery.find()
 
   debugger
 
