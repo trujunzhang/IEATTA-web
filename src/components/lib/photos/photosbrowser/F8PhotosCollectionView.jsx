@@ -82,12 +82,12 @@ class F8PhotosCollectionView extends Component {
 
 
   render() {
-    const {photosListTask} = this.props;
+    const {photosListTask, showAlertSection} = this.props;
     const photos = photosListTask.results;
     return (
       <div className="media-landing_gallery photos">
 
-        <Telescope.components.F8AppAlertSection/>
+        {showAlertSection && <Telescope.components.F8AppAlertSection/>}
 
         <ul className="photo-box-grid photo-box-grid--highlight photo-box-grid--small clearfix lightbox-media-parent">
           {photos.map((photo, index) => {
@@ -143,6 +143,15 @@ class F8PhotosCollectionView extends Component {
     )
   }
 }
+
+
+F8PhotosCollectionView.propTypes = {
+  showAlertSection: React.PropTypes.bool
+};
+
+F8PhotosCollectionView.defaultProps = {
+  showAlertSection: true
+};
 
 
 export default withRouter(F8PhotosCollectionView);

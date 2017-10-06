@@ -104,7 +104,9 @@ Records.createOnlineParseInstance = async function (editModelType, onlineParseOb
       onlineParseObject.set('displayName', localRecorder.displayName)
       onlineParseObject.set('price', localRecorder.price)
 
-      // relation(user,restaurant,event)
+      // relation(restaurant)
+      _online_restaurant_instance = getInstanceWithoutData(PARSE_RESTAURANTS, localRecorder.restaurant.id)
+      onlineParseObject.set('restaurant', _online_restaurant_instance)
 
       debugger
 

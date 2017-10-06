@@ -123,12 +123,12 @@ class IEAEditRecipeWithPhotosLayout extends Component {
         restaurant: {
           id: forRelationObject.id,
           uniqueId: forRelationObject.uniqueId
-        },
+        }
       }
     }
 
     try {
-      // await Promise.race([writeOnlineParseObjectAction(_object), timeout(15000)]);
+      await Promise.race([writeOnlineParseObjectAction(_object), timeout(15000)]);
     } catch (e) {
       this.props.actions.updateModelFailure(e);
       const message = e.message || e;
@@ -256,6 +256,7 @@ class IEAEditRecipeWithPhotosLayout extends Component {
             editModelType === MODEL_FORM_TYPE_EDIT &&
             <Telescope.components.IEAPhotosBrowserLayout
               photoTitleType={PHOTO_BROWSER_ORGANIZATION_TITLE}
+              showAlertSection={false}
               {...this.props}/>
           }
 
