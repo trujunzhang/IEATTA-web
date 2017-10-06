@@ -24,11 +24,12 @@ class EventsDetail extends Component {
       <div className="column column-alpha column--responsive">
         {this.renderLeftTopSection()}
 
-        <Telescope.components.ReviewsList
-          key={forObject.id}
-          forObject={this.props.forObject}
-          reviewType="event"
-          reviewTitle={reviewTitle}/>
+        {/*<Telescope.components.ReviewsList*/}
+          {/*key={forObject.id}*/}
+          {/*forObject={this.props.forObject}*/}
+          {/*reviewType="event"*/}
+          {/*reviewTitle={reviewTitle}/>*/}
+
       </div>
     )
   }
@@ -48,7 +49,7 @@ class EventsDetail extends Component {
       <div className="column column-beta column--responsive">
         {this.renderRightTopUsersSection()}
 
-        <Telescope.components.RecipesList forRestaurant={forObject.restaurant} forEvent={forObject} showTitle={true}/>
+        {/*<Telescope.components.RecipesList forRestaurant={forObject.restaurant} forEvent={forObject} showTitle={true}/>*/}
 
       </div>
     )

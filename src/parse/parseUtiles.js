@@ -83,7 +83,7 @@ function getUsersParameters(terms) {
 
 function getPeopleInEventParameters(terms) {
   return new Parameters.PeopleInEvent(getQueryByType(PARSE_PEOPLE_IN_EVENTS,
-    ['user', 'user.listPhoto', 'event']))
+    ['user', 'user.listPhoto', 'event',"restaurant","recipes"]))
     .addParameters(terms)
     .end()
 }

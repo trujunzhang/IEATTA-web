@@ -235,7 +235,6 @@ export function fromParseRecipe(map: Object): Recipe {
     listPhoto: fromParsePhotoNormal(map.get('listPhoto')),
     // Relations
     restaurant: map.get('restaurant') && fromParseRestaurant(map.get('restaurant')),
-    event: map.get('event') && fromParseEvent(map.get('event')),
     user: map.get('user') && fromParseUser(map.get('user'))
   }
 }
@@ -280,7 +279,7 @@ export function fromParseRestaurant(map: Object): Restaurant {
 
 
 export function fromParsePeopleInEvent(map: Object): PeopleInEvent {
-  return {
+  const model = {
     // Basic Fields
     ...fromParseCommon(map),
     // Attributes
@@ -288,8 +287,11 @@ export function fromParsePeopleInEvent(map: Object): PeopleInEvent {
     // Pointer
     restaurant: map.get('restaurant') && fromParseRestaurant(map.get('restaurant')),
     event: map.get('event') && fromParseEvent(map.get('event')),
-    user: map.get('user') && fromParseUser(map.get('user'))
+    user: map.get('user') && fromParseUser(map.get('user')),
+    recipes: (map.get("recipes") || []).map(fromParseRecipe)
   }
+
+  return model;
 }
 
 
@@ -316,6 +318,8 @@ export function parseOnlineParseObject(objectSchemaName, map) {
   switch (objectSchemaName) {
     case PARSE_RESTAURANTS:
       return fromParseRestaurant(map);
+    case PARSE_PEOPLE_IN_EVENTS:
+      return fromParsePeopleInEvent(map);
     case PARSE_EVENTS:
       return fromParseEvent(map);
     case PARSE_RECIPES:
