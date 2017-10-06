@@ -56,9 +56,38 @@ async function _loadRecipeListForEvent(listTask,
                                        terms,
                                        parseFun,
                                        type): Promise<Array<Action>> {
+  const {
+    pageIndex,
+    limit,
+    allItems = false
+  } = listTask
+  const skipCount = (pageIndex - 1) * limit
+
+  console.log("current:", pageIndex)
+
+  const totalCount = await objectsQuery.count()
+  let results = [];
+  if (allItems) {
+    results = await objectsQuery.find()
+  } else {
+    results = await objectsQuery.skip(skipCount).limit(limit).find()
+  }
 
   debugger
 
+  const payload = {
+    list: (results || []).map(parseFun),
+    listTask: listTask,
+    listId: terms.listId,
+    limit: terms.limit,
+    totalCount: totalCount
+  }
+
+  const action = {type, payload}
+
+  return Promise.all([
+    Promise.resolve(action)
+  ])
 }
 
 async function _loadListByType(listTask,
@@ -136,7 +165,7 @@ function loadRecipesListForRestaurant(listTask: Any, terms: Any): ThunkAction {
 }
 
 function loadRecipesListForEvent(listTask: Any, terms: Any): ThunkAction {
-  return loadListByType(listTask, getRecipesParameters(terms), terms, fromParseRecipe, _loadRecipeListForEvent)
+  return loadListByType(listTask, getPeopleInEventParameters(terms), terms, fromParseRecipe, _loadRecipeListForEvent)
 }
 
 function loadPhotosBrowser(terms: Any): ThunkAction {
