@@ -38,52 +38,6 @@ class RecipesList extends Component {
     this.props.dispatch(loadRecipesList(listTask, terms))
   }
 
-  renderRows() {
-    const {showRightTime} = this.props;
-    const {listTask} = this.state;
-
-    const {
-      results,
-      ready
-    } = listTask
-
-    if (!ready) {
-      return (<Telescope.components.F8LoadingView/>)
-    }
-
-    return (
-      <ul className="ylist ylist-bordered">
-        {results.map((recipe, index) =>
-          <Telescope.components.RecipesItem key={recipe.id}
-                                            recipe={recipe}
-                                            index={index}
-                                            showRightTime={showRightTime}/>
-        )}
-      </ul>
-
-    )
-  }
-
-  renderEmptySection() {
-    const {listTask} = this.state;
-
-    const {
-      results,
-      ready,
-      totalCount,
-    } = listTask
-
-    if (ready && results.length === 0) {
-      return (
-        <Telescope.components.F8EmptySection
-          title={''}
-          text="No recipes ordered"/>
-      )
-    }
-    return null;
-  }
-
-
   render() {
     const {showTitle} = this.props;
 
@@ -95,11 +49,7 @@ class RecipesList extends Component {
           <Telescope.components.F8SectionHeaderTitle title={"Recently Ordered Recipes"}/>
         }
 
-        {this.renderRows()}
-
-        <div className="u-space-t2 u-space-b2">
-          {this.renderEmptySection()}
-        </div>
+        {/*<Telescope.components.RecipesListPage/>*/}
 
       </div>
     )

@@ -235,7 +235,6 @@ export function fromParseRecipe(map: Object): Recipe {
     listPhoto: fromParsePhotoNormal(map.get('listPhoto')),
     // Relations
     restaurant: map.get('restaurant') && fromParseRestaurant(map.get('restaurant')),
-    user: map.get('user') && fromParseUser(map.get('user'))
   }
 }
 

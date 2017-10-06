@@ -22,9 +22,7 @@ class RecipesItem extends Component {
       <div className="media-avatar">
 
         <div className="photo-box pb-90s">
-          <Link
-            className="js-analytics-click"
-            to={getOrderedRecipeLink(recipe)}>
+          <Link className="js-analytics-click" to={getOrderedRecipeLink(recipe)}>
             <img alt={recipe.displayName}
                  className="photo-box-img"
                  width="90"
@@ -45,84 +43,43 @@ class RecipesItem extends Component {
         <div className="media-title clearfix">
             <span className="indexed-biz-name">
               {`${index + 1}.`}
-              <Link
-                className="biz-name js-analytics-click margin-left-4"
-                to={getOrderedRecipeLink(recipe)}>
+              <Link className="biz-name js-analytics-click margin-left-4" to={getOrderedRecipeLink(recipe)}>
                     <span>{recipe.displayName}</span>
               </Link>
             </span>
         </div>
 
-        <div className="price-category">
-             <span className="category-str-list">
-                   {"by "}
-               <Link to={getLoggedUserMenuLink(recipe.user)}>
-                 {recipe.user.username}
-               </Link>
-             </span>
-        </div>
+        {/*{this.renderRecipeUser()}*/}
 
         <div className="price-category">
-             <span className="category-str-list">{`$. ${recipe.price}`}</span>
+          <span className="category-str-list">{`$. ${recipe.price}`}</span>
         </div>
-
-
-        {/*<small className="biz-city">*/}
-        {/*{recipe.restaurant.address}*/}
-        {/*</small>*/}
 
         <div className="tag-18x18_flame-dd5114">
           <small>
             <FormattedRelative value={recipe.updatedAt}/>
           </small>
         </div>
-
       </div>
-
-    )
-  }
-
-  renderRating() {
-    return (
-      <div className="biz-rating biz-rating-large clearfix">
-
-        <Telescope.components.F8StarIcon
-          rate={1}
-          iconType="regular"
-          iconWidth="84"
-          iconHeight="303"/>
-
-        <div itemProp="ratingValue" content="4.0">
-              <span className="review-count rating-qualifier">
-            <span itemProp="reviewCount">5</span> reviews</span>
-        </div>
-
-      </div>
-
     )
   }
 
   renderRightTime() {
     return (
-
       <div className="arrange_unit nowrap">
         <div className="subtle-text">
           {Recipes.getUpdatedAtFormat(this.props.recipe)}
         </div>
       </div>
-
     )
   }
 
   render() {
-    const {
-      showRightTime
-    } = this.props;
+    const {showRightTime} = this.props;
 
     return (
       <li className="js-bookmark-row">
         <div className="bookmark-listing">
-
 
           <div className="arrange">
 
@@ -142,12 +99,26 @@ class RecipesItem extends Component {
         </div>
 
       </li>
+    )
+  }
 
+  renderRecipeUser() {
+    const {recipe, index} = this.props;
+    // const userName = recipe.user.username
+    const userName = 'trujunzhzhang'
+
+    return (
+      <div className="price-category">
+             <span className="category-str-list">
+                   {"by "}
+               <Link>
+                 {userName}
+               </Link>
+             </span>
+      </div>
     )
   }
 }
 
 
-const {connect} = require('react-redux')
-
-export default withRouter(connect()(RecipesItem))
+export default withRouter(RecipesItem);

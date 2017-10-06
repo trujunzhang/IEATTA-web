@@ -35,26 +35,25 @@ class OrderedUsersDetail extends Component {
   }
 
   renderRightPanel() {
-    const {forEvent, forRestaurant, orderedUser} = this.props;
-    if (!!forEvent && !!forRestaurant && !!orderedUser) {
-      return (
-        <div className="column column-beta ">
+    const {forEvent, forRestaurant, orderedUser, orderedRecipes} = this.props;
 
-          {this.renderTitle()}
+    return (
+      <div className="column column-beta ">
 
-          <div className="user-details_bookmarks js-user-details_bookmarks">
+        {this.renderTitle()}
 
-            <div className="user-details-bookmarks_content js-user-details-bookmarks_content">
-              <Telescope.components.RecipesList {...this.props} showRightTime={true}/>
-            </div>
-
-            {this.renderRightSidebar()}
+        <div className="user-details_bookmarks js-user-details_bookmarks">
+          <div className="user-details-bookmarks_content js-user-details-bookmarks_content">
+            <Telescope.components.RecipesListPage
+              recipes={orderedRecipes}
+              showTitle={true}
+            />
           </div>
-        </div>
 
-      )
-    }
-    return null;
+          {this.renderRightSidebar()}
+        </div>
+      </div>
+    )
   }
 
   render() {

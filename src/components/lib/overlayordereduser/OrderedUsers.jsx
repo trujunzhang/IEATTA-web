@@ -15,28 +15,30 @@ class OrderedUsers extends Component {
     super(props)
 
     this.state = this.initialState = {
-      pid: props.params.pid,
+      peopleInEventId: props.params.peopleInEventId,
       // Detailed object
       peopleInEvent: null,
       orderedUser: null,
       forEvent: null,
       forRestaurant: null,
+      orderedRecipes: null,
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    const peopleInEvent = getModelByObjectId(nextProps, this.state.pid, this.state.peopleInEvent)
+    const peopleInEvent = getModelByObjectId(nextProps, this.state.peopleInEventId, this.state.peopleInEvent)
 
     this.setState({
       peopleInEvent: peopleInEvent,
       orderedUser: peopleInEvent.user,
       forEvent: peopleInEvent.event,
       forRestaurant: peopleInEvent.restaurant,
+      orderedRecipes: peopleInEvent.recipes
     })
   }
 
   componentDidMount() {
-    this.props.dispatch(loadPeopleInEventPage(this.state.pid))
+    this.props.dispatch(loadPeopleInEventPage(this.state.peopleInEventId))
   }
 
   render() {
