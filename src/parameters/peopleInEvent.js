@@ -19,9 +19,6 @@ export default class PeopleInEventParameters {
   }
 
   addParameters(terms: Any) {
-
-    debugger
-
     if (!!terms.userId) {
       equalRelationObject(this.query, PARSE_USERS, terms.userId)
     }
