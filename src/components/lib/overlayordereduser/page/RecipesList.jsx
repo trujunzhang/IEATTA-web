@@ -10,6 +10,21 @@ const {
 
 import PaginationTerms from "../../../../lib/paginationTerms";
 
+/**
+ * The states were interested in
+ */
+const {
+  // Model Form Mode
+  MODEL_FORM_TYPE_NEW,
+  PARSE_EVENTS,
+  MENU_ITEM_ADD_OR_EDIT_EVENT,
+  ALERT_TYPE_ERROR,
+  ALERT_TYPE_SUCCESS,
+  // Review List Type
+  REVIEWS_LIST_FOR_RESTAURANT_PAGE,
+  REVIEWS_LIST_FOR_EVENT_PAGE,
+} = require('../../../../lib/constants').default
+
 class RecipesList extends Component {
 
   constructor(props) {
@@ -34,8 +49,17 @@ class RecipesList extends Component {
   }
 
   loadMore() {
+    const {reviewListType} = this.props;
     const {terms, listTask} = this.state;
-    this.props.dispatch(loadRecipesList(listTask, terms))
+
+    switch (reviewListType) {
+      case REVIEWS_LIST_FOR_RESTAURANT_PAGE:
+        this.props.dispatch(loadRecipesList(listTask, terms))
+        break;
+      case REVIEWS_LIST_FOR_EVENT_PAGE:
+
+        break;
+    }
   }
 
   renderRecipesList() {

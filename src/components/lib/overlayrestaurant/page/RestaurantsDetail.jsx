@@ -1,6 +1,22 @@
 import Telescope from '../../../lib'
 import React, {Component} from 'react'
 
+/**
+ * The states were interested in
+ */
+const {
+  // Model Form Mode
+  MODEL_FORM_TYPE_NEW,
+  PARSE_EVENTS,
+  MENU_ITEM_ADD_OR_EDIT_EVENT,
+  ALERT_TYPE_ERROR,
+  ALERT_TYPE_SUCCESS,
+  // Review List Type
+  REVIEWS_LIST_FOR_RESTAURANT_PAGE,
+  REVIEWS_LIST_FOR_EVENT_PAGE,
+} = require('../../../../lib/constants').default
+
+
 class RestaurantsDetail extends Component {
 
   renderLeftPanel() {
@@ -28,7 +44,10 @@ class RestaurantsDetail extends Component {
     return (
       <div className="column column-beta column--responsive official-events">
 
-        <Telescope.components.RecipesList forRestaurant={forObject} showTitle={true}/>
+        <Telescope.components.RecipesList
+          forRestaurant={forObject}
+          reviewListType={REVIEWS_LIST_FOR_RESTAURANT_PAGE}
+          showTitle={true}/>
 
       </div>
     )
