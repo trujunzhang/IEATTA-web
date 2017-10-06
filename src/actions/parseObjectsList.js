@@ -152,7 +152,8 @@ export default {
   loadEventsList,
   loadPeopleInEventList,
   loadReviewsList,
-  loadRecipesList,
+  loadRecipesListForRestaurant,
+  loadRecipesListForEvent,
   loadPhotosBrowser,
   loadUsersWithoutAnonymousList,
 }
