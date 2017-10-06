@@ -5,12 +5,6 @@ import React, {Component} from 'react'
  * The states were interested in
  */
 const {
-  // Model Form Mode
-  MODEL_FORM_TYPE_NEW,
-  PARSE_EVENTS,
-  MENU_ITEM_ADD_OR_EDIT_EVENT,
-  ALERT_TYPE_ERROR,
-  ALERT_TYPE_SUCCESS,
   // Review List Type
   REVIEWS_LIST_FOR_RESTAURANT_PAGE,
   REVIEWS_LIST_FOR_EVENT_PAGE,
@@ -36,7 +30,6 @@ class RestaurantsDetail extends Component {
       </div>
     )
   }
-
 
   renderRightPanel() {
     const {forObject} = this.props;

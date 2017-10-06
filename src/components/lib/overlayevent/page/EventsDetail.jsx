@@ -2,6 +2,16 @@ import Telescope from '../../../lib'
 import React, {Component} from 'react'
 import Events from '../../../../lib/events'
 
+
+/**
+ * The states were interested in
+ */
+const {
+  // Review List Type
+  REVIEWS_LIST_FOR_RESTAURANT_PAGE,
+  REVIEWS_LIST_FOR_EVENT_PAGE,
+} = require('../../../../lib/constants').default
+
 class EventsDetail extends Component {
 
   renderLeftTopSection() {
@@ -49,7 +59,11 @@ class EventsDetail extends Component {
       <div className="column column-beta column--responsive">
         {this.renderRightTopUsersSection()}
 
-        {/*<Telescope.components.RecipesList forRestaurant={forObject.restaurant} forEvent={forObject} showTitle={true}/>*/}
+        <Telescope.components.RecipesList
+          forRestaurant={forObject.restaurant}
+          forEvent={forObject}
+          reviewListType={REVIEWS_LIST_FOR_EVENT_PAGE}
+          showTitle={true}/>
 
       </div>
     )

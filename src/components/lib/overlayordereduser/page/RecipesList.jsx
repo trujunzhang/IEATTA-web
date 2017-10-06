@@ -57,7 +57,7 @@ class RecipesList extends Component {
         this.props.dispatch(loadRecipesList(listTask, terms))
         break;
       case REVIEWS_LIST_FOR_EVENT_PAGE:
-
+        this.props.dispatch(loadRecipesList(listTask, terms))
         break;
     }
   }
