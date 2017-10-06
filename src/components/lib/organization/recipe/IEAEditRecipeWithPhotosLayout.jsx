@@ -206,8 +206,7 @@ class IEAEditRecipeWithPhotosLayout extends Component {
               className='form-control'
               type='text'
               value={this.state.value.price}
-              onChange={this.onPriceChange.bind(this)}
-            />
+              onChange={this.onPriceChange.bind(this)}/>
 
           </div>
         </div>
