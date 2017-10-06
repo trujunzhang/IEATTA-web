@@ -108,6 +108,9 @@ Records.createOnlineParseInstance = async function (editModelType, onlineParseOb
       _online_restaurant_instance = getInstanceWithoutData(PARSE_RESTAURANTS, localRecorder.restaurant.id)
       onlineParseObject.set('restaurant', _online_restaurant_instance)
 
+      _online_user_Instance = getInstanceWithoutData(PARSE_USERS, localRecorder.creator.id)
+      onlineParseObject.set('creator', _online_user_Instance)
+
       debugger
 
       break;

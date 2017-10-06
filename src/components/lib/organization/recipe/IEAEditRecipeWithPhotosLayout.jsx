@@ -98,7 +98,7 @@ class IEAEditRecipeWithPhotosLayout extends Component {
 
 
   async onButtonPress() {
-    const {writeOnlineParseObjectAction, forRelationObject} = this.props;
+    const {writeOnlineParseObjectAction, forRelationObject, currentUser} = this.props;
 
     const editModelType = this.props.editModel.form.editModelType;
 
@@ -123,6 +123,10 @@ class IEAEditRecipeWithPhotosLayout extends Component {
         restaurant: {
           id: forRelationObject.id,
           uniqueId: forRelationObject.uniqueId
+        },
+        creator: {
+          id: currentUser.id,
+          uniqueId: currentUser.uniqueId
         }
       }
     }
@@ -285,6 +289,7 @@ function mapDispatchToProps(dispatch) {
 
 function select(store, ownProps) {
   return {
+    currentUser: store.user,
     editModel: store.editModel,
     goBack: ownProps.router.goBack
   };
