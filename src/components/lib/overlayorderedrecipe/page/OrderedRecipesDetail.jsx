@@ -10,11 +10,11 @@ class OrderedRecipesDetail extends Component {
     return (
       <div className="column column-alpha column--responsive">
 
-        {/*<Telescope.components.ReviewsList*/}
-        {/*key={forObject.id}*/}
-        {/*forObject={forObject}*/}
-        {/*reviewType="recipe"*/}
-        {/*reviewTitle={reviewTitle}/>*/}
+        <Telescope.components.ReviewsList
+        key={forObject.id}
+        forObject={forObject}
+        reviewType="recipe"
+        reviewTitle={reviewTitle}/>
 
       </div>
     )
@@ -38,7 +38,7 @@ class OrderedRecipesDetail extends Component {
         </div>
 
         <div className="ylist ylist-bordered">
-          <Telescope.components.F8SectionHeaderTitle title={"Related Recipes"}/>
+          {/*<Telescope.components.F8SectionHeaderTitle title={"Related Recipes"}/>*/}
 
           {/*<Telescope.components.RecipesList*/}
           {/*key={forObject.id}*/}

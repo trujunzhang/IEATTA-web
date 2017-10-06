@@ -22,5 +22,17 @@ PeopleInEvent.getRecipeIds = function (peopleInEventModels) {
   return recipeIds;
 }
 
+PeopleInEvent.getOtherUsersAlsoOrderedRecipe = function (list) {
+  const users = []
+  const userIds = []
+  list.map(({user}) => {
+    if (userIds.indexOf(user.id) === -1) {
+      users.push(user)
+      userIds.push(user.id)
+    }
+  })
+
+  return users;
+}
 
 export default PeopleInEvent;

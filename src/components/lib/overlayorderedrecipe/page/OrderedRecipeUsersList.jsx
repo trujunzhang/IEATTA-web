@@ -1,7 +1,7 @@
 import Telescope from '../../../lib'
 import React, {Component} from 'react'
 
-const {loadPeopleInEventList} = require('../../../../actions').default
+const {loadOtherUsersAlsoOrderedRecipeList} = require('../../../../actions').default
 
 import PaginationTerms from "../../../../lib/paginationTerms";
 
@@ -31,7 +31,7 @@ class OrderedRecipeUsersList extends Component {
 
   loadMore() {
     const {terms, listTask} = this.state;
-    this.props.dispatch(loadPeopleInEventList(listTask, terms))
+    this.props.dispatch(loadOtherUsersAlsoOrderedRecipeList(listTask, terms))
   }
 
   renderRows() {
@@ -47,6 +47,8 @@ class OrderedRecipeUsersList extends Component {
         <Telescope.components.F8LoadingView/>
       )
     }
+
+    debugger
 
     return (
       <ul className="ylist">

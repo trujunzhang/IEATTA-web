@@ -132,7 +132,7 @@ class OrderedRecipes extends Component {
   componentDidMount() {
     const oldOID = this.state.oid;
     this.props.dispatch(loadOrderedRecipePage(oldOID))
-    // this.props.dispatch(loadPhotosBrowser(this.state.photosTerms))
+    this.props.dispatch(loadPhotosBrowser(this.state.photosTerms))
     this.props.dispatch(invokeParseCloudMethod(CLOUD_STATISTIC_FOR_REVIEWS, {
       reviewType: this.state.modelType,
       forObjectId: oldOID,
@@ -143,7 +143,7 @@ class OrderedRecipes extends Component {
     const {photosListTask, forObject, pageForm, reviewStatistic} = this.state;
 
     if (!!forObject && !!reviewStatistic) {
-      if (!!photosListTask.ready || true) {
+      if (!!photosListTask.ready) {
         switch (pageForm) {
           case PAGE_SINGLE_SELECTED_PHOTO_FORM:
             return (<Telescope.components.IEAPhotosSingleLayout {...this.state}/>)

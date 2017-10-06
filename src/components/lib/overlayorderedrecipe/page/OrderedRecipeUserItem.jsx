@@ -11,8 +11,7 @@ import {withRouter} from 'react-router'
 class OrderedRecipeUserItem extends Component {
 
   renderLeft() {
-    const {peopleInEvent} = this.props;
-    const {user} = peopleInEvent;
+    const {user} = this.props;
 
     return (
 
@@ -37,15 +36,13 @@ class OrderedRecipeUserItem extends Component {
 
 
   renderStory() {
-    const {peopleInEvent} = this.props;
-    const {user} = peopleInEvent;
-
+    const {user} = this.props;
     return (
       <div className="media-story">
         <ul className="user-passport-info">
           <li className="user-name">
             <Link className="user-display-name js-analytics-click"
-                  to={getOrderedUserLink(user, peopleInEvent)}
+                  to={getLoggedUserMenuLink(user)}
                   id="dropdown_user-name">
               {user.username}
             </Link>
@@ -55,7 +52,7 @@ class OrderedRecipeUserItem extends Component {
 
         <div className="tag-18x18_flame-dd5114">
           <small>
-            <FormattedRelative value={peopleInEvent.updatedAt}/>
+            <FormattedRelative value={user.updatedAt}/>
           </small>
         </div>
 

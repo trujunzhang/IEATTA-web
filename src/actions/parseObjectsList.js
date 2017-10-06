@@ -84,6 +84,7 @@ async function _loadListByType(listTask,
                                objectsQuery,
                                terms,
                                parseFun,
+                               afterFetchHook,
                                type): Promise<Array<Action>> {
   const {
     pageIndex,
@@ -96,8 +97,6 @@ async function _loadListByType(listTask,
 
   const totalCount = await objectsQuery.count()
 
-  debugger
-
   let results = [];
   if (allItems) {
     results = await objectsQuery.find()
@@ -105,10 +104,13 @@ async function _loadListByType(listTask,
     results = await objectsQuery.skip(skipCount).limit(limit).find()
   }
 
-  debugger
+  let list = (results || []).map(parseFun)
+  if (!!afterFetchHook) {
+    list = afterFetchHook(list)
+  }
 
   const payload = {
-    list: (results || []).map(parseFun),
+    list,
     listTask: listTask,
     listId: terms.listId,
     limit: terms.limit,
@@ -127,9 +129,10 @@ function loadListByType(listTask,
                         terms,
                         parseFun,
                         invokeListFunc = _loadListByType,
+                        afterFetchHook,
                         type = LIST_VIEW_LOADED_BY_TYPE): ThunkAction {
   return (dispatch) => {
-    const action = invokeListFunc(listTask, objectsQuery, terms, parseFun, type)
+    const action = invokeListFunc(listTask, objectsQuery, terms, parseFun, afterFetchHook, type)
     action.then(
       ([result]) => {
         dispatch(result)
@@ -149,6 +152,13 @@ function loadEventsList(listTask, terms): ThunkAction {
 
 function loadPeopleInEventList(listTask, terms): ThunkAction {
   return loadListByType(listTask, getPeopleInEventParameters(terms), terms, fromParsePeopleInEvent)
+}
+
+function loadOtherUsersAlsoOrderedRecipeList(listTask, terms): ThunkAction {
+  return loadListByType(listTask,
+    getPeopleInEventParameters(terms), terms, fromParsePeopleInEvent,
+    _loadListByType,
+    PeopleInEvent.getOtherUsersAlsoOrderedRecipe)
 }
 
 function loadReviewsList(listTask, terms): ThunkAction {
@@ -175,6 +185,7 @@ export default {
   loadRestaurantsList,
   loadEventsList,
   loadPeopleInEventList,
+  loadOtherUsersAlsoOrderedRecipeList,
   loadReviewsList,
   loadRecipesListForRestaurant,
   loadRecipesListForEvent,
