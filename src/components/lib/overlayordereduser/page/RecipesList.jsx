@@ -39,10 +39,8 @@ class RecipesList extends Component {
   }
 
   renderRows() {
+    const {showRightTime} = this.props;
     const {listTask} = this.state;
-    const {
-      showRightTime = false
-    } = this.props;
 
     const {
       results,
@@ -111,11 +109,13 @@ class RecipesList extends Component {
 
 
 RecipesList.propTypes = {
-  showTitle: React.PropTypes.bool
+  showTitle: React.PropTypes.bool,
+  showRightTime: React.PropTypes.bool
 };
 
 RecipesList.defaultProps = {
-  showTitle: false
+  showTitle: false,
+  showRightTime: false,
 };
 
 
