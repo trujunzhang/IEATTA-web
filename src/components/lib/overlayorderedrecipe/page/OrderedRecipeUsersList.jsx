@@ -50,8 +50,10 @@ class OrderedRecipeUsersList extends Component {
 
     return (
       <ul className="ylist">
-        {results.map(peopleInEvent =>
-          <Telescope.components.OrderedUserItem key={peopleInEvent.id} peopleInEvent={peopleInEvent}/>
+        {results.map(user =>
+          <Telescope.components.OrderedRecipeUserItem
+            key={user.id}
+            user={user}/>
         )}
       </ul>
     )

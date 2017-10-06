@@ -9,7 +9,7 @@ class IEAOrderedRecipesLayout extends Component {
 
         <div className="main-content-wrap main-content-wrap--full">
           <div className="top-shelf">
-            <Telescope.components.OrderedRecipesSingleHeader {...this.props}/>
+            {/*<Telescope.components.OrderedRecipesSingleHeader {...this.props}/>*/}
           </div>
 
           <div id="super-container" className="content-container">

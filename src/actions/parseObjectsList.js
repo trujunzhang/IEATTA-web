@@ -105,6 +105,8 @@ async function _loadListByType(listTask,
     results = await objectsQuery.skip(skipCount).limit(limit).find()
   }
 
+  debugger
+
   const payload = {
     list: (results || []).map(parseFun),
     listTask: listTask,
@@ -137,35 +139,35 @@ function loadListByType(listTask,
   }
 }
 
-function loadRestaurantsList(listTask: Any, terms: Any): ThunkAction {
+function loadRestaurantsList(listTask, terms): ThunkAction {
   return loadListByType(listTask, getRestaurantParameters(terms), terms, fromParseRestaurant)
 }
 
-function loadEventsList(listTask: Any, terms: Any): ThunkAction {
+function loadEventsList(listTask, terms): ThunkAction {
   return loadListByType(listTask, getEventParameters(terms), terms, fromParseEvent)
 }
 
-function loadPeopleInEventList(listTask: Any, terms: Any): ThunkAction {
+function loadPeopleInEventList(listTask, terms): ThunkAction {
   return loadListByType(listTask, getPeopleInEventParameters(terms), terms, fromParsePeopleInEvent)
 }
 
-function loadReviewsList(listTask: Any, terms: Any): ThunkAction {
+function loadReviewsList(listTask, terms): ThunkAction {
   return loadListByType(listTask, getReviewsParameters(terms), terms, fromParseReview)
 }
 
-function loadRecipesListForRestaurant(listTask: Any, terms: Any): ThunkAction {
+function loadRecipesListForRestaurant(listTask, terms): ThunkAction {
   return loadListByType(listTask, getRecipesParameters(terms), terms, fromParseRecipe)
 }
 
-function loadRecipesListForEvent(listTask: Any, terms: Any): ThunkAction {
+function loadRecipesListForEvent(listTask, terms): ThunkAction {
   return loadListByType(listTask, getPeopleInEventParameters(terms), terms, fromParseRecipe, _loadRecipeListForEvent)
 }
 
-function loadPhotosBrowser(terms: Any): ThunkAction {
+function loadPhotosBrowser(terms): ThunkAction {
   return loadListByType(terms, getPhotosParameters(terms), terms, fromParsePhoto)
 }
 
-function loadUsersWithoutAnonymousList(listTask: Any, terms: Any): ThunkAction {
+function loadUsersWithoutAnonymousList(listTask, terms): ThunkAction {
   return loadListByType(listTask, getUsersParameters(terms), terms, fromParseUser)
 }
 

@@ -32,7 +32,7 @@ export default class PeopleInEventParameters {
     }
 
     if (!!terms.recipeId) {
-      containInRelationObject(this.query, PARSE_RECIPES, terms.recipeId)
+      containInRelationObject(this.query, PARSE_RECIPES, terms.recipeId,'recipes')
     }
 
     return this

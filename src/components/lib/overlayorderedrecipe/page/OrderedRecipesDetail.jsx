@@ -11,10 +11,10 @@ class OrderedRecipesDetail extends Component {
       <div className="column column-alpha column--responsive">
 
         {/*<Telescope.components.ReviewsList*/}
-          {/*key={forObject.id}*/}
-          {/*forObject={forObject}*/}
-          {/*reviewType="recipe"*/}
-          {/*reviewTitle={reviewTitle}/>*/}
+        {/*key={forObject.id}*/}
+        {/*forObject={forObject}*/}
+        {/*reviewType="recipe"*/}
+        {/*reviewTitle={reviewTitle}/>*/}
 
       </div>
     )
@@ -27,7 +27,7 @@ class OrderedRecipesDetail extends Component {
     return (
       <div className="column column-beta column--responsive official-events">
         <div className="ylist ylist-bordered" id="ordered-user-on-recipe-panel">
-          <Telescope.components.F8SectionHeaderTitle title={"Ordered Users"}/>
+          <Telescope.components.F8SectionHeaderTitle title={"Who's also ordered"}/>
 
           <div className="js-subscriber-list">
 

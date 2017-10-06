@@ -8,7 +8,7 @@ import {FormattedMessage, FormattedRelative} from 'react-intl'
 import {getOrderedUserLink, getLoggedUserMenuLink} from '../../../../lib/link'
 import {withRouter} from 'react-router'
 
-class OrderedUserItem extends Component {
+class OrderedRecipeUserItem extends Component {
 
   renderLeft() {
     const {peopleInEvent} = this.props;
@@ -30,8 +30,6 @@ class OrderedUserItem extends Component {
           </Link>
 
         </div>
-
-
       </div>
 
     )
@@ -114,4 +112,4 @@ class OrderedUserItem extends Component {
   }
 }
 
-export default withRouter(OrderedUserItem)
+export default withRouter(OrderedRecipeUserItem)

@@ -33,9 +33,8 @@ export function equalToRelationObject(query, objectSchemaName, parseId, fieldNam
 
 export function containInRelationObject(query, objectSchemaName, parseId, fieldName) {
   if (!!parseId) {
-    const modelType = AppConstants.realmTypes[objectSchemaName]
     const instanceWithoutData = getInstanceWithoutData(objectSchemaName, parseId)
-    query.containedIn(modelType, [instanceWithoutData])
+    query.containedIn(fieldName, [instanceWithoutData])
   }
 }
 
