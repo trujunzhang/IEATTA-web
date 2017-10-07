@@ -29,11 +29,8 @@ class IEAUserProfileRecipesLayout extends Component {
     return (
       <div className="clearfix layout-block layout-n user-details_container">
         <Telescope.components.UserProfileLeftMenusPanel {...this.props} />
-
         {this.renderRightPanel()}
-
       </div>
-
     )
   }
 
@@ -50,7 +47,6 @@ class IEAUserProfileRecipesLayout extends Component {
       </div>
     )
   }
-
 }
 
 import {connect} from 'react-redux'
