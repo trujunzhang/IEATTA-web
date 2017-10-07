@@ -22,10 +22,10 @@ const {
   LOGGED_USER_MENU_REVIEWS,
   LOGGED_USER_MENU_BROWSER_PHOTOS,
   LOGGED_USER_MENU_EVENTS,
+  LOGGED_USER_MENU_RECIPES,
   // 1.2 Edit User.
   LOGGED_USER_EDIT_FORM,
 } = require('../../../lib/constants').default
-
 
 const {getModelByObjectId} = require('../../filter/filterPosts')
 
@@ -97,6 +97,8 @@ class UsersSingle extends Component {
         case LOGGED_USER_MENU_BROWSER_PHOTOS:
           return (<Telescope.components.IEAUserProfilePhotosLayout {...this.state} {...this.props}/>)
         case LOGGED_USER_MENU_EVENTS:
+          return (<Telescope.components.IEAUserProfileEventsLayout {...this.state} {...this.props}/>)
+        case LOGGED_USER_MENU_RECIPES:
           return (<Telescope.components.IEAUserProfileEventsLayout {...this.state} {...this.props}/>)
         case LOGGED_USER_EDIT_FORM:
           return (<Telescope.components.IEAEditUserLayout {...this.state} {...this.props}/>)

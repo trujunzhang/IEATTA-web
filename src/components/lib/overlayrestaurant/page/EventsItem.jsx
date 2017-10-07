@@ -79,7 +79,7 @@ class EventsItem extends Component {
     return (
       <li key={event.id}>
         <div className="media-block">
-          {/*{this.renderLeft()}*/}
+          {this.renderLeft()}
           {this.renderStory()}
         </div>
 

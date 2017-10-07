@@ -18,23 +18,11 @@ class IEAUserProfileEventsLayout extends Component {
   renderRightPanel() {
     const {userProfile, forObject} = this.props;
     return (
-      <div className="column column-beta">
-        <div className="user-details-bookmarks_content js-user-details-bookmarks_content">
-          <Telescope.components.EventsList
-            eventType={EVENTS_LIST_FOR_USER}
-            {...this.props}/>
-        </div>
-
-        <div className="user-details-overview_sidebar">
-          <Telescope.components.F8SectionHeaderTitle title={"Recently Added Recipes"}/>
-          <Telescope.components.RecipesList
-            key={forObject.id}
-            orderedUser={userProfile}
-            showTitle={false}/>
-        </div>
-
+      <div className="user-details-bookmarks_content js-user-details-bookmarks_content">
+        <Telescope.components.EventsList
+          eventType={EVENTS_LIST_FOR_USER}
+          {...this.props}/>
       </div>
-
     )
   }
 
