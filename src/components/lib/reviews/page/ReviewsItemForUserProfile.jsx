@@ -10,33 +10,9 @@ import {
 } from '../../../../lib/link'
 
 class ReviewsItemForUserProfile extends Component {
-
-  renderBreadCrumbs(breadcrumbs) {
-    return (
-      <ul className="breadcrumbs">
-        <li>
-          <a>
-            Trujun Z.
-          </a>
-
-        </li>
-        <li>
-
-           <span id="icon_24X24"
-                 className="icon icon--24-chevron-right icon--size-24 icon--neutral-gray u-space-r-half">
-            <svg className="icon_svg">
-                 <path d="M9.525 5.636L8.11 7.05 13.06 12l-4.95 4.95 1.415 1.414L15.89 12 9.524 5.636z"/>
-            </svg>
-           </span>
-          {"Profile photos"}
-        </li>
-      </ul>
-    )
-  }
-
   renderTop() {
     const {review} = this.props;
-    const {reviewType, event, restaurant, user, recipe} = review;
+    const {reviewType} = review;
     const reviewObject = Reviews.getReviewObjectByType(review);
 
     return (
@@ -45,10 +21,8 @@ class ReviewsItemForUserProfile extends Component {
         <div className="media-block media-block--12 biz-listing-medium">
 
           <div className="media-avatar">
-            <div className="photo-box pb-60s" data-hovercard-id="YCUg5LPpRgun-AcOFMMS_w">
-              <a
-                className="js-analytics-click"
-                data-analytics-label="user-photo">
+            <div className="photo-box pb-60s">
+              <a className="js-analytics-click">
                 <Telescope.components.F8PlaceHolderImage
                   alt={reviewObject.title}
                   className="photo-box-img"
@@ -80,7 +54,6 @@ class ReviewsItemForUserProfile extends Component {
                     <a>{reviewType}</a>
                </span>
 
-
               </li>
 
               <li className="user-location responsive-hidden-small">
@@ -90,12 +63,8 @@ class ReviewsItemForUserProfile extends Component {
             </ul>
 
           </div>
-
-
         </div>
       </div>
-
-
     )
   }
 
@@ -104,29 +73,20 @@ class ReviewsItemForUserProfile extends Component {
       {rate} = review;
 
     const htmlBody = Reviews.getHtmlBody(review);
-
     const canEditReview = Reviews.checkCanEditReview(this.props)
 
     return (
       <div className="review-content">
-
         <div className="review-content">
-
           <div className="biz-rating biz-rating-large clearfix">
             <div>
               <Telescope.components.F8StarIcon
                 rate={rate}
                 iconType="regular"
                 iconWidth="84"
-                iconHeight="303"
-              />
+                iconHeight="303"/>
 
-              {
-                canEditReview &&
-                <div className="review_edit_button">
-                  {this.renderRightEditButton()}
-                </div>
-              }
+              {canEditReview && <div className="review_edit_button">{this.renderRightEditButton()}</div>}
 
             </div>
             <span className="rating-qualifier">
@@ -169,9 +129,7 @@ class ReviewsItemForUserProfile extends Component {
           {this.renderStory()}
 
         </div>
-
       </li>
-
     )
   }
 }

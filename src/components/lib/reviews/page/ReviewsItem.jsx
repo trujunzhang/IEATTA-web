@@ -47,13 +47,10 @@ class ReviewsItem extends Component {
                   </Link>
                 </li>
                 <li className="user-location responsive-hidden-small">
-
                   <small>
-
                     <h6>Account Since</h6>
                     <p>{Users.getCreatedAtFormat(creator)}</p>
                   </small>
-
                 </li>
               </ul>
 
@@ -87,12 +84,7 @@ class ReviewsItem extends Component {
                 iconWidth="84"
                 iconHeight="303"/>
 
-              {
-                canEditReview &&
-                <div className="review_edit_button">
-                  {this.renderRightEditButton()}
-                </div>
-              }
+              {canEditReview && <div className="review_edit_button">{this.renderRightEditButton()}</div>}
 
             </div>
             <span className="rating-qualifier">
