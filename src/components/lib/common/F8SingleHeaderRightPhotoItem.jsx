@@ -84,7 +84,7 @@ class F8SingleHeaderRightPhotoItem extends Component {
             {/*</Link>*/}
             <span className="author">
                 {"by"}
-              <Link className="user-display-name js-analytics-click margin-left-4"
+              <Link className="user-display-name margin-left-4"
                     {...linkProperty}
                     id="dropdown_user-name">
                     {userName}

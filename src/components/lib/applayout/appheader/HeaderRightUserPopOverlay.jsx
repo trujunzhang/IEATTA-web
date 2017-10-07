@@ -137,8 +137,7 @@ class HeaderRightUserPopOverlay extends Component {
           <div className="media-story">
             <ul className="user-passport-info">
               <li className="user-name">
-                <Link className="user-display-name js-analytics-click"
-                      to={getLoggedUserMenuLink(currentUser)}
+                <Link className="user-display-name" to={getLoggedUserMenuLink(currentUser)}
                       onClick={(e) => {
                         this.handleClickOutside(e)
                       }}
@@ -147,7 +146,6 @@ class HeaderRightUserPopOverlay extends Component {
                 </Link>
               </li>
               <li className="user-location responsive-hidden-small">
-
                 <small>
                   <FormattedRelative value={currentUser.updatedAt}/>
                 </small>

@@ -46,7 +46,7 @@ class OrderedUserItem extends Component {
       <div className="media-story">
         <ul className="user-passport-info">
           <li className="user-name">
-            <Link className="user-display-name js-analytics-click"
+            <Link className="user-display-name title-font-weight-bold"
                   to={getOrderedUserLink(user, peopleInEvent)}
                   id="dropdown_user-name">
               {user.username}

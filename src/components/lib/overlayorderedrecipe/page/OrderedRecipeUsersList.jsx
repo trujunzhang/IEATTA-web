@@ -48,8 +48,6 @@ class OrderedRecipeUsersList extends Component {
       )
     }
 
-    debugger
-
     return (
       <ul className="ylist">
         {results.map(user =>
