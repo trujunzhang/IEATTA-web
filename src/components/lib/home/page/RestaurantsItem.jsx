@@ -31,7 +31,7 @@ class RestaurantsItem extends Component {
         <div className="media-block media-block--12">
           <div className="media-avatar">
             <div className="photo-box pb-90s">
-              <Link className="js-analytics-click" to={getRestaurantLink(restaurant)}>
+              <Link to={getRestaurantLink(restaurant)}>
 
                 <Telescope.components.F8PlaceHolderImage
                   alt={restaurant.displayName}
@@ -47,15 +47,11 @@ class RestaurantsItem extends Component {
           <div className="media-story">
             <h3 className="search-result-title">
               <span className="indexed-biz-name">{`${index + 1}.`}
-                <Link className="biz-name js-analytics-click margin-left-4" to={getRestaurantLink(restaurant)}>
-
+                <Link className="biz-name margin-left-4" to={getRestaurantLink(restaurant)}>
                   <span>{restaurant.displayName}</span>
-
                 </Link>
               </span>
             </h3>
-
-            {/*{this.renderReview()}*/}
 
             <div className="price-category">
               <span className="bullet-after">
@@ -93,7 +89,7 @@ class RestaurantsItem extends Component {
 
   renderRight() {
     const {restaurant} = this.props,
-      address = restaurant.address,
+      {address} = restaurant,
       array = address.split(',')
 
     const addressViews = array.map((item, index) => {
