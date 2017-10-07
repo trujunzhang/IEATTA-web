@@ -91,14 +91,10 @@ class EventsList extends Component {
   }
 
   render() {
-
     return (
       <div className="ysection events">
-
         {this.renderTitle()}
-
         {this.renderRows()}
-
       </div>
     )
   }
@@ -107,12 +103,11 @@ class EventsList extends Component {
 
 EventsList.propTypes = {
   eventType: React.PropTypes.string
-};
+}
 
 EventsList.defaultProps = {
   eventType: EVENTS_LIST_FOR_RESTAURANT
-};
-
+}
 
 const {connect} = require('react-redux')
 
