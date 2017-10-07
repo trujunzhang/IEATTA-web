@@ -65,9 +65,9 @@ class EventsList extends Component {
     } else if (!!results && results.length) {
       return (
         <ul className="ylist ylist-bordered">
-          {results.map(item => {
+          {results.map((item, index) => {
             const event = (eventType === EVENTS_LIST_FOR_USER) ? item.event : item;
-            return (<Telescope.components.EventsItem key={event.id} event={event}/>)
+            return (<Telescope.components.EventsItem key={event.id} event={event} index={index}/>)
           })}
         </ul>
       )

@@ -3,6 +3,13 @@ import React, {Component} from 'react'
 import Users from '../../../../lib/users'
 import Events from '../../../../lib/events'
 
+/**
+ * User's recent activity:
+ * 1. created recipes.
+ * 2. created events.
+ * 3. created restaurant.
+ *
+ */
 class UserProfileRecentActivityPanel extends Component {
 
   renderRating() {

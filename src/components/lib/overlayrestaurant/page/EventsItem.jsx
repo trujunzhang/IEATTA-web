@@ -32,7 +32,7 @@ class EventsItem extends Component {
   }
 
   renderStory() {
-    const {event} = this.props;
+    const {event, index} = this.props;
     const info = Events.getDateInfo(event);
     const htmlBody = Events.getWantBody(event);
 
@@ -40,7 +40,7 @@ class EventsItem extends Component {
       <div className="media-story u-space-l1">
         <h3>
           <Link to={getEventLink(event)}>
-            {event.displayName}
+            {`${index + 1}. ${event.displayName}`}
           </Link>
         </h3>
         <div>
@@ -79,7 +79,7 @@ class EventsItem extends Component {
     return (
       <li key={event.id}>
         <div className="media-block">
-          {this.renderLeft()}
+          {/*{this.renderLeft()}*/}
           {this.renderStory()}
         </div>
 
