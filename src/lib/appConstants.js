@@ -100,9 +100,9 @@ AppConstants.getRelativeModel = function (modelType, objectSchemaName, parseRela
 }
 
 AppConstants.generateNewRealmPhotoObject = function ({modelType, forObject, currentUser}) { // (For Web)
-  let _owner = {id: '', uniqueId: ''}
+  let creator = {id: '', uniqueId: ''}
   if (currentUser.isLoggedIn) {
-    _owner = {id: currentUser.id, uniqueId: currentUser.uniqueId}
+    creator = {id: currentUser.id, uniqueId: currentUser.uniqueId}
   }
   return {
     objectId: UUID.create().toString(),
@@ -112,7 +112,7 @@ AppConstants.generateNewRealmPhotoObject = function ({modelType, forObject, curr
     // Pointer
     restaurant: AppConstants.getRelativeModel(modelType, PARSE_RESTAURANTS, forObject),
     recipe: AppConstants.getRelativeModel(modelType, PARSE_RECIPES, forObject),
-    owner: _owner
+    creator,
   }
 }
 

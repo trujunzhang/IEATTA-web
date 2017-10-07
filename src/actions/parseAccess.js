@@ -200,8 +200,8 @@ async function _ownAnotherPhotoUser(photoId: string, selectedUserId: string): Pr
   // step1: get online photo instance.
   const onlinePhoto = await getQueryByType(PARSE_PHOTOS).get(photoId)
 
-  const ownerUser = getInstanceWithoutData(PARSE_USERS, selectedUserId)
-  onlinePhoto.set('owner', ownerUser);
+  const _creator = getInstanceWithoutData(PARSE_USERS, selectedUserId)
+  onlinePhoto.set('creator', _creator);
 
   // step2: update user.
   await onlinePhoto.save()

@@ -43,8 +43,8 @@ Photos.getSinglePhotoItem = function (photo, modelType, forObject) {
 
 Photos.getPhotoInfoAboutUser = function (_photo) {
   let user = Users.anonymousUser;
-  if (!!_photo.owner) {
-    user = _photo.owner;
+  if (!!_photo.creator) {
+    user = _photo.creator;
   }
   return {
     userId: user.id,

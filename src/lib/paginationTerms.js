@@ -142,7 +142,7 @@ PaginationTerms.generatePhotoTerm = function (objectSchemaName,
 
   const currentPageIndex = getCurrentPageIndex(props)
 
-  const extendProps = isUserOwnerPhotos ? {ownerId: forObjectId} : {}
+  const extendProps = isUserOwnerPhotos ? {creatorId: forObjectId} : {}
 
   const photoTerms = {
     ...extendProps,

@@ -196,7 +196,9 @@ function parsePhotoNormal(map: Object): Object {
     original: map.get('original'),
     thumbnail: map.get('thumbnail'),
     photoType: map.get('photoType'),
-  };
+    // Creator
+    creator: map.get('creator') && fromParseUser(map.get('creator'))
+  }
 }
 
 function fromParsePhotoNormal(map: Object): Photo {
@@ -217,8 +219,6 @@ export function fromParsePhoto(map: Object): Photo {
     event: map.get('event') && fromParseEvent(map.get('event')),
     recipe: map.get('recipe') && fromParseRecipe(map.get('recipe')),
     user: map.get('user') && fromParseUser(map.get('user')),
-    // Owner
-    owner: map.get('owner') && fromParseUser(map.get('owner'))
   }
   return instance
 }

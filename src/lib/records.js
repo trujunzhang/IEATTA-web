@@ -124,9 +124,9 @@ Records.createOnlineParseInstance = async function (editModelType, onlineParseOb
       onlineParseObject.set('original', localRecorder.thumbnail)
 
       // step2: the logged user submitted the photo(for web).
-      if (!!localRecorder.owner) {
-        _online_user_Instance = getInstanceWithoutData(PARSE_USERS, localRecorder.owner.id)
-        onlineParseObject.set('owner', _online_user_Instance)
+      if (!!localRecorder.creator) {
+        _online_user_Instance = getInstanceWithoutData(PARSE_USERS, localRecorder.creator.id)
+        onlineParseObject.set('creator', _online_user_Instance)
       }
 
       // step3: set the relation by photo type(for web).
