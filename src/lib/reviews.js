@@ -173,8 +173,8 @@ Reviews.getSortTag = function (sort) {
 }
 
 Reviews.checkCanEditReview = function ({review, currentUser}) {
-  const {user} = review;
-  if (!!currentUser.uniqueId && !!user.uniqueId && user.uniqueId === currentUser.uniqueId) {
+  const {creator} = review;
+  if (!!currentUser.uniqueId && !!creator.uniqueId && creator.uniqueId === currentUser.uniqueId) {
     return true;
   }
 
