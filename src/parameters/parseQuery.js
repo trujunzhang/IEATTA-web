@@ -25,7 +25,10 @@ const {
 
 export function equalToRelationObject(query, objectSchemaName, parseId, fieldName) {
   if (!!parseId) {
-    const modelType = AppConstants.realmTypes[objectSchemaName]
+    let modelType = AppConstants.realmTypes[objectSchemaName]
+    if (!!fieldName) {
+      modelType = fieldName;
+    }
     const instanceWithoutData = getInstanceWithoutData(objectSchemaName, parseId)
     query.equalTo(modelType, instanceWithoutData)
   }

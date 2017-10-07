@@ -24,6 +24,8 @@ const {
   REVIEW_SORT_LOWEST,
   // Parse Model Types
   PARSE_USERS,
+  // Review List Type
+  REVIEW_LIST_TYPE_USER_PROFILE_ABOUT,
 } = require('../lib/constants').default
 
 export default class ReviewsParameters {
@@ -31,10 +33,11 @@ export default class ReviewsParameters {
     this.query = query
   }
 
-  addParameters(terms: Any) {
+  addParameters(terms) {
+    const {reviewType, forObject, sort_by, reviewListType} = terms;
 
-    if (!!terms.sort_by) {
-      const sortTag = Reviews.getSortTag(terms.sort_by)
+    if (!!sort_by) {
+      const sortTag = Reviews.getSortTag(sort_by)
       switch (sortTag) {
         case REVIEW_SORT_NORMAL:
           // Here, sorted by default.
@@ -54,11 +57,14 @@ export default class ReviewsParameters {
       }
     }
 
-    if (!!terms.reviewListType) {
-      equalToRelationObject(this.query, PARSE_USERS, terms.forObject.id)
+    if (!!reviewListType) {
+      switch (reviewListType) {
+        case REVIEW_LIST_TYPE_USER_PROFILE_ABOUT:
+          equalToRelationObject(this.query, PARSE_USERS, forObject.id, 'creator')
+          break;
+      }
     }
 
-    const {reviewType, forObject} = terms;
     if (!!reviewType) {
       this.query.equalTo('reviewType', reviewType)
       const {objectSchemaName} = AppConstants.realmObjects[reviewType]
