@@ -79,7 +79,7 @@ Reviews.getReviewObjectByType = function (review) {
   switch (objectSchemaName) {
     case PARSE_RESTAURANTS:
       return {
-        avatorUrl: Photos.getListThumbnailUrl(review.restaurant),
+        avatarUrl: Photos.getListThumbnailUrl(review.restaurant),
         title: review.restaurant.displayName,
         detailUrl: getRestaurantLink(review.restaurant),
         breadcrumbs: [
@@ -92,7 +92,7 @@ Reviews.getReviewObjectByType = function (review) {
       }
     case PARSE_EVENTS:
       return {
-        avatorUrl: Photos.getListThumbnailUrl(review.event.restaurant),
+        avatarUrl: Photos.getListThumbnailUrl(review.event.restaurant),
         title: review.event.displayName,
         detailUrl: getEventLink(review.event),
         breadcrumbs: [
@@ -109,7 +109,7 @@ Reviews.getReviewObjectByType = function (review) {
       }
     case PARSE_RECIPES:
       return {
-        avatorUrl: Photos.getListThumbnailUrl(review.recipe),
+        avatarUrl: Photos.getListThumbnailUrl(review.recipe),
         title: review.recipe.displayName,
         detailUrl: getOrderedRecipeLink(review.recipe),
         breadcrumbs: [],

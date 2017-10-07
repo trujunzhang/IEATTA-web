@@ -29,7 +29,7 @@ class ReviewsItemForUserProfile extends Component {
                   width="60"
                   height="60"
                   placeholderSource={"/default/user_30_square.png"}
-                  source={reviewObject.avatorUrl}
+                  source={reviewObject.avatarUrl}
                 />
               </a>
             </div>
@@ -39,7 +39,7 @@ class ReviewsItemForUserProfile extends Component {
           <div className="media-story">
             <ul className="user-passport-info">
               <li className="user-name">
-                <Link className="user-display-name js-analytics-click"
+                <Link className="user-display-name title-font-weight-bold"
                       to={reviewObject.detailUrl}
                       id="dropdown_user-name">
                   {reviewObject.title}
