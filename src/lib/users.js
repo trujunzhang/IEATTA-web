@@ -12,6 +12,7 @@ const {
   LOGGED_USER_MENU_REVIEWS,
   LOGGED_USER_MENU_BROWSER_PHOTOS,
   LOGGED_USER_MENU_EVENTS,
+  LOGGED_USER_MENU_RECIPES,
 } = require('./constants').default
 
 const Users = {
@@ -64,6 +65,12 @@ const Users = {
       title: "Events",
       svg: "M18 21H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3 1 1 0 0 1 2 0h8a1 1 0 0 1 2 0 3 3 0 0 1 3 3v12a3 3 0 0 1-3 3zm1-13H5v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V8zm-5.634 7.723L12 18l-1.366-2.277a3.5 3.5 0 1 1 2.732 0zM12 11.25a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5z",
       path: 'user_details_events'
+    },
+    LOGGED_USER_MENU_RECIPES: {
+      tag: 'recipe',
+      title: "Recipes",
+      svg: "M17.22 22a1.78 1.78 0 0 1-1.74-2.167l1.298-4.98L14 13l1.756-9.657A1.635 1.635 0 0 1 19 3.635V20.22A1.78 1.78 0 0 1 17.22 22zm-7.138-9.156l.697 7.168a1.79 1.79 0 1 1-3.56 0l.7-7.178A3.985 3.985 0 0 1 5 9V3a1 1 0 0 1 2 0v5.5c0 .28.22.5.5.5s.5-.22.5-.5V3a1 1 0 0 1 2 0v5.5c0 .28.22.5.5.5s.5-.22.5-.5V3a1 1 0 0 1 2 0v5.83c0 1.85-1.2 3.518-2.918 4.014z",
+      path: 'user_details_recipes'
     }
   }
 }
@@ -92,8 +99,8 @@ Users.getOrderedUserFormat = function (peopleInEvent) {
   return moment(peopleInEvent.createdAt).format(Users.config.orderedDataFormat)
 }
 
-Users.isLeftMenuActive = function (row, props) {
-  const pathname = props.location.pathname;
+Users.isLeftMenuActive = function (row, {location}) {
+  const {pathname} = location;
   return (`${pathname}/`.indexOf(`${row.path}/`) !== -1);
 }
 

@@ -12,6 +12,7 @@ const {
   LOGGED_USER_MENU_REVIEWS,
   LOGGED_USER_MENU_BROWSER_PHOTOS,
   LOGGED_USER_MENU_EVENTS,
+  LOGGED_USER_MENU_RECIPES,
 } = require('../../../../lib/constants').default
 
 
@@ -22,18 +23,16 @@ class UserProfileLeftMenusPanel extends Component {
       LOGGED_USER_MENU_ABOUT,
       LOGGED_USER_MENU_REVIEWS,
       LOGGED_USER_MENU_BROWSER_PHOTOS,
-      LOGGED_USER_MENU_EVENTS
+      LOGGED_USER_MENU_EVENTS,
+      LOGGED_USER_MENU_RECIPES
     ]
 
     return (
-
       <div className="column column-alpha user-details_sidebar">
         <div className="ysection">
 
           <div className="titled-nav js-titled-nav">
-
             <div className="titled-nav_menus">
-
               <div className="titled-nav_menu">
                 {this.renderLeftMenuTitle()}
 

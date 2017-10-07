@@ -22,6 +22,7 @@ const {
   LOGGED_USER_MENU_REVIEWS,
   LOGGED_USER_MENU_BROWSER_PHOTOS,
   LOGGED_USER_MENU_EVENTS,
+  LOGGED_USER_MENU_RECIPES,
   // 1.2 Edit User.
   LOGGED_USER_EDIT_FORM,
 } = require('../lib/constants').default
@@ -185,6 +186,7 @@ export function getLoggedUserMenuLink(userProfile, menuType = LOGGED_USER_MENU_A
     case LOGGED_USER_MENU_REVIEWS:
     case LOGGED_USER_MENU_BROWSER_PHOTOS:
     case LOGGED_USER_MENU_EVENTS:
+    case LOGGED_USER_MENU_RECIPES:
       return `/${row.path}/${userProfile.id}/${slugify(userProfile.username)}`
     case LOGGED_USER_EDIT_FORM:
       return '/profile'

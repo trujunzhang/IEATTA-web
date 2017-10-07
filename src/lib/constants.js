@@ -61,6 +61,7 @@ export default keyMirror({
   LOGGED_USER_MENU_REVIEWS: null,
   LOGGED_USER_MENU_BROWSER_PHOTOS: null,
   LOGGED_USER_MENU_EVENTS: null,
+  LOGGED_USER_MENU_RECIPES: null,
 
   // 1.2 Edit User.
   LOGGED_USER_EDIT_FORM: null,
