@@ -35,12 +35,11 @@ class ReviewsItem extends Component {
                     source={creator.defaultAvatarUrl}/>
                 </Link>
               </div>
-
             </div>
             <div className="media-story">
               <ul className="user-passport-info">
                 <li className="user-name">
-                  <Link className="user-display-name js-analytics-click"
+                  <Link className="user-display-name title-font-weight-bold"
                         to={getLoggedUserMenuLink(creator)}
                         id="dropdown_user-name">
                     {creator.username}
@@ -53,14 +52,10 @@ class ReviewsItem extends Component {
                   </small>
                 </li>
               </ul>
-
             </div>
           </div>
-
         </div>
       </div>
-
-
     )
   }
 

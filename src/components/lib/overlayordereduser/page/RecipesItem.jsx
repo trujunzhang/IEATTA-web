@@ -43,13 +43,11 @@ class RecipesItem extends Component {
         <div className="media-title clearfix">
             <span className="indexed-biz-name">
               {`${index + 1}.`}
-              <Link className="biz-name js-analytics-click margin-left-4" to={getOrderedRecipeLink(recipe)}>
+              <Link className="biz-name title-font-weight-bold margin-left-4" to={getOrderedRecipeLink(recipe)}>
                     <span>{recipe.displayName}</span>
               </Link>
             </span>
         </div>
-
-        {/*{this.renderRecipeUser()}*/}
 
         <div className="price-category">
           <span className="category-str-list">{`$. ${recipe.price}`}</span>
@@ -82,9 +80,7 @@ class RecipesItem extends Component {
         <div className="bookmark-listing">
 
           <div className="arrange">
-
             <div className="arrange_unit arrange_unit--fill">
-
               <div className="media-block media-block--12 biz-listing-medium">
 
                 {this.renderLeftAvator()}
@@ -97,7 +93,6 @@ class RecipesItem extends Component {
 
           </div>
         </div>
-
       </li>
     )
   }
