@@ -8,7 +8,6 @@ class IEAEventsLayout extends Component {
       <div className="main-content-wrap main-content-wrap--full">
         <div className="top-shelf top-shelf-grey">
           <Telescope.components.EventsSingleHeader {...this.props}/>
-
         </div>
 
         <div id="super-container" className="content-container">

@@ -18,7 +18,6 @@ class EventsSingleHeaderLeftPanel extends Component {
         <div
           className="photo-slideshow photo-slideshow--full-width js-photo-slideshow-event-details lightbox-media-parent">
 
-
           <Telescope.components.F8PlaceHolderImage
             alt={forObject.restaurant.displayName}
             className="photo-box-img"
@@ -26,7 +25,6 @@ class EventsSingleHeaderLeftPanel extends Component {
             height={300}
             placeholderSource={"/default/blank_biz_large.png"}
             source={Photos.getListThumbnailUrl(forObject.restaurant)}/>
-
         </div>
 
       </div>
@@ -59,8 +57,7 @@ class EventsSingleHeaderLeftPanel extends Component {
           </div>
 
           <div className="media-story">
-            <div className="media-title">
-
+            <div className="media-title margin-bottom-4">
               <Link className="biz-name js-analytics-click" to={getRestaurantLink(restaurant)}>
                 <span>{restaurant.displayName}</span>
               </Link>
