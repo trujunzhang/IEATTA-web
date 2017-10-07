@@ -158,17 +158,6 @@ function fromParseCommon(map: Object) {
 }
 
 
-function _get_default_image_photo_url(map) {
-  const photos = map.get('photos') || []
-
-  if (photos.length > 0) {
-    const firstPhoto = photos[0]
-    const thumbnail = firstPhoto.get('thumbnail') || {};
-    return thumbnail._url
-  }
-  return null;
-}
-
 export function fromParseUser(map: Object): User {
   const _listPhoto = fromParsePhotoNormal(map.get('listPhoto'));
 
@@ -196,8 +185,6 @@ function parsePhotoNormal(map: Object): Object {
     original: map.get('original'),
     thumbnail: map.get('thumbnail'),
     photoType: map.get('photoType'),
-    // Creator
-    creator: map.get('creator') && fromParseUser(map.get('creator'))
   }
 }
 
@@ -219,6 +206,9 @@ export function fromParsePhoto(map: Object): Photo {
     event: map.get('event') && fromParseEvent(map.get('event')),
     recipe: map.get('recipe') && fromParseRecipe(map.get('recipe')),
     user: map.get('user') && fromParseUser(map.get('user')),
+
+    // Creator
+    creator: map.get('creator') && fromParseUser(map.get('creator'))
   }
   return instance
 }

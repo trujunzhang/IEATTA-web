@@ -57,7 +57,17 @@ function getQueryByType(type: string, includes: Array = []) {
       break;
   }
 
-  includes.map((include) => {
+  let relationsArray = includes;
+  switch (type) {
+    case PARSE_RECORDS:
+      break;
+    default:
+      relationsArray.push('creator')
+      relationsArray.push('creator.listPhoto')
+      break;
+  }
+
+  relationsArray.map((include) => {
     query = query.include(include)
   })
   return query;
@@ -109,7 +119,7 @@ function getRecipesParameters(terms) {
 
 function getPhotosParameters(terms) {
   return new Parameters.Photos(getQueryByType(PARSE_PHOTOS,
-    ['restaurant', 'recipe', 'user', 'owner', "owner.listPhoto"]
+    ['restaurant', 'recipe', 'user']
   ))
     .addParameters(terms)
     .end()
