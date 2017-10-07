@@ -12,7 +12,7 @@ const {
 } = require('../../../lib/constants').default
 
 
-class IEAUserProfileEventsLayout extends Component {
+class IEAUserProfileRecipesLayout extends Component {
 
   renderRightPanel() {
     const {userProfile, forObject} = this.props;
@@ -29,8 +29,11 @@ class IEAUserProfileEventsLayout extends Component {
     return (
       <div className="clearfix layout-block layout-n user-details_container">
         <Telescope.components.UserProfileLeftMenusPanel {...this.props} />
+
         {this.renderRightPanel()}
+
       </div>
+
     )
   }
 
@@ -58,6 +61,5 @@ function select(store, ownProps) {
   }
 }
 
-export default withRouter(connect(select)(IEAUserProfileEventsLayout));
-
+export default withRouter(connect(select)(IEAUserProfileRecipesLayout));
 
