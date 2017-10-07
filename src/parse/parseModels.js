@@ -298,7 +298,6 @@ export function fromParseReview(map: Object): Review {
     // Creator
     creator: map.get('creator') && fromParseUser(map.get('creator'))
   }
-  debugger
   return model;
 }
 
