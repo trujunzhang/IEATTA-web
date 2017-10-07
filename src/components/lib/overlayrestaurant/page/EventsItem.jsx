@@ -8,6 +8,10 @@ import {withRouter} from 'react-router'
 
 import {Link} from 'react-router'
 
+const {
+  EVENTS_LIST_FOR_USER,
+} = require('../../../../lib/constants').default
+
 class EventsItem extends Component {
 
   renderLeft() {
@@ -74,12 +78,12 @@ class EventsItem extends Component {
   }
 
   render() {
-    const {event} = this.props;
+    const {event, eventType} = this.props;
 
     return (
       <li key={event.id}>
         <div className="media-block">
-          {this.renderLeft()}
+          {eventType === EVENTS_LIST_FOR_USER && this.renderLeft()}
           {this.renderStory()}
         </div>
 

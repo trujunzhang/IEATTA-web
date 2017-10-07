@@ -14,7 +14,6 @@ const {
 
 class IEAUserProfileEventsLayout extends Component {
 
-
   renderRightPanel() {
     const {userProfile, forObject} = this.props;
     return (
