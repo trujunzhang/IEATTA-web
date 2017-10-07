@@ -15,7 +15,7 @@ class ReviewsItem extends Component {
 
   renderLeft() {
     const {review} = this.props;
-    const {user} = review;
+    const {creator} = review;
 
     return (
       <div className="review-sidebar">
@@ -25,14 +25,14 @@ class ReviewsItem extends Component {
           <div className="ypassport media-block">
             <div className="media-avatar responsive-photo-box">
               <div className="photo-box pb-60s" data-hovercard-id="YCUg5LPpRgun-AcOFMMS_w">
-                <Link to={getLoggedUserMenuLink(user)} className="js-analytics-click">
+                <Link to={getLoggedUserMenuLink(creator)} className="js-analytics-click">
                   <Telescope.components.F8PlaceHolderImage
-                    alt={user.username}
+                    alt={creator.username}
                     className="photo-box-img"
                     width="60"
                     height="60"
                     placeholderSource={"/default/user_30_square.png"}
-                    source={user.defaultAvatarUrl}/>
+                    source={creator.defaultAvatarUrl}/>
                 </Link>
               </div>
 
@@ -41,9 +41,9 @@ class ReviewsItem extends Component {
               <ul className="user-passport-info">
                 <li className="user-name">
                   <Link className="user-display-name js-analytics-click"
-                        to={getLoggedUserMenuLink(user)}
+                        to={getLoggedUserMenuLink(creator)}
                         id="dropdown_user-name">
-                    {user.username}
+                    {creator.username}
                   </Link>
                 </li>
                 <li className="user-location responsive-hidden-small">
@@ -51,7 +51,7 @@ class ReviewsItem extends Component {
                   <small>
 
                     <h6>Account Since</h6>
-                    <p>{Users.getCreatedAtFormat(user)}</p>
+                    <p>{Users.getCreatedAtFormat(creator)}</p>
                   </small>
 
                 </li>

@@ -206,7 +206,6 @@ export function fromParsePhoto(map: Object): Photo {
     event: map.get('event') && fromParseEvent(map.get('event')),
     recipe: map.get('recipe') && fromParseRecipe(map.get('recipe')),
     user: map.get('user') && fromParseUser(map.get('user')),
-
     // Creator
     creator: map.get('creator') && fromParseUser(map.get('creator'))
   }
@@ -296,9 +295,10 @@ export function fromParseReview(map: Object): Review {
     restaurant: map.get('restaurant') && fromParseRestaurant(map.get('restaurant')),
     event: map.get('event') && fromParseEvent(map.get('event')),
     recipe: map.get('recipe') && fromParseRecipe(map.get('recipe')),
-    // Relation
-    user: map.get('user') && fromParseUser(map.get('user')),
+    // Creator
+    creator: map.get('creator') && fromParseUser(map.get('creator'))
   }
+  debugger
   return model;
 }
 
