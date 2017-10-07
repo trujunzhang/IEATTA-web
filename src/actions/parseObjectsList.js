@@ -56,8 +56,7 @@ const {
 async function _loadRecipeListForEvent(listTask,
                                        objectsQuery,
                                        terms,
-                                       parseFun,
-                                       type): Promise<Array<Action>> {
+                                       parseFun): Promise<Array<Action>> {
   const results = await objectsQuery.find()
   const peopleInEventModels = (results || []).map(fromParsePeopleInEvent);
   const recipeIds = PeopleInEvent.getRecipeIds(peopleInEventModels)
@@ -73,7 +72,7 @@ async function _loadRecipeListForEvent(listTask,
     totalCount: -1
   }
 
-  const action = {type, payload}
+  const action = {type: LIST_VIEW_LOADED_BY_TYPE, payload}
 
   return Promise.all([
     Promise.resolve(action)
@@ -124,13 +123,15 @@ async function _loadListByType(listTask,
   ])
 }
 
-function loadListByType(listTask,
-                        objectsQuery,
-                        terms,
-                        parseFun,
-                        invokeListFunc = _loadListByType,
-                        afterFetchHook,
-                        type = LIST_VIEW_LOADED_BY_TYPE): ThunkAction {
+function loadListByType({
+                          listTask,
+                          objectsQuery,
+                          terms,
+                          parseFun,
+                          invokeListFunc = _loadListByType,
+                          afterFetchHook,
+                          type = LIST_VIEW_LOADED_BY_TYPE
+                        }): ThunkAction {
   return (dispatch) => {
     const action = invokeListFunc(listTask, objectsQuery, terms, parseFun, afterFetchHook, type)
     action.then(
@@ -143,42 +144,78 @@ function loadListByType(listTask,
 }
 
 function loadRestaurantsList(listTask, terms): ThunkAction {
-  return loadListByType(listTask, getRestaurantParameters(terms), terms, fromParseRestaurant)
+  return loadListByType({
+    listTask,
+    objectsQuery: getRestaurantParameters(terms), terms,
+    parseFun: fromParseRestaurant
+  })
 }
 
 function loadEventsList(listTask, terms): ThunkAction {
-  return loadListByType(listTask, getEventParameters(terms), terms, fromParseEvent)
+  return loadListByType({
+    listTask,
+    objectsQuery: getEventParameters(terms), terms,
+    parseFun: fromParseEvent
+  })
 }
 
 function loadPeopleInEventList(listTask, terms): ThunkAction {
-  return loadListByType(listTask, getPeopleInEventParameters(terms), terms, fromParsePeopleInEvent)
+  return loadListByType({
+    listTask,
+    objectsQuery: getPeopleInEventParameters(terms), terms,
+    parseFun: fromParsePeopleInEvent
+  })
 }
 
 function loadOtherUsersAlsoOrderedRecipeList(listTask, terms): ThunkAction {
-  return loadListByType(listTask,
-    getPeopleInEventParameters(terms), terms, fromParsePeopleInEvent,
-    _loadListByType,
-    PeopleInEvent.getOtherUsersAlsoOrderedRecipe)
+  return loadListByType({
+    listTask,
+    objectsQuery: getPeopleInEventParameters(terms), terms,
+    parseFun: fromParsePeopleInEvent,
+    afterFetchHook: PeopleInEvent.getOtherUsersAlsoOrderedRecipe
+  })
 }
 
 function loadReviewsList(listTask, terms): ThunkAction {
-  return loadListByType(listTask, getReviewsParameters(terms), terms, fromParseReview)
+  return loadListByType({
+    listTask,
+    objectsQuery: getReviewsParameters(terms), terms,
+    parseFun: fromParseReview
+  })
 }
 
 function loadRecipesListForRestaurant(listTask, terms): ThunkAction {
-  return loadListByType(listTask, getRecipesParameters(terms), terms, fromParseRecipe)
+  return loadListByType({
+    listTask,
+    objectsQuery: getRecipesParameters(terms), terms,
+    parseFun: fromParseRecipe
+  })
 }
 
 function loadRecipesListForEvent(listTask, terms): ThunkAction {
-  return loadListByType(listTask, getPeopleInEventParameters(terms), terms, fromParseRecipe, _loadRecipeListForEvent)
+  return loadListByType({
+    listTask,
+    objectsQuery: getPeopleInEventParameters(terms),
+    terms,
+    parseFun: fromParseRecipe,
+    invokeListFunc: _loadRecipeListForEvent
+  })
 }
 
 function loadPhotosBrowser(terms): ThunkAction {
-  return loadListByType(terms, getPhotosParameters(terms), terms, fromParsePhoto)
+  return loadListByType({
+    listTask: terms,
+    objectsQuery: getPhotosParameters(terms), terms,
+    parseFun: fromParsePhoto
+  })
 }
 
 function loadUsersWithoutAnonymousList(listTask, terms): ThunkAction {
-  return loadListByType(listTask, getUsersParameters(terms), terms, fromParseUser)
+  return loadListByType({
+    listTask,
+    objectsQuery: getUsersParameters(terms), terms,
+    parseFun: fromParseUser
+  })
 }
 
 export default {
