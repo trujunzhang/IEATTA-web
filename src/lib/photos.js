@@ -141,4 +141,14 @@ Photos.generateScrollPhotoIndex = function (props, action, last = {}) {
   }
 }
 
+Photos.isPhotoOwnRecipe = function (recipe, photo) {
+  if (!!photo.recipe) {
+    if (recipe.id === photo.recipe.id) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 export default Photos

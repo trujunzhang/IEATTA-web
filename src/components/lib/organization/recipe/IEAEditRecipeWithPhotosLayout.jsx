@@ -241,6 +241,7 @@ class IEAEditRecipeWithPhotosLayout extends Component {
 
   render() {
     const editModelType = this.props.editModel.form.editModelType;
+    const originalModel = this.props.editModel.form.originModel;
 
     return (
       <div className="main-content-wrap main-content-wrap--full">
@@ -263,6 +264,7 @@ class IEAEditRecipeWithPhotosLayout extends Component {
           {
             editModelType === MODEL_FORM_TYPE_EDIT &&
             <Telescope.components.IEAPhotosBrowserLayout
+              forObject={originalModel}
               photoTitleType={PHOTO_BROWSER_ORGANIZATION_TITLE}
               onOwnPhotoForRecipes={this.onOwnPhotoForRecipes.bind(this)}
               showAlertSection={false}
