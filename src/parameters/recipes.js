@@ -30,6 +30,10 @@ export default class RecipesParameters {
       this.query.containedIn('objectId', terms.recipeIds)
     }
 
+    if (!!terms.creatorId) {
+      equalToRelationObject(this.query, PARSE_USERS, terms.creatorId, 'creator')
+    }
+
     return this
   }
 

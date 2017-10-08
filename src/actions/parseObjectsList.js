@@ -202,6 +202,14 @@ function loadRecipesListForEvent(listTask, terms): ThunkAction {
   })
 }
 
+function loadRecipesListForCreator(listTask, terms): ThunkAction {
+  return loadListByType({
+    listTask,
+    objectsQuery: getRecipesParameters(terms), terms,
+    parseFun: fromParseRecipe
+  })
+}
+
 function loadPhotosBrowser(terms): ThunkAction {
   return loadListByType({
     listTask: terms,
@@ -224,8 +232,11 @@ export default {
   loadPeopleInEventList,
   loadOtherUsersAlsoOrderedRecipeList,
   loadReviewsList,
+  // Recipes List
   loadRecipesListForRestaurant,
   loadRecipesListForEvent,
+  loadRecipesListForCreator,
+  // Photo
   loadPhotosBrowser,
   loadUsersWithoutAnonymousList,
 }

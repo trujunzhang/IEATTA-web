@@ -3,7 +3,8 @@ import React, {Component} from 'react'
 
 const {
   loadRecipesListForRestaurant,
-  loadRecipesListForEvent
+  loadRecipesListForEvent,
+  loadRecipesListForCreator
 } = require('../../../../actions').default
 
 const {
@@ -64,7 +65,7 @@ class RecipesList extends Component {
         this.props.dispatch(loadRecipesListForEvent(listTask, terms))
         break;
       case RECIPES_LIST_FOR_LOGGED_USER_PAGE:
-        this.props.dispatch(loadRecipesListForEvent(listTask, terms))
+        this.props.dispatch(loadRecipesListForCreator(listTask, terms))
         break;
     }
   }
