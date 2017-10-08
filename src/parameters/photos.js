@@ -23,13 +23,19 @@ export default class photosParameters {
 
   addParameters(terms) {
 
+
     const {objectSchemaName, forObjectId, creatorId} = terms;
+
     if (!!creatorId) {// This is the query for the user profile's photos page.
-      const instanceWithoutData = getInstanceWithoutData(objectSchemaName, forObjectId)
+      const instanceWithoutData = getInstanceWithoutData(objectSchemaName, creatorId)
       this.query.equalTo('creator', instanceWithoutData)
+      debugger
+
     }
     else if (!!objectSchemaName) {
       const photoType = AppConstants.realmTypes[objectSchemaName]
+
+      debugger
 
       if (objectSchemaName !== PARSE_USERS) {
         this.query.equalTo('photoType', photoType)
@@ -39,7 +45,6 @@ export default class photosParameters {
         const instanceWithoutData = getInstanceWithoutData(objectSchemaName, forObjectId)
         this.query.equalTo(photoType, instanceWithoutData)
       }
-
     }
 
     return this
