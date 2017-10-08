@@ -1,7 +1,7 @@
 import Telescope from '../../../lib'
 import React, {Component} from 'react'
 
-class RecipesListPage extends Component {
+class RecipesBaseListPage extends Component {
   renderRows() {
     const {recipes, showRightTime} = this.props;
 
@@ -46,13 +46,13 @@ class RecipesListPage extends Component {
 }
 
 
-RecipesListPage.propTypes = {
+RecipesBaseListPage.propTypes = {
   showRightTime: React.PropTypes.bool
 };
 
-RecipesListPage.defaultProps = {
+RecipesBaseListPage.defaultProps = {
   showRightTime: false,
 };
 
 
-export default RecipesListPage;
+export default RecipesBaseListPage;
