@@ -236,7 +236,29 @@ class IEAEditRecipeWithPhotosLayout extends Component {
   }
 
   async onOwnPhotoForRecipes(photo) {
+    const {ownPhotoForRecipeAction, forRelationObject, currentUser} = this.props;
 
+    const originalModel = this.props.editModel.form.originModel;
+
+    let errorMessage = null
+
+    const _object = {
+      recipeId: originalModel.id,
+      photoId: photo.id
+    }
+
+    try {
+      await Promise.race([ownPhotoForRecipeAction(_object), timeout(15000)]);
+    } catch (e) {
+      this.props.actions.updateModelFailure(e);
+      const message = e.message || e;
+      if (message !== 'Timed out' && message !== 'Canceled by user') {
+        errorMessage = message;
+        this.props.dispatch(showAlertMessage({type: ALERT_TYPE_ERROR, text: errorMessage}))
+      }
+    } finally {
+
+    }
   }
 
   render() {
