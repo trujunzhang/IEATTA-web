@@ -172,6 +172,10 @@ function invokeEventFromAction(action: Promise<Array<Action>>): ThunkAction {
   }
 }
 
+async function _ownPhotoForRecipe(recipe: object, photo: object): Promise<Array<Action>> {
+
+}
+
 /**
  * http://docs.parseplatform.org/js/guide/#objects
  * @param photo
@@ -247,4 +251,9 @@ export default {
   removeSelectedPhoto(photo: object): ThunkAction {
     return invokeEventFromAction(_removeSelectedPhoto(photo))
   },
+
+  // Relate photo for recipe.
+  ownPhotoForRecipe(recipe: object, photo: object): ThunkAction {
+    return invokeEventFromAction(_removeSelectedPhoto(photo))
+  }
 }
