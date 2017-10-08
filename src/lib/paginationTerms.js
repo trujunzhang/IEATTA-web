@@ -48,19 +48,22 @@ PaginationTerms.generateTermsForRecipesList = function (props) {
   const forEvent = props.forEvent || {};
   const forRestaurant = props.forRestaurant || {};
   const orderedUser = props.orderedUser || {};
+  const forCreator = props.forCreator || {};
 
   const orderedUserId = orderedUser.id || '';
   const eventId = forEvent.id || '';
   const restaurantId = forRestaurant.id || '';
+  const creatorId = forCreator.id || '';
 
-  const listId = `ordered-recipes-list-view-for-${orderedUserId}-e-${eventId}-r-${restaurantId}`;
+  const listId = `ordered-recipes-list-view-for-u${orderedUserId}-e${eventId}-r${restaurantId}-c${creatorId}`;
 
   const terms = {
     listId: listId,
     limit: 10,
-    orderedUserId: orderedUserId,
-    eventId: eventId,
-    restaurantId: restaurantId
+    orderedUserId,
+    eventId,
+    restaurantId,
+    creatorId
   };
 
   return terms;

@@ -6,8 +6,8 @@ import React, {Component} from 'react'
  */
 const {
   // Review List Type
-  REVIEWS_LIST_FOR_RESTAURANT_PAGE,
-  REVIEWS_LIST_FOR_EVENT_PAGE,
+  RECIPES_LIST_FOR_RESTAURANT_PAGE,
+  RECIPES_LIST_FOR_EVENT_PAGE,
 } = require('../../../../lib/constants').default
 
 
@@ -39,7 +39,7 @@ class RestaurantsDetail extends Component {
 
         <Telescope.components.RecipesList
           forRestaurant={forObject}
-          reviewListType={REVIEWS_LIST_FOR_RESTAURANT_PAGE}
+          recipeListType={RECIPES_LIST_FOR_RESTAURANT_PAGE}
           showTitle={true}/>
 
       </div>

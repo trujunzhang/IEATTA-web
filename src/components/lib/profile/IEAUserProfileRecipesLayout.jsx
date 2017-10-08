@@ -9,6 +9,8 @@ const {
 
 const {
   EVENTS_LIST_FOR_USER,
+  // Review List Type
+  RECIPES_LIST_FOR_LOGGED_USER_PAGE,
 } = require('../../../lib/constants').default
 
 
@@ -18,9 +20,10 @@ class IEAUserProfileRecipesLayout extends Component {
     const {userProfile, forObject} = this.props;
     return (
       <div className="user-details-bookmarks_content js-user-details-bookmarks_content">
-        <Telescope.components.EventsList
-          eventType={EVENTS_LIST_FOR_USER}
-          {...this.props}/>
+        <Telescope.components.RecipesList
+          forCreator={userProfile}
+          recipeListType={RECIPES_LIST_FOR_LOGGED_USER_PAGE}
+          showTitle={true}/>
       </div>
     )
   }

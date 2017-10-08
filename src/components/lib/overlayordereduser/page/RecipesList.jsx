@@ -24,8 +24,9 @@ const {
   ALERT_TYPE_ERROR,
   ALERT_TYPE_SUCCESS,
   // Review List Type
-  REVIEWS_LIST_FOR_RESTAURANT_PAGE,
-  REVIEWS_LIST_FOR_EVENT_PAGE,
+  RECIPES_LIST_FOR_RESTAURANT_PAGE,
+  RECIPES_LIST_FOR_EVENT_PAGE,
+  RECIPES_LIST_FOR_LOGGED_USER_PAGE,
 } = require('../../../../lib/constants').default
 
 class RecipesList extends Component {
@@ -52,14 +53,17 @@ class RecipesList extends Component {
   }
 
   loadMore() {
-    const {reviewListType} = this.props;
+    const {recipeListType} = this.props;
     const {terms, listTask} = this.state;
 
-    switch (reviewListType) {
-      case REVIEWS_LIST_FOR_RESTAURANT_PAGE:
+    switch (recipeListType) {
+      case RECIPES_LIST_FOR_RESTAURANT_PAGE:
         this.props.dispatch(loadRecipesListForRestaurant(listTask, terms))
         break;
-      case REVIEWS_LIST_FOR_EVENT_PAGE:
+      case RECIPES_LIST_FOR_EVENT_PAGE:
+        this.props.dispatch(loadRecipesListForEvent(listTask, terms))
+        break;
+      case RECIPES_LIST_FOR_LOGGED_USER_PAGE:
         this.props.dispatch(loadRecipesListForEvent(listTask, terms))
         break;
     }

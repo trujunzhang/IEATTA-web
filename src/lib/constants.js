@@ -2,8 +2,9 @@ import keyMirror from 'key-mirror'
 
 export default keyMirror({
   // Review List Type
-  REVIEWS_LIST_FOR_RESTAURANT_PAGE: null,
-  REVIEWS_LIST_FOR_EVENT_PAGE: null,
+  RECIPES_LIST_FOR_RESTAURANT_PAGE: null,
+  RECIPES_LIST_FOR_EVENT_PAGE: null,
+  RECIPES_LIST_FOR_LOGGED_USER_PAGE: null,
 
   // Right Buttons Group Type
   RIGHT_BUTTON_GROUP_ADD_EVENT: null,

@@ -8,8 +8,8 @@ import Events from '../../../../lib/events'
  */
 const {
   // Review List Type
-  REVIEWS_LIST_FOR_RESTAURANT_PAGE,
-  REVIEWS_LIST_FOR_EVENT_PAGE,
+  RECIPES_LIST_FOR_RESTAURANT_PAGE,
+  RECIPES_LIST_FOR_EVENT_PAGE,
 } = require('../../../../lib/constants').default
 
 class EventsDetail extends Component {
@@ -62,7 +62,7 @@ class EventsDetail extends Component {
         <Telescope.components.RecipesList
           forRestaurant={forObject.restaurant}
           forEvent={forObject}
-          reviewListType={REVIEWS_LIST_FOR_EVENT_PAGE}
+          recipeListType={RECIPES_LIST_FOR_EVENT_PAGE}
           showTitle={true}/>
 
       </div>
