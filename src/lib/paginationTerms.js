@@ -131,7 +131,8 @@ PaginationTerms.generatePhotoTerm = function (objectSchemaName,
                                               pageForm = PAGE_MAIN_FORM,
                                               props,
                                               isUserOwnerPhotos = false,
-                                              isPhotosBrowserPage = false) {
+                                              isPhotosBrowserPage = false,
+                                              withoutPhotoType = false) {
 
   let _isPhotosBrowserPage = isPhotosBrowserPage;
 
@@ -151,9 +152,10 @@ PaginationTerms.generatePhotoTerm = function (objectSchemaName,
 
   const photoTerms = {
     ...extendProps,
-    listId: listId,
-    forObjectId: forObjectId,
-    objectSchemaName: objectSchemaName,
+    withoutPhotoType,
+    listId,
+    forObjectId,
+    objectSchemaName,
     allItems: (limit === -1),
     limit: limit,
     pageIndex: parseInt(currentPageIndex)

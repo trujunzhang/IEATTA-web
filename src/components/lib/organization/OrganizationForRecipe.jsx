@@ -47,7 +47,7 @@ class OrganizationForRecipe extends Component {
     const {modelType, forObjectId, recipeId} = props.params;
     const {objectSchemaName} = AppConstants.realmObjects[modelType]
     const pageForm = getPageFormType(objectSchemaName, props, null)
-    const photosTerms = PaginationTerms.generatePhotoTerm(objectSchemaName, props.params.forObjectId, pageForm, props, false, true)
+    const photosTerms = PaginationTerms.generatePhotoTerm(objectSchemaName, props.params.forObjectId, pageForm, props, false, true, true)
 
     let forObject = null;
     if (pageForm === MODEL_FORM_TYPE_NEW) {
@@ -80,7 +80,7 @@ class OrganizationForRecipe extends Component {
     const {modelType, forObjectId, recipeId} = nextProps.params;
 
     const newPageForm = getPageFormType(objectSchemaName, nextProps, this.state.pageForm)
-    const newPhotosTerms = PaginationTerms.generatePhotoTerm(objectSchemaName, forObjectId, newPageForm, nextProps, false, true)
+    const newPhotosTerms = PaginationTerms.generatePhotoTerm(objectSchemaName, forObjectId, newPageForm, nextProps, false, true, true)
     const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms, this.state.photosListTask);
 
     const newRestaurant = getModelByObjectId(nextProps, forObjectId, this.state.forRelationObject);
