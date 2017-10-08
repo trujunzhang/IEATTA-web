@@ -13,22 +13,17 @@ const {
 class IEAPhotosBrowserLayout extends Component {
 
   renderFooter() {
-
     const {photosListTask} = this.props;
 
     return (
       <div className="media-landing_footer">
-
         <div className="media-pager">
-
           <Telescope.components.F8PaginationButtonNavigationBar
             listTask={photosListTask}
             {...this.props}
             {...this.state}/>
-
         </div>
       </div>
-
     )
   }
 
@@ -62,21 +57,14 @@ class IEAPhotosBrowserLayout extends Component {
   render() {
     return (
       <div className="main-content-wrap main-content-wrap--full">
-
         <div id="super-container" className="content-container">
-
           <div className="container">
             <div className="js-media-landing_container">
-
               {this.renderTitle()}
-
               <div className="media-landing js-media-landing">
-
                 {this.renderContent()}
                 {this.renderFooter()}
-
               </div>
-
             </div>
           </div>
         </div>
