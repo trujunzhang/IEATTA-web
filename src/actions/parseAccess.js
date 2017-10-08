@@ -176,10 +176,15 @@ async function _ownPhotoForRecipe(recipeId: string, photoId: string): Promise<Ar
   // step1: get photo.
   const photo = await getQueryByType(PARSE_PHOTOS).get(photoId)
 
-  const isOwner = Photos.isPhotoOwnRecipe(recipeId, photo);
+  const isOwner = Photos.isPhotoParseObjectOwnRecipe(recipeId, photo);
 
-  photo.set('photoType', 'recipe')
-  photo.set('recipe', getInstanceWithoutData(PARSE_RECIPES, recipeId))
+  if (isOwner) {
+    photo.set('photoType', 'restaurant')
+    photo.set('recipe', null)
+  } else {
+    photo.set('photoType', 'recipe')
+    photo.set('recipe', getInstanceWithoutData(PARSE_RECIPES, recipeId))
+  }
 
   // step2: update photo.
   await photo.save()

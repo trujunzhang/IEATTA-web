@@ -141,14 +141,17 @@ Photos.generateScrollPhotoIndex = function (props, action, last = {}) {
   }
 }
 
-Photos.isPhotoOwnRecipe = function (recipeId, photo) {
-  if (!!photo.recipe) {
-    if (recipeId === photo.recipe.id) {
-      return true;
-    }
+Photos.isPhotoParseObjectOwnRecipe = function (recipeId, photoParseInstance) {
+  const recipeParseInstance = photoParseInstance.get('recipe')
+  if (!!recipeParseInstance && recipeId === recipeParseInstance.id) {
+    return true;
   }
 
-  return false;
+  return false
+}
+
+Photos.isPhotoOwnRecipe = function (recipeId, {recipe = {id: ""}}) {
+  return (recipeId === recipe.id)
 }
 
 export default Photos

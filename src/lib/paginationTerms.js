@@ -148,8 +148,6 @@ PaginationTerms.generatePhotoTerm = function (objectSchemaName,
 
   const extendProps = isUserOwnerPhotos ? {creatorId: forObjectId} : {}
 
-  debugger
-
   const photoTerms = {
     ...extendProps,
     withoutPhotoType,
