@@ -23,11 +23,13 @@ class RecipesItem extends Component {
 
         <div className="photo-box pb-90s">
           <Link className="js-analytics-click" to={getOrderedRecipeLink(recipe)}>
-            <img alt={recipe.displayName}
-                 className="photo-box-img"
-                 width="90"
-                 height="90"
-                 src={Photos.getListThumbnailUrl(recipe)}/>
+            <Telescope.components.F8PlaceHolderImage
+              alt={recipe.displayName}
+              className="photo-box-img"
+              width="90"
+              height="90"
+              placeholderSource={"/default/blank_biz_small.png"}
+              source={Photos.getListThumbnailUrl(recipe)}/>
           </Link>
         </div>
       </div>
