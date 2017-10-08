@@ -189,6 +189,9 @@ async function _ownPhotoForRecipe(recipeId: string, photoId: string): Promise<Ar
   // step2: update photo.
   await photo.save()
 
+  // step3: update the recorder
+  await updateParseRecorder(PARSE_PHOTOS, photo)
+
   const action = {
     type: SAVE_MODEL_REQUEST,
   }
