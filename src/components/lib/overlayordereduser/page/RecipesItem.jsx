@@ -22,7 +22,7 @@ class RecipesItem extends Component {
       <div className="media-avatar">
 
         <div className="photo-box pb-90s">
-          <Link className="js-analytics-click" to={getOrderedRecipeLink(recipe)}>
+          <Link to={getOrderedRecipeLink(recipe)}>
             <Telescope.components.F8PlaceHolderImage
               alt={recipe.displayName}
               className="photo-box-img"
@@ -96,23 +96,6 @@ class RecipesItem extends Component {
           </div>
         </div>
       </li>
-    )
-  }
-
-  renderRecipeUser() {
-    const {recipe, index} = this.props;
-    // const userName = recipe.user.username
-    const userName = 'trujunzhzhang'
-
-    return (
-      <div className="price-category">
-             <span className="category-str-list">
-                   {"by "}
-               <Link>
-                 {userName}
-               </Link>
-             </span>
-      </div>
     )
   }
 }
