@@ -173,7 +173,21 @@ function invokeEventFromAction(action: Promise<Array<Action>>): ThunkAction {
 }
 
 async function _ownPhotoForRecipe(recipeId: string, photoId: string): Promise<Array<Action>> {
+  // step1: get photo.
+  const photo = await getQueryByType(PARSE_PHOTOS).get(photoId)
 
+  photo.set('photoType', 'recipe')
+  photo.set('recipe', getInstanceWithoutData(PARSE_RECIPES, recipeId))
+
+  // step2: update photo.
+  await photo.save()
+
+  const action = {
+    type: SAVE_MODEL_REQUEST,
+  }
+  return Promise.all([
+    Promise.resolve(action)
+  ])
 }
 
 /**
@@ -253,7 +267,7 @@ export default {
   },
 
   // Relate photo for recipe.
-  ownPhotoForRecipe({recipeId: string, photoId: string}): ThunkAction {
+  ownPhotoForRecipe({recipeId, photoId}): ThunkAction {
     return invokeEventFromAction(_ownPhotoForRecipe(recipeId, photoId))
   }
 }
