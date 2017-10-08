@@ -75,7 +75,7 @@ class RecipesList extends Component {
 
     if (ready) {
       return (
-        <Telescope.components.RecipesBaseListPage
+        <Telescope.components.BaseRecipesListPage
           recipes={results}
         />
       )

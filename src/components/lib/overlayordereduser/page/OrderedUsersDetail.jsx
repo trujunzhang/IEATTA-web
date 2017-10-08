@@ -44,7 +44,7 @@ class OrderedUsersDetail extends Component {
 
         <div className="user-details_bookmarks js-user-details_bookmarks">
           <div className="user-details-bookmarks_content js-user-details-bookmarks_content">
-            <Telescope.components.RecipesBaseListPage
+            <Telescope.components.BaseRecipesListPage
               recipes={orderedRecipes}
               showTitle={true}
             />

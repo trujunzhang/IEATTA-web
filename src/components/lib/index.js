@@ -103,7 +103,7 @@ Telescope.registerComponent('OrderedUsersLeftPanel',                     require
 Telescope.registerComponent('OrderedUsersSingleHeader',                  require('./overlayordereduser/page/OrderedUsersSingleHeader.jsx').default)
 Telescope.registerComponent('RecipesItem',                               require('./overlayordereduser/page/RecipesItem.jsx').default)
 Telescope.registerComponent('RecipesList',                               require('./overlayordereduser/page/RecipesList.jsx').default)
-Telescope.registerComponent('RecipesBaseListPage',                       require('./overlayordereduser/page/RecipesBaseListPage.jsx').default)
+Telescope.registerComponent('BaseRecipesListPage',                       require('./overlayordereduser/page/BaseRecipesListPage.jsx').default)
 
 // overlayOrderedRecipe
 Telescope.registerComponent('OrderedRecipes',                              require('./overlayorderedrecipe/OrderedRecipes.jsx').default)
