@@ -172,7 +172,7 @@ function invokeEventFromAction(action: Promise<Array<Action>>): ThunkAction {
   }
 }
 
-async function _ownPhotoForRecipe(recipe: object, photo: object): Promise<Array<Action>> {
+async function _ownPhotoForRecipe(recipeId: string, photoId: string): Promise<Array<Action>> {
 
 }
 
@@ -253,7 +253,7 @@ export default {
   },
 
   // Relate photo for recipe.
-  ownPhotoForRecipe(recipe: object, photo: object): ThunkAction {
-    return invokeEventFromAction(_removeSelectedPhoto(photo))
+  ownPhotoForRecipe({recipeId: string, photoId: string}): ThunkAction {
+    return invokeEventFromAction(_ownPhotoForRecipe(recipeId, photoId))
   }
 }

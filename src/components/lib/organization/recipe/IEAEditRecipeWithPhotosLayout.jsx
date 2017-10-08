@@ -16,6 +16,7 @@ const numberMask = createNumberMask({
 
 const {
   writeOnlineParseObject,
+  ownPhotoForRecipe,
   showAlertMessage,
   timeout
 } = require('../../../../actions/index').default
@@ -234,6 +235,10 @@ class IEAEditRecipeWithPhotosLayout extends Component {
     )
   }
 
+  async onOwnPhotoForRecipes(photo) {
+
+  }
+
   render() {
     const editModelType = this.props.editModel.form.editModelType;
 
@@ -259,6 +264,7 @@ class IEAEditRecipeWithPhotosLayout extends Component {
             editModelType === MODEL_FORM_TYPE_EDIT &&
             <Telescope.components.IEAPhotosBrowserLayout
               photoTitleType={PHOTO_BROWSER_ORGANIZATION_TITLE}
+              onOwnPhotoForRecipes={this.onOwnPhotoForRecipes.bind(this)}
               showAlertSection={false}
               {...this.props}/>
           }
@@ -284,6 +290,7 @@ function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(editModelActions, dispatch),
     writeOnlineParseObjectAction: (object) => dispatch(writeOnlineParseObject(object)),
+    ownPhotoForRecipeAction: (object) => dispatch(ownPhotoForRecipe(object)),
   }
 }
 

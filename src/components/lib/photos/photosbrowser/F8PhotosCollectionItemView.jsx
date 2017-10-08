@@ -28,7 +28,7 @@ class F8PhotosCollectionItemView extends Component {
     return (
       <button className="chiclet-link u-cursor-pointer js-delete-review-draft"
               onClick={() => {
-                this.props.onShowRemoveConfirmDialogPress(photo)
+                this.props.onOwnPhotoForRecipes(photo)
               }}
               id="photos-browser-cell-item-button-selector">
                 <span id="icon_18X18" className="icon icon--18-trash icon--size-18 icon--currentColor">
