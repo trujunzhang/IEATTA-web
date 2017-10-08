@@ -140,16 +140,18 @@ class F8PhotosCollectionItemView extends Component {
     const {photoInfo, photo, index} = this.props;
     const {forObject, modelType, photoTitleType} = this.props;
 
+    const linkProps = photoTitleType === PHOTO_BROWSER_ORGANIZATION_TITLE ? {} : {
+      to: getPhotosBrowserSelectionLink(photo, modelType, forObject, this.props)
+    }
     return (
       <li className="photos-browser-item" key={photo.id}>
         <div className="photo-box photo-box--interactive">
 
-          <Link to={getPhotosBrowserSelectionLink(photo, modelType, forObject, this.props)}>
-            <img
-              width="150"
-              height="150"
-              className="photo-box-img"
-              src={Photos.getThumbnailUrl(photo)}/>
+          <Link {...linkProps}>
+            <img className="photo-box-img"
+                 width="150"
+                 height="150"
+                 src={Photos.getThumbnailUrl(photo)}/>
           </Link>
 
           {photoTitleType === PHOTO_BROWSER_LOGGED_USER_TITLE && this.renderLeftTopTrash(photo)}
