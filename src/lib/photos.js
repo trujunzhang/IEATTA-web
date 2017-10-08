@@ -141,9 +141,9 @@ Photos.generateScrollPhotoIndex = function (props, action, last = {}) {
   }
 }
 
-Photos.isPhotoOwnRecipe = function (recipe, photo) {
+Photos.isPhotoOwnRecipe = function (recipeId, photo) {
   if (!!photo.recipe) {
-    if (recipe.id === photo.recipe.id) {
+    if (recipeId === photo.recipe.id) {
       return true;
     }
   }

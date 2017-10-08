@@ -30,7 +30,7 @@ const Parse = require('parse')
 const _ = require('underscore')
 import type {Action, ThunkAction} from './types'
 import Records from "../lib/records";
-
+import Photos from "../lib/photos";
 
 const {
   getInstanceWithoutData,
@@ -175,6 +175,8 @@ function invokeEventFromAction(action: Promise<Array<Action>>): ThunkAction {
 async function _ownPhotoForRecipe(recipeId: string, photoId: string): Promise<Array<Action>> {
   // step1: get photo.
   const photo = await getQueryByType(PARSE_PHOTOS).get(photoId)
+
+  const isOwner = Photos.isPhotoOwnRecipe(recipeId, photo);
 
   photo.set('photoType', 'recipe')
   photo.set('recipe', getInstanceWithoutData(PARSE_RECIPES, recipeId))

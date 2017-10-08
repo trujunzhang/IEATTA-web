@@ -18,6 +18,7 @@ const {
   writeOnlineParseObject,
   ownPhotoForRecipe,
   showAlertMessage,
+  loadPhotosBrowser,
   timeout
 } = require('../../../../actions/index').default
 
@@ -257,7 +258,7 @@ class IEAEditRecipeWithPhotosLayout extends Component {
         this.props.dispatch(showAlertMessage({type: ALERT_TYPE_ERROR, text: errorMessage}))
       }
     } finally {
-
+      this.props.dispatch(loadPhotosBrowser(this.props.photosTerms))
     }
   }
 
