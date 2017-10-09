@@ -5,9 +5,9 @@ import Restaurants from '../../../../lib/restaurants'
 class OrderedRecipesSingleHeader extends Component {
 
   renderSubHeader() {
-    const mapInfo = Restaurants.getMapInfo(this.props.forObject.restaurant,
-      this.props.forObject.restaurant.geoLocation,
-      false, false)
+    const {forObject} = this.props;
+    const {restaurant} = forObject;
+    const mapInfo = Restaurants.getMapInfo(restaurant, restaurant.geoLocation, false, false)
 
     return (
       <div className="biz-page-subheader">
@@ -16,7 +16,6 @@ class OrderedRecipesSingleHeader extends Component {
         </div>
         <Telescope.components.F8SingleHeaderRightPhotos  {...this.props}/>
       </div>
-
     )
   }
 
