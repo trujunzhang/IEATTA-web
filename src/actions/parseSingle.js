@@ -130,15 +130,21 @@ export default {
   },
 
   loadUserProfilePage: (parseId: string): ThunkAction => {
-    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_USERS, ['photos']), parseId, fromParseUser)
+    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE,
+      getQueryByType(PARSE_USERS),
+      parseId, fromParseUser)
   },
 
   loadRestaurantPage: (parseId: string): ThunkAction => {
-    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_RESTAURANTS, ['photos']), parseId, fromParseRestaurant)
+    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE,
+      getQueryByType(PARSE_RESTAURANTS),
+      parseId, fromParseRestaurant)
   },
 
   loadEventPage: (parseId: string): ThunkAction => {
-    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_EVENTS, ['restaurant', 'restaurant.photos']), parseId, fromParseEvent)
+    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE,
+      getQueryByType(PARSE_EVENTS, ['restaurant', 'restaurant.listPhoto']),
+      parseId, fromParseEvent)
   },
 
   loadPeopleInEventPage: (parseId: string): ThunkAction => {
@@ -150,13 +156,13 @@ export default {
 
   loadOrderedRecipePage: (parseId: string): ThunkAction => {
     return loadParseObject(OVERLAY_LOADED_MODEL_PAGE,
-      getQueryByType(PARSE_RECIPES, ['restaurant', 'event', 'user', 'photos']),
+      getQueryByType(PARSE_RECIPES, ['restaurant']),
       parseId, fromParseRecipe)
   },
 
   loadReviewPage: (parseId: string): ThunkAction => {
     return loadParseObject(OVERLAY_LOADED_MODEL_PAGE,
-      getQueryByType(PARSE_REVIEWS, ['restaurant', 'event', 'recipe', 'user']),
+      getQueryByType(PARSE_REVIEWS, ['restaurant', 'event', 'recipe']),
       parseId, fromParseReview)
   },
 
