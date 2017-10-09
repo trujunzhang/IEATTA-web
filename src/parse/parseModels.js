@@ -45,8 +45,8 @@ export type User = {
 
 export type Photo = {
   id: string;
-  original: string;
-  thumbnail: string;
+  originalUrl: string;
+  thumbnailUrl: string;
   url: string;
   photoType: string;
 }
@@ -170,7 +170,7 @@ export function fromParseUser(map: Object): User {
     loginType: map.get('loginType'),
     email: map.get('email') || "",
     // Photos
-    defaultAvatarUrl: _listPhoto.thumbnail._url,
+    defaultAvatarUrl: _listPhoto.thumbnailUrl,
     // Photos
     listPhoto: _listPhoto
   }
@@ -182,8 +182,8 @@ function parsePhotoNormal(map: Object): Object {
     // Basic Fields
     ...fromParseCommon(map),
     // Attributes
-    original: map.get('original'),
-    thumbnail: map.get('thumbnail'),
+    originalUrl: map.get('originalUrl'),
+    thumbnailUrl: map.get('thumbnailUrl'),
     photoType: map.get('photoType'),
   }
 }
@@ -193,8 +193,8 @@ function fromParsePhotoNormal(map: Object): Photo {
     return parsePhotoNormal(map)
   }
   return {
-    original: {_url: ""},
-    thumbnail: {_url: ""}
+    originalUrl: "",
+    thumbnailUrl: ""
   }
 }
 

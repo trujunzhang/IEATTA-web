@@ -19,12 +19,11 @@ const Photos = {
 }
 
 Photos.getThumbnailUrl = function (photo) {
-  const _thumbnail = photo.thumbnail || {};
-  return _thumbnail._url || '';
+  return photo.thumbnailUrl;
 }
 
 Photos.getOriginalUrl = function (photo) {
-  return photo.original._url;
+  return photo.originalUrl;
 }
 
 Photos.getListThumbnailUrl = function (item = {}) {
