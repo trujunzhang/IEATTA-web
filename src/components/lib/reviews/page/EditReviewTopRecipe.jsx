@@ -1,3 +1,4 @@
+import Telescope from '../../index'
 import React, {Component} from 'react';
 
 import {getOrderedRecipeLink} from '../../../../lib/link'
