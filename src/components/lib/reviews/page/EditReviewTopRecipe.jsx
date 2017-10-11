@@ -16,12 +16,14 @@ class EditReviewTopRecipe extends Component {
             <div className="photo-box pb-60s">
 
               <a className="js-analytics-click">
-                <img alt={forObject.displayName}
-                     className="photo-box-img"
-                     width="60"
-                     height="60"
-                     src={Photos.getListThumbnailUrl(forObject)}/>
 
+                <Telescope.components.F8PlaceHolderImage
+                  alt={forObject.displayName}
+                  className="photo-box-img"
+                  width="60"
+                  height="60"
+                  placeholderSource={"/default/blank_biz_small.png"}
+                  source={Photos.getListThumbnailUrl(forObject)}/>
               </a>
 
             </div>
