@@ -98,7 +98,7 @@ async function _writeOnlineParseObject(editModelType,
   await onlineParseObject.save()
 
   // step2: save it's recorder.
-  // await updateParseRecorder(objectSchemaName, onlineParseObject)
+  await updateParseRecorder(objectSchemaName, onlineParseObject)
 
   const _originalModel = parseOnlineParseObject(objectSchemaName, onlineParseObject);
   const action = {

@@ -111,8 +111,6 @@ Records.createOnlineParseInstance = async function (editModelType, onlineParseOb
       _online_user_Instance = getInstanceWithoutData(PARSE_USERS, localRecorder.creator.id)
       onlineParseObject.set('creator', _online_user_Instance)
 
-      debugger
-
       break;
 
     case PARSE_PHOTOS:
@@ -135,23 +133,17 @@ Records.createOnlineParseInstance = async function (editModelType, onlineParseOb
       break;
 
     case PARSE_REVIEWS:
-      debugger
 
       // step1: common fields.
       onlineParseObject.set('rate', localRecorder.reviewRating)
       onlineParseObject.set('body', localRecorder.reviewBody)
 
-
-      debugger
-
       if (editModelType === MODEL_FORM_TYPE_NEW) {
-
-        debugger
 
         onlineParseObject.set('reviewType', localRecorder.reviewType)
 
         // step2: the logged user submitted the review.
-        Records.setParseObjectFieldWithoutData('user', onlineParseObject, localRecorder.currentUserId)
+        Records.setParseObjectFieldWithoutData('creator', onlineParseObject, localRecorder.currentUserId)
 
         // step3: set the relation by review type.
         Records.setParseObjectFieldWithoutData(localRecorder.reviewType, onlineParseObject, localRecorder.forObjectId)

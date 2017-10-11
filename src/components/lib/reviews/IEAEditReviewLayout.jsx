@@ -11,7 +11,6 @@ const {
   timeout
 } = require('../../../actions').default
 
-
 /**
  * The states were interested in
  */
@@ -29,7 +28,6 @@ class IEAEditReviewLayout extends Component {
 
   constructor(props, context) {
     super(props)
-
 
     let editReview = props.review;
 
