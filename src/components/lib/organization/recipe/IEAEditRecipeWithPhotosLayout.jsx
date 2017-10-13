@@ -6,6 +6,7 @@ import {withRouter} from 'react-router'
 import MaskedInput from 'react-text-mask';
 import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 
+// https://github.com/text-mask/text-mask
 const numberMask = createNumberMask({
   prefix: '$',
   allowDecimal: true,
