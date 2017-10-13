@@ -16,7 +16,6 @@ Recipes.getUpdatedAtFormat = function (recipe) {
 }
 
 Recipes.validateModel = function (state, originModel) {
-  debugger
   if (
     state.form.fields.price !== originModel.price
   ) {
