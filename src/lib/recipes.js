@@ -15,5 +15,23 @@ Recipes.getUpdatedAtFormat = function (recipe) {
   return day;
 }
 
+Recipes.validateModel = function (state, originModel) {
+  debugger
+  if (
+    state.form.fields.price !== originModel.price
+  ) {
+    return true;
+  }
+  if (state.form.fields.displayName !== '' &&
+    state.form.fields.displayName !== originModel.displayName &&
+    !state.form.fields.displayNameHasError) {
+    return true;
+  } else {
+    return false;
+  }
+
+  return true;
+}
+
 
 export default Recipes;

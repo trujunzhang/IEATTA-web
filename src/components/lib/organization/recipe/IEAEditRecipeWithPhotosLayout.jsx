@@ -8,10 +8,8 @@ import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 
 const numberMask = createNumberMask({
   prefix: '$',
-  suffix: '',
   allowDecimal: true,
-  requireDecimal: true,
-  integerLimit: 3
+  integerLimit: 4
 })
 
 const {

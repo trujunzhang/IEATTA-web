@@ -20,6 +20,10 @@ const {
   MENU_ITEM_ADD_OR_EDIT_RECIPE
 } = require('../../lib/constants').default
 
+
+import Events from '../../lib/events'
+import Recipes from '../../lib/recipes'
+
 /**
  * ## formValidation
  * @param {Object} state - the Redux state object
@@ -40,23 +44,11 @@ export default function formValidation(state) {
       }
       break;
     case MENU_ITEM_ADD_OR_EDIT_EVENT:
-      if (state.form.fields.displayName !== '' &&
-        !state.form.fields.displayNameHasError) {
-        return state.setIn(['form', 'isValid'], true)
-      } else {
-        return state.setIn(['form', 'isValid'], false)
-      }
-      break;
-
+      validate = Events.validateModel(state, originModel)
+      return state.setIn(['form', 'isValid'], validate)
     case MENU_ITEM_ADD_OR_EDIT_RECIPE:
-      if (state.form.fields.displayName !== '' &&
-        state.form.fields.displayName !== originModel.displayName &&
-        !state.form.fields.displayNameHasError) {
-        return state.setIn(['form', 'isValid'], true)
-      } else {
-        return state.setIn(['form', 'isValid'], false)
-      }
-      break;
+      validate = Recipes.validateModel(state, originModel)
+      return state.setIn(['form', 'isValid'], validate)
     case MENU_ITEM_ADD_OR_EDIT_REVIEW:
       if (state.form.fields.reviewBody !== '' &&
         state.form.fields.reviewRating !== 0 &&

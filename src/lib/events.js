@@ -58,4 +58,28 @@ Events.getWantBody = function (event) {
 }
 
 
+Events.validateModel = function (state, originModel) {
+  if (state.form.fields.displayName === originModel.displayName &&
+    state.form.fields.eventWhat === originModel.want &&
+    moment(state.form.fields.start).isSame(moment(originModel.start)) &&
+    moment(state.form.fields.end).isSame(moment(originModel.end))
+  ) {
+    return false;
+  }
+
+  if (state.form.fields.eventWhat === '' ||
+    state.form.fields.displayName === '') {
+    return false;
+  }
+
+  if (
+    state.form.fields.displayNameHasError
+  ) {
+    return false;
+  }
+
+  return true;
+}
+
+
 export default Events;
