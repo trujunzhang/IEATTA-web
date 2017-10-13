@@ -181,7 +181,7 @@ class IEAEditRecipeWithPhotosLayout extends Component {
   onPriceChange(e) {
     const newValue = e.target.value.replace('$', '')
 
-    this.props.actions.onEditModelFormFieldChange('price', newValue, true)
+    this.props.actions.onEditModelFormFieldChange('price', newValue)
 
     this.setState({
       value:
