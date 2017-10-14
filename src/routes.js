@@ -88,11 +88,6 @@ const createRoutes = (store) => {
       path: 'edit/event/(:eid)/(:eslug)',
       component: Telescope.components.DetailedEvent,
       // onEnter: requireAuth(store)
-    },
-    {
-      path: 'new/event/(:rid)/(:rslug)',
-      component: Telescope.components.DetailedEvent,
-      // onEnter: requireAuth(store)
     }
   ];
 
@@ -186,6 +181,12 @@ const createRoutes = (store) => {
     }
   ];
   const organizationRoutes = [
+    //for event
+    {
+      path: 'organization/event/new/(:modelType)/(:forObjectId)',
+      component: Telescope.components.DetailedEvent
+    },
+    //for recipe
     {
       path: 'organization/recipe/new/(:modelType)/(:forObjectId)',
       component: Telescope.components.OrganizationForRecipe

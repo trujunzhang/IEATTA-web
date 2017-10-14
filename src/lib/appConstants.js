@@ -64,6 +64,15 @@ AppConstants.generateNewRestaurantRealmObject = function () {
   }
 }
 
+AppConstants.generateNewEventParseObject = function () {
+  return {
+    id: UUID.create().toString(),
+    uniqueId: UUID.create().toString(),
+    displayName: '',
+    price: 0
+  }
+}
+
 AppConstants.generateNewRecipeParseObject = function () {
   return {
     id: UUID.create().toString(),
