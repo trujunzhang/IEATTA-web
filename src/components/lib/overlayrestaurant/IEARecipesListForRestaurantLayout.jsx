@@ -9,7 +9,7 @@ import {
   calculateTotalCount
 } from '../../../lib/link'
 
-const {loadRecipesList} = require('../../../actions').default
+const {loadRecipesListForRestaurant} = require('../../../actions').default
 const {byListId, getDefaultListTask} = require('../../filter/filterPosts')
 
 import PaginationTerms from "../../../lib/paginationTerms";
@@ -42,11 +42,12 @@ class IEARecipesListForRestaurantLayout extends Component {
   }
 
   loadMore(listTask, recipesListTerms) {
-    this.props.dispatch(loadRecipesList(listTask, recipesListTerms))
+    this.props.dispatch(loadRecipesListForRestaurant(listTask, recipesListTerms))
   }
 
   renderRecipeListHeader() {
-    const {listTask, forObject} = this.state;
+    const {listTask} = this.state;
+    const {forObject} = this.props;
 
     return (<h3>{`${calculateTotalCount(listTask)} recipes for ${forObject.displayName}`}</h3>)
   }
@@ -103,7 +104,7 @@ class IEARecipesListForRestaurantLayout extends Component {
   }
 
   render() {
-    const {forObject} = this.state;
+    const {forObject} = this.props;
 
     return (
       <div className="main-content-wrap main-content-wrap--full">
