@@ -15,7 +15,7 @@ import {
 
 class RecipesItem extends Component {
 
-  renderLeftAvator() {
+  renderLeftAvatar() {
     const {recipe} = this.props;
 
     return (
@@ -85,7 +85,7 @@ class RecipesItem extends Component {
             <div className="arrange_unit arrange_unit--fill">
               <div className="media-block media-block--12 biz-listing-medium">
 
-                {this.renderLeftAvator()}
+                {this.renderLeftAvatar()}
                 {this.renderStory()}
 
               </div>
