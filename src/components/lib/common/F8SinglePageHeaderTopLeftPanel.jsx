@@ -5,7 +5,8 @@ import Records from '../../../lib/records'
 
 import {
   getReviewsListLink,
-  getEditLinkByModelType
+  getEditLinkByModelType,
+  getRecipesListForRestaurantLink,
 } from '../../../lib/link'
 import {Link} from 'react-router'
 
@@ -143,14 +144,15 @@ class F8SinglePageHeaderTopLeftPanel extends Component {
         </div>
 
         {
-          objectSchemaName === PARSE_RESTAURANTS && this.renderRecipesInfoForRestaurnt()
+          objectSchemaName === PARSE_RESTAURANTS && this.renderRecipesInfoForRestaurant()
         }
       </div>
 
     )
   }
 
-  renderRecipesInfoForRestaurnt() {
+  renderRecipesInfoForRestaurant() {
+    const {forObject, modelType} = this.props;
     return (
       <div className="u-nowrap claim-status_teaser js-claim-status-hover">
         <span id="icon_18X18"
@@ -160,7 +162,7 @@ class F8SinglePageHeaderTopLeftPanel extends Component {
                           d="M6 14v-2h10v2H6zM6 4h10v2H6V4zm-4 8h2v2H2v-2zm0-4h2v2H2V8zm0-4h2v2H2V4zm12 6H6V8h8v2z"/>
                   </svg>
         </span>
-        <Link to={"/"}>
+        <Link to={getRecipesListForRestaurantLink(forObject)}>
           {"Recipes"}
         </Link>
       </div>

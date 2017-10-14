@@ -79,6 +79,10 @@ export function getAddPhotoLink(modelType, model) {
   return `/photos/add/${modelType}/${model.id}`
 }
 
+export function getRecipesListForRestaurantLink(model) {
+  return `/restaurant/recipes/${model.id}`
+}
+
 export function getEditLinkByModelType(modelType, forObject) {
   const {objectSchemaName} = AppConstants.realmObjects[modelType]
   switch (objectSchemaName) {
