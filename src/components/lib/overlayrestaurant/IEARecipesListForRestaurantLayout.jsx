@@ -14,7 +14,7 @@ const {byListId, getDefaultListTask} = require('../../filter/filterPosts')
 
 import PaginationTerms from "../../../lib/paginationTerms";
 
-class IEARecipesListLayout extends Component {
+class IEARecipesListForRestaurantLayout extends Component {
 
   constructor(props, context) {
     super(props)
@@ -144,4 +144,4 @@ function select(store, ownProps) {
   };
 }
 
-export default withRouter(connect(select)(IEARecipesListLayout));
+export default withRouter(connect(select)(IEARecipesListForRestaurantLayout));

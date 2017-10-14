@@ -145,7 +145,7 @@ class DetailedRestaurant extends Component {
         case PAGE_RECIPES_LIST_BROWSER_FORM:
           return (
             <div>
-              <h1>PAGE_RECIPES_LIST_BROWSER_FORM</h1>
+              <Telescope.components.IEARecipesListForRestaurantLayout {...this.state}/>
             </div>
           )
         case PAGE_PHOTOS_BROWSER_FORM:
