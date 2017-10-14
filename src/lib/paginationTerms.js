@@ -43,6 +43,20 @@ PaginationTerms.generateTermsForReviewsList = function (props, prefix = "list") 
 }
 
 
+PaginationTerms.generateTermsForRecipesListOnRestaurant = function ({forObject}) {
+  const restaurantId = forObject.id;
+
+  const listId = `recipes-list-view-for-r${restaurantId}`;
+
+  const terms = {
+    listId: listId,
+    limit: 10,
+    restaurantId,
+  }
+
+  return terms;
+}
+
 PaginationTerms.generateTermsForRecipesList = function (props) {
 
   const forEvent = props.forEvent || {};
