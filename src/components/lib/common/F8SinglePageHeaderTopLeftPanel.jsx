@@ -128,6 +128,8 @@ class F8SinglePageHeaderTopLeftPanel extends Component {
   renderRestaurantTitle() {
     const {forObject, modelType} = this.props;
 
+    const {objectSchemaName} = AppConstants.realmObjects[modelType]
+
     return (
       <div className="u-space-t1">
         <h1 className="biz-page-title embossed-text-white shortenough">
@@ -140,8 +142,28 @@ class F8SinglePageHeaderTopLeftPanel extends Component {
           }
         </div>
 
+        {
+          objectSchemaName === PARSE_RESTAURANTS && this.renderRecipesInfoForRestaurnt()
+        }
       </div>
 
+    )
+  }
+
+  renderRecipesInfoForRestaurnt() {
+    return (
+      <div className="u-nowrap claim-status_teaser js-claim-status-hover">
+        <span id="icon_18X18"
+              className="icon icon--18-checkmark-badged icon--size-18 icon--blue-dark claim-status_icon u-space-r1 claim-status_icon--claimed">
+                  <svg className="icon_svg">
+                        <path
+                          d="M6 14v-2h10v2H6zM6 4h10v2H6V4zm-4 8h2v2H2v-2zm0-4h2v2H2V8zm0-4h2v2H2V4zm12 6H6V8h8v2z"/>
+                  </svg>
+        </span>
+        <Link to={"/"}>
+          {"Recipes"}
+        </Link>
+      </div>
     )
   }
 }
