@@ -37,6 +37,7 @@ const {
   PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY,
   PAGE_PHOTOS_BROWSER_FORM,
   PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY,
+  PAGE_RECIPES_LIST_BROWSER_FORM,
   // Model Form Mode
   MODEL_FORM_TYPE_EDIT,
   MODEL_FORM_TYPE_NEW,
@@ -70,6 +71,11 @@ export function checkPhotosBrowser(objectSchemaName, props: Object) {
   return props.location.pathname.indexOf(subDomain + '/') !== -1;
 }
 
+export function checkRecipesListBrowser(objectSchemaName, props: Object) {
+  const subDomain = AppConstants.SubDomainRecipesList [objectSchemaName];
+  return props.location.pathname.indexOf(subDomain + '/') !== -1;
+}
+
 export function checkPhotosBrowserSelection({location}) {
   const {query} = location;
   if (!!query && !!query.select) {
@@ -96,8 +102,10 @@ export function getPageFormType(pageType, props: Object, lastFormType: Any) {
     return PAGE_SINGLE_SELECTED_PHOTO_FORM;
   }
 
-  const isPhotoBrowser = checkPhotosBrowser(pageType, props);
+  const isRecipesBrowser = checkRecipesListBrowser(pageType, props)
+  if (isRecipesBrowser) return PAGE_RECIPES_LIST_BROWSER_FORM;
 
+  const isPhotoBrowser = checkPhotosBrowser(pageType, props);
   if (isPhotoBrowser) return PAGE_PHOTOS_BROWSER_FORM;
 
   return PAGE_MAIN_FORM;

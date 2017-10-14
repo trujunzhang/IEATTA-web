@@ -73,6 +73,10 @@ const createRoutes = (store) => {
       path: 'biz_photos/(:rid)/(:rslug)',
       component: Telescope.components.DetailedRestaurant
     },
+    {
+      path: 'biz_recipes/(:rid)/(:rslug)',
+      component: Telescope.components.DetailedRestaurant
+    },
   ];
 
   const eventRoutes = [

@@ -46,6 +46,9 @@ AppConstants.realmTypes = {
   PARSE_REVIEWS: 'review'
 }
 
+AppConstants.SubDomainRecipesList = {
+  PARSE_RESTAURANTS: 'biz_recipes',
+}
 AppConstants.SubDomainPhotos = {
   PARSE_RESTAURANTS: 'biz_photos',
   PARSE_RECIPES: 'recipe_photos',

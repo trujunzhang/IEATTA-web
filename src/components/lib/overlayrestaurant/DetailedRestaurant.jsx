@@ -16,6 +16,7 @@ const {
   PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY,
   PAGE_PHOTOS_BROWSER_FORM,
   PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY,
+  PAGE_RECIPES_LIST_BROWSER_FORM,
   // Edit form
   MODEL_FORM_TYPE_NEW,
   MODEL_FORM_TYPE_EDIT,
@@ -141,6 +142,12 @@ class DetailedRestaurant extends Component {
         }
       }
       switch (pageForm) {
+        case PAGE_RECIPES_LIST_BROWSER_FORM:
+          return (
+            <div>
+              <h1>PAGE_RECIPES_LIST_BROWSER_FORM</h1>
+            </div>
+          )
         case PAGE_PHOTOS_BROWSER_FORM:
         case PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY:
           return (<div>
