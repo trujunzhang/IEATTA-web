@@ -68,8 +68,8 @@ class DetailedEvent extends Component {
         case PAGE_MAIN_FORM:
           return (<Telescope.components.IEAEventsLayout  {...this.state}/>)
         case MODEL_FORM_TYPE_EDIT:
-        case MODEL_FORM_TYPE_NEW:
           return (<Telescope.components.IEAEditEventLayout
+              forRelationObject={forObject.restaurant}
               {...this.state}
               dispatch={this.props.dispatch}/>
           )

@@ -87,7 +87,7 @@ class IEAEditEventLayout extends Component {
 
 
   async onButtonPress() {
-    const {writeOnlineParseObjectAction, forObject} = this.props;
+    const {writeOnlineParseObjectAction, forObject, forRelationObject} = this.props;
 
     const editModelType = this.props.editModel.form.editModelType;
 
@@ -110,11 +110,12 @@ class IEAEditEventLayout extends Component {
         parseId,
         uniqueId,
         displayName, want, start, end,
-        restaurant: forObject.restaurant
+        restaurant: forRelationObject
       }
     }
+
     try {
-      await Promise.race([writeOnlineParseObjectAction(_object), timeout(15000)]);
+      // await Promise.race([writeOnlineParseObjectAction(_object), timeout(15000)]);
     } catch (e) {
       this.props.actions.updateModelFailure(e);
       const message = e.message || e;

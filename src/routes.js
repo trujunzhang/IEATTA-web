@@ -180,11 +180,12 @@ const createRoutes = (store) => {
       onEnter: requireAuth(store)
     }
   ];
+
   const organizationRoutes = [
     //for event
     {
       path: 'organization/event/new/(:modelType)/(:forObjectId)',
-      component: Telescope.components.DetailedEvent
+      component: Telescope.components.OrganizationForNewEvent
     },
     //for recipe
     {

@@ -119,7 +119,8 @@ Telescope.registerComponent('OrderedRecipesSingleHeader',                  requi
 Telescope.registerComponent('EditRecipeForm',                              require('./overlayorderedrecipe/page/EditRecipeForm.jsx').default)
 
 // organization
-Telescope.registerComponent('OrganizationForRecipe',                              require('./organization/OrganizationForRecipe.jsx').default)
+Telescope.registerComponent('OrganizationForRecipe',                                 require('./organization/OrganizationForRecipe.jsx').default)
+Telescope.registerComponent('OrganizationForNewEvent',                               require('./organization/OrganizationForNewEvent.jsx').default)
 
 // organization(recipe)
 Telescope.registerComponent('IEAEditRecipeWithPhotosLayout',                              require('./organization/recipe/IEAEditRecipeWithPhotosLayout.jsx').default)

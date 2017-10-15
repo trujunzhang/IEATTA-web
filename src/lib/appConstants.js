@@ -69,7 +69,9 @@ AppConstants.generateNewEventParseObject = function () {
     id: UUID.create().toString(),
     uniqueId: UUID.create().toString(),
     displayName: '',
-    price: 0
+    want: '',
+    start: new Date(),
+    end: new Date()
   }
 }
 
