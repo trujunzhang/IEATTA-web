@@ -53,6 +53,8 @@ function createParseInstance(objectSchemaName) {
   switch (objectSchemaName) {
     case PARSE_RESTAURANTS:
       return new ParseRestaurant();
+    case PARSE_EVENTS:
+      return new ParseEvent();
     case PARSE_RECORDS:
       return new ParseRecord();
     case PARSE_REVIEWS:
