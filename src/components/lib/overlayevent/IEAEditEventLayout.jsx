@@ -115,7 +115,7 @@ class IEAEditEventLayout extends Component {
     }
 
     try {
-      // await Promise.race([writeOnlineParseObjectAction(_object), timeout(15000)]);
+      await Promise.race([writeOnlineParseObjectAction(_object), timeout(15000)]);
     } catch (e) {
       this.props.actions.updateModelFailure(e);
       const message = e.message || e;
