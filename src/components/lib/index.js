@@ -81,9 +81,11 @@ Telescope.registerComponent('RestaurantsFixMapMarker',                require('.
 
 
 // overlayEvent
-Telescope.registerComponent('DetailedEvent',                 require('./overlayevent/DetailedEvent.jsx').default)
-Telescope.registerComponent('IEAEventsLayout',               require('./overlayevent/IEAEventsLayout.jsx').default)
-Telescope.registerComponent('IEAEditEventLayout',            require('./overlayevent/IEAEditEventLayout.jsx').default)
+Telescope.registerComponent('DetailedEvent',                            require('./overlayevent/DetailedEvent.jsx').default)
+Telescope.registerComponent('IEAEventsLayout',                          require('./overlayevent/IEAEventsLayout.jsx').default)
+Telescope.registerComponent('IEAEditEventLayout',                       require('./overlayevent/IEAEditEventLayout.jsx').default)
+Telescope.registerComponent('IEAEditEventLayout',                       require('./overlayevent/IEAEditEventLayout.jsx').default)
+Telescope.registerComponent('IEAOrderedUsersInEventsLayout',            require('./overlayevent/IEAOrderedUsersInEventsLayout.jsx').default)
 
 // overlayEvent(page)
 Telescope.registerComponent('EventsDetail',                  require('./overlayevent/page/EventsDetail.jsx').default)

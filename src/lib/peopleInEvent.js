@@ -9,7 +9,6 @@ const PeopleInEvent = {
 }
 
 PeopleInEvent.getRecipeIds = function (peopleInEventModels) {
-
   const multipleArrays = _.pluck(peopleInEventModels, 'recipes')
   const arrays = _.reduce(multipleArrays, function (result, arr) {
     return result.concat(arr)

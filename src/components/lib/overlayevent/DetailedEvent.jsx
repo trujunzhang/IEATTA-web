@@ -17,6 +17,7 @@ const {
   MODEL_FORM_TYPE_NEW,
   PAGE_OVERLAY_SELECTED_PHOTO_FORM,
   PAGE_SINGLE_SELECTED_PHOTO_FORM,
+  PAGE_ORDERED_USERS_IN_EVENT,
   CLOUD_STATISTIC_FOR_REVIEWS,
   PARSE_EVENTS
 } = require('../../../lib/constants').default
@@ -63,16 +64,28 @@ class DetailedEvent extends Component {
   render() {
     const {forObject, pageForm, reviewStatistic} = this.state;
 
-    if (!!forObject && !!reviewStatistic) {
+    if (!!forObject) {
+
       switch (pageForm) {
-        case PAGE_MAIN_FORM:
-          return (<Telescope.components.IEAEventsLayout  {...this.state}/>)
-        case MODEL_FORM_TYPE_EDIT:
-          return (<Telescope.components.IEAEditEventLayout
-              forRelationObject={forObject.restaurant}
-              {...this.state}
-              dispatch={this.props.dispatch}/>
-          )
+        case PAGE_ORDERED_USERS_IN_EVENT:
+          debugger
+          return (<Telescope.components.IEAOrderedUsersInEventsLayout
+            {...this.props}
+            {...this.state}/>)
+      }
+
+      if (!!reviewStatistic) {
+        switch (pageForm) {
+          case PAGE_MAIN_FORM:
+            return (<Telescope.components.IEAEventsLayout  {...this.state}/>)
+          case MODEL_FORM_TYPE_EDIT:
+            return (<Telescope.components.IEAEditEventLayout
+                forRelationObject={forObject.restaurant}
+                {...this.state}
+                dispatch={this.props.dispatch}/>
+            )
+        }
+
       }
     }
 

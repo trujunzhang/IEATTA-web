@@ -43,6 +43,7 @@ const {
   MODEL_FORM_TYPE_NEW,
   PAGE_OVERLAY_SELECTED_PHOTO_FORM,
   PAGE_SINGLE_SELECTED_PHOTO_FORM,
+  PAGE_ORDERED_USERS_IN_EVENT,
   // Login Page
   LOGIN_FORM_TYPE_LOGIN,
   LOGIN_FORM_TYPE_REGISTER,
@@ -87,6 +88,7 @@ export function checkPhotosBrowserSelection({location}) {
 export function getPageFormType(pageType, props: Object, lastFormType: Any) {
   if (checkEditModel(props)) return MODEL_FORM_TYPE_EDIT;
   if (checkNewModel(props)) return MODEL_FORM_TYPE_NEW;
+  if (props.location.pathname.indexOf('/event/users/') !== -1) return PAGE_ORDERED_USERS_IN_EVENT;
 
   const isPhotoBrowserSelectionId = checkPhotosBrowserSelection(props);
   if (!!isPhotoBrowserSelectionId) {

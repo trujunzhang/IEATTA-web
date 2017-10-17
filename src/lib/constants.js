@@ -1,6 +1,9 @@
 import keyMirror from 'key-mirror'
 
 export default keyMirror({
+  // Users ordered in event
+  PAGE_ORDERED_USERS_IN_EVENT: null,
+
   // Review List Type
   RECIPES_LIST_FOR_RESTAURANT_PAGE: null,
   RECIPES_LIST_FOR_EVENT_PAGE: null,
