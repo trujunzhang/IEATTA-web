@@ -28,19 +28,23 @@ class OrderedUserInEventHeaderView extends Component {
           {this.renderColumnOne()}
         </div>
 
-        <div className="forObject-details_photo">
-          <div
-            className="photo-slideshow photo-slideshow--full-width js-photo-slideshow-forObject-details lightbox-media-parent">
 
-            <Telescope.components.F8PlaceHolderImage
-              alt={forObject.restaurant.displayName}
-              className="photo-box-img"
-              width={300}
-              height={300}
-              placeholderSource={"/default/blank_biz_large.png"}
-              source={Photos.getListThumbnailUrl(forObject.restaurant)}/>
+        <div className={"ordered-user-profile"}>
+          <div className="user-profile_container">
+
+            <div className={"user-profile_avatar"}>
+              <div
+                className="photo-slideshow photo-slideshow--full-width photo-slideshow--rounded js-photo-slideshow-user-details">
+                <Telescope.components.F8PlaceHolderImage
+                  alt={forObject.restaurant.displayName}
+                  className="photo-box-img"
+                  width={250}
+                  height={250}
+                  placeholderSource={"/default/blank_biz_large.png"}
+                  source={Photos.getListThumbnailUrl(forObject.restaurant)}/>
+              </div>
+            </div>
           </div>
-
         </div>
 
       </div>

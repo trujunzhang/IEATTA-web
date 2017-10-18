@@ -50,19 +50,13 @@ class IEAUserProfileAboutLayout extends Component {
   render() {
 
     return (
-
       <div className="main-content-wrap main-content-wrap--full">
-
         <div className="top-shelf top-shelf-grey">
-
           <Telescope.components.UserProfileSingleHeader {...this.props}/>
-
         </div>
 
         <div id="super-container" className="content-container">
-
           {this.renderContent()}
-
         </div>
       </div>
 
