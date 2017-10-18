@@ -62,7 +62,6 @@ class DetailedEvent extends Component {
 
   render() {
     const {forObject, pageForm, reviewStatistic} = this.state;
-
     if (!!forObject) {
 
       switch (pageForm) {
