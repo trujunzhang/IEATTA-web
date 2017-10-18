@@ -40,7 +40,7 @@ class UserItem extends Component {
     const {user} = this.props;
 
     return (
-      <div className="media-story">
+      <div className="media-story align-vertical-center">
         <ul className="user-passport-info">
           <li className="user-name">
             <Link className="user-display-name title-font-weight-bold"

@@ -12,22 +12,19 @@ const {
 class IEAOrderedUsersInEventsLayout extends Component {
 
   renderRightPanel() {
-    const {userProfile} = this.props;
+    const {forObject} = this.props;
+    const reviewTitle = forObject.displayName;
+
     return (
       <div className="column column-beta ">
-
         <div className="user-details_bookmarks js-user-details_bookmarks">
 
-          <div className="user-details-bookmarks_content js-user-details-bookmarks_content">
-
             <Telescope.components.ReviewsList
-              key={userProfile.id}
-              forObject={this.props.userProfile}
-              reviewListType={REVIEW_LIST_TYPE_USER_PROFILE_ABOUT}
-              reviewTitle={userProfile.username}/>
-          </div>
+              key={forObject.id}
+              forObject={this.props.forObject}
+              reviewType="event"
+              reviewTitle={reviewTitle}/>
 
-          <Telescope.components.UserProfileAboutRightPanel {...this.props} />
         </div>
       </div>
 
@@ -42,7 +39,7 @@ class IEAOrderedUsersInEventsLayout extends Component {
           <Telescope.components.OrderedUserLeftMenusPanel {...this.props} />
         </div>
 
-        {/*{this.renderRightPanel()}*/}
+        {this.renderRightPanel()}
 
       </div>
 
