@@ -1,106 +1,106 @@
 import Telescope from '../../../lib'
 import React, {Component} from 'react'
-import Users from '../../../../lib/users'
 
-import {Link} from 'react-router'
+const {loadUsersWithoutAnonymousList} = require('../../../../actions').default
 
-import {getLoggedUserMenuLink} from '../../../../lib/link'
+import PaginationTerms from "../../../../lib/paginationTerms";
 
-const {
-  // 1.1 LOGGED user left menus.
-  LOGGED_USER_MENU_ABOUT,
-  LOGGED_USER_MENU_REVIEWS,
-  LOGGED_USER_MENU_BROWSER_PHOTOS,
-  LOGGED_USER_MENU_EVENTS,
-  LOGGED_USER_MENU_RECIPES,
-} = require('../../../../lib/constants').default
-
+const {byListId, getDefaultListTask} = require('../../../filter/filterPosts')
 
 class OrderedUserLeftMenusPanel extends Component {
 
-  render() {
-    const userProfileMenus = [
-      LOGGED_USER_MENU_ABOUT,
-      LOGGED_USER_MENU_REVIEWS,
-      LOGGED_USER_MENU_BROWSER_PHOTOS,
-      LOGGED_USER_MENU_EVENTS,
-      LOGGED_USER_MENU_RECIPES
-    ]
+  constructor(props) {
+    super(props)
+
+    const terms = PaginationTerms.generateTermsForOrderedUsersList(props)
+    this.state = {
+      terms: terms,
+      listTask: getDefaultListTask(terms),
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      listTask: byListId(nextProps.listContainerTasks, this.state.terms, this.state.listTask)
+    })
+  }
+
+  componentDidMount() {
+    this.loadMore()
+  }
+
+  loadMore() {
+    const {terms, listTask} = this.state;
+    this.props.dispatch(loadUsersWithoutAnonymousList(listTask, terms))
+  }
+
+  renderRows() {
+    const {listTask} = this.state
+
+    const {
+      results,
+      ready
+    } = listTask
+
+    if (!ready) {
+      return (
+        <Telescope.components.F8LoadingView/>
+      )
+    }
 
     return (
-      <div className="column column-alpha user-details_sidebar">
-        <div className="ysection">
-
-          <div className="titled-nav js-titled-nav">
-            <div className="titled-nav_menus">
-              <div className="titled-nav_menu">
-                {this.renderLeftMenuTitle()}
-
-                <ul className="titled-nav_items">
-                  {userProfileMenus.map((type, index) => {
-                    const row = Users.profileLeftMenus[type];
-                    const isActive = Users.isLeftMenuActive(row, this.props);
-                    const rowClass = "titled-nav_link" + (isActive ? " is-active" : "")
-                    return (
-                      <li key={index} className="titled-nav_item">
-                        <Link className={rowClass}
-                              to={getLoggedUserMenuLink(this.props.userProfile, type)}>
-                          <div className="titled-nav_link-content arrange arrange--middle arrange--6">
-
-                            <div className="arrange_unit">
-                               <span id="icon_24X24"
-                                     className={`icon icon--24-${row.tag} icon--size-24 titled-nav_icon`}>
-                                  <svg className="icon_svg">
-                                     <path d={row.svg}/>
-                                   </svg>
-                              </span>
-                            </div>
-
-                            <div className="arrange_unit arrange_unit--fill">
-                              <span className="titled-nav_link-label">{row.title}</span>
-                            </div>
-
-                          </div>
-
-                        </Link>
-
-                      </li>
-
-                    )
-                  })}
-                </ul>
-              </div>
-
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
+      <ul className="ylist">
+        {results.map(user =>
+          <Telescope.components.UserItem key={user.id} user={user}/>
+        )}
+      </ul>
     )
   }
 
-  renderLeftMenuTitle() {
+  renderEmptySection() {
+    const {listTask} = this.state
+
+    const {
+      results,
+      ready,
+      totalCount,
+    } = listTask
+
+    if (ready && results.length === 0) {
+      return (
+        <Telescope.components.F8EmptySection
+          title={`No Users Found`}
+          text=""/>
+      )
+    }
+    return null;
+  }
+
+  render() {
+
     return (
-      <div className="titled-nav-header">
-        <div className="arrange arrange--top">
+      <div className="ysection">
 
-          <div className="arrange_unit arrange_unit--fill">
-            <div className="titled-nav-header_content">
-              <h3>
-                {`${this.props.userProfile.username}'s Profile`}
-              </h3>
-            </div>
-          </div>
+        <Telescope.components.F8SectionHeaderTitle title={"Users List"}/>
 
-          <div className="arrange_unit">
-          </div>
+        {this.renderRows()}
 
+        <div className="u-space-t2 u-space-b2">
+          {this.renderEmptySection()}
         </div>
+
       </div>
     )
+  }
+
+}
+
+const {connect} = require('react-redux')
+
+function select(store) {
+  return {
+    listContainerTasks: store.listContainerTasks
   }
 }
 
-export default OrderedUserLeftMenusPanel;
+export default connect(select)(OrderedUserLeftMenusPanel)

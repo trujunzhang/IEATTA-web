@@ -38,7 +38,9 @@ class IEAOrderedUsersInEventsLayout extends Component {
   renderContent() {
     return (
       <div className="clearfix layout-block layout-n user-details_container">
-        <Telescope.components.UserProfileLeftMenusPanel {...this.props} />
+        <div className="column column-alpha user-details_sidebar">
+          <Telescope.components.OrderedUserLeftMenusPanel {...this.props} />
+        </div>
 
         {/*{this.renderRightPanel()}*/}
 
@@ -56,7 +58,7 @@ class IEAOrderedUsersInEventsLayout extends Component {
         </div>
 
         <div id="super-container" className="content-container">
-          {/*{this.renderContent()}*/}
+          {this.renderContent()}
         </div>
       </div>
     )

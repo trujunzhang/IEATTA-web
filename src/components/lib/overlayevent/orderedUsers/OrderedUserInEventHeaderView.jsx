@@ -18,7 +18,6 @@ class OrderedUserInEventHeaderView extends Component {
 
   render() {
     const {forObject} = this.props;
-    debugger
 
     return (
       <div className="content-container" style={{height: '184px'}}>

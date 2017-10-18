@@ -15,7 +15,6 @@ class OrderedUserItem extends Component {
     const {user} = peopleInEvent;
 
     return (
-
       <div className="media-avatar">
         <div className="photo-box pb-30s" data-hovercard-id="hCvy2SRZbqVllq6p-KTJ8g">
 
