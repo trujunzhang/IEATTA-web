@@ -20,6 +20,7 @@ const {
   // Right Buttons Group Type
   RIGHT_BUTTON_GROUP_ADD_EVENT,
   RIGHT_BUTTON_GROUP_ADD_RECIPE,
+  RIGHT_BUTTON_GROUP_MANAGER_ORDERED_USERS,
 } = require('./constants').default
 
 const TopRightButtonsGroup = {}
@@ -38,6 +39,12 @@ TopRightButtonsGroup.generateButtonSVGView = function (buttonType, modelType, fo
         title: "Add Recipe",
         svg: "M13.61 17h-.007a1.39 1.39 0 0 1-1.376-1.587L13 10l-2-1c0-5.373 1.375-8 3.25-8 .497 0 .75.336.75.75v13.86A1.39 1.39 0 0 1 13.61 17zM6.557 9.912l.35 5.59a1.41 1.41 0 1 1-2.813 0l.35-5.59A1.994 1.994 0 0 1 3 8V1.5a.5.5 0 0 1 1 0v5a.5.5 0 0 0 1 0v-5a.5.5 0 0 1 1 0v5a.5.5 0 0 0 1 0v-5a.5.5 0 0 1 1 0V8c0 .91-.61 1.67-1.443 1.912z",
         linkUrl: `/organization/recipe/new/${modelType}/${forObject.id}`
+      }
+    case RIGHT_BUTTON_GROUP_MANAGER_ORDERED_USERS:
+      return {
+        title: "Manager Users",
+        svg: "M13.61 17h-.007a1.39 1.39 0 0 1-1.376-1.587L13 10l-2-1c0-5.373 1.375-8 3.25-8 .497 0 .75.336.75.75v13.86A1.39 1.39 0 0 1 13.61 17zM6.557 9.912l.35 5.59a1.41 1.41 0 1 1-2.813 0l.35-5.59A1.994 1.994 0 0 1 3 8V1.5a.5.5 0 0 1 1 0v5a.5.5 0 0 0 1 0v-5a.5.5 0 0 1 1 0v5a.5.5 0 0 0 1 0v-5a.5.5 0 0 1 1 0V8c0 .91-.61 1.67-1.443 1.912z",
+        linkUrl: `/organization/event/users/${forObject.id}`
       }
   }
 

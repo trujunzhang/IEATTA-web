@@ -188,8 +188,8 @@ const createRoutes = (store) => {
       component: Telescope.components.OrganizationForNewEvent
     },
     {
-      path: 'organization/event/users/(:modelType)/(:forObjectId)',
-      component: Telescope.components.OrganizationForNewEvent
+      path: 'organization/event/users/(:eId)',
+      component: Telescope.components.DetailedEvent
     },
     //for recipe
     {

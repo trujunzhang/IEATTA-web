@@ -11,6 +11,7 @@ export default keyMirror({
 
   // Right Buttons Group Type
   RIGHT_BUTTON_GROUP_ADD_EVENT: null,
+  RIGHT_BUTTON_GROUP_MANAGER_ORDERED_USERS: null,
   RIGHT_BUTTON_GROUP_ADD_RECIPE: null,
 
   // Parse Object Model Status

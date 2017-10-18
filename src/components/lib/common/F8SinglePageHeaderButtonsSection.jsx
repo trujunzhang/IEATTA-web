@@ -27,6 +27,7 @@ const {
   // Right Buttons Group Type
   RIGHT_BUTTON_GROUP_ADD_EVENT,
   RIGHT_BUTTON_GROUP_ADD_RECIPE,
+  RIGHT_BUTTON_GROUP_MANAGER_ORDERED_USERS,
 } = require('../../../lib/constants').default
 
 import AppConstants from "../../../lib/appConstants";
@@ -83,11 +84,11 @@ class F8SinglePageHeaderButtonsSection extends Component {
           </span>
         )
       case PARSE_EVENTS:
-        // return (
-        //   <span className="ybtn-group clearfix">
-        //
-        //   </span>
-        // )
+        return (
+          <span className="ybtn-group clearfix">
+            {this.renderButtonByType(RIGHT_BUTTON_GROUP_MANAGER_ORDERED_USERS)}
+           </span>
+        )
         break;
       case PARSE_RECIPES:
         // return (

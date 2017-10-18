@@ -31,7 +31,6 @@ class DetailedEvent extends Component {
 
     this.state = this.initialState = {
       eid: props.params.eid,
-      eslug: props.params.eslug,
       // Detailed object
       forObject: null,
       reviewStatistic: null,
