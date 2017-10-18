@@ -79,13 +79,16 @@ Telescope.registerComponent('EventsList',                             require('.
 Telescope.registerComponent('RestaurantsSingleHeader',                require('./overlayrestaurant/page/RestaurantsSingleHeader.jsx').default)
 Telescope.registerComponent('RestaurantsFixMapMarker',                require('./overlayrestaurant/page/RestaurantsFixMapMarker.jsx').default)
 
-
 // overlayEvent
 Telescope.registerComponent('DetailedEvent',                            require('./overlayevent/DetailedEvent.jsx').default)
 Telescope.registerComponent('IEAEventsLayout',                          require('./overlayevent/IEAEventsLayout.jsx').default)
 Telescope.registerComponent('IEAEditEventLayout',                       require('./overlayevent/IEAEditEventLayout.jsx').default)
 Telescope.registerComponent('IEAEditEventLayout',                       require('./overlayevent/IEAEditEventLayout.jsx').default)
 Telescope.registerComponent('IEAOrderedUsersInEventsLayout',            require('./overlayevent/IEAOrderedUsersInEventsLayout.jsx').default)
+
+// overlayUser In Event
+Telescope.registerComponent('OrderedUserInEventHeaderView',            require('./overlayevent/orderedUsers/OrderedUserInEventHeaderView.jsx').default)
+Telescope.registerComponent('OrderedUserLeftMenusPanel',               require('./overlayevent/orderedUsers/OrderedUserLeftMenusPanel.jsx').default)
 
 // overlayEvent(page)
 Telescope.registerComponent('EventsDetail',                  require('./overlayevent/page/EventsDetail.jsx').default)

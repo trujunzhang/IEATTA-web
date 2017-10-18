@@ -138,9 +138,7 @@ class EventsSingleHeaderLeftPanel extends Component {
     return (
       <div className="event-details_info-card card card--horizontal" id="event-single-header-left-panel-wh">
         <div className="card_photo responsive-hidden-small">
-
           {this.renderLeft()}
-
         </div>
 
         {this.renderRight()}
@@ -160,12 +158,10 @@ class EventsSingleHeaderLeftPanel extends Component {
           iconExtension="rating"
           iconType="small"
           iconWidth="84"
-          iconHeight="303"
-        />
+          iconHeight="303"/>
         <span className="review-count rating-qualifier">
                 {`${reviewStatistic.total} reviews`}
-                </span>
-
+        </span>
       </div>
 
     )

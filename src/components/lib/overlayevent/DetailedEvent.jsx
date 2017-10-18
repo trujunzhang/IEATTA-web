@@ -66,7 +66,6 @@ class DetailedEvent extends Component {
 
       switch (pageForm) {
         case PAGE_ORDERED_USERS_IN_EVENT:
-          debugger
           return (<Telescope.components.IEAOrderedUsersInEventsLayout
             {...this.props}
             {...this.state}/>)
