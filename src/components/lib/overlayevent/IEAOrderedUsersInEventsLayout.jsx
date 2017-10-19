@@ -27,13 +27,16 @@ class IEAOrderedUsersInEventsLayout extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      leftUsersListTask: byListId(nextProps,  this.state.leftUsersListTerms, this.state.leftUsersListTask)
+      leftUsersListTask: byListId(nextProps, this.state.leftUsersListTerms, this.state.leftUsersListTask)
     })
   }
 
   componentDidMount() {
     const {leftUsersListTerms, leftUsersListTask} = this.state;
-    this.props.loadUsersWithoutAnonymousListAction(leftUsersListTask, leftUsersListTerms)
+    this.props.loadUsersWithoutAnonymousListAction({
+      listTask: leftUsersListTask,
+      terms: leftUsersListTerms
+    })
   }
 
   renderRightPanel() {

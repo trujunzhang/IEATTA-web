@@ -218,7 +218,7 @@ function loadPhotosBrowser(terms): ThunkAction {
   })
 }
 
-function loadUsersWithoutAnonymousList(listTask, terms): ThunkAction {
+function loadUsersWithoutAnonymousList({listTask, terms}): ThunkAction {
   return loadListByType({
     listTask,
     objectsQuery: getUsersParameters(terms), terms,

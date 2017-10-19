@@ -43,11 +43,14 @@ class F8PhotosSelectRightPanel extends Component {
       listTask: usersListTask
     }
 
-    props.dispatch(loadUsersWithoutAnonymousList(usersListTask, terms))
+    props.dispatch(loadUsersWithoutAnonymousList({
+      listTask: usersListTask,
+      terms
+    }))
   }
 
   componentWillReceiveProps(nextProps) {
-    const newListTask = byListId(nextProps,  this.state.terms, this.state.listTask);
+    const newListTask = byListId(nextProps, this.state.terms, this.state.listTask);
     const {selectedUserIndex, selectedUserId} = Users.getSelectedUserIndex(newListTask, nextProps);
 
     this.setState({
