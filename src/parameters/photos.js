@@ -27,10 +27,10 @@ export default class photosParameters {
   addParameters(terms) {
     switch (terms.photoParamsType) {
       case PHOTOS_TERMS_PARAM_NORMAL:
-        this.queryPhotoForEditRecipe(terms)
+        this.queryPhotoNormal(terms)
         break;
       case PHOTOS_TERMS_PARAM_FOR_EDIT_RECIPE:
-        this.queryPhotoNormal(terms)
+        this.queryPhotoForEditRecipe(terms)
         break;
     }
 
@@ -47,6 +47,8 @@ export default class photosParameters {
 
   queryPhotoNormal(terms) {
     const {objectSchemaName, forObjectId, creatorId, withoutPhotoType} = terms;
+
+    debugger
 
     if (!!creatorId) {// This is the query for the user profile's photos page.
       const instanceWithoutData = getInstanceWithoutData(objectSchemaName, creatorId)
