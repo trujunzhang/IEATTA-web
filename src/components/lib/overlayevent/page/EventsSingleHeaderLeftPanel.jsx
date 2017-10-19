@@ -33,7 +33,7 @@ class EventsSingleHeaderLeftPanel extends Component {
 
 
   renderLineOne() {
-    const {forObject, reviewStatistic} = this.props;
+    const {forObject} = this.props;
     const {restaurant} = forObject;
     const address = restaurant.address,
       array = address.split(',');
@@ -53,10 +53,10 @@ class EventsSingleHeaderLeftPanel extends Component {
                     d="M12 2C8.13 2 5 5.13 5 9c0 2.61 1.43 4.88 3.54 6.08L12 22l3.46-6.92A6.987 6.987 0 0 0 19 9c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/>
             </svg>
           </span>
-
           </div>
 
           <div className="media-story">
+
             <div className="media-title margin-bottom-4">
               <Link className="biz-name js-analytics-click" to={getRestaurantLink(restaurant)}>
                 <span>{restaurant.displayName}</span>

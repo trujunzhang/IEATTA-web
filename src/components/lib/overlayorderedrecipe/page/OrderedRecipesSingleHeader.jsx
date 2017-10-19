@@ -12,7 +12,9 @@ class OrderedRecipesSingleHeader extends Component {
     return (
       <div className="biz-page-subheader">
         <div className="mapbox-container">
-          <Telescope.components.F8RestaurantMapSection mapInfo={mapInfo}/>
+          <Telescope.components.F8RestaurantMapSection mapInfo={mapInfo}
+                                                       showRestaurantName={true}
+                                                       restaurant={forObject.restaurant}/>
         </div>
         <Telescope.components.F8SingleHeaderRightPhotos  {...this.props}/>
       </div>

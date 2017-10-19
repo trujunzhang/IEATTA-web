@@ -1,7 +1,11 @@
 import Telescope from '../index'
 import React, {Component} from 'react'
 
-import {getEditRestaurantLink} from '../../../lib/link'
+
+import {
+  getEditRestaurantLink,
+  getRestaurantLink
+} from '../../../lib/link'
 import {Link} from 'react-router'
 
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
@@ -63,7 +67,11 @@ class F8RestaurantMapSection extends Component {
             </svg>
           </span>
           {showEditButton ? this.renderRightEditButton() : null}
+
           <div className="map-box-address u-space-l4">
+
+            {this.props.showRestaurantName && this.renderRestaurantName()}
+
             <strong className="street-address">
               {rows.map((item, index) => {
                 return (<div key={'address-' + index}>{item}</div>)
@@ -96,6 +104,17 @@ class F8RestaurantMapSection extends Component {
     )
   }
 
+  renderRestaurantName() {
+    const {restaurant} = this.props;
+    return (
+      <div className="media-title margin-bottom-4">
+        <Link className="biz-name js-analytics-click" to={getRestaurantLink(restaurant)}>
+          <span>{restaurant.displayName}</span>
+        </Link>
+      </div>
+    )
+  }
+
   render() {
     const {mapInfo} = this.props,
       {onlyMap} = mapInfo;
@@ -118,5 +137,14 @@ class F8RestaurantMapSection extends Component {
     )
   }
 }
+
+
+F8RestaurantMapSection.propTypes = {
+  showRestaurantName: React.PropTypes.bool
+};
+
+F8RestaurantMapSection.defaultProps = {
+  showRestaurantName: false
+};
 
 export default F8RestaurantMapSection;
