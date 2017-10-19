@@ -110,7 +110,21 @@ async function _writeOnlineParseObject(editModelType,
   ])
 }
 
-
+/**
+ * V2: 30/09/2017
+ * Using cloudinary API to save uploaded Images.
+ * Just need to invoke the cloud method 'invokeCloudinary'
+ *  var result = {
+                    "cloudinaryId": cloudinaryId,
+                    'originalUrl': cloudinaryUrl,
+                    'thumbnailUrl': thumbnailUrl
+                }
+ *
+ * @param newPhotoInstance
+ * @param file
+ * @returns {Promise.<*[]>}
+ * @private
+ */
 async function _uploadPhoto({newPhotoInstance, file}): Promise<Array<Action>> {
   const thumbnailFile = new Parse.File('image', file)
   await thumbnailFile.save()

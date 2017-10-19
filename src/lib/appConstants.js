@@ -113,18 +113,33 @@ AppConstants.getRelativeModel = function (modelType, objectSchemaName, parseRela
 
 }
 
+/**
+ * So important to upload photo for Recipe,
+ * Because must save recipe and it's restaurant together.
+ *
+ * @param modelType
+ * @param forObject
+ * @param currentUser
+ * @returns {{objectId, uniqueId, photoType: *, forObjectId, restaurant, recipe, creator: {id: string, uniqueId: string}}}
+ */
 AppConstants.generateNewRealmPhotoObject = function ({modelType, forObject, currentUser}) { // (For Web)
   let creator = {id: '', uniqueId: ''}
   if (currentUser.isLoggedIn) {
     creator = {id: currentUser.id, uniqueId: currentUser.uniqueId}
   }
+
+  let restaurantPointer = AppConstants.getRelativeModel(modelType, PARSE_RESTAURANTS, forObject);
+  if (modelType === 'recipe') { // Here, also need to save restaurant and recipe together.
+    restaurantPointer = AppConstants.getRelativeModel('restaurant', PARSE_RESTAURANTS, forObject.restaurant);
+  }
+
   return {
     objectId: UUID.create().toString(),
     uniqueId: UUID.create().toString(),
     photoType: modelType,
     forObjectId: forObject.id,
     // Pointer
-    restaurant: AppConstants.getRelativeModel(modelType, PARSE_RESTAURANTS, forObject),
+    restaurant: restaurantPointer,
     recipe: AppConstants.getRelativeModel(modelType, PARSE_RECIPES, forObject),
     creator,
   }

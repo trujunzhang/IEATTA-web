@@ -18,6 +18,7 @@ const {
   UPLOAD_IMAGE_FILE_DROP,
   UPLOAD_IMAGE_FILE_PREVIEW,
   ALERT_TYPE_ERROR,
+  ALERT_TYPE_SUCCESS,
 } = require('../../../../lib/constants').default
 
 class IEAAddPhotosForm extends Component {
@@ -34,6 +35,8 @@ class IEAAddPhotosForm extends Component {
   async onButtonPress() {
     const newPhotoInstance = AppConstants.generateNewRealmPhotoObject(this.props);
 
+    debugger
+
     const {saveUploadPhotoAction, showAlertMessageAction} = this.props;
 
     const file = this.state.file;
@@ -47,7 +50,7 @@ class IEAAddPhotosForm extends Component {
       file,
     }
     try {
-      await Promise.race([saveUploadPhotoAction(_object), timeout(15000),]);
+      // await Promise.race([saveUploadPhotoAction(_object), timeout(15000),]);
     } catch (e) {
       this.props.actions.updateModelFailure(e);
       haveError = true;
@@ -63,6 +66,7 @@ class IEAAddPhotosForm extends Component {
           formType: UPLOAD_IMAGE_FILE_DROP
         });
         this.props.actions.updateModelSuccess();
+        showAlertMessageAction({type: ALERT_TYPE_SUCCESS, text: 'Uploaded the photo successfully!'})
       }
     }
   }
@@ -89,7 +93,7 @@ class IEAAddPhotosForm extends Component {
 
   renderFilePreview() {
     const {editModel} = this.props;
-    const isDisabled = (!editModel.form.isValid || editModel.form.isFetching);
+    const isDisabled = ( editModel.form.isFetching);
 
     return (
       <div className="post-upload-container no-js-hidden">
@@ -171,6 +175,8 @@ class IEAAddPhotosForm extends Component {
   renderFileDrop() {
     return (
       <div className="upload upload--photos js-html5-uploader hidden" style={{'display': 'block'}}>
+
+        <Telescope.components.F8AppAlertSection/>
 
         <Dropzone
           multiple={false}
