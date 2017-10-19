@@ -52,19 +52,21 @@ class DetailedEvent extends Component {
   }
 
   componentDidMount() {
+    const {loadEventPageAction, invokeParseCloudMethodAction} = this.props;
     const parseId = this.state.eid;
-    this.props.dispatch(loadEventPage(parseId))
 
-    const {pageForm} = this.state;
+    loadEventPageAction(parseId)
 
-    switch (pageForm) {
+    switch (this.state.pageForm) {
       case PAGE_ORDERED_USERS_IN_EVENT:
         break;
       default:
-        this.props.dispatch(invokeParseCloudMethod(CLOUD_STATISTIC_FOR_REVIEWS, {
-          reviewType: this.state.modelType,
-          forObjectId: parseId,
-        }, parseId))
+        invokeParseCloudMethodAction(
+          CLOUD_STATISTIC_FOR_REVIEWS, {
+            reviewType: this.state.modelType,
+            forObjectId: parseId,
+          },
+          parseId)
         break;
     }
   }
@@ -101,11 +103,18 @@ class DetailedEvent extends Component {
 
 const {connect} = require('react-redux')
 
+function mapDispatchToProps(dispatch) {
+  return {
+    loadEventPageAction: (object) => dispatch(loadEventPage(object)),
+    invokeParseCloudMethodAction: (methodType, params, parseId) => dispatch(invokeParseCloudMethod(methodType, params, parseId)),
+  }
+}
+
 function select(store) {
   return {
     detailedModelsOverlay: store.detailedModelsOverlay
   }
 }
 
-export default connect(select)(DetailedEvent)
+export default connect(select, mapDispatchToProps)(DetailedEvent)
 

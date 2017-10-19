@@ -128,13 +128,13 @@ class IEAEditReviewLayout extends Component {
       const message = e.message || e;
       if (message !== 'Timed out' && message !== 'Canceled by user') {
         errorMessage = message;
-        this.props.dispatch(showAlertMessage({type: ALERT_TYPE_ERROR, text: errorMessage}))
+        showAlertMessage({type: ALERT_TYPE_ERROR, text: errorMessage})
       }
     } finally {
       if (!!errorMessage) {
       } else {
         this.props.actions.updateModelSuccess();
-        this.props.dispatch(showAlertMessage({type: ALERT_TYPE_SUCCESS, text: 'Saved the review successfully!'}))
+        showAlertMessage({type: ALERT_TYPE_SUCCESS, text: 'Saved the review successfully!'})
         // this.props.router.goBack();
       }
     }
@@ -277,6 +277,7 @@ function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(editModelActions, dispatch),
     writeOnlineParseObjectAction: (object) => dispatch(writeOnlineParseObject(object)),
+    showAlertMessageAction: (object) => dispatch(showAlertMessage(object)),
   }
 }
 

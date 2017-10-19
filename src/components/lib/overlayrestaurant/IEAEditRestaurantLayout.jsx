@@ -97,7 +97,7 @@ class IEAEditRestaurantLayout extends Component {
 
 
   async onButtonPress() {
-    const {writeOnlineParseObjectAction} = this.props;
+    const {writeOnlineParseObjectAction, showAlertMessageAction} = this.props;
 
     const editModelType = this.props.editModel.form.editModelType;
 
@@ -147,13 +147,13 @@ class IEAEditRestaurantLayout extends Component {
       const message = e.message || e;
       if (message !== 'Timed out' && message !== 'Canceled by user') {
         errorMessage = message;
-        this.props.dispatch(showAlertMessage({type: ALERT_TYPE_ERROR, text: errorMessage}))
+        showAlertMessageAction({type: ALERT_TYPE_ERROR, text: errorMessage})
       }
     } finally {
       if (!!errorMessage) {
       } else {
         this.props.actions.updateModelSuccess();
-        this.props.dispatch(showAlertMessage({type: ALERT_TYPE_SUCCESS, text: 'Saved the restaurant successfully!'}))
+        showAlertMessageAction({type: ALERT_TYPE_SUCCESS, text: 'Saved the restaurant successfully!'})
       }
     }
   }
@@ -245,7 +245,6 @@ class IEAEditRestaurantLayout extends Component {
     return (
       <div>
         <div className="main-content-wrap main-content-wrap--full">
-
           <div id="super-container" className="content-container">
 
             <Telescope.components.F8AppAlertSection/>
@@ -292,6 +291,7 @@ function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(editModelActions, dispatch),
     writeOnlineParseObjectAction: (object) => dispatch(writeOnlineParseObject(object)),
+    showAlertMessageAction: (object) => dispatch(showAlertMessage(object)),
   }
 }
 

@@ -54,7 +54,7 @@ class IEAAddPhotosForm extends Component {
       const message = e.message || e;
       if (message !== 'Timed out' && message !== 'Canceled by user') {
         errorMessage = message;
-        this.props.dispatch(showAlertMessage({type: ALERT_TYPE_ERROR, text: errorMessage}))
+        showAlertMessage({type: ALERT_TYPE_ERROR, text: errorMessage})
       }
     } finally {
       if (!haveError) {
@@ -215,6 +215,7 @@ function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(editModelActions, dispatch),
     saveUploadPhotoAction: (object) => dispatch(uploadPhoto(object)),
+    showAlertMessageAction: (object) => dispatch(showAlertMessage(object)),
   }
 }
 
