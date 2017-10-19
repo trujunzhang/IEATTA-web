@@ -28,7 +28,7 @@ class EventsList extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const newListTask = byListId(nextProps.listContainerTasks, this.state.terms, this.state.listTask)
+    const newListTask = byListId(nextProps,  this.state.terms, this.state.listTask)
     this.setState({
       listTask: newListTask
     })

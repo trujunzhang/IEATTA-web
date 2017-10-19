@@ -58,7 +58,7 @@ export function getDefaultListTask(terms: Any, lastTask = {}) {
  * @param lastTask
  * @returns {Any}
  */
-export function byListId(listContainerTasks: Any, {listId}, lastTask: Any) {
+export function byListId({listContainerTasks}, {listId}, lastTask: Any) {
   const taskObject = convertToObject(listContainerTasks)
   let task = taskObject[listId]
   if (!!task) {
@@ -81,7 +81,7 @@ export function getModelByObjectId(nextProps: Any, forParseId: string, lastModel
   return lastModel;
 }
 
-export function generateMarkers(listContainerTasks: Any, listId: string) {
+export function generateMarkers({listContainerTasks}, listId: string) {
   const taskObject = convertToObject(listContainerTasks)
 
   const task = (taskObject[listId] || {})

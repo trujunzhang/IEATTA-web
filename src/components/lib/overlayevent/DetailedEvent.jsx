@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 
 const {
   loadEventPage,
+  loadUsersWithoutAnonymousList,
   loadRestaurantPage,
   loadPhotosBrowser,
   invokeParseCloudMethod
@@ -107,6 +108,7 @@ const {connect} = require('react-redux')
 function mapDispatchToProps(dispatch) {
   return {
     loadEventPageAction: (object) => dispatch(loadEventPage(object)),
+    loadUsersWithoutAnonymousListAction: (object) => dispatch(loadUsersWithoutAnonymousList(object)),
     invokeParseCloudMethodAction: (methodType, params, parseId) => dispatch(invokeParseCloudMethod(methodType, params, parseId)),
   }
 }

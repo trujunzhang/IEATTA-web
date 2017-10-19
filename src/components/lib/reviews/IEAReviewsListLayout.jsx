@@ -56,7 +56,7 @@ class IEAReviewsListLayout extends Component {
     };
 
     const newReviewsTerms = PaginationTerms.generateTermsForReviewsList({reviewType, forObject, location}, 'page')
-    const newListTask = byListId(nextProps.listContainerTasks, this.state.reviewTerms, this.state.listTask);
+    const newListTask = byListId(nextProps,  this.state.reviewTerms, this.state.listTask);
 
     this.setState({
       listTask: newListTask

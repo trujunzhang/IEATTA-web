@@ -36,8 +36,8 @@ class IEARestaurantsHome extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const listTask = byListId(nextProps.listContainerTasks, this.state.terms, this.state.listTask);
-    const markers = generateMarkers(nextProps.listContainerTasks, this.state.terms.listId);
+    const listTask = byListId(nextProps, this.state.terms, this.state.listTask);
+    const markers = generateMarkers(nextProps, this.state.terms.listId);
 
     const defaultMarker = markers.length > 0 ? markers[0] : null;
 

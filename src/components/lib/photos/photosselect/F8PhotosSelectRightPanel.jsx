@@ -47,7 +47,7 @@ class F8PhotosSelectRightPanel extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const newListTask = byListId(nextProps.listContainerTasks, this.state.terms, this.state.listTask);
+    const newListTask = byListId(nextProps,  this.state.terms, this.state.listTask);
     const {selectedUserIndex, selectedUserId} = Users.getSelectedUserIndex(newListTask, nextProps);
 
     this.setState({

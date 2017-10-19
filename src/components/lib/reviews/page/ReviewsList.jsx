@@ -31,7 +31,7 @@ class ReviewsList extends Component {
     const lastSort = this.state.terms.sort_by || '';
 
     const newTerms = PaginationTerms.generateTermsForReviewsList(nextProps)
-    const newListTask = byListId(nextProps.listContainerTasks, newTerms, this.state.listTask);
+    const newListTask = byListId(nextProps,  newTerms, this.state.listTask);
 
     this.setState({
       terms: newTerms,

@@ -69,7 +69,7 @@ class OrderedRecipes extends Component {
 
     const newPageForm = getPageFormType(PARSE_RECIPES, nextProps, this.state.pageForm)
     const newPhotosTerms = PaginationTerms.generatePhotoTerm(PARSE_RECIPES, nextProps.params.oid, newPageForm, nextProps)
-    const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms, this.state.photosListTask);
+    const photosListTask = byListId(nextProps,  this.state.photosTerms, this.state.photosListTask);
 
     this.setState({
       // Detailed object

@@ -21,7 +21,7 @@ class OrderedUserList extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      listTask: byListId(nextProps.listContainerTasks, this.state.terms, this.state.listTask)
+      listTask: byListId(nextProps,  this.state.terms, this.state.listTask)
     })
   }
 

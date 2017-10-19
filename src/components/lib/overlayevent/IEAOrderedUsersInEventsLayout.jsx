@@ -17,6 +17,7 @@ const {
 class IEAOrderedUsersInEventsLayout extends Component {
   constructor(props, context) {
     super(props)
+
     const leftUsersListTerms = PaginationTerms.generateTermsForOrderedUsersList(props)
     this.state = {
       leftUsersListTerms: leftUsersListTerms,
@@ -26,13 +27,13 @@ class IEAOrderedUsersInEventsLayout extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      leftUsersListTask: byListId(nextProps.listContainerTasks, this.state.leftUsersListTerms, this.state.leftUsersListTask)
+      leftUsersListTask: byListId(nextProps,  this.state.leftUsersListTerms, this.state.leftUsersListTask)
     })
   }
 
   componentDidMount() {
     const {leftUsersListTerms, leftUsersListTask} = this.state;
-    this.props.dispatch(loadUsersWithoutAnonymousList(leftUsersListTask, leftUsersListTerms))
+    this.props.loadUsersWithoutAnonymousListAction(leftUsersListTask, leftUsersListTerms)
   }
 
   renderRightPanel() {
@@ -43,11 +44,11 @@ class IEAOrderedUsersInEventsLayout extends Component {
       <div className="column column-beta ">
         <div className="user-details_bookmarks js-user-details_bookmarks">
 
-          <Telescope.components.ReviewsList
-            key={forObject.id}
-            forObject={this.props.forObject}
-            reviewType="event"
-            reviewTitle={reviewTitle}/>
+          {/*<Telescope.components.ReviewsList*/}
+          {/*key={forObject.id}*/}
+          {/*forObject={this.props.forObject}*/}
+          {/*reviewType="event"*/}
+          {/*reviewTitle={reviewTitle}/>*/}
 
         </div>
       </div>

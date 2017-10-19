@@ -29,7 +29,7 @@ class IEARecipesListForRestaurantLayout extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const newListTask = byListId(nextProps.listContainerTasks, this.state.recipesListTerms, this.state.listTask);
+    const newListTask = byListId(nextProps,  this.state.recipesListTerms, this.state.listTask);
 
     this.setState({
       listTask: newListTask
