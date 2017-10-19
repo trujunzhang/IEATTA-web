@@ -45,8 +45,6 @@ class OrganizationForRecipe extends Component {
   constructor(props, context) {
     super(props)
 
-    debugger
-
     const {modelType, forObjectId, recipeId} = props.params;
     const {objectSchemaName} = AppConstants.realmObjects[modelType]
     const pageForm = getPageFormType(objectSchemaName, props, null)
