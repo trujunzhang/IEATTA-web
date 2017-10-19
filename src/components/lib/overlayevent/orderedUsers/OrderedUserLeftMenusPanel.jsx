@@ -31,7 +31,8 @@ class OrderedUserLeftMenusPanel extends Component {
     const {
       results,
       ready
-    } = leftUsersListTask
+    } = leftUsersListTask;
+
 
     if (!ready) {
       return (
@@ -120,12 +121,4 @@ class OrderedUserLeftMenusPanel extends Component {
 
 }
 
-const {connect} = require('react-redux')
-
-function select(store) {
-  return {
-    listContainerTasks: store.listContainerTasks
-  }
-}
-
-export default connect(select)(OrderedUserLeftMenusPanel)
+export default OrderedUserLeftMenusPanel;

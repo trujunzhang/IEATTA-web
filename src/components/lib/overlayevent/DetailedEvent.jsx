@@ -115,7 +115,8 @@ function mapDispatchToProps(dispatch) {
 
 function select(store) {
   return {
-    detailedModelsOverlay: store.detailedModelsOverlay
+    detailedModelsOverlay: store.detailedModelsOverlay,
+    listContainerTasks: store.listContainerTasks
   }
 }
 
