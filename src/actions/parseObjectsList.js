@@ -96,6 +96,7 @@ async function _loadListByType(listTask,
 
   const totalCount = await objectsQuery.count()
 
+
   let results = [];
   if (allItems) {
     results = await objectsQuery.find()
