@@ -139,6 +139,29 @@ PaginationTerms.generateTermsForRestaurantList = function (props) {
   };
 }
 
+PaginationTerms.generatePhotoTermForRecipe = function (objectSchemaName,
+                                                       forObjectId,
+                                                       pageForm = PAGE_MAIN_FORM,
+                                                       props) {
+
+  const limit = Photos.config.paginationCountPerPage;
+  const listId = `photos-page-view-for-parseId-${forObjectId}`
+
+  const currentPageIndex = getCurrentPageIndex(props)
+
+  const photoTerms = {
+    withoutPhotoType: true,
+    listId,
+    forObjectId,
+    objectSchemaName,
+    allItems: (limit === -1),
+    limit: limit,
+    pageIndex: parseInt(currentPageIndex)
+  }
+
+  return photoTerms;
+}
+
 
 PaginationTerms.generatePhotoTerm = function (objectSchemaName,
                                               forObjectId,

@@ -24,6 +24,7 @@ const {
   PAGE_SINGLE_SELECTED_PHOTO_FORM,
   CLOUD_STATISTIC_FOR_REVIEWS,
   PARSE_RESTAURANTS,
+  PARSE_RECIPES,
 } = require('../../../lib/constants').default
 
 const {
@@ -44,10 +45,12 @@ class OrganizationForRecipe extends Component {
   constructor(props, context) {
     super(props)
 
+    debugger
+
     const {modelType, forObjectId, recipeId} = props.params;
     const {objectSchemaName} = AppConstants.realmObjects[modelType]
     const pageForm = getPageFormType(objectSchemaName, props, null)
-    const photosTerms = PaginationTerms.generatePhotoTerm(objectSchemaName, props.params.forObjectId, pageForm, props, false, true, true)
+    const photosTerms = PaginationTerms.generatePhotoTermForRecipe(objectSchemaName, props.params.forObjectId, pageForm, props)
 
     let forObject = null;
     if (pageForm === MODEL_FORM_TYPE_NEW) {
@@ -80,7 +83,7 @@ class OrganizationForRecipe extends Component {
     const {modelType, forObjectId, recipeId} = nextProps.params;
 
     const newPageForm = getPageFormType(objectSchemaName, nextProps, this.state.pageForm)
-    const newPhotosTerms = PaginationTerms.generatePhotoTerm(objectSchemaName, forObjectId, newPageForm, nextProps, false, true, true)
+    const newPhotosTerms = PaginationTerms.generatePhotoTermForRecipe(objectSchemaName, forObjectId, newPageForm, nextProps)
     const photosListTask = byListId(nextProps.listContainerTasks, this.state.photosTerms, this.state.photosListTask);
 
     const newRestaurant = getModelByObjectId(nextProps, forObjectId, this.state.forRelationObject);

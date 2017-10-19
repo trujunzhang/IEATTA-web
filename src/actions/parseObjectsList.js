@@ -211,6 +211,7 @@ function loadRecipesListForCreator(listTask, terms): ThunkAction {
 }
 
 function loadPhotosBrowser(terms): ThunkAction {
+  debugger
   return loadListByType({
     listTask: terms,
     objectsQuery: getPhotosParameters(terms), terms,
