@@ -89,7 +89,6 @@ Telescope.registerComponent('IEAOrderedUsersInEventsLayout',            require(
 // overlayUser In Event
 Telescope.registerComponent('OrderedUserInEventHeaderView',            require('./overlayevent/orderedUsers/OrderedUserInEventHeaderView.jsx').default)
 Telescope.registerComponent('OrderedUserLeftMenusPanel',               require('./overlayevent/orderedUsers/OrderedUserLeftMenusPanel.jsx').default)
-Telescope.registerComponent('UserItem',                                require('./overlayevent/orderedUsers/UserItem.jsx').default)
 
 // overlayEvent(page)
 Telescope.registerComponent('EventsDetail',                  require('./overlayevent/page/EventsDetail.jsx').default)
