@@ -14,6 +14,9 @@ const {
   EVENTS_LIST_FOR_RESTAURANT,
   PAGE_PHOTOS_BROWSER_FORM,
   PAGE_MAIN_FORM,
+  // Photos Terms parameters type
+  PHOTOS_TERMS_PARAM_NORMAL,
+  PHOTOS_TERMS_PARAM_FOR_EDIT_RECIPE,
 } = require('./constants').default
 
 import Photos from "./photos";
@@ -150,6 +153,7 @@ PaginationTerms.generatePhotoTermForRecipe = function (objectSchemaName,
   const currentPageIndex = getCurrentPageIndex(props)
 
   const photoTerms = {
+    photoParamsType: PHOTOS_TERMS_PARAM_FOR_EDIT_RECIPE,
     withoutPhotoType: true,
     listId,
     forObjectId,
@@ -186,6 +190,7 @@ PaginationTerms.generatePhotoTerm = function (objectSchemaName,
   const extendProps = isUserOwnerPhotos ? {creatorId: forObjectId} : {}
 
   const photoTerms = {
+    photoParamsType: PHOTOS_TERMS_PARAM_NORMAL,
     ...extendProps,
     withoutPhotoType,
     listId,

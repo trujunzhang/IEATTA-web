@@ -13,7 +13,10 @@ const {
  * The states were interested in
  */
 const {
-  PARSE_USERS
+  PARSE_USERS,
+  // Photos Terms parameters type
+  PHOTOS_TERMS_PARAM_NORMAL,
+  PHOTOS_TERMS_PARAM_FOR_EDIT_RECIPE,
 } = require('../lib/constants').default
 
 export default class photosParameters {
@@ -22,7 +25,27 @@ export default class photosParameters {
   }
 
   addParameters(terms) {
+    switch (terms.photoParamsType) {
+      case PHOTOS_TERMS_PARAM_NORMAL:
+        this.queryPhotoForEditRecipe(terms)
+        break;
+      case PHOTOS_TERMS_PARAM_FOR_EDIT_RECIPE:
+        this.queryPhotoNormal(terms)
+        break;
+    }
 
+    return this
+  }
+
+  queryPhotoForEditRecipe(terms) {
+    const {objectSchemaName, forObjectId} = terms;
+
+    const instanceWithoutData = getInstanceWithoutData(objectSchemaName, forObjectId)
+    this.query.equalTo('restaurant', instanceWithoutData)
+  }
+
+
+  queryPhotoNormal(terms) {
     const {objectSchemaName, forObjectId, creatorId, withoutPhotoType} = terms;
 
     if (!!creatorId) {// This is the query for the user profile's photos page.
@@ -42,7 +65,6 @@ export default class photosParameters {
       }
     }
 
-    return this
   }
 
   end() {

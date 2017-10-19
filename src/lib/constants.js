@@ -1,6 +1,10 @@
 import keyMirror from 'key-mirror'
 
 export default keyMirror({
+  // Photos Terms parameters type
+  PHOTOS_TERMS_PARAM_NORMAL: null,
+  PHOTOS_TERMS_PARAM_FOR_EDIT_RECIPE: null,
+
   // Users ordered in event
   PAGE_ORDERED_USERS_IN_EVENT: null,
 
