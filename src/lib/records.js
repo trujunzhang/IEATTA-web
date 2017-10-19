@@ -150,7 +150,9 @@ Records.createOnlineParseInstance = async function (editModelType, onlineParseOb
         onlineParseObject.set('reviewType', localRecorder.reviewType)
 
         // step2: the logged user submitted the review.
-        Records.setParseObjectFieldWithoutData('creator', onlineParseObject, localRecorder.currentUserId)
+        if (!!localRecorder.currentUserId) {
+          onlineParseObject.set('creator', getInstanceWithoutData(PARSE_USERS, localRecorder.currentUserId))
+        }
 
         // step3: set the relation by review type.
         Records.setParseObjectFieldWithoutData(localRecorder.reviewType, onlineParseObject, localRecorder.forObjectId)
