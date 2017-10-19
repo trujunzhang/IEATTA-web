@@ -54,16 +54,24 @@ class DetailedEvent extends Component {
   componentDidMount() {
     const parseId = this.state.eid;
     this.props.dispatch(loadEventPage(parseId))
-    this.props.dispatch(invokeParseCloudMethod(CLOUD_STATISTIC_FOR_REVIEWS, {
-      reviewType: this.state.modelType,
-      forObjectId: parseId,
-    }, parseId))
+
+    const {pageForm} = this.state;
+
+    switch (pageForm) {
+      case PAGE_ORDERED_USERS_IN_EVENT:
+        break;
+      default:
+        this.props.dispatch(invokeParseCloudMethod(CLOUD_STATISTIC_FOR_REVIEWS, {
+          reviewType: this.state.modelType,
+          forObjectId: parseId,
+        }, parseId))
+        break;
+    }
   }
 
   render() {
     const {forObject, pageForm, reviewStatistic} = this.state;
     if (!!forObject) {
-
       switch (pageForm) {
         case PAGE_ORDERED_USERS_IN_EVENT:
           return (<Telescope.components.IEAOrderedUsersInEventsLayout

@@ -42,12 +42,10 @@ class IEAOrderedUsersInEventsLayout extends Component {
         {this.renderRightPanel()}
 
       </div>
-
     )
   }
 
   render() {
-
     return (
       <div className="main-content-wrap main-content-wrap--full">
         <div className="top-shelf top-shelf-grey">
