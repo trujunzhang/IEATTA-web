@@ -29,6 +29,7 @@ class UserProfileLeftMenusPanel extends Component {
 
     return (
       <div className="column column-alpha user-details_sidebar">
+
         <div className="ysection">
 
           <div className="titled-nav js-titled-nav">
@@ -94,13 +95,11 @@ class UserProfileLeftMenusPanel extends Component {
             </div>
           </div>
 
-          <div className="arrange_unit">
-          </div>
-
         </div>
       </div>
     )
   }
+
 }
 
 export default UserProfileLeftMenusPanel;
