@@ -35,8 +35,6 @@ class IEAAddPhotosForm extends Component {
   async onButtonPress() {
     const newPhotoInstance = AppConstants.generateNewRealmPhotoObject(this.props);
 
-    debugger
-
     const {saveUploadPhotoAction, showAlertMessageAction} = this.props;
 
     const file = this.state.file;
@@ -50,7 +48,7 @@ class IEAAddPhotosForm extends Component {
       file,
     }
     try {
-      // await Promise.race([saveUploadPhotoAction(_object), timeout(15000),]);
+      await Promise.race([saveUploadPhotoAction(_object), timeout(15000)]);
     } catch (e) {
       this.props.actions.updateModelFailure(e);
       haveError = true;
@@ -98,7 +96,10 @@ class IEAAddPhotosForm extends Component {
     return (
       <div className="post-upload-container no-js-hidden">
 
+        <Telescope.components.F8AppAlertSection/>
+
         <div className="arrange arrange--middle finish-upload-header">
+
 
           <div className="arrange_unit">
 

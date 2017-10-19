@@ -126,8 +126,25 @@ async function _writeOnlineParseObject(editModelType,
  * @private
  */
 async function _uploadPhoto({newPhotoInstance, file}): Promise<Array<Action>> {
-  const thumbnailFile = new Parse.File('image', file)
-  await thumbnailFile.save()
+  const onlineParseTempFile = new Parse.File('image', file)
+  await onlineParseTempFile.save()
+  const onlineParseTempImageUrl = onlineParseTempFile._url;
+
+  let cloudinaryResult = null;
+  await Parse.Cloud.run('invokeCloudinary', {imageURL: onlineParseTempImageUrl}, {
+    success: (model) => {
+      cloudinaryResult = model;
+    },
+    error: (error) => {
+      debugger
+    }
+  })
+
+
+  if (!cloudinaryResult) {
+    throw new Error('You need to set a proper User Id before query posts')
+  }
+
   const photo = createParseInstance(PARSE_PHOTOS)
 
   // step1: generate photo.
@@ -136,8 +153,8 @@ async function _uploadPhoto({newPhotoInstance, file}): Promise<Array<Action>> {
     photo,
     PARSE_PHOTOS,
     Object.assign({}, newPhotoInstance, {
-      thumbnail: thumbnailFile,
-      original: thumbnailFile,
+      thumbnailUrl: cloudinaryResult.thumbnailUrl,
+      originalUrl: cloudinaryResult.originalUrl,
     })
   )
 

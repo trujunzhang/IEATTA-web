@@ -118,8 +118,8 @@ Records.createOnlineParseInstance = async function (editModelType, onlineParseOb
       // step1: common fields.
       onlineParseObject.set('photoType', localRecorder.photoType)
       // Photo images.
-      onlineParseObject.set('thumbnail', localRecorder.thumbnail)
-      onlineParseObject.set('original', localRecorder.thumbnail)
+      onlineParseObject.set('thumbnailUrl', localRecorder.thumbnailUrl)
+      onlineParseObject.set('originalUrl', localRecorder.originalUrl)
 
       // step2: the logged user submitted the photo(for web).
       if (!!localRecorder.creator) {
@@ -129,6 +129,13 @@ Records.createOnlineParseInstance = async function (editModelType, onlineParseOb
 
       // step3: set the relation by photo type(for web).
       Records.setParseObjectFieldWithoutData(localRecorder.photoType, onlineParseObject, localRecorder.forObjectId)
+
+      // step4: save the restaurant and recipe together.
+      if (localRecorder.photoType === 'recipe') {
+        _online_restaurant_instance = getInstanceWithoutData(PARSE_RESTAURANTS, localRecorder.restaurant.id)
+        onlineParseObject.set('restaurant', _online_restaurant_instance)
+      }
+
 
       break;
 
