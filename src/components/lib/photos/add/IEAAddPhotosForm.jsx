@@ -34,7 +34,7 @@ class IEAAddPhotosForm extends Component {
   async onButtonPress() {
     const newPhotoInstance = AppConstants.generateNewRealmPhotoObject(this.props);
 
-    const {saveUploadPhotoAction} = this.props;
+    const {saveUploadPhotoAction, showAlertMessageAction} = this.props;
 
     const file = this.state.file;
 
@@ -54,7 +54,7 @@ class IEAAddPhotosForm extends Component {
       const message = e.message || e;
       if (message !== 'Timed out' && message !== 'Canceled by user') {
         errorMessage = message;
-        showAlertMessage({type: ALERT_TYPE_ERROR, text: errorMessage})
+        showAlertMessageAction({type: ALERT_TYPE_ERROR, text: errorMessage})
       }
     } finally {
       if (!haveError) {

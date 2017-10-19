@@ -93,7 +93,7 @@ class IEAEditRecipeLayout extends Component {
 
 
   async onButtonPress() {
-    const {writeOnlineParseObjectAction} = this.props;
+    const {writeOnlineParseObjectAction, showAlertMessageAction} = this.props;
 
     const editModelType = this.props.editModel.form.editModelType;
 
@@ -124,13 +124,13 @@ class IEAEditRecipeLayout extends Component {
       const message = e.message || e;
       if (message !== 'Timed out' && message !== 'Canceled by user') {
         errorMessage = message;
-        showAlertMessage({type: ALERT_TYPE_ERROR, text: errorMessage})
+        showAlertMessageAction({type: ALERT_TYPE_ERROR, text: errorMessage})
       }
     } finally {
       if (!!errorMessage) {
       } else {
         this.props.actions.updateModelSuccess();
-        showAlertMessage({type: ALERT_TYPE_SUCCESS, text: 'Saved the recipe successfully!'})
+        showAlertMessageAction({type: ALERT_TYPE_SUCCESS, text: 'Saved the recipe successfully!'})
       }
     }
   }

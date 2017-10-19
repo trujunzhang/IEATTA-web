@@ -99,7 +99,7 @@ class IEAEditRecipeWithPhotosLayout extends Component {
 
 
   async onButtonPress() {
-    const {writeOnlineParseObjectAction, forRelationObject, currentUser} = this.props;
+    const {writeOnlineParseObjectAction, showAlertMessageAction, forRelationObject, currentUser} = this.props;
 
     const editModelType = this.props.editModel.form.editModelType;
 
@@ -139,13 +139,13 @@ class IEAEditRecipeWithPhotosLayout extends Component {
       const message = e.message || e;
       if (message !== 'Timed out' && message !== 'Canceled by user') {
         errorMessage = message;
-        showAlertMessage({type: ALERT_TYPE_ERROR, text: errorMessage})
+        showAlertMessageAction({type: ALERT_TYPE_ERROR, text: errorMessage})
       }
     } finally {
       if (!!errorMessage) {
       } else {
         this.props.actions.updateModelSuccess();
-        showAlertMessage({type: ALERT_TYPE_SUCCESS, text: 'Saved the recipe successfully!'})
+        showAlertMessageAction({type: ALERT_TYPE_SUCCESS, text: 'Saved the recipe successfully!'})
       }
     }
   }
@@ -236,7 +236,7 @@ class IEAEditRecipeWithPhotosLayout extends Component {
   }
 
   async onOwnPhotoForRecipes(photo) {
-    const {ownPhotoForRecipeAction, forRelationObject, currentUser} = this.props;
+    const {ownPhotoForRecipeAction, showAlertMessageAction, forRelationObject, currentUser} = this.props;
 
     const originalModel = this.props.editModel.form.originModel;
 
@@ -254,7 +254,7 @@ class IEAEditRecipeWithPhotosLayout extends Component {
       const message = e.message || e;
       if (message !== 'Timed out' && message !== 'Canceled by user') {
         errorMessage = message;
-        showAlertMessage({type: ALERT_TYPE_ERROR, text: errorMessage})
+        showAlertMessageAction({type: ALERT_TYPE_ERROR, text: errorMessage})
       }
     } finally {
       this.props.dispatch(loadPhotosBrowser(this.props.photosTerms))

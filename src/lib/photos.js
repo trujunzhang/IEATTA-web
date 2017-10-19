@@ -149,7 +149,8 @@ Photos.isPhotoParseObjectOwnRecipe = function (recipeId, photoParseInstance) {
   return false
 }
 
-Photos.isPhotoOwnRecipe = function (recipeId, {recipe = {id: ""}}) {
+Photos.isPhotoOwnRecipe = function (recipeId, photo) {
+  const recipe = photo.recipe || {id: ""}
   return (recipeId === recipe.id)
 }
 

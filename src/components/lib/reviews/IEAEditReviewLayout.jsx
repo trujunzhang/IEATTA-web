@@ -88,7 +88,7 @@ class IEAEditReviewLayout extends Component {
 
 
   async onButtonPress() {
-    const {writeOnlineParseObjectAction, forObject, currentUser} = this.props;
+    const {writeOnlineParseObjectAction, showAlertMessageAction, forObject, currentUser} = this.props;
 
     const editModelType = this.props.editModel.form.editModelType;
 
@@ -128,13 +128,13 @@ class IEAEditReviewLayout extends Component {
       const message = e.message || e;
       if (message !== 'Timed out' && message !== 'Canceled by user') {
         errorMessage = message;
-        showAlertMessage({type: ALERT_TYPE_ERROR, text: errorMessage})
+        showAlertMessageAction({type: ALERT_TYPE_ERROR, text: errorMessage})
       }
     } finally {
       if (!!errorMessage) {
       } else {
         this.props.actions.updateModelSuccess();
-        showAlertMessage({type: ALERT_TYPE_SUCCESS, text: 'Saved the review successfully!'})
+        showAlertMessageAction({type: ALERT_TYPE_SUCCESS, text: 'Saved the review successfully!'})
         // this.props.router.goBack();
       }
     }
