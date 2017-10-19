@@ -26,6 +26,7 @@ const {getModelByObjectId} = require('../../filter/filterPosts')
 const {getPageFormType} = require('../../filter/filterRoutes')
 
 class DetailedEvent extends Component {
+
   constructor(props, context) {
     super(props)
 

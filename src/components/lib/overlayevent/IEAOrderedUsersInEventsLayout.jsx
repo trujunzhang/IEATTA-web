@@ -1,6 +1,11 @@
 import Telescope from '../index'
 import React, {Component} from 'react'
 
+const {loadUsersWithoutAnonymousList} = require('../../../actions').default
+import PaginationTerms from "../../../lib/paginationTerms";
+
+const {byListId, getDefaultListTask} = require('../../filter/filterPosts')
+
 import {withRouter} from 'react-router'
 
 const {
@@ -10,6 +15,25 @@ const {
 } = require('../../../lib/constants').default
 
 class IEAOrderedUsersInEventsLayout extends Component {
+  constructor(props, context) {
+    super(props)
+    const leftUsersListTerms = PaginationTerms.generateTermsForOrderedUsersList(props)
+    this.state = {
+      leftUsersListTerms: leftUsersListTerms,
+      leftUsersListTask: getDefaultListTask(leftUsersListTerms),
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      leftUsersListTask: byListId(nextProps.listContainerTasks, this.state.leftUsersListTerms, this.state.leftUsersListTask)
+    })
+  }
+
+  componentDidMount() {
+    const {leftUsersListTerms, leftUsersListTask} = this.state;
+    this.props.dispatch(loadUsersWithoutAnonymousList(leftUsersListTask, leftUsersListTerms))
+  }
 
   renderRightPanel() {
     const {forObject} = this.props;
@@ -36,7 +60,9 @@ class IEAOrderedUsersInEventsLayout extends Component {
     return (
       <div className="clearfix layout-block layout-n user-details_container">
         <div className="column column-alpha user-details_sidebar">
-          <Telescope.components.OrderedUserLeftMenusPanel {...this.props} />
+          <Telescope.components.OrderedUserLeftMenusPanel
+            {...this.state}
+            {...this.props} />
         </div>
 
         {this.renderRightPanel()}

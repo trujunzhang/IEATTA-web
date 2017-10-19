@@ -3,39 +3,8 @@ import React, {Component} from 'react'
 
 import Photos from '../../../../lib/photos'
 
-const {loadUsersWithoutAnonymousList} = require('../../../../actions').default
-
-import PaginationTerms from "../../../../lib/paginationTerms";
-
-const {byListId, getDefaultListTask} = require('../../../filter/filterPosts')
 
 class OrderedUserLeftMenusPanel extends Component {
-
-  constructor(props) {
-    super(props)
-
-    const terms = PaginationTerms.generateTermsForOrderedUsersList(props)
-    this.state = {
-      terms: terms,
-      listTask: getDefaultListTask(terms),
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      listTask: byListId(nextProps.listContainerTasks, this.state.terms, this.state.listTask)
-    })
-  }
-
-  componentDidMount() {
-    this.loadMore()
-  }
-
-  loadMore() {
-    const {terms, listTask} = this.state;
-    this.props.dispatch(loadUsersWithoutAnonymousList(listTask, terms))
-  }
-
 
   renderLeftMenuTitle() {
     return (
@@ -57,12 +26,12 @@ class OrderedUserLeftMenusPanel extends Component {
 
 
   renderRows() {
-    const {listTask} = this.state
+    const {leftUsersListTask} = this.props;
 
     const {
       results,
       ready
-    } = listTask
+    } = leftUsersListTask
 
     if (!ready) {
       return (
@@ -117,13 +86,13 @@ class OrderedUserLeftMenusPanel extends Component {
   }
 
   renderEmptySection() {
-    const {listTask} = this.state
+    const {leftUsersListTask} = this.props;
 
     const {
       results,
       ready,
       totalCount,
-    } = listTask
+    } = leftUsersListTask
 
     if (ready && results.length === 0) {
       return (
