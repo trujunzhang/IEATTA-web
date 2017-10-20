@@ -12,34 +12,59 @@ const {
   REVIEW_LIST_TYPE_NORMAL,
   REVIEW_LIST_TYPE_USER_PROFILE_ABOUT,
   REVIEW_LIST_TYPE_USER_PROFILE_REVIEWS,
+  EVENTS_LIST_FOR_RESTAURANT,
 } = require('../../../lib/constants').default
 
 class IEAOrderedUsersInEventsLayout extends Component {
   constructor(props, context) {
     super(props)
 
+    const event = props.forObject;
     const leftUsersListTerms = PaginationTerms.generateTermsForOrderedUsersList(props)
+    const peopleInEventTerms = PaginationTerms.generateTermsForEventsList({
+      eventType: EVENTS_LIST_FOR_RESTAURANT,
+      forObject: {
+        id: event.restaurant.id
+      }
+    })
     this.state = {
-      leftUsersListTerms: leftUsersListTerms,
+      leftUsersListTerms,
+      peopleInEventTerms,
       leftUsersListTask: getDefaultListTask(leftUsersListTerms),
+      peopleInEventListTask: getDefaultListTask(peopleInEventTerms),
     }
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
       leftUsersListTask: byListId(nextProps, this.state.leftUsersListTerms, this.state.leftUsersListTask),
+      peopleInEventListTask: byListId(nextProps, this.state.peopleInEventTerms, this.state.peopleInEventListTask),
     })
   }
 
   componentDidMount() {
-    const {leftUsersListTerms, leftUsersListTask} = this.state;
+    const {
+      leftUsersListTerms, leftUsersListTask,
+      peopleInEventTerms, peopleInEventListTask
+    } = this.state;
+
     this.props.loadUsersWithoutAnonymousListAction({
       listTask: leftUsersListTask,
       terms: leftUsersListTerms
     })
+    this.props.loadPeopleInEventListAction(peopleInEventListTask, peopleInEventTerms);
   }
 
   renderRightPanel() {
+    const {peopleInEventListTask} = this.state;
+    const {
+      ready,
+      results
+    } = peopleInEventListTask;
+
+    if (ready) {
+    }
+
     const {forObject} = this.props;
     const reviewTitle = forObject.displayName;
 
