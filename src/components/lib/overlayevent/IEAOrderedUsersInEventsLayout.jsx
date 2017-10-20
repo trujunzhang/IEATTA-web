@@ -27,11 +27,18 @@ class IEAOrderedUsersInEventsLayout extends Component {
         id: event.restaurant.id
       }
     })
+    const recipesInRestaurantTerms = PaginationTerms.generateTermsForRecipesList({
+      forRestaurant: {
+        id: event.restaurant.id
+      }
+    })
     this.state = {
       leftUsersListTerms,
       peopleInEventTerms,
+      recipesInRestaurantTerms,
       leftUsersListTask: getDefaultListTask(leftUsersListTerms),
       peopleInEventListTask: getDefaultListTask(peopleInEventTerms),
+      recipesInRestaurantTask: getDefaultListTask(recipesInRestaurantTerms),
     }
   }
 
@@ -39,13 +46,15 @@ class IEAOrderedUsersInEventsLayout extends Component {
     this.setState({
       leftUsersListTask: byListId(nextProps, this.state.leftUsersListTerms, this.state.leftUsersListTask),
       peopleInEventListTask: byListId(nextProps, this.state.peopleInEventTerms, this.state.peopleInEventListTask),
+      recipesInRestaurantTask: byListId(nextProps, this.state.recipesInRestaurantTerms, this.state.recipesInRestaurantTask),
     })
   }
 
   componentDidMount() {
     const {
       leftUsersListTerms, leftUsersListTask,
-      peopleInEventTerms, peopleInEventListTask
+      peopleInEventTerms, peopleInEventListTask,
+      recipesInRestaurantTerms, recipesInRestaurantTask,
     } = this.state;
 
     this.props.loadUsersWithoutAnonymousListAction({
@@ -53,16 +62,18 @@ class IEAOrderedUsersInEventsLayout extends Component {
       terms: leftUsersListTerms
     })
     this.props.loadPeopleInEventListAction(peopleInEventListTask, peopleInEventTerms);
+    this.props.loadRecipesListForRestaurantAction(recipesInRestaurantTask, recipesInRestaurantTerms);
   }
 
   renderRightPanel() {
-    const {peopleInEventListTask} = this.state;
+    const {recipesInRestaurantTask} = this.state;
     const {
       ready,
       results
-    } = peopleInEventListTask;
+    } = recipesInRestaurantTask;
 
     if (ready) {
+      debugger
     }
 
     const {forObject} = this.props;
