@@ -73,7 +73,7 @@ class IEAOrderedUsersInEventsLayout extends Component {
     } = recipesInRestaurantTask;
 
     if (ready) {
-      debugger
+      // debugger
     }
 
     const {forObject} = this.props;
