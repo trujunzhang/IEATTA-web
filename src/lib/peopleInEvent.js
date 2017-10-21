@@ -34,8 +34,18 @@ PeopleInEvent.getOtherUsersAlsoOrderedRecipe = function (list) {
   return users;
 }
 
-PeopleInEvent.getOrderedRecipeCount = function (user, peopleInEventListTask) {
+PeopleInEvent.getOrderedRecipeDict = function (peopleInEventListTask) {
+  let dict = {};
+  peopleInEventListTask.map(function (item) {
+    const user = item.user;
+    dict[user.id] = item.recipes;
+  })
 
+  debugger
+  return dict;
+}
+
+PeopleInEvent.getOrderedRecipeCount = function (user, peopleInEventListDict) {
 
 
   debugger

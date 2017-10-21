@@ -54,8 +54,9 @@ class OrderedUserLeftMenusPanel extends Component {
                   const isActive = index === 0; //Users.isLeftMenuActive(row, this.props);
                   const rowClass = "titled-nav_link" + (isActive ? " is-active" : "")
 
-                  const orderedRecipesCount = PeopleInEvent.getOrderedRecipeCount(user, peopleInEventListTask)
-                  const recipesCountView = (<span className="left-ordered-user-recipes-count">{` (${orderedRecipesCount})`}</span>)
+                  const orderedRecipesCount = PeopleInEvent.getOrderedRecipeCount(user, peopleInEventListDict)
+                  const recipesCountView = (
+                    <span className="left-ordered-user-recipes-count">{` (${orderedRecipesCount})`}</span>)
                   return (
                     <li key={index} className="titled-nav_item">
                       <a className={rowClass}>

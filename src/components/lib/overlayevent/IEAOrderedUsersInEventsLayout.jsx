@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 
 const {loadUsersWithoutAnonymousList} = require('../../../actions').default
 import PaginationTerms from "../../../lib/paginationTerms";
+import PeopleInEvent from "../../../lib/peopleInEvent";
 
 const {byListId, getDefaultListTask} = require('../../filter/filterPosts')
 
@@ -33,14 +34,18 @@ class IEAOrderedUsersInEventsLayout extends Component {
       recipesInRestaurantTerms,
       leftUsersListTask: getDefaultListTask(leftUsersListTerms),
       peopleInEventListTask: getDefaultListTask(peopleInEventTerms),
+      peopleInEventListDict: {},
       recipesInRestaurantTask: getDefaultListTask(recipesInRestaurantTerms),
     }
   }
 
   componentWillReceiveProps(nextProps) {
+    const peopleInEventListTask = byListId(nextProps, this.state.peopleInEventTerms, this.state.peopleInEventListTask)
+    const peopleInEventListDict = PeopleInEvent.getOrderedRecipeDict(peopleInEventListTask)
     this.setState({
       leftUsersListTask: byListId(nextProps, this.state.leftUsersListTerms, this.state.leftUsersListTask),
-      peopleInEventListTask: byListId(nextProps, this.state.peopleInEventTerms, this.state.peopleInEventListTask),
+      peopleInEventListTask,
+      peopleInEventListDict,
       recipesInRestaurantTask: byListId(nextProps, this.state.recipesInRestaurantTerms, this.state.recipesInRestaurantTask),
     })
   }
