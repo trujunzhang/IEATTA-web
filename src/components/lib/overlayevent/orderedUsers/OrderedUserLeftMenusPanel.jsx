@@ -2,6 +2,7 @@ import Telescope from '../../../lib'
 import React, {Component} from 'react'
 
 import Photos from '../../../../lib/photos'
+import PeopleInEvent from '../../../../lib/peopleInEvent'
 
 
 class OrderedUserLeftMenusPanel extends Component {
@@ -26,7 +27,7 @@ class OrderedUserLeftMenusPanel extends Component {
 
 
   renderRows() {
-    const {leftUsersListTask, recipesInRestaurantTask} = this.props;
+    const {leftUsersListTask, recipesInRestaurantTask, peopleInEventListTask} = this.props;
 
     const {
       results,
@@ -52,6 +53,9 @@ class OrderedUserLeftMenusPanel extends Component {
                 {results.map((user, index) => {
                   const isActive = index === 0; //Users.isLeftMenuActive(row, this.props);
                   const rowClass = "titled-nav_link" + (isActive ? " is-active" : "")
+
+                  const orderedRecipesCount = PeopleInEvent.getOrderedRecipeCount(user, peopleInEventListTask)
+                  const recipesCountView = (<span className="left-ordered-user-recipes-count">{` (${orderedRecipesCount})`}</span>)
                   return (
                     <li key={index} className="titled-nav_item">
                       <a className={rowClass}>
@@ -70,6 +74,7 @@ class OrderedUserLeftMenusPanel extends Component {
 
                           <div className="arrange_unit arrange_unit--fill">
                             <span className="titled-nav_link-label">{user.username}</span>
+                            {orderedRecipesCount > 0 && recipesCountView}
                           </div>
 
                         </div>

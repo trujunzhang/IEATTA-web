@@ -34,4 +34,15 @@ PeopleInEvent.getOtherUsersAlsoOrderedRecipe = function (list) {
   return users;
 }
 
+PeopleInEvent.getOrderedRecipeCount = function (user, peopleInEventListTask) {
+
+
+
+  // debugger
+
+
+  return 2;
+}
+
+
 export default PeopleInEvent;

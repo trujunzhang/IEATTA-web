@@ -112,9 +112,9 @@ class IEAOrderedUsersInEventsLayout extends Component {
   }
 
   render() {
-    const {leftUsersListTask, recipesInRestaurantTask} = this.state;
+    const {leftUsersListTask, recipesInRestaurantTask, peopleInEventListTask} = this.state;
 
-    if (!leftUsersListTask.ready && !recipesInRestaurantTask.ready) {
+    if (!leftUsersListTask.ready && !recipesInRestaurantTask.ready && !peopleInEventListTask.ready) {
       return (<Telescope.components.F8LoadingView loadingClass="placeholder_1WOC3"/>)
     }
 
