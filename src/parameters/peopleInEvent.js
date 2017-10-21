@@ -19,20 +19,23 @@ export default class PeopleInEventParameters {
   }
 
   addParameters(terms: Any) {
-    if (!!terms.userId) {
-      equalToRelationObject(this.query, PARSE_USERS, terms.userId)
+
+    const {userId, eventId, restaurantId, recipeId} = terms;
+
+    if (!!userId) {
+      equalToRelationObject(this.query, PARSE_USERS, userId)
     }
 
-    if (!!terms.eventId) {
-      equalToRelationObject(this.query, PARSE_EVENTS, terms.eventId)
+    if (!!eventId) {
+      equalToRelationObject(this.query, PARSE_EVENTS, eventId)
     }
 
-    if (!!terms.restaurantId) {
-      equalToRelationObject(this.query, PARSE_RESTAURANTS, terms.restaurantId)
+    if (!!restaurantId) {
+      equalToRelationObject(this.query, PARSE_RESTAURANTS, restaurantId)
     }
 
-    if (!!terms.recipeId) {
-      containInRelationObject(this.query, PARSE_RECIPES, terms.recipeId,'recipes')
+    if (!!recipeId) {
+      containInRelationObject(this.query, PARSE_RECIPES, recipeId, 'recipes')
     }
 
     return this
