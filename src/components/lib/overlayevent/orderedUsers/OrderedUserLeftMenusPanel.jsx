@@ -34,13 +34,6 @@ class OrderedUserLeftMenusPanel extends Component {
       ready
     } = leftUsersListTask;
 
-
-    if (!ready) {
-      return (
-        <Telescope.components.F8LoadingView/>
-      )
-    }
-
     return (
       <div className="ysection">
 
