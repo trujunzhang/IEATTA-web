@@ -36,7 +36,6 @@ class RecipesItem extends Component {
     )
   }
 
-
   renderStory() {
     const {recipe, index} = this.props;
 
@@ -60,6 +59,9 @@ class RecipesItem extends Component {
             <FormattedRelative value={recipe.updatedAt}/>
           </small>
         </div>
+
+
+        {this.props.renderActionButtons && this.renderActionButtons()}
       </div>
     )
   }
