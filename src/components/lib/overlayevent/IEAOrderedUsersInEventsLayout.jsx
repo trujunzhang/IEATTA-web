@@ -72,10 +72,6 @@ class IEAOrderedUsersInEventsLayout extends Component {
       results
     } = recipesInRestaurantTask;
 
-    if (ready) {
-      // debugger
-    }
-
     const {forObject} = this.props;
     const reviewTitle = forObject.displayName;
 

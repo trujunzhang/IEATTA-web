@@ -87,8 +87,9 @@ Telescope.registerComponent('IEAEditEventLayout',                       require(
 Telescope.registerComponent('IEAOrderedUsersInEventsLayout',            require('./overlayevent/IEAOrderedUsersInEventsLayout.jsx').default)
 
 // overlayUser In Event
-Telescope.registerComponent('OrderedUserInEventHeaderView',            require('./overlayevent/orderedUsers/OrderedUserInEventHeaderView.jsx').default)
-Telescope.registerComponent('OrderedUserLeftMenusPanel',               require('./overlayevent/orderedUsers/OrderedUserLeftMenusPanel.jsx').default)
+Telescope.registerComponent('OrderedUserInEventHeaderView',                  require('./overlayevent/orderedUsers/OrderedUserInEventHeaderView.jsx').default)
+Telescope.registerComponent('OrderedUserLeftMenusPanel',                     require('./overlayevent/orderedUsers/OrderedUserLeftMenusPanel.jsx').default)
+Telescope.registerComponent('OrderedUserRightRecipesListView',               require('./overlayevent/orderedUsers/OrderedUserRightRecipesListView.jsx').default)
 
 // overlayEvent(page)
 Telescope.registerComponent('EventsDetail',                  require('./overlayevent/page/EventsDetail.jsx').default)
