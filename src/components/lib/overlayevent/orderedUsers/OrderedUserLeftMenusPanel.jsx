@@ -26,7 +26,7 @@ class OrderedUserLeftMenusPanel extends Component {
 
 
   renderRows() {
-    const {leftUsersListTask} = this.props;
+    const {leftUsersListTask, recipesInRestaurantTask} = this.props;
 
     const {
       results,

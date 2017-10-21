@@ -112,6 +112,12 @@ class IEAOrderedUsersInEventsLayout extends Component {
   }
 
   render() {
+    const {leftUsersListTask, recipesInRestaurantTask} = this.state;
+
+    if (!leftUsersListTask.ready && !recipesInRestaurantTask.ready) {
+      return (<Telescope.components.F8LoadingView loadingClass="placeholder_1WOC3"/>)
+    }
+
     return (
       <div className="main-content-wrap main-content-wrap--full">
         <div className="top-shelf top-shelf-grey">
