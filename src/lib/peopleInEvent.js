@@ -38,7 +38,7 @@ PeopleInEvent.getOrderedRecipeCount = function (user, peopleInEventListTask) {
 
 
 
-  // debugger
+  debugger
 
 
   return 2;

@@ -87,6 +87,18 @@ PaginationTerms.generateTermsForRecipesList = function (props) {
 }
 
 
+PaginationTerms.generateTermsForPeopleInEventList = function (event) {
+  const listId = event.id;
+
+  return {
+    listId: 'people-in-event-list-view-for-' + listId,
+    limit: -1,
+    allItems: true,
+    restaurantId: event.restaurant.id,
+    eventId: event.id,
+  }
+}
+
 PaginationTerms.generateTermsForEventsList = function ({eventType, forObject}) {
   const listId = forObject.id;
   const extendProps = (eventType === EVENTS_LIST_FOR_RESTAURANT) ? {
@@ -99,7 +111,7 @@ PaginationTerms.generateTermsForEventsList = function ({eventType, forObject}) {
     listId: 'event-list-view-for-' + listId,
     limit: 10,
     ...extendProps
-  };
+  }
 }
 
 /**

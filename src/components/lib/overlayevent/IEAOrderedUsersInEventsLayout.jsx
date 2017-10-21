@@ -21,12 +21,7 @@ class IEAOrderedUsersInEventsLayout extends Component {
 
     const event = props.forObject;
     const leftUsersListTerms = PaginationTerms.generateTermsForOrderedUsersList(props)
-    const peopleInEventTerms = PaginationTerms.generateTermsForEventsList({
-      eventType: EVENTS_LIST_FOR_RESTAURANT,
-      forObject: {
-        id: event.restaurant.id
-      }
-    })
+    const peopleInEventTerms = PaginationTerms.generateTermsForPeopleInEventList(event)
     const recipesInRestaurantTerms = PaginationTerms.generateTermsForRecipesList({
       forRestaurant: {
         id: event.restaurant.id
@@ -114,21 +109,21 @@ class IEAOrderedUsersInEventsLayout extends Component {
   render() {
     const {leftUsersListTask, recipesInRestaurantTask, peopleInEventListTask} = this.state;
 
-    if (!leftUsersListTask.ready && !recipesInRestaurantTask.ready && !peopleInEventListTask.ready) {
-      return (<Telescope.components.F8LoadingView loadingClass="placeholder_1WOC3"/>)
+    if (leftUsersListTask.ready && recipesInRestaurantTask.ready && peopleInEventListTask.ready) {
+      return (
+        <div className="main-content-wrap main-content-wrap--full">
+          <div className="top-shelf top-shelf-grey">
+            <Telescope.components.OrderedUserInEventHeaderView {...this.props}/>
+          </div>
+
+          <div id="super-container" className="content-container">
+            {this.renderContent()}
+          </div>
+        </div>
+      )
     }
 
-    return (
-      <div className="main-content-wrap main-content-wrap--full">
-        <div className="top-shelf top-shelf-grey">
-          <Telescope.components.OrderedUserInEventHeaderView {...this.props}/>
-        </div>
-
-        <div id="super-container" className="content-container">
-          {this.renderContent()}
-        </div>
-      </div>
-    )
+    return (<Telescope.components.F8LoadingView loadingClass="placeholder_1WOC3"/>)
   }
 
 }
