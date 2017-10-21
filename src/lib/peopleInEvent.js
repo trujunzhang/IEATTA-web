@@ -45,7 +45,11 @@ PeopleInEvent.getOrderedRecipeDict = function (peopleInEventListTask) {
 }
 
 PeopleInEvent.getOrderedRecipeCount = function (user, peopleInEventListDict) {
-  return peopleInEventListDict[user.id].length();
+  if (Object.keys(peopleInEventListDict).indexOf(user.id) === -1) {
+    return 0;
+  }
+
+  return peopleInEventListDict[user.id].length;
 }
 
 
