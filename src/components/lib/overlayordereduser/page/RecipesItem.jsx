@@ -61,7 +61,7 @@ class RecipesItem extends Component {
         </div>
 
 
-        {this.props.renderActionButtons && this.renderActionButtons()}
+        {this.props.renderActionButtons && this.props.renderActionButtons()}
       </div>
     )
   }
