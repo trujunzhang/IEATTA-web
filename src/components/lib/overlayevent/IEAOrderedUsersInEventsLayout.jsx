@@ -66,24 +66,15 @@ class IEAOrderedUsersInEventsLayout extends Component {
   }
 
   renderRightPanel() {
-    const {recipesInRestaurantTask} = this.state;
-    const {
-      ready,
-      results
-    } = recipesInRestaurantTask;
-
-    const {forObject} = this.props;
-    const reviewTitle = forObject.displayName;
 
     return (
       <div className="column column-beta ">
         <div className="user-details_bookmarks js-user-details_bookmarks">
 
-          {/*<Telescope.components.ReviewsList*/}
-          {/*key={forObject.id}*/}
-          {/*forObject={this.props.forObject}*/}
-          {/*reviewType="event"*/}
-          {/*reviewTitle={reviewTitle}/>*/}
+          <Telescope.components.OrderedUserRightRecipesListView
+            {...this.state}
+            {...this.props}
+          />
 
         </div>
       </div>

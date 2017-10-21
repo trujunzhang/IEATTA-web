@@ -15,7 +15,7 @@ class OrderedUserRightRecipesListView extends Component {
           <div className="arrange_unit arrange_unit--fill">
             <div className="titled-nav-header_content">
               <h3>
-                {`Ordered Recipes`}
+                {`Recipes List`}
               </h3>
             </div>
           </div>
@@ -27,19 +27,11 @@ class OrderedUserRightRecipesListView extends Component {
 
 
   renderRows() {
-    const {leftUsersListTask, peopleInEventListDict} = this.props;
-
+    const {recipesInRestaurantTask} = this.props;
     const {
-      results,
-      ready
-    } = leftUsersListTask;
-
-
-    if (!ready) {
-      return (
-        <Telescope.components.F8LoadingView/>
-      )
-    }
+      ready,
+      results
+    } = recipesInRestaurantTask;
 
     return (
       <div className="ysection">
@@ -49,43 +41,16 @@ class OrderedUserRightRecipesListView extends Component {
             <div className="titled-nav_menu">
               {this.renderLeftMenuTitle()}
 
-              <ul className="titled-nav_items">
-                {results.map((user, index) => {
-                  const isActive = index === 0; //Users.isLeftMenuActive(row, this.props);
-                  const rowClass = "titled-nav_link" + (isActive ? " is-active" : "")
 
-                  const orderedRecipesCount = PeopleInEvent.getOrderedRecipeCount(user, peopleInEventListDict)
-                  const recipesCountView = (
-                    <span className="left-ordered-user-recipes-count">{` (${orderedRecipesCount})`}</span>)
-                  return (
-                    <li key={index} className="titled-nav_item">
-                      <a className={rowClass}>
-                        <div className="titled-nav_link-content arrange arrange--middle arrange--6">
-
-                          <div className="arrange_unit">
-
-                            <Telescope.components.F8PlaceHolderImage
-                              alt={user.username}
-                              width="30"
-                              height="30"
-                              placeholderSource={"/default/user_30_square.png"}
-                              source={Photos.getListThumbnailUrl(user)}/>
-
-                          </div>
-
-                          <div className="arrange_unit arrange_unit--fill">
-                            <span className="titled-nav_link-label">{user.username}</span>
-                            {orderedRecipesCount > 0 && recipesCountView}
-                          </div>
-
-                        </div>
-                      </a>
-
-                    </li>
-
-                  )
-                })}
+              <ul className="ylist ylist-bordered">
+                {results.map((recipe, index) =>
+                  <Telescope.components.RecipesItem key={recipe.id}
+                                                    recipe={recipe}
+                                                    index={index}
+                                                    showRightTime={true}/>
+                )}
               </ul>
+
             </div>
 
           </div>
@@ -107,7 +72,7 @@ class OrderedUserRightRecipesListView extends Component {
     if (ready && results.length === 0) {
       return (
         <Telescope.components.F8EmptySection
-          title={`No Users Found`}
+          title={`No Recipes in the restaurant!`}
           text=""/>
       )
     }
