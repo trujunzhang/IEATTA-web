@@ -47,7 +47,7 @@ class OrderedUserRightRecipesListView extends Component {
     const hasOrdered = (this.state.orderedRecipeIds.indexOf(recipe.id) !== -1)
 
     return (
-      <ul className="voting-buttons">
+      <ul className="recipe-event-buttons">
         <li className="vote-item inline-block">
 
           <a className="ybtn ybtn--small useful js-analytics-click" id={hasOrdered ? "remove" : "add"}>
