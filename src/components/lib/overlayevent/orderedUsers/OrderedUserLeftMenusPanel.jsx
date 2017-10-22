@@ -25,9 +25,19 @@ class OrderedUserLeftMenusPanel extends Component {
     )
   }
 
+  onLeftUserMenuItemPress(user) {
+    const {location} = this.props;
+    this.props.router.push({
+      pathname: location.pathname,
+      query: {
+        userId: user.id
+      }
+    })
+  }
+
 
   renderRows() {
-    const {leftUsersListTask, peopleInEventListDict} = this.props;
+    const {leftUsersListTask, peopleInEventListDict, selectedUserId} = this.props;
 
     const {
       results,
@@ -44,7 +54,7 @@ class OrderedUserLeftMenusPanel extends Component {
 
               <ul className="titled-nav_items">
                 {results.map((user, index) => {
-                  const isActive = index === 0; //Users.isLeftMenuActive(row, this.props);
+                  const isActive = selectedUserId === user.id;
                   const rowClass = "titled-nav_link" + (isActive ? " is-active" : "")
 
                   const orderedRecipesCount = PeopleInEvent.getOrderedRecipeCount(user, peopleInEventListDict)
@@ -52,7 +62,11 @@ class OrderedUserLeftMenusPanel extends Component {
                     <span className="left-ordered-user-recipes-count">{` (${orderedRecipesCount})`}</span>)
                   return (
                     <li key={index} className="titled-nav_item">
-                      <a className={rowClass}>
+                      <a
+                        onClick={() => {
+                          this.onLeftUserMenuItemPress(user)
+                        }}
+                        className={rowClass}>
                         <div className="titled-nav_link-content arrange arrange--middle arrange--6">
 
                           <div className="arrange_unit">

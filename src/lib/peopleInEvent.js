@@ -44,6 +44,21 @@ PeopleInEvent.getOrderedRecipeDict = function (peopleInEventListTask) {
   return dict;
 }
 
+PeopleInEvent.getSelectedUserId = function (nextProps, peopleInEventListTask, leftUsersListTask) {
+  const {location} = nextProps;
+  const {query} = location;
+  if (!!query.userId) {
+    return query.userId;
+  }
+
+  const usersResults = leftUsersListTask.results;
+  if (usersResults.length > 0) {
+    return usersResults[0].id
+  }
+
+  return '';
+}
+
 PeopleInEvent.getOrderedRecipeCount = function (user, peopleInEventListDict) {
   if (Object.keys(peopleInEventListDict).indexOf(user.id) === -1) {
     return 0;

@@ -10,7 +10,6 @@ class F8SingleHeaderRightPhotoItem extends Component {
 
   onImageLinkPress() {
     const {linkObject} = this.props.item;
-
     this.props.router.push(adjustRouterQuery(linkObject, this.props))
   }
 

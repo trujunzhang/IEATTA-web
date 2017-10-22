@@ -40,12 +40,16 @@ class IEAOrderedUsersInEventsLayout extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    const leftUsersListTask = byListId(nextProps, this.state.leftUsersListTerms, this.state.leftUsersListTask)
     const peopleInEventListTask = byListId(nextProps, this.state.peopleInEventTerms, this.state.peopleInEventListTask)
     const peopleInEventListDict = PeopleInEvent.getOrderedRecipeDict(peopleInEventListTask)
+    const selectedUserId = PeopleInEvent.getSelectedUserId(nextProps, peopleInEventListTask, leftUsersListTask)
+
     this.setState({
-      leftUsersListTask: byListId(nextProps, this.state.leftUsersListTerms, this.state.leftUsersListTask),
+      leftUsersListTask,
       peopleInEventListTask,
       peopleInEventListDict,
+      selectedUserId,
       recipesInRestaurantTask: byListId(nextProps, this.state.recipesInRestaurantTerms, this.state.recipesInRestaurantTask),
     })
   }
