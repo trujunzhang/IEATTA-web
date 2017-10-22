@@ -426,3 +426,18 @@ ul.star-selector_stars {
 .left-ordered-user-recipes-count {
   color: #aaaaaa;
 }
+
+#recipe-item {
+  div.media-story {
+    a#remove {
+      //display: none;
+    }
+  }
+  &:hover {
+    div.media-story {
+      a#remove {
+        //display: inline-block;
+      }
+    }
+  }
+}

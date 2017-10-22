@@ -8,7 +8,7 @@ const PeopleInEvent = {
   }
 }
 
-PeopleInEvent.getRecipeIds = function (peopleInEventModels) {
+PeopleInEvent.getRecipeIdsForQuery = function (peopleInEventModels) {
   const multipleArrays = _.pluck(peopleInEventModels, 'recipes')
   const arrays = _.reduce(multipleArrays, function (result, arr) {
     return result.concat(arr)
@@ -57,6 +57,17 @@ PeopleInEvent.getSelectedUserId = function (nextProps, peopleInEventListTask, le
   }
 
   return '';
+}
+
+PeopleInEvent.getOrderedRecipeIds = function (props) {
+  const {
+    peopleInEventListDict,
+    selectedUserId,
+  } = props;
+
+  const orderedRecipes = peopleInEventListDict[selectedUserId]
+
+  return _.pluck(orderedRecipes, 'id')
 }
 
 PeopleInEvent.getOrderedRecipeCount = function (user, peopleInEventListDict) {

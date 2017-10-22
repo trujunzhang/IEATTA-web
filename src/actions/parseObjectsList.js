@@ -59,7 +59,7 @@ async function _loadRecipeListForEvent(listTask,
                                        parseFun): Promise<Array<Action>> {
   const results = await objectsQuery.find()
   const peopleInEventModels = (results || []).map(fromParsePeopleInEvent);
-  const recipeIds = PeopleInEvent.getRecipeIds(peopleInEventModels)
+  const recipeIds = PeopleInEvent.getRecipeIdsForQuery(peopleInEventModels)
 
   const recipesQuery = getRecipesParameters({recipeIds})
   const recipeResults = await recipesQuery.find()

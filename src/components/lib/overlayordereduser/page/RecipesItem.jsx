@@ -61,7 +61,7 @@ class RecipesItem extends Component {
         </div>
 
 
-        {this.props.renderActionButtons && this.props.renderActionButtons()}
+        {this.props.renderActionButtons && this.props.renderActionButtons(recipe, index)}
       </div>
     )
   }
@@ -80,7 +80,7 @@ class RecipesItem extends Component {
     const {showRightTime} = this.props;
 
     return (
-      <li className="js-bookmark-row">
+      <li className="js-bookmark-row" id="recipe-item">
         <div className="bookmark-listing">
 
           <div className="arrange">
