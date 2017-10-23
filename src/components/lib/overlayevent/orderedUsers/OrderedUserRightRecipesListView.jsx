@@ -42,6 +42,10 @@ class OrderedUserRightRecipesListView extends Component {
     )
   }
 
+  onAddRemoveRecipePress(hasOrdered, recipe) {
+    const newOrderedRecipeIds = PeopleInEvent.getOrderedRecipeIdsAfterAddRemove(this.state.orderedRecipeIds, hasOrdered, recipe)
+
+  }
 
   renderRecipeActionButtons = (recipe, index) => {
     const hasOrdered = (this.state.orderedRecipeIds.indexOf(recipe.id) !== -1)
@@ -50,7 +54,11 @@ class OrderedUserRightRecipesListView extends Component {
       <ul className="recipe-event-buttons">
         <li className="vote-item inline-block">
 
-          <a className="ybtn ybtn--small useful js-analytics-click" id={hasOrdered ? "remove" : "add"}>
+          <a className="ybtn ybtn--small useful js-analytics-click"
+             onClick={() => {
+               this.onAddRemoveRecipePress(hasOrdered, recipe)
+             }}
+             id={hasOrdered ? "remove" : "add"}>
             <span id="review_item_footer_buttons_panel_span "
                   className="icon icon--18-useful-outline icon--size-18 icon--active-inverse button-content u-space-r-half">
             <svg className="icon_svg">

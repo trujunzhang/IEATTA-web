@@ -59,6 +59,18 @@ PeopleInEvent.getSelectedUserId = function (nextProps, peopleInEventListTask, le
   return '';
 }
 
+PeopleInEvent.getOrderedRecipeIdsAfterAddRemove = function (orderedRecipeIds, hasOrdered, recipe) {
+  let newOrderedRecipeIds = orderedRecipeIds
+
+  if (hasOrdered) { // remove
+    newOrderedRecipeIds = _.without(orderedRecipeIds, recipe.id)
+  } else { // add
+    newOrderedRecipeIds.push(recipe.id)
+  }
+
+  return newOrderedRecipeIds;
+}
+
 PeopleInEvent.getOrderedRecipeIds = function (props) {
   const {
     peopleInEventListDict,
