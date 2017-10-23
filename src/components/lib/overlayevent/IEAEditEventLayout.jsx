@@ -1,7 +1,6 @@
 import Telescope from '../../lib'
 import React, {Component} from 'react'
 
-import {withRouter} from 'react-router'
 
 const {
   writeOnlineParseObject,
@@ -227,30 +226,4 @@ class IEAEditEventLayout extends Component {
   }
 }
 
-
-/**
- * ## Imports
- *
- * Redux
- */
-import {bindActionCreators} from 'redux'
-import {connect} from 'react-redux'
-
-import * as editModelActions from '../../../reducers/editModel/editModelActions'
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(editModelActions, dispatch),
-    writeOnlineParseObjectAction: (object) => dispatch(writeOnlineParseObject(object)),
-    showAlertMessageAction: (object) => dispatch(showAlertMessage(object)),
-  }
-}
-
-function select(store, ownProps) {
-  return {
-    editModel: store.editModel,
-    goBack: ownProps.router.goBack
-  };
-}
-
-export default withRouter(connect(select, mapDispatchToProps)(IEAEditEventLayout));
+export default IEAEditEventLayout;

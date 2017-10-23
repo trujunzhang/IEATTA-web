@@ -2,6 +2,10 @@ import Telescope from '../../lib'
 import React, {Component} from 'react'
 
 const {
+  // Edit Model
+  writeOnlineParseObject,
+  showAlertMessage,
+  // List Tasks
   loadEventPage,
   loadPeopleInEventList,
   loadRecipesListForRestaurant,
@@ -105,10 +109,24 @@ class DetailedEvent extends Component {
 
 }
 
-const {connect} = require('react-redux')
+
+/**
+ * ## Imports
+ *
+ * Redux
+ */
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
+
+import * as editModelActions from '../../../reducers/editModel/editModelActions'
 
 function mapDispatchToProps(dispatch) {
   return {
+    // Edit Model
+    actions: bindActionCreators(editModelActions, dispatch),
+    writeOnlineParseObjectAction: (object) => dispatch(writeOnlineParseObject(object)),
+    showAlertMessageAction: (object) => dispatch(showAlertMessage(object)),
+    // List Tasks
     loadEventPageAction: (object) => dispatch(loadEventPage(object)),
     loadPeopleInEventListAction: (listTask, terms) => dispatch(loadPeopleInEventList(listTask, terms)),
     loadRecipesListForRestaurantAction: (listTask, terms) => dispatch(loadRecipesListForRestaurant(listTask, terms)),
@@ -117,12 +135,16 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-function select(store) {
+function select(store, ownProps) {
   return {
+    editModel: store.editModel,
+    goBack: ownProps.router.goBack,
     detailedModelsOverlay: store.detailedModelsOverlay,
     listContainerTasks: store.listContainerTasks
   }
 }
 
-export default connect(select, mapDispatchToProps)(DetailedEvent)
+import {withRouter} from 'react-router'
+
+export default withRouter(connect(select, mapDispatchToProps)(DetailedEvent))
 

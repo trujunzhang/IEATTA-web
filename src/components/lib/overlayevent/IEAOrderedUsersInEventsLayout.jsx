@@ -108,6 +108,9 @@ class IEAOrderedUsersInEventsLayout extends Component {
     if (leftUsersListTask.ready && recipesInRestaurantTask.ready && peopleInEventListTask.ready) {
       return (
         <div className="main-content-wrap main-content-wrap--full">
+
+          <Telescope.components.F8AppAlertSection/>
+
           <div className="top-shelf top-shelf-grey">
             <Telescope.components.OrderedUserInEventHeaderView {...this.props}/>
           </div>

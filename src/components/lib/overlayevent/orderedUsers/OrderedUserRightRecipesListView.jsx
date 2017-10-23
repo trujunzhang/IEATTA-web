@@ -4,13 +4,22 @@ import React, {Component} from 'react'
 import Photos from '../../../../lib/photos'
 import PeopleInEvent from '../../../../lib/peopleInEvent'
 
+/**
+ * The states were interested in
+ */
+const {
+  // Model Form Mode
+  MODEL_FORM_TYPE_NEW,
+  PARSE_EVENTS,
+  MENU_ITEM_ADD_OR_EDIT_EVENT,
+  ALERT_TYPE_ERROR,
+  ALERT_TYPE_SUCCESS,
+} = require('../../../../lib/constants').default
 
 class OrderedUserRightRecipesListView extends Component {
 
-
   constructor(props, context) {
     super(props)
-
 
     this.state = this.initialState = {
       orderedRecipeIds: PeopleInEvent.getOrderedRecipeIds(props)
@@ -22,7 +31,6 @@ class OrderedUserRightRecipesListView extends Component {
       orderedRecipeIds: PeopleInEvent.getOrderedRecipeIds(nextProps)
     })
   }
-
 
   renderLeftMenuTitle() {
     return (
@@ -42,8 +50,32 @@ class OrderedUserRightRecipesListView extends Component {
     )
   }
 
-  onAddRemoveRecipePress(hasOrdered, recipe) {
-    const newOrderedRecipeIds = PeopleInEvent.getOrderedRecipeIdsAfterAddRemove(this.state.orderedRecipeIds, hasOrdered, recipe)
+  async onAddRemoveRecipePress(hasOrdered, recipe) {
+    const {xx, showAlertMessageAction} = this.props;
+    const {orderedRecipeIds} = this.state;
+
+    debugger
+
+    const newOrderedRecipeIds = PeopleInEvent.getOrderedRecipeIdsAfterAddRemove(orderedRecipeIds, hasOrdered, recipe)
+
+    let errorMessage = null
+
+    try {
+      // await Promise.race([writeOnlineParseObjectAction(_object), timeout(15000)]);
+    } catch (e) {
+      this.props.actions.updateModelFailure(e);
+      const message = e.message || e;
+      if (message !== 'Timed out' && message !== 'Canceled by user') {
+        errorMessage = message;
+        showAlertMessageAction({type: ALERT_TYPE_ERROR, text: errorMessage})
+      }
+    } finally {
+      if (!!errorMessage) {
+      } else {
+        this.props.actions.updateModelSuccess();
+        showAlertMessageAction({type: ALERT_TYPE_SUCCESS, text: 'Saved the ordered recipes successfully!'})
+      }
+    }
 
   }
 
