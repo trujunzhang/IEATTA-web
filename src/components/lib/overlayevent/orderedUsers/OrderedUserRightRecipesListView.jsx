@@ -4,6 +4,10 @@ import React, {Component} from 'react'
 import Photos from '../../../../lib/photos'
 import PeopleInEvent from '../../../../lib/peopleInEvent'
 
+const {
+  timeout
+} = require('../../../../actions').default
+
 /**
  * The states were interested in
  */

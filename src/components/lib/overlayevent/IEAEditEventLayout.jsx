@@ -3,8 +3,6 @@ import React, {Component} from 'react'
 
 
 const {
-  writeOnlineParseObject,
-  showAlertMessage,
   timeout
 } = require('../../../actions').default
 

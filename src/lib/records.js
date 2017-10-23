@@ -173,6 +173,7 @@ Records.createOnlineParseInstance = async function (editModelType, onlineParseOb
       // User
       _online_user_Instance = getInstanceWithoutData(PARSE_USERS, localRecorder.user.id)
       onlineParseObject.set('user', _online_user_Instance)
+      onlineParseObject.set('creator', _online_user_Instance)
 
       // Recipes Array
       const _recipes_array = localRecorder.newOrderedRecipeIds.map(function (recipeId) {

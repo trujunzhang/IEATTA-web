@@ -92,8 +92,12 @@ async function _writeOnlineParseObject(editModelType,
       debugger
       break;
     case MODEL_FORM_TYPE_FOR_PEOPLE_IN_EVENT:
+      debugger
       onlineParseObject = await getFirstOnlineParseInstance(objectSchemaName, model)
       debugger
+      if (!onlineParseObject) { // New
+        onlineParseObject = createParseInstance(objectSchemaName)
+      }
       break;
   }
 
