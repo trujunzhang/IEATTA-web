@@ -27,7 +27,7 @@ class OrderedUserRightRecipesListView extends Component {
     super(props)
 
     this.state = this.initialState = {
-      orderedRecipeIds: PeopleInEvent.getOrderedRecipeIds(props)
+      orderedRecipeIds: PeopleInEvent.getOrderedRecipeIds(props),
     }
   }
 
@@ -61,7 +61,7 @@ class OrderedUserRightRecipesListView extends Component {
 
     const updatedModel = PeopleInEvent.updatePeopleInEventParseInstance(this.props, orderedRecipeIds, hasOrdered, recipe)
 
-    this.props.actions.updateModelRequest();
+    this.props.actions.updateCurrentRequestRecipeId(recipe.id);
 
     let errorMessage = null
     const _object = {
@@ -91,7 +91,8 @@ class OrderedUserRightRecipesListView extends Component {
   }
 
   renderRecipeActionButtons = (recipe, index) => {
-    const hasOrdered = (this.state.orderedRecipeIds.indexOf(recipe.id) !== -1)
+    const {orderedRecipeIds} = this.state;
+    const hasOrdered = (orderedRecipeIds.indexOf(recipe.id) !== -1)
 
     return (
       <ul className="recipe-event-buttons">

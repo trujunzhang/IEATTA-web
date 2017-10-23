@@ -22,6 +22,9 @@ const {
   UPDATE_MODEL_REQUEST,
   UPDATE_MODEL_SUCCESS,
   UPDATE_MODEL_FAILURE,
+  UPDATE_MODEL_REQUEST_FOR_RECIPE_ID,
+  UPDATE_MODEL_SUCCESS_FOR_RECIPE_ID,
+  UPDATE_MODEL_FAILURE_FOR_RECIPE_ID,
 } = require('../../lib/constants').default
 
 
@@ -67,6 +70,13 @@ export function onRestaurantFormAddressFieldChange(restaurant) {
 export function updateModelRequest() {
   return {
     type: UPDATE_MODEL_REQUEST
+  }
+}
+
+export function updateCurrentRequestRecipeId(recipeId) {
+  return {
+    type: UPDATE_MODEL_REQUEST_FOR_RECIPE_ID,
+    payload: {recipeId}
   }
 }
 

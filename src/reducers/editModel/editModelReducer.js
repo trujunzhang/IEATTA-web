@@ -123,6 +123,12 @@ function editModelReducer(state = initialState, action) {
         .setIn(['form', 'error'], null)
       return nextState
     }
+
+    case UPDATE_MODEL_REQUEST_FOR_RECIPE_ID: {
+      return state
+        .setIn(['form', 'currentRequestRecipeId'], action.payload.recipeId)
+    }
+
     /**
      * ### Requests end, good or bad
      * Set the fetching flag so the forms will be enabled
