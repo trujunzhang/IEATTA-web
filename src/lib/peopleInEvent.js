@@ -78,7 +78,18 @@ PeopleInEvent.getOrderedRecipeCount = function (user, peopleInEventListDict) {
   return peopleInEventListDict[user.id].length;
 }
 
-
+/**
+ * Basically, the 'peopleInEvent' parse instance can be created and removed as the same instance.
+ * For Example:
+ *     1. Created a 'PeopleInEvent' parse object for some use in the event and flagged it as '1'.
+ *     2. One day, the 'PeopleInEvent' parse object will be removed only flagged as '0'.
+ *     3. Other day, some user also want to create it again, but the parse instance already exist,
+ *        So do not need to create a new 'PeopleInEvent' parse object,
+ *        Just query it using 'PeopleInEvent' uniqueId.
+ * @param event
+ * @param user
+ * @returns {string}
+ */
 PeopleInEvent.generateParseObjectUniqueId = function (event, user) {
   return `${event.uniqueId}_${user.uniqueId}`
 }
