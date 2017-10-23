@@ -59,7 +59,15 @@ PeopleInEvent.getSelectedUserId = function (nextProps, peopleInEventListTask, le
   return '';
 }
 
-PeopleInEvent.getOrderedRecipeIdsAfterAddRemove = function (orderedRecipeIds, hasOrdered, recipe) {
+/**
+ * Update or New an 'PeopleInEvent' Parse Instance
+ * @param props
+ * @param orderedRecipeIds
+ * @param hasOrdered
+ * @param recipe
+ * @returns {*}
+ */
+PeopleInEvent.updatePeopleInEventParseInstance = function (props, orderedRecipeIds, hasOrdered, recipe) {
   let newOrderedRecipeIds = orderedRecipeIds
 
   if (hasOrdered) { // remove
@@ -67,6 +75,8 @@ PeopleInEvent.getOrderedRecipeIdsAfterAddRemove = function (orderedRecipeIds, ha
   } else { // add
     newOrderedRecipeIds.push(recipe.id)
   }
+
+  debugger
 
   return newOrderedRecipeIds;
 }

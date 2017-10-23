@@ -55,18 +55,13 @@ class OrderedUserRightRecipesListView extends Component {
     const {writeOnlineParseObjectAction, showAlertMessageAction} = this.props;
     const {orderedRecipeIds} = this.state;
 
-    const newOrderedRecipeIds = PeopleInEvent.getOrderedRecipeIdsAfterAddRemove(orderedRecipeIds, hasOrdered, recipe)
+    const updatedModel = PeopleInEvent.updatePeopleInEventParseInstance(this.props, orderedRecipeIds, hasOrdered, recipe)
 
     let errorMessage = null
     const _object = {
       MODEL_FORM_TYPE_FOR_PEOPLE_IN_EVENT: null,
       objectSchemaName: PARSE_PEOPLE_IN_EVENTS,
-      model: {
-        parseId,
-        uniqueId,
-        displayName, want, start, end,
-        restaurant: forRelationObject
-      }
+      model: updatedModel
     }
     try {
       // await Promise.race([writeOnlineParseObjectAction(_object), timeout(15000)]);
