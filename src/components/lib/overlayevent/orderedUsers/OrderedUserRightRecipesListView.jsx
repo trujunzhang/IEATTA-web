@@ -61,6 +61,8 @@ class OrderedUserRightRecipesListView extends Component {
 
     const updatedModel = PeopleInEvent.updatePeopleInEventParseInstance(this.props, orderedRecipeIds, hasOrdered, recipe)
 
+    this.props.actions.updateModelRequest();
+
     let errorMessage = null
     const _object = {
       editModelType: MODEL_FORM_TYPE_FOR_PEOPLE_IN_EVENT,

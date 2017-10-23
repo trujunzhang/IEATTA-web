@@ -73,6 +73,9 @@ class IEAOrderedUsersInEventsLayout extends Component {
 
     return (
       <div className="column column-beta ">
+
+        <Telescope.components.F8AppAlertSection/>
+       
         <div className="user-details_bookmarks js-user-details_bookmarks">
 
           <Telescope.components.OrderedUserRightRecipesListView
@@ -109,7 +112,6 @@ class IEAOrderedUsersInEventsLayout extends Component {
       return (
         <div className="main-content-wrap main-content-wrap--full">
 
-          <Telescope.components.F8AppAlertSection/>
 
           <div className="top-shelf top-shelf-grey">
             <Telescope.components.OrderedUserInEventHeaderView {...this.props}/>
