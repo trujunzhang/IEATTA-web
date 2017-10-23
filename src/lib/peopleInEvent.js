@@ -79,4 +79,9 @@ PeopleInEvent.getOrderedRecipeCount = function (user, peopleInEventListDict) {
 }
 
 
+PeopleInEvent.generateParseObjectUniqueId = function (event, user) {
+  return `${event.uniqueId}_${user.uniqueId}`
+}
+
+
 export default PeopleInEvent;
