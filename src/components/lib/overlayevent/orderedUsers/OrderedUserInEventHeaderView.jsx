@@ -1,6 +1,9 @@
 import Telescope from '../../../lib'
 import React, {Component} from 'react'
 
+import {getRestaurantLink, getEventLink} from '../../../../lib/link'
+
+import {Link} from 'react-router'
 import Photos from '../../../../lib/photos'
 
 class OrderedUserInEventHeaderView extends Component {
@@ -9,8 +12,18 @@ class OrderedUserInEventHeaderView extends Component {
 
     return (
       <div className="user-profile_info arrange_unit">
-        <h1>{forObject.displayName}</h1>
-        <h3 className="user-location alternate">{forObject.displayName}</h3>
+        <div>
+          <Link to={getEventLink(forObject)}>
+            <h1>{forObject.displayName}</h1>
+          </Link>
+        </div>
+
+        <div>
+          <Link to={getRestaurantLink(forObject.restaurant)}>
+            <h3 className="user-location alternate">{forObject.restaurant.displayName}</h3>
+          </Link>
+        </div>
+
       </div>
 
     )
