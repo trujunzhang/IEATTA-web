@@ -51,7 +51,7 @@ function listContainerReducer(state: State = initialState, action): State {
         ready: true,
         totalCount: totalCount,
         limit: limit,
-        pageIndex: listTask.pageIndex + 1,
+        pageIndex: listTask.pageIndex,
         firstPagination: false,
         results: list
       };

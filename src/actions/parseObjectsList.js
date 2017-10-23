@@ -90,17 +90,16 @@ async function _loadListByType(listTask,
     limit,
     allItems = false
   } = listTask
-  const skipCount = (pageIndex - 1) * limit
 
   console.log("current:", pageIndex)
 
   const totalCount = await objectsQuery.count()
 
-
   let results = [];
-  if (allItems) {
+  if (allItems || limit === -1) {
     results = await objectsQuery.find()
   } else {
+    const skipCount = (pageIndex - 1) * limit
     results = await objectsQuery.skip(skipCount).limit(limit).find()
   }
 
