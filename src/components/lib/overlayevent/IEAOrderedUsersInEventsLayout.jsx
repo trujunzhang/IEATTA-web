@@ -75,7 +75,7 @@ class IEAOrderedUsersInEventsLayout extends Component {
       <div className="column column-beta ">
 
         <Telescope.components.F8AppAlertSection/>
-       
+
         <div className="user-details_bookmarks js-user-details_bookmarks">
 
           <Telescope.components.OrderedUserRightRecipesListView
@@ -111,8 +111,6 @@ class IEAOrderedUsersInEventsLayout extends Component {
     if (leftUsersListTask.ready && recipesInRestaurantTask.ready && peopleInEventListTask.ready) {
       return (
         <div className="main-content-wrap main-content-wrap--full">
-
-
           <div className="top-shelf top-shelf-grey">
             <Telescope.components.OrderedUserInEventHeaderView {...this.props}/>
           </div>
