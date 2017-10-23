@@ -109,7 +109,7 @@ PeopleInEvent.updatePeopleInEventParseInstance = function (props, orderedRecipeI
   const restaurant = event.restaurant;
 
   let updatedPeopleInEvent = null;
-  if (!!Object.keys(peopleInEventListDict).indexOf(selectedUserId) !== -1) {
+  if (Object.keys(peopleInEventListDict).indexOf(selectedUserId) !== -1) {
     updatedPeopleInEvent = Object.assign(
       peopleInEventListDict[selectedUserId].peopleInEvent, {
         newOrderedRecipeIds
@@ -125,7 +125,6 @@ PeopleInEvent.updatePeopleInEventParseInstance = function (props, orderedRecipeI
         id: selectedUserId
       }
     }
-    debugger
   }
 
   return updatedPeopleInEvent;

@@ -181,8 +181,6 @@ Records.createOnlineParseInstance = async function (editModelType, onlineParseOb
       })
       onlineParseObject.set('recipes', _recipes_array)
 
-      debugger
-
       break;
   }
 

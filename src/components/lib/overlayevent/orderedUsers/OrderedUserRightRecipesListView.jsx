@@ -56,7 +56,7 @@ class OrderedUserRightRecipesListView extends Component {
   }
 
   async onAddRemoveRecipePress(hasOrdered, recipe) {
-    const {writeOnlineParseObjectAction, showAlertMessageAction} = this.props;
+    const {writeOnlineParseObjectAction, showAlertMessageAction, peopleInEventListTask, peopleInEventTerms} = this.props;
     const {orderedRecipeIds} = this.state;
 
     const updatedModel = PeopleInEvent.updatePeopleInEventParseInstance(this.props, orderedRecipeIds, hasOrdered, recipe)
@@ -81,6 +81,8 @@ class OrderedUserRightRecipesListView extends Component {
       } else {
         this.props.actions.updateModelSuccess();
         showAlertMessageAction({type: ALERT_TYPE_SUCCESS, text: 'Saved the ordered recipes successfully!'})
+
+        this.props.loadPeopleInEventListAction(peopleInEventListTask, peopleInEventTerms);
       }
     }
 
