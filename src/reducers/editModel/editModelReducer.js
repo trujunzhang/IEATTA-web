@@ -27,7 +27,11 @@ const {
   UPDATE_MODEL_SUCCESS,
   UPDATE_MODEL_FAILURE,
   WRITE_MODEL_DONE,
-  MODEL_FORM_TYPE_EDIT
+  MODEL_FORM_TYPE_EDIT,
+  UPDATE_MODEL_REQUEST_FOR_RECIPE_ID,
+  UPDATE_MODEL_SUCCESS_FOR_RECIPE_ID,
+  UPDATE_MODEL_FAILURE_FOR_RECIPE_ID,
+  LIST_VIEW_LOADED_BY_TYPE,
 } = require('../../lib/constants').default
 
 const initialState = new InitialState()
@@ -118,15 +122,22 @@ function editModelReducer(state = initialState, action) {
      * set the form to fetching and clear any errors
      */
     case UPDATE_MODEL_REQUEST: {
-      let nextState = state
+      return state
         .setIn(['form', 'isFetching'], true)
         .setIn(['form', 'error'], null)
-      return nextState
     }
 
     case UPDATE_MODEL_REQUEST_FOR_RECIPE_ID: {
       return state
+        .setIn(['form', 'isFetching'], true)
         .setIn(['form', 'currentRequestRecipeId'], action.payload.recipeId)
+    }
+
+
+    case LIST_VIEW_LOADED_BY_TYPE: {
+      return state
+        .setIn(['form', 'isFetching'], false)
+        .setIn(['form', 'currentRequestRecipeId'], '')
     }
 
     /**

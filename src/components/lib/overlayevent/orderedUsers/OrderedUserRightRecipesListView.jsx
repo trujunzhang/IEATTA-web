@@ -94,11 +94,34 @@ class OrderedUserRightRecipesListView extends Component {
     const {orderedRecipeIds} = this.state;
     const hasOrdered = (orderedRecipeIds.indexOf(recipe.id) !== -1)
 
+    const {editModel} = this.props;
+    const requestRecipeId = editModel.form.currentRequestRecipeId;
+    const isDisabled = (!editModel.form.isValid || editModel.form.isFetching);
+
+    let actionClass = "ybtn ybtn--small"
+    if (requestRecipeId === recipe.id) {
+      return (
+
+        <ul className="recipe-event-buttons">
+
+          <li className="vote-item inline-block">
+
+            <a className={actionClass}>
+
+              <Telescope.components.F8LoadingView loadingClass="icon--size-18"/>
+
+            </a>
+          </li>
+        </ul>
+      )
+    }
+
+
     return (
       <ul className="recipe-event-buttons">
         <li className="vote-item inline-block">
 
-          <a className="ybtn ybtn--small useful js-analytics-click"
+          <a className={actionClass}
              onClick={() => {
                this.onAddRemoveRecipePress(hasOrdered, recipe)
              }}

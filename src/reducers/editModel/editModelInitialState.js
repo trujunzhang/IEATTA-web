@@ -30,6 +30,7 @@ const Form = Record({
   editModelType: MODEL_FORM_TYPE_NEW,
   originModel: {},
   disabled: false,
+  // currentRequestRecipeId: 'TFMuxD6Etf',
   currentRequestRecipeId: '',
   error: null,
   isValid: false,
