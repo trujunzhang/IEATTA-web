@@ -10,7 +10,8 @@ import PeopleInEvent from '../../../../lib/peopleInEvent'
 const {
   // Model Form Mode
   MODEL_FORM_TYPE_NEW,
-  PARSE_EVENTS,
+  MODEL_FORM_TYPE_FOR_PEOPLE_IN_EVENT,
+  PARSE_PEOPLE_IN_EVENTS,
   MENU_ITEM_ADD_OR_EDIT_EVENT,
   ALERT_TYPE_ERROR,
   ALERT_TYPE_SUCCESS,
@@ -51,15 +52,22 @@ class OrderedUserRightRecipesListView extends Component {
   }
 
   async onAddRemoveRecipePress(hasOrdered, recipe) {
-    const {xx, showAlertMessageAction} = this.props;
+    const {writeOnlineParseObjectAction, showAlertMessageAction} = this.props;
     const {orderedRecipeIds} = this.state;
-
-    debugger
 
     const newOrderedRecipeIds = PeopleInEvent.getOrderedRecipeIdsAfterAddRemove(orderedRecipeIds, hasOrdered, recipe)
 
     let errorMessage = null
-
+    const _object = {
+      MODEL_FORM_TYPE_FOR_PEOPLE_IN_EVENT: null,
+      objectSchemaName: PARSE_PEOPLE_IN_EVENTS,
+      model: {
+        parseId,
+        uniqueId,
+        displayName, want, start, end,
+        restaurant: forRelationObject
+      }
+    }
     try {
       // await Promise.race([writeOnlineParseObjectAction(_object), timeout(15000)]);
     } catch (e) {

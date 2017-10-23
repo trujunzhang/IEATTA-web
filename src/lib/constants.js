@@ -101,6 +101,7 @@ export default keyMirror({
   // Model Form Mode
   MODEL_FORM_TYPE_NEW: null,
   MODEL_FORM_TYPE_EDIT: null,
+  MODEL_FORM_TYPE_FOR_PEOPLE_IN_EVENT: null,
 
   // Edit Model
   EDIT_MODEL_TOGGLE_TYPE: null,
