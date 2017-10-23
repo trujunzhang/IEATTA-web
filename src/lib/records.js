@@ -159,6 +159,13 @@ Records.createOnlineParseInstance = async function (editModelType, onlineParseOb
       }
       break;
 
+    case PARSE_PEOPLE_IN_EVENTS:
+
+
+      _online_restaurant_instance = getInstanceWithoutData(PARSE_RESTAURANTS, localRecorder.restaurant.id)
+      onlineParseObject.set('restaurant', _online_restaurant_instance)
+
+      break;
   }
 
 }

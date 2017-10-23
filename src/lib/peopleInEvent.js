@@ -2,6 +2,8 @@ const _ = require('underscore')
 const md5 = require('blueimp-md5')
 import moment from 'moment'
 
+const UUID = require('../components/vendor/uuid');
+
 const PeopleInEvent = {
   config: {
     paginationCountPerPage: 10, //Using it now.
@@ -38,10 +40,33 @@ PeopleInEvent.getOrderedRecipeDict = function (peopleInEventListTask) {
   let dict = {};
   peopleInEventListTask.results.map(function (item) {
     const user = item.user;
-    dict[user.id] = item.recipes;
+    dict[user.id] = {
+      peopleInEvent: item,
+      recipes: item.recipes
+    }
   })
 
   return dict;
+}
+
+
+PeopleInEvent.getOrderedRecipeCount = function (user, peopleInEventListDict) {
+  if (Object.keys(peopleInEventListDict).indexOf(user.id) === -1) {
+    return 0;
+  }
+
+  return peopleInEventListDict[user.id].recipes.length;
+}
+
+PeopleInEvent.getOrderedRecipeIds = function (props) {
+  const {
+    peopleInEventListDict,
+    selectedUserId,
+  } = props;
+
+  const orderedRecipes = peopleInEventListDict[selectedUserId].recipes;
+
+  return _.pluck(orderedRecipes, 'id')
 }
 
 PeopleInEvent.getSelectedUserId = function (nextProps, peopleInEventListTask, leftUsersListTask) {
@@ -76,29 +101,29 @@ PeopleInEvent.updatePeopleInEventParseInstance = function (props, orderedRecipeI
     newOrderedRecipeIds.push(recipe.id)
   }
 
-  debugger
+  const {peopleInEventListDict, selectedUserId} = props;
+  const event = props.forObject;
+  const restaurant = event.restaurant;
+  const peopleInEvent = peopleInEventListDict[selectedUserId].peopleInEvent;
 
-  return newOrderedRecipeIds;
-}
-
-PeopleInEvent.getOrderedRecipeIds = function (props) {
-  const {
-    peopleInEventListDict,
-    selectedUserId,
-  } = props;
-
-  const orderedRecipes = peopleInEventListDict[selectedUserId]
-
-  return _.pluck(orderedRecipes, 'id')
-}
-
-PeopleInEvent.getOrderedRecipeCount = function (user, peopleInEventListDict) {
-  if (Object.keys(peopleInEventListDict).indexOf(user.id) === -1) {
-    return 0;
+  let updatedPeopleInEvent = null;
+  if (!!peopleInEvent) {
+    updatedPeopleInEvent = Object.assign(peopleInEvent, {
+      newOrderedRecipeIds
+    })
+  } else {
+    updatedPeopleInEvent = {
+      objectId: UUID.create().toString(),
+      uniqueId: PeopleInEvent.generateParseObjectUniqueId(event, selectedUserId),
+      restaurant,
+      event,
+      newOrderedRecipeIds
+    };
   }
 
-  return peopleInEventListDict[user.id].length;
+  return updatedPeopleInEvent;
 }
+
 
 /**
  * Basically, the 'peopleInEvent' parse instance can be created and removed as the same instance.
@@ -109,11 +134,11 @@ PeopleInEvent.getOrderedRecipeCount = function (user, peopleInEventListDict) {
  *        So do not need to create a new 'PeopleInEvent' parse object,
  *        Just query it using 'PeopleInEvent' uniqueId.
  * @param event
- * @param user
+ * @param userId
  * @returns {string}
  */
-PeopleInEvent.generateParseObjectUniqueId = function (event, user) {
-  return `${event.uniqueId}_${user.uniqueId}`
+PeopleInEvent.generateParseObjectUniqueId = function (event, userId) {
+  return `${event.uniqueId}_${userId}`
 }
 
 
