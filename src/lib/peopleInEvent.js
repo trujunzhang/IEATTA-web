@@ -64,9 +64,12 @@ PeopleInEvent.getOrderedRecipeIds = function (props) {
     selectedUserId,
   } = props;
 
-  const orderedRecipes = peopleInEventListDict[selectedUserId].recipes;
+  if (Object.keys(peopleInEventListDict).indexOf(selectedUserId) !== -1) {
+    const orderedRecipes = peopleInEventListDict[selectedUserId].recipes;
+    return _.pluck(orderedRecipes, 'id')
+  }
 
-  return _.pluck(orderedRecipes, 'id')
+  return []
 }
 
 PeopleInEvent.getSelectedUserId = function (nextProps, peopleInEventListTask, leftUsersListTask) {
