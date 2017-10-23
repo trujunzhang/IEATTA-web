@@ -40,6 +40,7 @@ const {
 
 const {
   getQueryByType,
+  getFirstOnlineParseInstance,
 } = require('../parse/parseUtiles').default
 
 const {
@@ -70,6 +71,7 @@ const {
   // Edit form
   MODEL_FORM_TYPE_NEW,
   MODEL_FORM_TYPE_EDIT,
+  MODEL_FORM_TYPE_FOR_PEOPLE_IN_EVENT,
   WRITE_MODEL_DONE,
   // Parse Object Model Status
   PARSE_OBJECT_FLAG_NORMAL,
@@ -89,16 +91,22 @@ async function _writeOnlineParseObject(editModelType,
       onlineParseObject = await getQueryByType(objectSchemaName).get(model.parseId)
       debugger
       break;
+    case MODEL_FORM_TYPE_FOR_PEOPLE_IN_EVENT:
+      onlineParseObject = await getFirstOnlineParseInstance(objectSchemaName, model)
+      debugger
+      break;
   }
 
   // First of all, set fields.
   await  Records.createOnlineParseInstance(editModelType, onlineParseObject, objectSchemaName, model)
 
+  debugger
+
   // step1: save the online object.
-  await onlineParseObject.save()
+  // await onlineParseObject.save()
 
   // step2: save it's recorder.
-  await updateParseRecorder(objectSchemaName, onlineParseObject)
+  // await updateParseRecorder(objectSchemaName, onlineParseObject)
 
   const _originalModel = parseOnlineParseObject(objectSchemaName, onlineParseObject);
   const action = {

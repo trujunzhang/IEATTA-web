@@ -117,8 +117,12 @@ PeopleInEvent.updatePeopleInEventParseInstance = function (props, orderedRecipeI
       uniqueId: PeopleInEvent.generateParseObjectUniqueId(event, selectedUserId),
       restaurant,
       event,
-      newOrderedRecipeIds
-    };
+      newOrderedRecipeIds,
+      user: {
+        id: selectedUserId
+      }
+    }
+    debugger
   }
 
   return updatedPeopleInEvent;

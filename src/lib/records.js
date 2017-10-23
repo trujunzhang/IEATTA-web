@@ -13,6 +13,7 @@ const {
   // Edit form
   MODEL_FORM_TYPE_NEW,
   MODEL_FORM_TYPE_EDIT,
+  MODEL_FORM_TYPE_FOR_PEOPLE_IN_EVENT,
 } = require('./constants').default
 
 const {
@@ -54,7 +55,7 @@ Records.createOnlineParseInstance = async function (editModelType, onlineParseOb
 
   onlineParseObject.set('flag', '1')
 
-  if (editModelType === MODEL_FORM_TYPE_NEW) {
+  if (editModelType === MODEL_FORM_TYPE_NEW || editModelType === MODEL_FORM_TYPE_FOR_PEOPLE_IN_EVENT) {
     onlineParseObject.set('uniqueId', localRecorder.uniqueId)
   }
 
@@ -161,9 +162,25 @@ Records.createOnlineParseInstance = async function (editModelType, onlineParseOb
 
     case PARSE_PEOPLE_IN_EVENTS:
 
-
+      // Restaurant
       _online_restaurant_instance = getInstanceWithoutData(PARSE_RESTAURANTS, localRecorder.restaurant.id)
       onlineParseObject.set('restaurant', _online_restaurant_instance)
+
+      // Event
+      _online_event_instance = getInstanceWithoutData(PARSE_EVENTS, localRecorder.event.id)
+      onlineParseObject.set('event', _online_event_instance)
+
+      // User
+      _online_user_Instance = getInstanceWithoutData(PARSE_USERS, localRecorder.user.id)
+      onlineParseObject.set('user', _online_user_Instance)
+
+      // Recipes Array
+      const _recipes_array = localRecorder.newOrderedRecipeIds.map(function (recipeId) {
+        return getInstanceWithoutData(PARSE_RECIPES, recipeId)
+      })
+      onlineParseObject.set('recipes', _recipes_array)
+
+      debugger
 
       break;
   }

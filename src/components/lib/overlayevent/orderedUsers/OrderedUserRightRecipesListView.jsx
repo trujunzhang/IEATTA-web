@@ -59,12 +59,12 @@ class OrderedUserRightRecipesListView extends Component {
 
     let errorMessage = null
     const _object = {
-      MODEL_FORM_TYPE_FOR_PEOPLE_IN_EVENT: null,
+      editModelType: MODEL_FORM_TYPE_FOR_PEOPLE_IN_EVENT,
       objectSchemaName: PARSE_PEOPLE_IN_EVENTS,
       model: updatedModel
     }
     try {
-      // await Promise.race([writeOnlineParseObjectAction(_object), timeout(15000)]);
+      await Promise.race([writeOnlineParseObjectAction(_object), timeout(15000)]);
     } catch (e) {
       this.props.actions.updateModelFailure(e);
       const message = e.message || e;
