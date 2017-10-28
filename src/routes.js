@@ -1,56 +1,20 @@
-let Telescope = require('./components/lib').default
+const Telescope = require('./components/lib').default
 
-
-export function requireAuth(store) {
-  return (nextState, replace) => {
-
-    const state = store.getState()
-
-    if (!state.user.isLoggedIn) {
-      replace({
-        pathname: '/login',
-        query: {
-          next: nextState.location.pathname
-        }
-      })
-    }
-
-  }
-}
-
-export function alreadyLogin(store) {
-  return (nextState, replace) => {
-
-    const state = store.getState()
-
-    if (state.user.isLoggedIn) {
-      replace({
-        pathname: '/logout',
-        query: {
-          next: nextState.location.pathname
-        }
-      })
-    }
-
-  }
-}
+import {userIsAuthenticated, userIsNotAuthenticated} from './auth'
 
 
 const createRoutes = (store) => {
   const loginRoutes = [
     {
       path: 'login',
-      component: Telescope.components.UserLoginMain,
-      onEnter: alreadyLogin(store)
+      component: userIsNotAuthenticated(Telescope.components.UserLoginMain),
     },
     {
       path: 'signup',
-      component: Telescope.components.UserLoginMain,
-      onEnter: alreadyLogin(store)
+      component: userIsNotAuthenticated(Telescope.components.UserLoginMain),
     },
     {
       path: 'logout',
-      component: Telescope.components.UserLoginMain
     }
   ];
 
@@ -61,13 +25,11 @@ const createRoutes = (store) => {
     },
     {
       path: 'edit/biz/(:rid)/(:rslug)',
-      component: Telescope.components.DetailedRestaurant,
-      // onEnter: requireAuth(store)
+      component: userIsAuthenticated(Telescope.components.DetailedRestaurant),
     },
     {
       path: 'new/biz',
-      component: Telescope.components.DetailedRestaurant,
-      onEnter: requireAuth(store)
+      component: userIsAuthenticated(Telescope.components.DetailedRestaurant),
     },
     {
       path: 'biz_photos/(:rid)/(:rslug)',
@@ -86,8 +48,7 @@ const createRoutes = (store) => {
     },
     {
       path: 'edit/event/(:eid)/(:eslug)',
-      component: Telescope.components.DetailedEvent,
-      // onEnter: requireAuth(store)
+      component: userIsAuthenticated(Telescope.components.DetailedEvent),
     }
   ];
 
@@ -98,8 +59,7 @@ const createRoutes = (store) => {
     },
     {
       path: 'edit/recipe/(:oid)/(:oslug)',
-      component: Telescope.components.OrderedRecipes,
-      // onEnter: requireAuth(store)
+      component: userIsAuthenticated(Telescope.components.OrderedRecipes),
     },
     {
       path: 'recipe_photos/(:oid)/(:oslug)',
@@ -110,13 +70,11 @@ const createRoutes = (store) => {
   const reviewRoutes = [
     {
       path: 'edit/review/(:reviewType)/(:forObjectId)/(:reviewId)',
-      component: Telescope.components.DetailedReview,
-      // onEnter: requireAuth(store)
+      component: userIsAuthenticated(Telescope.components.DetailedReview),
     },
     {
       path: 'new/review/(:reviewType)/(:forObjectId)',
-      component: Telescope.components.DetailedReview,
-      // onEnter: requireAuth(store)
+      component: userIsAuthenticated(Telescope.components.DetailedReview),
     },
     {
       path: 'reviews/(:modelType)/(:forObjectId)/(:forObjectDisplayName)',
@@ -159,7 +117,7 @@ const createRoutes = (store) => {
   const userEditRoutes = [
     {
       path: 'profile',
-      component: Telescope.components.UsersSingle
+      component: userIsAuthenticated(Telescope.components.UsersSingle)
     },
   ];
 
@@ -167,7 +125,7 @@ const createRoutes = (store) => {
   const photosRoutes = [
     {
       path: 'photos/add/(:modelType)/(:forObjectId)',
-      component: Telescope.components.AddPhotoForModel
+      component: userIsAuthenticated(Telescope.components.AddPhotoForModel)
     },
   ];
 
@@ -185,25 +143,23 @@ const createRoutes = (store) => {
     //for event
     {
       path: 'organization/event/new/(:modelType)/(:forObjectId)',
-      component: Telescope.components.OrganizationForNewEvent
+      component: userIsAuthenticated(Telescope.components.OrganizationForNewEvent)
     },
     {
       path: 'organization/event/users/(:eid)',
-      component: Telescope.components.DetailedEvent
+      component: userIsAuthenticated(Telescope.components.DetailedEvent)
     },
     //for recipe
     {
       path: 'organization/recipe/new/(:modelType)/(:forObjectId)',
-      component: Telescope.components.OrganizationForRecipe
+      component: userIsAuthenticated(Telescope.components.OrganizationForRecipe)
     },
     {
       path: 'organization/recipe/edit/(:modelType)/(:forObjectId)/(:recipeId)',
-      component: Telescope.components.OrganizationForRecipe
+      component: userIsAuthenticated(Telescope.components.OrganizationForRecipe)
     },
-
-
-    // return `/organization/recipe/edit/restaurant/${recipe.restaurant.id}/${recipe.id}`
   ];
+  
   const routes = [
     {
       path: '/',
