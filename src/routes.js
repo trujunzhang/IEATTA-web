@@ -15,6 +15,7 @@ const createRoutes = (store) => {
     },
     {
       path: 'logout',
+      component: Telescope.components.UserLoginMain,
     }
   ];
 
@@ -134,8 +135,7 @@ const createRoutes = (store) => {
     {
       // http://localhost:3000/playground
       path: 'playground',
-      component: Telescope.components.TcombCommonExample,
-      onEnter: requireAuth(store)
+      component: Telescope.components.TcombCommonExample
     }
   ];
 
@@ -159,7 +159,7 @@ const createRoutes = (store) => {
       component: userIsAuthenticated(Telescope.components.OrganizationForRecipe)
     },
   ];
-  
+
   const routes = [
     {
       path: '/',
