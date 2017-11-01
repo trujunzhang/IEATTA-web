@@ -17,7 +17,23 @@ const {
 
 const UUID = require('../components/vendor/uuid');
 
-const AppConstants = {}
+const AppConstants = {
+  config: {}
+}
+
+AppConstants.config.parse = {
+  // deploy-check
+  serverURL: 'https://ieattaps.herokuapp.com/parse'
+}
+
+
+if (__DEV__) {
+  AppConstants.config.parse = {
+    // deploy-check
+    serverURL: 'http://localhost:1337/parse/',
+  }
+
+}
 
 AppConstants.parseObjectFlags = {
   PARSE_OBJECT_FLAG_NORMAL: '1',

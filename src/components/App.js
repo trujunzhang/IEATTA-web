@@ -4,11 +4,12 @@ import {Router} from 'react-router'
 import {Provider} from 'react-redux'
 import PropTypes from 'prop-types'
 import {IntlProvider} from 'react-intl'
+import AppConstants from '../lib/appConstants'
 
-let Parse = require('parse')
+const Parse = require('parse')
 
 Parse.initialize('YJ60VCiTAD01YOA3LJtHQlhaLjxiHSsv4mkxKvVM', '3S9VZj8y9g0Tj1WS64dl19eDJrEVpvckG7uhcXIi', '87rxX8J0JwaaPSBxY9DdKJEqWXByqE7sShRsX4vg')
-Parse.serverURL = 'https://ieattaps.herokuapp.com/parse'
+Parse.serverURL = AppConstants.config.parse.serverURL;
 
 let Telescope = require('../lib/en_US').default
 
