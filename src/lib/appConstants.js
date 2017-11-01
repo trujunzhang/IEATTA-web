@@ -28,10 +28,10 @@ AppConstants.config.parse = {
 
 
 if (__DEV__) {
-  AppConstants.config.parse = {
-    // deploy-check
-    serverURL: 'http://localhost:1337/parse/',
-  }
+  // AppConstants.config.parse = {
+  //   // deploy-check
+  //   serverURL: 'http://localhost:1337/parse/',
+  // }
 
 }
 

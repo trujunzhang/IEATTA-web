@@ -2,15 +2,19 @@ import Telescope from '../../index'
 import React, {Component} from 'react'
 import {Link} from 'react-router'
 
+import {getLoggedUserMenuLink} from '../../../../lib/link'
+
 class HeaderRightUserIconsPanel extends Component {
 
-
   render() {
+    const {currentUser} = this.props
+
     return (
       <div className="arrange_unit main-header--full_arrange_unit">
         <div className="main-header_notifications u-nowrap responsive-visible-large-block">
-          <a href="/mail" className="header-nav_link js-header-messages js-analytics-click" id="messages-icon"
-             data-analytics-label="messages_icon">
+          <a href="/mail"
+             className="header-nav_link js-header-messages js-analytics-click"
+             id="messages-icon">
             <span aria-label="Messages" id="icon_24X24"
                   className="icon icon--24-speech icon--size-24 icon--white icon--fallback-inverted">
               <svg className="icon_svg">
@@ -21,8 +25,10 @@ class HeaderRightUserIconsPanel extends Component {
             <span className="ybadge ybadge--notification js-notification-badge u-hidden">0</span>
 
           </a>
-          <a href="/user_details" className="header-nav_link show-tooltip js-analytics-click" id="notifications-icon"
-             data-analytics-label="notifications_icon">
+          <Link
+            to={getLoggedUserMenuLink(currentUser)}
+            className="header-nav_link show-tooltip js-analytics-click"
+            id="notifications-icon">
             <span aria-label="Notifications" id="icon_24X24"
                   className="icon icon--24-notification icon--size-24 icon--white icon--fallback-inverted">
               <svg className="icon_svg">
@@ -31,7 +37,7 @@ class HeaderRightUserIconsPanel extends Component {
               </svg>
             </span>
             <span className="ybadge ybadge--notification js-notification-badge u-hidden">0</span>
-          </a>
+          </Link>
         </div>
 
       </div>

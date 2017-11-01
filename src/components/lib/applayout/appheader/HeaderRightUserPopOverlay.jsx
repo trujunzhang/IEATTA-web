@@ -15,7 +15,7 @@ const {
 class HeaderRightUserPopOverlay extends Component {
 
   renderMenus() {
-    const {currentUser} = this.props;
+    const {currentUser} = this.props
     return (
       <ul className="drop-menu-group--nav drop-menu-group">
         <li className="drop-down-menu-link">
