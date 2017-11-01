@@ -21,11 +21,15 @@ class OrderedRecipeUserItem extends Component {
           <Link
             to={getLoggedUserMenuLink(user)}
             className="js-analytics-click">
-            <img alt={user.username}
-                 className="photo-box-img"
-                 width={30}
-                 height={30}
-                 src={Photos.getListThumbnailUrl(user)}/>
+
+            <Telescope.components.F8PlaceHolderImage
+              alt={user.username}
+              className="photo-box-img"
+              width={30}
+              height={30}
+              placeholderSource={"/default/user_30_square.png"}
+              source={Photos.getListThumbnailUrl(user)}/>
+
           </Link>
 
         </div>
