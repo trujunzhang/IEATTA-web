@@ -45,8 +45,9 @@ class HeaderRightUserPopOverlay extends Component {
         </li>
 
         <li className="drop-down-menu-link">
-          <a className="js-analytics-click arrange arrange--middle arrange--6"
-             href="/invite">
+          <Link className="js-analytics-click arrange arrange--middle arrange--6"
+                onClick={this.props.onHandleClickOutsidePress}
+                to="/invite">
             <strong className="arrange_unit">
                                 <span id="icon_24X24"
                                       className="icon icon--24-friends icon--size-24 u-space-r1">
@@ -59,7 +60,8 @@ class HeaderRightUserPopOverlay extends Component {
                                               opacity=".502"/>
                                         </g>
                                     </svg>
-                                </span>Invite Friends
+                                </span>
+              {'Invite Friends'}
             </strong>
             <span className="arrange_unit arrange_unit--fill u-text-right">
                                 <span id="icon_24X24"
@@ -70,7 +72,7 @@ class HeaderRightUserPopOverlay extends Component {
                                     </svg>
                                 </span>
                             </span>
-          </a>
+          </Link>
         </li>
 
         <li className="drop-down-menu-link">
