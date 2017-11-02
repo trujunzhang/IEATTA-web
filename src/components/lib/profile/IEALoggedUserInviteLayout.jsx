@@ -52,7 +52,7 @@ class IEALoggedUserInviteLayout extends Component {
     const homepage = AppConstants.config.ieattaWeb.serverURL;
     const username = currentUser.username;
     const fromEmail = currentUser.email;
-    const userLink = (homepage + getLoggedUserMenuLink(currentUser)).replace('//', '/')
+    const userLink = (homepage + getLoggedUserMenuLink(currentUser))
 
     const toEmails = Users.getInviteEmailArray(this.props)
 

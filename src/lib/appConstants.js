@@ -27,7 +27,7 @@ AppConstants.config.parse = {
 }
 
 AppConstants.config.ieattaWeb = {
-  serverURL: 'http://ieatta-web.herokuapp.com/',
+  serverURL: 'http://ieatta-web.herokuapp.com',
 }
 
 if (__DEV__) {
