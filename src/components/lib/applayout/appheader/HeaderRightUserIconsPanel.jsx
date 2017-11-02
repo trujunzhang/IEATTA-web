@@ -12,7 +12,7 @@ class HeaderRightUserIconsPanel extends Component {
     return (
       <div className="arrange_unit main-header--full_arrange_unit">
         <div className="main-header_notifications u-nowrap responsive-visible-large-block">
-          <a href="/mail"
+          <a href="/invite"
              className="header-nav_link js-header-messages js-analytics-click"
              id="messages-icon">
             <span aria-label="Messages" id="icon_24X24"

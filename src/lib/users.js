@@ -13,6 +13,7 @@ const {
   LOGGED_USER_MENU_BROWSER_PHOTOS,
   LOGGED_USER_MENU_EVENTS,
   LOGGED_USER_MENU_RECIPES,
+  LOGGED_USER_INVITE_FORM,
 } = require('./constants').default
 
 const Users = {
@@ -38,6 +39,10 @@ const Users = {
     orderedDataFormat: 'DD, MMMM, YYYY'
   },
   profileLeftMenus: {
+    LOGGED_USER_INVITE_FORM: {
+      tag: 'invite',
+      path: 'invite'
+    },
     LOGGED_USER_EDIT_FORM: {
       tag: 'edit',
       path: 'profile'

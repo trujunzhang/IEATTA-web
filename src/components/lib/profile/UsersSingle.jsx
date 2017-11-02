@@ -25,6 +25,7 @@ const {
   LOGGED_USER_MENU_RECIPES,
   // 1.2 Edit User.
   LOGGED_USER_EDIT_FORM,
+  LOGGED_USER_INVITE_FORM,
 } = require('../../../lib/constants').default
 
 const {getModelByObjectId} = require('../../filter/filterPosts')
@@ -101,6 +102,8 @@ class UsersSingle extends Component {
         case LOGGED_USER_MENU_RECIPES:
           return (<Telescope.components.IEAUserProfileRecipesLayout {...this.state} {...this.props}/>)
         case LOGGED_USER_EDIT_FORM:
+          return (<Telescope.components.IEAEditUserLayout {...this.state} {...this.props}/>)
+        case LOGGED_USER_INVITE_FORM:
           return (<Telescope.components.IEAEditUserLayout {...this.state} {...this.props}/>)
       }
     }

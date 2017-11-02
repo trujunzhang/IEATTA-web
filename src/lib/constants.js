@@ -74,6 +74,7 @@ export default keyMirror({
 
   // 1.2 Edit User.
   LOGGED_USER_EDIT_FORM: null,
+  LOGGED_USER_INVITE_FORM: null,
 
   // App alert
   SHOW_ALERT_MESSAGE: null,

@@ -133,6 +133,7 @@ Telescope.registerComponent('IEAEditRecipeWithPhotosLayout',                    
 
 // profile
 Telescope.registerComponent('IEAUserProfileAboutLayout',           require('./profile/IEAUserProfileAboutLayout.jsx').default)
+Telescope.registerComponent('IEALoggedUserInviteLayout',           require('./profile/IEALoggedUserInviteLayout.jsx').default)
 Telescope.registerComponent('UsersSingle',                         require('./profile/UsersSingle.jsx').default)
 
 // profile(page)

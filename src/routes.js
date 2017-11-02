@@ -108,9 +108,12 @@ const createRoutes = (store) => {
       path: 'user_details_events/(:uid)/(:uslug)',
       component: Telescope.components.UsersSingle
     },
-
     {
       path: 'user_details_recipes/(:uid)/(:uslug)',
+      component: Telescope.components.UsersSingle
+    },
+    {
+      path: 'invite',
       component: Telescope.components.UsersSingle
     },
   ];
