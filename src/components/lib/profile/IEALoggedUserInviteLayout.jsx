@@ -32,6 +32,7 @@ class IEALoggedUserInviteLayout extends Component {
         email: props.auth.form.fields.email,
       }
     }
+
     props.actions.toggleEditModelType(MENU_ITEM_LOGGED_USER_INVITE, {}, LOGGED_USER_INVITE_FORM);
 
   }

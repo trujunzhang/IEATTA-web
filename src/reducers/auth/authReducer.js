@@ -22,6 +22,7 @@ const {
   REGISTER,
   LOGIN,
   FORGOT_PASSWORD,
+  MENU_ITEM_LOGGED_USER_INVITE,
 
   LOGOUT_REQUEST,
   LOGOUT_SUCCESS,
@@ -93,6 +94,7 @@ function authReducer(state = initialState, action) {
     case LOGIN:
     case REGISTER:
     case FORGOT_PASSWORD:
+    case MENU_ITEM_LOGGED_USER_INVITE:
       return formValidation(
         state.setIn(['form', 'state'], action.type)
           .setIn(['form', 'error'], null)

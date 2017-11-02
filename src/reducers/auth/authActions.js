@@ -19,6 +19,7 @@ const {
   LOGIN,
   FORGOT_PASSWORD,
   MENU_ITEM_ADD_OR_EDIT_USER,
+  MENU_ITEM_LOGGED_USER_INVITE,
 
   LOGOUT_REQUEST,
   LOGOUT_SUCCESS,
@@ -66,6 +67,14 @@ export function loginState() {
     type: LOGIN
   }
 }
+
+
+export function inviteState() {
+  return {
+    type: MENU_ITEM_LOGGED_USER_INVITE
+  }
+}
+
 
 export function editUserState() {
   return {
