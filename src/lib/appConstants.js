@@ -26,13 +26,19 @@ AppConstants.config.parse = {
   serverURL: 'https://ieattaps.herokuapp.com/parse'
 }
 
+AppConstants.config.ieattaWeb = {
+  serverURL: 'http://ieatta-web.herokuapp.com/',
+}
 
 if (__DEV__) {
   // AppConstants.config.parse = {
   //   // deploy-check
   //   serverURL: 'http://localhost:1337/parse/',
   // }
-
+  // AppConstants.config.ieattaWeb = {
+  //   // deploy-check
+  // serverURL: 'http://localhost:300',
+  // }
 }
 
 AppConstants.parseObjectFlags = {

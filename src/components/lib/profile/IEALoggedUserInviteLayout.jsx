@@ -55,7 +55,7 @@ class IEALoggedUserInviteLayout extends Component {
 
     const params = {
       username: username,
-      homepage: AppConstants.config.parse,
+      homepage: AppConstants.config.ieattaWeb.serverURL,
       fromEmail: fromEmail,
       toEmails: toEmails
     }
