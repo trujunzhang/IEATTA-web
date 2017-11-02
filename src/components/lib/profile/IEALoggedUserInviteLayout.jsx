@@ -87,7 +87,9 @@ class IEALoggedUserInviteLayout extends Component {
 
     const parseId = currentUser.id;
     const username = currentUser.username;
-    const email = currentUser.email;
+    const fromEmail = currentUser.email;
+
+
 
     this.props.actions.loginRequest()
 
