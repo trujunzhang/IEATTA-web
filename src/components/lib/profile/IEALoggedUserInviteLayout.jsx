@@ -4,6 +4,8 @@ import React, {Component} from 'react'
 import {withRouter} from 'react-router'
 import Users from '../../../lib/users'
 
+import AppConstants from "../../../lib/appConstants";
+
 const {
   uploadLoggedUser,
   showAlertMessage,
@@ -42,7 +44,6 @@ class IEALoggedUserInviteLayout extends Component {
   async onButtonPress() {
     const {invokeParseCloudMethodAction, currentUser} = this.props;
 
-    const parseId = currentUser.id;
     const username = currentUser.username;
     const fromEmail = currentUser.email;
 
@@ -194,7 +195,6 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 
 import * as authActions from '../../../reducers/auth/authActions'
-import AppConstants from "../../../lib/appConstants";
 
 function mapDispatchToProps(dispatch) {
   return {

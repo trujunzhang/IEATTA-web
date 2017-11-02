@@ -31,14 +31,14 @@ AppConstants.config.ieattaWeb = {
 }
 
 if (__DEV__) {
-  // AppConstants.config.parse = {
-  //   // deploy-check
-  //   serverURL: 'http://localhost:1337/parse/',
-  // }
-  // AppConstants.config.ieattaWeb = {
-  //   // deploy-check
-  // serverURL: 'http://localhost:300',
-  // }
+  AppConstants.config.parse = {
+    // deploy-check
+    serverURL: 'http://localhost:1337/parse/',
+  }
+  AppConstants.config.ieattaWeb = {
+    // deploy-check
+    serverURL: 'http://localhost:3000',
+  }
 }
 
 AppConstants.parseObjectFlags = {
