@@ -24,7 +24,7 @@ class HeaderContent extends Component {
     return (
       <div className="arrange_unit main-header--full_arrange_unit">
         <div className="main-header_logo js-analytics-click" id="logo">
-          <a href="/">IEATTA</a>
+          <Link to="/">IEATTA</Link>
         </div>
       </div>
     )
