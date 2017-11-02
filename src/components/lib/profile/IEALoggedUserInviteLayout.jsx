@@ -85,7 +85,7 @@ class IEALoggedUserInviteLayout extends Component {
     } finally {
       this.props.actions.loginSuccess()
 
-      this.props.dispatch(showAlertMessage({type: ALERT_TYPE_SUCCESS, text: "Sent these emails successfully!"}))
+      this.props.dispatch(showAlertMessage({type: ALERT_TYPE_SUCCESS, text: `Sent ${toEmails.length} emails successfully!`}))
     }
   }
 
