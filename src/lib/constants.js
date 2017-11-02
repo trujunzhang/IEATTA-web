@@ -98,6 +98,7 @@ export default keyMirror({
   MENU_ITEM_SEARCH_RESTAURANTS: null,
   MENU_ITEM_MANAGE_FRIENDS: null,
   MENU_ITEM_READ_REVIEWS: null,
+  MENU_ITEM_LOGGED_USER_INVITE: null,
 
   // Model Form Mode
   MODEL_FORM_TYPE_NEW: null,

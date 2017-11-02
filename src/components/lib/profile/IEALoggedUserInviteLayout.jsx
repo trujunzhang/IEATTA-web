@@ -15,6 +15,8 @@ const {
 const {
   MENU_ITEM_ADD_OR_EDIT_USER,
   ALERT_TYPE_ERROR,
+  MENU_ITEM_LOGGED_USER_INVITE,
+  LOGGED_USER_INVITE_FORM,
 } = require('../../../lib/constants').default
 
 
@@ -30,6 +32,7 @@ class IEALoggedUserInviteLayout extends Component {
         email: props.auth.form.fields.email,
       }
     }
+    props.actions.toggleEditModelType(MENU_ITEM_LOGGED_USER_INVITE, {}, LOGGED_USER_INVITE_FORM);
 
   }
 
@@ -79,21 +82,21 @@ class IEALoggedUserInviteLayout extends Component {
 
 
   async onButtonPress() {
-    const {dispatch, userProfile} = this.props;
+    const {dispatch, currentUser} = this.props;
 
-    const parseId = userProfile.id;
-    const username = this.props.auth.form.fields.username;
-    const email = this.props.auth.form.fields.email;
+    const parseId = currentUser.id;
+    const username = currentUser.username;
+    const email = currentUser.email;
 
     this.props.actions.loginRequest()
 
     let errorMessage = null
     try {
       await Promise.race([
-        dispatch(uploadLoggedUser({
-          parseId,
-          username, email
-        })),
+        // dispatch(uploadLoggedUser({
+        //   parseId,
+        //   username, email
+        // })),
         timeout(15000),
       ]);
     } catch (e) {
@@ -105,30 +108,6 @@ class IEALoggedUserInviteLayout extends Component {
     } finally {
       this.props.actions.loginSuccess()
     }
-  }
-
-
-  renderLeftButton() {
-    const {auth} = this.props;
-    const isDisabled = (!auth.form.isValid || auth.form.isFetching);
-
-    return (
-      <div className="form-footer">
-        <button
-          onClick={this.onButtonPress.bind(this)}
-          disabled={isDisabled}
-          id="submit-biz-details-changes"
-          name="action_submit"
-          type="submit"
-          value="Submit Changes"
-          className="ybtn ybtn--primary">
-          <span>{"Save Changes"}</span>
-        </button>
-        <a onClick={this.props.goBack}>
-          {'Cancel'}
-        </a>
-      </div>
-    )
   }
 
 
@@ -171,13 +150,13 @@ class IEALoggedUserInviteLayout extends Component {
                 </li>
               </ul>
 
-
             </div>
             <div className="content-field">
               <div className="action-buttons">
                 <button type="buttom"
                         value="submit"
-
+                        onClick={this.onButtonPress.bind(this)}
+                        disabled={isDisabled}
                         className="ybtn ybtn--primary disable-on-submit">
                   <span>Send Email Invites</span>
                 </button>
