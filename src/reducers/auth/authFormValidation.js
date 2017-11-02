@@ -36,7 +36,9 @@ export default function formValidation(state) {
      */
     case MENU_ITEM_LOGGED_USER_INVITE:
       if (
-        !state.form.fields.emailHasError
+        !state.form.fields.emailHasError &&
+        !state.form.fields.email1HasError &&
+        !state.form.fields.email2HasError
       ) {
         return state.setIn(['form', 'isValid'], true)
       } else {

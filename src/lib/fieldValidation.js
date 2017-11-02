@@ -164,17 +164,32 @@ export default function fieldValidation(state, action) {
      * set the form field error
      */
     case ('email'): {
-      let validEmail = _.isUndefined(validate({from: value},
-        emailConstraints))
+      let validEmail = _.isUndefined(validate({from: value}, emailConstraints))
       if (validEmail) {
         return state.setIn(['form', 'fields', 'emailHasError'], false)
       } else {
         return state.setIn(['form', 'fields', 'emailHasError'], true)
-          .setIn(['form', 'fields', 'emailErrorMsg'],
-            'FieldValidation.valid_email')
+          .setIn(['form', 'fields', 'emailErrorMsg'], 'FieldValidation.valid_email')
       }
     }
-
+    case ('email1'): {
+      let validEmail = _.isUndefined(validate({from: value}, emailConstraints))
+      if (validEmail) {
+        return state.setIn(['form', 'fields', 'email1HasError'], false)
+      } else {
+        return state.setIn(['form', 'fields', 'email1HasError'], true)
+          .setIn(['form', 'fields', 'emailErrorMsg'], 'FieldValidation.valid_email')
+      }
+    }
+    case ('email2'): {
+      let validEmail = _.isUndefined(validate({from: value}, emailConstraints))
+      if (validEmail) {
+        return state.setIn(['form', 'fields', 'email2HasError'], false)
+      } else {
+        return state.setIn(['form', 'fields', 'email2HasError'], true)
+          .setIn(['form', 'fields', 'emailErrorMsg'], 'FieldValidation.valid_email')
+      }
+    }
     /**
      * ### password validation
      * set the form field error

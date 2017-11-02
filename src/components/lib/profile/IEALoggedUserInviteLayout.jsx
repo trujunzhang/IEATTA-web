@@ -145,11 +145,24 @@ class IEALoggedUserInviteLayout extends Component {
                 </li>
                 <li>
                   <label className="u-offscreen">Email address</label>
-                  <input type="email" name="contacts" id="email-invite-1"/>
+                  <input type="email"
+                         name="contacts"
+                         value={auth.form.fields.email1}
+                         onChange={(event) => {
+                           this.props.actions.onAuthFormFieldChange('email1', event.target.value)
+                         }}
+                         id="email-invite-1"/>
                 </li>
                 <li>
                   <label className="u-offscreen">Email address</label>
-                  <input type="email" name="contacts" id="email-invite-2"/>
+                  <input
+                    type="email"
+                    name="contacts"
+                    value={auth.form.fields.email2}
+                    onChange={(event) => {
+                      this.props.actions.onAuthFormFieldChange('email2', event.target.value)
+                    }}
+                    id="email-invite-2"/>
                 </li>
               </ul>
 
