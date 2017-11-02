@@ -60,12 +60,15 @@ const {
   // statistic
   CLOUD_STATISTIC_FOR_USER_STATE,
   CLOUD_STATISTIC_FOR_REVIEWS,
+  CLOUD_RESTAURANT_ADDRESS,
+  CLOUD_INVITE_WITH_EMAILS,
 } = require('../lib/constants').default
 
 const cloudMethods = {
   CLOUD_STATISTIC_FOR_USER_STATE: 'statisticUserState',
   CLOUD_STATISTIC_FOR_REVIEWS: 'statisticReviews',
-  CLOUD_RESTAURANT_ADDRESS: 'getAddressFromLocation'
+  CLOUD_RESTAURANT_ADDRESS: 'getAddressFromLocation',
+  CLOUD_INVITE_WITH_EMAILS: 'inviteCompose',
 }
 
 function callCloudStatisticMethod(type: string, methodType: string, params: string, parseId: string): ThunkAction {

@@ -7,6 +7,7 @@ import Users from '../../../lib/users'
 const {
   uploadLoggedUser,
   showAlertMessage,
+  invokeParseCloudMethod,
   timeout
 } = require('../../../actions').default
 
@@ -14,6 +15,7 @@ const {
  * The states were interested in
  */
 const {
+  CLOUD_INVITE_WITH_EMAILS,
   MENU_ITEM_ADD_OR_EDIT_USER,
   ALERT_TYPE_ERROR,
   MENU_ITEM_LOGGED_USER_INVITE,
@@ -47,7 +49,10 @@ class IEALoggedUserInviteLayout extends Component {
 
     const toEmails = Users.getInviteEmailArray(this.props)
 
-    debugger
+    if (toEmails.length === 0) {
+      this.props.dispatch(showAlertMessage({type: ALERT_TYPE_ERROR, text: 'At least, one email to invite!'}))
+      return
+    }
 
     this.props.actions.loginRequest()
 
@@ -159,6 +164,9 @@ class IEALoggedUserInviteLayout extends Component {
         <div id="super-container" className="content-container">
 
           <div className="container find-friends_container">
+
+            <Telescope.components.F8AppAlertSection/>
+
             <div className="clearfix layout-block layout-n equalize-columns">
 
               {this.renderInvitePanel()}
@@ -187,6 +195,7 @@ import * as authActions from '../../../reducers/auth/authActions'
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(authActions, dispatch),
+    invokeParseCloudMethodAction: (params) => dispatch(invokeParseCloudMethod(CLOUD_INVITE_WITH_EMAILS, params, PARSE_COMMENTS)),
   }
 }
 

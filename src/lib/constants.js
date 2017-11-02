@@ -48,6 +48,7 @@ export default keyMirror({
   CLOUD_STATISTIC_FOR_USER_STATE: null,
   CLOUD_STATISTIC_FOR_REVIEWS: null,
   CLOUD_RESTAURANT_ADDRESS: null,
+  CLOUD_INVITE_WITH_EMAILS: null,
 
   // Google Address
   RESTAURANT_CLOUD_ADDRESS_MODEL: null,
