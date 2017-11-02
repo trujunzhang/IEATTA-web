@@ -47,6 +47,7 @@ const {
   OVERLAY_LOADED_MODEL_PAGE,
   OVERLAY_LOADED_MODEL_RESET,
   STATISTIC_CLOUD_MODEL,
+  EMAIL_SEND_CLOUD_MODEL,
   USERPROFILE_LOADED,
   // parse models
   PARSE_RESTAURANTS,
@@ -70,6 +71,7 @@ const cloudMethods = {
   CLOUD_RESTAURANT_ADDRESS: 'getAddressFromLocation',
   CLOUD_INVITE_WITH_EMAILS: 'inviteCompose',
 }
+
 
 function callCloudStatisticMethod(type: string, methodType: string, params: string, parseId: string): ThunkAction {
   const methodName = cloudMethods[methodType];

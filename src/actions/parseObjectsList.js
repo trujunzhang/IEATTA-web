@@ -23,6 +23,7 @@
  */
 import {fromParsePhoto, fromParseRecipe} from "../parse/parseModels";
 
+const Parse = require('parse')
 const _ = require('underscore')
 import type {ThunkAction, Action} from './types'
 
@@ -51,6 +52,7 @@ import PeopleInEvent from '../lib/peopleInEvent'
  */
 const {
   LIST_VIEW_LOADED_BY_TYPE,
+  EMAIL_SEND_CLOUD_MODEL,
 } = require('../lib/constants').default
 
 async function _loadRecipeListForEvent(listTask,
@@ -122,6 +124,36 @@ async function _loadListByType(listTask,
     Promise.resolve(action)
   ])
 }
+
+async function _callCloudInviteEmailMethod(params, emails): ThunkAction {
+  for (var i = 0; i < emails.length; i++) {
+    await Parse.Cloud.run('inviteCompose', {...params, toEmail: emails[i]}, {
+      success: (model) => {
+      },
+      error: (error) => {
+        debugger
+      }
+    })
+  }
+  const action = {type: EMAIL_SEND_CLOUD_MODEL}
+
+  return Promise.all([
+    Promise.resolve(action)
+  ])
+}
+
+function callCloudInviteEmailMethod(params, emails): ThunkAction {
+  return (dispatch) => {
+    const action = _callCloudInviteEmailMethod(params, emails)
+    action.then(
+      ([result]) => {
+        dispatch(result)
+      }
+    )
+    return action
+  }
+}
+
 
 function loadListByType({
                           listTask,
@@ -236,6 +268,8 @@ export default {
   loadRecipesListForRestaurant,
   loadRecipesListForEvent,
   loadRecipesListForCreator,
+  // Send invite email
+  callCloudInviteEmailMethod,
   // Photo
   loadPhotosBrowser,
   loadUsersWithoutAnonymousList,

@@ -11,9 +11,8 @@ import {
 } from '../../../lib/link'
 
 const {
-  uploadLoggedUser,
   showAlertMessage,
-  invokeParseCloudMethod,
+  callCloudInviteEmailMethod,
   timeout
 } = require('../../../actions').default
 
@@ -26,6 +25,7 @@ const {
   ALERT_TYPE_SUCCESS,
   ALERT_TYPE_ERROR,
   MENU_ITEM_LOGGED_USER_INVITE,
+  EMAIL_SEND_CLOUD_MODEL,
 } = require('../../../lib/constants').default
 
 
@@ -47,11 +47,12 @@ class IEALoggedUserInviteLayout extends Component {
   }
 
   async onButtonPress() {
-    const {invokeParseCloudMethodAction, currentUser} = this.props;
+    const {callCloudInviteEmailMethodAction, currentUser} = this.props;
 
+    const homepage = AppConstants.config.ieattaWeb.serverURL;
     const username = currentUser.username;
     const fromEmail = currentUser.email;
-    const userLink = getLoggedUserMenuLink(currentUser)
+    const userLink = (homepage + getLoggedUserMenuLink(currentUser)).replace('//', '/')
 
     const toEmails = Users.getInviteEmailArray(this.props)
 
@@ -63,9 +64,8 @@ class IEALoggedUserInviteLayout extends Component {
     const params = {
       username: username,
       userLink: userLink,
-      homepage: AppConstants.config.ieattaWeb.serverURL,
+      homepage: homepage,
       fromEmail: fromEmail,
-      toEmails: toEmails
     }
 
     this.props.actions.loginRequest()
@@ -73,7 +73,7 @@ class IEALoggedUserInviteLayout extends Component {
     let errorMessage = null
     try {
       await Promise.race([
-        invokeParseCloudMethodAction(params),
+        callCloudInviteEmailMethodAction(params, toEmails),
         timeout(15000),
       ]);
     } catch (e) {
@@ -85,7 +85,10 @@ class IEALoggedUserInviteLayout extends Component {
     } finally {
       this.props.actions.loginSuccess()
 
-      this.props.dispatch(showAlertMessage({type: ALERT_TYPE_SUCCESS, text: `Sent ${toEmails.length} emails successfully!`}))
+      this.props.dispatch(showAlertMessage({
+        type: ALERT_TYPE_SUCCESS,
+        text: `Sent ${toEmails.length} emails successfully!`
+      }))
     }
   }
 
@@ -208,7 +211,7 @@ import * as authActions from '../../../reducers/auth/authActions'
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(authActions, dispatch),
-    invokeParseCloudMethodAction: (params) => dispatch(invokeParseCloudMethod(CLOUD_INVITE_WITH_EMAILS, params, MENU_ITEM_LOGGED_USER_INVITE)),
+    callCloudInviteEmailMethodAction: (params, toEmails) => dispatch(callCloudInviteEmailMethod(params, toEmails)),
   }
 }
 
