@@ -103,8 +103,6 @@ class UsersSingle extends Component {
           return (<Telescope.components.IEAUserProfileRecipesLayout {...this.state} {...this.props}/>)
         case LOGGED_USER_EDIT_FORM:
           return (<Telescope.components.IEAEditUserLayout {...this.state} {...this.props}/>)
-        case LOGGED_USER_INVITE_FORM:
-          return (<Telescope.components.IEAEditUserLayout {...this.state} {...this.props}/>)
       }
     }
 

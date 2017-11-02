@@ -114,7 +114,7 @@ const createRoutes = (store) => {
     },
     {
       path: 'invite',
-      component: Telescope.components.UsersSingle
+      component: userIsAuthenticated(Telescope.components.IEALoggedUserInviteLayout)
     },
   ];
 

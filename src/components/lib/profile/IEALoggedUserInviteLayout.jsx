@@ -132,39 +132,85 @@ class IEALoggedUserInviteLayout extends Component {
   }
 
 
-  render() {
+  renderInvitePanel() {
+    const {auth} = this.props;
+    const isDisabled = (!auth.form.isValid || auth.form.isFetching);
 
+    return (
+      <div className="column column-beta column--responsive">
+
+        <div id="msf-step-container" className="find-friends inner-content clearfix">
+          <span id="step-name" className="hidden">email_invite</span>
+          <div className="section-header">
+            <h2>Send IEATTA Invites To These Email Addresses:</h2>
+          </div>
+
+
+          <div className="yform email-invite-form"
+               name="email-invite-form">
+            <input type="hidden" name="csrftok" className="csrftok"
+                   value="501531f1b10cb63051b25f46bcc6488f4559c9fbf785331d75891988d9779acb"/>
+
+            <div className="content-field">
+              <ul id="emails">
+
+                <li>
+                  <label>Email address</label>
+                  <input id="email-invite-0"
+                         type="email" name="contacts"
+                         placeholder="e.g. bob@email.com"
+                         className='first_invite_email_input'/>
+                </li>
+                <li>
+                  <label className="u-offscreen">Email address</label>
+                  <input type="email" name="contacts" id="email-invite-1"/>
+                </li>
+                <li>
+                  <label className="u-offscreen">Email address</label>
+                  <input type="email" name="contacts" id="email-invite-2"/>
+                </li>
+              </ul>
+
+
+            </div>
+            <div className="content-field">
+              <div className="action-buttons">
+                <button type="buttom"
+                        value="submit"
+
+                        className="ybtn ybtn--primary disable-on-submit">
+                  <span>Send Email Invites</span>
+                </button>
+
+                {
+                  auth.form.isFetching &&
+                  <span className="throbber show-on-submit">Sending email invites...</span>
+                }
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    )
+  }
+
+  render() {
     return (
       <div className="main-content-wrap main-content-wrap--full">
 
         <div id="super-container" className="content-container">
 
-          <div className="clearfix layout-block layout-n column--responsive account-settings_container">
+          <div className="container find-friends_container">
+            <div className="clearfix layout-block layout-n equalize-columns">
 
-            <div className="column column-beta column--responsive">
-              <div className="account-settings_content">
-                <div className="section-header clearfix">
-                  <h2>Profile</h2>
-                </div>
-
-                <div className="profile-bio yform yform-vertical-spacing" name="profile_bio">
-
-                  <div className="profile-bio">
-
-                    <Telescope.components.EditUserProfilePhoto  {...this.props}/>
-
-                    {this.renderLeft()}
-
-                    {this.renderLeftButton()}
-
-                  </div>
-
-                </div>
-              </div>
+              {this.renderInvitePanel()}
 
             </div>
-
           </div>
+
         </div>
       </div>
 
@@ -191,6 +237,8 @@ function mapDispatchToProps(dispatch) {
 
 function select(store, ownProps) {
   return {
+    isLoggedIn: store.user.isLoggedIn || store.user.hasSkippedLogin,
+    currentUser: store.user,
     auth: store.auth,
     goBack: ownProps.router.goBack
   };
