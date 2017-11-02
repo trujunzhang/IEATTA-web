@@ -19,7 +19,6 @@ const {
   MENU_ITEM_ADD_OR_EDIT_USER,
   ALERT_TYPE_ERROR,
   MENU_ITEM_LOGGED_USER_INVITE,
-  LOGGED_USER_INVITE_FORM,
 } = require('../../../lib/constants').default
 
 
@@ -41,7 +40,7 @@ class IEALoggedUserInviteLayout extends Component {
   }
 
   async onButtonPress() {
-    const {dispatch, currentUser} = this.props;
+    const {invokeParseCloudMethodAction, currentUser} = this.props;
 
     const parseId = currentUser.id;
     const username = currentUser.username;
@@ -54,15 +53,19 @@ class IEALoggedUserInviteLayout extends Component {
       return
     }
 
+    const params = {
+      username: username,
+      homepage: AppConstants.config.parse,
+      fromEmail: fromEmail,
+      toEmails: toEmails
+    }
+
     this.props.actions.loginRequest()
 
     let errorMessage = null
     try {
       await Promise.race([
-        // dispatch(uploadLoggedUser({
-        //   parseId,
-        //   username, email
-        // })),
+        invokeParseCloudMethodAction(params),
         timeout(15000),
       ]);
     } catch (e) {
@@ -191,11 +194,12 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 
 import * as authActions from '../../../reducers/auth/authActions'
+import AppConstants from "../../../lib/appConstants";
 
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(authActions, dispatch),
-    invokeParseCloudMethodAction: (params) => dispatch(invokeParseCloudMethod(CLOUD_INVITE_WITH_EMAILS, params, PARSE_COMMENTS)),
+    invokeParseCloudMethodAction: (params) => dispatch(invokeParseCloudMethod(CLOUD_INVITE_WITH_EMAILS, params, MENU_ITEM_LOGGED_USER_INVITE)),
   }
 }
 
