@@ -23,6 +23,7 @@ const {
 const {
   CLOUD_INVITE_WITH_EMAILS,
   MENU_ITEM_ADD_OR_EDIT_USER,
+  ALERT_TYPE_SUCCESS,
   ALERT_TYPE_ERROR,
   MENU_ITEM_LOGGED_USER_INVITE,
 } = require('../../../lib/constants').default
@@ -83,6 +84,8 @@ class IEALoggedUserInviteLayout extends Component {
       }
     } finally {
       this.props.actions.loginSuccess()
+
+      this.props.dispatch(showAlertMessage({type: ALERT_TYPE_SUCCESS, text: "Sent these emails successfully!"}))
     }
   }
 
