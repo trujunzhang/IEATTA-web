@@ -2,6 +2,7 @@ import Telescope from '../../lib'
 import React, {Component} from 'react'
 
 import {withRouter} from 'react-router'
+import Users from '../../../lib/users'
 
 const {
   uploadLoggedUser,
@@ -25,16 +26,8 @@ class IEALoggedUserInviteLayout extends Component {
   constructor(props, context) {
     super(props)
 
-    this.state = {
-      pageForm: props.pageForm,
-      value: {
-        username: props.auth.form.fields.username,
-        email: props.auth.form.fields.email,
-      }
-    }
 
     this.props.actions.inviteState()
-
   }
 
   /**
@@ -42,45 +35,8 @@ class IEALoggedUserInviteLayout extends Component {
    * As the properties are validated they will be set here.
    */
   componentWillReceiveProps(nextProps) {
-    this.setState({
-      value: {
-        username: nextProps.auth.form.fields.username,
-        email: nextProps.auth.form.fields.email,
-      }
-    })
+
   }
-
-  /**
-   * ### onChange
-   *
-   * As the user enters keys, this is called for each key stroke.
-   * Rather then publish the rules for each of the fields, I find it
-   * better to display the rules required as long as the field doesn't
-   * meet the requirements.
-   * *Note* that the fields are validated by the authReducer
-   */
-  onChange(value) {
-    if (value.username !== '') {
-      this.props.actions.onAuthFormFieldChange('username', value.username)
-    }
-
-    if (value.email !== '') {
-      this.props.actions.onAuthFormFieldChange('email', value.email)
-    }
-    this.setState(
-      {value}
-    )
-  }
-
-  renderLeft() {
-    return (
-      <Telescope.components.EditUserForm
-        form={this.props.auth.form}
-        value={this.state.value}
-        onChange={this.onChange.bind(this)}/>
-    )
-  }
-
 
   async onButtonPress() {
     const {dispatch, currentUser} = this.props;
@@ -89,7 +45,9 @@ class IEALoggedUserInviteLayout extends Component {
     const username = currentUser.username;
     const fromEmail = currentUser.email;
 
+    const toEmails = Users.getInviteEmailArray(this.props)
 
+    debugger
 
     this.props.actions.loginRequest()
 
