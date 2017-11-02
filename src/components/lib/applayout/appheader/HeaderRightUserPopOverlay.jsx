@@ -46,7 +46,7 @@ class HeaderRightUserPopOverlay extends Component {
 
         <li className="drop-down-menu-link">
           <a className="js-analytics-click arrange arrange--middle arrange--6"
-             href="/invite_friends">
+             href="/invite">
             <strong className="arrange_unit">
                                 <span id="icon_24X24"
                                       className="icon icon--24-friends icon--size-24 u-space-r1">
