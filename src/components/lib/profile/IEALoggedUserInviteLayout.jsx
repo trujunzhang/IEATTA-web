@@ -6,6 +6,10 @@ import Users from '../../../lib/users'
 
 import AppConstants from "../../../lib/appConstants";
 
+import {
+  getLoggedUserMenuLink
+} from '../../../lib/link'
+
 const {
   uploadLoggedUser,
   showAlertMessage,
@@ -46,6 +50,7 @@ class IEALoggedUserInviteLayout extends Component {
 
     const username = currentUser.username;
     const fromEmail = currentUser.email;
+    const userLink = getLoggedUserMenuLink(currentUser)
 
     const toEmails = Users.getInviteEmailArray(this.props)
 
