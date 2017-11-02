@@ -223,6 +223,8 @@ export default keyMirror({
   RESET_PASSWORD_SUCCESS: null,
   RESET_PASSWORD_FAILURE: null,
 
+  DELETE_TOKEN_SUCCESS: null,
+
   GET_PROFILE_REQUEST: null,
   GET_PROFILE_SUCCESS: null,
   GET_PROFILE_FAILURE: null,

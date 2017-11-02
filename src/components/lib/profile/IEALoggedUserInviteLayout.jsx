@@ -33,7 +33,7 @@ class IEALoggedUserInviteLayout extends Component {
       }
     }
 
-    props.actions.toggleEditModelType(MENU_ITEM_LOGGED_USER_INVITE, {}, LOGGED_USER_INVITE_FORM);
+    this.props.actions.inviteState()
 
   }
 
@@ -116,6 +116,7 @@ class IEALoggedUserInviteLayout extends Component {
     const {auth} = this.props;
     const isDisabled = (!auth.form.isValid || auth.form.isFetching);
 
+
     return (
       <div className="column column-beta column--responsive">
 
@@ -126,10 +127,7 @@ class IEALoggedUserInviteLayout extends Component {
           </div>
 
 
-          <div className="yform email-invite-form"
-               name="email-invite-form">
-            <input type="hidden" name="csrftok" className="csrftok"
-                   value="501531f1b10cb63051b25f46bcc6488f4559c9fbf785331d75891988d9779acb"/>
+          <div className="yform email-invite-form" name="email-invite-form">
 
             <div className="content-field">
               <ul id="emails">
@@ -138,6 +136,10 @@ class IEALoggedUserInviteLayout extends Component {
                   <label>Email address</label>
                   <input id="email-invite-0"
                          type="email" name="contacts"
+                         value={auth.form.fields.email}
+                         onChange={(event) => {
+                           this.props.actions.onAuthFormFieldChange('email', event.target.value)
+                         }}
                          placeholder="e.g. bob@email.com"
                          className='first_invite_email_input'/>
                 </li>
@@ -220,7 +222,6 @@ function select(store, ownProps) {
     isLoggedIn: store.user.isLoggedIn || store.user.hasSkippedLogin,
     currentUser: store.user,
     auth: store.auth,
-    goBack: ownProps.router.goBack
   };
 }
 

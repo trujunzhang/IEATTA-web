@@ -38,6 +38,8 @@ const {
   RESET_PASSWORD_SUCCESS,
   RESET_PASSWORD_FAILURE,
 
+  DELETE_TOKEN_SUCCESS,
+
   SET_STATE
 
 } = require('../../lib/constants').default

@@ -16,14 +16,15 @@ const {
   LOGOUT,
   REGISTER,
   LOGIN,
-  FORGOT_PASSWORD
+  FORGOT_PASSWORD,
+  MENU_ITEM_LOGGED_USER_INVITE
 } = require('../../lib/constants').default
 
 /**
  * ## formValidation
  * @param {Object} state - the Redux state object
  */
-export default function formValidation (state) {
+export default function formValidation(state) {
   switch (state.form.state) {
     /**
      * ### Logout has no fields, so always valid
@@ -33,14 +34,22 @@ export default function formValidation (state) {
     /**
      * ### Registration has 4 fields
      */
+    case MENU_ITEM_LOGGED_USER_INVITE:
+      if (
+        !state.form.fields.emailHasError
+      ) {
+        return state.setIn(['form', 'isValid'], true)
+      } else {
+        return state.setIn(['form', 'isValid'], false)
+      }
     case REGISTER:
       if (state.form.fields.username !== '' &&
-          state.form.fields.email !== '' &&
-          state.form.fields.password !== '' &&
-          state.form.fields.passwordAgain !== '' &&
-          !state.form.fields.usernameHasError &&
-          !state.form.fields.emailHasError &&
-          !state.form.fields.passwordHasError &&
+        state.form.fields.email !== '' &&
+        state.form.fields.password !== '' &&
+        state.form.fields.passwordAgain !== '' &&
+        !state.form.fields.usernameHasError &&
+        !state.form.fields.emailHasError &&
+        !state.form.fields.passwordHasError &&
         !state.form.fields.passwordAgainHasError) {
         return state.setIn(['form', 'isValid'], true)
       } else {
@@ -51,9 +60,9 @@ export default function formValidation (state) {
      */
     case LOGIN:
       if (state.form.fields.username !== '' &&
-          state.form.fields.password !== '' &&
-          !state.form.fields.usernameHasError &&
-          !state.form.fields.passwordHasError) {
+        state.form.fields.password !== '' &&
+        !state.form.fields.usernameHasError &&
+        !state.form.fields.passwordHasError) {
         return state.setIn(['form', 'isValid'], true)
       } else {
         return state.setIn(['form', 'isValid'], false)
