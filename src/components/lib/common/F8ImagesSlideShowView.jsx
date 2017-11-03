@@ -59,6 +59,17 @@ class F8ImagesSlideShowView extends Component {
           src={placeholder}
         />
       )
+    } else {
+      imageViews.push(
+        <img
+          key={`emptyItem-for-${objectSchemaName}-${forObject.id}`}
+          alt={altValue}
+          className="photo-box-img"
+          width="90"
+          height="90"
+          src={imageArray[0]}
+        />
+      )
     }
 
     return (

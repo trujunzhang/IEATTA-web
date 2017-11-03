@@ -209,7 +209,7 @@ Photos.generateSlideShowObject = function (props) {
   const size = photos.length;
 
   const slideObject = {
-    emptyList: size > 0,
+    emptyList: size === 0,
     imageArray: photos.map(function (photo) {
       return Photos.getThumbnailUrl(photo)
     }),
