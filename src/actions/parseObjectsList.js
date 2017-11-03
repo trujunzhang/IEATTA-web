@@ -97,7 +97,7 @@ async function _loadPhotosList(terms, listTask, list) {
       photoParamsType: PHOTOS_TERMS_PARAM_FOR_SLIDE_SHOW,
       objectSchemaName,
       forObjectId: id
-    }, false).find()
+    }, false).limit(1).find()
 
     listPhotosDict[id] = (array || []).map(fromParsePhoto)
   }
