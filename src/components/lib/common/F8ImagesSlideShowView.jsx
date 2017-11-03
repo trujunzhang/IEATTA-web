@@ -30,26 +30,43 @@ class F8ImagesSlideShowView extends Component {
     super(props)
 
     const slideObject = Photos.generateSlideShowObject(props)
-
-    debugger
     this.state = {slideObject}
+  }
+
+  componentDidMount() {
+
   }
 
   render() {
     const {altValue, forObject, objectSchemaName} = this.props;
+    const {slideObject} = this.state;
+    const {
+      emptyList,
+      imageArray,
+      placeholder
+    } = slideObject;
+
+
+    const imageViews = []
+    if (emptyList) {
+      imageViews.push(
+        <img
+          key={`emptyItem-for-${objectSchemaName}-${forObject.id}`}
+          alt={altValue}
+          className="photo-box-img"
+          width="90"
+          height="90"
+          src={placeholder}
+        />
+      )
+    }
 
     return (
       <div className="media-avatar">
         <div className="photo-box pb-90s">
           <Link to={geDetailedModelLinkByObjectSchemaName(objectSchemaName, forObject)}>
 
-            <Telescope.components.F8PlaceHolderImage
-              alt={altValue}
-              className="photo-box-img"
-              width="90"
-              height="90"
-              placeholderSource={Photos.config.placeHolderSmallImage[objectSchemaName]}
-              source={Photos.getListThumbnailUrl(forObject)}/>
+            {imageViews}
 
           </Link>
         </div>

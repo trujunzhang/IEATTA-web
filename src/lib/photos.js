@@ -201,20 +201,22 @@ Photos.isPhotoOwnRecipe = function (recipeId, photo) {
  * @param props
  */
 Photos.generateSlideShowObject = function (props) {
-  const {listTask, objectSchemaName} = props;
-
-  debugger
-
+  const {listTask, objectSchemaName, forObject} = props;
   const {listPhotosDict} = listTask;
-  const size = Object.keys(listPhotosDict).length;
+  const parseId = forObject.id;
+  const photos = listPhotosDict[parseId]
 
-  debugger
+  const size = photos.length;
 
-  return {
-    emptyList: false,
-    imageArray: [],
+  const slideObject = {
+    emptyList: size > 0,
+    imageArray: photos.map(function (photo) {
+      return Photos.getThumbnailUrl(photo)
+    }),
     placeholder: Photos.config.placeHolderSmallImage[objectSchemaName]
   }
+
+  return slideObject;
 }
 
 export default Photos
