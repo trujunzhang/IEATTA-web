@@ -9,19 +9,23 @@ import {Link} from 'react-router'
 
 import {FormattedMessage, FormattedRelative} from 'react-intl'
 
+
+/**
+ * The states were interested in
+ */
+const {
+  PARSE_RESTAURANTS,
+  PARSE_USERS,
+  PARSE_RECORDS,
+  PARSE_EVENTS,
+  PARSE_RECIPES,
+  PARSE_PHOTOS,
+  PARSE_REVIEWS,
+  PARSE_PEOPLE_IN_EVENTS,
+} = require('../../../../lib/constants').default
+
+
 class RestaurantsItem extends Component {
-
-  renderReview() {
-    const {listId, restaurant, index} = this.props,
-      reviews = 0;
-
-    return (
-      <div className="biz-rating biz-rating-large clearfix">
-        <Telescope.components.F8StarIcon rate="3" iconType="regular"/>
-        <span className="review-count rating-qualifier">{`${reviews} reviews`}</span>
-      </div>
-    )
-  }
 
   renderLeft() {
     const {restaurant, index} = this.props;
@@ -29,21 +33,13 @@ class RestaurantsItem extends Component {
     return (
       <div className="main-attributes">
         <div className="media-block media-block--12">
-          <div className="media-avatar">
-            <div className="photo-box pb-90s">
-              <Link to={getRestaurantLink(restaurant)}>
 
-                <Telescope.components.F8PlaceHolderImage
-                  alt={restaurant.displayName}
-                  className="photo-box-img"
-                  width="90"
-                  height="90"
-                  placeholderSource={"/default/blank_biz_small.png"}
-                  source={Photos.getListThumbnailUrl(restaurant)}/>
+          <Telescope.components.F8ImagesSlideShowView
+            altValue={restaurant.displayName}
+            forObject={restaurant}
+            objectSchemaName={PARSE_RESTAURANTS}
+            {...this.props}/>
 
-              </Link>
-            </div>
-          </div>
           <div className="media-story">
             <h3 className="search-result-title">
               <span className="indexed-biz-name">{`${index + 1}.`}

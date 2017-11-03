@@ -37,6 +37,7 @@ function listContainerReducer(state: State = initialState, action): State {
     case LIST_VIEW_LOADED_BY_TYPE: {
       const {list, listTask, listId, limit, totalCount, listPhotosDict} = action.payload
 
+
       // let nextTask = state.get(listId)
       // if (!!nextTask && false) {
       //   nextTask = nextTask.set('results', nextTask.get('results').concat(list))

@@ -8,13 +8,50 @@ import {
   geDetailedModelLink
 } from './link'
 
+const {
+  PAGE_MAIN_FORM,
+  PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY,
+  PAGE_PHOTOS_BROWSER_FORM,
+  PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY,
+  PARSE_RESTAURANTS,
+  PARSE_USERS,
+  PARSE_RECORDS,
+  PARSE_EVENTS,
+  PARSE_RECIPES,
+  PARSE_PHOTOS,
+  PARSE_REVIEWS,
+  PARSE_PEOPLE_IN_EVENT,
+  // 1.1 LOGGED user left menus.
+  LOGGED_USER_MENU_ABOUT,
+  LOGGED_USER_MENU_REVIEWS,
+  LOGGED_USER_MENU_BROWSER_PHOTOS,
+  LOGGED_USER_MENU_EVENTS,
+  LOGGED_USER_MENU_RECIPES,
+  // 1.2 Edit User.
+  LOGGED_USER_EDIT_FORM,
+} = require('../lib/constants').default
+
 const Photos = {
 
   config: {
     paginationCountPerPage: 6 * 5, //Using it now.
     // paginationCountPerPage: 6 * 1, //Using it now.
     // July 29, 2017
-    selectedPhotoCreatedAtFormat: 'MMMM DD, YYYY'
+    selectedPhotoCreatedAtFormat: 'MMMM DD, YYYY',
+    placeHolderSmallImage: {
+      PAGE_MAIN_FORM,
+      PAGE_MAIN_FORM_WITH_PHOTO_OVERLAY,
+      PAGE_PHOTOS_BROWSER_FORM,
+      PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY,
+      PARSE_RESTAURANTS: "/default/blank_biz_small.png",
+      PARSE_USERS,
+      PARSE_RECORDS,
+      PARSE_EVENTS,
+      PARSE_RECIPES,
+      PARSE_PHOTOS,
+      PARSE_REVIEWS,
+      PARSE_PEOPLE_IN_EVENT,
+    }
   }
 }
 
@@ -152,6 +189,32 @@ Photos.isPhotoParseObjectOwnRecipe = function (recipeId, photoParseInstance) {
 Photos.isPhotoOwnRecipe = function (recipeId, photo) {
   const recipe = photo.recipe || {id: ""}
   return (recipeId === recipe.id)
+}
+
+/**
+ * Format:
+ * {
+ *   emptyList: true|false
+ *   imageArray:[]
+ *   placeholder: string
+ * }
+ * @param props
+ */
+Photos.generateSlideShowObject = function (props) {
+  const {listTask, objectSchemaName} = props;
+
+  debugger
+
+  const {listPhotosDict} = listTask;
+  const size = Object.keys(listPhotosDict).length;
+
+  debugger
+
+  return {
+    emptyList: false,
+    imageArray: [],
+    placeholder: Photos.config.placeHolderSmallImage[objectSchemaName]
+  }
 }
 
 export default Photos

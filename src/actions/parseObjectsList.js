@@ -86,9 +86,7 @@ async function _loadRecipeListForEvent(listTask,
 }
 
 async function _loadPhotosList(terms, listTask, list) {
-  const {
-    objectSchemaName
-  } = terms;
+  const {objectSchemaName} = terms;
 
   const modelIds = _.pluck(list, 'id')
 
@@ -135,7 +133,7 @@ async function _loadListByType(listTask,
 
   let extendProps = {}
   if (!!afterFetchHook) {
-    extendProps = afterFetchHook(terms, listTask, list)
+    extendProps = await afterFetchHook(terms, listTask, list)
   }
 
   const payload = {

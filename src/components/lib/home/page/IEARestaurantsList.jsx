@@ -37,6 +37,7 @@ class IEARestaurantsList extends Component {
               key={item.id}
               index={index}
               restaurant={item}
+              listTask={listTask}
               onRestaurantItemHover={this.props.onRestaurantItemHover}
               canEdit={false}/>
           )}

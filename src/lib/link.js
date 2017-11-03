@@ -142,8 +142,7 @@ export function getPhotosBrowserLink(photoType, forObject) {
   return `/${AppConstants.SubDomainPhotos[objectSchemaName]}/${forObject.id}/${slugify(forObject.displayName)}`
 }
 
-export function geDetailedModelLink(modelType, forObject) {
-  const {objectSchemaName} = AppConstants.realmObjects[modelType]
+export function geDetailedModelLinkByObjectSchemaName(objectSchemaName, forObject) {
   switch (objectSchemaName) {
     case PARSE_RESTAURANTS:
       return getRestaurantLink(forObject)
@@ -155,6 +154,11 @@ export function geDetailedModelLink(modelType, forObject) {
       return getEventLink(forObject)
   }
   throw new Error('You need to set a proper model type!')
+}
+
+export function geDetailedModelLink(modelType, forObject) {
+  const {objectSchemaName} = AppConstants.realmObjects[modelType]
+  return geDetailedModelLinkByObjectSchemaName(objectSchemaName, forObject)
 }
 
 export function getPhotoSelectBackLink(pageForm, photoType, forObject, props) {
