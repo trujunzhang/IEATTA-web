@@ -101,9 +101,7 @@ async function _loadPhotosList(terms, listTask, list) {
       forObjectId: id
     }, false).find()
 
-    debugger
     listPhotosDict[id] = (array || []).map(fromParsePhoto)
-    debugger
   }
 
   return {listPhotosDict}
