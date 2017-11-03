@@ -96,7 +96,11 @@ function authReducer(state = initialState, action) {
     case FORGOT_PASSWORD:
     case MENU_ITEM_LOGGED_USER_INVITE:
       return formValidation(
-        state.setIn(['form', 'state'], action.type)
+        state
+          .setIn(['form', 'state'], action.type)
+          .setIn(['form', 'fields', 'email'], '')
+          .setIn(['form', 'fields', 'email1'], '')
+          .setIn(['form', 'fields', 'email2'], '')
           .setIn(['form', 'error'], null)
       )
 

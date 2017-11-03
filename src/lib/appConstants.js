@@ -21,19 +21,19 @@ const AppConstants = {
   config: {}
 }
 
-AppConstants.config.parse = {
-  // deploy-check
-  serverURL: 'https://ieattaps.herokuapp.com/parse'
-}
-
-AppConstants.config.ieattaWeb = {
-  serverURL: 'http://ieatta-web.herokuapp.com',
-}
+// AppConstants.config.parse = {
+//   // deploy-check
+//   serverURL: 'https://ieattaps.herokuapp.com/parse'
+// }
+//
+// AppConstants.config.ieattaWeb = {
+//   serverURL: 'http://ieatta-web.herokuapp.com',
+// }
 
 if (__DEV__) {
   AppConstants.config.parse = {
     // deploy-check
-    serverURL: 'http://localhost:1337/parse/',
+    serverURL: 'http://localhost:1337/parse',
   }
   AppConstants.config.ieattaWeb = {
     // deploy-check
