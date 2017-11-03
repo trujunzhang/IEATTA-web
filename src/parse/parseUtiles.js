@@ -121,12 +121,17 @@ function getRecipesParameters(terms) {
     .end()
 }
 
-function getPhotosParameters(terms) {
-  return new Parameters.Photos(getQueryByType(PARSE_PHOTOS,
-    ['restaurant', 'recipe', 'user']
-  ))
+function getPhotosParameters(terms, haveRelations = true) {
+  const relations = haveRelations ?
+    ['restaurant', 'recipe', 'user'] : []
+  return new Parameters.Photos(
+    getQueryByType(PARSE_PHOTOS, relations))
     .addParameters(terms)
     .end()
+}
+
+function getQueryParameters(objectSchemaName) {
+
 }
 
 async function checkExistOnlineParseInstance(objectSchemaName, realmInstance) {
@@ -150,6 +155,8 @@ export default {
   getUsersParameters,
   getPeopleInEventParameters,
   getRecipesParameters,
+  // By
+  getQueryParameters,
   // Update the model's record after saved it.
   checkExistOnlineParseInstance,
   getFirstOnlineParseInstance,

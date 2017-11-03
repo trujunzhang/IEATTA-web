@@ -35,6 +35,8 @@ const {
   getEventParameters,
   getPeopleInEventParameters,
   getUsersParameters,
+  // By
+  getQueryParameters,
 } = require('../parse/parseUtiles').default
 
 const {
@@ -53,6 +55,8 @@ import PeopleInEvent from '../lib/peopleInEvent'
 const {
   LIST_VIEW_LOADED_BY_TYPE,
   EMAIL_SEND_CLOUD_MODEL,
+  // Photos Terms parameters type
+  PHOTOS_TERMS_PARAM_FOR_SLIDE_SHOW,
 } = require('../lib/constants').default
 
 async function _loadRecipeListForEvent(listTask,
@@ -88,8 +92,21 @@ async function _loadPhotosList(terms, listTask, list) {
 
   const modelIds = _.pluck(list, 'id')
 
+  const listPhotosDict = {}
 
-  debugger
+  for (let id of modelIds) {
+    const array = await getPhotosParameters({
+      photoParamsType: PHOTOS_TERMS_PARAM_FOR_SLIDE_SHOW,
+      objectSchemaName,
+      forObjectId: id
+    }, false).find()
+
+    debugger
+    listPhotosDict[id] = (array || []).map(fromParsePhoto)
+    debugger
+  }
+
+  return {listPhotosDict}
 }
 
 async function _loadListByType(listTask,

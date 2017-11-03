@@ -17,6 +17,7 @@ const {
   // Photos Terms parameters type
   PHOTOS_TERMS_PARAM_NORMAL,
   PHOTOS_TERMS_PARAM_FOR_EDIT_RECIPE,
+  PHOTOS_TERMS_PARAM_FOR_SLIDE_SHOW,
 } = require('../lib/constants').default
 
 export default class photosParameters {
@@ -32,10 +33,24 @@ export default class photosParameters {
       case PHOTOS_TERMS_PARAM_FOR_EDIT_RECIPE:
         this.queryPhotoForEditRecipe(terms)
         break;
+      case PHOTOS_TERMS_PARAM_FOR_SLIDE_SHOW:
+        this.queryPhotoForSlideShow(terms)
+        break;
     }
 
     return this
   }
+
+
+  queryPhotoForSlideShow(terms) {
+    const {objectSchemaName, forObjectId} = terms;
+    const photoType = AppConstants.realmTypes[objectSchemaName]
+    this.query.equalTo('photoType', photoType)
+
+    const instanceWithoutData = getInstanceWithoutData(objectSchemaName, forObjectId)
+    this.query.equalTo(photoType, instanceWithoutData)
+  }
+
 
   queryPhotoForEditRecipe(terms) {
     const {objectSchemaName, forObjectId} = terms;
@@ -43,7 +58,6 @@ export default class photosParameters {
     const instanceWithoutData = getInstanceWithoutData(objectSchemaName, forObjectId)
     this.query.equalTo('restaurant', instanceWithoutData)
   }
-
 
   queryPhotoNormal(terms) {
     const {objectSchemaName, forObjectId, creatorId, withoutPhotoType} = terms;
