@@ -73,7 +73,7 @@ class IEARestaurantsHome extends Component {
   }
 
   loadMore(listTask, terms) {
-    this.props.dispatch(loadRestaurantsList(listTask, terms))
+    this.props.loadRestaurantsListAction(listTask, terms)
   }
 
   onRestaurantItemHover(restaurant) {
@@ -128,11 +128,17 @@ class IEARestaurantsHome extends Component {
 
 const {connect} = require('react-redux')
 
+function mapDispatchToProps(dispatch) {
+  return {
+    loadRestaurantsListAction: (listTask, terms) => dispatch(loadRestaurantsList(listTask, terms)),
+  }
+}
+
 function select(store) {
   return {
     listContainerTasks: store.listContainerTasks
   }
 }
 
-export default withRouter(connect(select)(IEARestaurantsHome))
+export default withRouter(connect(select, mapDispatchToProps)(IEARestaurantsHome))
 
