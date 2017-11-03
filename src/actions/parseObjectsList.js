@@ -86,6 +86,9 @@ async function _loadPhotosList(terms, listTask, list) {
     objectSchemaName
   } = terms;
 
+  const modelIds = _.pluck(list, 'id')
+
+
   debugger
 }
 
