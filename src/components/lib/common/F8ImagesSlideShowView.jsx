@@ -62,7 +62,7 @@ class F8ImagesSlideShowView extends Component {
     } else {
       imageViews.push(
         <img
-          key={`emptyItem-for-${objectSchemaName}-${forObject.id}`}
+          key={`item-for-${objectSchemaName}-${forObject.id}-1`}
           alt={altValue}
           className="photo-box-img"
           width="90"
