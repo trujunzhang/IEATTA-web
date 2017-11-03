@@ -82,6 +82,10 @@ async function _loadRecipeListForEvent(listTask,
 }
 
 async function _loadPhotosList(terms, listTask, list) {
+  const {
+    objectSchemaName
+  } = terms;
+
   debugger
 }
 
@@ -110,11 +114,14 @@ async function _loadListByType(listTask,
   }
 
   let list = (results || []).map(parseFun)
+
+  let extendProps = {}
   if (!!afterFetchHook) {
-    list = afterFetchHook(terms, listTask, list)
+    extendProps = afterFetchHook(terms, listTask, list)
   }
 
   const payload = {
+    ...extendProps,
     list,
     listTask: listTask,
     listId: terms.listId,
@@ -185,7 +192,8 @@ function loadRestaurantsList(listTask, terms): ThunkAction {
   return loadListByType({
     listTask,
     objectsQuery: getRestaurantParameters(terms), terms,
-    parseFun: fromParseRestaurant
+    parseFun: fromParseRestaurant,
+    afterFetchHook: _loadPhotosList
   })
 }
 

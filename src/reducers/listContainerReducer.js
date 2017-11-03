@@ -35,7 +35,7 @@ function listContainerReducer(state: State = initialState, action): State {
      * set the form to fetching and clear any errors
      */
     case LIST_VIEW_LOADED_BY_TYPE: {
-      const {list, listTask, listId, limit, totalCount} = action.payload
+      const {list, listTask, listId, limit, totalCount, listPhotosDict} = action.payload
 
       // let nextTask = state.get(listId)
       // if (!!nextTask && false) {
@@ -49,11 +49,12 @@ function listContainerReducer(state: State = initialState, action): State {
       nextTask[listId] = {
         id: listId,
         ready: true,
-        totalCount: totalCount,
-        limit: limit,
+        totalCount,
+        limit,
         pageIndex: listTask.pageIndex,
         firstPagination: false,
-        results: list
+        results: list,
+        listPhotosDict,
       };
 
       const nextState = nextTask;
