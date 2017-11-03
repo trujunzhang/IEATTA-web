@@ -81,6 +81,10 @@ async function _loadRecipeListForEvent(listTask,
   ])
 }
 
+async function _loadPhotosList(terms, listTask, list) {
+  debugger
+}
+
 async function _loadListByType(listTask,
                                objectsQuery,
                                terms,
@@ -107,7 +111,7 @@ async function _loadListByType(listTask,
 
   let list = (results || []).map(parseFun)
   if (!!afterFetchHook) {
-    list = afterFetchHook(list)
+    list = afterFetchHook(terms, listTask, list)
   }
 
   const payload = {

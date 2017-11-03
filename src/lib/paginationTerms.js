@@ -39,6 +39,7 @@ PaginationTerms.generateTermsForReviewsList = function (props, prefix = "list") 
     ...props,
     ...props.location.query,
 
+    objectSchemaName: PARSE_REVIEWS,
     listId: listId,
     limit: limit,
     pageIndex: parseInt(currentPageIndex)
@@ -55,6 +56,8 @@ PaginationTerms.generateTermsForRecipesListOnRestaurant = function ({forObject})
     listId: listId,
     limit: 10,
     restaurantId,
+
+    objectSchemaName: PARSE_RECIPES,
   }
 
   return terms;
@@ -80,7 +83,9 @@ PaginationTerms.generateTermsForRecipesList = function (props) {
     orderedUserId,
     eventId,
     restaurantId,
-    creatorId
+    creatorId,
+
+    objectSchemaName: PARSE_RECIPES,
   };
 
   return terms;
@@ -96,6 +101,8 @@ PaginationTerms.generateTermsForPeopleInEventList = function (event) {
     allItems: true,
     restaurantId: event.restaurant.id,
     eventId: event.id,
+
+    objectSchemaName: PARSE_PEOPLE_IN_EVENTS,
   }
 }
 
@@ -110,7 +117,9 @@ PaginationTerms.generateTermsForEventsList = function ({eventType, forObject}) {
   return {
     listId: 'event-list-view-for-' + listId,
     limit: 10,
-    ...extendProps
+    ...extendProps,
+
+    objectSchemaName: PARSE_EVENTS,
   }
 }
 
@@ -125,7 +134,9 @@ PaginationTerms.generateTermsForOrderedUsersList = function ({forObject}) {
     listId: 'ordered-users-list-view-for-' + listId,
     limit: 10,
     eventId: listId,
-    restaurantId: forObject.restaurant.id
+    restaurantId: forObject.restaurant.id,
+
+    objectSchemaName: PARSE_USERS,
   }
 }
 
@@ -140,6 +151,8 @@ PaginationTerms.generateTermsForOrderedRecipeUsersList = function ({forObject}) 
     listId: 'ordered-users-list-view-for-' + listId,
     limit: 10,
     recipeId: listId,
+
+    objectSchemaName: PARSE_USERS,
   }
 }
 
@@ -150,7 +163,9 @@ PaginationTerms.generateTermsForRestaurantList = function (props) {
   return {
     ...location.query,
     limit: 10,
-    listId: 'single-list-view-for-restaurants'
+    listId: 'single-list-view-for-restaurants',
+
+    objectSchemaName: PARSE_RESTAURANTS,
   };
 }
 
@@ -172,7 +187,7 @@ PaginationTerms.generatePhotoTermForRecipe = function (objectSchemaName,
     objectSchemaName,
     allItems: (limit === -1),
     limit: limit,
-    pageIndex: parseInt(currentPageIndex)
+    pageIndex: parseInt(currentPageIndex),
   }
 
   return photoTerms;
@@ -220,7 +235,9 @@ PaginationTerms.generateTermsForUsersWithoutAnonymousList = function (props) {
   return {
     listId: 'current-users-list-without-anonymous',
     allItems: true,
-    limit: -1
+    limit: -1,
+
+    objectSchemaName: PARSE_USERS,
   }
 }
 
