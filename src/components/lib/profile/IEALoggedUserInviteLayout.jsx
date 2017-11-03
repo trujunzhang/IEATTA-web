@@ -54,9 +54,9 @@ class IEALoggedUserInviteLayout extends Component {
     const fromEmail = currentUser.email;
     const userLink = (homepage + getLoggedUserMenuLink(currentUser))
 
-    const toEmails = Users.getInviteEmailArray(this.props)
+    const toEmailsObject = Users.getInviteEmailObject(this.props)
 
-    if (toEmails.length === 0) {
+    if (toEmailsObject.size === 0) {
       this.props.dispatch(showAlertMessage({type: ALERT_TYPE_ERROR, text: 'At least, one email to invite!'}))
       return
     }
@@ -73,7 +73,7 @@ class IEALoggedUserInviteLayout extends Component {
     let errorMessage = null
     try {
       await Promise.race([
-        callCloudInviteEmailMethodAction(params, toEmails),
+        callCloudInviteEmailMethodAction(params, toEmailsObject),
         timeout(15000),
       ]);
     } catch (e) {
@@ -211,7 +211,7 @@ import * as authActions from '../../../reducers/auth/authActions'
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(authActions, dispatch),
-    callCloudInviteEmailMethodAction: (params, toEmails) => dispatch(callCloudInviteEmailMethod(params, toEmails)),
+    callCloudInviteEmailMethodAction: (params, toEmailsObject) => dispatch(callCloudInviteEmailMethod(params, toEmailsObject)),
   }
 }
 

@@ -125,16 +125,18 @@ async function _loadListByType(listTask,
   ])
 }
 
-async function _callCloudInviteEmailMethod(params, emails): ThunkAction {
-  for (var i = 0; i < emails.length; i++) {
-    await Parse.Cloud.run('inviteCompose', {...params, toEmail: emails[i]}, {
-      success: (model) => {
-      },
-      error: (error) => {
-        debugger
-      }
-    })
+async function _callCloudInviteEmailMethod(params, toEmailsObject): ThunkAction {
+  const {emails} = toEmailsObject;
+  if (emails['0'] !== '') {
+    await Parse.Cloud.run('inviteCompose', {...params, toEmail: emails['0']})
   }
+  if (emails['1'] !== '') {
+    await Parse.Cloud.run('inviteCompose', {...params, toEmail: emails['1']})
+  }
+  if (emails['2'] !== '') {
+    await Parse.Cloud.run('inviteCompose', {...params, toEmail: emails['2']})
+  }
+
   const action = {type: EMAIL_SEND_CLOUD_MODEL}
 
   return Promise.all([
@@ -142,9 +144,9 @@ async function _callCloudInviteEmailMethod(params, emails): ThunkAction {
   ])
 }
 
-function callCloudInviteEmailMethod(params, emails): ThunkAction {
+function callCloudInviteEmailMethod(params, toEmailsObject): ThunkAction {
   return (dispatch) => {
-    const action = _callCloudInviteEmailMethod(params, emails)
+    const action = _callCloudInviteEmailMethod(params, toEmailsObject)
     action.then(
       ([result]) => {
         dispatch(result)

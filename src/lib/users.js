@@ -104,24 +104,34 @@ Users.getOrderedUserFormat = function (peopleInEvent) {
   return moment(peopleInEvent.createdAt).format(Users.config.orderedDataFormat)
 }
 
-Users.getInviteEmailArray = function (props) {
+Users.getInviteEmailObject = function (props) {
   const {auth} = props;
-
-  let array = []
+  let size = 0;
+  let emails = {
+    0: '',
+    1: '',
+    2: '',
+  }
   const email = auth.form.fields.email;
   if (email !== '') {
-    array.push(email)
+    size++;
+    emails[0] = email;
   }
   const email1 = auth.form.fields.email1;
   if (email1 !== '') {
-    array.push(email1)
+    size++;
+    emails[1] = email1;
   }
   const email2 = auth.form.fields.email2;
   if (email2 !== '') {
-    array.push(email2)
+    size++;
+    emails[2] = email2;
   }
 
-  return array;
+  return {
+    size,
+    emails,
+  };
 }
 Users.isLeftMenuActive = function (row, {location}) {
   const {pathname} = location;
