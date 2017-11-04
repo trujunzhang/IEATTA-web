@@ -45,7 +45,7 @@ class RecipesList extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      listTask: byListId(nextProps,  this.state.terms, this.state.listTask)
+      listTask: byListId(nextProps, this.state.terms, this.state.listTask)
     })
   }
 
@@ -82,6 +82,7 @@ class RecipesList extends Component {
       return (
         <Telescope.components.BaseRecipesListPage
           recipes={results}
+          listTask={listTask}
         />
       )
     }
@@ -117,7 +118,6 @@ RecipesList.defaultProps = {
   showTitle: false,
   showRightTime: false,
 };
-
 
 const {connect} = require('react-redux')
 

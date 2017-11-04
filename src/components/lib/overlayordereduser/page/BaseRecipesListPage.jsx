@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 
 class BaseRecipesListPage extends Component {
   renderRows() {
-    const {recipes, showRightTime} = this.props;
+    const {listTask, recipes, showRightTime} = this.props;
 
     return (
       <ul className="ylist ylist-bordered">
@@ -11,6 +11,7 @@ class BaseRecipesListPage extends Component {
           <Telescope.components.RecipesItem key={recipe.id}
                                             recipe={recipe}
                                             index={index}
+                                            listTask={listTask}
                                             showRightTime={showRightTime}/>
         )}
       </ul>

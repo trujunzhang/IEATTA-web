@@ -72,7 +72,7 @@ class DetailedRestaurant extends Component {
 
     const newPageForm = getPageFormType(PARSE_RESTAURANTS, nextProps, this.state.pageForm)
     const newPhotosTerms = PaginationTerms.generatePhotoTerm(PARSE_RESTAURANTS, nextProps.params.rid, newPageForm, nextProps)
-    const photosListTask = byListId(nextProps,  this.state.photosTerms, this.state.photosListTask);
+    const photosListTask = byListId(nextProps, this.state.photosTerms, this.state.photosListTask);
 
     const newRestaurant = getModelByObjectId(nextProps, this.state.rid, this.state.forObject);
 
@@ -107,12 +107,12 @@ class DetailedRestaurant extends Component {
 
   componentDidMount() {
     const parseId = this.state.rid;
-    this.props.dispatch(loadRestaurantPage(parseId))
-    this.props.dispatch(loadPhotosBrowser(this.state.photosTerms))
-    this.props.dispatch(invokeParseCloudMethod(CLOUD_STATISTIC_FOR_REVIEWS, {
+    this.props.loadRestaurantPageAction(parseId)
+    this.props.loadPhotosBrowserAction(this.state.photosTerms)
+    this.props.invokeParseCloudMethodAction({
       reviewType: this.state.modelType,
       forObjectId: parseId,
-    }, parseId))
+    }, parseId)
   }
 
   render() {
@@ -168,6 +168,16 @@ class DetailedRestaurant extends Component {
 
 import {connect} from 'react-redux'
 
+function mapDispatchToProps(dispatch) {
+  return {
+    //Model
+    loadRestaurantPageAction: (parseId) => dispatch(loadRestaurantPage(parseId)),
+    //List
+    loadPhotosBrowserAction: (terms) => dispatch(loadPhotosBrowser(terms)),
+    invokeParseCloudMethodAction: (params, parseId) => dispatch(invokeParseCloudMethod(CLOUD_STATISTIC_FOR_REVIEWS, params, parseId)),
+  }
+}
+
 function select(store, ownProps) {
   return {
     detailedModelsOverlay: store.detailedModelsOverlay,
@@ -175,5 +185,5 @@ function select(store, ownProps) {
   }
 }
 
-export default withRouter(connect(select)(DetailedRestaurant));
+export default withRouter(connect(select, mapDispatchToProps)(DetailedRestaurant));
 
