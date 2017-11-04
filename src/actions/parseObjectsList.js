@@ -88,6 +88,8 @@ async function _loadRecipeListForEvent(listTask,
 async function _loadPhotosList(terms, listTask, list) {
   const {objectSchemaName} = terms;
 
+  debugger
+
   const modelIds = _.pluck(list, 'id')
 
   const listPhotosDict = {}
@@ -261,7 +263,8 @@ function loadRecipesListForEvent(listTask, terms): ThunkAction {
     objectsQuery: getPeopleInEventParameters(terms),
     terms,
     parseFun: fromParseRecipe,
-    invokeListFunc: _loadRecipeListForEvent
+    invokeListFunc: _loadRecipeListForEvent,
+    afterFetchHook: _loadPhotosList
   })
 }
 
