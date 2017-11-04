@@ -62,7 +62,8 @@ const {
 async function _loadRecipeListForEvent(listTask,
                                        objectsQuery,
                                        terms,
-                                       parseFun): Promise<Array<Action>> {
+                                       parseFun,
+                                       afterFetchHook): Promise<Array<Action>> {
   const results = await objectsQuery.find()
   const peopleInEventModels = (results || []).map(fromParsePeopleInEvent);
   const recipeIds = PeopleInEvent.getRecipeIdsForQuery(peopleInEventModels)
@@ -70,9 +71,17 @@ async function _loadRecipeListForEvent(listTask,
   const recipesQuery = getRecipesParameters({recipeIds})
   const recipeResults = await recipesQuery.find()
 
+  let list = (recipeResults || []).map(parseFun)
+
+  let extendProps = {}
+  if (!!afterFetchHook) {
+    extendProps = await afterFetchHook(terms, listTask, list)
+  }
+
   const payload = {
-    list: (recipeResults || []).map(parseFun),
-    listTask: listTask,
+    ...extendProps,
+    list,
+    listTask,
     listId: terms.listId,
     limit: terms.limit,
     totalCount: -1
@@ -87,8 +96,6 @@ async function _loadRecipeListForEvent(listTask,
 
 async function _loadPhotosList(terms, listTask, list) {
   const {objectSchemaName} = terms;
-
-  debugger
 
   const modelIds = _.pluck(list, 'id')
 
@@ -141,10 +148,10 @@ async function _loadListByType(listTask,
   const payload = {
     ...extendProps,
     list,
-    listTask: listTask,
+    listTask,
     listId: terms.listId,
     limit: terms.limit,
-    totalCount: totalCount
+    totalCount
   }
 
   const action = {type, payload}
@@ -258,6 +265,7 @@ function loadRecipesListForRestaurant(listTask, terms): ThunkAction {
 }
 
 function loadRecipesListForEvent(listTask, terms): ThunkAction {
+  debugger
   return loadListByType({
     listTask,
     objectsQuery: getPeopleInEventParameters(terms),

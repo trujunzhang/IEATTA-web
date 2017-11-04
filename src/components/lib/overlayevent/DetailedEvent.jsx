@@ -70,7 +70,7 @@ class DetailedEvent extends Component {
         break;
       default:
         invokeParseCloudMethodAction(
-          CLOUD_STATISTIC_FOR_REVIEWS, {
+          {
             reviewType: this.state.modelType,
             forObjectId: parseId,
           },
@@ -131,7 +131,7 @@ function mapDispatchToProps(dispatch) {
     loadPeopleInEventListAction: (listTask, terms) => dispatch(loadPeopleInEventList(listTask, terms)),
     loadRecipesListForRestaurantAction: (listTask, terms) => dispatch(loadRecipesListForRestaurant(listTask, terms)),
     loadUsersWithoutAnonymousListAction: (object) => dispatch(loadUsersWithoutAnonymousList(object)),
-    invokeParseCloudMethodAction: (methodType, params, parseId) => dispatch(invokeParseCloudMethod(methodType, params, parseId)),
+    invokeParseCloudMethodAction: (params, parseId) => dispatch(invokeParseCloudMethod(CLOUD_STATISTIC_FOR_REVIEWS, params, parseId)),
   }
 }
 
