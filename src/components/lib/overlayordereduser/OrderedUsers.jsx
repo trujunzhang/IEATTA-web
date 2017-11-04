@@ -22,22 +22,24 @@ class OrderedUsers extends Component {
       forEvent: null,
       forRestaurant: null,
       orderedRecipes: null,
+      listTask: {
+        listPhotosDict: {}
+      }
     }
   }
 
   componentWillReceiveProps(nextProps) {
     const peopleInEvent = getModelByObjectId(nextProps, this.state.peopleInEventId, this.state.peopleInEvent)
 
-    if (!!peopleInEvent) {
-      debugger
-    }
-
     this.setState({
       peopleInEvent: peopleInEvent,
       orderedUser: peopleInEvent.user,
       forEvent: peopleInEvent.event,
       forRestaurant: peopleInEvent.restaurant,
-      orderedRecipes: peopleInEvent.recipes
+      orderedRecipes: peopleInEvent.recipes,
+      listTask: {
+        listPhotosDict: peopleInEvent.listPhotosDict
+      }
     })
   }
 

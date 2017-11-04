@@ -35,7 +35,7 @@ class OrderedUsersDetail extends Component {
   }
 
   renderRightPanel() {
-    const {forEvent, forRestaurant, orderedUser, orderedRecipes} = this.props;
+    const {forEvent, forRestaurant, orderedUser, orderedRecipes, listTask} = this.props;
 
     return (
       <div className="column column-beta ">
@@ -44,10 +44,11 @@ class OrderedUsersDetail extends Component {
 
         <div className="user-details_bookmarks js-user-details_bookmarks">
           <div className="user-details-bookmarks_content js-user-details-bookmarks_content">
-            {/*<Telescope.components.BaseRecipesListPage*/}
-              {/*recipes={orderedRecipes}*/}
-              {/*showTitle={true}*/}
-            {/*/>*/}
+            <Telescope.components.BaseRecipesListPage
+              recipes={orderedRecipes}
+              listTask={listTask}
+              showTitle={true}
+            />
           </div>
 
           {this.renderRightSidebar()}
