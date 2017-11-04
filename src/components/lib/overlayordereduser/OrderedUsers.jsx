@@ -28,6 +28,10 @@ class OrderedUsers extends Component {
   componentWillReceiveProps(nextProps) {
     const peopleInEvent = getModelByObjectId(nextProps, this.state.peopleInEventId, this.state.peopleInEvent)
 
+    if (!!peopleInEvent) {
+      debugger
+    }
+
     this.setState({
       peopleInEvent: peopleInEvent,
       orderedUser: peopleInEvent.user,

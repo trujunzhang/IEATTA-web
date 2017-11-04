@@ -24,18 +24,20 @@
 import {fromParseRecipe, fromParseReview} from "../parse/parseModels";
 
 const Parse = require('parse')
-
+const _ = require('underscore')
 import type {ThunkAction} from './types'
 
 const {
   getQueryByType,
-  getReviewsParameters
+  getReviewsParameters,
+  getPhotosParameters,
 } = require('../parse/parseUtiles').default
 
 const {
   fromParseUser,
   fromParseRestaurant,
   fromParseEvent,
+  fromParsePhoto,
   fromParsePeopleInEvent
 } = require('../parse/parseModels')
 
@@ -63,6 +65,8 @@ const {
   CLOUD_STATISTIC_FOR_REVIEWS,
   CLOUD_RESTAURANT_ADDRESS,
   CLOUD_INVITE_WITH_EMAILS,
+  // Photos Terms parameters type
+  PHOTOS_TERMS_PARAM_FOR_SLIDE_SHOW,
 } = require('../lib/constants').default
 
 const cloudMethods = {
@@ -90,17 +94,15 @@ function callCloudStatisticMethod(type: string, methodType: string, params: stri
 
 }
 
-async function _loadPhotosListForRecipes(parseId, model) {
-  const {objectSchemaName} = terms;
-
-  const modelIds = _.pluck(list, 'id')
-
+async function _loadPhotosListForRecipes(parseId, parseModel) {
+  const {recipes} = parseModel;
+  const modelIds = _.pluck(recipes, 'id')
   const listPhotosDict = {}
 
   for (let id of modelIds) {
     const array = await getPhotosParameters({
       photoParamsType: PHOTOS_TERMS_PARAM_FOR_SLIDE_SHOW,
-      objectSchemaName,
+      objectSchemaName: PARSE_RECIPES,
       forObjectId: id
     }, false).limit(1).find()
 
@@ -116,14 +118,14 @@ async function _loadParseObject(query,
                                 afterFetchHook,
                                 type): Promise<Array<Action>> {
   const onlineParseInstance = await query.get(parseId)
-  const model = parseFun(onlineParseInstance);
+  const parseModel = parseFun(onlineParseInstance);
 
   let extendProps = {}
   if (!!afterFetchHook) {
-    extendProps = await afterFetchHook(parseId, model)
+    extendProps = await afterFetchHook(parseId, parseModel)
   }
 
-  const payload = {parseId, model}
+  const payload = {parseId, model: {...parseModel, ...extendProps}}
   const action = {type, payload}
 
   return Promise.all([
