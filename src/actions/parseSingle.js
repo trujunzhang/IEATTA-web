@@ -153,10 +153,13 @@ export default {
   },
 
   loadPeopleInEventPage: (parseId: string): ThunkAction => {
-    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE, getQueryByType(PARSE_PEOPLE_IN_EVENTS,
-      ['user', 'user.listPhoto', 'event', 'restaurant', 'recipes', 'recipes.listPhoto']),
+    return loadParseObject(
+      OVERLAY_LOADED_MODEL_PAGE,
+      getQueryByType(PARSE_PEOPLE_IN_EVENTS,
+        ['user', 'user.listPhoto', 'event', 'restaurant', 'recipes', 'recipes.listPhoto']),
       parseId,
-      fromParsePeopleInEvent)
+      fromParsePeopleInEvent
+    )
   },
 
   loadOrderedRecipePage: (parseId: string): ThunkAction => {
