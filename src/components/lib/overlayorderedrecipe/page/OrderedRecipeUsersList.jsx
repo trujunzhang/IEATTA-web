@@ -21,7 +21,7 @@ class OrderedRecipeUsersList extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      listTask: byListId(nextProps,  this.state.terms, this.state.listTask)
+      listTask: byListId(nextProps, this.state.terms, this.state.listTask)
     })
   }
 
@@ -35,12 +35,13 @@ class OrderedRecipeUsersList extends Component {
   }
 
   renderRows() {
-    const {listTask} = this.state
+    const {listTask} = this.state;
 
     const {
-      results,
+      orderedUsers,
       ready
-    } = listTask
+    } = listTask;
+
 
     if (!ready) {
       return (
@@ -50,7 +51,7 @@ class OrderedRecipeUsersList extends Component {
 
     return (
       <ul className="ylist">
-        {results.map(user =>
+        {orderedUsers.map(user =>
           <Telescope.components.OrderedRecipeUserItem
             key={user.id}
             user={user}/>
@@ -63,12 +64,11 @@ class OrderedRecipeUsersList extends Component {
     const {listTask} = this.state
 
     const {
-      results,
+      orderedUsers,
       ready,
-      totalCount,
     } = listTask
 
-    if (ready && results.length === 0) {
+    if (ready && orderedUsers.length === 0) {
       return (
         <Telescope.components.F8EmptySection
           title={`No Users ordered`}

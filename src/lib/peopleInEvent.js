@@ -23,7 +23,7 @@ PeopleInEvent.getRecipeIdsForQuery = function (peopleInEventModels) {
   return recipeIds;
 }
 
-PeopleInEvent.getOtherUsersAlsoOrderedRecipe = function (list) {
+PeopleInEvent.getOtherUsersAlsoOrderedRecipe = function (terms, listTask, list) {
   const users = []
   const userIds = []
   list.map(({user}) => {
@@ -33,7 +33,7 @@ PeopleInEvent.getOtherUsersAlsoOrderedRecipe = function (list) {
     }
   })
 
-  return users;
+  return {orderedUsers: users};
 }
 
 PeopleInEvent.getOrderedRecipeDict = function (peopleInEventListTask) {

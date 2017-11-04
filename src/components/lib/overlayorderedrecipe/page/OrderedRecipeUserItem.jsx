@@ -13,8 +13,9 @@ class OrderedRecipeUserItem extends Component {
   renderLeft() {
     const {user} = this.props;
 
-    return (
+debugger
 
+    return (
       <div className="media-avatar">
         <div className="photo-box pb-30s" data-hovercard-id="hCvy2SRZbqVllq6p-KTJ8g">
 
