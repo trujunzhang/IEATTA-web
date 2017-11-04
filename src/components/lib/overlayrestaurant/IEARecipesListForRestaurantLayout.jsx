@@ -29,7 +29,7 @@ class IEARecipesListForRestaurantLayout extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const newListTask = byListId(nextProps,  this.state.recipesListTerms, this.state.listTask);
+    const newListTask = byListId(nextProps, this.state.recipesListTerms, this.state.listTask);
 
     this.setState({
       listTask: newListTask
@@ -42,7 +42,7 @@ class IEARecipesListForRestaurantLayout extends Component {
   }
 
   loadMore(listTask, recipesListTerms) {
-    this.props.dispatch(loadRecipesListForRestaurant(listTask, recipesListTerms))
+    this.props.loadRecipesListForRestaurantAction(listTask, recipesListTerms)
   }
 
   renderRecipeListHeader() {
@@ -128,13 +128,20 @@ class IEARecipesListForRestaurantLayout extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 
 }
 
 
 import {connect} from 'react-redux'
+
+
+function mapDispatchToProps(dispatch) {
+  return {
+    loadRecipesListForRestaurantAction: (listTask, terms) => dispatch(loadRecipesListForRestaurant(listTask, terms)),
+  }
+}
 
 function select(store, ownProps) {
   return {
@@ -145,4 +152,4 @@ function select(store, ownProps) {
   };
 }
 
-export default withRouter(connect(select)(IEARecipesListForRestaurantLayout));
+export default withRouter(connect(select, mapDispatchToProps)(IEARecipesListForRestaurantLayout));

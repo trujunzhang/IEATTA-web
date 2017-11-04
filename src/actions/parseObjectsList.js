@@ -250,7 +250,8 @@ function loadRecipesListForRestaurant(listTask, terms): ThunkAction {
   return loadListByType({
     listTask,
     objectsQuery: getRecipesParameters(terms), terms,
-    parseFun: fromParseRecipe
+    parseFun: fromParseRecipe,
+    afterFetchHook: _loadPhotosList
   })
 }
 
