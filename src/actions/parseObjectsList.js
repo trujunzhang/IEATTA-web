@@ -265,7 +265,6 @@ function loadRecipesListForRestaurant(listTask, terms): ThunkAction {
 }
 
 function loadRecipesListForEvent(listTask, terms): ThunkAction {
-  debugger
   return loadListByType({
     listTask,
     objectsQuery: getPeopleInEventParameters(terms),
@@ -279,8 +278,10 @@ function loadRecipesListForEvent(listTask, terms): ThunkAction {
 function loadRecipesListForCreator(listTask, terms): ThunkAction {
   return loadListByType({
     listTask,
-    objectsQuery: getRecipesParameters(terms), terms,
-    parseFun: fromParseRecipe
+    objectsQuery: getRecipesParameters(terms),
+    terms,
+    parseFun: fromParseRecipe,
+    afterFetchHook: _loadPhotosList
   })
 }
 
