@@ -149,7 +149,7 @@ class OrderedUsersSingleHeader extends Component {
         <div className="user-profile_content-wrapper arrange arrange--bottom arrange--30">
           <div className="user-profile_avatar-dummy arrange_unit"/>
           {this.renderColumnOne()}
-          {this.renderColumnTwo()}
+          {/*{this.renderColumnTwo()}*/}
         </div>
 
         <Telescope.components.F8UserAvatorSection user={this.props.orderedUser}/>

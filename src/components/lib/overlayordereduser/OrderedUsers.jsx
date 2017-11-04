@@ -38,7 +38,7 @@ class OrderedUsers extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(loadPeopleInEventPage(this.state.peopleInEventId))
+    this.props.loadPeopleInEventPageAction(this.state.peopleInEventId)
   }
 
   render() {
@@ -55,11 +55,19 @@ class OrderedUsers extends Component {
 
 const {connect} = require('react-redux')
 
+function mapDispatchToProps(dispatch) {
+  return {
+    //Model
+    //List
+    loadPeopleInEventPageAction: (parseId) => dispatch(loadPeopleInEventPage(parseId)),
+  }
+}
+
 function select(store) {
   return {
     detailedModelsOverlay: store.detailedModelsOverlay
   }
 }
 
-export default connect(select)(OrderedUsers)
+export default connect(select, mapDispatchToProps)(OrderedUsers)
 
