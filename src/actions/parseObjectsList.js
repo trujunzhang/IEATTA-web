@@ -243,7 +243,7 @@ function loadOtherUsersAlsoOrderedRecipeList(listTask, terms): ThunkAction {
     listTask,
     objectsQuery: getPeopleInEventParameters(terms), terms,
     parseFun: fromParsePeopleInEvent,
-    afterFetchHook: PeopleInEvent.getOtherUsersAlsoOrderedRecipe
+    afterFetchHook: PeopleInEvent.getOtherUsersAlsoOrderedRecipe,
   })
 }
 

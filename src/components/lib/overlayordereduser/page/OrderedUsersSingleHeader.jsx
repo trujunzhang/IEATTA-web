@@ -59,7 +59,7 @@ class OrderedUsersSingleHeader extends Component {
           <strong className="margin-right-4">{'Ordered at:'}</strong>
           {Users.getOrderedUserFormat(peopleInEvent)}
         </span>
-        {this.renderColumnOneBottom()}
+        {/*{this.renderColumnOneBottom()}*/}
       </div>
     )
   }
