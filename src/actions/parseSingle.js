@@ -90,35 +90,63 @@ function callCloudStatisticMethod(type: string, methodType: string, params: stri
 
 }
 
-function findParseObject(type: string, query: Parse.Query, parseId: string, parseFun: Any): ThunkAction {
+async function _loadPhotosListForRecipes(parseId, model) {
+  const {objectSchemaName} = terms;
+
+  const modelIds = _.pluck(list, 'id')
+
+  const listPhotosDict = {}
+
+  for (let id of modelIds) {
+    const array = await getPhotosParameters({
+      photoParamsType: PHOTOS_TERMS_PARAM_FOR_SLIDE_SHOW,
+      objectSchemaName,
+      forObjectId: id
+    }, false).limit(1).find()
+
+    listPhotosDict[id] = (array || []).map(fromParsePhoto)
+  }
+
+  return {listPhotosDict}
+}
+
+async function _loadParseObject(query,
+                                parseId,
+                                parseFun,
+                                afterFetchHook,
+                                type): Promise<Array<Action>> {
+  const onlineParseInstance = await query.get(parseId)
+  const model = parseFun(onlineParseInstance);
+
+  let extendProps = {}
+  if (!!afterFetchHook) {
+    extendProps = await afterFetchHook(parseId, model)
+  }
+
+  const payload = {parseId, model}
+  const action = {type, payload}
+
+  return Promise.all([
+    Promise.resolve(action)
+  ])
+}
+
+function loadParseObject(query,
+                         parseId,
+                         parseFun,
+                         afterFetchHook,
+                         type = OVERLAY_LOADED_MODEL_PAGE): ThunkAction {
   return (dispatch) => {
-    return query.first({
-      success: (object) => {
-        const model = parseFun(object);
-        const payload = {parseId, model}
-        dispatch({type, payload})
-      },
-      error: (error) => {
-        debugger
+    const action = _loadParseObject(query, parseId, parseFun, afterFetchHook, type)
+    action.then(
+      ([result]) => {
+        dispatch(result)
       }
-    })
+    )
+    return action
   }
 }
 
-function loadParseObject(type: string, query: Parse.Query, parseId: string, parseFun: Any): ThunkAction {
-  return (dispatch) => {
-    return query.get(parseId, {
-      success: (object) => {
-        const model = parseFun(object);
-        const payload = {parseId, model}
-        dispatch({type, payload})
-      },
-      error: (error) => {
-        debugger
-      }
-    })
-  }
-}
 
 export default {
   /**
@@ -135,51 +163,59 @@ export default {
   },
 
   loadUserProfilePage: (parseId: string): ThunkAction => {
-    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE,
+    return loadParseObject(
       getQueryByType(PARSE_USERS),
-      parseId, fromParseUser)
+      parseId,
+      fromParseUser
+    )
   },
 
   loadRestaurantPage: (parseId: string): ThunkAction => {
-    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE,
+    return loadParseObject(
       getQueryByType(PARSE_RESTAURANTS),
-      parseId, fromParseRestaurant)
+      parseId,
+      fromParseRestaurant
+    )
   },
 
   loadEventPage: (parseId: string): ThunkAction => {
-    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE,
+    return loadParseObject(
       getQueryByType(PARSE_EVENTS, ['restaurant', 'restaurant.listPhoto']),
-      parseId, fromParseEvent)
+      parseId,
+      fromParseEvent
+    )
   },
 
   loadPeopleInEventPage: (parseId: string): ThunkAction => {
     return loadParseObject(
-      OVERLAY_LOADED_MODEL_PAGE,
       getQueryByType(PARSE_PEOPLE_IN_EVENTS,
         ['user', 'user.listPhoto', 'event', 'restaurant', 'recipes', 'recipes.listPhoto']),
       parseId,
-      fromParsePeopleInEvent
+      fromParsePeopleInEvent,
+      _loadPhotosListForRecipes
     )
   },
 
   loadOrderedRecipePage: (parseId: string): ThunkAction => {
-    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE,
+    return loadParseObject(
       getQueryByType(PARSE_RECIPES, ['restaurant']),
-      parseId, fromParseRecipe
+      parseId,
+      fromParseRecipe
     )
   },
 
   loadReviewPage: (parseId: string): ThunkAction => {
-    return loadParseObject(OVERLAY_LOADED_MODEL_PAGE,
+    return loadParseObject(
       getQueryByType(PARSE_REVIEWS, ['restaurant', 'event', 'recipe']),
-      parseId, fromParseReview)
+      parseId,
+      fromParseReview
+    )
   },
 
   resetLoadPage: Action => {
     return {
       type: OVERLAY_LOADED_MODEL_RESET,
     }
-  },
-
+  }
 
 }
