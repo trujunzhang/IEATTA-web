@@ -67,6 +67,7 @@ class IEARecipesListForRestaurantLayout extends Component {
         <ul className="ylist ylist-bordered reviews">
           {results.map((recipe, index) => {
               return (<Telescope.components.RecipesItem key={recipe.id}
+                                                        listTask={listTask}
                                                         recipe={recipe}
                                                         index={index}
                                                         showRightTime={true}/>)

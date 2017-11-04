@@ -47,7 +47,7 @@ const Photos = {
       PARSE_USERS,
       PARSE_RECORDS,
       PARSE_EVENTS,
-      PARSE_RECIPES,
+      PARSE_RECIPES: "/default/blank_biz_small.png",
       PARSE_PHOTOS,
       PARSE_REVIEWS,
       PARSE_PEOPLE_IN_EVENT,

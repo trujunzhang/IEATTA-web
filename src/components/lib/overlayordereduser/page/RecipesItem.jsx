@@ -13,26 +13,33 @@ import {
   getLoggedUserMenuLink
 } from '../../../../lib/link'
 
+/**
+ * The states were interested in
+ */
+const {
+  PARSE_RECIPES,
+  // Model Form Mode
+  MODEL_FORM_TYPE_NEW,
+  PARSE_EVENTS,
+  MENU_ITEM_ADD_OR_EDIT_EVENT,
+  ALERT_TYPE_ERROR,
+  ALERT_TYPE_SUCCESS,
+  // Review List Type
+  RECIPES_LIST_FOR_RESTAURANT_PAGE,
+  RECIPES_LIST_FOR_EVENT_PAGE,
+  RECIPES_LIST_FOR_LOGGED_USER_PAGE,
+} = require('../../../../lib/constants').default
+
 class RecipesItem extends Component {
 
   renderLeftAvatar() {
     const {recipe} = this.props;
-
     return (
-      <div className="media-avatar">
-
-        <div className="photo-box pb-90s">
-          <Link to={getOrderedRecipeLink(recipe)}>
-            <Telescope.components.F8PlaceHolderImage
-              alt={recipe.displayName}
-              className="photo-box-img"
-              width="90"
-              height="90"
-              placeholderSource={"/default/blank_biz_small.png"}
-              source={Photos.getListThumbnailUrl(recipe)}/>
-          </Link>
-        </div>
-      </div>
+      <Telescope.components.F8ImagesSlideShowView
+        altValue={recipe.displayName}
+        forObject={recipe}
+        objectSchemaName={PARSE_RECIPES}
+        {...this.props}/>
     )
   }
 
