@@ -11,10 +11,10 @@ class OrderedRecipesDetail extends Component {
       <div className="column column-alpha column--responsive">
 
         <Telescope.components.ReviewsList
-        key={forObject.id}
-        forObject={forObject}
-        reviewType="recipe"
-        reviewTitle={reviewTitle}/>
+          key={forObject.id}
+          forObject={forObject}
+          reviewType="recipe"
+          reviewTitle={reviewTitle}/>
 
       </div>
     )

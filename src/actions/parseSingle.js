@@ -162,7 +162,8 @@ export default {
   loadOrderedRecipePage: (parseId: string): ThunkAction => {
     return loadParseObject(OVERLAY_LOADED_MODEL_PAGE,
       getQueryByType(PARSE_RECIPES, ['restaurant']),
-      parseId, fromParseRecipe)
+      parseId, fromParseRecipe
+    )
   },
 
   loadReviewPage: (parseId: string): ThunkAction => {

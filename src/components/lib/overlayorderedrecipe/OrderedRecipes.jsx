@@ -69,7 +69,7 @@ class OrderedRecipes extends Component {
 
     const newPageForm = getPageFormType(PARSE_RECIPES, nextProps, this.state.pageForm)
     const newPhotosTerms = PaginationTerms.generatePhotoTerm(PARSE_RECIPES, nextProps.params.oid, newPageForm, nextProps)
-    const photosListTask = byListId(nextProps,  this.state.photosTerms, this.state.photosListTask);
+    const photosListTask = byListId(nextProps, this.state.photosTerms, this.state.photosListTask);
 
     this.setState({
       // Detailed object
@@ -102,7 +102,6 @@ class OrderedRecipes extends Component {
     }
   }
 
-
   checkReceiveNextRecipe(nextProps, oldOID, newPhotosTerms) {
     const currentOID = nextProps.params.oid;
     if (currentOID !== oldOID) {
@@ -131,12 +130,12 @@ class OrderedRecipes extends Component {
 
   componentDidMount() {
     const oldOID = this.state.oid;
-    this.props.dispatch(loadOrderedRecipePage(oldOID))
-    this.props.dispatch(loadPhotosBrowser(this.state.photosTerms))
-    this.props.dispatch(invokeParseCloudMethod(CLOUD_STATISTIC_FOR_REVIEWS, {
+    this.props.loadOrderedRecipePageAction(oldOID)
+    this.props.loadPhotosBrowserAction(this.state.photosTerms)
+    this.props.invokeParseCloudMethodAction({
       reviewType: this.state.modelType,
       forObjectId: oldOID,
-    }, oldOID))
+    }, oldOID)
   }
 
   render() {
@@ -188,6 +187,16 @@ class OrderedRecipes extends Component {
 
 const {connect} = require('react-redux')
 
+function mapDispatchToProps(dispatch) {
+  return {
+    //Model
+    loadOrderedRecipePageAction: (parseId) => dispatch(loadOrderedRecipePage(parseId)),
+    //List
+    loadPhotosBrowserAction: (terms) => dispatch(loadPhotosBrowser(terms)),
+    invokeParseCloudMethodAction: (params, parseId) => dispatch(invokeParseCloudMethod(CLOUD_STATISTIC_FOR_REVIEWS, params, parseId)),
+  }
+}
+
 function select(store) {
   return {
     detailedModelsOverlay: store.detailedModelsOverlay,
@@ -195,5 +204,5 @@ function select(store) {
   }
 }
 
-export default withRouter(connect(select)(OrderedRecipes));
+export default withRouter(connect(select, mapDispatchToProps)(OrderedRecipes));
 
