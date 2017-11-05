@@ -46,28 +46,30 @@ class ReviewsList extends Component {
       this.setState({
         listTask: resetListTask
       })
-      this.loadMore(newTerms, resetListTask)
+      this.props.dispatch(loadReviewsList(resetListTask, newTerms))
     }
   }
 
   componentDidMount() {
     const {terms, listTask} = this.state;
-    this.loadMore(terms, listTask)
-  }
-
-  loadMore(terms, listTask) {
     this.props.dispatch(loadReviewsList(listTask, terms))
   }
 
-
   renderRowItem(review, index) {
-    const reviewListType = this.props.reviewListType || REVIEW_LIST_TYPE_NORMAL;
+    const {listTask} = this.state;
+    const {reviewListType} = this.props;
 
     switch (reviewListType) {
       case REVIEW_LIST_TYPE_NORMAL:
-        return (<Telescope.components.ReviewsItem key={review.id} review={review}/>)
+        return (<Telescope.components.ReviewsItem
+          key={review.id}
+          listTask={listTask}
+          review={review}/>)
       case REVIEW_LIST_TYPE_USER_PROFILE_ABOUT:
-        return (<Telescope.components.ReviewsItemForUserProfile key={review.id} review={review}/>)
+        return (<Telescope.components.ReviewsItemForUserProfile
+          key={review.id}
+          listTask={listTask}
+          review={review}/>)
     }
 
   }
@@ -124,11 +126,13 @@ class ReviewsList extends Component {
 
 
 ReviewsList.propTypes = {
-  showHeaderTitle: React.PropTypes.bool
+  showHeaderTitle: React.PropTypes.bool,
+  reviewListType: React.PropTypes.string
 };
 
 ReviewsList.defaultProps = {
-  showHeaderTitle: true
+  showHeaderTitle: true,
+  reviewListType: REVIEW_LIST_TYPE_NORMAL
 };
 
 const {connect} = require('react-redux')
