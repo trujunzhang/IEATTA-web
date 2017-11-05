@@ -44,7 +44,7 @@ const Photos = {
       PAGE_PHOTOS_BROWSER_FORM,
       PAGE_PHOTOS_BROWSER_FORM_WITH_PHOTO_OVERLAY,
       PARSE_RESTAURANTS: "/default/blank_biz_small.png",
-      PARSE_USERS,
+      PARSE_USERS: "/default/user_30_square.png",
       PARSE_RECORDS,
       PARSE_EVENTS,
       PARSE_RECIPES: "/default/blank_biz_small.png",

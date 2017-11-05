@@ -104,7 +104,10 @@ class IEAReviewsListLayout extends Component {
       return (
         <ul className="ylist ylist-bordered reviews">
           {results.map((review, index) => {
-              return (<Telescope.components.ReviewsItem key={review.id} review={review}/>)
+              return (<Telescope.components.ReviewsItem
+                key={review.id}
+                listTask={listTask}
+                review={review}/>)
             }
           )}
         </ul>

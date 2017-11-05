@@ -11,6 +11,20 @@ import {
   getLoggedUserMenuLink
 } from '../../../../lib/link'
 
+/**
+ * The states were interested in
+ */
+const {
+  PARSE_RESTAURANTS,
+  PARSE_USERS,
+  PARSE_RECORDS,
+  PARSE_EVENTS,
+  PARSE_RECIPES,
+  PARSE_PHOTOS,
+  PARSE_REVIEWS,
+  PARSE_PEOPLE_IN_EVENTS,
+} = require('../../../../lib/constants').default
+
 class ReviewsItem extends Component {
 
   renderLeft() {
@@ -23,22 +37,31 @@ class ReviewsItem extends Component {
         <div className="review-sidebar-content">
 
           <div className="ypassport media-block">
-            <div className="media-avatar responsive-photo-box">
-              <div className="photo-box pb-60s" data-hovercard-id="YCUg5LPpRgun-AcOFMMS_w">
 
-                <Link to={getLoggedUserMenuLink(creator)}>
+            <Telescope.components.F8ImagesSlideShowView
+              altValue={creator.displayName}
+              forObject={creator}
+              objectSchemaName={PARSE_USERS}
+              {...this.props}/>
 
-                  <Telescope.components.F8PlaceHolderImage
-                    alt={creator.username}
-                    className="photo-box-img"
-                    width="60"
-                    height="60"
-                    placeholderSource={"/default/user_30_square.png"}
-                    source={creator.defaultAvatarUrl}/>
 
-                </Link>
-              </div>
-            </div>
+            {/*<div className="media-avatar responsive-photo-box">*/}
+            {/*<div className="photo-box pb-60s" data-hovercard-id="YCUg5LPpRgun-AcOFMMS_w">*/}
+
+            {/*<Link to={getLoggedUserMenuLink(creator)}>*/}
+
+            {/*<Telescope.components.F8PlaceHolderImage*/}
+            {/*alt={creator.username}*/}
+            {/*className="photo-box-img"*/}
+            {/*width="60"*/}
+            {/*height="60"*/}
+            {/*placeholderSource={"/default/user_30_square.png"}*/}
+            {/*source={creator.defaultAvatarUrl}/>*/}
+
+            {/*</Link>*/}
+            {/*</div>*/}
+            {/*</div>*/}
+
             <div className="media-story">
               <ul className="user-passport-info">
                 <li className="user-name">

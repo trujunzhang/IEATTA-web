@@ -98,7 +98,7 @@ class OrderedRecipes extends Component {
         photosListTask: getDefaultListTask(newPhotosTerms, photosListTask),
         selectPhotoIndex: -1,
       })
-      this.props.dispatch(loadPhotosBrowser(newPhotosTerms))
+      this.props.loadPhotosBrowserAction(newPhotosTerms)
     }
   }
 
@@ -116,12 +116,12 @@ class OrderedRecipes extends Component {
         selectPhotoIndex: -1,
       })
 
-      this.props.dispatch(loadOrderedRecipePage(currentOID))
-      this.props.dispatch(loadPhotosBrowser(newPhotosTerms))
-      this.props.dispatch(invokeParseCloudMethod(CLOUD_STATISTIC_FOR_REVIEWS, {
+      this.props.loadOrderedRecipePageAction(currentOID)
+      this.props.loadPhotosBrowserAction(newPhotosTerms)
+      this.props.invokeParseCloudMethodAction({
         reviewType: this.state.modelType,
         forObjectId: currentOID,
-      }, currentOID))
+      }, currentOID)
 
       return true;
     }
