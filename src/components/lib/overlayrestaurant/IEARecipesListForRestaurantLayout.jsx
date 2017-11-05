@@ -20,8 +20,10 @@ class IEARecipesListForRestaurantLayout extends Component {
     super(props)
 
     const recipesListTerms = PaginationTerms.generateTermsForRecipesListOnRestaurant(props)
+    const currentPageIndex = PaginationTerms.getCurrentQueryPageIndex(props);
 
     this.state = {
+      currentPageIndex,
       // Common
       recipesListTerms: recipesListTerms,
       listTask: getDefaultListTask(recipesListTerms)
@@ -40,18 +42,17 @@ class IEARecipesListForRestaurantLayout extends Component {
 
   checkNeedUpdate(nextProps) {
     const newCurrentPageIndex = PaginationTerms.getCurrentQueryPageIndex(nextProps)
-    const queryHasChanged = Posts.hasQueryChanged(nextProps.editModel, this.state.terms, nextProps.location)
-
-    if (queryHasChanged || this.state.currentPageIndex !== newCurrentPageIndex) {
-      const terms = PaginationTerms.generateTermsForPostsList(nextProps, newCurrentPageIndex)
-      const listTask = getDefaultListTask(terms, this.state.listTask)
+    if (this.state.currentPageIndex !== newCurrentPageIndex) {
+      const recipesListTerms = PaginationTerms.generateTermsForRecipesListOnRestaurant(nextProps, newCurrentPageIndex)
+      const listTask = getDefaultListTask(recipesListTerms, this.state.listTask)
       this.setState({
         currentPageIndex: newCurrentPageIndex,
         // Query
-        terms: terms,
+        terms: recipesListTerms,
         listTask
       })
-      this.props.loadPostsListAction(listTask, terms)
+
+      this.props.loadRecipesListForRestaurantAction(listTask, recipesListTerms)
     }
 
   }
