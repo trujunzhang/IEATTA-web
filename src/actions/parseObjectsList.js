@@ -251,7 +251,8 @@ function loadReviewsList(listTask, terms): ThunkAction {
   return loadListByType({
     listTask,
     objectsQuery: getReviewsParameters(terms), terms,
-    parseFun: fromParseReview
+    parseFun: fromParseReview,
+    afterFetchHook: _loadPhotosList
   })
 }
 

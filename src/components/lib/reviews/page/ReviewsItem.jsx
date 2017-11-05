@@ -25,7 +25,9 @@ class ReviewsItem extends Component {
           <div className="ypassport media-block">
             <div className="media-avatar responsive-photo-box">
               <div className="photo-box pb-60s" data-hovercard-id="YCUg5LPpRgun-AcOFMMS_w">
-                <Link to={getLoggedUserMenuLink(creator)} className="js-analytics-click">
+
+                <Link to={getLoggedUserMenuLink(creator)}>
+
                   <Telescope.components.F8PlaceHolderImage
                     alt={creator.username}
                     className="photo-box-img"
@@ -33,6 +35,7 @@ class ReviewsItem extends Component {
                     height="60"
                     placeholderSource={"/default/user_30_square.png"}
                     source={creator.defaultAvatarUrl}/>
+
                 </Link>
               </div>
             </div>

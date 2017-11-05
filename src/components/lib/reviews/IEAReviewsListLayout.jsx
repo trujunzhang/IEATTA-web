@@ -53,10 +53,10 @@ class IEAReviewsListLayout extends Component {
       id: forObjectId,
       modelType: modelType,
       displayName: forObjectDisplayName
-    };
+    }
 
     const newReviewsTerms = PaginationTerms.generateTermsForReviewsList({reviewType, forObject, location}, 'page')
-    const newListTask = byListId(nextProps,  this.state.reviewTerms, this.state.listTask);
+    const newListTask = byListId(nextProps, this.state.reviewTerms, this.state.listTask);
 
     this.setState({
       listTask: newListTask
@@ -66,7 +66,6 @@ class IEAReviewsListLayout extends Component {
   }
 
   checkNeedUpdate(lastReviewTerms, newReviewsTerms, newListTask) {
-
     const newReviewTask = getDefaultListTask(newReviewsTerms, newListTask);
 
     if (lastReviewTerms.pageIndex !== newReviewsTerms.pageIndex  // Change page index.
@@ -76,17 +75,16 @@ class IEAReviewsListLayout extends Component {
         reviewTerms: newReviewsTerms,
         listTask: newReviewTask
       })
-      this.props.dispatch(loadReviewsList(newReviewTask, newReviewsTerms))
+      this.props.loadReviewsListAction(newReviewTask, newReviewsTerms)
     }
   }
 
   componentDidMount() {
     const {listTask, reviewTerms} = this.state;
-    this.loadMore(listTask, reviewTerms)
-  }
 
-  loadMore(listTask, reviewTerms) {
-    this.props.dispatch(loadReviewsList(listTask, reviewTerms))
+    debugger
+
+    this.props.loadReviewsListAction(listTask, reviewTerms)
   }
 
   renderReviewListHeader() {
@@ -128,11 +126,9 @@ class IEAReviewsListLayout extends Component {
 
             {this.renderReviewListHeader()}
 
-
             <div className="review-list" id="position-relative">
               {this.renderRows()}
             </div>
-
 
             <Telescope.components.F8PaginationButtonNavigationBar
               {...this.props}
@@ -177,6 +173,15 @@ class IEAReviewsListLayout extends Component {
 
 import {connect} from 'react-redux'
 
+
+function mapDispatchToProps(dispatch) {
+  return {
+    //Model
+    //List
+    loadReviewsListAction: (listTask, terms) => dispatch(loadReviewsList(listTask, terms)),
+  }
+}
+
 function select(store, ownProps) {
   return {
     currentUserId: store.user.id,
@@ -186,4 +191,4 @@ function select(store, ownProps) {
   };
 }
 
-export default withRouter(connect(select)(IEAReviewsListLayout));
+export default withRouter(connect(select, mapDispatchToProps)(IEAReviewsListLayout));
