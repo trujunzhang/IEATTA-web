@@ -65,6 +65,10 @@ const {
   PARSE_RECIPES,
   PARSE_RECORDS,
   PARSE_PHOTOS,
+  // Review List Type
+  REVIEW_LIST_TYPE_NORMAL,
+  REVIEW_LIST_TYPE_USER_PROFILE_ABOUT,
+  REVIEW_LIST_TYPE_USER_PROFILE_REVIEWS,
 } = require('../lib/constants').default
 
 async function _loadRecipeListForEvent(listTask,
@@ -109,9 +113,14 @@ async function _loadPhotosList(terms, listTask, list) {
 
   switch (objectSchemaName) {
     case PARSE_REVIEWS:
-      const creators = _.pluck(list, 'creator')
-      modelIds = _.pluck(creators, 'id')
-      queryObjectSchemaName = PARSE_USERS;
+      const {reviewListType} = terms;
+      if (reviewListType === REVIEW_LIST_TYPE_USER_PROFILE_ABOUT) {
+        // Reviews.getRelationIds(list)
+      } else {
+        const creators = _.pluck(list, 'creator')
+        modelIds = _.pluck(creators, 'id')
+        queryObjectSchemaName = PARSE_USERS;
+      }
       break;
     case PARSE_EVENTS:
       const restaurants = _.pluck(list, 'restaurant')

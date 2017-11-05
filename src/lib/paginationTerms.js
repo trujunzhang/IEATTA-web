@@ -38,6 +38,7 @@ PaginationTerms.getCurrentQueryPageIndex = function ({location}) {
 }
 
 PaginationTerms.generateTermsForReviewsList = function (props, prefix = "list") {
+  const {reviewListType} = props;
   const {id} = props.forObject;
   const limit = prefix === "page" ? Reviews.config.paginationCountPerPage : 10;
 
@@ -50,6 +51,7 @@ PaginationTerms.generateTermsForReviewsList = function (props, prefix = "list") 
     ...props.location.query,
 
     objectSchemaName: PARSE_REVIEWS,
+    reviewListType,
     listId: listId,
     limit: limit,
     pageIndex: parseInt(currentPageIndex)

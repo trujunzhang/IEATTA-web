@@ -10,6 +10,7 @@ const {byListId, getDefaultListTask} = require('../../../filter/filterPosts')
 import PaginationTerms from "../../../../lib/paginationTerms";
 
 const {
+  // Review List Type
   REVIEW_LIST_TYPE_NORMAL,
   REVIEW_LIST_TYPE_USER_PROFILE_ABOUT,
   REVIEW_LIST_TYPE_USER_PROFILE_REVIEWS,
