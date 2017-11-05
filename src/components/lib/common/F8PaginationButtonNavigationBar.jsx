@@ -81,7 +81,7 @@ class F8PaginationButtonNavigationBar extends Component {
         </div>
       )
 
-      if (`${x + 1}` === currentPageIndex) {
+      if ((x + 1) === currentPageIndex) {
         row = (
           <div key={x} className="arrange_unit page-option current">
             <span className="pagination-links_anchor">{x + 1}</span>
@@ -95,12 +95,12 @@ class F8PaginationButtonNavigationBar extends Component {
       <div className="pagination-links arrange_unit">
         <div className="arrange arrange--baseline">
 
-          {(currentPageIndex !== "1" && totalCount > 0) &&
+          {(currentPageIndex !== 1 && totalCount > 0) &&
           this.renderPreviousIcon()}
 
           {arrangeUnits}
 
-          {(currentPageIndex !== `${totalPage}` && totalCount > 0) &&
+          {(currentPageIndex !== totalPage && totalCount > 0) &&
           this.renderNextIcon()}
 
         </div>
