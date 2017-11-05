@@ -101,7 +101,7 @@ class DetailedRestaurant extends Component {
         photosListTask: getDefaultListTask(newPhotosTerms, photosListTask),
         selectPhotoIndex: -1,
       })
-      this.props.dispatch(loadPhotosBrowser(newPhotosTerms))
+      this.props.loadPhotosBrowserAction(newPhotosTerms)
     }
   }
 
@@ -185,5 +185,5 @@ function select(store, ownProps) {
   }
 }
 
-export default withRouter(connect(select, mapDispatchToProps)(DetailedRestaurant));
+export default withRouter(connect(select, mapDispatchToProps)(DetailedRestaurant))
 

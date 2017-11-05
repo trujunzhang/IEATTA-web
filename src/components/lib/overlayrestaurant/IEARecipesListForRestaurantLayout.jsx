@@ -42,6 +42,7 @@ class IEARecipesListForRestaurantLayout extends Component {
 
   checkNeedUpdate(nextProps) {
     const newCurrentPageIndex = PaginationTerms.getCurrentQueryPageIndex(nextProps)
+
     if (this.state.currentPageIndex !== newCurrentPageIndex) {
       const recipesListTerms = PaginationTerms.generateTermsForRecipesListOnRestaurant(nextProps, newCurrentPageIndex)
       const listTask = getDefaultListTask(recipesListTerms, this.state.listTask)
