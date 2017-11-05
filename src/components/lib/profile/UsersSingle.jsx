@@ -71,15 +71,15 @@ class UsersSingle extends Component {
       this.setState({
         uid: newUid,
       })
-      this.props.dispatch(loadUserProfilePage(newUid))
-      this.props.dispatch(invokeParseCloudMethod(CLOUD_STATISTIC_FOR_USER_STATE, {userId: newUid}, newUid))
+      this.props.loadUserProfilePageAction(newUid)
+      this.props.invokeParseCloudMethodAction({userId: newUid}, newUid)
     }
   }
 
   componentDidMount() {
     if (!!this.state.uid) {
-      this.props.dispatch(loadUserProfilePage(this.state.uid))
-      this.props.dispatch(invokeParseCloudMethod(CLOUD_STATISTIC_FOR_USER_STATE, {userId: this.state.uid}, this.state.uid))
+      this.props.loadUserProfilePageAction(this.state.uid)
+      this.props.invokeParseCloudMethodAction({userId: this.state.uid}, this.state.uid)
     }
   }
 
@@ -118,6 +118,16 @@ class UsersSingle extends Component {
  */
 const {connect} = require('react-redux')
 
+function mapDispatchToProps(dispatch) {
+  return {
+    //Model
+    loadUserProfilePageAction: (parseId) => dispatch(loadUserProfilePage(parseId)),
+    //List
+    invokeParseCloudMethodAction: (params, parseId) => dispatch(invokeParseCloudMethod(CLOUD_STATISTIC_FOR_USER_STATE, params, parseId)),
+  }
+}
+
+
 function select(store) {
   return {
     detailedModelsOverlay: store.detailedModelsOverlay,
@@ -127,5 +137,5 @@ function select(store) {
 }
 
 
-export default withRouter(connect(select)(UsersSingle))
+export default withRouter(connect(select, mapDispatchToProps)(UsersSingle))
 
