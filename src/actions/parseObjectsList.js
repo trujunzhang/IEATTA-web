@@ -107,12 +107,20 @@ async function _loadPhotosList(terms, listTask, list) {
   let queryObjectSchemaName = objectSchemaName;
   let modelIds = []
 
-  if (objectSchemaName === PARSE_REVIEWS) {
-    const creators = _.pluck(list, 'creator')
-    modelIds = _.pluck(creators, 'id')
-    queryObjectSchemaName = PARSE_USERS;
-  } else {
-    modelIds = _.pluck(list, 'id')
+  switch (objectSchemaName) {
+    case PARSE_REVIEWS:
+      const creators = _.pluck(list, 'creator')
+      modelIds = _.pluck(creators, 'id')
+      queryObjectSchemaName = PARSE_USERS;
+      break;
+    case PARSE_EVENTS:
+      const restaurants = _.pluck(list, 'restaurant')
+      modelIds = _.pluck(restaurants, 'id')
+      queryObjectSchemaName = PARSE_RESTAURANTS;
+      break;
+    default:
+      modelIds = _.pluck(list, 'id')
+      break;
   }
 
   const listPhotosDict = {}
@@ -242,7 +250,7 @@ function loadEventsList(listTask, terms): ThunkAction {
   return loadListByType({
     listTask,
     objectsQuery: getEventParameters(terms), terms,
-    parseFun: fromParseEvent
+    parseFun: fromParseEvent,
   })
 }
 
@@ -250,7 +258,8 @@ function loadPeopleInEventList(listTask, terms): ThunkAction {
   return loadListByType({
     listTask,
     objectsQuery: getPeopleInEventParameters(terms), terms,
-    parseFun: fromParsePeopleInEvent
+    parseFun: fromParsePeopleInEvent,
+    afterFetchHook: _loadPhotosList
   })
 }
 

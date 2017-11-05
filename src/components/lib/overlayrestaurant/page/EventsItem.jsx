@@ -10,11 +10,24 @@ import {Link} from 'react-router'
 
 const {
   EVENTS_LIST_FOR_USER,
+  PARSE_EVENTS,
+  PARSE_RESTAURANTS,
 } = require('../../../../lib/constants').default
 
 class EventsItem extends Component {
 
   renderLeft() {
+    return (
+      <Telescope.components.F8ImagesSlideShowView
+        altValue={this.props.event.restaurant}
+        forObject={this.props.event.restaurant}
+        objectSchemaName={PARSE_RESTAURANTS}
+        imageSize={90}
+        {...this.props}/>
+    )
+  }
+
+  renderLeftxxx() {
     return (
       <div className="media-avatar">
         <div className="photo-box pb-120s">
@@ -67,8 +80,6 @@ class EventsItem extends Component {
 
           <div className="post_page_body" dangerouslySetInnerHTML={htmlBody}/>
 
-          {/*<a href="/events/sf/browse?c=3">Performing Arts</a>*/}
-          {/*<span className="u-text-subtle u-space-l1">36 are interested!</span>*/}
 
         </div>
       </div>

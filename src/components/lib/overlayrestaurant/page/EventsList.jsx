@@ -57,18 +57,19 @@ class EventsList extends Component {
       ready,
       totalCount,
     } = listTask;
-
     if (!ready) {
       return (
         <Telescope.components.F8LoadingView/>
       )
     } else if (!!results && results.length) {
+
       return (
         <ul className="ylist ylist-bordered">
           {results.map((item, index) => {
             const event = (eventType === EVENTS_LIST_FOR_USER) ? item.event : item;
             return (<Telescope.components.EventsItem
               key={event.id}
+              listTask={listTask}
               event={event}
               eventType={eventType}
               index={index}/>)
