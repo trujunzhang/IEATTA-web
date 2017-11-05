@@ -38,7 +38,7 @@ class F8ImagesSlideShowView extends Component {
   }
 
   render() {
-    const {altValue, forObject, objectSchemaName} = this.props;
+    const {altValue, forObject, objectSchemaName, imageSize} = this.props;
     const {slideObject} = this.state;
     const {
       emptyList,
@@ -54,8 +54,8 @@ class F8ImagesSlideShowView extends Component {
           key={`emptyItem-for-${objectSchemaName}-${forObject.id}`}
           alt={altValue}
           className="photo-box-img"
-          width="90"
-          height="90"
+          width={imageSize}
+          height={imageSize}
           src={placeholder}
         />
       )
@@ -65,8 +65,8 @@ class F8ImagesSlideShowView extends Component {
           key={`item-for-${objectSchemaName}-${forObject.id}-1`}
           alt={altValue}
           className="photo-box-img"
-          width="90"
-          height="90"
+          width={imageSize}
+          height={imageSize}
           src={imageArray[0]}
         />
       )
@@ -85,6 +85,14 @@ class F8ImagesSlideShowView extends Component {
     )
   }
 }
+
+F8ImagesSlideShowView.propTypes = {
+  imageSize: React.PropTypes.int
+};
+
+F8ImagesSlideShowView.defaultProps = {
+  imageSize: 60
+};
 
 
 export default F8ImagesSlideShowView;

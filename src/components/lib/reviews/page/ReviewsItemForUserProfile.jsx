@@ -20,9 +20,11 @@ class ReviewsItemForUserProfile extends Component {
 
         <div className="media-block media-block--12 biz-listing-medium">
 
+
           <div className="media-avatar">
             <div className="photo-box pb-60s">
               <a className="js-analytics-click">
+
                 <Telescope.components.F8PlaceHolderImage
                   alt={reviewObject.title}
                   className="photo-box-img"
@@ -31,6 +33,7 @@ class ReviewsItemForUserProfile extends Component {
                   placeholderSource={"/default/user_30_square.png"}
                   source={reviewObject.avatarUrl}
                 />
+
               </a>
             </div>
 

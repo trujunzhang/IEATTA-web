@@ -38,6 +38,7 @@ class RestaurantsItem extends Component {
             altValue={restaurant.displayName}
             forObject={restaurant}
             objectSchemaName={PARSE_RESTAURANTS}
+            imageSize={90}
             {...this.props}/>
 
           <div className="media-story">
