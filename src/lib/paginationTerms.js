@@ -21,11 +21,21 @@ const {
 
 import Photos from "./photos";
 import Reviews from "./reviews";
-import {getCurrentPageIndex} from './link'
 
 const UUID = require('../components/vendor/uuid');
 
 const PaginationTerms = {}
+
+PaginationTerms.getCurrentQueryPageIndex = function ({location}) {
+  if (!!location.query && location.query.page) {
+    let paged = location.query.page;
+    if (typeof (paged) === "string") {
+      return parseInt(paged);
+    }
+    return paged;
+  }
+  return 1;
+}
 
 PaginationTerms.generateTermsForReviewsList = function (props, prefix = "list") {
   const {id} = props.forObject;
@@ -33,7 +43,7 @@ PaginationTerms.generateTermsForReviewsList = function (props, prefix = "list") 
 
   const listId = `reviews-${prefix}-view-for-${id}`;
 
-  const currentPageIndex = getCurrentPageIndex(props)
+  const currentPageIndex = PaginationTerms.getCurrentQueryPageIndex(props)
 
   return {
     ...props,
@@ -177,7 +187,7 @@ PaginationTerms.generatePhotoTermForRecipe = function (objectSchemaName,
   const limit = Photos.config.paginationCountPerPage;
   const listId = `photos-page-view-for-parseId-${forObjectId}`
 
-  const currentPageIndex = getCurrentPageIndex(props)
+  const currentPageIndex = PaginationTerms.getCurrentQueryPageIndex(props)
 
   const photoTerms = {
     photoParamsType: PHOTOS_TERMS_PARAM_FOR_EDIT_RECIPE,
@@ -212,7 +222,7 @@ PaginationTerms.generatePhotoTerm = function (objectSchemaName,
   const limit = _isPhotosBrowserPage ? Photos.config.paginationCountPerPage : -1;
   const listId = `photos-${termType}-view-for-parseId-${forObjectId}`
 
-  const currentPageIndex = getCurrentPageIndex(props)
+  const currentPageIndex = PaginationTerms.getCurrentQueryPageIndex(props)
 
   const extendProps = isUserOwnerPhotos ? {creatorId: forObjectId} : {}
 

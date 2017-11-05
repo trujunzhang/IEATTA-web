@@ -34,16 +34,33 @@ class IEARecipesListForRestaurantLayout extends Component {
     this.setState({
       listTask: newListTask
     })
+
+    this.checkNeedUpdate(nextProps)
+  }
+
+  checkNeedUpdate(nextProps) {
+    const newCurrentPageIndex = PaginationTerms.getCurrentQueryPageIndex(nextProps)
+    const queryHasChanged = Posts.hasQueryChanged(nextProps.editModel, this.state.terms, nextProps.location)
+
+    if (queryHasChanged || this.state.currentPageIndex !== newCurrentPageIndex) {
+      const terms = PaginationTerms.generateTermsForPostsList(nextProps, newCurrentPageIndex)
+      const listTask = getDefaultListTask(terms, this.state.listTask)
+      this.setState({
+        currentPageIndex: newCurrentPageIndex,
+        // Query
+        terms: terms,
+        listTask
+      })
+      this.props.loadPostsListAction(listTask, terms)
+    }
+
   }
 
   componentDidMount() {
     const {listTask, recipesListTerms} = this.state;
-    this.loadMore(listTask, recipesListTerms)
-  }
-
-  loadMore(listTask, recipesListTerms) {
     this.props.loadRecipesListForRestaurantAction(listTask, recipesListTerms)
   }
+
 
   renderRecipeListHeader() {
     const {listTask} = this.state;

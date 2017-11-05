@@ -57,7 +57,6 @@ const {
   EVENTS_LIST_FOR_USER,
 } = require('../../lib/constants').default
 
-import {getCurrentPageIndex} from '../../lib/link'
 
 export function checkEditModel({location}) {
   return location.pathname.indexOf('edit/') !== -1;

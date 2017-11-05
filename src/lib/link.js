@@ -201,13 +201,6 @@ export function getLoggedUserMenuLink(userProfile, menuType = LOGGED_USER_MENU_A
   }
 }
 
-export function getCurrentPageIndex(props) {
-  if (props.location.query.page) {
-    return props.location.query.page;
-  }
-
-  return "1";
-}
 
 export function adjustRouterQuery(old, {location}) {
   let oldQuery = old.query;

@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 
+import PaginationTerms from "../../../lib/paginationTerms";
 import {withRouter} from 'react-router'
 import {
-  getCurrentPageIndex,
   getTotalPageForPagination
 } from '../../../lib/link'
 
@@ -16,7 +16,7 @@ class F8PaginationButtonNavigationBar extends Component {
 
     this.state = {
       totalCount: totalCount,
-      currentPageIndex: getCurrentPageIndex(props)
+      currentPageIndex: PaginationTerms.getCurrentQueryPageIndex(props)
     }
   }
 
@@ -26,7 +26,7 @@ class F8PaginationButtonNavigationBar extends Component {
 
     this.setState({
       totalCount: totalCount,
-      currentPageIndex: getCurrentPageIndex(nextProps)
+      currentPageIndex: PaginationTerms.getCurrentQueryPageIndex(nextProps)
     })
   }
 

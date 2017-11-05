@@ -6,6 +6,9 @@ class OrderedRecipesSingleHeader extends Component {
 
   renderSubHeader() {
     const {forObject} = this.props;
+
+    debugger
+
     const {restaurant} = forObject;
     const mapInfo = Restaurants.getMapInfo(restaurant, restaurant.geoLocation, false, false)
 
