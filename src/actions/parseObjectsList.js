@@ -57,6 +57,14 @@ const {
   EMAIL_SEND_CLOUD_MODEL,
   // Photos Terms parameters type
   PHOTOS_TERMS_PARAM_FOR_SLIDE_SHOW,
+  PARSE_RESTAURANTS,
+  PARSE_EVENTS,
+  PARSE_PEOPLE_IN_EVENTS,
+  PARSE_USERS,
+  PARSE_REVIEWS,
+  PARSE_RECIPES,
+  PARSE_RECORDS,
+  PARSE_PHOTOS,
 } = require('../lib/constants').default
 
 async function _loadRecipeListForEvent(listTask,
@@ -96,20 +104,30 @@ async function _loadRecipeListForEvent(listTask,
 
 async function _loadPhotosList(terms, listTask, list) {
   const {objectSchemaName} = terms;
+  let queryObjectSchemaName = objectSchemaName;
+  let modelIds = []
 
-  const modelIds = _.pluck(list, 'id')
+  if (objectSchemaName === PARSE_REVIEWS) {
+    const creators = _.pluck(list, 'creator')
+    modelIds = _.pluck(creators, 'id')
+    queryObjectSchemaName = PARSE_USERS;
+  } else {
+    modelIds = _.pluck(list, 'id')
+  }
 
   const listPhotosDict = {}
 
   for (let id of modelIds) {
     const array = await getPhotosParameters({
       photoParamsType: PHOTOS_TERMS_PARAM_FOR_SLIDE_SHOW,
-      objectSchemaName,
+      objectSchemaName: queryObjectSchemaName,
       forObjectId: id
     }, false).limit(1).find()
 
     listPhotosDict[id] = (array || []).map(fromParsePhoto)
   }
+
+  debugger
 
   return {listPhotosDict}
 }

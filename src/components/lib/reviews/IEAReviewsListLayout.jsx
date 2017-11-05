@@ -81,9 +81,6 @@ class IEAReviewsListLayout extends Component {
 
   componentDidMount() {
     const {listTask, reviewTerms} = this.state;
-
-    debugger
-
     this.props.loadReviewsListAction(listTask, reviewTerms)
   }
 
