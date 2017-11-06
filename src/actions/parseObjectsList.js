@@ -112,6 +112,7 @@ async function _loadPhotosList(terms, listTask, list) {
   let queryObjectSchemaName = objectSchemaName;
   let photoRelations = []
   let extendProps = {}
+
   switch (objectSchemaName) {
     case PARSE_USERS:// For loadOtherUsersAlsoOrderedRecipeList.
       const orderedUsers = PeopleInEvent.getOtherUsersAlsoOrderedRecipe(terms, listTask, list)
@@ -344,7 +345,8 @@ function loadPhotosBrowser(terms): ThunkAction {
   return loadListByType({
     listTask: terms,
     objectsQuery: getPhotosParameters(terms), terms,
-    parseFun: fromParsePhoto
+    parseFun: fromParsePhoto,
+    afterFetchHook: _loadPhotosList
   })
 }
 
