@@ -69,38 +69,11 @@ class F8SingleHeaderRightPhotoItem extends Component {
     )
   }
 
-  renderAvatarxxx() {
-    return (
-      <div className="media-avatar avatar">
-        <div className="photo-box pb-30s">
-
-          <Link {...linkProperty} className="js-analytics-click">
-
-            <Telescope.components.F8PlaceHolderImage
-              key={index}
-              alt={userName}
-              width="30"
-              height="30"
-              placeholderSource={"/default/user_30_square.png"}
-              source={userImageUrl}
-            />
-
-          </Link>
-
-        </div>
-
-
-      </div>
-
-    )
-  }
-
   renderOverLay() {
     const {item, index} = this.props;
     const {overlay} = item;
     const {user} = overlay;
     const userName = user.username;
-    const userImageUrl = user.imageUrl;
     const userLink = user.userProfileUrl;
     const linkProperty = !!userLink ? {to: userLink} : {};
 
@@ -111,9 +84,6 @@ class F8SingleHeaderRightPhotoItem extends Component {
           {this.renderAvatar()}
 
           <div className="media-story" id="photos-browser">
-            {/*<Link className="photo-desc margin-right-4" to={overlay.linkUrl}>*/}
-            {/*{overlay.title}*/}
-            {/*</Link>*/}
             <span className="author">
                 {"by"}
               <Link className="user-display-name margin-left-4"
