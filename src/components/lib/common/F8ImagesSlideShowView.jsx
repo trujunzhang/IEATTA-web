@@ -25,6 +25,7 @@ const {
   SLIDE_SHOW_VIEW_TYPE_NORMAL,
   SLIDE_SHOW_VIEW_TYPE_USER_AVATOR,
   SLIDE_SHOW_VIEW_TYPE_PHOTO_BROWSER,
+  SLIDE_SHOW_VIEW_TYPE_EDIT_USER,
   PARSE_RESTAURANTS,
   PARSE_USERS,
   PARSE_RECORDS,
@@ -79,59 +80,53 @@ class F8ImagesSlideShowView extends Component {
       )
     }
 
-    if (slideShowType === SLIDE_SHOW_VIEW_TYPE_PHOTO_BROWSER) {
-      const userLink = geDetailedModelLinkByObjectSchemaName(PARSE_USERS, forObject);
-      const linkProperty = !!forObject ? {to: userLink} : {};
-      return (
-        <div className="media-avatar avatar">
-          <div className="photo-box pb-30s">
-
-            <Link {...linkProperty} className="js-analytics-click">
-
-              {imageViews}
-
-            </Link>
-
+    switch (slideShowType) {
+      case SLIDE_SHOW_VIEW_TYPE_PHOTO_BROWSER:
+        const userLink = geDetailedModelLinkByObjectSchemaName(PARSE_USERS, forObject);
+        const linkProperty = !!forObject ? {to: userLink} : {};
+        return (
+          <div className="media-avatar avatar">
+            <div className="photo-box pb-30s">
+              <Link {...linkProperty} className="js-analytics-click">
+                {imageViews}
+              </Link>
+            </div>
           </div>
-
-
-        </div>
-      )
-    }
-    else if (slideShowType === SLIDE_SHOW_VIEW_TYPE_USER_AVATOR) {
-      return (
-        <div className="user-profile_avatar">
-          <div
-            className="photo-slideshow photo-slideshow--full-width photo-slideshow--rounded js-photo-slideshow-user-details">
-            <div className="photo-slideshow_slide is-active">
-              <div>
-
-                <Link to={geDetailedModelLinkByObjectSchemaName(objectSchemaName, forObject)}>
-
-                  {imageViews}
-
-                </Link>
-
+        )
+      case SLIDE_SHOW_VIEW_TYPE_USER_AVATOR:
+        return (
+          <div className="user-profile_avatar">
+            <div
+              className="photo-slideshow photo-slideshow--full-width photo-slideshow--rounded js-photo-slideshow-user-details">
+              <div className="photo-slideshow_slide is-active">
+                <div>
+                  <Link to={geDetailedModelLinkByObjectSchemaName(objectSchemaName, forObject)}>
+                    {imageViews}
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      )
+        )
+      case  SLIDE_SHOW_VIEW_TYPE_EDIT_USER:
+        return (
+          <div className="photo-box pb-m">
+            <a className="js-analytics-click">
+              {imageViews}
+            </a>
+          </div>
+        )
+      default:
+        return (
+          <div className='media-avatar'>
+            <div className={`photo-box pb-${imageSize}s`}>
+              <Link to={geDetailedModelLinkByObjectSchemaName(objectSchemaName, forObject)}>
+                {imageViews}
+              </Link>
+            </div>
+          </div>
+        )
     }
-
-    return (
-      <div className='media-avatar'>
-        <div className={`photo-box pb-${imageSize}s`}>
-
-          <Link to={geDetailedModelLinkByObjectSchemaName(objectSchemaName, forObject)}>
-
-            {imageViews}
-
-          </Link>
-
-        </div>
-      </div>
-    )
   }
 }
 
