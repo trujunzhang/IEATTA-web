@@ -144,7 +144,8 @@ class OrderedUsersSingleHeader extends Component {
   }
 
   render() {
-    const user = {...this.props.peopleInEvent.user, ...this.props.peopleInEvent.listPhotosDict}
+    const user = {...this.props.peopleInEvent.user, listPhotosDict: this.props.peopleInEvent.listPhotosDict}
+
     return (
       <div className="content-container" style={{height: '184px'}}>
 
