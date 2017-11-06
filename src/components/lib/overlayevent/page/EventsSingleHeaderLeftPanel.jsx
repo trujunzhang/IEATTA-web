@@ -8,23 +8,37 @@ import {getRestaurantLink} from '../../../../lib/link'
 
 import {Link} from 'react-router'
 
+/**
+ * The states were interested in
+ */
+const {
+  PARSE_RESTAURANTS,
+  PARSE_USERS,
+  PARSE_RECORDS,
+  PARSE_EVENTS,
+  PARSE_RECIPES,
+  PARSE_PHOTOS,
+  PARSE_REVIEWS,
+  PARSE_PEOPLE_IN_EVENTS,
+} = require('../../../../lib/constants').default
+
 class EventsSingleHeaderLeftPanel extends Component {
 
   renderLeft() {
     const {forObject} = this.props;
-
     return (
       <div className="event-details_photo">
         <div
           className="photo-slideshow photo-slideshow--full-width js-photo-slideshow-event-details lightbox-media-parent">
 
-          <Telescope.components.F8PlaceHolderImage
-            alt={forObject.restaurant.displayName}
-            className="photo-box-img"
-            width={300}
-            height={300}
-            placeholderSource={"/default/blank_biz_large.png"}
-            source={Photos.getListThumbnailUrl(forObject.restaurant)}/>
+          <Telescope.components.F8ImagesSlideShowView
+            altValue={forObject.restaurant.displayName}
+            forObject={forObject.restaurant}
+            objectSchemaName={PARSE_RESTAURANTS}
+            imageSize={300}
+            listTask={forObject}
+          />
+
         </div>
 
       </div>
