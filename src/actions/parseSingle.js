@@ -100,6 +100,7 @@ async function _loadPhotosListForSingleModel(parseId, parseModel) {
   const {objectSchemaName} = parseModel;
   let photoRelations = []
 
+
   switch (objectSchemaName) {
     case PARSE_PEOPLE_IN_EVENTS:
       photoRelations =

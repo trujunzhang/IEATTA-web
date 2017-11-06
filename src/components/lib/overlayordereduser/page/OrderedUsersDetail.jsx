@@ -17,9 +17,10 @@ class OrderedUsersDetail extends Component {
   }
 
   renderRightSidebar() {
-    const mapInfo = Restaurants.getMapInfo(this.props.forRestaurant,
-      this.props.forRestaurant.geoLocation,
-      true, false)
+    const {peopleInEvent} = this.props;
+    const {restaurant} = peopleInEvent;
+
+    const mapInfo = Restaurants.getMapInfo(restaurant, restaurant.geoLocation, false, false)
 
     return (
       <div className="user-details-bookmarks_sidebar">
@@ -35,7 +36,7 @@ class OrderedUsersDetail extends Component {
   }
 
   renderRightPanel() {
-    const {forEvent, forRestaurant, orderedUser, orderedRecipes, listTask} = this.props;
+    const {peopleInEvent} = this.props;
 
     return (
       <div className="column column-beta ">
@@ -45,8 +46,8 @@ class OrderedUsersDetail extends Component {
         <div className="user-details_bookmarks js-user-details_bookmarks">
           <div className="user-details-bookmarks_content js-user-details-bookmarks_content">
             <Telescope.components.BaseRecipesListPage
-              recipes={orderedRecipes}
-              listTask={listTask}
+              recipes={peopleInEvent.recipes}
+              listTask={peopleInEvent}
               showTitle={true}
             />
           </div>

@@ -18,29 +18,19 @@ class OrderedUsers extends Component {
       peopleInEventId: props.params.peopleInEventId,
       // Detailed object
       peopleInEvent: null,
-      orderedUser: null,
-      forEvent: null,
-      forRestaurant: null,
-      orderedRecipes: null,
-      listTask: {
-        listPhotosDict: {}
-      }
     }
   }
 
   componentWillReceiveProps(nextProps) {
     const peopleInEvent = getModelByObjectId(nextProps, this.state.peopleInEventId, this.state.peopleInEvent)
 
-    this.setState({
-      peopleInEvent: peopleInEvent,
-      orderedUser: peopleInEvent.user,
-      forEvent: peopleInEvent.event,
-      forRestaurant: peopleInEvent.restaurant,
-      orderedRecipes: peopleInEvent.recipes,
-      listTask: {
-        listPhotosDict: peopleInEvent.listPhotosDict
-      }
-    })
+    if (!!peopleInEvent) {
+
+      this.setState({
+        peopleInEvent: peopleInEvent,
+      })
+
+    }
   }
 
   componentDidMount() {
@@ -48,9 +38,9 @@ class OrderedUsers extends Component {
   }
 
   render() {
-    const {orderedUser, forRestaurant, forEvent} = this.state;
+    const {peopleInEvent} = this.state;
 
-    if (!!orderedUser && !!forRestaurant && !!forEvent) {
+    if (!!peopleInEvent) {
       return (<Telescope.components.IEAOrderedUsersLayout {...this.state}/>)
     }
 
