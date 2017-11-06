@@ -31,6 +31,7 @@ class ReviewsItemForUserProfile extends Component {
             <ul className="user-passport-info">
               <li className="user-name">
                 <Link className="user-display-name title-font-weight-bold"
+                      to={reviewObject.detailUrl}
                       id="dropdown_user-name">
                   {reviewObject.displayName}
                 </Link>
