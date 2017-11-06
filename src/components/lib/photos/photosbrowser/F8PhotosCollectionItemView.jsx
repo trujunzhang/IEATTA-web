@@ -4,7 +4,11 @@ import React, {Component} from 'react';
 import Photos from '../../../../lib/photos'
 
 import {withRouter} from 'react-router'
-import {getPhotosBrowserSelectionLink} from '../../../../lib/link'
+import {
+  getPhotosBrowserSelectionLink,
+  geDetailedModelLinkByObjectSchemaName
+} from '../../../../lib/link'
+
 import {Link} from 'react-router'
 
 const {
@@ -92,18 +96,32 @@ class F8PhotosCollectionItemView extends Component {
    */
   renderOverLay(photoInfo) {
     const {photo, photosListTask} = this.props;
-
+    const creator = photo.creator;
+    const userLink = geDetailedModelLinkByObjectSchemaName(PARSE_USERS, creator);
+    const linkProperty = !!creator ? {to: userLink} : {};
     return (
       <div className="photo-box-overlay js-overlay">
         <div className="media-block photo-box-overlay_caption">
 
           <Telescope.components.F8ImagesSlideShowView
-            altValue={photo.creator.displayName}
-            forObject={photo.creator}
+            altValue={creator.displayName}
+            forObject={creator}
             objectSchemaName={PARSE_USERS}
             imageSize={30}
             listTask={photosListTask}
           />
+
+          <div className="media-story" id="photos-browser">
+
+            <span className="author">
+                {"by"}
+              <Link className="user-display-name js-analytics-click margin-left-4"
+                    {...linkProperty}
+                    id="dropdown_user-name">
+                    {creator.displayName}
+              </Link>
+                </span>
+          </div>
 
 
         </div>
