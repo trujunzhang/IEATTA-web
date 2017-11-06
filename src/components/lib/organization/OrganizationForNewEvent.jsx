@@ -62,12 +62,11 @@ class OrganizationForNewEvent extends Component {
       // Detailed object
       forRelationObject: newRestaurant,
     })
-
   }
 
   componentDidMount() {
     const parseId = this.state.forObjectId;
-    this.props.dispatch(loadRestaurantPage(parseId))
+    this.props.loadRestaurantPageAction(parseId)
   }
 
   render() {
@@ -78,7 +77,8 @@ class OrganizationForNewEvent extends Component {
         case MODEL_FORM_TYPE_NEW:
           return (<Telescope.components.IEAEditEventLayout
               {...this.state}
-              dispatch={this.props.dispatch}/>
+              {...this.props}
+            />
           )
       }
     }
@@ -88,14 +88,30 @@ class OrganizationForNewEvent extends Component {
 
 }
 
+import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
+
+import * as editModelActions from '../../../reducers/editModel/editModelActions'
+
+function mapDispatchToProps(dispatch) {
+  return {
+    // Edit Model
+    actions: bindActionCreators(editModelActions, dispatch),
+    writeOnlineParseObjectAction: (object) => dispatch(writeOnlineParseObject(object)),
+    showAlertMessageAction: (object) => dispatch(showAlertMessage(object)),
+    //Model
+    loadRestaurantPageAction: (parseId) => dispatch(loadRestaurantPage(parseId)),
+  }
+}
 
 function select(store, ownProps) {
   return {
+    editModel: store.editModel,
+    goBack: ownProps.router.goBack,
     detailedModelsOverlay: store.detailedModelsOverlay,
     listContainerTasks: store.listContainerTasks
   }
 }
 
-export default withRouter(connect(select)(OrganizationForNewEvent));
+export default withRouter(connect(select, mapDispatchToProps)(OrganizationForNewEvent));
 

@@ -115,12 +115,14 @@ async function _loadPhotosList(terms, listTask, list) {
 
   switch (objectSchemaName) {
     case PARSE_USERS:// For loadOtherUsersAlsoOrderedRecipeList.
-      const orderedUsers = PeopleInEvent.getOtherUsersAlsoOrderedRecipe(terms, listTask, list)
-      extendProps['orderedUsers'] = orderedUsers;
-      photoRelations =
-        _.pluck(orderedUsers, 'id').map(function (id) {
-          return {id, photoType: AppConstants.realmTypes[PARSE_USERS]}
-        })
+      if (Object.keys(terms).indexOf("photoParamsType") === -1) { // not photo browser
+        const orderedUsers = PeopleInEvent.getOtherUsersAlsoOrderedRecipe(terms, listTask, list)
+        extendProps['orderedUsers'] = orderedUsers;
+        photoRelations =
+          _.pluck(orderedUsers, 'id').map(function (id) {
+            return {id, photoType: AppConstants.realmTypes[PARSE_USERS]}
+          })
+      }
       break;
     case PARSE_PEOPLE_IN_EVENTS:
       const users = _.pluck(list, 'user')

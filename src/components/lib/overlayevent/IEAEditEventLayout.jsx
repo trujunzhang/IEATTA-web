@@ -84,7 +84,7 @@ class IEAEditEventLayout extends Component {
 
 
   async onButtonPress() {
-    const {writeOnlineParseObjectAction, showAlertMessageAction, forObject, forRelationObject} = this.props;
+    const {writeOnlineParseObjectAction, showAlertMessageAction, forRelationObject} = this.props;
 
     const editModelType = this.props.editModel.form.editModelType;
 
