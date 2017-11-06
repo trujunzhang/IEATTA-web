@@ -220,7 +220,7 @@ class IEAEditEventLayout extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 

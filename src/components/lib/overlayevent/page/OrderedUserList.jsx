@@ -12,31 +12,31 @@ class OrderedUserList extends Component {
   constructor(props) {
     super(props)
 
-    const terms = PaginationTerms.generateTermsForOrderedUsersList(props)
+    const orderedUserTerms = PaginationTerms.generateTermsForOrderedUsersList(props)
     this.state = {
-      terms: terms,
-      listTask: getDefaultListTask(terms),
+      orderedUserTerms,
+      orderedUserListTask: getDefaultListTask(orderedUserTerms),
     }
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      listTask: byListId(nextProps, this.state.terms, this.state.listTask)
+      orderedUserListTask: byListId(nextProps, this.state.orderedUserTerms, this.state.orderedUserListTask)
     })
   }
 
   componentDidMount() {
-    const {terms, listTask} = this.state;
-    this.props.dispatch(loadPeopleInEventList(listTask, terms))
+    const {orderedUserTerms, orderedUserListTask} = this.state;
+    this.props.dispatch(loadPeopleInEventList(orderedUserListTask, orderedUserTerms))
   }
 
   renderRows() {
-    const {listTask} = this.state;
+    const {orderedUserListTask} = this.state;
 
     const {
       results,
       ready
-    } = listTask;
+    } = orderedUserListTask;
 
     if (!ready) {
       return (
@@ -50,7 +50,7 @@ class OrderedUserList extends Component {
           <Telescope.components.OrderedUserItem
             key={peopleInEvent.id}
             peopleInEvent={peopleInEvent}
-            listTask={listTask}
+            listTask={orderedUserListTask}
           />
         )}
       </ul>
@@ -58,13 +58,13 @@ class OrderedUserList extends Component {
   }
 
   renderEmptySection() {
-    const {listTask} = this.state
+    const {orderedUserListTask} = this.state
 
     const {
       results,
       ready,
       totalCount,
-    } = listTask
+    } = orderedUserListTask
 
     if (ready && results.length === 0) {
       return (
