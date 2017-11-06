@@ -23,6 +23,7 @@ const {
 const {
   PHOTOS_BROWSER_PAGE_NORMAL,
   PHOTOS_BROWSER_PAGE_FOR_USER_PROFILE,
+  PARSE_USERS,
 } = require('../../../../lib/constants').default
 
 
@@ -132,6 +133,45 @@ class F8PhotosSelectRightPanel extends Component {
     )
   }
 
+  renderAvatar() {
+    const {photosListTask, selectPhotoIndex} = this.props;
+    const photos = photosListTask.results;
+    const photo = photos[selectPhotoIndex];
+    const creator = photo.creator;
+
+    return (
+      <Telescope.components.F8ImagesSlideShowView
+        altValue={creator.displayName}
+        forObject={creator}
+        objectSchemaName={PARSE_USERS}
+        imageSize={30}
+        listTask={photosListTask}
+      />
+    )
+  }
+
+  renderAvatarxxx() {
+    const {selectedPhotoInfo} = this.props;
+    return (
+      <div className="media-avatar">
+        <div className="photo-box pb-30s">
+          <Link to={selectedPhotoInfo.userProfileUrl} className="js-analytics-click">
+            <Telescope.components.F8PlaceHolderImage
+              key={selectedPhotoInfo.username}
+              alt={selectedPhotoInfo.username}
+              className="photo-box-img"
+              width="30"
+              height="30"
+              placeholderSource={"/default/user_30_square.png"}
+              source={selectedPhotoInfo.imageUrl}/>
+
+          </Link>
+
+        </div>
+      </div>
+    )
+  }
+
   renderTopUserInfo() {
     const {selectedPhotoInfo} = this.props;
 
@@ -140,24 +180,7 @@ class F8PhotosSelectRightPanel extends Component {
         <div className="photo-user-passport">
           <div className="ypassport ypassport-slim media-block">
 
-            <div className="media-avatar">
-
-              <div className="photo-box pb-30s">
-                <Link to={selectedPhotoInfo.userProfileUrl} className="js-analytics-click">
-
-                  <Telescope.components.F8PlaceHolderImage
-                    key={selectedPhotoInfo.username}
-                    alt={selectedPhotoInfo.username}
-                    className="photo-box-img"
-                    width="30"
-                    height="30"
-                    placeholderSource={"/default/user_30_square.png"}
-                    source={selectedPhotoInfo.imageUrl}/>
-
-                </Link>
-
-              </div>
-            </div>
+            {this.renderAvatar()}
 
             <div className="media-story">
               <ul className="user-passport-info">

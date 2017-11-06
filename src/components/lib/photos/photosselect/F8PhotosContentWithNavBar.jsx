@@ -47,7 +47,7 @@ class F8PhotosContentWithNavBar extends Component {
 
 
   render() {
-    const {contentClass, location} = this.props;
+    const {contentClass} = this.props;
 
     return (
       <div className={contentClass}>
