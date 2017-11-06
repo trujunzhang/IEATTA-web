@@ -54,8 +54,9 @@ const {
   getQueryByType
 } = require('../parse/parseUtiles').default
 
+import AppConstants from '../lib/appConstants'
+
 const slugify = require('slugify')
-const {updateInstallation} = require('./installation')
 
 const {fromParseUser} = require('../parse/parseModels')
 
@@ -70,11 +71,16 @@ async function _logInWithPassword(username: string, password: string): Promise<A
 
   await user.logIn()
 
-  const current = await getQueryByType(PARSE_USERS, ['photos']).get(user.id)
+  const photoDict = await Parse.Cloud.run('photoListUrls', {
+    photoRelations: [{id: user.id, photoType: AppConstants.realmTypes[PARSE_USERS]}]
+  })
 
   const action = {
     type: LOGGED_IN,
-    payload: fromParseUser(current)
+    payload: {
+      ...fromParseUser(user),
+      defaultAvatarUrl: photoDict[user.id]
+    }
   };
 
   return Promise.all([
@@ -107,11 +113,16 @@ async function _signUpWithPassword(username: string, email: string, password: st
 
   await user.signUp({'loginType': 'email'})
 
-  const current = await getQueryByType(PARSE_USERS, ['photos']).get(user.id)
+  const photoDict = await Parse.Cloud.run('photoListUrls', {
+    photoRelations: [{id: user.id, photoType: AppConstants.realmTypes[PARSE_USERS]}]
+  })
 
   const action = {
     type: LOGGED_IN,
-    payload: fromParseUser(current)
+    payload: {
+      ...fromParseUser(user),
+      defaultAvatarUrl: photoDict[user.id]
+    }
   }
 
   return Promise.all([

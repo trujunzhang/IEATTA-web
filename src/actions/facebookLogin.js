@@ -94,8 +94,6 @@ async function _logInWithFacebook(source: ? object): Promise<Array<Action>> {
 
   const current = await getQueryByType(PARSE_USERS, ['photos']).get(user.id)
 
-  // await updateInstallation({user})
-
   const action = {
     type: LOGGED_IN,
     payload: fromParseUser(current)
