@@ -8,30 +8,22 @@ import {
   getAddPhotoLink
 } from '../../../../lib/link'
 
+import AppConstants from '../../../../lib/appConstants'
 
 class F8PhotosTitleHeader extends Component {
 
   renderObjectAvator() {
     const {modelType, forObject} = this.props;
+    const {objectSchemaName} = AppConstants.realmObjects[modelType]
 
     return (
-      <div className="media-avatar">
-        <div className="photo-box pb-30s">
-
-          <Link className="js-analytics-click"
-                to={geDetailedModelLink(modelType, forObject)}>
-            <Telescope.components.F8PlaceHolderImage
-              alt={forObject.displayName}
-              className="photo-box-img"
-              height="30"
-              width="30"
-              placeholderSource={"/default/blank_biz_small.png"}
-              source={Photos.getListThumbnailUrl(forObject)}/>
-
-          </Link>
-
-        </div>
-      </div>
+      <Telescope.components.F8ImagesSlideShowView
+        altValue={forObject.displayName}
+        forObject={forObject}
+        objectSchemaName={objectSchemaName}
+        imageSize={30}
+        listTask={forObject}
+      />
     )
   }
 
