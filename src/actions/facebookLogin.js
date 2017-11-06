@@ -41,6 +41,8 @@ const {
   PARSE_USERS,
 } = require('../lib/constants').default
 
+import AppConstants from '../lib/appConstants'
+
 const {
   getQueryByType
 } = require('../parse/parseUtiles').default
@@ -92,11 +94,16 @@ async function _logInWithFacebook(source: ? object): Promise<Array<Action>> {
 
   await user.save();
 
-  const current = await getQueryByType(PARSE_USERS, ['photos']).get(user.id)
+  const photoDict = await Parse.Cloud.run('photoListUrls', {
+    photoRelations: [{id: user.id, photoType: AppConstants.realmTypes[PARSE_USERS]}]
+  })
 
   const action = {
     type: LOGGED_IN,
-    payload: fromParseUser(current)
+    payload: {
+      ...fromParseUser(user),
+      defaultAvatarUrl: photoDict[user.id]
+    }
   }
 
   return Promise.all([
