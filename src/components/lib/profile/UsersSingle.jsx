@@ -130,7 +130,6 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-
 function select(store) {
   return {
     listContainerTasks: store.listContainerTasks,
@@ -139,7 +138,6 @@ function select(store) {
     currentUser: store.user,
   }
 }
-
 
 export default withRouter(connect(select, mapDispatchToProps)(UsersSingle))
 
