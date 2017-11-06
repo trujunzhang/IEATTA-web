@@ -27,6 +27,8 @@ const Parse = require('parse')
 const _ = require('underscore')
 import type {ThunkAction} from './types'
 
+import AppConstants from '../lib/appConstants'
+
 const {
   getQueryByType,
   getReviewsParameters,
@@ -96,18 +98,13 @@ function callCloudStatisticMethod(type: string, methodType: string, params: stri
 
 async function _loadPhotosListForRecipes(parseId, parseModel) {
   const {recipes} = parseModel;
-  const modelIds = _.pluck(recipes, 'id')
-  const listPhotosDict = {}
 
-  for (let id of modelIds) {
-    const array = await getPhotosParameters({
-      photoParamsType: PHOTOS_TERMS_PARAM_FOR_SLIDE_SHOW,
-      objectSchemaName: PARSE_RECIPES,
-      forObjectId: id
-    }, false).limit(1).find()
+  const photoRelations =
+    _.pluck(recipes, 'id').map(function (id) {
+      return {id, photoType: AppConstants.realmTypes[PARSE_RECIPES]}
+    })
 
-    listPhotosDict[id] = (array || []).map(fromParsePhoto)
-  }
+  const listPhotosDict = await Parse.Cloud.run('photoListUrls', {photoRelations})
 
   return {listPhotosDict}
 }
