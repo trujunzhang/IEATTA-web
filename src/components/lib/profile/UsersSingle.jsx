@@ -7,7 +7,8 @@ import {withRouter} from 'react-router'
 
 const {
   loadUserProfilePage,
-  invokeParseCloudMethod
+  invokeParseCloudMethod,
+  loadPhotosBrowser,
 } = require('../../../actions').default
 
 const {
@@ -124,6 +125,7 @@ function mapDispatchToProps(dispatch) {
     //Model
     loadUserProfilePageAction: (parseId) => dispatch(loadUserProfilePage(parseId)),
     //List
+    loadPhotosBrowserAction: (terms) => dispatch(loadPhotosBrowser(terms)),
     invokeParseCloudMethodAction: (params, parseId) => dispatch(invokeParseCloudMethod(CLOUD_STATISTIC_FOR_USER_STATE, params, parseId)),
   }
 }

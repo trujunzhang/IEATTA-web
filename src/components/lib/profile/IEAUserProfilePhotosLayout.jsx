@@ -5,10 +5,6 @@ import {withRouter} from 'react-router'
 import PhotoBrowser from '../../../lib/photobrowser'
 
 const {
-  loadPhotosBrowser,
-} = require('../../../actions').default
-
-const {
   PARSE_USERS,
   PHOTO_BROWSER_LOGGED_USER_TITLE,
   PAGE_PHOTOS_BROWSER_FORM,
@@ -83,12 +79,12 @@ class IEAUserProfilePhotosLayout extends Component {
         photosListTask: getDefaultListTask(newPhotosTerms, photosListTask),
         selectPhotoIndex: -1,
       })
-      this.props.dispatch(loadPhotosBrowser(newPhotosTerms))
+      this.props.loadPhotosBrowserAction(newPhotosTerms)
     }
   }
 
   componentDidMount() {
-    this.props.dispatch(loadPhotosBrowser(this.state.photosTerms))
+    this.props.loadPhotosBrowserAction(this.state.photosTerms)
   }
 
   render() {
