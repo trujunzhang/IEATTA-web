@@ -4,8 +4,6 @@ import Restaurants from '../../../lib/restaurants'
 
 
 const {
-  writeOnlineParseObject,
-  showAlertMessage,
   timeout
 } = require('../../../actions').default
 

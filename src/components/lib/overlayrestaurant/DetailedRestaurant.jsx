@@ -8,7 +8,9 @@ import PhotoBrowser from '../../../lib/photobrowser'
 const {
   loadRestaurantPage,
   loadPhotosBrowser,
-  invokeParseCloudMethod
+  invokeParseCloudMethod,
+  writeOnlineParseObject,
+  showAlertMessage,
 } = require('../../../actions').default
 
 const {
