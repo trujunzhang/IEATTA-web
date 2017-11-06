@@ -155,7 +155,7 @@ class OrderedUsersSingleHeader extends Component {
           {/*{this.renderColumnTwo()}*/}
         </div>
 
-        <Telescope.components.F8UserAvatorSection user={user}/>
+        <Telescope.components.F8UserAvatarSection user={user}/>
 
       </div>
     )

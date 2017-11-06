@@ -2,8 +2,6 @@ import Telescope from '../index'
 import React, {Component} from 'react'
 import Photos from '../../../lib/photos'
 
-import {getLoggedUserMenuLink} from '../../../lib/link'
-import {Link} from 'react-router'
 
 /**
  * The states were interested in
@@ -22,14 +20,13 @@ const {
   SLIDE_SHOW_VIEW_TYPE_USER_AVATOR,
 } = require('../../../lib/constants').default
 
-class F8UserAvatorSection extends Component {
+class F8UserAvatarSection extends Component {
 
 
-  renderLeftUserAvator() {
+  renderLeftUserAvatar() {
     const user = this.props.user || {displayName: ''};
-    const sectionClass = "user-profile_avatar";
-    return (
 
+    return (
       <Telescope.components.F8ImagesSlideShowView
         altValue={user.displayName}
         forObject={user}
@@ -47,7 +44,7 @@ class F8UserAvatorSection extends Component {
     return (
       <div className={sectionClass}>
         <div className="user-profile_container">
-          {this.renderLeftUserAvator()}
+          {this.renderLeftUserAvatar()}
         </div>
       </div>
     )
@@ -56,13 +53,13 @@ class F8UserAvatorSection extends Component {
 }
 
 
-F8UserAvatorSection.propTypes = {
+F8UserAvatarSection.propTypes = {
   sectionClass: React.PropTypes.string
 };
 
-F8UserAvatorSection.defaultProps = {
+F8UserAvatarSection.defaultProps = {
   sectionClass: "ordered-user-profile"
 };
 
 
-export default F8UserAvatorSection;
+export default F8UserAvatarSection;

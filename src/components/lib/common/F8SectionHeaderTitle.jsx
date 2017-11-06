@@ -4,7 +4,7 @@ import Photos from '../../../lib/photos'
 
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
 
-class F8UserAvatorSection extends Component {
+class F8SectionHeaderTitle extends Component {
   render() {
     const {
       title,
@@ -29,4 +29,4 @@ class F8UserAvatorSection extends Component {
 
 }
 
-export default F8UserAvatorSection;
+export default F8SectionHeaderTitle;

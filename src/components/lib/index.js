@@ -14,7 +14,7 @@ Telescope.registerComponent('F8SingleHeaderRightPhotosSingleModel',   require('.
 Telescope.registerComponent('F8SingleHeaderRightPhotosScrollModel',   require('./common/F8SingleHeaderRightPhotosScrollModel.jsx').default)
 Telescope.registerComponent('F8SingleHeaderRightPhotoItem',           require('./common/F8SingleHeaderRightPhotoItem.jsx').default)
 Telescope.registerComponent('F8RestaurantMapSection',                 require('./common/F8RestaurantMapSection.jsx').default)
-Telescope.registerComponent('F8UserAvatorSection',                    require('./common/F8UserAvatorSection.jsx').default)
+Telescope.registerComponent('F8UserAvatarSection',                    require('./common/F8UserAvatarSection.jsx').default)
 Telescope.registerComponent('F8LoadingView',                          require('./common/F8LoadingView.jsx').default)
 Telescope.registerComponent('F8EmptySection',                         require('./common/F8EmptySection.jsx').default)
 Telescope.registerComponent('F8ImagesSlideShowView',                  require('./common/F8ImagesSlideShowView.jsx').default)

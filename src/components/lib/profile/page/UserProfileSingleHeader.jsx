@@ -142,7 +142,7 @@ class UserProfileSingleHeader extends Component {
           {/*{this.renderColumnTwo()}*/}
         </div>
 
-        <Telescope.components.F8UserAvatorSection key={uid} user={userProfile}/>
+        <Telescope.components.F8UserAvatarSection key={uid} user={userProfile}/>
 
       </div>
     )
