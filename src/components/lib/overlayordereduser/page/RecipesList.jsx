@@ -38,7 +38,7 @@ class RecipesList extends Component {
     const terms = PaginationTerms.generateTermsForRecipesList(props)
 
     this.state = {
-      terms: terms,
+      terms,
       listTask: getDefaultListTask(terms),
     }
   }
@@ -50,10 +50,6 @@ class RecipesList extends Component {
   }
 
   componentDidMount() {
-    this.loadMore()
-  }
-
-  loadMore() {
     const {recipeListType} = this.props;
     const {terms, listTask} = this.state;
 
