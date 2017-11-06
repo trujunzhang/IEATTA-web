@@ -70,6 +70,7 @@ class UsersSingle extends Component {
     if (this.state.uid !== newUid) {
       this.setState({
         uid: newUid,
+        userProfile: null,
       })
       this.props.loadUserProfilePageAction(newUid)
       this.props.invokeParseCloudMethodAction({userId: newUid}, newUid)
