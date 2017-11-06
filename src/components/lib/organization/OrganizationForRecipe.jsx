@@ -61,11 +61,11 @@ class OrganizationForRecipe extends Component {
       forObject,
       forRelationObject: null,
       // photos
-      photosTerms: photosTerms,
+      photosTerms,
       photosListTask: getDefaultListTask(photosTerms),
       selectPhotoIndex: -1,
       // Common
-      pageForm: pageForm,
+      pageForm,
       forObjectId,
       modelType,
       objectSchemaName,
@@ -82,7 +82,7 @@ class OrganizationForRecipe extends Component {
 
     const newPageForm = getPageFormType(objectSchemaName, nextProps, this.state.pageForm)
     const newPhotosTerms = PaginationTerms.generatePhotoTermForRecipe(objectSchemaName, forObjectId, newPageForm, nextProps)
-    const photosListTask = byListId(nextProps,  this.state.photosTerms, this.state.photosListTask);
+    const photosListTask = byListId(nextProps, this.state.photosTerms, this.state.photosListTask);
 
     const newRestaurant = getModelByObjectId(nextProps, forObjectId, this.state.forRelationObject);
 

@@ -40,11 +40,11 @@ class IEAUserProfilePhotosLayout extends Component {
 
     this.state = this.initialState = {
       // photos
-      photosTerms: photosTerms,
+      photosTerms,
       photosListTask: getDefaultListTask(photosTerms),
       selectPhotoIndex: -1,
       // Common
-      pageForm: pageForm,
+      pageForm,
       modelType: 'user',
       photoBrowserType: PHOTOS_BROWSER_PAGE_FOR_USER_PROFILE,
       // Events
@@ -59,7 +59,7 @@ class IEAUserProfilePhotosLayout extends Component {
 
     const newPageForm = getPageFormType(PARSE_USERS, nextProps, this.state.pageForm)
     const newPhotosTerms = PaginationTerms.generatePhotoTerm(PARSE_USERS, nextProps.userProfile.id, newPageForm, nextProps, true)
-    const photosListTask = byListId(nextProps,  this.state.photosTerms, this.state.photosListTask);
+    const photosListTask = byListId(nextProps, this.state.photosTerms, this.state.photosListTask);
 
     this.setState({
       // photos

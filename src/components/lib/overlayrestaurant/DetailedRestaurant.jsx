@@ -56,11 +56,11 @@ class DetailedRestaurant extends Component {
       forObject: null,
       reviewStatistic: null,
       // photos
-      photosTerms: photosTerms,
+      photosTerms,
       photosListTask: getDefaultListTask(photosTerms),
       selectPhotoIndex: -1,
       // Common
-      pageForm: pageForm,
+      pageForm,
       modelType: 'restaurant',
       // Events
       onPreIconClick: photoBrowserInstance.onPreIconClick.bind(this),
