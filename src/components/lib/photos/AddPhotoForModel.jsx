@@ -4,10 +4,13 @@ import React, {Component} from 'react'
 import {withRouter} from 'react-router'
 
 
+import AppConstants from "../../../lib/appConstants";
+
 const {
   loadRestaurantPage,
   loadEventPage,
   loadOrderedRecipePage,
+  loadUserProfilePage,
 } = require('../../../actions').default
 
 const {
@@ -20,6 +23,14 @@ const {
   PAGE_OVERLAY_SELECTED_PHOTO_FORM,
   PAGE_SINGLE_SELECTED_PHOTO_FORM,
   CLOUD_STATISTIC_FOR_REVIEWS,
+  PARSE_RESTAURANTS,
+  PARSE_USERS,
+  PARSE_RECORDS,
+  PARSE_EVENTS,
+  PARSE_RECIPES,
+  PARSE_PHOTOS,
+  PARSE_REVIEWS,
+  PARSE_PEOPLE_IN_EVENTS,
 } = require('../../../lib/constants').default
 
 
@@ -34,7 +45,6 @@ class AddPhotoForModel extends Component {
 
   constructor(props, context) {
     super(props)
-
 
     this.state = this.initialState = {
       modelType: props.params.modelType,
@@ -53,17 +63,20 @@ class AddPhotoForModel extends Component {
     })
   }
 
-
   componentDidMount() {
-    switch (this.state.modelType) {
-      case 'restaurant':
+    const {objectSchemaName} = AppConstants.realmObjects[this.state.modelType]
+    switch (objectSchemaName) {
+      case PARSE_RESTAURANTS:
         this.props.dispatch(loadRestaurantPage(this.state.forObjectId))
         break;
-      case 'event':
+      case PARSE_EVENTS:
         this.props.dispatch(loadEventPage(this.state.forObjectId))
         break;
-      case 'recipe':
+      case PARSE_RECIPES:
         this.props.dispatch(loadOrderedRecipePage(this.state.forObjectId))
+        break;
+      case PARSE_USERS:
+        this.props.dispatch(loadUserProfilePage(this.state.forObjectId))
         break;
     }
   }
