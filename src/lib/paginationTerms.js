@@ -149,7 +149,7 @@ PaginationTerms.generateTermsForOrderedUsersList = function ({forObject}) {
     eventId: listId,
     restaurantId: forObject.restaurant.id,
 
-    objectSchemaName: PARSE_USERS,
+    objectSchemaName: PARSE_PEOPLE_IN_EVENTS,
   }
 }
 

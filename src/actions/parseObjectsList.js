@@ -112,6 +112,13 @@ async function _loadPhotosList(terms, listTask, list) {
   let queryObjectSchemaName = objectSchemaName;
   let photoRelations = []
   switch (objectSchemaName) {
+    case PARSE_PEOPLE_IN_EVENTS:
+      const users = _.pluck(list, 'user')
+      photoRelations =
+        _.pluck(users, 'id').map(function (id) {
+          return {id, photoType: AppConstants.realmTypes[PARSE_USERS]}
+        })
+      break;
     case PARSE_REVIEWS:
       const {reviewListType} = terms;
       if (reviewListType === REVIEW_LIST_TYPE_USER_PROFILE_ABOUT) {

@@ -21,26 +21,22 @@ class OrderedUserList extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      listTask: byListId(nextProps,  this.state.terms, this.state.listTask)
+      listTask: byListId(nextProps, this.state.terms, this.state.listTask)
     })
   }
 
   componentDidMount() {
-    this.loadMore()
-  }
-
-  loadMore() {
     const {terms, listTask} = this.state;
     this.props.dispatch(loadPeopleInEventList(listTask, terms))
   }
 
   renderRows() {
-    const {listTask} = this.state
+    const {listTask} = this.state;
 
     const {
       results,
       ready
-    } = listTask
+    } = listTask;
 
     if (!ready) {
       return (
@@ -51,7 +47,11 @@ class OrderedUserList extends Component {
     return (
       <ul className="ylist">
         {results.map(peopleInEvent =>
-          <Telescope.components.OrderedUserItem key={peopleInEvent.id} peopleInEvent={peopleInEvent}/>
+          <Telescope.components.OrderedUserItem
+            key={peopleInEvent.id}
+            peopleInEvent={peopleInEvent}
+            listTask={listTask}
+          />
         )}
       </ul>
     )
