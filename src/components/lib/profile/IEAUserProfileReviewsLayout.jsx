@@ -24,22 +24,10 @@ const {
 } = require('../../../lib/constants').default
 
 
-const {
-  getModelByObjectId,
-  getDefaultListTask,
-  byListId
-} = require('../../filter/filterPosts')
-
-
 class IEAUserProfileReviewsLayout extends Component {
 
-  constructor(props, context) {
-    super(props)
-  }
-
-
   renderRightPanel() {
-    const {userProfile, forObject} = this.props;
+    const {userProfile} = this.props;
     return (
       <div className="column column-beta">
 
@@ -61,16 +49,13 @@ class IEAUserProfileReviewsLayout extends Component {
         {this.renderRightPanel()}
 
       </div>
-
     )
   }
 
 
   render() {
     return (
-
       <div className="main-content-wrap main-content-wrap--full">
-
         <div className="top-shelf top-shelf-grey">
 
           <Telescope.components.UserProfileSingleHeader {...this.props}/>
@@ -83,20 +68,11 @@ class IEAUserProfileReviewsLayout extends Component {
 
         </div>
       </div>
-
     )
   }
 
 }
 
-import {connect} from 'react-redux'
-
-function select(store, ownProps) {
-  return {
-    listContainerTasks: store.listContainerTasks
-  }
-}
-
-export default withRouter(connect(select)(IEAUserProfileReviewsLayout));
+export default withRouter(IEAUserProfileReviewsLayout)
 
 

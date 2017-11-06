@@ -3,9 +3,6 @@ import React, {Component} from 'react'
 
 import {withRouter} from 'react-router'
 
-const {
-  loadPhotosBrowser,
-} = require('../../../actions').default
 
 const {
   EVENTS_LIST_FOR_USER,
@@ -15,7 +12,6 @@ const {
 class IEAUserProfileEventsLayout extends Component {
 
   renderRightPanel() {
-    const {userProfile, forObject} = this.props;
     return (
       <div className="user-details-bookmarks_content js-user-details-bookmarks_content">
         <Telescope.components.EventsList
@@ -50,14 +46,7 @@ class IEAUserProfileEventsLayout extends Component {
 
 }
 
-import {connect} from 'react-redux'
 
-function select(store, ownProps) {
-  return {
-    listContainerTasks: store.listContainerTasks
-  }
-}
-
-export default withRouter(connect(select)(IEAUserProfileEventsLayout));
+export default withRouter(IEAUserProfileEventsLayout)
 
 

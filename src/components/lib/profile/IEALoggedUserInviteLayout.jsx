@@ -111,7 +111,6 @@ class IEALoggedUserInviteLayout extends Component {
             <h2>Send IEATTA Invites To These Email Addresses:</h2>
           </div>
 
-
           <div className="yform email-invite-form" name="email-invite-form">
 
             <div className="content-field">

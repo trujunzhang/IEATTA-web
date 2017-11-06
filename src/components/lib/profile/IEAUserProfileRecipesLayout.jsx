@@ -4,10 +4,6 @@ import React, {Component} from 'react'
 import {withRouter} from 'react-router'
 
 const {
-  loadPhotosBrowser,
-} = require('../../../actions').default
-
-const {
   EVENTS_LIST_FOR_USER,
   // Review List Type
   RECIPES_LIST_FOR_LOGGED_USER_PAGE,
@@ -17,7 +13,7 @@ const {
 class IEAUserProfileRecipesLayout extends Component {
 
   renderRightPanel() {
-    const {userProfile, forObject} = this.props;
+    const {userProfile} = this.props;
     return (
       <div className="user-details-bookmarks_content js-user-details-bookmarks_content">
         <Telescope.components.RecipesList
@@ -52,13 +48,5 @@ class IEAUserProfileRecipesLayout extends Component {
   }
 }
 
-import {connect} from 'react-redux'
-
-function select(store, ownProps) {
-  return {
-    listContainerTasks: store.listContainerTasks
-  }
-}
-
-export default withRouter(connect(select)(IEAUserProfileRecipesLayout));
+export default withRouter(IEAUserProfileRecipesLayout)
 
