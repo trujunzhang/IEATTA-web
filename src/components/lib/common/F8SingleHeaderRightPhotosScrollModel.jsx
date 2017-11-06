@@ -49,6 +49,7 @@ class F8SingleHeaderRightPhotosScrollModel extends Component {
 
     const photoLength = photoModelObject.total;
 
+
     return (
       <div className="showcase-container">
 
@@ -66,7 +67,9 @@ class F8SingleHeaderRightPhotosScrollModel extends Component {
                 return (
                   <Telescope.components.F8SingleHeaderRightPhotoItem
                     key={`${userId}-${position}`}
+                    {...this.props}
                     item={item}
+                    photoIndex={position}
                     index={index}/>)
               })}
 

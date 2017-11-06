@@ -52,10 +52,9 @@ class F8SingleHeaderRightPhotoItem extends Component {
   }
 
   renderAvatar() {
-    const {photosListTask, selectPhotoIndex} = this.props;
-    debugger
+    const {photosListTask, photoIndex} = this.props;
     const photos = photosListTask.results;
-    const photo = photos[selectPhotoIndex];
+    const photo = photos[photoIndex];
     const creator = photo.creator;
 
     return (
