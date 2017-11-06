@@ -47,9 +47,9 @@ Telescope.registerComponent('ReviewsItem',                         require('./re
 Telescope.registerComponent('ReviewsItemForUserProfile',           require('./reviews/page/ReviewsItemForUserProfile.jsx').default)
 Telescope.registerComponent('ReviewsItemButtonsPanel',             require('./reviews/page/ReviewsItemButtonsPanel.jsx').default)
 Telescope.registerComponent('EditReviewForm',                      require('./reviews/page/EditReviewForm.jsx').default)
-Telescope.registerComponent('EditReviewTopRestaurant',             require('./reviews/page/EditReviewTopRestaurant.jsx').default)
-Telescope.registerComponent('EditReviewTopRecipe',                 require('./reviews/page/EditReviewTopRecipe.jsx').default)
-Telescope.registerComponent('EditReviewTopEvent',                  require('./reviews/page/EditReviewTopEvent.jsx').default)
+Telescope.registerComponent('EditReviewTopRestaurant',             require('./reviews/editTitle/EditReviewTopRestaurant.jsx').default)
+Telescope.registerComponent('EditReviewTopRecipe',                 require('./reviews/editTitle/EditReviewTopRecipe.jsx').default)
+Telescope.registerComponent('EditReviewTopEvent',                  require('./reviews/editTitle/EditReviewTopEvent.jsx').default)
 
 // reviews edit
 Telescope.registerComponent('DetailedReview',                          require('./reviews/DetailedReview.jsx').default)

@@ -5,32 +5,36 @@ import {getRestaurantLink} from '../../../../lib/link'
 import {Link} from 'react-router'
 import Photos from '../../../../lib/photos'
 
+/**
+ * The states were interested in
+ */
+const {
+  PARSE_RESTAURANTS,
+  PARSE_USERS,
+  PARSE_RECORDS,
+  PARSE_EVENTS,
+  PARSE_RECIPES,
+  PARSE_PHOTOS,
+  PARSE_REVIEWS,
+  PARSE_PEOPLE_IN_EVENTS,
+} = require('../../../../lib/constants').default
+
+
 class EditReviewTopRestaurant extends Component {
-
   render() {
-    const {forObject, reviewType} = this.props;
-
+    const {forObject, reviewType, review} = this.props;
     return (
       <div className="war-write_business">
         <div className="media-block media-block--12 biz-listing-medium">
-          <div className="media-avatar">
-            <div className="photo-box pb-60s">
 
-              <a className="js-analytics-click">
+          <Telescope.components.F8ImagesSlideShowView
+            altValue={forObject.displayName}
+            forObject={forObject}
+            objectSchemaName={PARSE_RESTAURANTS}
+            listTask={review}
+            imageSize={60}
+          />
 
-                <Telescope.components.F8PlaceHolderImage
-                  alt={forObject.displayName}
-                  className="photo-box-img"
-                  width="60"
-                  height="60"
-                  placeholderSource={"/default/blank_biz_small.png"}
-                  source={Photos.getListThumbnailUrl(forObject)}/>
-
-              </a>
-
-            </div>
-
-          </div>
           <div className="media-story">
             <div className="media-title clearfix">
 
@@ -53,7 +57,6 @@ class EditReviewTopRestaurant extends Component {
                     </a>
          </span>
 
-
             </div>
 
 
@@ -66,7 +69,7 @@ class EditReviewTopRestaurant extends Component {
         </div>
 
       </div>
-    );
+    )
   }
 }
 
