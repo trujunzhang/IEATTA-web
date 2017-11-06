@@ -36,7 +36,7 @@ class OrderedRecipeUserItem extends Component {
     )
   }
 
-  renderLeft() {
+  renderLeftxxx() {
     const {user} = this.props;
 
     return (
