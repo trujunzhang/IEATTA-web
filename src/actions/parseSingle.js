@@ -112,15 +112,11 @@ async function _loadPhotosListForSingleModel(parseId, parseModel) {
         {id: parseModel.restaurant.id, photoType: AppConstants.realmTypes[PARSE_RESTAURANTS]}
       ]
       break;
+    case PARSE_RESTAURANTS:
+    case PARSE_RECIPES:
     case PARSE_USERS:
       photoRelations = [
-        {id: parseModel.id, photoType: AppConstants.realmTypes[PARSE_USERS]}
-      ]
-      break;
-    case PARSE_REVIEWS:
-      const reviewForObject = parseModel[parseModel.reviewType]
-      photoRelations = [
-        {id: reviewForObject.id, photoType: parseModel.reviewType}
+        {id: parseModel.id, photoType: AppConstants.realmTypes[objectSchemaName]}
       ]
       break;
   }
@@ -194,7 +190,8 @@ export default {
     return loadParseObject(
       getQueryByType(PARSE_RESTAURANTS),
       parseId,
-      fromParseRestaurant
+      fromParseRestaurant,
+      _loadPhotosListForSingleModel
     )
   },
 
@@ -221,7 +218,8 @@ export default {
     return loadParseObject(
       getQueryByType(PARSE_RECIPES, ['restaurant']),
       parseId,
-      fromParseRecipe
+      fromParseRecipe,
+      _loadPhotosListForSingleModel
     )
   },
 
@@ -229,8 +227,7 @@ export default {
     return loadParseObject(
       getQueryByType(PARSE_REVIEWS, ['restaurant', 'event', 'recipe']),
       parseId,
-      fromParseReview,
-      _loadPhotosListForSingleModel
+      fromParseReview
     )
   },
 

@@ -31,7 +31,7 @@ class EditReviewTopRestaurant extends Component {
             altValue={forObject.displayName}
             forObject={forObject}
             objectSchemaName={PARSE_RESTAURANTS}
-            listTask={review}
+            listTask={forObject}
             imageSize={60}
           />
 
