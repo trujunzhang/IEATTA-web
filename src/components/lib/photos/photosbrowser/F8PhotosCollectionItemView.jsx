@@ -99,6 +99,7 @@ class F8PhotosCollectionItemView extends Component {
     const creator = photo.creator;
     const userLink = geDetailedModelLinkByObjectSchemaName(PARSE_USERS, creator);
     const linkProperty = !!creator ? {to: userLink} : {};
+
     return (
       <div className="photo-box-overlay js-overlay">
         <div className="media-block photo-box-overlay_caption">
