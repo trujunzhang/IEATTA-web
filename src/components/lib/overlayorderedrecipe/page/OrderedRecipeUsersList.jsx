@@ -26,13 +26,10 @@ class OrderedRecipeUsersList extends Component {
   }
 
   componentDidMount() {
-    this.loadMore()
-  }
-
-  loadMore() {
     const {terms, listTask} = this.state;
     this.props.dispatch(loadOtherUsersAlsoOrderedRecipeList(listTask, terms))
   }
+
 
   renderRows() {
     const {listTask} = this.state;
@@ -54,6 +51,7 @@ class OrderedRecipeUsersList extends Component {
         {orderedUsers.map(user =>
           <Telescope.components.OrderedRecipeUserItem
             key={user.id}
+            listTask={listTask}
             user={user}/>
         )}
       </ul>

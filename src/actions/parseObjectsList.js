@@ -111,7 +111,16 @@ async function _loadPhotosList(terms, listTask, list) {
   const {objectSchemaName} = terms;
   let queryObjectSchemaName = objectSchemaName;
   let photoRelations = []
+  let extendProps = {}
   switch (objectSchemaName) {
+    case PARSE_USERS:// For loadOtherUsersAlsoOrderedRecipeList.
+      const orderedUsers = PeopleInEvent.getOtherUsersAlsoOrderedRecipe(terms, listTask, list)
+      extendProps['orderedUsers'] = orderedUsers;
+      photoRelations =
+        _.pluck(orderedUsers, 'id').map(function (id) {
+          return {id, photoType: AppConstants.realmTypes[PARSE_USERS]}
+        })
+      break;
     case PARSE_PEOPLE_IN_EVENTS:
       const users = _.pluck(list, 'user')
       photoRelations =
@@ -153,9 +162,9 @@ async function _loadPhotosList(terms, listTask, list) {
       break;
   }
 
-  const listPhotosDict = await Parse.Cloud.run('photoListUrls', {photoRelations})
+  extendProps ['listPhotosDict'] = await Parse.Cloud.run('photoListUrls', {photoRelations});
 
-  return {listPhotosDict}
+  return extendProps;
 }
 
 async function _loadListByType(listTask,
@@ -288,7 +297,8 @@ function loadOtherUsersAlsoOrderedRecipeList(listTask, terms): ThunkAction {
     listTask,
     objectsQuery: getPeopleInEventParameters(terms), terms,
     parseFun: fromParsePeopleInEvent,
-    afterFetchHook: PeopleInEvent.getOtherUsersAlsoOrderedRecipe,
+    afterFetchHook: _loadPhotosList
+    // afterFetchHook: PeopleInEvent.getOtherUsersAlsoOrderedRecipe,
   })
 }
 

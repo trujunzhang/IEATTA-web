@@ -33,7 +33,7 @@ PeopleInEvent.getOtherUsersAlsoOrderedRecipe = function (terms, listTask, list) 
     }
   })
 
-  return {orderedUsers: users};
+  return users;
 }
 
 PeopleInEvent.getOrderedRecipeDict = function (peopleInEventListTask) {

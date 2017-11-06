@@ -21,6 +21,9 @@ const {
   // Model Form Type
   MODEL_FORM_TYPE_NEW,
   MODEL_FORM_TYPE_EDIT,
+  // Slide show type
+  SLIDE_SHOW_VIEW_TYPE_NORMAL,
+  SLIDE_SHOW_VIEW_TYPE_USER_AVATOR,
 } = require('../../../lib/constants').default
 
 
@@ -33,12 +36,8 @@ class F8ImagesSlideShowView extends Component {
     this.state = {slideObject}
   }
 
-  componentDidMount() {
-
-  }
-
   render() {
-    const {altValue, forObject, objectSchemaName, imageSize} = this.props;
+    const {altValue, forObject, objectSchemaName, imageSize, slideShowType} = this.props;
     const {slideObject} = this.state;
     const {
       emptyList,
@@ -71,14 +70,37 @@ class F8ImagesSlideShowView extends Component {
       )
     }
 
+    if (slideShowType === SLIDE_SHOW_VIEW_TYPE_USER_AVATOR) {
+      return (
+        <div className="user-profile_avatar">
+          <div
+            className="photo-slideshow photo-slideshow--full-width photo-slideshow--rounded js-photo-slideshow-user-details">
+            <div className="photo-slideshow_slide is-active">
+              <div>
+
+                <Link to={geDetailedModelLinkByObjectSchemaName(objectSchemaName, forObject)}>
+
+                  {imageViews}
+
+                </Link>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    }
+
     return (
-      <div className="media-avatar">
-        <div className="photo-box pb-90s">
+      <div className='media-avatar'>
+        <div className={`photo-box pb-${imageSize}s`}>
+
           <Link to={geDetailedModelLinkByObjectSchemaName(objectSchemaName, forObject)}>
 
             {imageViews}
 
           </Link>
+
         </div>
       </div>
     )
@@ -86,11 +108,13 @@ class F8ImagesSlideShowView extends Component {
 }
 
 F8ImagesSlideShowView.propTypes = {
-  imageSize: React.PropTypes.number
+  imageSize: React.PropTypes.number,
+  slideShowType: React.PropTypes.string
 };
 
 F8ImagesSlideShowView.defaultProps = {
-  imageSize: 60
+  imageSize: 60,
+  slideShowType: SLIDE_SHOW_VIEW_TYPE_NORMAL
 };
 
 

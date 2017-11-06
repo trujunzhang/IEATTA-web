@@ -8,12 +8,36 @@ import {FormattedMessage, FormattedRelative} from 'react-intl'
 import {getOrderedUserLink, getLoggedUserMenuLink} from '../../../../lib/link'
 import {withRouter} from 'react-router'
 
+/**
+ * The states were interested in
+ */
+const {
+  PARSE_RESTAURANTS,
+  PARSE_USERS,
+  PARSE_RECORDS,
+  PARSE_EVENTS,
+  PARSE_RECIPES,
+  PARSE_PHOTOS,
+  PARSE_REVIEWS,
+  PARSE_PEOPLE_IN_EVENTS,
+} = require('../../../../lib/constants').default
+
 class OrderedRecipeUserItem extends Component {
 
   renderLeft() {
     const {user} = this.props;
+    return (
+      <Telescope.components.F8ImagesSlideShowView
+        altValue={user.displayName}
+        forObject={user}
+        objectSchemaName={PARSE_USERS}
+        imageSize={30}
+        {...this.props}/>
+    )
+  }
 
-debugger
+  renderLeft() {
+    const {user} = this.props;
 
     return (
       <div className="media-avatar">

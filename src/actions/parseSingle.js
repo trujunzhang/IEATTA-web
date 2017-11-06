@@ -112,6 +112,11 @@ async function _loadPhotosListForSingleModel(parseId, parseModel) {
         {id: parseModel.restaurant.id, photoType: AppConstants.realmTypes[PARSE_RESTAURANTS]}
       ]
       break;
+    case PARSE_USERS:
+      photoRelations = [
+        {id: parseModel.id, photoType: AppConstants.realmTypes[PARSE_USERS]}
+      ]
+      break;
   }
 
   const listPhotosDict = await Parse.Cloud.run('photoListUrls', {photoRelations})
@@ -174,7 +179,8 @@ export default {
     return loadParseObject(
       getQueryByType(PARSE_USERS),
       parseId,
-      fromParseUser
+      fromParseUser,
+      _loadPhotosListForSingleModel
     )
   },
 

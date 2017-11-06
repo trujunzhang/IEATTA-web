@@ -164,7 +164,6 @@ PaginationTerms.generateTermsForOrderedRecipeUsersList = function ({forObject}) 
     listId: 'ordered-users-list-view-for-' + listId,
     limit: 10,
     recipeId: listId,
-
     objectSchemaName: PARSE_USERS,
   }
 }

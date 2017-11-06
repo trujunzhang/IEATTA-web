@@ -52,7 +52,7 @@ class UserProfileSingleHeader extends Component {
     return (
       <div className="user-profile_info arrange_unit">
         <h1>{userProfile.username}</h1>
-        <h3 className="user-location alternate">{userProfile.username}</h3>
+        {/*<h3 className="user-location alternate">{userProfile.username}</h3>*/}
         {this.renderColumnOneBottom()}
       </div>
 
