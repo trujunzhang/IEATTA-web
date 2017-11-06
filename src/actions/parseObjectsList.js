@@ -115,7 +115,14 @@ async function _loadPhotosList(terms, listTask, list) {
     case PARSE_REVIEWS:
       const {reviewListType} = terms;
       if (reviewListType === REVIEW_LIST_TYPE_USER_PROFILE_ABOUT) {
-        // Reviews.getRelationIds(list)
+        photoRelations =
+          list.map(function (item) {
+            let reviewForObject = item[item.reviewType];
+            if (reviewForObject.objectSchemaName === PARSE_EVENTS) {
+              reviewForObject = reviewForObject.restaurant;
+            }
+            return {id: reviewForObject.id, photoType: AppConstants.realmTypes[reviewForObject.objectSchemaName]}
+          })
       } else {
         const creators = _.pluck(list, 'creator')
         photoRelations =
@@ -138,7 +145,6 @@ async function _loadPhotosList(terms, listTask, list) {
         })
       break;
   }
-
 
   const listPhotosDict = await Parse.Cloud.run('photoListUrls', {photoRelations})
 

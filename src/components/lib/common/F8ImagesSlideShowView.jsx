@@ -46,6 +46,8 @@ class F8ImagesSlideShowView extends Component {
       placeholder
     } = slideObject;
 
+    debugger
+
     const imageViews = []
     if (emptyList) {
       imageViews.push(

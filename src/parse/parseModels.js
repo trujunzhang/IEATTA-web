@@ -121,10 +121,6 @@ export type Review = {
   recipe: Recipe;
   // Relation
   user: User;
-  // voting
-  useful: int;
-  funny: int;
-  cool: int;
 };
 
 export type PeopleInEvent = {
@@ -146,7 +142,6 @@ export function fromParsePointer(map: Object): Pointer {
   }
 }
 
-
 function fromParseCommon(map: Object) {
   return {
     id: map.id,
@@ -154,13 +149,13 @@ function fromParseCommon(map: Object) {
     createdAt: map.get('createdAt'),
     updatedAt: map.get('updatedAt'),
     flag: map.get('flag') || '1',
+    // Creator
+    creator: map.get('creator') && fromParseUser(map.get('creator')),
   }
 }
 
 
 export function fromParseUser(map: Object): User {
-  const _listPhoto = fromParsePhotoNormal(map.get('listPhoto'));
-
   const model = {
     // Basic Fields
     ...fromParseCommon(map),
@@ -169,10 +164,7 @@ export function fromParseUser(map: Object): User {
     displayName: map.get('username'),
     loginType: map.get('loginType'),
     email: map.get('email') || "",
-    // Photos
-    defaultAvatarUrl: _listPhoto.thumbnailUrl,
-    // Photos
-    listPhoto: _listPhoto
+    objectSchemaName: PARSE_USERS,
   }
   return model;
 }
@@ -188,15 +180,6 @@ function parsePhotoNormal(map: Object): Object {
   }
 }
 
-function fromParsePhotoNormal(map: Object): Photo {
-  if (!!map) {
-    return parsePhotoNormal(map)
-  }
-  return {
-    originalUrl: "",
-    thumbnailUrl: ""
-  }
-}
 
 export function fromParsePhoto(map: Object): Photo {
   const instance = {
@@ -206,8 +189,7 @@ export function fromParsePhoto(map: Object): Photo {
     event: map.get('event') && fromParseEvent(map.get('event')),
     recipe: map.get('recipe') && fromParseRecipe(map.get('recipe')),
     user: map.get('user') && fromParseUser(map.get('user')),
-    // Creator
-    creator: map.get('creator') && fromParseUser(map.get('creator'))
+    objectSchemaName: PARSE_PHOTOS,
   }
   return instance
 }
@@ -220,10 +202,9 @@ export function fromParseRecipe(map: Object): Recipe {
     // Attributes
     displayName: map.get('displayName'),
     price: map.get('price'),
-    // Pointer
-    listPhoto: fromParsePhotoNormal(map.get('listPhoto')),
     // Relations
     restaurant: map.get('restaurant') && fromParseRestaurant(map.get('restaurant')),
+    objectSchemaName: PARSE_RECIPES,
   }
 }
 
@@ -239,7 +220,8 @@ export function fromParseEvent(map: Object): Event {
     end: map.get('end'),
     want: map.get('want'),
     // Pointer
-    restaurant: map.get('restaurant') && fromParseRestaurant(map.get('restaurant'))
+    restaurant: map.get('restaurant') && fromParseRestaurant(map.get('restaurant')),
+    objectSchemaName: PARSE_EVENTS,
   }
 }
 
@@ -260,8 +242,7 @@ export function fromParseRestaurant(map: Object): Restaurant {
     country: map.get('country') || '',
     postal_code: map.get('postal_code') || '',
     administrative_area: map.get('administrative_area') || '',
-    // Photos
-    listPhoto: fromParsePhotoNormal(map.get('listPhoto')),
+    objectSchemaName: PARSE_RESTAURANTS,
   }
 }
 
@@ -276,7 +257,8 @@ export function fromParsePeopleInEvent(map: Object): PeopleInEvent {
     restaurant: map.get('restaurant') && fromParseRestaurant(map.get('restaurant')),
     event: map.get('event') && fromParseEvent(map.get('event')),
     user: map.get('user') && fromParseUser(map.get('user')),
-    recipes: (map.get("recipes") || []).map(fromParseRecipe)
+    recipes: (map.get("recipes") || []).map(fromParseRecipe),
+    objectSchemaName: PARSE_PEOPLE_IN_EVENTS,
   }
 
   return model;
@@ -295,8 +277,7 @@ export function fromParseReview(map: Object): Review {
     restaurant: map.get('restaurant') && fromParseRestaurant(map.get('restaurant')),
     event: map.get('event') && fromParseEvent(map.get('event')),
     recipe: map.get('recipe') && fromParseRecipe(map.get('recipe')),
-    // Creator
-    creator: map.get('creator') && fromParseUser(map.get('creator'))
+    objectSchemaName: PARSE_REVIEWS,
   }
   return model;
 }

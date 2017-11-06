@@ -20,32 +20,19 @@ class ReviewsItemForUserProfile extends Component {
 
         <div className="media-block media-block--12 biz-listing-medium">
 
+          <Telescope.components.F8ImagesSlideShowView
+            altValue={reviewObject.displayName}
+            forObject={reviewObject}
+            objectSchemaName={reviewObject.objectSchemaName}
+            {...this.props}/>
 
-          <div className="media-avatar">
-            <div className="photo-box pb-60s">
-              <a className="js-analytics-click">
-
-                <Telescope.components.F8PlaceHolderImage
-                  alt={reviewObject.title}
-                  className="photo-box-img"
-                  width="60"
-                  height="60"
-                  placeholderSource={"/default/user_30_square.png"}
-                  source={reviewObject.avatarUrl}
-                />
-
-              </a>
-            </div>
-
-          </div>
 
           <div className="media-story">
             <ul className="user-passport-info">
               <li className="user-name">
                 <Link className="user-display-name title-font-weight-bold"
-                      to={reviewObject.detailUrl}
                       id="dropdown_user-name">
-                  {reviewObject.title}
+                  {reviewObject.displayName}
                 </Link>
               </li>
 
