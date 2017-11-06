@@ -204,16 +204,12 @@ Photos.generateSlideShowObject = function (props) {
   const {listTask, objectSchemaName, forObject} = props;
   const {listPhotosDict} = listTask;
   const parseId = forObject.id;
-  const photos = listPhotosDict[parseId]
-
-  const size = photos.length;
+  const photoUrl = listPhotosDict[parseId]
 
   const slideObject = {
-    emptyList: size === 0,
+    emptyList: photoUrl === '',
     // emptyList: true,
-    imageArray: photos.map(function (photo) {
-      return Photos.getThumbnailUrl(photo)
-    }),
+    photoUrl,
     placeholder: Photos.config.placeHolderSmallImage[objectSchemaName]
   }
 

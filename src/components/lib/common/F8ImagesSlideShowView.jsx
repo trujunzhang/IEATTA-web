@@ -42,10 +42,9 @@ class F8ImagesSlideShowView extends Component {
     const {slideObject} = this.state;
     const {
       emptyList,
-      imageArray,
+      photoUrl,
       placeholder
     } = slideObject;
-
 
     const imageViews = []
     if (emptyList) {
@@ -67,7 +66,7 @@ class F8ImagesSlideShowView extends Component {
           className="photo-box-img"
           width={imageSize}
           height={imageSize}
-          src={imageArray[0]}
+          src={photoUrl}
         />
       )
     }

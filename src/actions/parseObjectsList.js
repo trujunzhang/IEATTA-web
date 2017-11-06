@@ -47,6 +47,7 @@ const {
   fromParseUser
 } = require('../parse/parseModels')
 
+import AppConstants from '../lib/appConstants'
 import PeopleInEvent from '../lib/peopleInEvent'
 
 /**
@@ -109,8 +110,7 @@ async function _loadRecipeListForEvent(listTask,
 async function _loadPhotosList(terms, listTask, list) {
   const {objectSchemaName} = terms;
   let queryObjectSchemaName = objectSchemaName;
-  let modelIds = []
-
+  let photoRelations = []
   switch (objectSchemaName) {
     case PARSE_REVIEWS:
       const {reviewListType} = terms;
@@ -118,31 +118,29 @@ async function _loadPhotosList(terms, listTask, list) {
         // Reviews.getRelationIds(list)
       } else {
         const creators = _.pluck(list, 'creator')
-        modelIds = _.pluck(creators, 'id')
-        queryObjectSchemaName = PARSE_USERS;
+        photoRelations =
+          _.pluck(creators, 'id').map(function (id) {
+            return {id, photoType: AppConstants.realmTypes[PARSE_USERS]}
+          })
       }
       break;
     case PARSE_EVENTS:
       const restaurants = _.pluck(list, 'restaurant')
-      modelIds = _.pluck(restaurants, 'id')
-      queryObjectSchemaName = PARSE_RESTAURANTS;
+      photoRelations =
+        _.pluck(restaurants, 'id').map(function (id) {
+          return {id, photoType: AppConstants.realmTypes[PARSE_RESTAURANTS]}
+        })
       break;
     default:
-      modelIds = _.pluck(list, 'id')
+      photoRelations =
+        _.pluck(list, 'id').map(function (id) {
+          return {id, photoType: AppConstants.realmTypes[objectSchemaName]}
+        })
       break;
   }
 
-  const listPhotosDict = {}
 
-  for (let id of modelIds) {
-    const array = await getPhotosParameters({
-      photoParamsType: PHOTOS_TERMS_PARAM_FOR_SLIDE_SHOW,
-      objectSchemaName: queryObjectSchemaName,
-      forObjectId: id
-    }, false).limit(1).find()
-
-    listPhotosDict[id] = (array || []).map(fromParsePhoto)
-  }
+  const listPhotosDict = await Parse.Cloud.run('photoListUrls', {photoRelations})
 
   return {listPhotosDict}
 }
