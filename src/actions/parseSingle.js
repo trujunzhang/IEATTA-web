@@ -100,13 +100,15 @@ async function _loadPhotosListForSingleModel(parseId, parseModel) {
   const {objectSchemaName} = parseModel;
   let photoRelations = []
 
-
   switch (objectSchemaName) {
     case PARSE_PEOPLE_IN_EVENTS:
       photoRelations =
         _.pluck(parseModel.recipes, 'id').map(function (id) {
           return {id, photoType: AppConstants.realmTypes[PARSE_RECIPES]}
         })
+      photoRelations.push({
+        id: parseModel.user.id, photoType: AppConstants.realmTypes[PARSE_USERS]
+      })
       break;
     case PARSE_EVENTS:
       photoRelations = [

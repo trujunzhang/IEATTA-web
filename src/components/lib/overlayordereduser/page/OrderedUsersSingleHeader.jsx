@@ -50,11 +50,12 @@ class OrderedUsersSingleHeader extends Component {
   }
 
   renderColumnOne() {
-    const {orderedUser, peopleInEvent} = this.props;
+    const {peopleInEvent} = this.props;
+    const {user} = peopleInEvent;
 
     return (
       <div className="user-profile_info arrange_unit">
-        <h1>{orderedUser.username}</h1>
+        <h1>{user.displayName}</h1>
         <span className="user-location margin-left-4">
           <strong className="margin-right-4">{'Ordered at:'}</strong>
           {Users.getOrderedUserFormat(peopleInEvent)}
@@ -143,6 +144,7 @@ class OrderedUsersSingleHeader extends Component {
   }
 
   render() {
+    const user = {...this.props.peopleInEvent.user, ...this.props.peopleInEvent.listPhotosDict}
     return (
       <div className="content-container" style={{height: '184px'}}>
 
@@ -152,7 +154,7 @@ class OrderedUsersSingleHeader extends Component {
           {/*{this.renderColumnTwo()}*/}
         </div>
 
-        <Telescope.components.F8UserAvatorSection user={this.props.orderedUser}/>
+        <Telescope.components.F8UserAvatorSection user={user}/>
 
       </div>
     )
