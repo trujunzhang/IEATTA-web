@@ -24,6 +24,7 @@ const {
   PHOTOS_BROWSER_PAGE_NORMAL,
   PHOTOS_BROWSER_PAGE_FOR_USER_PROFILE,
   PARSE_USERS,
+  ALERT_TYPE_ERROR,
 } = require('../../../../lib/constants').default
 
 
@@ -141,6 +142,7 @@ class F8PhotosSelectRightPanel extends Component {
 
     return (
       <Telescope.components.F8ImagesSlideShowView
+        key={creator.id}
         altValue={creator.displayName}
         forObject={creator}
         objectSchemaName={PARSE_USERS}
