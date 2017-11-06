@@ -36,34 +36,6 @@ class OrderedRecipeUserItem extends Component {
     )
   }
 
-  renderLeftxxx() {
-    const {user} = this.props;
-
-    return (
-      <div className="media-avatar">
-        <div className="photo-box pb-30s" data-hovercard-id="hCvy2SRZbqVllq6p-KTJ8g">
-
-          <Link
-            to={getLoggedUserMenuLink(user)}
-            className="js-analytics-click">
-
-            <Telescope.components.F8PlaceHolderImage
-              alt={user.username}
-              className="photo-box-img"
-              width={30}
-              height={30}
-              placeholderSource={"/default/user_30_square.png"}
-              source={Photos.getListThumbnailUrl(user)}/>
-
-          </Link>
-
-        </div>
-      </div>
-
-    )
-  }
-
-
   renderStory() {
     const {user} = this.props;
     return (
