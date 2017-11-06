@@ -36,9 +36,16 @@ class IEAPhotosBrowserLayout extends Component {
 
     if (!ready) {
       return (<Telescope.components.F8LoadingView/>)
+    } else if (!!results && results.length) {
+      return (<Telescope.components.F8PhotosCollectionView {...this.props}/>)
+    } else {
+      return (
+        <Telescope.components.F8EmptySection
+          title={`No Photos`}
+          text="You can upload photos clicking the 'Add Photo' button."/>
+      )
     }
 
-    return (<Telescope.components.F8PhotosCollectionView {...this.props}/>)
   }
 
   renderTitle() {

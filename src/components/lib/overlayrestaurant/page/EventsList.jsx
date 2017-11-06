@@ -22,7 +22,7 @@ class EventsList extends Component {
 
     const terms = PaginationTerms.generateTermsForEventsList(props)
     this.state = {
-      terms: terms,
+      terms,
       listTask: getDefaultListTask(terms),
     }
   }
@@ -35,10 +35,6 @@ class EventsList extends Component {
   }
 
   componentDidMount() {
-    this.loadMore()
-  }
-
-  loadMore() {
     const {terms, listTask} = this.state;
     const {eventType} = this.props;
     if (eventType === EVENTS_LIST_FOR_USER) {
@@ -47,6 +43,7 @@ class EventsList extends Component {
       this.props.dispatch(loadEventsList(listTask, terms))
     }
   }
+
 
   renderRows() {
     const {eventType} = this.props;
@@ -62,7 +59,6 @@ class EventsList extends Component {
         <Telescope.components.F8LoadingView/>
       )
     } else if (!!results && results.length) {
-
       return (
         <ul className="ylist ylist-bordered">
           {results.map((item, index) => {
