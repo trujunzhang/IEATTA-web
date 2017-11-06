@@ -137,7 +137,7 @@ class DetailedRestaurant extends Component {
             return (<Telescope.components.IEAEditRestaurantLayout
                 {...this.props}
                 {...this.state}
-                dispatch={this.props.dispatch}/>
+              />
             )
         }
       }
@@ -167,9 +167,16 @@ class DetailedRestaurant extends Component {
 }
 
 import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+
+import * as editModelActions from '../../../reducers/editModel/editModelActions'
 
 function mapDispatchToProps(dispatch) {
   return {
+    // Edit Model
+    actions: bindActionCreators(editModelActions, dispatch),
+    writeOnlineParseObjectAction: (object) => dispatch(writeOnlineParseObject(object)),
+    showAlertMessageAction: (object) => dispatch(showAlertMessage(object)),
     //Model
     loadRestaurantPageAction: (parseId) => dispatch(loadRestaurantPage(parseId)),
     //List
@@ -180,6 +187,8 @@ function mapDispatchToProps(dispatch) {
 
 function select(store, ownProps) {
   return {
+    editModel: store.editModel,
+    goBack: ownProps.router.goBack,
     detailedModelsOverlay: store.detailedModelsOverlay,
     listContainerTasks: store.listContainerTasks
   }

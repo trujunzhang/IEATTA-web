@@ -280,26 +280,4 @@ class IEAEditRestaurantLayout extends Component {
   }
 }
 
-
-import {withRouter} from 'react-router'
-import {bindActionCreators} from 'redux'
-import {connect} from 'react-redux'
-
-import * as editModelActions from '../../../reducers/editModel/editModelActions'
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(editModelActions, dispatch),
-    writeOnlineParseObjectAction: (object) => dispatch(writeOnlineParseObject(object)),
-    showAlertMessageAction: (object) => dispatch(showAlertMessage(object)),
-  }
-}
-
-function select(store, ownProps) {
-  return {
-    editModel: store.editModel,
-    goBack: ownProps.router.goBack
-  };
-}
-
-export default withRouter(connect(select, mapDispatchToProps)(IEAEditRestaurantLayout));
+export default IEAEditRestaurantLayout;

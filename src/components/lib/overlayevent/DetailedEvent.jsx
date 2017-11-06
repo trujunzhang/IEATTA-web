@@ -126,8 +126,9 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(editModelActions, dispatch),
     writeOnlineParseObjectAction: (object) => dispatch(writeOnlineParseObject(object)),
     showAlertMessageAction: (object) => dispatch(showAlertMessage(object)),
-    // List Tasks
+    //Model
     loadEventPageAction: (object) => dispatch(loadEventPage(object)),
+    // List Tasks
     loadPeopleInEventListAction: (listTask, terms) => dispatch(loadPeopleInEventList(listTask, terms)),
     loadRecipesListForRestaurantAction: (listTask, terms) => dispatch(loadRecipesListForRestaurant(listTask, terms)),
     loadUsersWithoutAnonymousListAction: (object) => dispatch(loadUsersWithoutAnonymousList(object)),
