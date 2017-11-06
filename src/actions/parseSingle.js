@@ -96,16 +96,25 @@ function callCloudStatisticMethod(type: string, methodType: string, params: stri
 
 }
 
-async function _loadPhotosListForRecipes(parseId, parseModel) {
-  const {recipes} = parseModel;
+async function _loadPhotosListForSingleModel(parseId, parseModel) {
+  const {objectSchemaName} = parseModel;
+  let photoRelations = []
 
-  const photoRelations =
-    _.pluck(recipes, 'id').map(function (id) {
-      return {id, photoType: AppConstants.realmTypes[PARSE_RECIPES]}
-    })
+  switch (objectSchemaName) {
+    case PARSE_PEOPLE_IN_EVENTS:
+      photoRelations =
+        _.pluck(parseModel.recipes, 'id').map(function (id) {
+          return {id, photoType: AppConstants.realmTypes[PARSE_RECIPES]}
+        })
+      break;
+    case PARSE_EVENTS:
+      photoRelations = [
+        {id: parseModel.restaurant.id, photoType: AppConstants.realmTypes[PARSE_RESTAURANTS]}
+      ]
+      break;
+  }
 
   const listPhotosDict = await Parse.Cloud.run('photoListUrls', {photoRelations})
-
   return {listPhotosDict}
 }
 
@@ -181,7 +190,8 @@ export default {
     return loadParseObject(
       getQueryByType(PARSE_EVENTS, ['restaurant', 'restaurant.listPhoto']),
       parseId,
-      fromParseEvent
+      fromParseEvent,
+      _loadPhotosListForSingleModel
     )
   },
 
@@ -191,7 +201,7 @@ export default {
         ['user', 'user.listPhoto', 'event', 'restaurant', 'recipes', 'recipes.listPhoto']),
       parseId,
       fromParsePeopleInEvent,
-      _loadPhotosListForRecipes
+      _loadPhotosListForSingleModel
     )
   },
 

@@ -60,16 +60,15 @@ class DetailedEvent extends Component {
   }
 
   componentDidMount() {
-    const {loadEventPageAction, invokeParseCloudMethodAction} = this.props;
     const parseId = this.state.eid;
 
-    loadEventPageAction(parseId)
+    this.props.loadEventPageAction(parseId)
 
     switch (this.state.pageForm) {
       case PAGE_ORDERED_USERS_IN_EVENT:
         break;
       default:
-        invokeParseCloudMethodAction(
+        this.props.invokeParseCloudMethodAction(
           {
             reviewType: this.state.modelType,
             forObjectId: parseId,
