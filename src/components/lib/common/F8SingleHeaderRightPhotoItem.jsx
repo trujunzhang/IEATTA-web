@@ -6,6 +6,13 @@ import {Link} from 'react-router'
 
 import {adjustRouterQuery} from '../../../lib/link'
 
+const {
+  PHOTOS_BROWSER_PAGE_NORMAL,
+  PHOTOS_BROWSER_PAGE_FOR_USER_PROFILE,
+  PARSE_USERS,
+  ALERT_TYPE_ERROR,
+} = require('../../../lib/constants').default
+
 class F8SingleHeaderRightPhotoItem extends Component {
 
   onImageLinkPress() {
@@ -44,6 +51,51 @@ class F8SingleHeaderRightPhotoItem extends Component {
     )
   }
 
+  renderAvatar() {
+    const {photosListTask, selectPhotoIndex} = this.props;
+    debugger
+    const photos = photosListTask.results;
+    const photo = photos[selectPhotoIndex];
+    const creator = photo.creator;
+
+    return (
+      <Telescope.components.F8ImagesSlideShowView
+        key={creator.id}
+        altValue={creator.displayName}
+        forObject={creator}
+        objectSchemaName={PARSE_USERS}
+        imageSize={30}
+        listTask={photosListTask}
+      />
+    )
+  }
+
+  renderAvatarxxx() {
+    return (
+      <div className="media-avatar avatar">
+        <div className="photo-box pb-30s">
+
+          <Link {...linkProperty} className="js-analytics-click">
+
+            <Telescope.components.F8PlaceHolderImage
+              key={index}
+              alt={userName}
+              width="30"
+              height="30"
+              placeholderSource={"/default/user_30_square.png"}
+              source={userImageUrl}
+            />
+
+          </Link>
+
+        </div>
+
+
+      </div>
+
+    )
+  }
+
   renderOverLay() {
     const {item, index} = this.props;
     const {overlay} = item;
@@ -56,26 +108,8 @@ class F8SingleHeaderRightPhotoItem extends Component {
     return (
       <div className="photo-box-overlay js-overlay">
         <div className="media-block photo-box-overlay_caption">
-          <div className="media-avatar avatar">
-            <div className="photo-box pb-30s">
 
-              <Link {...linkProperty} className="js-analytics-click">
-
-                <Telescope.components.F8PlaceHolderImage
-                  key={index}
-                  alt={userName}
-                  width="30"
-                  height="30"
-                  placeholderSource={"/default/user_30_square.png"}
-                  source={userImageUrl}
-                />
-
-              </Link>
-
-            </div>
-
-
-          </div>
+          {this.renderAvatar()}
 
           <div className="media-story" id="photos-browser">
             {/*<Link className="photo-desc margin-right-4" to={overlay.linkUrl}>*/}

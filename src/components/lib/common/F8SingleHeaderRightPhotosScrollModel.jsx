@@ -18,7 +18,6 @@ class F8SingleHeaderRightPhotosScrollModel extends Component {
     }
   }
 
-
   renderSeeAll() {
     const {modelType, forObject} = this.props;
     const {photoModelObject} = this.props;
