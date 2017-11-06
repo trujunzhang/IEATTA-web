@@ -115,14 +115,6 @@ class IEAUserProfilePhotosLayout extends Component {
 
 }
 
-import {connect} from 'react-redux'
-
-function select(store, ownProps) {
-  return {
-    listContainerTasks: store.listContainerTasks
-  }
-}
-
-export default withRouter(connect(select)(IEAUserProfilePhotosLayout));
+export default withRouter(IEAUserProfilePhotosLayout)
 
 

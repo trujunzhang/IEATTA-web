@@ -133,6 +133,7 @@ function mapDispatchToProps(dispatch) {
 
 function select(store) {
   return {
+    listContainerTasks: store.listContainerTasks,
     detailedModelsOverlay: store.detailedModelsOverlay,
     isLoggedIn: store.user.isLoggedIn || store.user.hasSkippedLogin,
     currentUser: store.user,
