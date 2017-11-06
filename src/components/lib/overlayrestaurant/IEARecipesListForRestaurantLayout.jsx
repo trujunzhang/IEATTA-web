@@ -95,7 +95,7 @@ class IEARecipesListForRestaurantLayout extends Component {
         </ul>
       )
     } else {
-      return (<Telescope.components.F8EmptySection title={`No reviews`} text=""/>)
+      return (<Telescope.components.F8EmptySection title={`No Recipes`} text=""/>)
     }
   }
 
