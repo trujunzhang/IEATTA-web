@@ -107,22 +107,31 @@ async function _loadRecipeListForEvent(listTask,
   ])
 }
 
+async function _loadPhotosListForPhotoBrowser(terms, listTask, list) {
+  const creators = _.pluck(list, 'creator')
+  const photoRelations =
+    _.pluck(creators, 'id').map(function (id) {
+      return {id, photoType: AppConstants.realmTypes[PARSE_USERS]}
+    })
+
+  let extendProps = {}
+  extendProps ['listPhotosDict'] = await Parse.Cloud.run('photoListUrls', {photoRelations});
+  return extendProps;
+}
+
 async function _loadPhotosList(terms, listTask, list) {
   const {objectSchemaName} = terms;
-  let queryObjectSchemaName = objectSchemaName;
   let photoRelations = []
   let extendProps = {}
 
   switch (objectSchemaName) {
     case PARSE_USERS:// For loadOtherUsersAlsoOrderedRecipeList.
-      if (Object.keys(terms).indexOf("photoParamsType") === -1) { // not photo browser
-        const orderedUsers = PeopleInEvent.getOtherUsersAlsoOrderedRecipe(terms, listTask, list)
-        extendProps['orderedUsers'] = orderedUsers;
-        photoRelations =
-          _.pluck(orderedUsers, 'id').map(function (id) {
-            return {id, photoType: AppConstants.realmTypes[PARSE_USERS]}
-          })
-      }
+      const orderedUsers = PeopleInEvent.getOtherUsersAlsoOrderedRecipe(terms, listTask, list)
+      extendProps['orderedUsers'] = orderedUsers;
+      photoRelations =
+        _.pluck(orderedUsers, 'id').map(function (id) {
+          return {id, photoType: AppConstants.realmTypes[PARSE_USERS]}
+        })
       break;
     case PARSE_PEOPLE_IN_EVENTS:
       const users = _.pluck(list, 'user')
@@ -166,7 +175,6 @@ async function _loadPhotosList(terms, listTask, list) {
   }
 
   extendProps ['listPhotosDict'] = await Parse.Cloud.run('photoListUrls', {photoRelations});
-
   return extendProps;
 }
 
@@ -348,7 +356,7 @@ function loadPhotosBrowser(terms): ThunkAction {
     listTask: terms,
     objectsQuery: getPhotosParameters(terms), terms,
     parseFun: fromParsePhoto,
-    afterFetchHook: _loadPhotosList
+    afterFetchHook: _loadPhotosListForPhotoBrowser
   })
 }
 

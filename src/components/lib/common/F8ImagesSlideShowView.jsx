@@ -24,6 +24,15 @@ const {
   // Slide show type
   SLIDE_SHOW_VIEW_TYPE_NORMAL,
   SLIDE_SHOW_VIEW_TYPE_USER_AVATOR,
+  SLIDE_SHOW_VIEW_TYPE_PHOTO_BROWSER,
+  PARSE_RESTAURANTS,
+  PARSE_USERS,
+  PARSE_RECORDS,
+  PARSE_EVENTS,
+  PARSE_RECIPES,
+  PARSE_PHOTOS,
+  PARSE_REVIEWS,
+  PARSE_PEOPLE_IN_EVENTS,
 } = require('../../../lib/constants').default
 
 
@@ -70,7 +79,26 @@ class F8ImagesSlideShowView extends Component {
       )
     }
 
-    if (slideShowType === SLIDE_SHOW_VIEW_TYPE_USER_AVATOR) {
+    if (slideShowType === SLIDE_SHOW_VIEW_TYPE_PHOTO_BROWSER) {
+      const userLink = geDetailedModelLinkByObjectSchemaName(PARSE_USERS, forObject);
+      const linkProperty = !!forObject ? {to: userLink} : {};
+      return (
+        <div className="media-avatar avatar">
+          <div className="photo-box pb-30s">
+
+            <Link {...linkProperty} className="js-analytics-click">
+
+              {imageViews}
+
+            </Link>
+
+          </div>
+
+
+        </div>
+      )
+    }
+    else if (slideShowType === SLIDE_SHOW_VIEW_TYPE_USER_AVATOR) {
       return (
         <div className="user-profile_avatar">
           <div

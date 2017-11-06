@@ -4,12 +4,8 @@ import React, {Component} from 'react';
 import Photos from '../../../../lib/photos'
 
 import {withRouter} from 'react-router'
-import {getPhotosBrowserSelectionLink} from '../../../../lib/link'
-import {Link} from 'react-router'
 
 const {
-  PHOTO_BROWSER_NORMAL_TITLE,
-  PHOTO_BROWSER_LOGGED_USER_TITLE,
   ALERT_TYPE_ERROR,
   ALERT_TYPE_SUCCESS,
 } = require('../../../../lib/constants').default
@@ -58,7 +54,6 @@ class F8PhotosCollectionView extends Component {
     const {dispatch, isLoggedIn} = this.props;
 
     if (isLoggedIn === false) {
-
     }
 
     let errorMessage = null
@@ -98,7 +93,9 @@ class F8PhotosCollectionView extends Component {
                 key={`${userId}-${index}`}
                 {...this.state}
                 {...this.props}
-                photoInfo={photoInfo} photo={photo} index={index}/>
+                photoInfo={photoInfo}
+                photo={photo}
+                index={index}/>
             )
           })}
         </ul>

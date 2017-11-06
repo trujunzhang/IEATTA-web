@@ -11,12 +11,11 @@ const {
   PHOTO_BROWSER_NORMAL_TITLE,
   PHOTO_BROWSER_LOGGED_USER_TITLE,
   PHOTO_BROWSER_ORGANIZATION_TITLE,
-} = require('../../../../lib/constants').default
+  // Slide show type
+  SLIDE_SHOW_VIEW_TYPE_PHOTO_BROWSER,
 
-const {
-  removeSelectedPhoto,
-  timeout,
-} = require('../../../../actions').default
+  PARSE_USERS,
+} = require('../../../../lib/constants').default
 
 class F8PhotosCollectionItemView extends Component {
 
@@ -92,6 +91,27 @@ class F8PhotosCollectionItemView extends Component {
    * @returns {XML}
    */
   renderOverLay(photoInfo) {
+    const {photo, photosListTask} = this.props;
+
+    return (
+      <div className="photo-box-overlay js-overlay">
+        <div className="media-block photo-box-overlay_caption">
+
+          <Telescope.components.F8ImagesSlideShowView
+            altValue={photo.creator.displayName}
+            forObject={photo.creator}
+            objectSchemaName={PARSE_USERS}
+            imageSize={30}
+            listTask={photosListTask}
+          />
+
+
+        </div>
+      </div>
+    )
+  }
+
+  renderOverLayxxx(photoInfo) {
     const {overlay} = photoInfo;
     const {user} = overlay;
     const userName = user.username;
@@ -101,12 +121,13 @@ class F8PhotosCollectionItemView extends Component {
 
     return (
       <div className="photo-box-overlay js-overlay">
+
         <div className="media-block photo-box-overlay_caption">
+
           <div className="media-avatar avatar">
             <div className="photo-box pb-30s">
 
               <Link {...linkProperty} className="js-analytics-click">
-
                 <Telescope.components.F8PlaceHolderImage
                   alt={userName}
                   width="30"
@@ -135,6 +156,7 @@ class F8PhotosCollectionItemView extends Component {
           </div>
 
         </div>
+
       </div>
 
     )

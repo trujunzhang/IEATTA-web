@@ -4,6 +4,7 @@ export default keyMirror({
   // Slide show type
   SLIDE_SHOW_VIEW_TYPE_NORMAL: null,
   SLIDE_SHOW_VIEW_TYPE_USER_AVATOR: null,
+  SLIDE_SHOW_VIEW_TYPE_PHOTO_BROWSER: null,
 
 
   // Photos Terms parameters type
