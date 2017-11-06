@@ -86,7 +86,7 @@ class F8ImagesSlideShowView extends Component {
 }
 
 F8ImagesSlideShowView.propTypes = {
-  imageSize: React.PropTypes.int
+  imageSize: React.PropTypes.number
 };
 
 F8ImagesSlideShowView.defaultProps = {
