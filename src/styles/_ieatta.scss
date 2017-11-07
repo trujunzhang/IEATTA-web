@@ -400,7 +400,7 @@ ul.star-selector_stars {
 
 .photos-browser-item {
   #photos-browser-cell-item-button-trash {
-    //display: none;
+    display: none;
   }
   &:hover {
     #photos-browser-cell-item-button-trash {
@@ -456,8 +456,8 @@ ul.recipe-event-buttons {
   cursor: auto;
 }
 
-ul#emails{
-  li{
-    max-width:60%;
+ul#emails {
+  li {
+    max-width: 60%;
   }
 }
