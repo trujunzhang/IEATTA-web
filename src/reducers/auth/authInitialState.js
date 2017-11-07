@@ -29,7 +29,7 @@ const Form = Record({
   isValid: false,
   isFetching: false,
   fields: new (Record({
-    username: 'Jaron Lawrence',
+    username: '',
     usernameHasError: false,
     usernameErrorMsg: '',
     email: '',
@@ -41,7 +41,7 @@ const Form = Record({
     email2: '',
     email2HasError: false,
     email2ErrorMsg: '',
-    password: 'jaronIEATTA@123',
+    password: '',
     passwordHasError: false,
     passwordErrorMsg: '',
     passwordAgain: '',
