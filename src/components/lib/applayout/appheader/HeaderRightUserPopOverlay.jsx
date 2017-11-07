@@ -2,6 +2,7 @@ import Telescope from '../../index'
 import React, {Component} from 'react'
 import {Link} from 'react-router'
 
+import Users from '../../../../lib/users'
 import {getLoggedUserMenuLink} from '../../../../lib/link'
 import onClickOutside from 'react-onclickoutside'
 import {FormattedMessage, FormattedRelative} from 'react-intl'
@@ -148,15 +149,28 @@ class HeaderRightUserPopOverlay extends Component {
                 </Link>
               </li>
               <li className="user-location responsive-hidden-small">
-                <small>
-                  <FormattedRelative value={currentUser.updatedAt}/>
-                </small>
+                <h5>Account Since</h5>
+                <p>{Users.getCreatedAtFormat(currentUser)}</p>
+                {/*<small>*/}
+                {/*<FormattedRelative value={currentUser.updatedAt}/>*/}
+                {/*</small>*/}
               </li>
             </ul>
 
+            {/*{this.renderColumnTwo()}*/}
+          </div>
+        </div>
 
-            <ul className="user-passport-stats">
-              <li className="friend-count">
+      </div>
+
+    )
+
+  }
+
+  renderColumnTwo() {
+    return (
+      <ul className="user-passport-stats">
+        <li className="friend-count">
                                     <span id="icon_fill_18X18"
                                           className="icon icon--18-friends icon--size-18">
                                         <svg className="icon_svg">
@@ -169,9 +183,9 @@ class HeaderRightUserPopOverlay extends Component {
                                             </g>
                                         </svg>
                                     </span>
-                <b>0</b>
-              </li>
-              <li className="review-count">
+          <b>0</b>
+        </li>
+        <li className="review-count">
                                     <span id="icon_fill_18X18"
                                           className="icon icon--18-review icon--size-18">
                                         <svg className="icon_svg">
@@ -179,15 +193,10 @@ class HeaderRightUserPopOverlay extends Component {
                                               d="M13 3H5c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1.505 9.643l-2.526-1.55L6.526 12.7 7 9.934 5 7.977l2.766-.404L8.97 4.7l1.264 2.873L13 7.977l-2 1.957.495 2.71z"/>
                                         </svg>
                                     </span>
-                <b>0</b>
-              </li>
+          <b>0</b>
+        </li>
 
-            </ul>
-
-          </div>
-        </div>
-
-      </div>
+      </ul>
 
     )
   }

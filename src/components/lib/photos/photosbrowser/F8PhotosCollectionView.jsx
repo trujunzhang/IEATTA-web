@@ -115,7 +115,8 @@ class F8PhotosCollectionView extends Component {
     const left = (width - 427) / 2;
 
     return (
-      <div className="ypop" id="delete-photo-popup" style={{"position": "absolute", "left": left, "top": "50px"}}>
+      <div className="ypop" id="delete-photo-popup"
+           style={{"position": "absolute", "left": left, "top": "50px"}}>
         <div className="ypop-content clearfix" id="delete-review-draft-popup-content">
           <div className="ypop-title" id="delete-review-draft-popup-title">
             <div onClick={this.onCloseRemoveConfirmDialogPress} className="ypop-close">×</div>
@@ -136,7 +137,6 @@ class F8PhotosCollectionView extends Component {
           <a
             className="offscreen ypop-close-offscreen">Close popup</a></div>
       </div>
-
     )
   }
 }
