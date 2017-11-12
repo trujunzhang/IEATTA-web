@@ -8,7 +8,6 @@ const {showAlertMessage, dismissAlertMessage, timeout, logInWithFacebook} = requ
 
 const {
   getLoginFormType,
-  ALERT_TYPE_ERROR,
 } = require('../../filter/filterRoutes')
 
 /**
@@ -20,6 +19,7 @@ const {
   LOGIN_FORM_TYPE_LOG_OUT,
   LOGIN_FORM_TYPE_FORGOTPASSWORD,
   LOGIN_FORM_TYPE_RESET_PASSWD,
+  ALERT_TYPE_ERROR,
 } = require('../../../lib/constants').default
 
 
